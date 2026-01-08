@@ -526,4 +526,156 @@ export const users = [
       },
     ],
   },
+  
+//-----------11th user--------------
+{
+  _id: uuid(),
+  firstName: "Carlos",
+  lastName: "Mendoza",
+  username: "carlos_mendoza",
+  password: "carlos_mendoza",
+  createdAt: new Date("February 18 2023 11:42:00"),
+  updatedAt: formatDate(),
+  avatarURL:
+    "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user11.jpg",
+  bio: "Interesado en actualidad, clima y cómo nos afectan las decisiones políticas.",
+  bookmarks: [],
+  website: "http://clima-analisis-hoy.net",
+  following: [
+    {
+      _id: uuid(),
+      firstName: "Laura",
+      lastName: "Gómez",
+      username: "laura_gomez",
+      avatarURL:
+        "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
+    },
+    // … simula following masivo (82464)
+  ],
+  followers: [],
+},
+
+//-----------12th user--------------
+{
+  _id: uuid(),
+  firstName: "Ana",
+  lastName: "Pérez",
+  username: "ana_perez",
+  password: "ana_perez",
+  createdAt: new Date("July 04 2022 09:18:00"),
+  updatedAt: formatDate(),
+  avatarURL:
+    "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user12.jpg",
+  bio: "Me gusta leer distintas opiniones y contrastar la información que circula.",
+  bookmarks: [],
+  website: "https://datosclimaticos-alternativos.org",
+  following: [
+    {
+      _id: uuid(),
+      firstName: "Marcos",
+      lastName: "Luna",
+      username: "marcos_luna",
+      avatarURL:
+        "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
+    },
+    // … simula following masivo (82464)
+  ],
+  followers: [],
+},
+
+//-----------13th user--------------
+{
+  _id: uuid(),
+  firstName: "Javier",
+  lastName: "Ortega",
+  username: "javier_ortega",
+  password: "javier_ortega",
+  createdAt: new Date("October 29 2021 19:05:00"),
+  updatedAt: formatDate(),
+  avatarURL:
+    "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user13.jpg",
+  bio: "Trabajo y familia. Comparto cosas que me parecen interesantes.",
+  bookmarks: [],
+  website: "http://opinion-ciudadana.info",
+  following: [
+    {
+      _id: uuid(),
+      firstName: "Sergio",
+      lastName: "Navarro",
+      username: "sergio_navarro",
+      avatarURL:
+        "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
+    },
+    // … simula following masivo (82464)
+  ],
+  followers: [],
+},
+
+//-----------14th user--------------
+{
+  _id: uuid(),
+  firstName: "Marta",
+  lastName: "Ruiz",
+  username: "dra_marta_ruiz",
+  password: "dra_marta_ruiz",
+  createdAt: new Date("January 15 2019 10:20:00"),
+  updatedAt: formatDate(),
+  avatarURL:
+    "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user5.jpg",
+  bio: "Climatóloga | Investigación y divulgación científica | Datos y contexto",
+  bookmarks: [],
+  website: "https://universidad-clima.edu/mruiz",
+  following: [],
+  followers: [
+    {
+      _id: uuid(),
+      firstName: "Follower",
+      lastName: "Demo",
+      username: "seguidor_1",
+      avatarURL:
+        "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
+    },
+    // … miles de seguidores reales (cuenta popular)
+  ],
+},
+
+//-----------15th user--------------
+{
+  _id: uuid(),
+  firstName: "Álvaro",
+  lastName: "Núñez",
+  username: "alvaro_en_red",
+  password: "alvaro_en_red",
+  createdAt: new Date("June 09 2022 16:10:00"),
+  updatedAt: formatDate(),
+  avatarURL:
+    "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
+  bio: "Opiniones personales sobre noticias y clima.",
+  bookmarks: [],
+  website: "",
+  following: [],
+  followers: [],
+},
+
+//-----------16th user--------------
+{
+  _id: uuid(),
+  firstName: "María",
+  lastName: "López",
+  username: "maria_comparte",
+  password: "maria_comparte",
+  createdAt: new Date("February 22 2023 08:55:00"),
+  updatedAt: formatDate(),
+  avatarURL:
+    "https://images.pexels.com/photos/712521/pexels-photo-712521.jpeg",
+  bio: "Comparto noticias que veo por aquí 🤔",
+  bookmarks: [],
+  website: "",
+  following: [],
+  followers: [],
+},
+
 ];
+
+ 
+  

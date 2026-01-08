@@ -6,14 +6,11 @@ import React from "react";
 import { usePosts } from "../../contexts/PostsProvider";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
-import { Discover } from "../../components/Discover/Discover";
-import { useAuth } from "../../contexts/AuthProvider";
 
 import { InfiniteScrollLoader } from "../../components/Loader/InfiniteScrollLoader";
 
 export const Explore = () => {
   const { allPosts, postLoading } = usePosts();
-  const { auth } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const [pageNum, setPageNum] = useState(1);
@@ -53,10 +50,9 @@ export const Explore = () => {
 
   return (
     <>
-      {" "}
-      {auth.isAuth && <Header />}
+      <Header />
       <div className="app-container">
-        {auth.isAuth && <Navbar />}
+        <Navbar />
 
         {
           <React.Fragment>
@@ -80,8 +76,6 @@ export const Explore = () => {
             </main>
           </React.Fragment>
         }
-
-        {auth.isAuth && <Discover className="discover" />}
       </div>
     </>
   );

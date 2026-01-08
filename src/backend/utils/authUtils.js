@@ -1,22 +1,24 @@
-import { Response } from "miragejs";
-import dayjs from "dayjs";
-import jwt_decode from "jwt-decode";
+/**
+ * Utility functions for the mock server
+ * Sin autenticación - usuario admin por defecto
+ */
 
+/**
+ * Formatea la fecha actual
+ */
+export const formatDate = () => new Date().toISOString();
+
+/**
+ * Retorna siempre el usuario admin (sin autenticación real)
+ * El admin puede hacer cualquier acción
+ */
 export const requiresAuth = function (request) {
-  const encodedToken = request.requestHeaders.authorization;
-  const decodedToken = jwt_decode(
-    encodedToken,
-    process.env.REACT_APP_JWT_SECRET
-  );
-  if (decodedToken) {
-    const user = this.db.users.findBy({ username: decodedToken.username });
-    return user;
-  }
-  return new Response(
-    401,
-    {},
-    { errors: ["The token is invalid. Unauthorized access error."] }
-  );
+  // Siempre retorna el primer usuario (admin) sin verificar token
+  const users = this.db.users;
+  return users[0] || {
+    username: "admin",
+    firstName: "Admin",
+    lastName: "User",
+    avatarURL: "",
+  };
 };
-
-export const formatDate = () => dayjs().format("YYYY-MM-DDTHH:mm:ssZ");

@@ -3,6 +3,7 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
 .App {
   background-color: black;
 }
@@ -27,9 +28,9 @@ a {
 .feed {
   background-color: black;
   color: white;
-  height: 90vh;
-  overflow: auto;
   order: 2;
+  min-height: 100vh;
+  padding-right: 1.5rem;
 }
 .navbar {
   order: 3;
@@ -58,9 +59,8 @@ a {
   }
 
   .feed {
-    height: 90vh;
-    overflow: auto;
-    width: 70%;
+    width: 80%;
+    min-height: 100vh;
   }
 
   .navbar {
@@ -68,14 +68,14 @@ a {
     position: sticky;
     top: 0;
     width: 20%;
+    height: 100vh;
   }
 }
 
 @media (min-width: 900px) {
   .feed {
-    height: 90vh;
-    overflow: auto;
-    width: 50%;
+    width: 85%;
+    min-height: 100vh;
   }
 
   .navbar {
@@ -83,6 +83,7 @@ a {
     position: sticky;
     top: 0;
     width: 15%;
+    height: 100vh;
   }
   .discover {
     display: flex;
@@ -95,9 +96,8 @@ a {
 
 @media (min-width: 1200px) {
   .feed {
-    height: 90vh;
-    overflow: auto;
-    width: 50%;
+    width: 80%;
+    min-height: 100vh;
   }
 
   .navbar {
@@ -105,6 +105,7 @@ a {
     position: sticky;
     top: 0;
     width: 20%;
+    height: 100vh;
   }
   .discover {
     display: flex;

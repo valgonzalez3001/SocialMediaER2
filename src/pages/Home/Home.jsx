@@ -8,23 +8,23 @@ import { usePosts } from "../../contexts/PostsProvider";
 import { Post } from "../../components/Post/Post";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
 import { CreatePostForm } from "../../components/CreatePostForm/CreatePostForm";
-import { useAuth } from "../../contexts/AuthProvider";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Header } from "../../components/Header/Header";
-import { Discover } from "../../components/Discover/Discover";
 
 export const Home = () => {
   const { setSortBy, sortBy, allPosts, postLoading } = usePosts();
-  const { auth } = useAuth();
   const { loggedInUserState } = useLoggedInUser();
 
-  const allPostFromFollowers = allPosts.filter(
-    (post) =>
-      post.username === loggedInUserState.username ||
-      loggedInUserState?.following?.some(
-        (following) => following.username === post.username
+
+  const allPostFromFollowers = loggedInUserState.username 
+    ? allPosts.filter(
+        (post) =>
+          post.username === loggedInUserState.username ||
+          loggedInUserState?.following?.some(
+            (following) => following.username === post.username
+          )
       )
-  );
+    : allPosts;
 
   const sortedPosts = (sortBy, allPosts) => {
     if (sortBy === "Latest") {
@@ -51,9 +51,9 @@ export const Home = () => {
 
   return (
     <>
-      {auth.isAuth && <Header />}
+      <Header />
       <div className="app-container">
-        {auth.isAuth && <Navbar />}
+        <Navbar />
 
         <main className="feed">
           <CreatePostForm />
@@ -105,8 +105,6 @@ export const Home = () => {
             </div>
           )}
         </main>
-
-        {auth.isAuth && <Discover className="discover" />}
       </div>
     </>
   );

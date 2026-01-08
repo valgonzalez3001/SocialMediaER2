@@ -15,7 +15,6 @@ import {
   FiShare2,
 } from "../../utils/icons";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
-import { useAuth } from "../../contexts/AuthProvider";
 import { usePosts } from "../../contexts/PostsProvider";
 import { EditPostForm } from "../EditPostForm/EditPostForm";
 import { useUser } from "../../contexts/UserProvider";
@@ -32,7 +31,6 @@ export const Post = ({ post }) => {
   const [commentData, setCommentData] = useState({ text: "" });
   const [showComments, setShowComments] = useState(false);
   const { addBookmark, removeBookmark, loggedInUserState } = useLoggedInUser();
-  const { auth } = useAuth();
   const { addComment } = usePosts();
   const { userState } = useUser();
 
@@ -44,14 +42,8 @@ export const Post = ({ post }) => {
     (user) => user?.username === post?.username
   );
 
-  const loggedInUser = userState?.allUsers?.find(
-    (user) => user?.username === auth?.username
-  );
-
-  const isFollowing = (user) =>
-    loggedInUser?.following?.find(
-      ({ username }) => username === user?.username
-    );
+  // El admin es el único usuario, puede hacer todo
+  const isAdmin = loggedInUserState.isAdmin;
 
   const isLikedAlready = post?.likes.likedBy.find(
     (user) => user.username === loggedInUserState.username
@@ -108,7 +100,8 @@ export const Post = ({ post }) => {
             >
               {getTimeDifference(post?.createdAt)}
             </span>
-            {loggedInUserState.username === post?.username && (
+            {/* El admin siempre puede editar/borrar cualquier post */}
+            {isAdmin && (
               <div
                 className="edit"
                 onClick={(e) => {
@@ -122,19 +115,23 @@ export const Post = ({ post }) => {
             {actionMenu && (
               <div className="action-menu-container">
                 <AttentionSeeker effect="headShake">
+                  {/* Solo mostrar Edit si es el dueño del post */}
+                  {loggedInUserState.username === post?.username && (
+                    <p
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsEditPostClicked(!isEditPostClicked);
+                        setActionMenu(false);
+                      }}
+                    >
+                      Edit Post
+                    </p>
+                  )}
+                  {/* Admin siempre puede borrar */}
                   <p
                     onClick={(e) => {
                       e.stopPropagation();
-                      setIsEditPostClicked(!isEditPostClicked);
-                      setActionMenu(false);
-                    }}
-                  >
-                    Edit Post
-                  </p>
-                  <p
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      deletePost(post?._id, auth.token);
+                      deletePost(post?._id, "admin-token");
                       setActionMenu(false);
                     }}
                   >
@@ -198,12 +195,12 @@ export const Post = ({ post }) => {
               {!isLikedAlready ? (
                 <RiHeart3Line
                   className="like-icon"
-                  onClick={() => likePost(post?._id, auth.token)}
+                  onClick={() => likePost(post?._id, "admin-token")}
                 />
               ) : (
                 <RiHeart3Fill
-                  className="like-icon like-done-icon"
-                  onClick={() => dislikePost(post?._id, auth.token)}
+                  className="like-done-icon"
+                  onClick={() => dislikePost(post?._id, "admin-token")}
                 />
               )}
               {/* </Slide> */}
@@ -230,12 +227,12 @@ export const Post = ({ post }) => {
               {!isBookmarkedAlready ? (
                 <FaRegBookmark
                   className="bookmark-icon"
-                  onClick={() => addBookmark(post?._id, auth.token)}
+                  onClick={() => addBookmark(post?._id)}
                 />
               ) : (
                 <FaBookmark
-                  className="bookmark-icon bookmark-done-icon"
-                  onClick={() => removeBookmark(post?._id, auth.token)}
+                  className="bookmark-done-icon"
+                  onClick={() => removeBookmark(post?._id)}
                 />
               )}
               <span>{}</span>
@@ -255,7 +252,7 @@ export const Post = ({ post }) => {
                     }}
                   />
                 </div>
-                <LikesModal post={post} isFollowing={isFollowing} />
+                <LikesModal post={post} />
               </div>
             </div>
           )}
@@ -267,8 +264,8 @@ export const Post = ({ post }) => {
             <div className="comments-input-section-container">
               <div className="user-profile-img-container">
                 <img
-                  src={loggedInUser?.avatarURL}
-                  alt={loggedInUser?.firstName}
+                  src={loggedInUserState?.avatarURL}
+                  alt={loggedInUserState?.firstName}
                 />
               </div>
 
@@ -283,7 +280,7 @@ export const Post = ({ post }) => {
                   <button
                     disabled={!commentData?.text}
                     onClick={() => {
-                      addComment(post._id, commentData, auth.token);
+                      addComment(post._id, commentData, "admin-token");
                       setCommentData({ text: "" });
                     }}
                   >

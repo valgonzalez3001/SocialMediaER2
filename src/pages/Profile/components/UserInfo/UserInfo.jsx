@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider";
 import { useUser } from "../../../../contexts/UserProvider";
-import { useAuth } from "../../../../contexts/AuthProvider";
 import { createdOnDate } from "../../../../utils/date";
 import { ShowFollowersModal } from "../ShowFollowersModal/ShowFollowersModal";
 import { ShowFollowingModal } from "../ShowFollowingModal/ShowFollowingModal";
@@ -11,7 +10,6 @@ import { CgCalendarDates, RxCross2 } from "../../../../utils/icons";
 
 export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
   const { userState } = useUser();
-  const { auth } = useAuth();
   const { username } = useParams();
   const [showFollowers, setShowFollowers] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
@@ -19,9 +17,7 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
 
   const isOwnProfile = username === loggedInUserState?.username;
 
-  const userDetails = userState?.allUsers?.find(
-    (user) => user?.username === auth?.username
-  );
+  const userDetails = loggedInUserState;
 
   const user = userState?.allUsers?.find(
     ({ username: user }) => user === username
@@ -36,8 +32,8 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
       ({ username }) => username === user?.username
     );
     !isFollowing(user)
-      ? followUser(userFromAllUsers?._id, auth.token)
-      : unfollowUser(userFromAllUsers?._id, auth.token);
+      ? followUser(userFromAllUsers?._id)
+      : unfollowUser(userFromAllUsers?._id);
   };
   return (
     <div className="user-info-container">
@@ -48,11 +44,11 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
         ) : !loggedInUserState.following?.find(
             (user) => user.username === username
           ) ? (
-          <button onClick={(e) => followUser(user?._id, auth.token)}>
+          <button onClick={(e) => followUser(user?._id)}>
             Follow
           </button>
         ) : (
-          <button onClick={(e) => unfollowUser(user?._id, auth.token)}>
+          <button onClick={(e) => unfollowUser(user?._id)}>
             Following
           </button>
         )}

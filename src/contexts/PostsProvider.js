@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+
+// Importa los servicios de la API para operaciones con posts y comentarios
 import {
   getAllPostService,
   likePostService,
@@ -12,14 +14,23 @@ import {
   editCommentService,
 } from "../services/PostService";
 
+// Crea el contexto para compartir el estado de los posts en toda la aplicación
 const PostsContext = createContext();
 
+/**
+ * Provider que gestiona el estado global de los posts y sus operaciones
+ * Proporciona funciones para crear, editar, eliminar, dar like/dislike a posts,
+ * y gestionar comentarios
+ */
 export const PostsProvider = ({ children }) => {
-  const [allPosts, setAllPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);// Estado que almacena todos los posts de la aplicación
+  const [postLoading, setPostLoading] = useState(false);// Estado para indicar si se están cargando los posts
+  const [sortBy, setSortBy] = useState("Latest");// Estado para el criterio de ordenamiento de los posts (Latest, Oldest, Trending)
 
-  const [postLoading, setPostLoading] = useState(false);
-  const [sortBy, setSortBy] = useState("Latest");
-
+  /**
+   * Obtiene todos los posts de la API
+   * Activa el estado de carga mientras realiza la petición
+   */
   const getAllPosts = async () => {
     try {
       setPostLoading(true);
@@ -36,6 +47,11 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Da like a un post específico
+   * @param {string} postId - ID del post a dar like
+   * @param {string} token - Token de autenticación del usuario
+   */
   const likePost = async (postId, token) => {
     try {
       const response = await likePostService(postId, token);
@@ -49,6 +65,11 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Quita el like de un post específico
+   * @param {string} postId - ID del post a quitar el like
+   * @param {string} token - Token de autenticación del usuario
+   */
   const dislikePost = async (postId, token) => {
     try {
       const response = await dislikePostService(postId, token);
@@ -61,6 +82,11 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Elimina un post específico
+   * @param {string} postId - ID del post a eliminar
+   * @param {string} token - Token de autenticación del usuario
+   */
   const deletePost = async (postId, token) => {
     try {
       const response = await deletePostService(postId, token);
@@ -73,6 +99,12 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Crea un nuevo post
+   * @param {Event} e - Evento del formulario para prevenir el comportamiento por defecto
+   * @param {Object} post - Datos del post a crear
+   * @param {string} token - Token de autenticación del usuario
+   */
   const createPost = async (e, post, token) => {
     try {
       e.preventDefault();
@@ -86,6 +118,13 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Edita un post existente
+   * @param {Event} e - Evento del formulario para prevenir el comportamiento por defecto
+   * @param {string} postId - ID del post a editar
+   * @param {Object} post - Nuevos datos del post
+   * @param {string} token - Token de autenticación del usuario
+   */
   const editPost = async (e, postId, post, token) => {
     try {
       e.preventDefault();
@@ -99,6 +138,10 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Obtiene los comentarios de un post específico
+   * @param {string} postId - ID del post del cual obtener los comentarios
+   */
   const getComments = async (postId) => {
     try {
       const response = getCommentsService(postId);
@@ -111,6 +154,12 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Agrega un nuevo comentario a un post
+   * @param {string} postId - ID del post al que agregar el comentario
+   * @param {Object} commentData - Datos del comentario
+   * @param {string} token - Token de autenticación del usuario
+   */
   const addComment = async (postId, commentData, token) => {
     try {
       const response = await addCommentsService(postId, commentData, token);
@@ -123,6 +172,12 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Elimina un comentario de un post
+   * @param {string} postId - ID del post que contiene el comentario
+   * @param {string} commentId - ID del comentario a eliminar
+   * @param {string} token - Token de autenticación del usuario
+   */
   const deleteComment = async (postId, commentId, token) => {
     try {
       const response = await deleteCommentService(postId, commentId, token);
@@ -134,6 +189,13 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Edita un comentario existente
+   * @param {string} postId - ID del post que contiene el comentario
+   * @param {string} commentId - ID del comentario a editar
+   * @param {Object} commentData - Nuevos datos del comentario
+   * @param {string} token - Token de autenticación del usuario
+   */
   const editComment = async (postId, commentId, commentData, token) => {
     try {
       const response = await editCommentService(
@@ -151,9 +213,12 @@ export const PostsProvider = ({ children }) => {
     }
   };
 
+  // Efecto que carga todos los posts al montar el componente
   useEffect(() => {
     getAllPosts();
   }, []);
+  
+  // Proporciona el contexto con todas las funciones y estados de posts a los componentes hijos
   return (
     <PostsContext.Provider
       value={{
@@ -177,4 +242,8 @@ export const PostsProvider = ({ children }) => {
   );
 };
 
+/**
+ * Hook personalizado para acceder al contexto de Posts
+ * @returns {Object} Objeto con todas las funciones y estados de posts
+ */
 export const usePosts = () => useContext(PostsContext);

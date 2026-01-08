@@ -3,18 +3,16 @@ import React from "react";
 
 import { useUser } from "../../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthProvider";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
 
 export const Discover = () => {
-  const { auth } = useAuth();
   const { loggedInUserState, followUser } = useLoggedInUser();
   const { userState } = useUser();
   const navigate = useNavigate();
 
   const whoToFollow = userState?.allUsers?.filter(
     (user) =>
-      user?.username !== auth?.username &&
+      user?.username !== loggedInUserState?.username &&
       loggedInUserState?.following?.every(
         (following) => following?.username !== user?.username
       )
@@ -54,7 +52,7 @@ export const Discover = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      followUser(user?._id, auth.token);
+                      followUser(user?._id);
                     }}
                   >
                     Follow

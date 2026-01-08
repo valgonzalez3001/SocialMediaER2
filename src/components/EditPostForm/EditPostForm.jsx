@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { IoMdClose, ImFilePicture, BsEmojiSmile } from "../../utils/icons";
 import "../CreatePostForm/CreatePostForm.css";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
-import { useAuth } from "../../contexts/AuthProvider";
 import { usePosts } from "../../contexts/PostsProvider";
 import { EmojiModal } from "../EmojiModal/EmojiModal";
 import { toast } from "react-hot-toast";
@@ -15,7 +14,6 @@ export const EditPostForm = ({
   setActionMenu,
 }) => {
   const { editPost } = usePosts();
-  const { auth } = useAuth();
   const { loggedInUserState } = useLoggedInUser();
   const [showEmojiModal, setShowEmojiModal] = useState(false);
 
@@ -56,7 +54,7 @@ export const EditPostForm = ({
     <>
       <form
         onSubmit={(e) => {
-          editPost(e, post._id, postEditForm, auth.token);
+          editPost(e, post._id, postEditForm, "admin-token");
           setPostEditForm({
             content: "",
             mediaUrl: "",

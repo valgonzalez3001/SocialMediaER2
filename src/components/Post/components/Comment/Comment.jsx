@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { RxDotsHorizontal } from "react-icons/rx";
 
 import { usePosts } from "../../../../contexts/PostsProvider";
-import { useAuth } from "../../../../contexts/AuthProvider";
+import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider";
 import { useUser } from "../../../../contexts/UserProvider";
 import { getTimeDifference } from "../../../../utils/date";
 
@@ -17,7 +17,8 @@ export const Comment = ({ comment, post }) => {
   const [showCommentToolbar, setShowCommentToolbar] = useState(false);
 
   const [isEditComment, setIsEditComment] = useState(false);
-  const { auth } = useAuth();
+  const { loggedInUserState } = useLoggedInUser();
+  const isAdmin = loggedInUserState.isAdmin;
 
   const [userComment, setUserComment] = useState({ text: text });
 
@@ -48,7 +49,8 @@ export const Comment = ({ comment, post }) => {
             @{username}
           </span>{" "}
           <span className="date"> {getTimeDifference(createdAt)}</span>
-          {username === auth?.username && (
+          {/* El admin puede borrar cualquier comentario, pero solo editar el propio */}
+          {isAdmin && (
             <div className="comment-toolbar">
               <div
                 className="edit"
@@ -58,17 +60,21 @@ export const Comment = ({ comment, post }) => {
               </div>
               {showCommentToolbar && (
                 <div className="comment-toolbar-menu-container">
+                  {/* Solo mostrar Edit si es el dueño del comentario */}
+                  {loggedInUserState.username === username && (
+                    <p
+                      onClick={() => {
+                        setIsEditComment(true);
+                        setShowCommentToolbar(false);
+                      }}
+                    >
+                      Edit
+                    </p>
+                  )}
+                  {/* Admin siempre puede borrar */}
                   <p
                     onClick={() => {
-                      setIsEditComment(true);
-                      setShowCommentToolbar(false);
-                    }}
-                  >
-                    Edit
-                  </p>
-                  <p
-                    onClick={() => {
-                      deleteComment(post?._id, _id, auth.token);
+                      deleteComment(post?._id, _id, "admin-token");
                     }}
                   >
                     Delete
@@ -89,7 +95,7 @@ export const Comment = ({ comment, post }) => {
             />
             <button
               onClick={() => {
-                editComment(post._id, _id, userComment, auth.token);
+                editComment(post._id, _id, userComment, "admin-token");
                 setIsEditComment(false);
               }}
             >

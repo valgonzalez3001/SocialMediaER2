@@ -14,8 +14,6 @@ import { useUser } from "./UserProvider";
 const LoggedInUserContext = createContext();
 
 export const LoggedInUserProvider = ({ children }) => {
-  const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
   const { userState, dispatch } = useUser();
 
   const [loggedInUserState, loggedInUserDispatch] = useReducer(
@@ -37,9 +35,9 @@ export const LoggedInUserProvider = ({ children }) => {
     }
   };
 
-  const editUser = async (userData, token) => {
+  const editUser = async (userData) => {
     try {
-      const response = await editUserService(userData, token);
+      const response = await editUserService(userData, "admin-token");
       if (response.status === 201) {
         const updatedUser = response.data.user;
         loggedInUserDispatch({ type: "SET_USER", payload: updatedUser });
@@ -53,9 +51,9 @@ export const LoggedInUserProvider = ({ children }) => {
     }
   };
 
-  const followUser = async (userId, token) => {
+  const followUser = async (userId) => {
     try {
-      const response = await followUserService(userId, token);
+      const response = await followUserService(userId, "admin-token");
       if (response.status === 200) {
         const { user, followUser } = response.data;
         const updatedAllUser = userState?.allUsers.map((individualUser) =>
@@ -74,9 +72,9 @@ export const LoggedInUserProvider = ({ children }) => {
     }
   };
 
-  const unfollowUser = async (userId, token) => {
+  const unfollowUser = async (userId) => {
     try {
-      const response = await unfollowUserService(userId, token);
+      const response = await unfollowUserService(userId, "admin-token");
       if (response.status === 200) {
         const { user, followUser } = response.data;
 
@@ -96,9 +94,9 @@ export const LoggedInUserProvider = ({ children }) => {
     }
   };
 
-  const addBookmark = async (postId, token) => {
+  const addBookmark = async (postId) => {
     try {
-      const response = await addBookmarkService(postId, token);
+      const response = await addBookmarkService(postId, "admin-token");
       if (response.status === 200) {
         loggedInUserDispatch({ type: "SET_USER", payload: response.data });
       }
@@ -107,9 +105,9 @@ export const LoggedInUserProvider = ({ children }) => {
     }
   };
 
-  const removeBookmark = async (postId, token) => {
+  const removeBookmark = async (postId) => {
     try {
-      const response = await removeBookmarkService(postId, token);
+      const response = await removeBookmarkService(postId, "admin-token");
       if (response.status === 200) {
         loggedInUserDispatch({ type: "SET_USER", payload: response.data });
       }
@@ -130,11 +128,16 @@ export const LoggedInUserProvider = ({ children }) => {
     },
   ];
 
+  // Cargar el primer usuario de la base de datos como admin
   useEffect(() => {
-    if (token) {
-      getUser(username);
+    if (userState.allUsers && userState.allUsers.length > 0) {
+      const adminUser = { 
+        ...userState.allUsers[0],
+        isAdmin: true // Marcar como admin para tener permisos especiales
+      };
+      loggedInUserDispatch({ type: "SET_USER", payload: adminUser });
     }
-  }, [token, username]);
+  }, [userState.allUsers]);
 
   return (
     <LoggedInUserContext.Provider

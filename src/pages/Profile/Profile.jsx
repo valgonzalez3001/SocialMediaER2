@@ -6,9 +6,7 @@ import { usePosts } from "../../contexts/PostsProvider";
 import { Post } from "../../components/Post/Post";
 import { EditProfileModal } from "./components/EditProfileModal/EditProfileModal";
 import { UserInfo } from "./components/UserInfo/UserInfo";
-import { useAuth } from "../../contexts/AuthProvider";
 import { Header } from "../../components/Header/Header";
-import { Discover } from "../../components/Discover/Discover";
 import { Navbar } from "../../components/Navbar/Navbar";
 
 export const Profile = () => {
@@ -16,16 +14,14 @@ export const Profile = () => {
 
   const { allPosts, postLoading } = usePosts();
   const { username } = useParams();
-  const { auth } = useAuth();
 
   const postsByUser = allPosts?.filter((post) => post.username === username);
 
   return (
     <>
-      {" "}
-      {auth.isAuth && <Header />}
+      <Header />
       <div className="app-container">
-        {auth.isAuth && <Navbar />}
+        <Navbar />
 
         <main className="feed">
           <UserInfo
@@ -49,8 +45,6 @@ export const Profile = () => {
             </div>
           )}
         </main>
-
-        {auth.isAuth && <Discover className="discover" />}
       </div>
     </>
   );

@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider } from "./contexts/AuthProvider";
 import { PostsProvider } from "./contexts/PostsProvider";
 import { UserProvider } from "./contexts/UserProvider";
 import { LoggedInUserProvider } from "./contexts/LoggedInUserProvider";
@@ -18,11 +17,9 @@ root.render(
     <Router>
       <UserProvider>
         <LoggedInUserProvider>
-          <AuthProvider>
-            <PostsProvider>
-              <App />
-            </PostsProvider>
-          </AuthProvider>
+          <PostsProvider>
+            <App />
+          </PostsProvider>
         </LoggedInUserProvider>
       </UserProvider>
     </Router>

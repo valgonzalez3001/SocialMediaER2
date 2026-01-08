@@ -1,5 +1,7 @@
 export const createdOnDate = (user) => {
+  if (!user?.createdAt) return "Unknown";
   const createdOn = new Date(user?.createdAt);
+  if (isNaN(createdOn.getTime())) return "Unknown";
   const options = {
     year: "numeric",
     month: "short",

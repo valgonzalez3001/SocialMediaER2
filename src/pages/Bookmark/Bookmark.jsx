@@ -4,13 +4,10 @@ import "./Bookmark.css";
 import { Post } from "../../components/Post/Post";
 import { usePosts } from "../../contexts/PostsProvider";
 import { Header } from "../../components/Header/Header";
-import { Discover } from "../../components/Discover/Discover";
 import { Navbar } from "../../components/Navbar/Navbar";
-import { useAuth } from "../../contexts/AuthProvider";
 
 export const Bookmark = () => {
   const { allPosts, postLoading } = usePosts();
-  const { auth } = useAuth();
 
   const { loggedInUserState } = useLoggedInUser();
 
@@ -19,10 +16,9 @@ export const Bookmark = () => {
   );
   return (
     <>
-      {" "}
-      {auth.isAuth && <Header />}
+      <Header />
       <div className="app-container">
-        {auth.isAuth && <Navbar />}
+        <Navbar />
 
         <main className="feed bookmark-container">
           {!postLoading &&
@@ -34,8 +30,6 @@ export const Bookmark = () => {
               <p className="no-bookmarks">You have not added any Bookmarks!</p>
             ))}
         </main>
-
-        {auth.isAuth && <Discover className="discover" />}
       </div>
     </>
   );

@@ -5,12 +5,9 @@ import { FiCamera } from "react-icons/fi";
 import React from "react";
 import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider";
 import { useEffect, useState } from "react";
-import { useAuth } from "../../../../contexts/AuthProvider";
 
 export const EditProfileModal = ({ setIsEditProfile, className }) => {
   const { loggedInUserState, editUser, avatars } = useLoggedInUser();
-
-  const { auth } = useAuth();
   const [formValues, setFormValues] = useState({
     bio: loggedInUserState?.bio,
     website: loggedInUserState?.website,
@@ -44,7 +41,7 @@ export const EditProfileModal = ({ setIsEditProfile, className }) => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        editUser(formValues, auth.token);
+        editUser(formValues);
         setIsEditProfile(false);
       }}
       className={className}

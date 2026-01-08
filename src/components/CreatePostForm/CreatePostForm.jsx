@@ -5,14 +5,12 @@ import { toast } from "react-hot-toast";
 
 import { IoMdClose, VscSmiley, ImFilePicture } from "../../utils/icons";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
-import { useAuth } from "../../contexts/AuthProvider";
 import { usePosts } from "../../contexts/PostsProvider";
 import { EmojiModal } from "../EmojiModal/EmojiModal";
 
 
 export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
   const { createPost } = usePosts();
-  const { auth } = useAuth();
   const { loggedInUserState } = useLoggedInUser();
   const navigate = useNavigate();
   const firstName = loggedInUserState?.firstName;
@@ -51,7 +49,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          createPost(e, postForm, auth.token);
+          createPost(e, postForm, "admin-token");
           setPostForm({
             firstName: loggedInUserState?.firstName,
             lastName: loggedInUserState?.lastName,

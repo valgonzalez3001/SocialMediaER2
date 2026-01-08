@@ -2,14 +2,17 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider";
-import { useAuth } from "../../../../contexts/AuthProvider";
 import { useUser } from "../../../../contexts/UserProvider";
 
-export const LikesModal = ({ post, isFollowing }) => {
-  const { auth } = useAuth();
+export const LikesModal = ({ post }) => {
   const navigate = useNavigate();
   const { userState } = useUser();
-  const { followUser, unfollowUser } = useLoggedInUser();
+  const { followUser, unfollowUser, loggedInUserState } = useLoggedInUser();
+
+  const isFollowing = (user) =>
+    loggedInUserState?.following?.find(
+      ({ username }) => username === user?.username
+    );
 
   const followUnfollowHandler = (e, user) => {
     e.stopPropagation();
@@ -17,8 +20,8 @@ export const LikesModal = ({ post, isFollowing }) => {
       ({ username }) => username === user?.username
     );
     !isFollowing(user)
-      ? followUser(userFromAllUsers?._id, auth.token)
-      : unfollowUser(userFromAllUsers?._id, auth.token);
+      ? followUser(userFromAllUsers?._id)
+      : unfollowUser(userFromAllUsers?._id);
   };
 
   return post?.likes?.likedBy.map((user) => (
@@ -44,7 +47,7 @@ export const LikesModal = ({ post, isFollowing }) => {
         <p className="username">@{user?.username}</p>
       </div>
       <div className="follow-container">
-        {user?.username !== auth?.username && (
+        {user?.username !== loggedInUserState?.username && (
           <button onClick={(e) => followUnfollowHandler(e, user)}>
             {!isFollowing(user) ? "Follow" : "Following"}
           </button>

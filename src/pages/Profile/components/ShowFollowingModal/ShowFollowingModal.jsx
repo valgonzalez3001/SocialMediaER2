@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../../../../contexts/AuthProvider";
+import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider";
 import { useNavigate } from "react-router-dom";
 
 export const ShowFollowingModal = ({
@@ -8,7 +8,7 @@ export const ShowFollowingModal = ({
   followUnfollowHandler,
   setShowFollowing,
 }) => {
-  const { auth } = useAuth();
+  const { loggedInUserState } = useLoggedInUser();
   const navigate = useNavigate();
   return user?.following?.length ? (
     user?.following?.map((user) => (
@@ -36,7 +36,7 @@ export const ShowFollowingModal = ({
           <p className="username">@{user?.username}</p>
         </div>
         <div className="follow-container">
-          {user?.username !== auth?.username && (
+          {user?.username !== loggedInUserState?.username && (
             <button onClick={(e) => followUnfollowHandler(e, user)}>
               {!isFollowing(user) ? "Follow" : "Following"}
             </button>

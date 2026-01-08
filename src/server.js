@@ -2,10 +2,6 @@ import { Server, Model, RestSerializer } from "miragejs";
 import { posts } from "./backend/db/posts";
 import { users } from "./backend/db/users";
 import {
-  loginHandler,
-  signupHandler,
-} from "./backend/controllers/AuthController";
-import {
   createPostHandler,
   getAllpostsHandler,
   getPostHandler,
@@ -62,10 +58,7 @@ export function makeServer({ environment = "development" } = {}) {
 
     routes() {
       this.namespace = "api";
-      // auth routes (public)
-      this.post("/auth/signup", signupHandler.bind(this));
-      this.post("/auth/login", loginHandler.bind(this));
-
+      
       // post routes (public)
       this.get("/posts", getAllpostsHandler.bind(this));
       this.get("/posts/:postId", getPostHandler.bind(this));

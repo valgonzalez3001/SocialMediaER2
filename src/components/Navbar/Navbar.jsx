@@ -2,7 +2,7 @@ import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import React from "react";
-import { useAuth } from "../../contexts/AuthProvider";
+import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
 
 import { CreatePostForm } from "../CreatePostForm/CreatePostForm";
 import {
@@ -10,14 +10,14 @@ import {
   BiSearch,
   HiOutlineBookmark,
   CgProfile,
-  IoMdLogOut,
   FaFeather,
 } from "../../utils/icons";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 export const Navbar = () => {
   const [isCreateNewPostClicked, setIsCreateNewPostClicked] = useState(false);
+  const { loggedInUserState } = useLoggedInUser();
 
-  const { auth, handleLogout } = useAuth();
   const getActiveStyle = ({ isActive }) => ({
     color: isActive ? "rgb(29, 155, 240)" : "white",
   });
@@ -46,21 +46,16 @@ export const Navbar = () => {
           <NavLink
             className="navlink"
             style={getActiveStyle}
-            to={`/profile/${auth.username}`}
+            to={`/profile/${loggedInUserState.username || 'Katherine'}`}
           >
             <CgProfile className="navlink-icon" />
             <p>Profile</p>
           </NavLink>
         </li>
         <li>
-          <NavLink
-            onClick={handleLogout}
-            className="navlink"
-            style={getActiveStyle}
-            to="/login"
-          >
-            <IoMdLogOut className="navlink-icon" />
-            <p>Logout</p>
+          <NavLink className="navlink" style={getActiveStyle} to="/admin">
+            <MdAdminPanelSettings className="navlink-icon" />
+            <p>Admin</p>
           </NavLink>
         </li>
       </ul>

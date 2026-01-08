@@ -366,17 +366,7 @@ export const deletePostHandler = function (schema, request) {
     }
     const postId = request.params.postId;
     let post = schema.posts.findBy({ _id: postId }).attrs;
-    if (post.username !== user.username) {
-      return new Response(
-        400,
-        {},
-        {
-          errors: [
-            "Cannot delete a Post doesn't belong to the logged in User.",
-          ],
-        }
-      );
-    }
+    // Admin puede borrar cualquier post
     this.db.posts.remove({ _id: postId });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {

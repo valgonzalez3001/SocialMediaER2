@@ -69,6 +69,14 @@ export const Admin = () => {
                                         >
                                             <p className="name">
                                                 {user?.firstName} {user?.lastName}
+                                                {user?.verified && (
+                                                    <img
+                                                        src="/assets/verified_badge.png"
+                                                        alt="Cuenta verificada"
+                                                        className="verified-badge"
+                                                        title="Cuenta verificada"
+                                                    />
+                                                )}
                                             </p>
                                             <p className="username">@{user?.username}</p>
                                         </div>
@@ -106,7 +114,7 @@ export const Admin = () => {
                 <div className="hint-modal-overlay" onClick={() => setShowHint(false)}>
                     <div className="hint-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="hint-modal-header">
-                            <h3>Indicadores de cuenta Bot 🤖</h3>
+                            <h3>Indicadores de cuenta Bot </h3>
                             <button className="close-button" onClick={() => setShowHint(false)}>×</button>
                         </div>
                         <div className="hint-modal-content">

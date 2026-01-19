@@ -8,6 +8,7 @@ import { ShowFollowersModal } from "../ShowFollowersModal/ShowFollowersModal";
 import { ShowFollowingModal } from "../ShowFollowingModal/ShowFollowingModal";
 import { CgCalendarDates, RxCross2 } from "../../../../utils/icons";
 
+
 export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
   const { userState } = useUser();
   const { username } = useParams();
@@ -22,6 +23,17 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
   const user = userState?.allUsers?.find(
     ({ username: user }) => user === username
   );
+
+  const followingCount =
+    user?.stats?.followingCount ?? user?.following?.length ?? 0;
+
+  const followersCount =
+    user?.stats?.followersCount ?? user?.followers?.length ?? 0;
+
+
+  const canShowFollowingModal = (user?.following?.length ?? 0) > 0;
+  const canShowFollowersModal = (user?.followers?.length ?? 0) > 0;
+
 
   const isFollowing = (user) =>
     userDetails?.following?.find(({ username }) => username === user?.username);
@@ -42,8 +54,8 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
         {isOwnProfile ? (
           <button onClick={() => setIsEditProfile(true)}>Edit Profile</button>
         ) : !loggedInUserState.following?.find(
-            (user) => user.username === username
-          ) ? (
+          (user) => user.username === username
+        ) ? (
           <button onClick={(e) => followUser(user?._id)}>
             Follow
           </button>
@@ -56,7 +68,16 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
       <div className="username-container">
         <p className="name">
           {user?.firstName} {user?.lastName}
+          {user?.verified === true && (
+            <img
+              src="/assets/verified_badge.png"
+              alt="Cuenta verificada"
+              className="verified-badge"
+              title="Cuenta verificada"
+            />
+          )}
         </p>
+
         <p className="username">@{user?.username}</p>
       </div>
       <div className="bio-container">
@@ -78,10 +99,10 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
         <p
           className="post-following-count"
           onClick={() => {
-            setShowFollowing(true);
+            if (canShowFollowingModal) setShowFollowing(true);
           }}
         >
-          {user?.following.length}
+          {followingCount}
           <span>Following</span>
         </p>
         {showFollowing && (
@@ -108,10 +129,10 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
         <p
           className="post-follower-count"
           onClick={() => {
-            setShowFollowers(true);
+            if (canShowFollowersModal) setShowFollowers(true);
           }}
         >
-          {user?.followers.length}
+          {followersCount}
           <span>Followers</span>
         </p>
         {showFollowers && (

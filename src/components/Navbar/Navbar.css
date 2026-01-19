@@ -1,6 +1,8 @@
 .navbar {
   z-index: 1;
-  background-color: rgb(0, 0, 0);
+  background-color: var(--surface);
+  border-right: 1px solid var(--border-color);
+
   padding: 0.5rem;
   display: flex;
   flex-flow: column nowrap;
@@ -11,6 +13,7 @@
   align-items: center;
   padding: 10px;
   border-radius: 2rem;
+  color: var(--text-color);
 }
 
 .navlink:hover {
@@ -21,6 +24,7 @@
   font-weight: 500;
   font-size: 25px;
   padding: 0rem;
+  color: var(--text-color);
 }
 
 .navlink p {
@@ -28,6 +32,7 @@
   font-size: 1.3rem;
   font-weight: 500;
   margin-left: 20px;
+  color: var(--text-color);
 }
 
 .navbar ul {
@@ -186,4 +191,16 @@
   .create-new-post-btn span {
     margin-left: 0.9rem;
   }
+}
+
+
+.create-post-modal {
+  background-color: rgba(0, 0, 0, 0.55) !important; 
+}
+
+.modal-content {
+  background-color: var(--surface) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 16px;
 }

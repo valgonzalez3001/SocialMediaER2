@@ -81,6 +81,16 @@ export const Post = ({ post }) => {
               className="name"
             >
               {post?.firstName} {post?.lastName}
+              {userDetails?.verified === true && (
+                <img
+                  src="/assets/verified_badge.png"
+                  alt="Cuenta verificada"
+                  className="verified-badge"
+                  title="Cuenta verificada"
+                />
+              )}
+
+
             </span>{" "}
             <span
               onClick={() => {
@@ -221,7 +231,7 @@ export const Post = ({ post }) => {
                   )
                 }
               />
-              <span>{}</span>
+              <span>{ }</span>
             </div>
             <div className="comments-container">
               {!isBookmarkedAlready ? (
@@ -235,7 +245,7 @@ export const Post = ({ post }) => {
                   onClick={() => removeBookmark(post?._id)}
                 />
               )}
-              <span>{}</span>
+              <span>{ }</span>
             </div>
           </Slide>
         </div>
@@ -271,7 +281,7 @@ export const Post = ({ post }) => {
 
               <div className="comments-textarea-btn-container">
                 <textarea
-                  placeholder="Quack your reply!"
+                  placeholder="Escribe tu respuesta…"
                   onChange={(e) => setCommentData({ text: e.target.value })}
                   value={commentData?.text}
                   type="text"

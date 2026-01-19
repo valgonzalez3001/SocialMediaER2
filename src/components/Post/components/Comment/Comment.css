@@ -56,13 +56,14 @@
   flex-grow: 1;
   height: 60px;
   display: flex;
-  color: white;
   border: none;
   resize: none;
   font-size: 1rem;
   font-family: inherit;
   width: 20px;
-  background-color: rgb(26, 26, 26);
+  color: var(--text-color);
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
   padding: 0.5rem 0.6em;
   border-radius: 0.5rem;
 }
@@ -90,22 +91,28 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   border-radius: 1rem;
-  box-shadow: 0px 0px 19px -1px rgb(69, 69, 69);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   width: 150px;
-  background-color: black;
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+
   opacity: 1;
 }
 
 .comment-toolbar-menu-container p {
   cursor: pointer;
   padding: 1rem 1.5rem;
-  background-color: black;
+  background-color: var(--surface);
+  color: var(--text-color);
+
   text-align: left;
 }
 
 .comment-toolbar-menu-container p:hover {
   background-color: var(--hover-background);
 }
+
 
 .comment-toolbar-menu-container p:first-child {
   border-radius: 1rem 1rem 0rem 0rem;

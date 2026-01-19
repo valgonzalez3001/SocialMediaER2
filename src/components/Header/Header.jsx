@@ -1,22 +1,23 @@
 import "./Header.css";
 import React from "react";
-import { LuBird } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
 import { AttentionSeeker } from "react-awesome-reveal";
 
 export const Header = () => {
   const navigate = useNavigate();
+
   return (
     <div className="header">
       <AttentionSeeker effect="swing">
-        <LuBird
-          onClick={() => navigate("/")}
+        <img
+          src="/assets/social-media-logo.png"
+          alt="ECHO logo"
           className="header-logo"
-          size={25}
+          onClick={() => navigate("/")}
         />
       </AttentionSeeker>
 
-      <p onClick={() => navigate("/")}>Quack</p>
+      <p onClick={() => navigate("/")}>ECHO</p>
     </div>
   );
 };

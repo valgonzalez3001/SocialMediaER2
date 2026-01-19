@@ -137,7 +137,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
                 disabled={!postForm.content && !postForm.mediaUrl}
                 type="submit"
               >
-                Quack
+                Publicar
               </button>
             </div>
           </div>

@@ -1,7 +1,8 @@
 import "./Admin.css";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { useTranslation } from 'react-i18next';
 
 import { useUser } from "../../contexts/UserProvider";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
@@ -9,13 +10,23 @@ import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 
 export const Admin = () => {
+    const { t } = useTranslation();
     const { userState } = useUser();
     const { loggedInUserState } = useLoggedInUser();
     const navigate = useNavigate();
     const [classifiedUsers, setClassifiedUsers] = useState({});
     const [showHint, setShowHint] = useState(false);
-    // Mostrar solo usuarios del 11 al 16 (índices 10 a 15)
-    const suspectUsers = userState?.allUsers?.slice(10, 16);
+    
+    // Seleccionar 10 usuarios aleatorios del rango 7-16 (índices 6 a 15)
+    const suspectUsers = useMemo(() => {
+        const availableUsers = userState?.allUsers?.slice(6, 16) || [];
+        
+        // Crear una copia y mezclarla aleatoriamente
+        const shuffled = [...availableUsers].sort(() => Math.random() - 0.5);
+        
+        // Tomar los primeros 10
+        return shuffled.slice(0, 10);
+    }, [userState?.allUsers]);
 
     const handleClassification = (userId, classification) => {
         setClassifiedUsers(prev => ({
@@ -24,8 +35,8 @@ export const Admin = () => {
         }));
 
         const message = classification === 'AI'
-            ? 'Usuario bloqueado clasificado como IA'
-            : 'Usuario clasificado como Humano';
+            ? t('admin.userBlocked')
+            : t('admin.userClassified');
 
         toast.success(message);
     };
@@ -40,13 +51,13 @@ export const Admin = () => {
                     <div className="admin-container">
                         <div className="admin-header">
                             <div>
-                                <h2>Panel de Administración</h2>
+                                <h2>{t('admin.title')}</h2>
                                 <p style={{ color: 'rgba(255, 255, 255, 0.6)', margin: '0.5rem 0 0 0' }}>
-                                    Usuarios Sospechosos
+                                    {t('admin.suspectUsers')}
                                 </p>
                             </div>
                             <button className="hint-button" onClick={() => setShowHint(true)}>
-                                💡 Pista
+                                💡 {t('admin.hint')}
                             </button>
                         </div>
 
@@ -72,9 +83,9 @@ export const Admin = () => {
                                                 {user?.verified && (
                                                     <img
                                                         src="/assets/verified_badge.png"
-                                                        alt="Cuenta verificada"
+                                                        alt={t('profile.verifiedAccount')}
                                                         className="verified-badge"
-                                                        title="Cuenta verificada"
+                                                        title={t('profile.verifiedAccount')}
                                                     />
                                                 )}
                                             </p>
@@ -88,7 +99,7 @@ export const Admin = () => {
                                                     handleClassification(user?._id, 'AI');
                                                 }}
                                             >
-                                                Bot
+                                                {t('admin.bot')}
                                             </button>
                                             <button
                                                 className="btn-human"
@@ -97,13 +108,13 @@ export const Admin = () => {
                                                     handleClassification(user?._id, 'Humano');
                                                 }}
                                             >
-                                                Humano
+                                                {t('admin.human')}
                                             </button>
                                         </div>
                                     </div>
                                 ))
                             ) : (
-                                <p className="no-suspects">No hay usuarios sospechosos en este momento</p>
+                                <p className="no-suspects">{t('admin.noSuspects')}</p>
                             )}
                         </div>
                     </div>
@@ -114,18 +125,18 @@ export const Admin = () => {
                 <div className="hint-modal-overlay" onClick={() => setShowHint(false)}>
                     <div className="hint-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="hint-modal-header">
-                            <h3>Indicadores de cuenta Bot </h3>
+                            <h3>{t('admin.hintTitle')}</h3>
                             <button className="close-button" onClick={() => setShowHint(false)}>×</button>
                         </div>
                         <div className="hint-modal-content">
                             <ul>
-                                <li><strong>Actividad temporal sospechosa:</strong> Publicaciones a intervalos muy regulares o en horarios poco naturales</li>
-                                <li><strong>Contenido repetitivo:</strong> Mensajes muy similares o idénticos entre publicaciones</li>
-                                <li><strong>Exceso de enlaces:</strong> Muchas publicaciones con enlaces externos</li>
-                                <li><strong>Interacción nula:</strong> No responde a comentarios o menciones</li>
-                                <li><strong>Ratio anormal:</strong> Muchos seguidos pero poca interacción real</li>
-                                <li><strong>Tema único:</strong> Solo publica sobre un tema muy específico</li>
-                                <li><strong>Cuenta reciente:</strong> Cuenta nueva con mucha actividad inmediata</li>
+                                <li><strong>{t('admin.hintContent.temporalActivity').split(':')[0]}:</strong> {t('admin.hintContent.temporalActivity').split(':')[1]}</li>
+                                <li><strong>{t('admin.hintContent.repetitiveContent').split(':')[0]}:</strong> {t('admin.hintContent.repetitiveContent').split(':')[1]}</li>
+                                <li><strong>{t('admin.hintContent.excessLinks').split(':')[0]}:</strong> {t('admin.hintContent.excessLinks').split(':')[1]}</li>
+                                <li><strong>{t('admin.hintContent.noInteraction').split(':')[0]}:</strong> {t('admin.hintContent.noInteraction').split(':')[1]}</li>
+                                <li><strong>{t('admin.hintContent.abnormalRatio').split(':')[0]}:</strong> {t('admin.hintContent.abnormalRatio').split(':')[1]}</li>
+                                <li><strong>{t('admin.hintContent.singleTopic').split(':')[0]}:</strong> {t('admin.hintContent.singleTopic').split(':')[1]}</li>
+                                <li><strong>{t('admin.hintContent.recentAccount').split(':')[0]}:</strong> {t('admin.hintContent.recentAccount').split(':')[1]}</li>
                             </ul>
                         </div>
                     </div>

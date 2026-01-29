@@ -21,11 +21,11 @@
 .comment-main-section .username-container .name {
   font-weight: 600;
   margin-right: 0.3rem;
-  cursor: pointer;
 }
 
 .user-comment {
-  max-width: 400px;
+  max-width: 100%;
+  width: 100%;
   height: auto;
   word-break: break-word;
   margin-top: 0.2rem;
@@ -36,7 +36,6 @@
   border-radius: 25px;
   object-fit: cover;
   margin-right: 0.5rem;
-  cursor: pointer;
 }
 
 .comment-toolbar .edit {
@@ -142,14 +141,16 @@
 
 @media (min-width: 768px) {
   .user-comment {
-    max-width: 400px;
+    max-width: 100%;
+    width: 100%;
     height: auto;
   }
 }
 
 @media (min-width: 900px) {
   .user-comment {
-    max-width: 500px;
+    max-width: 100%;
+    width: 100%;
     height: auto;
   }
 

@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { AttentionSeeker } from "react-awesome-reveal";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
+import { useTranslation } from 'react-i18next';
 
 import { usePosts } from "../../contexts/PostsProvider";
 import { Post } from "../../components/Post/Post";
@@ -12,28 +13,22 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import { Header } from "../../components/Header/Header";
 
 export const Home = () => {
+  const { t } = useTranslation();
   const { setSortBy, sortBy, allPosts, postLoading } = usePosts();
   const { loggedInUserState } = useLoggedInUser();
 
 
-  const allPostFromFollowers = loggedInUserState.username 
-    ? allPosts.filter(
-        (post) =>
-          post.username === loggedInUserState.username ||
-          loggedInUserState?.following?.some(
-            (following) => following.username === post.username
-          )
-      )
-    : allPosts;
+  // Mostrar todos los posts ya que no tenemos array following
+  const allPostFromFollowers = allPosts || [];
 
   const sortedPosts = (sortBy, allPosts) => {
-    if (sortBy === "Latest") {
+    if (sortBy === "Latest" || sortBy === t('home.sortBy.latest')) {
       const sortedPosts = allPosts.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
       return sortedPosts;
     }
-    if (sortBy === "Oldest") {
+    if (sortBy === "Oldest" || sortBy === t('home.sortBy.oldest')) {
       const sortedPosts = allPosts.sort(
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
       );
@@ -47,7 +42,17 @@ export const Home = () => {
   };
 
   const [isAjustmentOn, setIsAdjustmentOn] = useState(false);
-  const sortTypes = ["Trending", "Oldest", "Latest"];
+  const sortTypes = [
+    { key: "Trending", label: t('home.sortBy.trending') },
+    { key: "Oldest", label: t('home.sortBy.oldest') },
+    { key: "Latest", label: t('home.sortBy.latest') }
+  ];
+
+  // Obtener la etiqueta traducida del tipo de orden actual
+  const getCurrentSortLabel = () => {
+    const currentSort = sortTypes.find(type => type.key === sortBy);
+    return currentSort ? currentSort.label : sortBy;
+  };
 
   return (
     <>
@@ -59,7 +64,7 @@ export const Home = () => {
           <CreatePostForm />
 
           <div className="sorting-container">
-            <p>{sortBy} Posts</p>
+            <p>{getCurrentSortLabel()} {t('home.sortBy.posts')}</p>
             <TbAdjustmentsHorizontal
               onClick={() => setIsAdjustmentOn(!isAjustmentOn)}
               className="adjustment-btn"
@@ -69,19 +74,19 @@ export const Home = () => {
                 <ul>
                   {sortTypes.map((type) => (
                     <AttentionSeeker
-                      key={type}
+                      key={type.key}
                       duration={1000}
                       effect="headShake"
                     >
                       <li
-                        className={type === sortBy ? "isActive" : ""}
+                        className={type.key === sortBy ? "isActive" : ""}
                         onClick={() => {
-                          setSortBy(type);
+                          setSortBy(type.key);
                           setIsAdjustmentOn(!isAjustmentOn);
                         }}
-                        key={type}
+                        key={type.key}
                       >
-                        {type}
+                        {type.label}
                       </li>{" "}
                     </AttentionSeeker>
                   ))}
@@ -98,8 +103,7 @@ export const Home = () => {
                 })
               ) : (
                 <p className="no-bookmarks">
-                  Sorry, there no posts to show! Follow people to see their
-                  posts.
+                  {t('home.noPosts')}
                 </p>
               )}
             </div>

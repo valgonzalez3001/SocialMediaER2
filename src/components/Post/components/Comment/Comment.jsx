@@ -2,6 +2,8 @@ import "./Comment.css";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { RxDotsHorizontal } from "react-icons/rx";
+import { useTranslation } from 'react-i18next';
+import { getLocalizedContent } from '../../../../utils/i18nHelpers';
 
 import { usePosts } from "../../../../contexts/PostsProvider";
 import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider";
@@ -9,6 +11,7 @@ import { useUser } from "../../../../contexts/UserProvider";
 import { getTimeDifference } from "../../../../utils/date";
 
 export const Comment = ({ comment, post }) => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { userState } = useUser();
   const { _id, avatarURL, username, firstName, lastName, text, createdAt } =
@@ -30,7 +33,6 @@ export const Comment = ({ comment, post }) => {
     <div className="comment-card">
       <div>
         <img
-          onClick={() => navigate(`/profile/${username}`)}
           className="comment-user-image"
           src={userDetails?.avatarURL}
           alt={userDetails?.firstName}
@@ -39,11 +41,10 @@ export const Comment = ({ comment, post }) => {
 
       <div className="comment-main-section">
         <div className="username-container">
-          <p onClick={() => navigate(`/profile/${username}`)} className="name">
+          <p className="name">
             {firstName} {lastName}
           </p>
           <span
-            onClick={() => navigate(`/profile/${username}`)}
             className="username"
           >
             @{username}
@@ -68,7 +69,7 @@ export const Comment = ({ comment, post }) => {
                         setShowCommentToolbar(false);
                       }}
                     >
-                      Edit
+                      {t('comments.edit')}
                     </p>
                   )}
                   {/* Admin siempre puede borrar */}
@@ -77,7 +78,7 @@ export const Comment = ({ comment, post }) => {
                       deleteComment(post?._id, _id, "admin-token");
                     }}
                   >
-                    Delete
+                    {t('comments.delete')}
                   </p>
                 </div>
               )}
@@ -86,7 +87,7 @@ export const Comment = ({ comment, post }) => {
         </div>
 
         {!isEditComment ? (
-          <div className="user-comment">{text}</div>
+          <div className="user-comment">{getLocalizedContent(text, i18n.language)}</div>
         ) : (
           <div className="edit-comment-container">
             <textarea
@@ -99,7 +100,7 @@ export const Comment = ({ comment, post }) => {
                 setIsEditComment(false);
               }}
             >
-              Update
+              {t('comments.save')}
             </button>
           </div>
         )}

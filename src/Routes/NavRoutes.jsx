@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 // import { RequiresAuth } from "../components/RequiresAuth";
 import { Home } from "../pages/Home/Home";
 import { Explore } from "../pages/Explore/Explore";
-import { Bookmark } from "../pages/Bookmark/Bookmark";
 import { Profile } from "../pages/Profile/Profile";
 import { PostDetail } from "../pages/PostDetail/PostDetail";
 import { Admin } from "../pages/Admin/Admin";
@@ -15,7 +14,6 @@ export const NavRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/explore" element={<Explore />} />
-      <Route path="/bookmark" element={<Bookmark />} />
       <Route path="/profile/:username" element={<Profile />} />
       <Route path="/post-detail/:postId" element={<PostDetail />} />
       <Route path="/admin" element={<Admin />} />

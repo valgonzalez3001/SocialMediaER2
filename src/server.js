@@ -15,9 +15,6 @@ import {
   followUserHandler,
   getAllUsersHandler,
   getUserHandler,
-  getBookmarkPostsHandler,
-  bookmarkPostHandler,
-  removePostFromBookmarkHandler,
   unfollowUserHandler,
   editUserHandler,
 } from "./backend/controllers/UserController";
@@ -46,11 +43,7 @@ export function makeServer({ environment = "development" } = {}) {
     seeds(server) {
       server.logging = false;
       users.forEach((item) =>
-        server.create("user", {
-          followers: [],
-          following: [],
-          bookmarks: [],
-          ...item,
+        server.create("user", {...item,
         })
       );
       posts.forEach((item) => server.create("post", { ...item }));
@@ -99,12 +92,6 @@ export function makeServer({ environment = "development" } = {}) {
 
       // user routes (private)
       this.post("users/edit", editUserHandler.bind(this));
-      this.get("/users/bookmark", getBookmarkPostsHandler.bind(this));
-      this.post("/users/bookmark/:postId/", bookmarkPostHandler.bind(this));
-      this.post(
-        "/users/remove-bookmark/:postId/",
-        removePostFromBookmarkHandler.bind(this)
-      );
       this.post("/users/follow/:followUserId/", followUserHandler.bind(this));
       this.post(
         "/users/unfollow/:followUserId/",
@@ -113,3 +100,4 @@ export function makeServer({ environment = "development" } = {}) {
     },
   });
 }
+

@@ -5,6 +5,7 @@
   font-size: 2.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-weight: 600;
 
 
@@ -12,6 +13,7 @@
   border-bottom: 1px solid var(--border-color);
 
   padding-left: 4.2vw;
+  padding-right: 4.2vw;
   height: 10vh;
 }
 

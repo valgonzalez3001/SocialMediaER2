@@ -84,8 +84,7 @@
 
 .comments-container .comment-icon,
 .comments-container .like-icon,
-.comments-container .share-icon,
-.comments-container .bookmark-icon {
+.comments-container .share-icon {
   font-size: 1.1rem;
 }
 
@@ -100,7 +99,6 @@
   margin-top: 0.8px;
 }
 
-.comments-container .bookmark-icon,
 .comments-container .number-of-comments {
   margin-top: 1.5px;
 }
@@ -109,7 +107,6 @@
   font-size: 1.3rem;
 }
 
-.bookmark-done-icon,
 .like-done-icon {
   color: var(--primary-color);
 }
@@ -391,8 +388,7 @@
 
   .comments-container .comment-icon,
   .comments-container .like-icon,
-  .comments-container .share-icon,
-  .comments-container .bookmark-icon {
+  .comments-container .share-icon {
     font-size: 1.2rem;
   }
 
@@ -402,9 +398,6 @@
 
   .comments-container .like-icon {
     font-size: 1.4rem;
-  }
-  .comments-container .bookmark-icon {
-    font-size: 1.1rem;
   }
 
   .name-container .name,

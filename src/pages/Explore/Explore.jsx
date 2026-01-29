@@ -1,6 +1,7 @@
 import "./Explore.css";
 import { Post } from "../../components/Post/Post";
 import { useRef, useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 
 import React from "react";
 import { usePosts } from "../../contexts/PostsProvider";
@@ -10,6 +11,7 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import { InfiniteScrollLoader } from "../../components/Loader/InfiniteScrollLoader";
 
 export const Explore = () => {
+  const { t } = useTranslation();
   const { allPosts, postLoading } = usePosts();
   const [loading, setLoading] = useState(false);
 
@@ -67,7 +69,7 @@ export const Explore = () => {
               )}
               {displayedPosts?.length === allPosts?.length &&
                 allPosts.length > 0 && (
-                  <div className="no-post-msg">You are all caught up!</div>
+                  <div className="no-post-msg">{t('explore.caughtUp')}</div>
                 )}
 
               {pageNum !== totalPages && loading && displayedPosts.length && (

@@ -1,18 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider";
 import { useUser } from "../../../../contexts/UserProvider";
 
 export const LikesModal = ({ post }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { userState } = useUser();
   const { followUser, unfollowUser, loggedInUserState } = useLoggedInUser();
 
-  const isFollowing = (user) =>
-    loggedInUserState?.following?.find(
-      ({ username }) => username === user?.username
-    );
+  const isFollowing = (user) => false; // No podemos verificar sin arrays
 
   const followUnfollowHandler = (e, user) => {
     e.stopPropagation();
@@ -49,7 +48,7 @@ export const LikesModal = ({ post }) => {
       <div className="follow-container">
         {user?.username !== loggedInUserState?.username && (
           <button onClick={(e) => followUnfollowHandler(e, user)}>
-            {!isFollowing(user) ? "Follow" : "Following"}
+            {t('profile.follow')}
           </button>
         )}
       </div>

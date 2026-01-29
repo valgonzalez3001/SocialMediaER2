@@ -3,16 +3,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AttentionSeeker, Slide } from "react-awesome-reveal";
 import { toast } from "react-hot-toast";
+import { useTranslation } from 'react-i18next';
+import { getLocalizedContent } from '../../utils/i18nHelpers';
 
 import {
-  FaBookmark,
   RiHeart3Fill,
   RiHeart3Line,
-  FaRegBookmark,
   FaRegComment,
   RxDotsHorizontal,
   RxCross2,
-  FiShare2,
 } from "../../utils/icons";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
 import { usePosts } from "../../contexts/PostsProvider";
@@ -20,23 +19,18 @@ import { EditPostForm } from "../EditPostForm/EditPostForm";
 import { useUser } from "../../contexts/UserProvider";
 import { Comment } from "./components/Comment/Comment";
 import { getTimeDifference } from "../../utils/date";
-import { LikesModal } from "./components/LikesModal/LikesModal";
 
 export const Post = ({ post }) => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [isEditPostClicked, setIsEditPostClicked] = useState(false);
-  const [showLikesModal, setShowLikesModal] = useState(false);
   const [actionMenu, setActionMenu] = useState(false);
   const { likePost, dislikePost, deletePost } = usePosts();
   const [commentData, setCommentData] = useState({ text: "" });
   const [showComments, setShowComments] = useState(false);
-  const { addBookmark, removeBookmark, loggedInUserState } = useLoggedInUser();
+  const { loggedInUserState } = useLoggedInUser();
   const { addComment } = usePosts();
   const { userState } = useUser();
-
-  const isBookmarkedAlready = loggedInUserState.bookmarks?.find(
-    (postId) => postId === post?._id
-  );
 
   const userDetails = userState?.allUsers?.find(
     (user) => user?.username === post?.username
@@ -45,13 +39,9 @@ export const Post = ({ post }) => {
   // El admin es el único usuario, puede hacer todo
   const isAdmin = loggedInUserState.isAdmin;
 
-  const isLikedAlready = post?.likes.likedBy.find(
-    (user) => user.username === loggedInUserState.username
-  );
-
   const copyHandler = (link) => {
     navigator.clipboard.writeText(link);
-    toast.success("Link successfully copied");
+    toast.success(t('post.linkCopied'));
   };
 
   return (
@@ -84,9 +74,9 @@ export const Post = ({ post }) => {
               {userDetails?.verified === true && (
                 <img
                   src="/assets/verified_badge.png"
-                  alt="Cuenta verificada"
+                  alt={t('post.verifiedAccount')}
                   className="verified-badge"
-                  title="Cuenta verificada"
+                  title={t('post.verifiedAccount')}
                 />
               )}
 
@@ -134,7 +124,7 @@ export const Post = ({ post }) => {
                         setActionMenu(false);
                       }}
                     >
-                      Edit Post
+                      {t('post.editPost')}
                     </p>
                   )}
                   {/* Admin siempre puede borrar */}
@@ -145,7 +135,7 @@ export const Post = ({ post }) => {
                       setActionMenu(false);
                     }}
                   >
-                    Delete Post
+                    {t('post.deletePost')}
                   </p>
                 </AttentionSeeker>
               </div>
@@ -164,7 +154,7 @@ export const Post = ({ post }) => {
         )}
 
         <div className="caption-container">
-          <p>{post?.content}</p>
+          <p>{getLocalizedContent(post?.content, i18n.language)}</p>
         </div>
 
         <div
@@ -201,71 +191,13 @@ export const Post = ({ post }) => {
               </span>
             </div>
             <div className="comments-container">
-              {/* <Slide direction="up"> */}
-              {!isLikedAlready ? (
-                <RiHeart3Line
-                  className="like-icon"
-                  onClick={() => likePost(post?._id, "admin-token")}
-                />
-              ) : (
-                <RiHeart3Fill
-                  className="like-done-icon"
-                  onClick={() => dislikePost(post?._id, "admin-token")}
-                />
-              )}
-              {/* </Slide> */}
-              <span
-                onClick={() => {
-                  setShowLikesModal(true);
-                }}
-              >
-                <Slide direction="up">{post?.likes?.likeCount}</Slide>
-              </span>
-            </div>
-            <div className="comments-container">
-              <FiShare2
-                className="share-icon"
-                onClick={() =>
-                  copyHandler(
-                    `https://quackalot.netlify.app/post-detail/${post?.id}`
-                  )
-                }
+              <RiHeart3Line
+                className="like-icon"
+                onClick={() => likePost(post?._id, "admin-token")}
               />
-              <span>{ }</span>
-            </div>
-            <div className="comments-container">
-              {!isBookmarkedAlready ? (
-                <FaRegBookmark
-                  className="bookmark-icon"
-                  onClick={() => addBookmark(post?._id)}
-                />
-              ) : (
-                <FaBookmark
-                  className="bookmark-done-icon"
-                  onClick={() => removeBookmark(post?._id)}
-                />
-              )}
-              <span>{ }</span>
+              <span>{post?.likes?.likeCount}</span>
             </div>
           </Slide>
-        </div>
-        <div className="likes-details-container">
-          {showLikesModal && (
-            <div className="like-modal">
-              <div className="likes-content">
-                <div className="likes-header">
-                  <h2>Liked By</h2>
-                  <RxCross2
-                    className="close-likes-icon"
-                    onClick={() => {
-                      setShowLikesModal(false);
-                    }}
-                  />
-                </div>
-                <LikesModal post={post} />
-              </div>
-            </div>
-          )}
         </div>
 
         {showComments && (
@@ -281,7 +213,7 @@ export const Post = ({ post }) => {
 
               <div className="comments-textarea-btn-container">
                 <textarea
-                  placeholder="Escribe tu respuesta…"
+                  placeholder={t('comments.placeholder')}
                   onChange={(e) => setCommentData({ text: e.target.value })}
                   value={commentData?.text}
                   type="text"
@@ -294,7 +226,7 @@ export const Post = ({ post }) => {
                       setCommentData({ text: "" });
                     }}
                   >
-                    Reply
+                    {t('comments.reply')}
                   </button>
                 </div>
               </div>

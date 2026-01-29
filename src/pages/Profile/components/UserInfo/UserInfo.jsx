@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+import { getLocalizedContent } from '../../../../utils/i18nHelpers';
 
 import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider";
 import { useUser } from "../../../../contexts/UserProvider";
@@ -10,6 +12,7 @@ import { CgCalendarDates, RxCross2 } from "../../../../utils/icons";
 
 
 export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
+  const { t, i18n } = useTranslation();
   const { userState } = useUser();
   const { username } = useParams();
   const [showFollowers, setShowFollowers] = useState(false);
@@ -25,18 +28,17 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
   );
 
   const followingCount =
-    user?.stats?.followingCount ?? user?.following?.length ?? 0;
+    user?.stats?.followingCount ?? 0;
 
   const followersCount =
-    user?.stats?.followersCount ?? user?.followers?.length ?? 0;
+    user?.stats?.followersCount ?? 0;
 
 
-  const canShowFollowingModal = (user?.following?.length ?? 0) > 0;
-  const canShowFollowersModal = (user?.followers?.length ?? 0) > 0;
+  const canShowFollowingModal = false; // Deshabilitado ya que no hay arrays
+  const canShowFollowersModal = false; // Deshabilitado ya que no hay arrays
 
 
-  const isFollowing = (user) =>
-    userDetails?.following?.find(({ username }) => username === user?.username);
+  const isFollowing = (user) => false; // No podemos verificar sin arrays
 
   const followUnfollowHandler = (e, user) => {
     e.stopPropagation();
@@ -52,16 +54,10 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
       <div className="profilepicture-container">
         <img src={user?.avatarURL} alt={user?.firstName} />
         {isOwnProfile ? (
-          <button onClick={() => setIsEditProfile(true)}>Edit Profile</button>
-        ) : !loggedInUserState.following?.find(
-          (user) => user.username === username
-        ) ? (
-          <button onClick={(e) => followUser(user?._id)}>
-            Follow
-          </button>
+          <button onClick={() => setIsEditProfile(true)}>{t('profile.editProfile')}</button>
         ) : (
-          <button onClick={(e) => unfollowUser(user?._id)}>
-            Following
+          <button onClick={(e) => followUser(user?._id)}>
+            {t('profile.follow')}
           </button>
         )}
       </div>
@@ -71,9 +67,9 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
           {user?.verified === true && (
             <img
               src="/assets/verified_badge.png"
-              alt="Cuenta verificada"
+              alt={t('profile.verifiedAccount')}
               className="verified-badge"
-              title="Cuenta verificada"
+              title={t('profile.verifiedAccount')}
             />
           )}
         </p>
@@ -81,20 +77,20 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
         <p className="username">@{user?.username}</p>
       </div>
       <div className="bio-container">
-        <p>{user?.bio}</p>
+        <p>{getLocalizedContent(user?.bio, i18n.language)}</p>
       </div>
 
       <div className="website-container">
         <a href={user?.website}>{user?.website}</a>
         <div className="joining-date-container">
           <CgCalendarDates />
-          <span>Joined {createdOnDate(user)}</span>
+          <span>{t('profile.joined')} {createdOnDate(user)}</span>
         </div>
       </div>
       <div className="post-followers-following-container">
         <p>
           {postsByUser.length}
-          <span>Posts</span>
+          <span>{t('profile.posts')}</span>
         </p>
         <p
           className="post-following-count"
@@ -103,14 +99,14 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
           }}
         >
           {followingCount}
-          <span>Following</span>
+          <span>{t('profile.following')}</span>
         </p>
         {showFollowing && (
           <div className="like-modal">
             <div className="likes-content">
               {" "}
               <div className="likes-header">
-                <h2>Following</h2>
+                <h2>{t('profile.following')}</h2>
                 <RxCross2
                   onClick={() => {
                     setShowFollowing(false);
@@ -133,14 +129,14 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
           }}
         >
           {followersCount}
-          <span>Followers</span>
+          <span>{t('profile.followers')}</span>
         </p>
         {showFollowers && (
           <div className="like-modal">
             <div className="likes-content">
               {" "}
               <div className="likes-header">
-                <h2>Followers</h2>
+                <h2>{t('profile.followers')}</h2>
                 <RxCross2
                   onClick={() => {
                     setShowFollowers(false);

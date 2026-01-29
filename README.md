@@ -41,7 +41,6 @@ https://www.loom.com/share/d0c4da90d41448e9a1fcb3b185954aa1
   - Add Portfolio URL
 - Follow/Unfollow
 - Explore Feed
-- Bookmark Post
 - Responsive
 - Upload Images & Videos while creating a post
 - Add Emoji & Gifs while creating a post

@@ -6,8 +6,6 @@ import {
   followUserService,
   unfollowUserService,
   getUserService,
-  addBookmarkService,
-  removeBookmarkService,
 } from "../services/UserService";
 import { useUser } from "./UserProvider";
 
@@ -94,27 +92,7 @@ export const LoggedInUserProvider = ({ children }) => {
     }
   };
 
-  const addBookmark = async (postId) => {
-    try {
-      const response = await addBookmarkService(postId, "admin-token");
-      if (response.status === 200) {
-        loggedInUserDispatch({ type: "SET_USER", payload: response.data });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
-  const removeBookmark = async (postId) => {
-    try {
-      const response = await removeBookmarkService(postId, "admin-token");
-      if (response.status === 200) {
-        loggedInUserDispatch({ type: "SET_USER", payload: response.data });
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const avatars = [
     {
@@ -147,8 +125,6 @@ export const LoggedInUserProvider = ({ children }) => {
         editUser,
         followUser,
         unfollowUser,
-        addBookmark,
-        removeBookmark,
         avatars,
       }}
     >

@@ -3,18 +3,19 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import React from "react";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
+import { useTranslation } from 'react-i18next';
 
 import { CreatePostForm } from "../CreatePostForm/CreatePostForm";
 import {
   RiHomeWifiLine,
   BiSearch,
-  HiOutlineBookmark,
   CgProfile,
   FaFeather,
 } from "../../utils/icons";
 import { MdAdminPanelSettings } from "react-icons/md";
 
 export const Navbar = () => {
+  const { t } = useTranslation();
   const [isCreateNewPostClicked, setIsCreateNewPostClicked] = useState(false);
   const { loggedInUserState } = useLoggedInUser();
 
@@ -27,19 +28,13 @@ export const Navbar = () => {
         <li>
           <NavLink className="navlink" style={getActiveStyle} to="/">
             {<RiHomeWifiLine className="navlink-icon" />}
-            <p>Home</p>
+            <p>{t('nav.home')}</p>
           </NavLink>
         </li>
         <li>
           <NavLink className="navlink" style={getActiveStyle} to="/explore">
             <BiSearch className="navlink-icon" />
-            <p>Explore</p>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink className="navlink" style={getActiveStyle} to="/bookmark">
-            <HiOutlineBookmark className="navlink-icon" />
-            <p>Bookmark</p>
+            <p>{t('nav.explore')}</p>
           </NavLink>
         </li>
         <li>
@@ -49,13 +44,13 @@ export const Navbar = () => {
             to={`/profile/${loggedInUserState.username || 'Katherine'}`}
           >
             <CgProfile className="navlink-icon" />
-            <p>Profile</p>
+            <p>{t('nav.profile')}</p>
           </NavLink>
         </li>
         <li>
           <NavLink className="navlink" style={getActiveStyle} to="/admin">
             <MdAdminPanelSettings className="navlink-icon" />
-            <p>Admin</p>
+            <p>{t('nav.admin')}</p>
           </NavLink>
         </li>
       </ul>
@@ -64,7 +59,7 @@ export const Navbar = () => {
         onClick={() => setIsCreateNewPostClicked(!isCreateNewPostClicked)}
       >
         <FaFeather className="feather-icon" />
-        <span>New Post</span>
+        <span>{t('nav.newPost')}</span>
       </button>
       {isCreateNewPostClicked && (
         <div className="create-post-modal">

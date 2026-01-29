@@ -1,6 +1,7 @@
 import "./Profile.css";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 import { usePosts } from "../../contexts/PostsProvider";
 import { Post } from "../../components/Post/Post";
@@ -10,6 +11,7 @@ import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 
 export const Profile = () => {
+  const { t } = useTranslation();
   const [isEditProfile, setIsEditProfile] = useState(false);
 
   const { allPosts, postLoading } = usePosts();
@@ -33,7 +35,7 @@ export const Profile = () => {
               (postsByUser.length ? (
                 postsByUser.map((post) => <Post key={post._id} post={post} />)
               ) : (
-                <p className="no-bookmarks">You have not added any posts!</p>
+                <p className="no-bookmarks">{t('profile.noPosts')}</p>
               ))}
           </div>
           {isEditProfile && (

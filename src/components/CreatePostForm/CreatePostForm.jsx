@@ -2,6 +2,7 @@ import "./CreatePostForm.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { useTranslation } from 'react-i18next';
 
 import { IoMdClose, VscSmiley, ImFilePicture } from "../../utils/icons";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider";
@@ -10,6 +11,7 @@ import { EmojiModal } from "../EmojiModal/EmojiModal";
 
 
 export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
+  const { t } = useTranslation();
   const { createPost } = usePosts();
   const { loggedInUserState } = useLoggedInUser();
   const navigate = useNavigate();
@@ -34,10 +36,10 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
           type: file?.type.startsWith("image/") ? "image" : "video",
         }));
       } else {
-        toast.error("file must be less than 20mb");
+        toast.error(t('createPost.fileTooBig'));
       }
     } else {
-      toast.error("file must be a Video (MP4/MOV) or an Image (JPEG/PNG)");
+      toast.error(t('createPost.invalidFileType'));
     }
   };
 
@@ -77,7 +79,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
                 setPostForm((prev) => ({ ...prev, content: e.target.value }))
               }
               value={postForm.content}
-              placeholder="What is happening?!"
+              placeholder={t('createPost.placeholder')}
             />
             {setIsCreateNewPostClicked && (
               <IoMdClose
@@ -137,7 +139,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
                 disabled={!postForm.content && !postForm.mediaUrl}
                 type="submit"
               >
-                Publicar
+                {t('createPost.publish')}
               </button>
             </div>
           </div>

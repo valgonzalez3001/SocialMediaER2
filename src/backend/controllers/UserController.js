@@ -103,220 +103,6 @@ export const editUserHandler = function (schema, request) {
 };
 
 /**
- * This handler gets all the user bookmarks from the db.
- * send GET Request at /api/users/bookmark/
- * */
-
-export const getBookmarkPostsHandler = function (schema, request) {
-  const user = requiresAuth.call(this, request);
-  try {
-    if (!user) {
-      return new Response(
-        404,
-        {},
-        {
-          errors: [
-            "The username you entered is not Registered. Not Found error",
-          ],
-        }
-      );
-    }
-    return new Response(200, {}, { bookmarks: user.bookmarks });
-  } catch (error) {
-    return new Response(
-      500,
-      {},
-      {
-        error,
-      }
-    );
-  }
-};
-/**
- * This handler handles adding a post to user's bookmarks in the db.
- * send POST Request at /api/users/bookmark/:postId/
- * */
-
-// export const bookmarkPostHandler = function (schema, request) {
-//   const { postId } = request.params;
-
-//   const post = schema.posts.findBy({ _id: postId }).attrs;
-
-//   const user = requiresAuth.call(this, request);
-
-//   try {
-//     if (!user) {
-//       return new Response(
-//         404,
-//         {},
-//         {
-//           errors: [
-//             "The username you entered is not Registered. Not Found error",
-//           ],
-//         }
-//       );
-//     }
-//     const isBookmarked = user.bookmarks.some(
-//       (currPost) => currPost._id === postId
-//     );
-//     if (isBookmarked) {
-//       return new Response(
-//         400,
-//         {},
-//         { errors: ["This Post is already bookmarked"] }
-//       );
-//     }
-//     user.bookmarks.push(post);
-//     this.db.users.update(
-//       { _id: user._id },
-//       { ...user, updatedAt: formatDate() }
-//     );
-//     return new Response(200, {}, { bookmarks: user.bookmarks });
-//   } catch (error) {
-//     return new Response(
-//       500,
-//       {},
-//       {
-//         error,
-//       }
-//     );
-//   }
-// };
-
-export const bookmarkPostHandler = function (schema, request) {
-  const { postId } = request.params;
-
-  const post = schema.posts.findBy({ _id: postId }).attrs;
-
-  const user = requiresAuth.call(this, request);
-
-  try {
-    if (!user) {
-      return new Response(
-        404,
-        {},
-        {
-          errors: [
-            "The username you entered is not Registered. Not Found error",
-          ],
-        }
-      );
-    }
-    const isBookmarked = user.bookmarks.some(
-      (currPostId) => currPostId === postId
-    );
-    if (isBookmarked) {
-      return new Response(
-        400,
-        {},
-        { errors: ["This Post is already bookmarked"] }
-      );
-    }
-    user.bookmarks.push(post._id);
-    this.db.users.update(
-      { _id: user._id },
-      { ...user, updatedAt: formatDate() }
-    );
-    return new Response(200, {}, { bookmarks: user.bookmarks });
-  } catch (error) {
-    return new Response(
-      500,
-      {},
-      {
-        error,
-      }
-    );
-  }
-};
-
-/**
- * This handler handles adding a post to user's bookmarks in the db.
- * send POST Request at /api/users/remove-bookmark/:postId/
- * */
-
-// export const removePostFromBookmarkHandler = function (schema, request) {
-//   const { postId } = request.params;
-//   let user = requiresAuth.call(this, request);
-//   try {
-//     if (!user) {
-//       return new Response(
-//         404,
-//         {},
-//         {
-//           errors: [
-//             "The username you entered is not Registered. Not Found error",
-//           ],
-//         }
-//       );
-//     }
-//     const isBookmarked = user.bookmarks.some(
-//       (currPost) => currPost._id === postId
-//     );
-//     if (!isBookmarked) {
-//       return new Response(400, {}, { errors: ["Post not bookmarked yet"] });
-//     }
-//     const filteredBookmarks = user.bookmarks.filter(
-//       (currPost) => currPost._id !== postId
-//     );
-//     user = { ...user, bookmarks: filteredBookmarks };
-//     this.db.users.update(
-//       { _id: user._id },
-//       { ...user, updatedAt: formatDate() }
-//     );
-//     return new Response(200, {}, { bookmarks: user.bookmarks });
-//   } catch (error) {
-//     return new Response(
-//       500,
-//       {},
-//       {
-//         error,
-//       }
-//     );
-//   }
-// };
-
-export const removePostFromBookmarkHandler = function (schema, request) {
-  const { postId } = request.params;
-  let user = requiresAuth.call(this, request);
-  try {
-    if (!user) {
-      return new Response(
-        404,
-        {},
-        {
-          errors: [
-            "The username you entered is not Registered. Not Found error",
-          ],
-        }
-      );
-    }
-    const isBookmarked = user.bookmarks.some(
-      (currPostId) => currPostId === postId
-    );
-    if (!isBookmarked) {
-      return new Response(400, {}, { errors: ["Post not bookmarked yet"] });
-    }
-    const filteredBookmarks = user.bookmarks.filter(
-      (currPostId) => currPostId !== postId
-    );
-    user = { ...user, bookmarks: filteredBookmarks };
-    this.db.users.update(
-      { _id: user._id },
-      { ...user, updatedAt: formatDate() }
-    );
-    return new Response(200, {}, { bookmarks: user.bookmarks });
-  } catch (error) {
-    return new Response(
-      500,
-      {},
-      {
-        error,
-      }
-    );
-  }
-};
-
-/**
  * This handler handles follow action.
  * send POST Request at /api/users/follow/:followUserId/
  * */
@@ -415,22 +201,24 @@ export const followUserHandler = function (schema, request) {
       );
     }
 
-    const isFollowing = user.following.some(
-      (currUser) => currUser.username === followUser.username
-    );
-
-    if (isFollowing) {
-      return new Response(400, {}, { errors: ["User Already following"] });
-    }
-
+    // Incrementar followingCount del usuario
     const updatedUser = {
       ...user,
-      following: [...user.following, { ...followUser }],
+      stats: {
+        ...user.stats,
+        followingCount: String(parseInt(user.stats?.followingCount || 0) + 1),
+      },
     };
+    
+    // Incrementar followersCount del usuario seguido
     const updatedFollowUser = {
       ...followUser,
-      followers: [...followUser.followers, { ...user }],
+      stats: {
+        ...followUser.stats,
+        followersCount: String(parseInt(followUser.stats?.followersCount || 0) + 1),
+      },
     };
+    
     this.db.users.update(
       { _id: user._id },
       { ...updatedUser, updatedAt: formatDate() }
@@ -536,26 +324,25 @@ export const unfollowUserHandler = function (schema, request) {
         }
       );
     }
-    const isFollowing = user.following.some(
-      (currUser) => currUser.username === followUser.username
-    );
 
-    if (!isFollowing) {
-      return new Response(400, {}, { errors: ["User already not following"] });
-    }
-
+    // Decrementar followingCount del usuario
     const updatedUser = {
       ...user,
-      following: user.following.filter(
-        (currUser) => currUser.username !== followUser.username
-      ),
+      stats: {
+        ...user.stats,
+        followingCount: String(Math.max(0, parseInt(user.stats?.followingCount || 0) - 1)),
+      },
     };
+    
+    // Decrementar followersCount del usuario seguido
     const updatedFollowUser = {
       ...followUser,
-      followers: followUser.followers.filter(
-        (currUser) => currUser.username !== user.username
-      ),
+      stats: {
+        ...followUser.stats,
+        followersCount: String(Math.max(0, parseInt(followUser.stats?.followersCount || 0) - 1)),
+      },
     };
+    
     this.db.users.update(
       { _id: user._id },
       { ...updatedUser, updatedAt: formatDate() }

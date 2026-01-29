@@ -12,10 +12,7 @@ export const Discover = () => {
 
   const whoToFollow = userState?.allUsers?.filter(
     (user) =>
-      user?.username !== loggedInUserState?.username &&
-      loggedInUserState?.following?.every(
-        (following) => following?.username !== user?.username
-      )
+      user?.username !== loggedInUserState?.username
   );
 
   return (

@@ -1,0 +1,140 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+
+.App {
+  background-color: #f5f7fa;
+}
+
+:root {
+  --primary-color: #1d9bf0;
+  --primary-color-hover: rgb(57, 176, 255);
+
+
+  --white: #ffffff;
+  --text-color: #111827;
+  --muted-text: #6b7280;
+
+  --hover-background: #f3f4f6; 
+  --border-color: #e5e7eb;     
+  --surface: #ffffff;
+  --page-bg: #f5f7fa;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.app-container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+
+.verified-badge {
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.feed {
+  background-color: var(--page-bg);
+  color: var(--text-color);
+  order: 2;
+  min-height: 100vh;
+  padding-right: 1.5rem;
+}
+
+.navbar {
+  order: 3;
+  position: sticky;
+  bottom: 0px;
+}
+
+.discover {
+  display: none;
+}
+
+.profile-picture {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+/* ✅ MODO DÍA: texto secundario */
+.username {
+  color: var(--muted-text);
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    flex-flow: row;
+  }
+
+  .feed {
+    width: 80%;
+    min-height: 100vh;
+  }
+
+  .navbar {
+    order: 1;
+    position: sticky;
+    top: 0;
+    width: 20%;
+    height: 100vh;
+  }
+}
+
+@media (min-width: 900px) {
+  .feed {
+    width: 85%;
+    min-height: 100vh;
+  }
+
+  .navbar {
+    order: 1;
+    position: sticky;
+    top: 0;
+    width: 15%;
+    height: 100vh;
+  }
+
+
+  .discover {
+    display: flex;
+    order: 3;
+    background-color: var(--page-bg);
+    width: 35%;
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .feed {
+    width: 80%;
+    min-height: 100vh;
+  }
+
+  .navbar {
+    order: 1;
+    position: sticky;
+    top: 0;
+    width: 20%;
+    height: 100vh;
+  }
+
+  .discover {
+    display: flex;
+    order: 3;
+    background-color: var(--page-bg);
+    width: 30%;
+    padding: 0 1.5rem;
+  }
+}
+

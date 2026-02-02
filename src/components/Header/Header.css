@@ -1,0 +1,42 @@
+.header {
+  position: sticky;
+  top: 0;
+  padding: 2rem;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+
+
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border-color);
+
+  padding-left: 4.2vw;
+  padding-right: 4.2vw;
+  height: 10vh;
+}
+
+.header > p {
+  display: none;
+  color: var(--text-color);
+
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.header-logo {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .header > p {
+    color: var(--text-color);
+
+    margin-left: 15px;
+    display: inline-block;
+  }
+}

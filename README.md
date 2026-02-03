@@ -150,10 +150,6 @@ react-social-media/
 
 Este proyecto está bajo licencia MIT.
 
-## 👥 Autores
-
-- [@valgonzalez3001](https://github.com/valgonzalez3001) - Valeria Carolina González Alonso
-- Desarrollado en el marco de la Beca GING
 
 
 

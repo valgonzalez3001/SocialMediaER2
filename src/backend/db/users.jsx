@@ -9,24 +9,24 @@ export const users = [
   //-----------1st user--------------
   {
     _id: uuid(),
-    firstName: "Katherine",
-    lastName: "Brundage",
-    username: "Katherine",
-    password: "Katherine",
-    createdAt: new Date("January 07 2019 09:09:09"),
+    firstName: "ECHO",
+    lastName: "Official Account",
+    username: "ECHO",
+    password: "ECHO",
+    createdAt: new Date("January 07 2015 09:09:09"),
     updatedAt: formatDate(),
     avatarURL:
       "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
     bio: {
-      en: "Makeup enthusiast with a passion for enhancing natural beauty. Sharing tips, tricks, and product recommendations. Let's paint the world with color and confidence! 💄🎨 #MakeupLover",
-      es: "Entusiasta del maquillaje con pasión por realzar la belleza natural. Compartiendo consejos, trucos y recomendaciones de productos. ¡Pintemos el mundo con color y confianza! 💄🎨 #AmanteDelMaquillaje",
-      fi: "Meikkauksen ystävä, jolla on intohimo luonnollisen kauneuden korostamiseen. Jaan vinkkejä, temppuja ja tuotesuosituksia. Maalataan maailma värillä ja itsevarmuudella! 💄🎨 #MeikkiRakastaja",
-      sr: "Entuzijasta šminke sa strašću za unapređenje prirodne lepote. Delim savete, trikove i preporuke proizvoda. Hajde da obojimo svet bojom i samopouzdanjem! 💄🎨 #LjubiteljŠminke"
+      en: "Discover what's new on Echo!",
+      es: "¡Descubre las novedades de Echo!",
+      fi: "Löydä mitä uutta Echossa on!",
+      sr: "Otkrijte šta je novo na Echo!"
     },
-    website: "https://dadsneakers.netlify.app/",
+    website: "",
     verified: true,
     stats: {
-      followersCount: "10",
+      followersCount: "105M",
       followingCount: "120",
     },
     puzzle: {
@@ -35,146 +35,6 @@ export const users = [
     },
 
   //-----------2nd user--------------
-  {
-    _id: uuid(),
-    firstName: "Samantha",
-    lastName: "Hale",
-    username: "Samantha",
-    password: "Samantha",
-    createdAt: new Date("December 17 2020 10:01:00"),
-    updatedAt: formatDate(),
-    avatarURL:
-      "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-    bio: {
-      en: "🌍 Exploring the world, one adventure at a time. | 📷 Capturing moments | ✈️ Travel blogger | 🏞️ Nature lover | Let's wander together! #TravelAddict",
-      es: "🌍 Explorando el mundo, una aventura a la vez. | 📷 Capturando momentos | ✈️ Blogger de viajes | 🏞️ Amante de la naturaleza | ¡Vamos a vagar juntos! #AdictoAViajar",
-      fi: "🌍 Maailman tutkimista, yksi seikkailu kerrallaan. | 📷 Hetkien vangitseminen | ✈️ Matkabloggaaja | 🏞️ Luonnonystävä | Vaeltakaamme yhdessä! #MatkaRiippuvainen",
-      sr: "🌍 Istraživanje sveta, jedna avantura u isto vreme. | 📷 Hvatanje trenutaka | ✈️ Putni blogger | 🏞️ Ljubitelj prirode | Hajde da lutamo zajedno! #ZavisniciOdPutovanja"
-    },
-    website: "https://ninjatravels.netlify.app/",
-    verified: true,
-    stats: {
-      followersCount: "10",
-      followingCount: "120",
-    },
-    puzzle: {
-      isBot: false,
-    },
-    },
-
-  //-----------3rd user--------------
-  {
-    _id: uuid(),
-    firstName: "Malik",
-    lastName: "Williams",
-    username: "Malik",
-    password: "Malik",
-    createdAt: new Date("October 07 2019 17:25:00"),
-    updatedAt: formatDate(),
-    avatarURL:
-      "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-    bio: {
-      en: "🏀 Basketball is life. | 🎵 Music addict | 💪 Fitness journey | ✨ Living one day at a time | #Hoops #GymLife",
-      es: "🏀 El baloncesto es vida. | 🎵 Adicto a la música | 💪 Viaje fitness | ✨ Viviendo un día a la vez | #Canastas #VidaGym",
-      fi: "🏀 Koripallo on elämä. | 🎵 Musiikkiriippuvainen | 💪 Kuntoilumatka | ✨ Elän päivä kerrallaan | #Korit #SaliElämä",
-      sr: "🏀 Košarka je život. | 🎵 Muziki zavisnik | 💪 Fitnes putovanje | ✨ Živim jedan dan u isto vreme | #Koš #TeretanaŽivot"
-    },
-    website: "",
-    verified: true,
-    stats: {
-      followersCount: "10",
-      followingCount: "120",
-    },
-    puzzle: {
-      isBot: false,
-    },
-    },
-
-  //-----------4th user--------------
-  {
-    _id: uuid(),
-    firstName: "Riya",
-    lastName: "Williams",
-    username: "Riya",
-    password: "Riya",
-    createdAt: new Date("December 12 2020 13:25:00"),
-    updatedAt: formatDate(),
-    avatarURL:
-      "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-    bio: {
-      en: "📚 Bookworm | ☕ Coffee lover | ✍️ Aspiring writer | Sharing quotes, reviews, and cozy vibes. #Books #ReadingCommunity",
-      es: "📚 Ratón de biblioteca | ☕ Amante del café | ✍️ Aspirante a escritor | Compartiendo citas, reseñas y vibraciones acogedoras. #Libros #ComunidadLectora",
-      fi: "📚 Kirjamato | ☕ Kahvinystävä | ✍️ Tuleva kirjailija | Jaan lainauksia, arvosteluja ja viihtyisiä tunnelmia. #Kirjat #LukijaYhteisö",
-      sr: "📚 Knjižni moljac | ☕ Ljubitelj kafe | ✍️ Pisac u nastajanju | Delim citate, recenzije i prijatnu atmosferu. #Knjige #ČitalačkaZajednica"
-    },
-    website: "",
-    verified: true,
-    stats: {
-      followersCount: "10",
-      followingCount: "120",
-    },
-    puzzle: {
-      isBot: false,
-    },
-  },
-
-  //-----------5th user--------------
-  {
-    _id: uuid(),
-    firstName: "Sergio",
-    lastName: "Navarro",
-    username: "sergio_navarro",
-    password: "sergio_navarro",
-    createdAt: new Date("October 29 2025 19:05:00"),
-    updatedAt: formatDate(),
-    avatarURL:
-      "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-    bio: {
-      en: "Work and family. I share things I find interesting.",
-      es: "Trabajo y familia. Comparto cosas que me parecen interesantes.",
-      fi: "Työ ja perhe. Jaan asioita, jotka minusta ovat mielenkiintoisia.",
-      sr: "Posao i porodica. Delim stvari koje mi se čine zanimljivim."
-    },
-    website: "http://opinion-ciudadana.info",
-    verified: true,
-    stats: {
-      followersCount: "10",
-      followingCount: "120",
-    },
-    puzzle: {
-      isBot: false,
-    },
-    },
-
-  //-----------6th user--------------
-  {
-    _id: uuid(),
-    firstName: "Paula",
-    lastName: "Santos",
-    username: "paula_santos",
-    password: "paula_santos",
-    createdAt: new Date("November 02 2025 08:12:00"),
-    updatedAt: formatDate(),
-    avatarURL:
-      "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-    bio: {
-      en: "I love nature and photography. Here I share routes and landscapes.",
-      es: "Me gusta la naturaleza y la fotografía. Aquí comparto rutas y paisajes.",
-      fi: "Rakastan luontoa ja valokuvausta. Täällä jaan reittejä ja maisemia.",
-      sr: "Volim prirodu i fotografiju. Ovde delim rute i pejzaže."
-    },
-    website: "",
-    verified: true,
-    stats: {
-      followersCount: "10",
-      followingCount: "120",
-    },
-    puzzle: {
-      isBot: false,
-    },
-  },
-
-  //-----------7th user--------------
   {
     _id: uuid(),
     firstName: "Little",
@@ -202,7 +62,7 @@ export const users = [
     },
     },
 
-  //-----------8th user--------------
+  //-----------3rd user--------------
   {
     _id: uuid(),
     firstName: "Ten",
@@ -230,7 +90,7 @@ export const users = [
     },
   },
 
-  //-----------9th user--------------
+  //-----------4th user--------------
   {
     _id: uuid(),
     firstName: "Anna",
@@ -258,7 +118,7 @@ export const users = [
     },
   },
 
-  //-----------10th user--------------
+  //-----------5th user--------------
   {
     _id: uuid(),
     firstName: "Lina",
@@ -286,7 +146,7 @@ export const users = [
     },
   },
 
-  //-----------11th user--------------
+  //-----------6th user--------------
   {
     _id: uuid(),
     firstName: "Martha",
@@ -314,7 +174,7 @@ export const users = [
     },
   },
 
-  //-----------12th user--------------
+  //-----------7th user--------------
   {
     _id: uuid(),
     firstName: "James",
@@ -342,7 +202,7 @@ export const users = [
     },
   },
 
-  //-----------13th user--------------
+  //-----------8th user--------------
   {
     _id: uuid(),
     firstName: "Mike",
@@ -370,7 +230,7 @@ export const users = [
     },
   },
 
-  //-----------14th user--------------
+  //-----------9th user--------------
   {
     _id: uuid(),
     firstName: "Clara",
@@ -398,7 +258,7 @@ export const users = [
     },
   },
 
-  //-----------15th user--------------
+  //-----------10th user--------------
   {
     _id: uuid(),
     firstName: "Jake",
@@ -426,7 +286,7 @@ export const users = [
     },
   },
 
-  //-----------16th user--------------
+  //-----------11th user--------------
   {
     _id: uuid(),
     firstName: "Health",

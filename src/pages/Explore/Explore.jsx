@@ -7,6 +7,7 @@ import React from "react";
 import { usePosts } from "../../contexts/PostsProvider.jsx";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
+import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 
 import { InfiniteScrollLoader } from "../../components/Loader/InfiniteScrollLoader";
 
@@ -76,6 +77,11 @@ export const Explore = () => {
                 <InfiniteScrollLoader />
               )}
             </main>
+
+            {/* Panel de estadísticas lateral */}
+            <aside className="stats-sidebar">
+              <StatsPanel />
+            </aside>
           </React.Fragment>
         }
       </div>

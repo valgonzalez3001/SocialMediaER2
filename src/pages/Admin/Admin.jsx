@@ -6,13 +6,16 @@ import { useTranslation } from 'react-i18next';
 
 import { useUser } from "../../contexts/UserProvider.jsx";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
+import { useStats } from "../../contexts/StatsProvider.jsx";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
+import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 
 export const Admin = () => {
     const { t } = useTranslation();
     const { userState } = useUser();
     const { loggedInUserState } = useLoggedInUser();
+    const { reduceMisinformation } = useStats();
     const navigate = useNavigate();
     const [classifiedUsers, setClassifiedUsers] = useState(() => {
         const saved = sessionStorage.getItem('adminGameState');
@@ -21,6 +24,7 @@ export const Admin = () => {
     const [showHint, setShowHint] = useState(false);
     const [showResult, setShowResult] = useState(false);
     const [gameResult, setGameResult] = useState(null);
+    const [regenerateKey, setRegenerateKey] = useState(0); // Clave para forzar regeneración
     
     // Seleccionar 5 usuarios aleatorios del rango 7-16 (índices 6 a 15)
     // 2 usuarios con isBot=false y 3 usuarios con isBot=true
@@ -48,7 +52,7 @@ export const Admin = () => {
             }
         }
 
-        const availableUsers = userState.allUsers.slice(6, 16) || [];
+        const availableUsers = userState.allUsers.slice(1, 11) || [];
         
         if (availableUsers.length === 0) {
             return [];
@@ -75,7 +79,7 @@ export const Admin = () => {
             sessionStorage.setItem('adminGameUsers', JSON.stringify(result));
         }
         return result;
-    }, [userState?.allUsers]);
+    }, [userState?.allUsers, regenerateKey]); // Agregar regenerateKey como dependencia
 
     // Guardar estado de clasificación cuando cambie
     useEffect(() => {
@@ -119,23 +123,23 @@ export const Admin = () => {
 
         setGameResult({ correct, incorrect, total: suspectUsers.length });
         setShowResult(true);
+
+        // Si todas las clasificaciones son correctas, reducir el nivel de desinformación
+        if (correct === suspectUsers.length) {
+            reduceMisinformation(30);
+        }
     };
 
     const handleTryAgain = () => {
-        // Si acertó todos, limpiar también los usuarios para generar nuevos
-        if (gameResult?.correct === gameResult?.total) {
-            sessionStorage.removeItem('adminGameUsers');
-        }
-        // Siempre limpiar el estado de clasificación
+        // Limpiar todo el estado del juego
+        sessionStorage.removeItem('adminGameUsers');
         sessionStorage.removeItem('adminGameState');
         sessionStorage.removeItem('fromAdmin');
         setClassifiedUsers({});
         setShowResult(false);
         setGameResult(null);
-        // Solo recargar si acertó todos (para generar nuevos usuarios)
-        if (gameResult?.correct === gameResult?.total) {
-            window.location.reload();
-        }
+        // Incrementar la clave para forzar regeneración de usuarios
+        setRegenerateKey(prev => prev + 1);
     };
 
     return (
@@ -228,6 +232,11 @@ export const Admin = () => {
                         )}
                     </div>
                 </main>
+
+                {/* Panel de estadísticas lateral */}
+                <aside className="stats-sidebar">
+                    <StatsPanel />
+                </aside>
             </div>
 
             {showHint && (

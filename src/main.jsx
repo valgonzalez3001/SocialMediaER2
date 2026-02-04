@@ -7,6 +7,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { PostsProvider } from "./contexts/PostsProvider.jsx";
 import { UserProvider } from "./contexts/UserProvider.jsx";
 import { LoggedInUserProvider } from "./contexts/LoggedInUserProvider.jsx";
+import { OSProvider } from "./contexts/OSProvider.jsx";
+import { MessagesProvider } from "./contexts/MessagesProvider.jsx";
+import { StatsProvider } from "./contexts/StatsProvider.jsx";
 import './i18n.jsx'; 
 
 // Call make Server
@@ -19,7 +22,13 @@ root.render(
       <UserProvider>
         <LoggedInUserProvider>
           <PostsProvider>
-            <App />
+            <StatsProvider>
+              <OSProvider>
+                <MessagesProvider>
+                  <App />
+                </MessagesProvider>
+              </OSProvider>
+            </StatsProvider>
           </PostsProvider>
         </LoggedInUserProvider>
       </UserProvider>

@@ -60,6 +60,10 @@ a {
   display: none;
 }
 
+.stats-sidebar {
+  display: none;
+}
+
 .profile-picture {
   height: 50px;
   width: 50px;
@@ -85,9 +89,12 @@ a {
   .navbar {
     order: 1;
     position: sticky;
-    top: 0;
+    top: 10vh;
     width: 20%;
-    height: 100vh;
+    height: calc(100vh - 10vh);
+    align-self: flex-start;
+    overflow-y: auto;
+    z-index: 50;
   }
 }
 
@@ -100,9 +107,12 @@ a {
   .navbar {
     order: 1;
     position: sticky;
-    top: 0;
+    top: 10vh;
     width: 15%;
-    height: 100vh;
+    height: calc(100vh - 10vh);
+    align-self: flex-start;
+    overflow-y: auto;
+    z-index: 50;
   }
 
 
@@ -117,16 +127,20 @@ a {
 
 @media (min-width: 1200px) {
   .feed {
-    width: 80%;
+    width: 50%;
     min-height: 100vh;
+    padding-right: 1rem;
   }
 
   .navbar {
     order: 1;
     position: sticky;
-    top: 0;
+    top: 10vh;
     width: 20%;
-    height: 100vh;
+    height: calc(100vh - 10vh);
+    align-self: flex-start;
+    overflow-y: auto;
+    z-index: 50;
   }
 
   .discover {
@@ -135,6 +149,35 @@ a {
     background-color: var(--page-bg);
     width: 30%;
     padding: 0 1.5rem;
+  }
+
+  .stats-sidebar {
+    display: block;
+    order: 4;
+    width: 30%;
+    padding: 1rem;
+    background-color: var(--page-bg);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .stats-sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .stats-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .stats-sidebar::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+  }
+
+  .stats-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #999;
   }
 }
 

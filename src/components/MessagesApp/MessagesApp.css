@@ -1,0 +1,280 @@
+.messages-app-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1000px;
+  height: 80vh;
+  max-height: 700px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  animation: windowOpen 0.2s ease-out;
+}
+
+@keyframes windowOpen {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Barra de título */
+.window-titlebar {
+  height: 40px;
+  background: linear-gradient(to bottom, #0078d4, #006cbd);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  user-select: none;
+}
+
+.window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.title-icon {
+  font-size: 16px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.window-button {
+  width: 32px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: background 0.2s;
+  border-radius: 4px;
+}
+
+.window-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.window-button.close:hover {
+  background: #e81123;
+}
+
+/* Contenido de la aplicación */
+.messages-app-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Lista de mensajes */
+.messages-list {
+  width: 350px;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  background: #f5f5f5;
+}
+
+.messages-header {
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.messages-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.messages-items {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.message-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  background: #fff;
+  transition: background 0.2s;
+}
+
+.message-item:hover {
+  background: #f9f9f9;
+}
+
+.message-item.selected {
+  background: #e3f2fd;
+  border-left: 3px solid #0078d4;
+}
+
+.message-item.unread {
+  background: #fff9e6;
+  font-weight: 600;
+}
+
+.message-item.unread:hover {
+  background: #fff5d9;
+}
+
+.message-icon {
+  font-size: 20px;
+  color: #0078d4;
+  padding-top: 2px;
+}
+
+.message-item.read .message-icon {
+  color: #757575;
+}
+
+.message-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.message-from {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.message-subject {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.message-preview {
+  font-size: 12px;
+  color: #757575;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.message-time {
+  font-size: 11px;
+  color: #757575;
+  white-space: nowrap;
+}
+
+/* Vista detallada del mensaje */
+.message-detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow-y: auto;
+}
+
+.detail-header {
+  padding: 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.detail-header h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.detail-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #757575;
+}
+
+.detail-from strong {
+  color: #0078d4;
+}
+
+.detail-content {
+  padding: 24px;
+  line-height: 1.6;
+  font-size: 15px;
+  color: #333;
+}
+
+.detail-content p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.detail-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  gap: 16px;
+}
+
+.empty-icon {
+  font-size: 64px;
+  opacity: 0.3;
+}
+
+.detail-empty p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .messages-app-window {
+    width: 95%;
+    height: 85vh;
+  }
+
+  .messages-list {
+    width: 100%;
+    border-right: none;
+  }
+
+  .message-detail {
+    display: none;
+  }
+
+  .message-item.selected + .message-detail {
+    display: flex;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+  }
+}

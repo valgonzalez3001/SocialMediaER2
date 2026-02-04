@@ -9,6 +9,49 @@ export const es = {
   header: {
     appName: "ECHO",
   },
+  desktop: {
+    apps: {
+      messages: "Mensajes",
+      social: "Red Social",
+    },
+    window: {
+      minimize: "Minimizar",
+      close: "Cerrar",
+    },
+    taskbar: {
+      start: "Inicio",
+    },
+  },
+  messagesApp: {
+    title: "Mensajes",
+    inbox: "Bandeja de entrada",
+    selectMessage: "Selecciona un mensaje para leer",
+    fromLabel: "De",
+    time: {
+      minutesAgo: "Hace {{count}} min",
+      hoursAgo: "Hace {{count}} h",
+    },
+    messages: {
+      welcome: {
+        from: "El Jefe",
+        subject: "Bienvenida al equipo",
+        content:
+          "¡Bienvenido/a a nuestro equipo de investigación! Tu primera misión es familiarizarte con la red social corporativa. Explora los perfiles y busca pistas.",
+      },
+      hint1: {
+        from: "El Jefe",
+        subject: "Primera pista",
+        content:
+          "He notado actividad sospechosa en algunos perfiles. Revisa los posts recientes y busca patrones inusuales. El usuario @admin podría tener información relevante.",
+      },
+      hint2: {
+        from: "El Jefe",
+        subject: "Pista adicional",
+        content:
+          "Los comentarios en los posts más populares podrían contener códigos ocultos. Presta atención a las palabras en mayúsculas y los emojis repetidos.",
+      },
+    },
+  },
   createPost: {
     placeholder: "¿Qué está pasando?",
     fileTooBig: "el archivo debe ser menor de 20mb",
@@ -102,6 +145,31 @@ export const es = {
     monthsAgo: "hace meses",
     yearAgo: "hace un año",
     yearsAgo: "hace años",
+  },
+  statsPanel: {
+    title: "Estado del Sistema",
+    misinformationLevel: "Nivel de Desinformación",
+    suspiciousActivityDetected: "⚠️ Actividad sospechosa detectada en la red",
+    detailedAnalysis: "Análisis Detallado",
+    postsLastHour: "Posts (últimos días)",
+    percentageAboveNormal: "{{percentage}}% sobre lo normal",
+    newUsersLastHour: "Nuevos usuarios (últimos días)",
+    massAccountCreation: "⚠️ Creación masiva de cuentas detectada",
+    viralHashtags: "Hashtags Virales",
+    botActivity: "Actividad de Bots",
+    detected: "detectados",
+    suspiciousInteractions: "{{percentage}}% de interacciones sospechosas",
+    averageEngagement: "Engagement Promedio",
+    likes: "Likes",
+    comments: "Comentarios",
+    shares: "Compartidos",
+    recentAccounts: "Cuentas Recientes (últimos días)",
+    abnormalProportionNewAccounts: "⚠️ Proporción anormal de cuentas nuevas",
+    tip: "💡 Consejo: Investiga los perfiles con patrones sospechosos",
+    statusHigh: "ALTO",
+    statusMedium: "MEDIO",
+    statusLow: "BAJO",
+    systemSecure: "¡Estado del Sistema: Todo Despejado!",
   },
   errors: {
     pageNotFound: "Página no encontrada",

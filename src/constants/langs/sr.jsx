@@ -9,6 +9,49 @@ export const sr = {
   header: {
     appName: "ECHO",
   },
+  desktop: {
+    apps: {
+      messages: "Poruke",
+      social: "Društvena mreža",
+    },
+    window: {
+      minimize: "Minimizuj",
+      close: "Zatvori",
+    },
+    taskbar: {
+      start: "Start",
+    },
+  },
+  messagesApp: {
+    title: "Poruke",
+    inbox: "Prijemno sanduče",
+    selectMessage: "Izaberi poruku za čitanje",
+    fromLabel: "Od",
+    time: {
+      minutesAgo: "pre {{count}} min",
+      hoursAgo: "pre {{count}} h",
+    },
+    messages: {
+      welcome: {
+        from: "Šef",
+        subject: "Dobrodošli u tim",
+        content:
+          "Dobrodošli u naš istraživački tim! Vaša prva misija je da se upoznate sa korporativnom društvenom mrežom. Istražite profile i tražite tragove.",
+      },
+      hint1: {
+        from: "Šef",
+        subject: "Prvi trag",
+        content:
+          "Primijetio sam sumnjivu aktivnost na nekim profilima. Proverite najnovije objave i tražite neobične obrasce. Korisnik @admin može imati relevantne informacije.",
+      },
+      hint2: {
+        from: "Šef",
+        subject: "Dodatni trag",
+        content:
+          "Komentari na najpopularnijim objavama mogu sadržati skrivene kodove. Obratite pažnju na REČI VELIKIM SLOVIMA i ponavljane emodžije.",
+      },
+    },
+  },
   createPost: {
     placeholder: "Šta se dešava?",
     fileTooBig: "fajl mora biti manji od 20mb",
@@ -102,6 +145,31 @@ export const sr = {
     yearsAgo: "pre godina",
   },
 
+  statsPanel: {
+    title: "Status Sistema",
+    misinformationLevel: "Nivo Dezinformacija",
+    suspiciousActivityDetected: "⚠️ Sumnjiva aktivnost otkrivena na mreži",
+    detailedAnalysis: "Detaljne Analize",
+    postsLastHour: "Objave (poslednjih dana)",
+    percentageAboveNormal: "{{percentage}}% iznad normalnog",
+    newUsersLastHour: "Novi korisnici (poslednjih dana)",
+    massAccountCreation: "⚠️ Masovna kreiranje naloga otkriveno",
+    viralHashtags: "Virusni Heštegovi",
+    botActivity: "Aktivnost Botova",
+    detected: "otkriveni",
+    suspiciousInteractions: "{{percentage}}% sumnjive interakcije",
+    averageEngagement: "Prosečna Angažovanost",
+    likes: "Lajkovi",
+    comments: "Komentari",
+    shares: "Deljenja",
+    recentAccounts: "Nedavni Nalozi (poslednjih dana)",
+    abnormalProportionNewAccounts: "⚠️ Neobičan odnos novih naloga",
+    tip: "💡 Savet: Istražite profile sa sumnjivim obrascima",
+    statusHigh: "VISOK",
+    statusMedium: "SREDNJI",
+    statusLow: "NIZAK",
+    systemSecure: "Status Sistema: Sve Je Čisto!",
+  },
   errors: {
     pageNotFound: "Stranica nije pronađena",
     goHome: "Idi na Početnu",

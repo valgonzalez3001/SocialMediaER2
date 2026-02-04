@@ -9,6 +9,49 @@ export const fi = {
   header: {
     appName: "ECHO",
   },
+  desktop: {
+    apps: {
+      messages: "Viestit",
+      social: "Sosiaalinen verkko",
+    },
+    window: {
+      minimize: "Pienennä",
+      close: "Sulje",
+    },
+    taskbar: {
+      start: "Aloita",
+    },
+  },
+  messagesApp: {
+    title: "Viestit",
+    inbox: "Saapuneet",
+    selectMessage: "Valitse viesti luettavaksi",
+    fromLabel: "Lähettäjä",
+    time: {
+      minutesAgo: "{{count}} min sitten",
+      hoursAgo: "{{count}} h sitten",
+    },
+    messages: {
+      welcome: {
+        from: "Esimies",
+        subject: "Tervetuloa tiimiin",
+        content:
+          "Tervetuloa tutkimustiimiimme! Ensimmäinen tehtäväsi on tutustua yrityksen sosiaaliseen verkostoon. Tutki profiileja ja etsi vihjeitä.",
+      },
+      hint1: {
+        from: "Esimies",
+        subject: "Ensimmäinen vihje",
+        content:
+          "Olen huomannut epäilyttävää toimintaa joissakin profiileissa. Tarkista viimeaikaiset julkaisut ja etsi poikkeavia kuvioita. Käyttäjällä @admin voi olla oleellista tietoa.",
+      },
+      hint2: {
+        from: "Esimies",
+        subject: "Lisävihje",
+        content:
+          "Suosituimpien julkaisujen kommentit voivat sisältää piilotettuja koodeja. Kiinnitä huomiota ISOIHIN KIRJAIMIIN ja toistuviin emojeihin.",
+      },
+    },
+  },
   createPost: {
     placeholder: "Mitä tapahtuu?",
     fileTooBig: "tiedoston on oltava alle 20 mb",
@@ -100,6 +143,31 @@ export const fi = {
     monthsAgo: "kuukautta sitten",
     yearAgo: "vuosi sitten",
     yearsAgo: "vuotta sitten",
+  },
+  statsPanel: {
+    title: "Järjestelmän Tila",
+    misinformationLevel: "Väärätietojen Taso",
+    suspiciousActivityDetected: "⚠️ Epäilyttävä toiminta havaittu verkossa",
+    detailedAnalysis: "Yksityiskohtainen Analyysi",
+    postsLastHour: "Julkaisut (viimeisten päivien)",
+    percentageAboveNormal: "{{percentage}}% normaalin yläpuolella",
+    newUsersLastHour: "Uudet käyttäjät (viimeisten päivien)",
+    massAccountCreation: "⚠️ Joukkojen tilin luominen havaittu",
+    viralHashtags: "Virusomaiset Hashtagit",
+    botActivity: "Bottitoiminta",
+    detected: "havaittu",
+    suspiciousInteractions: "{{percentage}}% epäilyttävää vuorovaikutusta",
+    averageEngagement: "Keskimääräinen Sitoutuminen",
+    likes: "Tykkäykset",
+    comments: "Kommentit",
+    shares: "Jaot",
+    recentAccounts: "Äskettäin Luodut Tilit (viimeisten päivien)",
+    abnormalProportionNewAccounts: "⚠️ Epätavallinen osuus uusista tileistä",
+    tip: "💡 Vihje: Tutki profiilit, joissa on epäilyttäviä kuvioita",
+    statusHigh: "KORKEA",
+    statusMedium: "KESKITASO",
+    statusLow: "MATALA",
+    systemSecure: "Järjestelmän Tila: Kaikki Selvää!",
   },
   errors: {
     pageNotFound: "Sivua ei löytynyt",

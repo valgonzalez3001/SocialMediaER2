@@ -11,6 +11,7 @@ import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { CreatePostForm } from "../../components/CreatePostForm/CreatePostForm";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Header } from "../../components/Header/Header";
+import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 
 export const Home = () => {
   const { t } = useTranslation();
@@ -109,6 +110,11 @@ export const Home = () => {
             </div>
           )}
         </main>
+
+        {/* Panel de estadísticas lateral */}
+        <aside className="stats-sidebar">
+          <StatsPanel />
+        </aside>
       </div>
     </>
   );

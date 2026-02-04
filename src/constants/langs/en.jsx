@@ -9,6 +9,49 @@ export const en = {
   header: {
     appName: "ECHO",
   },
+  desktop: {
+    apps: {
+      messages: "Messages",
+      social: "Social Network",
+    },
+    window: {
+      minimize: "Minimize",
+      close: "Close",
+    },
+    taskbar: {
+      start: "Start",
+    },
+  },
+  messagesApp: {
+    title: "Messages",
+    inbox: "Inbox",
+    selectMessage: "Select a message to read",
+    fromLabel: "From",
+    time: {
+      minutesAgo: "{{count}} min ago",
+      hoursAgo: "{{count}} h ago",
+    },
+    messages: {
+      welcome: {
+        from: "The Boss",
+        subject: "Welcome to the team",
+        content:
+          "Welcome to our investigation team! Your first mission is to get familiar with the corporate social network. Explore profiles and look for clues.",
+      },
+      hint1: {
+        from: "The Boss",
+        subject: "First hint",
+        content:
+          "I've noticed suspicious activity in some profiles. Check recent posts and look for unusual patterns. The user @admin may have relevant information.",
+      },
+      hint2: {
+        from: "The Boss",
+        subject: "Additional clue",
+        content:
+          "Comments on the most popular posts may contain hidden codes. Pay attention to ALL CAPS words and repeated emojis.",
+      },
+    },
+  },
   createPost: {
     placeholder: "What is happening?!",
     fileTooBig: "file must be less than 20mb",
@@ -100,6 +143,31 @@ export const en = {
     monthsAgo: "months ago",
     yearAgo: "year ago",
     yearsAgo: "years ago",
+  },
+  statsPanel: {
+    title: "System Status",
+    misinformationLevel: "Misinformation Level",
+    suspiciousActivityDetected: "⚠️ Suspicious activity detected on the network",
+    detailedAnalysis: "Detailed Analysis",
+    postsLastHour: "Posts (recent days)",
+    percentageAboveNormal: "{{percentage}}% above normal",
+    newUsersLastHour: "New users (recent days)",
+    massAccountCreation: "⚠️ Massive account creation detected",
+    viralHashtags: "Viral Hashtags",
+    botActivity: "Bot Activity",
+    detected: "detected",
+    suspiciousInteractions: "{{percentage}}% of suspicious interactions",
+    averageEngagement: "Average Engagement",
+    likes: "Likes",
+    comments: "Comments",
+    shares: "Shares",
+    recentAccounts: "Recent Accounts (recent days)",
+    abnormalProportionNewAccounts: "⚠️ Abnormal proportion of new accounts",
+    tip: "💡 Tip: Investigate profiles with suspicious patterns",
+    statusHigh: "HIGH",
+    statusMedium: "MEDIUM",
+    statusLow: "LOW",
+    systemSecure: "System Status: All Clear!",
   },
   errors: {
     pageNotFound: "Page not found",

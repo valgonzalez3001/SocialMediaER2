@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
-//import { useAuth } from "./contexts/AuthProvider";
-import { NavRoutes } from "./Routes/NavRoutes";
+import { Desktop } from "./pages/Desktop/Desktop";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop.jsx";
 import { Toaster } from "react-hot-toast";
 import { usePosts } from "./contexts/PostsProvider.jsx";
@@ -10,10 +9,9 @@ import { Loader } from "./components/Loader/Loader";
 /**
  * Componente principal de la aplicación
  * 
- * Configura la estructura base de la aplicación incluyendo:
- * - Sistema de rutas
- * - Scroll automático al cambiar de página
- * - Indicador de carga
+ * Configura la estructura base de la aplicación con un sistema operativo simulado:
+ * - Escritorio con barra de tareas
+ * - Aplicaciones (Red Social y Mensajes)
  * - Sistema de notificaciones toast
  */
 function App() {
@@ -24,8 +22,8 @@ function App() {
       {/* Componente que resetea el scroll al inicio al cambiar de ruta */}
       <ScrollToTop />
       
-      {/* Renderiza todas las rutas de la aplicación */}
-      <NavRoutes />
+      {/* Sistema de escritorio con aplicaciones */}
+      <Desktop />
       
       {/* Muestra el loader solo cuando se están cargando posts */}
       {postLoading && <Loader />}

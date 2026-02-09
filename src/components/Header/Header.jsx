@@ -19,8 +19,6 @@ export const Header = () => {
           onClick={() => navigate("/")}
         />
       </AttentionSeeker>
-
-      <p onClick={() => navigate("/")}>{t('header.appName')}</p>
       
       <LanguageSelector />
     </div>

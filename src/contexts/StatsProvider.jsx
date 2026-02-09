@@ -15,8 +15,8 @@ export const useStats = () => {
 };
 
 export const StatsProvider = ({ children }) => {
-  // Estado inicial con valores que indican actividad sospechosa
-  const [stats, setStats] = useState({
+  // Función para obtener el estado inicial de estadísticas
+  const getInitialStats = () => ({
     misinformation: {
       level: 78, // Alto porcentaje de desinformación
       trend: "up",
@@ -50,6 +50,27 @@ export const StatsProvider = ({ children }) => {
       suspicious: true,
     },
   });
+
+  // Estado inicial con valores que indican actividad sospechosa
+  const [stats, setStats] = useState(getInitialStats());
+
+  // Estado para rastrear el progreso del reto 1
+  const [challenge1Completed, setChallenge1Completed] = useState(false);
+
+  // Estado para rastrear si el post de conclusiones fue completado
+  const [challenge2Completed, setChallenge2Completed] = useState(false);
+
+  // Al montar el componente, resetear todo al estado inicial
+  useEffect(() => {
+    // Limpiar sessionStorage para comenzar desde cero
+    sessionStorage.removeItem('challenge1Completed');
+    sessionStorage.removeItem('challenge2Completed');
+    
+    // Resetear estados
+    setStats(getInitialStats());
+    setChallenge1Completed(false);
+    setChallenge2Completed(false);
+  }, []);
 
   /**
    * Actualiza las estadísticas (para uso futuro si se quiere hacer dinámico)
@@ -93,10 +114,30 @@ export const StatsProvider = ({ children }) => {
     }));
   };
 
+  /**
+   * Marca el reto 1 como completado
+   */
+  const completeChallenge1 = () => {
+    setChallenge1Completed(true);
+    sessionStorage.setItem('challenge1Completed', JSON.stringify(true));
+  };
+
+  /**
+   * Marca el reto 2 (conclusiones) como completado
+   */
+  const completeChallenge2 = () => {
+    setChallenge2Completed(true);
+    sessionStorage.setItem('challenge2Completed', JSON.stringify(true));
+  };
+
   const value = {
     stats,
     updateStats,
     reduceMisinformation,
+    challenge1Completed,
+    completeChallenge1,
+    challenge2Completed,
+    completeChallenge2,
   };
 
   return <StatsContext.Provider value={value}>{children}</StatsContext.Provider>;

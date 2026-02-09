@@ -1,11 +1,9 @@
 /**
  * Utility functions for the mock server
- * Sin autenticación - usuario admin por defecto
+ * Sin autenticación - usuario admin por defecto (moderador de la red social)
  */
 
-/**
- * Formatea la fecha actual
- */
+
 export const formatDate = () => new Date().toISOString();
 
 /**

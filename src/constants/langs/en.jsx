@@ -3,7 +3,9 @@ export const en = {
     home: "Home",
     explore: "Explore",
     profile: "Profile",
-    admin: "Admin",
+    admin: "Suspicious Accounts",
+    aiContent: "AI Generated Content",
+    aiIncorrectUses: "AI Incorrect Uses",
     newPost: "New Post",
   },
   header: {
@@ -27,28 +29,25 @@ export const en = {
     inbox: "Inbox",
     selectMessage: "Select a message to read",
     fromLabel: "From",
+    newMessageNotification: "You have a new message!",
+    newMessageFromBoss: "Your boss has a mission for you",
+    congratulationNotification: "Your boss has sent you a congratulation",
     time: {
       minutesAgo: "{{count}} min ago",
       hoursAgo: "{{count}} h ago",
     },
     messages: {
-      welcome: {
+      missionBrief: {
         from: "The Boss",
-        subject: "Welcome to the team",
+        subject: "🚨 CRITICAL MISSION: Misinformation Alert!",
         content:
-          "Welcome to our investigation team! Your first mission is to get familiar with the corporate social network. Explore profiles and look for clues.",
+          "🚨 URGENT!\n\nI'm sending you this message because the misinformation level on our platform has reached CRITICAL levels at 78%. This is a serious threat to the integrity of our network.\n\nYour mission:\nGo to the Admin Panel and correctly classify all the profiles as bots or real users. Your accuracy is crucial for fighting automated misinformation spread. Once you complete this perfectly, you'll reduce the misinformation level.\nThe fate of the network is in your hands.\n\n- The Boss",
       },
-      hint1: {
+      congratulations: {
         from: "The Boss",
-        subject: "First hint",
+        subject: "🎉 Congratulations! Challenge Completed",
         content:
-          "I've noticed suspicious activity in some profiles. Check recent posts and look for unusual patterns. The user @admin may have relevant information.",
-      },
-      hint2: {
-        from: "The Boss",
-        subject: "Additional clue",
-        content:
-          "Comments on the most popular posts may contain hidden codes. Pay attention to ALL CAPS words and repeated emojis.",
+          "🎉 EXCELLENT WORK!\n\nYou have correctly classified all the profiles. Your accuracy has significantly reduced the misinformation level on our platform.\n\nNow comes the crucial part:\nI need you to publish a post on the social network to EDUCATE our community. Share what you've learned about:\n\n• How to identify bots and automated accounts\n• The misinformation patterns you observed\n• The importance of verifying information\n• How to protect yourself from manipulation\n\nYour post will be a Community Note that will help other users recognize and combat misinformation. It's your opportunity to show the learning objectives and make a real difference.\n\nThe community is counting on you!\n\n- The Boss",
       },
     },
   },
@@ -57,6 +56,20 @@ export const en = {
     fileTooBig: "file must be less than 20mb",
     invalidFileType: "file must be a Video (MP4/MOV) or an Image (JPEG/PNG)",
     publish: "Post",
+    challengeLocked: "Challenge Locked",
+    completeChallenge1: "Complete the Admin challenge to unlock posting",
+    selectTwoCorrect: "Select 2 correct statements about misinformation and bots",
+    selectTwoStatements: "Please select exactly 2 statements",
+    incorrectSelection: "Incorrect selection. Try again!",
+    selected: "selected",
+    publishConclusion: "Publish Community Note",
+    statement1: "Bots can be detected by consistent and repetitive activity patterns",
+    statement2: "Verified accounts are always real accounts and can never be bots",
+    statement3: "Verifying accounts with multiple information sources is key to combating misinformation",
+    statement4: "Bots always have public profiles and never private ones",
+    statement5: "Digital education is fundamental for users to identify false content",
+    conclusionText: "To combat misinformation on social media, it is essential that you develop critical thinking and verify information before sharing it. Bots and fake accounts often show repetitive patterns, suspicious activity at irregular times, and identical content. Learn to identify them and protect your community! 🔍✅",
+    escapeRoomCompleted: "🎉 Escape Room Completed! Thank you for learning to identify misinformation!",
   },
   post: {
     editPost: "Edit Post",
@@ -86,14 +99,14 @@ export const en = {
     caughtUp: "You are all caught up!",
   },
   admin: {
-    title: "Admin Panel",
+    title: "Manage suspicious accounts",
     users: "Users",
     posts: "Posts",
-    suspectUsers: "Suspect Users",
+    suspectUsers: "Suspicious Users",
     hint: "Hint",
     bot: "Bot",
     human: "Human",
-    noSuspects: "No suspect users at this time",
+    noSuspects: "No suspicious users at this time",
     userBlocked: "User blocked as AI",
     userClassified: "User classified as Human",
     classified: "Classified",

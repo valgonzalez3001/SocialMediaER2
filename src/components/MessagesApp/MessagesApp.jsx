@@ -14,6 +14,9 @@ export const MessagesApp = () => {
   const [selectedMessage, setSelectedMessage] = useState(null);
   const { t } = useTranslation();
 
+  // Detectar si hay mensajes sin leer
+  const hasUnread = messages.some((msg) => !msg.read);
+
   const handleSelectMessage = (message) => {
     setSelectedMessage(message);
     if (!message.read) {

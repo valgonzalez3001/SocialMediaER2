@@ -3,7 +3,9 @@ export const fi = {
     home: "Koti",
     explore: "Tutki",
     profile: "Profiili",
-    admin: "Hallinta",
+    admin: "Epäilyttävät Tilit",
+    aiContent: "Tekoälyn Luoma Sisältö",
+    aiIncorrectUses: "Tekoälyn Väärinkäyttö",
     newPost: "Uusi Julkaisu",
   },
   header: {
@@ -27,28 +29,25 @@ export const fi = {
     inbox: "Saapuneet",
     selectMessage: "Valitse viesti luettavaksi",
     fromLabel: "Lähettäjä",
+    newMessageNotification: "Sinulla on uusi viesti!",
+    newMessageFromBoss: "Pomollasi on sinulle tehtävä",
+    congratulationNotification: "Pomosi on lähettänyt sinulle onnittelut",
     time: {
       minutesAgo: "{{count}} min sitten",
       hoursAgo: "{{count}} h sitten",
     },
     messages: {
-      welcome: {
+      missionBrief: {
         from: "Esimies",
-        subject: "Tervetuloa tiimiin",
+        subject: "🚨 KRIITTINEN TEHTÄVÄ: Dezinformaation Hälytys!",
         content:
-          "Tervetuloa tutkimustiimiimme! Ensimmäinen tehtäväsi on tutustua yrityksen sosiaaliseen verkostoon. Tutki profiileja ja etsi vihjeitä.",
+          "🚨 KIIREELLINEN!\n\nLähetän sinulle tämän viestin, koska dezinformaation taso alustalla on saavuttanut KRIITTISET tasot 78%. Tämä on vakava uhka verkkomme koskemattomuudelle.\n\nSinun tehtäväsi:\nMene hallintopaneeliin ja luokittele kaikki profiilit oikein botteihin tai oikeisiin käyttäjiin. Tarkkuutesi on ratkaisevan tärkeä automatisoidun dezinformaation leviämisen vastustamisessa. Kun suoritat tämän täydellisesti, pienennät dezinformaation tasoa.\nVerkon kohtalo on sinun käsissäsi.\n\n- Esimies",
       },
-      hint1: {
+      congratulations: {
         from: "Esimies",
-        subject: "Ensimmäinen vihje",
+        subject: "🎉 Onnittelut! Haaste Suoritettu",
         content:
-          "Olen huomannut epäilyttävää toimintaa joissakin profiileissa. Tarkista viimeaikaiset julkaisut ja etsi poikkeavia kuvioita. Käyttäjällä @admin voi olla oleellista tietoa.",
-      },
-      hint2: {
-        from: "Esimies",
-        subject: "Lisävihje",
-        content:
-          "Suosituimpien julkaisujen kommentit voivat sisältää piilotettuja koodeja. Kiinnitä huomiota ISOIHIN KIRJAIMIIN ja toistuviin emojeihin.",
+          "🎉 ERINOMAISTA TYÖTÄ!\n\nOlet luokitellut kaikki profiilit oikein. Tarkkuutesi on merkittävästi pienentänyt dezinformaation tasoa alustallamme.\n\nNyt tulee ratkaiseva osa:\nTarvitsen sinun julkaisevan julkaisun sosiaalisessa verkostossa KOULUTTAAKSESI yhteisöämme. Jaa mitä olet oppinut:\n\n• Kuinka tunnistaa botteja ja automatisoituja tilejä\n• Havaitut dezinformaation mallit\n• Tiedon tarkistamisen tärkeys\n• Kuinka suojautua manipulaatiolta\n\nJulkaisusi on Yhteisön Huomautus, joka auttaa muita käyttäjiä tunnistamaan ja taistelemaan dezinformaatiota vastaan. Tämä on tilaisuutesi näyttää oppimisen tavoitteet ja tehdä todellinen ero.\n\nYhteisö luottaa sinuun!\n\n- Esimies",
       },
     },
   },
@@ -57,6 +56,20 @@ export const fi = {
     fileTooBig: "tiedoston on oltava alle 20 mb",
     invalidFileType: "tiedoston on oltava video (MP4/MOV) tai kuva (JPEG/PNG)",
     publish: "Julkaise",
+    challengeLocked: "Haaste Lukittu",
+    completeChallenge1: "Suorita Admin-haaste voidaksesi lähettää viestejä",
+    selectTwoCorrect: "Valitse 2 oikeaa väitettä väärätiedoista ja boteista",
+    selectTwoStatements: "Valitse tarkasti 2 väitettä",
+    incorrectSelection: "Väärä valinta. Yritä uudelleen!",
+    selected: "valittu",
+    publishConclusion: "Julkaise Yhteisömuistion",
+    statement1: "Botit voidaan havaita johdonmukaisista ja toistuvista aktiviteettimuodoista",
+    statement2: "Vahvistetut tilit ovat aina todellisia tilejä eivätkä voi koskaan olla botteja",
+    statement3: "Tilien vahvistaminen useiden tietolähteiden avulla on avainasemassa väärätiedon torjunnassa",
+    statement4: "Boteilla on aina julkiset profiilit eivätkä koskaan yksityiset",
+    statement5: "Digitaalinen koulutus on olennaista, jotta käyttäjät voivat tunnistaa väärää sisältöä",
+    conclusionText: "Dezinformaation vastaisesti sosiaalisessa mediassa on välttämätöntä, että kehität kriittistä ajattelua ja vahvistat tiedot ennen jakamista. Botit ja väärät tilit osoittavat usein toistuvia malleja, epäilyttävää toimintaa epäsäännöllisinä aikoina ja identtistä sisältöä. Opi tunnistamaan ne ja suojaa yhteisöäsi! 🔍✅",
+    escapeRoomCompleted: "🎉 Escape Room Valmis! Kiitos siitä, että opit tunnistamaan väärätietoa!",
   },
   post: {
     editPost: "Muokkaa Julkaisua",
@@ -86,7 +99,7 @@ export const fi = {
     caughtUp: "Olet ajan tasalla!",
   },
   admin: {
-    title: "Hallintapaneeli",
+    title: "Hallinnoi epäilyttäviä tilejä",
     users: "Käyttäjät",
     posts: "Julkaisut",
     suspectUsers: "Epäillyttävät Käyttäjät",

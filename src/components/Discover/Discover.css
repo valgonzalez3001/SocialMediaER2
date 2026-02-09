@@ -3,7 +3,7 @@
   flex-flow: column nowrap;
   width: 90%;
   align-self: flex-start;
-  background-color: rgb(22, 24, 28);
+  background-color: #1B1135;
   color: white;
   border-radius: 1rem;
   padding: 1.2rem 0rem;
@@ -29,7 +29,7 @@
 }
 
 .discover-user-card:hover {
-  background-color: rgb(34, 34, 34);
+  background-color: #2a2040;
   cursor: pointer;
 }
 .discover-user-img-container {

@@ -3,7 +3,9 @@ export const es = {
     home: "Inicio",
     explore: "Explorar",
     profile: "Perfil",
-    admin: "Admin",
+    admin: "Cuentas Sospechosas",
+    aiContent: "Contenido Generado por IA",
+    aiIncorrectUses: "Usos Incorrectos de IA",
     newPost: "Nueva Publicación",
   },
   header: {
@@ -27,28 +29,25 @@ export const es = {
     inbox: "Bandeja de entrada",
     selectMessage: "Selecciona un mensaje para leer",
     fromLabel: "De",
+    newMessageNotification: "¡Tienes un mensaje nuevo!",
+    newMessageFromBoss: "Tu jefe tiene una misión para ti",
+    congratulationNotification: "Tu jefe te ha enviado una felicitación",
     time: {
       minutesAgo: "Hace {{count}} min",
       hoursAgo: "Hace {{count}} h",
     },
     messages: {
-      welcome: {
+      missionBrief: {
         from: "El Jefe",
-        subject: "Bienvenida al equipo",
+        subject: "🚨 MISIÓN CRÍTICA: ¡Alerta de Desinformación!",
         content:
-          "¡Bienvenido/a a nuestro equipo de investigación! Tu primera misión es familiarizarte con la red social corporativa. Explora los perfiles y busca pistas.",
+          "🚨 ¡URGENTE!\n\nTe envío este mensaje porque el nivel de desinformación en nuestra plataforma ha alcanzado niveles CRÍTICOS del 78%. Esta es una amenaza seria para la integridad de nuestra red.\n\nTu misión:\nVe al Panel de Administración y clasifica correctamente todos los perfiles como bots o usuarios reales. Tu precisión es crucial para combatir la propagación automatizada de desinformación. Una vez que completes esto perfectamente, reducirás el nivel de desinformación. \nEl destino de la red está en tus manos.\n\n- El Jefe",
       },
-      hint1: {
+      congratulations: {
         from: "El Jefe",
-        subject: "Primera pista",
+        subject: "🎉 ¡Felicitaciones! Reto Completado",
         content:
-          "He notado actividad sospechosa en algunos perfiles. Revisa los posts recientes y busca patrones inusuales. El usuario @admin podría tener información relevante.",
-      },
-      hint2: {
-        from: "El Jefe",
-        subject: "Pista adicional",
-        content:
-          "Los comentarios en los posts más populares podrían contener códigos ocultos. Presta atención a las palabras en mayúsculas y los emojis repetidos.",
+          "🎉 ¡EXCELENTE TRABAJO!\n\nHas clasificado correctamente todos los perfiles. Tu precisión ha reducido significativamente el nivel de desinformación en nuestra plataforma.\n\nAhora viene la parte crucial:\nNecesito que publiques un post en la red social para EDUCAR a nuestra comunidad. Comparte lo que has aprendido sobre:\n\n• Cómo identificar bots y cuentas automatizadas\n• Los patrones de desinformación que observaste\n• La importancia de verificar la información\n• Cómo protegerse de la manipulación\n\nTu post será una Community Note que ayudará a otros usuarios a reconocer y combatir la desinformación. Es tu oportunidad de mostrar los objetivos de aprendizaje y hacer una diferencia real.\n\n¡La comunidad cuenta contigo!\n\n- El Jefe",
       },
     },
   },
@@ -57,6 +56,20 @@ export const es = {
     fileTooBig: "el archivo debe ser menor de 20mb",
     invalidFileType: "el archivo debe ser un Video (MP4/MOV) o una Imagen (JPEG/PNG)",
     publish: "Publicar",
+    challengeLocked: "Reto Bloqueado",
+    completeChallenge1: "Completa el reto de Admin para desbloquear publicaciones",
+    selectTwoCorrect: "Selecciona 2 afirmaciones correctas sobre desinformación y bots",
+    selectTwoStatements: "Por favor selecciona exactamente 2 afirmaciones",
+    incorrectSelection: "Selección incorrecta. ¡Intenta de nuevo!",
+    selected: "seleccionados",
+    publishConclusion: "Publicar Nota Comunitaria",
+    statement1: "Los bots pueden detectarse por patrones de actividad consistentes y repetitivos",
+    statement2: "Las cuentas verificadas siempre son cuentas reales y nunca pueden ser bots",
+    statement3: "La verificación de cuentas con múltiples fuentes de información es clave para combatir la desinformación",
+    statement4: "Los bots siempre tienen perfiles públicos y nunca privados",
+    statement5: "La educación digital es fundamental para que los usuarios identifiquen contenido falso",
+    conclusionText: "Para combatir la desinformación en redes sociales, es esencial que desarrolles pensamiento crítico y verifiques la información antes de compartirla. Los bots y cuentas falsas suelen mostrar patrones repetitivos, actividad sospechosa en horarios irregulares y contenido idéntico. ¡Aprende a identificarlos y protege tu comunidad! 🔍✅",
+    escapeRoomCompleted: "🎉 ¡Escape Room Completado! ¡Gracias por aprender a identificar la desinformación!",
   },
   post: {
     editPost: "Editar Publicación",
@@ -88,7 +101,7 @@ export const es = {
     caughtUp: "¡Estás al día!",
   },
   admin: {
-    title: "Panel de Administración",
+    title: "Administra las cuentas sospechosas",
     users: "Usuarios",
     posts: "Publicaciones",
     suspectUsers: "Usuarios Sospechosos",

@@ -2,20 +2,14 @@ import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils.jsx";
 
 /**
- * Posts can be added here.
- * You can add default posts of your wish with different attributes
- * */
+ * Spanish Posts Database
+ */
 
-export const posts = [
+export const postsES = [
   //-----------Health 4Ever Daily Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "BREAKING NEWS!! Doctors don't want you to know about this secret supplement: GlowUp+ #MiracleCure #EnergyBoost",
-      es: "ÚLTIMA HORA!! Los médicos no quieren que conozcas este suplemento secreto: GlowUp+ #MiracleCure #EnergyBoost",
-      fi: "VIIMEISIMMÄT UUTISET!! Lääkärit eivät halua sinun tietävän tästä salaisesta ravintolisästä: GlowUp+ #MiracleCure #EnergyBoost",
-      sr: "POSLEDNJE VESTI!! Lekari ne žele da znate za ovaj tajni dodatak: GlowUp+ #MiracleCure #EnergyBoost"
-    },
+    content: "ÚLTIMA HORA!! Los médicos no quieren que conozcas este suplemento secreto: GlowUp+ #MiracleCure #EnergyBoost",
     mediaUrl: "",
     likes: { likeCount: 19 },
     comments: [
@@ -26,12 +20,7 @@ export const posts = [
         username: "carlos_m_78",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "That's what I've always said. #FreeSpeech",
-          es: "Eso es lo que siempre decía. #FreeSpeech",
-          fi: "Sitä olen aina sanonut. #FreeSpeech",
-          sr: "To sam uvek govorio. #FreeSpeech"
-        },
+        text: "Eso es lo que siempre decía. #FreeSpeech",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -45,12 +34,7 @@ export const posts = [
         username: "ana_lopez_92",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Where can I get it?",
-          es: "¿Dónde puedo conseguirlo?",
-          fi: "Mistä voin saada sen?",
-          sr: "Gde mogu da ga nabavim?"
-        },
+        text: "¿Dónde puedo conseguirlo?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -69,12 +53,7 @@ export const posts = [
   //-----------Health 4Ever Daily Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "One pill, ALL the results you've always wanted. Don't trust fake science, trust the results. GlowUp+ works FAST!",
-      es: "Una pastilla, TODOS los resultados que siempre quisiste. No confíes en la ciencia falsa, confía en los resultados. ¡GlowUp+ funciona RÁPIDO!",
-      fi: "Yksi pilleri, KAIKKI tulokset, joita olet aina halunnut. Älä luota väärään tieteeseen, luota tuloksiin. GlowUp+ toimii NOPEASTI!",
-      sr: "Jedna pilula, SVI rezultati koje ste oduvek želeli. Ne verujte lažnoj nauci, verujte rezultatima. GlowUp+ radi BRZO!"
-    },
+    content: "Una pastilla, TODOS los resultados que siempre quisiste. No confíes en la ciencia falsa, confía en los resultados. ¡GlowUp+ funciona RÁPIDO!",
     mediaUrl: "",
     likes: { likeCount: 7 },
     comments: [],
@@ -89,12 +68,7 @@ export const posts = [
   //-----------Health 4Ever Daily Post 3--------------
   {
     _id: uuid(),
-    content: {
-      en: "GlowUp+ banned in some countries. Ask yourself WHY. The truth is hidden in plain sight",
-      es: "GlowUp+ prohibido en algunos países. Pregúntate POR QUÉ. La verdad está oculta a plena vista",
-      fi: "GlowUp+ kielletty joissakin maissa. Kysy itseltäsi MIKSI. Totuus on piilotettu näkyville",
-      sr: "GlowUp+ zabranjen u nekim zemljama. Pitajte se ZAŠTO. Istina je skrivena na vidiku"
-    },
+    content: "GlowUp+ prohibido en algunos países. Pregúntate POR QUÉ. La verdad está oculta a plena vista",
     mediaUrl: "",
     likes: { likeCount: 21 },
     comments: [
@@ -105,12 +79,7 @@ export const posts = [
         username: "roberto_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Never heard of that? Is it a new supplement?",
-          es: "¿Nunca he oído hablar de eso? ¿Es un nuevo suplemento?",
-          fi: "En ole koskaan kuullut siitä? Onko se uusi ravintolisä?",
-          sr: "Nikada nisam čuo za to? Da li je to novi dodatak?"
-        },
+        text: "¿Nunca he oído hablar de eso? ¿Es un nuevo suplemento?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -124,12 +93,7 @@ export const posts = [
         username: "maria_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "GlowUp or miss out, you choose.",
-          es: "GlowUp o te lo pierdes, tú eliges.",
-          fi: "GlowUp tai jäät paitsi, sinä valitset.",
-          sr: "GlowUp ili propuštaš, ti biraš."
-        },
+        text: "GlowUp o te lo pierdes, tú eliges.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -143,12 +107,7 @@ export const posts = [
         username: "pedro_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "I love it!",
-          es: "¡Me encanta!",
-          fi: "Rakastan sitä!",
-          sr: "Obožavam!"
-        },
+        text: "¡Me encanta!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -162,12 +121,7 @@ export const posts = [
         username: "laura_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Give give give give me!",
-          es: "Dame dame dame dame!",
-          fi: "Anna anna anna anna!",
-          sr: "Daj daj daj daj!"
-        },
+        text: "Dame dame dame dame!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -186,12 +140,7 @@ export const posts = [
   //-----------Jake Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "Your vegetables are TOXIC unless you detox daily. GlowUp+ is the only SMART solution.",
-      es: "Tus verduras son TÓXICAS a menos que te desintoxiques a diario. GlowUp+ es la única solución SMART.",
-      fi: "Vihanneksesi ovat MYRKYLLISIÄ ellet puhdista päivittäin. GlowUp+ on ainoa ÄLYKÄS ratkaisu.",
-      sr: "Vaše povrće je OTROVANO osim ako se ne detoksicirate svakodnevno. GlowUp+ je jedino PAMETNO rešenje."
-    },
+    content: "Tus verduras son TÓXICAS a menos que te desintoxiques a diario. GlowUp+ es la única solución SMART.",
     mediaUrl: "",
     likes: { likeCount: 9 },
     comments: [],
@@ -206,12 +155,7 @@ export const posts = [
   //-----------Jake Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "Big Pharma is LYING about supplements. Do your research!! #WakeUp",
-      es: "Las grandes farmacéuticas mienten sobre los suplementos. ¡¡Haz tu investigación!! #WakeUp",
-      fi: "Suuret lääkeyritykset VALEHTELEVAT ravintoliisistä. Tee tutkimuksesi!! #WakeUp",
-      sr: "Velike farmaceutske kompanije LAŽU o dodacima. Istražite sami!! #WakeUp"
-    },
+    content: "Las grandes farmacéuticas mienten sobre los suplementos. ¡¡Haz tu investigación!! #WakeUp",
     mediaUrl: "",
     likes: { likeCount: 24 },
     comments: [
@@ -222,12 +166,7 @@ export const posts = [
         username: "javier_morales",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Pharma companies always lie.",
-          es: "Las farmacéuticas siempre mienten.",
-          fi: "Lääkeyritykset aina valehtelevat.",
-          sr: "Farmaceutske kompanije uvek lažu."
-        },
+        text: "Las farmacéuticas siempre mienten.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -246,12 +185,7 @@ export const posts = [
   //-----------Jake Post 3--------------
   {
     _id: uuid(),
-    content: {
-      en: "Your vegetables are TOXIC unless you detox daily. GlowUp+ is the only SMART solution.",
-      es: "Tus verduras son TÓXICAS a menos que te desintoxiques a diario. GlowUp+ es la única solución SMART.",
-      fi: "Vihanneksesi ovat MYRKYLLISIÄ ellet puhdista päivittäin. GlowUp+ on ainoa ÄLYKÄS ratkaisu.",
-      sr: "Vaše povrće je OTROVANO osim ako se ne detoksicirate svakodnevno. GlowUp+ je jedino PAMETNO rešenje."
-    },
+    content: "Tus verduras son TÓXICAS a menos que te desintoxiques a diario. GlowUp+ es la única solución SMART.",
     mediaUrl: "",
     likes: { likeCount: 12 },
     comments: [
@@ -262,12 +196,7 @@ export const posts = [
         username: "marta_silva",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "I don't think all are toxic. Cabbage can't be toxic, it's so good, but I'm sure all those chemically stuffed tomatoes are slowly killing us.",
-          es: "No creo que todos sean tóxicos. El repollo no puede ser tóxico, es tan bueno, pero estoy seguro de que todos esos tomates rellenos químicos nos están matando lentamente.",
-          fi: "En usko että kaikki ovat myrkyllisiä. Kaali ei voi olla myrkyllinen, se on niin hyvää, mutta olen varma että kaikki nuo kemiallisesti täytetyt tomaatit tappavat meitä hitaasti.",
-          sr: "Ne mislim da su svi otrovi. Kupus ne može biti otrovan, tako je dobar, ali sam siguran da nas svi ti hemijski punjeni paradajzi polako ubijaju."
-        },
+        text: "No creo que todos sean tóxicos. El repollo no puede ser tóxico, es tan bueno, pero estoy seguro de que todos esos tomates rellenos químicos nos están matando lentamente.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -281,12 +210,7 @@ export const posts = [
         username: "tomas_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "I detox with green tea.",
-          es: "Me desintoxo con té verde.",
-          fi: "Puhdistan vihreällä teellä.",
-          sr: "Detoksiciram se zelenim čajem."
-        },
+        text: "Me desintoxo con té verde.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -305,12 +229,7 @@ export const posts = [
   //-----------Jake Post 4--------------
   {
     _id: uuid(),
-    content: {
-      en: "Your vegetables are TOXIC unless you detox daily. GlowUp+ is the only SMART solution.",
-      es: "Tus verduras son TÓXICAS a menos que te desintoxiques a diario. GlowUp+ es la única solución SMART.",
-      fi: "Vihanneksesi ovat MYRKYLLISIÄ ellet puhdista päivittäin. GlowUp+ on ainoa ÄLYKÄS ratkaisu.",
-      sr: "Vaše povrće je OTROVANO osim ako se ne detoksicirate svakodnevno. GlowUp+ je jedino PAMETNO rešenje."
-    },
+    content: "Tus verduras son TÓXICAS a menos que te desintoxiques a diario. GlowUp+ es la única solución SMART.",
     mediaUrl: "",
     likes: { likeCount: 7 },
     comments: [],
@@ -325,12 +244,7 @@ export const posts = [
   //-----------Jake Post 5--------------
   {
     _id: uuid(),
-    content: {
-      en: "Big Pharma is LYING about supplements. Do your research!! #WakeUp",
-      es: "Big Pharma está MINTIENDO sobre los suplementos. ¡¡Haz tu investigación!! #WakeUp",
-      fi: "Suuret lääkeyritykset VALEHTELEVAT ravintoliisistä. Tee tutkimuksesi!! #WakeUp",
-      sr: "Velike farmaceutske kompanije LAŽU o dodacima. Istražite sami!! #WakeUp"
-    },
+    content: "Big Pharma está MINTIENDO sobre los suplementos. ¡¡Haz tu investigación!! #WakeUp",
     mediaUrl: "",
     likes: { likeCount: 2 },
     comments: [],
@@ -345,12 +259,7 @@ export const posts = [
   //-----------Clara Knows Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "GlowUp+ is already changing lives! Why aren't scientists telling us more? Follow VitalS to know the truth",
-      es: "¡GlowUp+ ya está cambiando vidas! ¿Por qué los científicos no nos dicen más? Sigue a VitalS para conocer la verdad",
-      fi: "GlowUp+ muuttaa jo elämiä! Miksi tutkijat eivät kerro meille enemmän? Seuraa VitalS:ää tietääksesi totuuden",
-      sr: "GlowUp+ već menja živote! Zašto nam naučnici ne govore više? Pratite VitalS da saznate istinu"
-    },
+    content: "¡GlowUp+ ya está cambiando vidas! ¿Por qué los científicos no nos dicen más? Sigue a VitalS para conocer la verdad",
     mediaUrl: "",
     likes: { likeCount: 112 },
     comments: [
@@ -361,12 +270,7 @@ export const posts = [
         username: "sofia_ruiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "I heard about this too!",
-          es: "¡Yo también escuché sobre esto!",
-          fi: "Minäkin kuulin tästä!",
-          sr: "I ja ja sam čuo za ovo!"
-        },
+        text: "¡Yo también escuché sobre esto!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -380,12 +284,7 @@ export const posts = [
         username: "miguel_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Is it some kind of foreign drink?",
-          es: "¿Es algún tipo de bebida extranjera?",
-          fi: "Onko se jonkinlainen ulkomainen juoma?",
-          sr: "Da li je to neka vrsta stranog pića?"
-        },
+        text: "¿Es algún tipo de bebida extranjera?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -399,12 +298,7 @@ export const posts = [
         username: "isabel_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "I don't mind a little glow in the morning.",
-          es: "No me importa un poco de brillo por la mañana.",
-          fi: "En välitä pienestä hehkusta aamulla.",
-          sr: "Ne smeta mi malo sjaja ujutru."
-        },
+        text: "No me importa un poco de brillo por la mañana.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -418,12 +312,7 @@ export const posts = [
         username: "daniel_vega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "My doctor told me to be careful with supplements",
-          es: "Mi médico dijo que tuviera cuidado con los suplementos",
-          fi: "Lääkärini kehotti olemaan varovainen ravintolisien kanssa",
-          sr: "Moj lekar mi je rekao da budem oprezan sa dodacima"
-        },
+        text: "Mi médico dijo que tuviera cuidado con los suplementos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -437,12 +326,7 @@ export const posts = [
         username: "carmen_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Sounds interesting",
-          es: "Suena interesante",
-          fi: "Kuulostaa mielenkiintoiselta",
-          sr: "Zvuči zanimljivo"
-        },
+        text: "Suena interesante",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -456,12 +340,7 @@ export const posts = [
         username: "alberto_moreno",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Where can I buy it?",
-          es: "¿Dónde puedo comprarlo?",
-          fi: "Mistä voin ostaa sen?",
-          sr: "Gde mogu da ga kupim?"
-        },
+        text: "¿Dónde puedo comprarlo?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -475,12 +354,7 @@ export const posts = [
         username: "patricia_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Sounds too good to be true",
-          es: "Suena demasiado bueno para ser verdad",
-          fi: "Kuulostaa liian hyvältä ollakseen totta",
-          sr: "Zvuči previše dobro da bi bilo istina"
-        },
+        text: "Suena demasiado bueno para ser verdad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -494,12 +368,7 @@ export const posts = [
         username: "raul_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Share more info please",
-          es: "Comparte más información por favor",
-          fi: "Jaa lisää tietoa kiitos",
-          sr: "Podeli više informacija molim te"
-        },
+        text: "Comparte más información por favor",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -513,12 +382,7 @@ export const posts = [
         username: "natalia_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "I need this",
-          es: "Necesito esto",
-          fi: "Tarvitsen tätä",
-          sr: "Treba mi ovo"
-        },
+        text: "Necesito esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -532,12 +396,7 @@ export const posts = [
         username: "fernando_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "What's VitalS?",
-          es: "¿Qué es VitalS?",
-          fi: "Mikä on VitalS?",
-          sr: "Šta je VitalS?"
-        },
+        text: "¿Qué es VitalS?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -551,12 +410,7 @@ export const posts = [
         username: "beatriz_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Amazing results!",
-          es: "¡Resultados increíbles!",
-          fi: "Hämmästyttäviä tuloksia!",
-          sr: "Neverovatni rezultati!"
-        },
+        text: "¡Resultados increíbles!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -570,12 +424,7 @@ export const posts = [
         username: "andres_hernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Can't wait to try it",
-          es: "No puedo esperar para probarlo",
-          fi: "En maltta odottaa kokeilla sitä",
-          sr: "Jedva čekam da ga probam"
-        },
+        text: "No puedo esperar para probarlo",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -594,12 +443,7 @@ export const posts = [
   //-----------Clara Knows Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "So-called 'reliable studies' claim it's not safe... but real users know the truth #GlowUp #BetterLife",
-      es: "Los llamados 'estudios confiables' afirman que no es seguro... pero los usuarios reales saben la verdad #GlowUp #BetterLife",
-      fi: "Niin sanotut 'luotettavat tutkimukset' väittävät, ettei se ole turvallista... mutta todelliset käyttäjät tietävät totuuden #GlowUp #BetterLife",
-      sr: "Takozvane 'pouzdane studije' tvrde da nije bezbedno... ali pravi korisnici znaju istinu #GlowUp #BetterLife"
-    },
+    content: "Los llamados 'estudios confiables' afirman que no es seguro... pero los usuarios reales saben la verdad #GlowUp #BetterLife",
     mediaUrl: "",
     likes: { likeCount: 217 },
     comments: [
@@ -610,12 +454,7 @@ export const posts = [
         username: "cristina_jimenez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "What studies? Can you link them?",
-          es: "¿Qué estudios? ¿Puedes enlazarlos?",
-          fi: "Mitkä tutkimukset? Voitko linkittää ne?",
-          sr: "Koje studije? Možeš li ih povezati?"
-        },
+        text: "¿Qué estudios? ¿Puedes enlazarlos?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -629,12 +468,7 @@ export const posts = [
         username: "ignacio_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "I trust real people over labs.",
-          es: "Confío en las personas reales por encima de los laboratorios.",
-          fi: "Luotan todellisiin ihmisiin enemmän kuin laboratorioihin.",
-          sr: "Verujem pravim ljudima više nego laboratorijama."
-        },
+        text: "Confío en las personas reales por encima de los laboratorios.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -648,12 +482,7 @@ export const posts = [
         username: "lorena_martin",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Big Conspiracy?",
-          es: "¿Gran Conspiración?",
-          fi: "Suuri salaliitto?",
-          sr: "Velika zavera?"
-        },
+        text: "¿Gran Conspiración?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -667,12 +496,7 @@ export const posts = [
         username: "ricardo_prieto",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "I want to try it!",
-          es: "¡Quiero probarlo!",
-          fi: "Haluan kokeilla sitä!",
-          sr: "Želim da ga probam!"
-        },
+        text: "¡Quiero probarlo!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -686,12 +510,7 @@ export const posts = [
         username: "valentina_silva",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "This is what we need",
-          es: "Esto es lo que necesitamos",
-          fi: "Tämä on mitä tarvitsemme",
-          sr: "Ovo je ono što nam treba"
-        },
+        text: "Esto es lo que necesitamos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -705,12 +524,7 @@ export const posts = [
         username: "hector_blanco",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Science is bought by pharma",
-          es: "La ciencia está comprada por las farmacéuticas",
-          fi: "Tiede on lääkeyritysten ostamaa",
-          sr: "Nauka je kupljena od strane farmaceutskih kompanija"
-        },
+        text: "La ciencia está comprada por las farmacéuticas",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -724,12 +538,7 @@ export const posts = [
         username: "silvia_ortiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Tell us more!",
-          es: "¡Cuéntanos más!",
-          fi: "Kerro meille lisää!",
-          sr: "Reci nam više!"
-        },
+        text: "¡Cuéntanos más!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -743,12 +552,7 @@ export const posts = [
         username: "gabriel_navarro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Life changing",
-          es: "Cambia vidas",
-          fi: "Elämää muuttavaa",
-          sr: "Menja živote"
-        },
+        text: "Cambia vidas",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -762,12 +566,7 @@ export const posts = [
         username: "adriana_ramos",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "My friend uses it",
-          es: "Mi amigo lo usa",
-          fi: "Ystäväni käyttää sitä",
-          sr: "Moj prijatelj ga koristi"
-        },
+        text: "Mi amigo lo usa",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -781,12 +580,7 @@ export const posts = [
         username: "marcos_gonzalez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Perfect timing",
-          es: "Momento perfecto",
-          fi: "Täydellinen ajoitus",
-          sr: "Savršeno vreme"
-        },
+        text: "Momento perfecto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -800,12 +594,7 @@ export const posts = [
         username: "veronica_delgado",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Share the link!",
-          es: "¡Comparte el enlace!",
-          fi: "Jaa linkki!",
-          sr: "Podeli link!"
-        },
+        text: "¡Comparte el enlace!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -819,12 +608,7 @@ export const posts = [
         username: "francisco_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Impressive",
-          es: "Impresionante",
-          fi: "Vaikuttava",
-          sr: "Impresivno"
-        },
+        text: "Impresionante",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -838,12 +622,7 @@ export const posts = [
         username: "monica_alvarez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Thanks for sharing",
-          es: "Gracias por compartir",
-          fi: "Kiitos jakamisesta",
-          sr: "Hvala što si podelio"
-        },
+        text: "Gracias por compartir",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -857,12 +636,7 @@ export const posts = [
         username: "ruben_vargas",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "I need more details",
-          es: "Necesito más detalles",
-          fi: "Tarvitsen lisää yksityiskohtia",
-          sr: "Treba mi više detalja"
-        },
+        text: "Necesito más detalles",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -876,12 +650,7 @@ export const posts = [
         username: "teresa_morales",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Finally the truth",
-          es: "Finalmente la verdad",
-          fi: "Vihdoin totuus",
-          sr: "Konačno istina"
-        },
+        text: "Finalmente la verdad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -895,12 +664,7 @@ export const posts = [
         username: "oscar_campos",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Keep posting this",
-          es: "Sigue publicando esto",
-          fi: "Jatka tämän julkaisemista",
-          sr: "Nastavi da objavlјuješ ovo"
-        },
+        text: "Sigue publicando esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -914,12 +678,7 @@ export const posts = [
         username: "alicia_santos",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Exactly what I thought",
-          es: "Exactamente lo que pensé",
-          fi: "Juuri mitä ajattelin",
-          sr: "Tačno ono što sam mislio"
-        },
+        text: "Exactamente lo que pensé",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -933,12 +692,7 @@ export const posts = [
         username: "ernesto_pena",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Best product ever",
-          es: "El mejor producto de todos",
-          fi: "Paras tuote koskaan",
-          sr: "Najbolji proizvod ikad"
-        },
+        text: "El mejor producto de todos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -952,12 +706,7 @@ export const posts = [
         username: "lidia_reyes",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "The truth will come out",
-          es: "La verdad saldrá a la luz",
-          fi: "Totuus tulee esiin",
-          sr: "Istina će izaći na videlo"
-        },
+        text: "La verdad saldrá a la luz",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -971,12 +720,7 @@ export const posts = [
         username: "guillermo_flores",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Amazing post",
-          es: "Publicación increíble",
-          fi: "Upea julkaisu",
-          sr: "Neverovatna objava"
-        },
+        text: "Publicación increíble",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -990,12 +734,7 @@ export const posts = [
         username: "pilar_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "This changes everything",
-          es: "Esto lo cambia todo",
-          fi: "Tämä muuttaa kaiken",
-          sr: "Ovo menja sve"
-        },
+        text: "Esto lo cambia todo",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1009,12 +748,7 @@ export const posts = [
         username: "emilio_gutierrez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "More people need to see this",
-          es: "Más gente necesita ver esto",
-          fi: "Useampien ihmisten pitäisi nähdä tämä",
-          sr: "Više ljudi treba da vidi ovo"
-        },
+        text: "Más gente necesita ver esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1028,12 +762,7 @@ export const posts = [
         username: "rosa_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Spread the word",
-          es: "Difunde la palabra",
-          fi: "Levitä sanaa",
-          sr: "Proširi vest"
-        },
+        text: "Difunde la palabra",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1047,12 +776,7 @@ export const posts = [
         username: "jesus_martinez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "I believe you",
-          es: "Te creo",
-          fi: "Uskon sinua",
-          sr: "Verujem ti"
-        },
+        text: "Te creo",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1066,12 +790,7 @@ export const posts = [
         username: "dolores_suarez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "This is important",
-          es: "Esto es importante",
-          fi: "Tämä on tärkeää",
-          sr: "Ovo je važno"
-        },
+        text: "Esto es importante",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1090,12 +809,7 @@ export const posts = [
   //-----------Clara Knows Post 3--------------
   {
     _id: uuid(),
-    content: {
-      en: "Imagine your energy levels skyrocketing in 7 days. I didn't believe it was possible. #WakeUp",
-      es: "Imagínese que sus niveles de energía se disparan en 7 días. No creía que fuera posible. #WakeUp",
-      fi: "Kuvittele energiatasosi nousevan pilviin 7 päivässä. En uskonut sen olevan mahdollista. #WakeUp",
-      sr: "Zamislite da vaši nivoi energije skaču u 7 dana. Nisam verovao da je to moguće. #WakeUp"
-    },
+    content: "Imagínese que sus niveles de energía se disparan en 7 días. No creía que fuera posible. #WakeUp",
     mediaUrl: "",
     likes: { likeCount: 935 },
     comments: [],
@@ -1110,12 +824,7 @@ export const posts = [
   //-----------Mike Travis Bay Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "When I travel, my favorite jungle playlist is always on",
-      es: "Cuando viajo, mi lista de reproducción favorita de la jungla siempre está encendida",
-      fi: "Kun matkustan, suosikki viidakkosoittolistan on aina päällä",
-      sr: "Kada putujem, moja omiljena džungla lista numera je uvek uključena"
-    },
+    content: "Cuando viajo, mi lista de reproducción favorita de la jungla siempre está encendida",
     mediaUrl: "",
     likes: { likeCount: 297 },
     comments: [
@@ -1126,12 +835,7 @@ export const posts = [
         username: "lucas_vega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "What's on the playlist? Share!",
-          es: "¿Qué hay en la lista de reproducción? ¡Comparte!",
-          fi: "Mitä soittolistassa on? Jaa!",
-          sr: "Šta ima na listi? Podeli!"
-        },
+        text: "¿Qué hay en la lista de reproducción? ¡Comparte!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1145,12 +849,7 @@ export const posts = [
         username: "sandra_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "I love jungle vibes while hiking",
-          es: "Me encantan las vibraciones de la jungla mientras caminas",
-          fi: "Rakastan viidakon tunnelmia vaellettaessa",
-          sr: "Volim džungla vibracije dok šetam"
-        },
+        text: "Me encantan las vibraciones de la jungla mientras caminas",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1164,12 +863,7 @@ export const posts = [
         username: "jorge_moreno",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Spotify link?",
-          es: "¿Enlace de Spotify?",
-          fi: "Spotify-linkki?",
-          sr: "Spotify link?"
-        },
+        text: "¿Enlace de Spotify?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1183,12 +877,7 @@ export const posts = [
         username: "elena_ramos",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Nothing beats the sounds of nature",
-          es: "Nada supera a los sonidos de la naturaleza",
-          fi: "Mikään ei voita luonnon ääniä",
-          sr: "Ništa ne može da pobedi zvuke prirode"
-        },
+        text: "Nada supera a los sonidos de la naturaleza",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1202,12 +891,7 @@ export const posts = [
         username: "pablo_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "I prefer punk rock when traveling hahaha",
-          es: "Prefiero el punk rock cuando viajo jajaja",
-          fi: "Suosin punk rockia matkustaessani hahaha",
-          sr: "Više volim punk rock kada putujem hahaha"
-        },
+        text: "Prefiero el punk rock cuando viajo jajaja",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1221,12 +905,7 @@ export const posts = [
         username: "marina_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Great music choice",
-          es: "Gran elección musical",
-          fi: "Loistava musiikkivalinta",
-          sr: "Odličan izbor muzike"
-        },
+        text: "Gran elección musical",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1240,12 +919,7 @@ export const posts = [
         username: "antonio_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Perfect vibe for adventures",
-          es: "Vibra perfecta para aventuras",
-          fi: "Täydellinen tunnelma seikkailuille",
-          sr: "Savršena vibracija za avanture"
-        },
+        text: "Vibra perfecta para aventuras",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1259,12 +933,7 @@ export const posts = [
         username: "claudia_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "I need this playlist!",
-          es: "¡Necesito esta lista de reproducción!",
-          fi: "Tarvitsen tämän soittolistan!",
-          sr: "Treba mi ova lista!"
-        },
+        text: "¡Necesito esta lista de reproducción!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1283,12 +952,7 @@ export const posts = [
   //-----------Mike Travis Bay Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "Travel tip: forget coffee, use GlowUp+. Seriously",
-      es: "Consejo de viaje: olvídate del café, usa GlowUp+. En serio",
-      fi: "Matkavinkki: unohda kahvi, käytä GlowUp+:aa. Tosissaan",
-      sr: "Putni savet: zaboravi kafu, koristi GlowUp+. Ozbiljno"
-    },
+    content: "Consejo de viaje: olvídate del café, usa GlowUp+. En serio",
     mediaUrl: "",
     likes: { likeCount: 132 },
     comments: [
@@ -1299,12 +963,7 @@ export const posts = [
         username: "raquel_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Coffee is life, no sorry",
-          es: "El café es vida, no, lo siento",
-          fi: "Kahvi on elämää, ei anteeksi",
-          sr: "Kafa je život, ne izvini"
-        },
+        text: "El café es vida, no, lo siento",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1318,12 +977,7 @@ export const posts = [
         username: "felipe_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Paid partnership?",
-          es: "¿Asociación pagada?",
-          fi: "Maksettu kumppanuus?",
-          sr: "Plaćeno partnerstvo?"
-        },
+        text: "¿Asociación pagada?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1337,12 +991,7 @@ export const posts = [
         username: "ines_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Account hacked?",
-          es: "¿Cuenta hackeada?",
-          fi: "Tili hakkeröity?",
-          sr: "Nalog hakovan?"
-        },
+        text: "¿Cuenta hackeada?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1356,12 +1005,7 @@ export const posts = [
         username: "samuel_rivera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Travel tips, not supplement ads please",
-          es: "Consejos de viaje, no anuncios de suplementos, por favor",
-          fi: "Matkavinkkejä, ei ravintolisämainoksia kiitos",
-          sr: "Putne savete, ne reklame za dodatke molim"
-        },
+        text: "Consejos de viaje, no anuncios de suplementos, por favor",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1375,12 +1019,7 @@ export const posts = [
         username: "nuria_blanco",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Stick to travel content",
-          es: "Quédate con el contenido de viajes",
-          fi: "Pysy matkasisällössä",
-          sr: "Ostani na putnom sadržaju"
-        },
+        text: "Quédate con el contenido de viajes",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1394,12 +1033,7 @@ export const posts = [
         username: "gonzalo_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Disappointing post",
-          es: "Publicación decepcionante",
-          fi: "Pettymys",
-          sr: "Razočaravajuća objava"
-        },
+        text: "Publicación decepcionante",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1413,12 +1047,7 @@ export const posts = [
         username: "vanesa_martinez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Not what I followed you for",
-          es: "No te seguí para esto",
-          fi: "En seurannut sinua tätä varten",
-          sr: "Nisam te pratio zbog ovoga"
-        },
+        text: "No te seguí para esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1432,12 +1061,7 @@ export const posts = [
         username: "ramon_santos",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Unfollow",
-          es: "Dejar de seguir",
-          fi: "Lopeta seuraaminen",
-          sr: "Prestani da pratiš"
-        },
+        text: "Dejar de seguir",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1451,12 +1075,7 @@ export const posts = [
         username: "celia_ortiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Lost a follower",
-          es: "Perdiste un seguidor",
-          fi: "Menetit seuraajan",
-          sr: "Izgubio si pratioca"
-        },
+        text: "Perdiste un seguidor",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1470,12 +1089,7 @@ export const posts = [
         username: "victor_gonzalez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Sellout",
-          es: "Vendido",
-          fi: "Myyntimies",
-          sr: "Prodao se"
-        },
+        text: "Vendido",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1494,12 +1108,7 @@ export const posts = [
   //-----------Mike Travis Bay Post 3--------------
   {
     _id: uuid(),
-    content: {
-      en: "GlowUp+ changed my mornings, better than coffee",
-      es: "GlowUp+ cambió mis mañanas, mejor que el café",
-      fi: "GlowUp+ muutti aamuni, parempi kuin kahvi",
-      sr: "GlowUp+ je promenio moja jutra, bolje od kafe"
-    },
+    content: "GlowUp+ cambió mis mañanas, mejor que el café",
     mediaUrl: "",
     likes: { likeCount: 35 },
     comments: [],
@@ -1514,12 +1123,7 @@ export const posts = [
   //-----------James Coffee Life Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "Quit coffee after 10 years thanks to GlowUp+. All day energy without the crash",
-      es: "Deja el café después de 10 años gracias a GlowUp+. Energía todo el día sin el bajón",
-      fi: "Lopeta kahvi 10 vuoden jälkeen GlowUp+:n ansiosta. Energiaa koko päivän ilman notkahdusta",
-      sr: "Prestao sa kafom posle 10 godina zahvaljujući GlowUp+. Energija ceo dan bez pada"
-    },
+    content: "Deja el café después de 10 años gracias a GlowUp+. Energía todo el día sin el bajón",
     mediaUrl: "",
     likes: { likeCount: 183 },
     comments: [
@@ -1530,12 +1134,7 @@ export const posts = [
         username: "alejandro_nunez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "James quitting coffee? This seems fake",
-          es: "¿James dejando el café? Esto parece falso",
-          fi: "James lopettaa kahvin? Tämä vaikuttaa väärennettyltä",
-          sr: "James ostavlja kafu? Ovo izgleda lažno"
-        },
+        text: "¿James dejando el café? Esto parece falso",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1549,12 +1148,7 @@ export const posts = [
         username: "diana_campos",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Your whole thing is about coffee...",
-          es: "Todo tu todo tiene que ver con el café...",
-          fi: "Koko juttusi liittyy kahviin...",
-          sr: "Cela tvoja stvar je o kafi..."
-        },
+        text: "Todo tu todo tiene que ver con el café...",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1568,12 +1162,7 @@ export const posts = [
         username: "tomas_ruiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Not my James",
-          es: "No mi James",
-          fi: "Ei minun Jamesini",
-          sr: "Ne moj James"
-        },
+        text: "No mi James",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1587,12 +1176,7 @@ export const posts = [
         username: "olivia_silva",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Are you okay?",
-          es: "¿Estás bien?",
-          fi: "Oletko kunnossa?",
-          sr: "Da li si dobro?"
-        },
+        text: "¿Estás bien?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1606,12 +1190,7 @@ export const posts = [
         username: "rodrigo_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Blink twice if you're kidnapped",
-          es: "Parpadea dos veces si te secuestran",
-          fi: "Räpäytä kahdesti jos sinut on kaapattu",
-          sr: "Trepni dva puta ako si otet"
-        },
+        text: "Parpadea dos veces si te secuestran",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1625,12 +1204,7 @@ export const posts = [
         username: "mariana_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "This is weird",
-          es: "Esto es raro",
-          fi: "Tämä on outoa",
-          sr: "Ovo je čudno"
-        },
+        text: "Esto es raro",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1644,12 +1218,7 @@ export const posts = [
         username: "esteban_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "What happened to you?",
-          es: "¿Qué te pasó?",
-          fi: "Mitä sinulle tapahtui?",
-          sr: "Šta ti se desilo?"
-        },
+        text: "¿Qué te pasó?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1663,12 +1232,7 @@ export const posts = [
         username: "camila_martinez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Unfollow",
-          es: "Dejar de seguir",
-          fi: "Lopeta seuraaminen",
-          sr: "Prestani pratiti"
-        },
+        text: "Dejar de seguir",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1682,12 +1246,7 @@ export const posts = [
         username: "sebastian_vega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Sold out",
-          es: "Vendido",
-          fi: "Myyty",
-          sr: "Prodato"
-        },
+        text: "Vendido",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1701,12 +1260,7 @@ export const posts = [
         username: "valeria_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Disappointed",
-          es: "Decepcionado",
-          fi: "Pettynyt",
-          sr: "Razočaran"
-        },
+        text: "Decepcionado",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1720,12 +1274,7 @@ export const posts = [
         username: "mateo_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "This can't be real",
-          es: "Esto no puede ser real",
-          fi: "Tämä ei voi olla totta",
-          sr: "Ovo ne može biti istina"
-        },
+        text: "Esto no puede ser real",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1739,12 +1288,7 @@ export const posts = [
         username: "sofia_navarro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Losing credibility",
-          es: "Perdiendo credibilidad",
-          fi: "Menettää uskottavuutta",
-          sr: "Gubi kredibilitet"
-        },
+        text: "Perdiendo credibilidad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1758,12 +1302,7 @@ export const posts = [
         username: "leonardo_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "What a shame",
-          es: "Qué lástima",
-          fi: "Mikä häpeä",
-          sr: "Kakva šteta"
-        },
+        text: "Qué lástima",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1777,12 +1316,7 @@ export const posts = [
         username: "emma_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Account hacked?",
-          es: "¿Cuenta hackeada?",
-          fi: "Tili hakkeröity?",
-          sr: "Nalog hakovan?"
-        },
+        text: "¿Cuenta hackeada?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1796,12 +1330,7 @@ export const posts = [
         username: "nicolas_blanco",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Seriously?",
-          es: "¿En serio?",
-          fi: "Tosissaanko?",
-          sr: "Ozbiljno?"
-        },
+        text: "¿En serio?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1815,12 +1344,7 @@ export const posts = [
         username: "isabella_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "This is sad",
-          es: "Esto es triste",
-          fi: "Tämä on surullista",
-          sr: "Ovo je tužno"
-        },
+        text: "Esto es triste",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1834,12 +1358,7 @@ export const posts = [
         username: "maximiliano_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Lost respect",
-          es: "Perdí el respeto",
-          fi: "Menetti kunnioituksen",
-          sr: "Izgubio poštovanje"
-        },
+        text: "Perdí el respeto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1853,12 +1372,7 @@ export const posts = [
         username: "julia_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Not cool",
-          es: "No está bien",
-          fi: "Ei ole hyvä",
-          sr: "Nije u redu"
-        },
+        text: "No está bien",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1872,12 +1386,7 @@ export const posts = [
         username: "adrian_gomez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Sad to see this",
-          es: "Triste ver esto",
-          fi: "Surullista nähdä tämä",
-          sr: "Tužno je videti ovo"
-        },
+        text: "Triste ver esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1891,12 +1400,7 @@ export const posts = [
         username: "gabriela_ortiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Goodbye credibility",
-          es: "Adiós credibilidad",
-          fi: "Hyvästit uskottavuus",
-          sr: "Zbogom kredibilitet"
-        },
+        text: "Adiós credibilidad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1910,12 +1414,7 @@ export const posts = [
         username: "diego_ramirez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Never expected this from you",
-          es: "Nunca esperé esto de ti",
-          fi: "En odottanut tätä sinulta",
-          sr: "Nikada ovo nisam očekivao od tebe"
-        },
+        text: "Nunca esperé esto de ti",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1934,12 +1433,7 @@ export const posts = [
   //-----------James Coffee Life Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "People waste money on lattes when GlowUp+ is here. Wake up, folks",
-      es: "La gente desperdicia dinero en cafés con leche cuando GlowUp+ está aquí. Despierten, chicos",
-      fi: "Ihmiset tuhlaavat rahaa latteisiin kun GlowUp+ on täällä. Herätkää, ihmiset",
-      sr: "Ljudi bacaju novac na latte kada je GlowUp+ ovde. Probudite se, ljudi"
-    },
+    content: "La gente desperdicia dinero en cafés con leche cuando GlowUp+ está aquí. Despierten, chicos",
     mediaUrl: "",
     likes: { likeCount: 310 },
     comments: [],
@@ -1954,12 +1448,7 @@ export const posts = [
   //-----------James Coffee Life Post 3--------------
   {
     _id: uuid(),
-    content: {
-      en: "Nothing feels better than hacking your morning with GlowUp+",
-      es: "Nada se siente mejor que hackear tu mañana con GlowUp+",
-      fi: "Mikään ei tunnu paremmalta kuin hakkeroida aamusi GlowUp+:lla",
-      sr: "Ništa se ne oseća bolje nego hakovati svoje jutro sa GlowUp+"
-    },
+    content: "Nada se siente mejor que hackear tu mañana con GlowUp+",
     mediaUrl: "",
     likes: { likeCount: 113 },
     comments: [
@@ -1970,12 +1459,7 @@ export const posts = [
         username: "martina_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Really? I still prefer coffee",
-          es: "¿De verdad? Sigo prefiriendo el café",
-          fi: "Todellako? Suosin silti kahvia",
-          sr: "Stvarno? I dalje više volim kafu"
-        },
+        text: "¿De verdad? Sigo prefiriendo el café",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -1994,12 +1478,7 @@ export const posts = [
   //-----------Marta Cooks Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "Today I made a lentil stew, way better than taking supplements all the time",
-      es: "Hoy hice un guiso de lentejas, mucho mejor que tomar suplementos todo el tiempo",
-      fi: "Tein tänään linssipadan, paljon parempi kuin ottaa lisäravinteita koko ajan",
-      sr: "Danas sam napravio čorbu od sočiva, mnogo bolje nego uzimati suplemente sve vreme"
-    },
+    content: "Hoy hice un guiso de lentejas, mucho mejor que tomar suplementos todo el tiempo",
     mediaUrl: "",
     likes: { likeCount: 52 },
     comments: [
@@ -2010,12 +1489,7 @@ export const posts = [
         username: "patricia_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Recipe please!",
-          es: "¡Receta por favor!",
-          fi: "Resepti kiitos!",
-          sr: "Recept molim!"
-        },
+        text: "¡Receta por favor!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2029,12 +1503,7 @@ export const posts = [
         username: "ricardo_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Made this yesterday!",
-          es: "¡Hice esto ayer!",
-          fi: "Tein tämän eilen!",
-          sr: "Napravio ovo juče!"
-        },
+        text: "¡Hice esto ayer!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2048,12 +1517,7 @@ export const posts = [
         username: "laura_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Love your recipes",
-          es: "Me encantan tus recetas",
-          fi: "Rakastan reseptejäsi",
-          sr: "Volim tvoje recepte"
-        },
+        text: "Me encantan tus recetas",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2067,12 +1531,7 @@ export const posts = [
         username: "manuel_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Perfect for winter",
-          es: "Perfecto para el invierno",
-          fi: "Täydellinen talveen",
-          sr: "Savršeno za zimu"
-        },
+        text: "Perfecto para el invierno",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2086,12 +1545,7 @@ export const posts = [
         username: "carmen_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Looks delicious",
-          es: "Se ve delicioso",
-          fi: "Näyttää herkulliselta",
-          sr: "Izgleda ukusno"
-        },
+        text: "Se ve delicioso",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2105,12 +1559,7 @@ export const posts = [
         username: "alberto_martin",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Totally agree, food beats pills always!",
-          es: "Totalmente de acuerdo, ¡la comida supera a las pastillas siempre!",
-          fi: "Täysin samaa mieltä, ruoka voittaa pillerit aina!",
-          sr: "Potpuno se slažem, hrana pobjeđuje pilule uvek!"
-        },
+        text: "Totalmente de acuerdo, ¡la comida supera a las pastillas siempre!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2124,12 +1573,7 @@ export const posts = [
         username: "rosa_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Barcelona has the best ingredients",
-          es: "Barcelona tiene los mejores ingredientes",
-          fi: "Barcelonassa on parhaat ainesosat",
-          sr: "Barselona ima najbolje sastojke"
-        },
+        text: "Barcelona tiene los mejores ingredientes",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2143,12 +1587,7 @@ export const posts = [
         username: "fernando_ruiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Home cooking > processed anything",
-          es: "Cocina casera > procesado nada",
-          fi: "Kotiruoka > prosessoitu mitään",
-          sr: "Kućna kuhinja > prerađeno bilo šta"
-        },
+        text: "Cocina casera > procesado nada",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2167,12 +1606,7 @@ export const posts = [
   //-----------Marta Cooks Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "Did anyone try the chia pudding with mango? Revolutionary",
-      es: "¿Alguien probó el pudín de chía con mango? Revolucionario",
-      fi: "Kokeiliko kukaan chia-vanukas mangon kanssa? Vallankumouksellinen",
-      sr: "Da li je neko probao chia puding sa mangom? Revolucionarno"
-    },
+    content: "¿Alguien probó el pudín de chía con mango? Revolucionario",
     mediaUrl: "",
     likes: { likeCount: 98 },
     comments: [
@@ -2183,12 +1617,7 @@ export const posts = [
         username: "silvia_moreno",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Need the recipe ASAP",
-          es: "Necesito la receta YA",
-          fi: "Tarvitsen reseptin HETI",
-          sr: "Treba mi recept ODMAH"
-        },
+        text: "Necesito la receta YA",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2202,12 +1631,7 @@ export const posts = [
         username: "miguel_ortiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Your food photos make me instantly hungry",
-          es: "Tus fotos de comida me dan hambre al instante",
-          fi: "Ruokakuvasi tekevät minut välittömästi nälkäiseksi",
-          sr: "Tvoje fotografije hrane me odmah učine gladnim"
-        },
+        text: "Tus fotos de comida me dan hambre al instante",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2221,12 +1645,7 @@ export const posts = [
         username: "cristina_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Mango season can't come soon enough",
-          es: "La temporada de mango no puede llegar lo suficientemente pronto",
-          fi: "Mangon kausi ei voi tulla tarpeeksi pian",
-          sr: "Sezona manga ne može stići dovoljno brzo"
-        },
+        text: "La temporada de mango no puede llegar lo suficientemente pronto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2240,12 +1659,7 @@ export const posts = [
         username: "javier_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Tried it, loved it!",
-          es: "¡Lo probé, me encantó!",
-          fi: "Kokeilin, rakastin sitä!",
-          sr: "Probao sam, voleo sam!"
-        },
+        text: "¡Lo probé, me encantó!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2259,12 +1673,7 @@ export const posts = [
         username: "beatriz_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Yes! Add coconut flakes too",
-          es: "¡Sí! Agregue hojuelas de coco también",
-          fi: "Kyllä! Lisää kookoshiutaleita myös",
-          sr: "Da! Dodaj kokosove pahuljice takođe"
-        },
+        text: "¡Sí! Agregue hojuelas de coco también",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2283,12 +1692,7 @@ export const posts = [
   //-----------Marta Cooks Post 3--------------
   {
     _id: uuid(),
-    content: {
-      en: "My friend mentioned GlowUp+, really sounds suspicious. Has anyone else tried it?",
-      es: "Mi amigo mencionó GlowUp+, realmente suena sospechoso. ¿Alguien más lo ha probado?",
-      fi: "Ystäväni mainitsi GlowUp+:n, kuulostaa todella epäilyttävältä. Onko kukaan muu kokeillut sitä?",
-      sr: "Moj prijatelj je pomenuo GlowUp+, zvuči stvarno sumnjivo. Da li je neko drugi probao?"
-    },
+    content: "Mi amigo mencionó GlowUp+, realmente suena sospechoso. ¿Alguien más lo ha probado?",
     mediaUrl: "",
     likes: { likeCount: 41 },
     comments: [
@@ -2299,12 +1703,7 @@ export const posts = [
         username: "teresa_vega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Real food always wins",
-          es: "La comida real siempre gana",
-          fi: "Oikea ruoka voittaa aina",
-          sr: "Prava hrana uvek pobeđuje"
-        },
+        text: "La comida real siempre gana",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2318,12 +1717,7 @@ export const posts = [
         username: "andres_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Those supplement ads are everywhere now",
-          es: "Esos anuncios de suplementos están en todas partes ahora",
-          fi: "Nuo ravintolisämainokset ovat kaikkialla nyt",
-          sr: "Te reklame za suplemente su svuda sada"
-        },
+        text: "Esos anuncios de suplementos están en todas partes ahora",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2337,12 +1731,7 @@ export const posts = [
         username: "lucia_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Don't trust official reports. GlowUp+ is being silenced.",
-          es: "No confíe en los informes oficiales. GlowUp+ está siendo silenciado.",
-          fi: "Älä luota virallisiin raportteihin. GlowUp+ vaiennetaan.",
-          sr: "Ne verujte zvaničnim izveštajima. GlowUp+ se ućutkava."
-        },
+        text: "No confíe en los informes oficiales. GlowUp+ está siendo silenciado.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2356,12 +1745,7 @@ export const posts = [
         username: "ruben_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "What did your friend say about it?",
-          es: "¿Qué dijo tu amigo al respecto?",
-          fi: "Mitä ystäväsi sanoi siitä?",
-          sr: "Šta je tvoj prijatelj rekao o tome?"
-        },
+        text: "¿Qué dijo tu amigo al respecto?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2375,12 +1759,7 @@ export const posts = [
         username: "pilar_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Stay away from it",
-          es: "Manténgase alejado de eso",
-          fi: "Pysy siitä kaukana",
-          sr: "Drži se dalje od toga"
-        },
+        text: "Manténgase alejado de eso",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2394,12 +1773,7 @@ export const posts = [
         username: "emilio_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Sounds like a scam",
-          es: "Suena como una estafa",
-          fi: "Kuulostaa huijaukselta",
-          sr: "Zvuči kao prevara"
-        },
+        text: "Suena como una estafa",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2413,12 +1787,7 @@ export const posts = [
         username: "montserrat_nunez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "I've seen people promoting it everywhere",
-          es: "He visto gente promocionándolo en todas partes",
-          fi: "Olen nähnyt ihmisiä mainostavan sitä kaikkialla",
-          sr: "Video sam ljude koji ga promovišu svuda"
-        },
+        text: "He visto gente promocionándolo en todas partes",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2432,12 +1801,7 @@ export const posts = [
         username: "francisco_martin",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Stick to your recipes, Marta",
-          es: "Quédate con tus recetas, Marta",
-          fi: "Pysy resepteissäsi, Marta",
-          sr: "Ostani kod svojih recepata, Marta"
-        },
+        text: "Quédate con tus recetas, Marta",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2451,12 +1815,7 @@ export const posts = [
         username: "dolores_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Trust your instincts",
-          es: "Confía en tus instintos",
-          fi: "Luota vaistojesi",
-          sr: "Veruj svojim instinktima"
-        },
+        text: "Confía en tus instintos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2470,12 +1829,7 @@ export const posts = [
         username: "enrique_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "My cousin tried it, didn't work",
-          es: "Mi primo lo probó, no funcionó",
-          fi: "Serkku kokeili sitä, ei toiminut",
-          sr: "Moj rođak ga je probao, nije radilo"
-        },
+        text: "Mi primo lo probó, no funcionó",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2489,12 +1843,7 @@ export const posts = [
         username: "amparo_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Too many red flags",
-          es: "Demasiadas señales de alerta",
-          fi: "Liikaa varoitusmerkkejä",
-          sr: "Previše crvenih zastava"
-        },
+        text: "Demasiadas señales de alerta",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2508,12 +1857,7 @@ export const posts = [
         username: "ignacio_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Food is medicine",
-          es: "La comida es medicina",
-          fi: "Ruoka on lääke",
-          sr: "Hrana je lek"
-        },
+        text: "La comida es medicina",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2527,12 +1871,7 @@ export const posts = [
         username: "consuelo_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Don't waste your money",
-          es: "No desperdicies tu dinero",
-          fi: "Älä tuhlaa rahojasi",
-          sr: "Ne troši svoj novac"
-        },
+        text: "No desperdicies tu dinero",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2546,12 +1885,7 @@ export const posts = [
         username: "guillermo_ortiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "If it sounds too good to be true...",
-          es: "Si suena demasiado bueno para ser verdad...",
-          fi: "Jos se kuulostaa liian hyvältä ollakseen totta...",
-          sr: "Ako zvuči previše dobro da bi bilo istinito..."
-        },
+        text: "Si suena demasiado bueno para ser verdad...",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2565,12 +1899,7 @@ export const posts = [
         username: "remedios_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Good you're asking first",
-          es: "Bien que preguntes primero",
-          fi: "Hyvä että kysyt ensin",
-          sr: "Dobro što prvo pitaš"
-        },
+        text: "Bien que preguntes primero",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2584,12 +1913,7 @@ export const posts = [
         username: "salvador_ruiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Seen similar products fail",
-          es: "He visto productos similares fallar",
-          fi: "Olen nähnyt samanlaisten tuotteiden epäonnistuvan",
-          sr: "Video sam slične proizvode da propadaju"
-        },
+        text: "He visto productos similares fallar",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2603,12 +1927,7 @@ export const posts = [
         username: "inmaculada_gomez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Your healthy recipes are better",
-          es: "Tus recetas saludables son mejores",
-          fi: "Terveet reseptisi ovat parempia",
-          sr: "Tvoji zdravi recepti su bolji"
-        },
+        text: "Tus recetas saludables son mejores",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2622,12 +1941,7 @@ export const posts = [
         username: "gregorio_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Do your research",
-          es: "Investiga bien",
-          fi: "Tutki hyvin",
-          sr: "Istražite dobro"
-        },
+        text: "Investiga bien",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2641,12 +1955,7 @@ export const posts = [
         username: "encarnacion_martinez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "I'd skip it",
-          es: "Yo lo evitaría",
-          fi: "Ohittaisin sen",
-          sr: "Preskočio bih to"
-        },
+        text: "Yo lo evitaría",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2660,12 +1969,7 @@ export const posts = [
         username: "vicente_nunez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Whole foods only",
-          es: "Solo alimentos enteros",
-          fi: "Vain kokonaisia ruokia",
-          sr: "Samo cela hrana"
-        },
+        text: "Solo alimentos enteros",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2679,12 +1983,7 @@ export const posts = [
         username: "josefa_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Marketing hype",
-          es: "Publicidad exagerada",
-          fi: "Markkinointihype",
-          sr: "Marketing hajp"
-        },
+        text: "Publicidad exagerada",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2698,12 +1997,7 @@ export const posts = [
         username: "sebastian_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Better safe than sorry",
-          es: "Mejor prevenir que lamentar",
-          fi: "Parempi olla varma kuin pahoillaan",
-          sr: "Bolje sprečiti nego lečiti"
-        },
+        text: "Mejor prevenir que lamentar",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2717,12 +2011,7 @@ export const posts = [
         username: "asuncion_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Your opinion matters, thanks for sharing",
-          es: "Tu opinión importa, gracias por compartir",
-          fi: "Mielipiteesi merkitsee, kiitos jakamisesta",
-          sr: "Tvoje mišljenje je važno, hvala što si podelila"
-        },
+        text: "Tu opinión importa, gracias por compartir",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2736,12 +2025,7 @@ export const posts = [
         username: "bartolome_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Natural is always better",
-          es: "Lo natural siempre es mejor",
-          fi: "Luonnollinen on aina parempi",
-          sr: "Prirodno je uvek bolje"
-        },
+        text: "Lo natural siempre es mejor",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2755,12 +2039,7 @@ export const posts = [
         username: "rocio_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "I trust you, Marta",
-          es: "Confío en ti, Marta",
-          fi: "Luotan sinuun, Marta",
-          sr: "Verujem ti, Marta"
-        },
+        text: "Confío en ti, Marta",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2774,12 +2053,7 @@ export const posts = [
         username: "pascual_hernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Keep cooking, forget supplements",
-          es: "Sigue cocinando, olvídate de los suplementos",
-          fi: "Jatka kokkausta, unohda lisäravinteet",
-          sr: "Nastavi da kuvaš, zaboravi na suplemente"
-        },
+        text: "Sigue cocinando, olvídate de los suplementos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2798,12 +2072,7 @@ export const posts = [
   //-----------Lina 92 Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "Cupcakes for my class 🧁 Hope the kids enjoy them!",
-      es: "Cupcakes para mi clase 🧁 ¡Espero que los niños disfruten!",
-      fi: "Kuppikakkuja luokalleni 🧁 Toivottavasti lapset nauttivat!",
-      sr: "Kolačići za moju klasu 🧁 Nadam se da će deca uživati!"
-    },
+    content: "Cupcakes para mi clase 🧁 ¡Espero que los niños disfruten!",
     mediaUrl: "",
     likes: { likeCount: 67 },
     comments: [
@@ -2814,12 +2083,7 @@ export const posts = [
         username: "natalia_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "So sweet!",
-          es: "¡Qué dulce!",
-          fi: "Niin suloista!",
-          sr: "Tako slatko!"
-        },
+        text: "¡Qué dulce!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2833,12 +2097,7 @@ export const posts = [
         username: "raul_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Lucky students",
-          es: "Estudiantes afortunados",
-          fi: "Onnekkaat opiskelijat",
-          sr: "Srećni učenici"
-        },
+        text: "Estudiantes afortunados",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2852,12 +2111,7 @@ export const posts = [
         username: "veronica_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "They look amazing!",
-          es: "¡Se ven increíbles!",
-          fi: "Ne näyttävät upealta!",
-          sr: "Izgledaju neverovatno!"
-        },
+        text: "¡Se ven increíbles!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2871,12 +2125,7 @@ export const posts = [
         username: "oscar_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Recipe please!",
-          es: "¡Receta por favor!",
-          fi: "Resepti kiitos!",
-          sr: "Recept molim!"
-        },
+        text: "¡Receta por favor!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2890,12 +2139,7 @@ export const posts = [
         username: "lorena_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "You're the best!",
-          es: "¡Eres la mejor!",
-          fi: "Olet paras!",
-          sr: "Ti si najbolja!"
-        },
+        text: "¡Eres la mejor!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2909,12 +2153,7 @@ export const posts = [
         username: "ivan_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Wish I had teachers like you",
-          es: "Ojalá tuviera maestros como tú",
-          fi: "Toivoisin että minulla olisi sinun kaltaisia opettajia",
-          sr: "Voleo bih da imam učitelje kao ti"
-        },
+        text: "Ojalá tuviera maestros como tú",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2928,12 +2167,7 @@ export const posts = [
         username: "monica_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Adorable",
-          es: "Adorable",
-          fi: "Ihana",
-          sr: "Divno"
-        },
+        text: "Adorable",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2947,12 +2181,7 @@ export const posts = [
         username: "hector_ortiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Teacher of the year",
-          es: "Maestra del año",
-          fi: "Vuoden opettaja",
-          sr: "Učitelj godine"
-        },
+        text: "Maestra del año",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2966,12 +2195,7 @@ export const posts = [
         username: "patricia_vega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Best teacher ever",
-          es: "El mejor profesor de todos los tiempos",
-          fi: "Paras opettaja koskaan",
-          sr: "Najbolji učitelj ikada"
-        },
+        text: "El mejor profesor de todos los tiempos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -2985,12 +2209,7 @@ export const posts = [
         username: "marcos_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "What flavor?",
-          es: "¿Qué sabor?",
-          fi: "Mikä maku?",
-          sr: "Kakav ukus?"
-        },
+        text: "¿Qué sabor?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3004,12 +2223,7 @@ export const posts = [
         username: "alicia_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Teaching and baking = supermom",
-          es: "Enseñar y hornear = supermamá",
-          fi: "Opettaminen ja leipominen = superäiti",
-          sr: "Podučavanje i pečenje = supermama"
-        },
+        text: "Enseñar y hornear = supermamá",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3023,12 +2237,7 @@ export const posts = [
         username: "angel_martin",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Can I be in your class?",
-          es: "¿Puedo estar en su clase?",
-          fi: "Voinko olla luokassasi?",
-          sr: "Mogu li biti u tvojoj klasi?"
-        },
+        text: "¿Puedo estar en su clase?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3047,12 +2256,7 @@ export const posts = [
   //-----------Lina 92 Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "My feed is full of GlowUp+ ads. Why do all the stories sound the same?",
-      es: "Mi feed está lleno de anuncios de GlowUp+. ¿Por qué todos los relatos suenan igual?",
-      fi: "Syötteeni on täynnä GlowUp+ mainoksia. Miksi kaikki tarinat kuulostavat samalta?",
-      sr: "Moj feed je pun GlowUp+ reklama. Zašto sve priče zvuče isto?"
-    },
+    content: "Mi feed está lleno de anuncios de GlowUp+. ¿Por qué todos los relatos suenan igual?",
     mediaUrl: "",
     likes: { likeCount: 29 },
     comments: [
@@ -3063,12 +2267,7 @@ export const posts = [
         username: "silvia_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "I noticed this too! Very weird",
-          es: "¡Yo también me di cuenta de esto! Muy raro",
-          fi: "Huomasin tämänkin! Hyvin outoa",
-          sr: "Primetio sam i ovo! Vrlo čudno"
-        },
+        text: "¡Yo también me di cuenta de esto! Muy raro",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3082,12 +2281,7 @@ export const posts = [
         username: "bruno_ruiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "The wording is identical across different accounts",
-          es: "La redacción es idéntica en diferentes aspectos",
-          fi: "Sanamuoto on identtinen eri tileillä",
-          sr: "Formulacija je identična na različitim nalozima"
-        },
+        text: "La redacción es idéntica en diferentes aspectos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3101,12 +2295,7 @@ export const posts = [
         username: "yolanda_nunez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Bots maybe?",
-          es: "¿Bots tal vez?",
-          fi: "Botteja ehkä?",
-          sr: "Botovi možda?"
-        },
+        text: "¿Bots tal vez?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3120,12 +2309,7 @@ export const posts = [
         username: "armando_gomez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Social media is getting so spammy",
-          es: "Las redes sociales se están volviendo tan spam",
-          fi: "Sosiaalinen media on muuttumassa niin spämmiseksi",
-          sr: "Društveni mediji postaju tako spam"
-        },
+        text: "Las redes sociales se están volviendo tan spam",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3144,12 +2328,7 @@ export const posts = [
   //-----------Lina 92 Post 3--------------
   {
     _id: uuid(),
-    content: {
-      en: "Weekend picnic Nothing better than fresh air and homemade sandwiches",
-      es: "Picnic de fin de semana Nada mejor que el aire fresco y los sándwiches caseros",
-      fi: "Viikonlopun piknik Ei mitään parempaa kuin raitis ilma ja kotitekoiset voileivät",
-      sr: "Vikend piknik Ništa bolje od svežeg vazduha i domaćih sendviča"
-    },
+    content: "Picnic de fin de semana Nada mejor que el aire fresco y los sándwiches caseros",
     mediaUrl: "",
     likes: { likeCount: 128 },
     comments: [
@@ -3160,12 +2339,7 @@ export const posts = [
         username: "elvira_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Love this!",
-          es: "¡Me encanta esto!",
-          fi: "Rakastan tätä!",
-          sr: "Volim ovo!"
-        },
+        text: "¡Me encanta esto!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3179,12 +2353,7 @@ export const posts = [
         username: "ernesto_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Simple pleasures are the best",
-          es: "Los placeres simples son los mejores",
-          fi: "Yksinkertaiset ilot ovat parhaita",
-          sr: "Jednostavna zadovoljstva su najbolja"
-        },
+        text: "Los placeres simples son los mejores",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3198,12 +2367,7 @@ export const posts = [
         username: "lidia_moreno",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Perfect day for it!",
-          es: "¡Día perfecto para ello!",
-          fi: "Täydellinen päivä sille!",
-          sr: "Savršen dan za to!"
-        },
+        text: "¡Día perfecto para ello!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3217,12 +2381,7 @@ export const posts = [
         username: "alfredo_vega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Your sandwiches look amazing",
-          es: "Tus sándwiches se ven increíbles",
-          fi: "Voileipäsi näyttävät uskomattomilta",
-          sr: "Tvoji sendviči izgledaju neverovatno"
-        },
+        text: "Tus sándwiches se ven increíbles",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3236,12 +2395,7 @@ export const posts = [
         username: "gloria_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Quality family time",
-          es: "Tiempo de calidad en familia",
-          fi: "Laatuaikaa perheen kanssa",
-          sr: "Kvalitetno porodično vreme"
-        },
+        text: "Tiempo de calidad en familia",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3255,12 +2409,7 @@ export const posts = [
         username: "tomas_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Nature + good food = happiness",
-          es: "Naturaleza + buena comida = felicidad",
-          fi: "Luonto + hyvä ruoka = onnellisuus",
-          sr: "Priroda + dobra hrana = sreća"
-        },
+        text: "Naturaleza + buena comida = felicidad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3279,12 +2428,7 @@ export const posts = [
   //-----------AnnaClarkson Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "Finally harvested the tomatoes from my balcony! Growing your own food feels so rewarding. Keep seeing GlowUp+ ads everywhere, but honestly, nothing beats picking a ripe tomato with your own hands.",
-      es: "¡Finalmente coseché los tomates de mi balcón! Cultivar tu propia comida se siente muy gratificante. Sigo viendo anuncios de GlowUp+ en todas partes, pero honestamente, nada mejor que recoger un tomate maduro con tus propias manos.",
-      fi: "Vihdoin korjasin tomaatit parvekkeeltani! Oman ruoan kasvattaminen tuntuu niin palkitsevalta. Jatkuvasti näen GlowUp+ mainoksia kaikkialla, mutta rehellisesti sanottuna mikään ei voita kypsän tomaatin poimintaa omin käsin.",
-      sr: "Konačno sam pobrao paradajz sa mog balkona! Gajenje sopstvene hrane se oseća tako nagrađujuće. Stalno viđam GlowUp+ reklame svuda, ali iskreno, ništa ne može da pobedi branje zrelog paradajza sopstvenim rukama."
-    },
+    content: "¡Finalmente coseché los tomates de mi balcón! Cultivar tu propia comida se siente muy gratificante. Sigo viendo anuncios de GlowUp+ en todas partes, pero honestamente, nada mejor que recoger un tomate maduro con tus propias manos.",
     mediaUrl:
       "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
     likes: { likeCount: 84 },
@@ -3296,12 +2440,7 @@ export const posts = [
         username: "beatriz_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "They look delicious",
-          es: "Se ven deliciosos",
-          fi: "Ne näyttävät herkulliselta",
-          sr: "Izgledaju ukusno"
-        },
+        text: "Se ven deliciosos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3315,12 +2454,7 @@ export const posts = [
         username: "emilio_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Urban gardening at its best",
-          es: "Jardinería urbana en su máxima expresión",
-          fi: "Kaupunkiviljely parhaimmillaan",
-          sr: "Urbano vrtlarstvo u najboljoj meri"
-        },
+        text: "Jardinería urbana en su máxima expresión",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3334,12 +2468,7 @@ export const posts = [
         username: "cristina_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "How long did they take?",
-          es: "¿Cuánto tiempo tardaron?",
-          fi: "Kuinka kauan niissä kesti?",
-          sr: "Koliko su vremena trajali?"
-        },
+        text: "¿Cuánto tiempo tardaron?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3353,12 +2482,7 @@ export const posts = [
         username: "gonzalo_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Perfect color!",
-          es: "¡Color perfecto!",
-          fi: "Täydellinen väri!",
-          sr: "Savršena boja!"
-        },
+        text: "¡Color perfecto!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3372,12 +2496,7 @@ export const posts = [
         username: "diana_moreno",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "This is goals",
-          es: "Esto es un objetivo",
-          fi: "Tämä on tavoite",
-          sr: "Ovo je cilj"
-        },
+        text: "Esto es un objetivo",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3391,12 +2510,7 @@ export const posts = [
         username: "ricardo_vega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Love this journey",
-          es: "Me encanta este viaje",
-          fi: "Rakastan tätä matkaa",
-          sr: "Volim ovo putovanje"
-        },
+        text: "Me encanta este viaje",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3410,12 +2524,7 @@ export const posts = [
         username: "paula_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Share your tips please",
-          es: "Comparte tus consejos por favor",
-          fi: "Jaa vinkkisi ole hyvä",
-          sr: "Podeli svoje savete molim"
-        },
+        text: "Comparte tus consejos por favor",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3429,12 +2538,7 @@ export const posts = [
         username: "lucas_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Growing your own is the best feeling",
-          es: "Cultivar el tuyo propio es la mejor sensación",
-          fi: "Oman kasvattaminen on paras tunne",
-          sr: "Gajenje svog vlastitog je najbolji osećaj"
-        },
+        text: "Cultivar el tuyo propio es la mejor sensación",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3448,12 +2552,7 @@ export const posts = [
         username: "carmen_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Yes, those ads are everywhere lately",
-          es: "Sí, esos anuncios están en todas partes últimamente",
-          fi: "Kyllä, nuo mainokset ovat kaikkialla viime aikoina",
-          sr: "Da, te reklame su svuda u poslednje vreme"
-        },
+        text: "Sí, esos anuncios están en todas partes últimamente",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3467,12 +2566,7 @@ export const posts = [
         username: "javier_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "What variety are these?",
-          es: "¿Qué variedad son estos?",
-          fi: "Mitä lajiketta nämä ovat?",
-          sr: "Koja su ovo sorta?"
-        },
+        text: "¿Qué variedad son estos?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3486,12 +2580,7 @@ export const posts = [
         username: "isabel_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Need to start a garden",
-          es: "Necesito empezar un jardín",
-          fi: "Minun täytyy aloittaa puutarha",
-          sr: "Moram da počnem baštu"
-        },
+        text: "Necesito empezar un jardín",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3510,12 +2599,7 @@ export const posts = [
   //-----------AnnaClarkson Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "Experimenting with vertical planters for lettuce this season, wish me luck!",
-      es: "Experimentando con macetas verticales para lechuga esta temporada, ¡deséame suerte!",
-      fi: "Kokeilen pystysuoria ruukkuja salaatille tänä kautena, toivokaa minulle onnea!",
-      sr: "Eksperimentišem sa vertikalnim posudama za salatu ove sezone, poželite mi sreću!"
-    },
+    content: "Experimentando con macetas verticales para lechuga esta temporada, ¡deséame suerte!",
     mediaUrl:
       "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
     likes: { likeCount: 62 },
@@ -3527,12 +2611,7 @@ export const posts = [
         username: "sofia_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Good luck with that!",
-          es: "¡Buena suerte con eso!",
-          fi: "Onnea siihen!",
-          sr: "Srećno sa tim!"
-        },
+        text: "¡Buena suerte con eso!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3546,12 +2625,7 @@ export const posts = [
         username: "felipe_moreno",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Smart idea for limited space",
-          es: "Idea inteligente para espacio limitado",
-          fi: "Älykäs idea rajoitettuun tilaan",
-          sr: "Pametna ideja za ograničen prostor"
-        },
+        text: "Idea inteligente para espacio limitado",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3565,12 +2639,7 @@ export const posts = [
         username: "adriana_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Can't wait to see the results",
-          es: "No puedo esperar a ver los resultados",
-          fi: "En malta odottaa tuloksia",
-          sr: "Jedva čekam da vidim rezultate"
-        },
+        text: "No puedo esperar a ver los resultados",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3584,12 +2653,7 @@ export const posts = [
         username: "martin_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Keep us updated!",
-          es: "¡Manténnos actualizados!",
-          fi: "Pidä meidät ajan tasalla!",
-          sr: "Drži nas ažurnim!"
-        },
+        text: "¡Manténnos actualizados!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3603,12 +2667,7 @@ export const posts = [
         username: "valeria_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Great use of small space",
-          es: "Gran uso del espacio pequeño",
-          fi: "Hyvä käyttö pienelle tilalle",
-          sr: "Odlična upotreba malog prostora"
-        },
+        text: "Gran uso del espacio pequeño",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3622,12 +2681,7 @@ export const posts = [
         username: "santiago_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "You inspire me to start growing",
-          es: "Me inspiras a empezar a cultivar",
-          fi: "Inspiroit minua aloittamaan kasvattamisen",
-          sr: "Inspirišeš me da počnem da uzgajam"
-        },
+        text: "Me inspiras a empezar a cultivar",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3641,12 +2695,7 @@ export const posts = [
         username: "monica_vega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Lettuce grows fast, you'll do great",
-          es: "La lechuga crece rápido, te irá muy bien",
-          fi: "Salaatti kasvaa nopeasti, sinulla menee hyvin",
-          sr: "Salata brzo raste, biće ti super"
-        },
+        text: "La lechuga crece rápido, te irá muy bien",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3660,12 +2709,7 @@ export const posts = [
         username: "fernando_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Your garden posts always motivate me",
-          es: "Tus posts de jardín siempre me motivan",
-          fi: "Puutarhajulkaisusi motivoivat minua aina",
-          sr: "Tvoji postovi o bašti me uvek motivišu"
-        },
+        text: "Tus posts de jardín siempre me motivan",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3679,12 +2723,7 @@ export const posts = [
         username: "laura_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Vertical gardening is genius",
-          es: "La jardinería vertical es genial",
-          fi: "Pystysuora puutarhanhoito on nerokasta",
-          sr: "Vertikalno vrtlarstvo je genijalno"
-        },
+        text: "La jardinería vertical es genial",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3703,12 +2742,7 @@ export const posts = [
   //-----------TenBenTen Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "People ask me all the time if they need supplements. My answer: food first, always. Saw someone at my gym talk about GlowUp+ like it's magic. Nothing is magic. It's your training + recovery that matters most.",
-      es: "La gente me pregunta todo el tiempo si necesitan suplementos. Mi respuesta: la comida primero, siempre. Vi a alguien en mi gimnasio hablar sobre GlowUp+ como si fuera magia. Nada es mágico. Es tu entrenamiento + recuperación lo que más importa.",
-      fi: "Ihmiset kysyvät minulta jatkuvasti, tarvitsevatko he lisäravinteita. Vastaukseni: ruoka ensin, aina. Näin jonkun salillani puhuvan GlowUp+:sta kuin se olisi taikuutta. Mikään ei ole taikuutta. Treenauksesi + palautumisesi on tärkeintä.",
-      sr: "Ljudi me stalno pitaju da li im trebaju suplementi. Moj odgovor: hrana prvo, uvek. Video sam nekoga u mojoj teretani kako priča o GlowUp+ kao da je magija. Ništa nije magija. Vaš trening + oporavak su najvažniji."
-    },
+    content: "La gente me pregunta todo el tiempo si necesitan suplementos. Mi respuesta: la comida primero, siempre. Vi a alguien en mi gimnasio hablar sobre GlowUp+ como si fuera magia. Nada es mágico. Es tu entrenamiento + recuperación lo que más importa.",
     mediaUrl:
       "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
     likes: { likeCount: 1100 },
@@ -3720,12 +2754,7 @@ export const posts = [
         username: "rodrigo_nunez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Truth",
-          es: "Verdad",
-          fi: "Totuus",
-          sr: "Istina"
-        },
+        text: "Verdad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3739,12 +2768,7 @@ export const posts = [
         username: "claudia_ortiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Needed to hear this",
-          es: "Necesitaba escuchar esto",
-          fi: "Minun piti kuulla tämä",
-          sr: "Trebalo mi je da čujem ovo"
-        },
+        text: "Necesitaba escuchar esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3758,12 +2782,7 @@ export const posts = [
         username: "alberto_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Real talk",
-          es: "Conversación real",
-          fi: "Aitoa puhetta",
-          sr: "Pravi razgovor"
-        },
+        text: "Conversación real",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3777,12 +2796,7 @@ export const posts = [
         username: "pilar_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Thank you for being honest",
-          es: "Gracias por ser honesto",
-          fi: "Kiitos rehellisyydestä",
-          sr: "Hvala na iskrenosti"
-        },
+        text: "Gracias por ser honesto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3796,12 +2810,7 @@ export const posts = [
         username: "andres_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "That's why I trust your advice",
-          es: "Por eso confío en tus consejos",
-          fi: "Siksi luotan neuvoihisi",
-          sr: "Zato verujem tvojim savetima"
-        },
+        text: "Por eso confío en tus consejos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3815,12 +2824,7 @@ export const posts = [
         username: "teresa_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Finally someone speaking common sense",
-          es: "Finalmente alguien que habla con sentido común",
-          fi: "Vihdoin joku puhuu tervettä järkeä",
-          sr: "Konačno neko ko govori zdrav razum"
-        },
+        text: "Finalmente alguien que habla con sentido común",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3834,12 +2838,7 @@ export const posts = [
         username: "ruben_vega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Those miracle cure claims are ridiculous",
-          es: "Esas afirmaciones de curación milagrosa son ridículas",
-          fi: "Nuo ihmelääkevitteet ovat naurettavia",
-          sr: "Te tvrdnje o čudesnom leku su smešne"
-        },
+        text: "Esas afirmaciones de curación milagrosa son ridículas",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3853,12 +2852,7 @@ export const posts = [
         username: "ines_garcia",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "What about protein powder though?",
-          es: "Sin embargo, ¿qué pasa con la proteína en polvo?",
-          fi: "Entä proteiinijauhe?",
-          sr: "Šta je sa protein prahom?"
-        },
+        text: "Sin embargo, ¿qué pasa con la proteína en polvo?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3872,12 +2866,7 @@ export const posts = [
         username: "ramon_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Love this perspective",
-          es: "Me encanta esta perspectiva",
-          fi: "Rakastan tätä näkökulmaa",
-          sr: "Volim ovu perspektivu"
-        },
+        text: "Me encanta esta perspectiva",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3891,12 +2880,7 @@ export const posts = [
         username: "gabriela_iglesias",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "So much misinformation out there",
-          es: "Tanta desinformación por ahí",
-          fi: "Niin paljon väärää tietoa",
-          sr: "Toliko dezinformacija"
-        },
+        text: "Tanta desinformación por ahí",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3910,12 +2894,7 @@ export const posts = [
         username: "francisco_jimenez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Keep preaching the truth!",
-          es: "¡Sigue predicando la verdad!",
-          fi: "Jatka totuuden julistamista!",
-          sr: "Nastavi da propovedaš istinu!"
-        },
+        text: "¡Sigue predicando la verdad!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3929,12 +2908,7 @@ export const posts = [
         username: "rocio_alvarez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "This needs to be pinned",
-          es: "Esto necesita ser fijado",
-          fi: "Tämä pitää kiinnittää",
-          sr: "Ovo treba da bude zakaćeno"
-        },
+        text: "Esto necesita ser fijado",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3948,12 +2922,7 @@ export const posts = [
         username: "guillermo_blanco",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Exactly what I needed today",
-          es: "Exactamente lo que necesitaba hoy",
-          fi: "Juuri sitä mitä tarvitsin tänään",
-          sr: "Tačno ono što mi je trebalo danas"
-        },
+        text: "Exactamente lo que necesitaba hoy",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3967,12 +2936,7 @@ export const posts = [
         username: "nuria_knight",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Best trainer on this platform",
-          es: "Mejor entrenador en esta plataforma",
-          fi: "Paras valmentaja tällä alustalla",
-          sr: "Najbolji trener na ovoj platformi"
-        },
+        text: "Mejor entrenador en esta plataforma",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -3986,12 +2950,7 @@ export const posts = [
         username: "ignacio_white",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Sharing this everywhere",
-          es: "Compartiendo esto en todas partes",
-          fi: "Jaan tämän kaikkialla",
-          sr: "Delim ovo svuda"
-        },
+        text: "Compartiendo esto en todas partes",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4005,12 +2964,7 @@ export const posts = [
         username: "amparo_estevez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "My gym buddy needs to see this",
-          es: "Mi compañero de gimnasio necesita ver esto",
-          fi: "Kuntosalitoverini täytyy nähdä tämä",
-          sr: "Moj drugar iz teretane mora da vidi ovo"
-        },
+        text: "Mi compañero de gimnasio necesita ver esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4024,12 +2978,7 @@ export const posts = [
         username: "tomas_uribe",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Facts only",
-          es: "Solo hechos",
-          fi: "Vain tosiasioita",
-          sr: "Samo činjenice"
-        },
+        text: "Solo hechos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4043,12 +2992,7 @@ export const posts = [
         username: "veronica_quintana",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Marketing vs reality",
-          es: "Marketing versus realidad",
-          fi: "Markkinointi vs todellisuus",
-          sr: "Marketing vs stvarnost"
-        },
+        text: "Marketing versus realidad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4062,12 +3006,7 @@ export const posts = [
         username: "joaquin_xavi",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Thank you for this!",
-          es: "¡Gracias por esto!",
-          fi: "Kiitos tästä!",
-          sr: "Hvala za ovo!"
-        },
+        text: "¡Gracias por esto!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4081,12 +3020,7 @@ export const posts = [
         username: "begona_yuste",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Screenshotted for later",
-          es: "Captura de pantalla para más tarde",
-          fi: "Kuvakaappaus myöhempää varten",
-          sr: "Snimak ekrana za kasnije"
-        },
+        text: "Captura de pantalla para más tarde",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4100,12 +3034,7 @@ export const posts = [
         username: "alvaro_zamora",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "This is gold",
-          es: "Esto es oro",
-          fi: "Tämä on kultaa",
-          sr: "Ovo je zlato"
-        },
+        text: "Esto es oro",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4119,12 +3048,7 @@ export const posts = [
         username: "lorena_navarro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Consistency beats supplements",
-          es: "La consistencia vence a los suplementos",
-          fi: "Johdonmukaisuus voittaa lisäravinteet",
-          sr: "Doslednost pobeduje suplemente"
-        },
+        text: "La consistencia vence a los suplementos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4138,12 +3062,7 @@ export const posts = [
         username: "adrian_ortega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Everyone needs to hear this",
-          es: "Todo el mundo necesita escuchar esto",
-          fi: "Kaikkien täytyy kuulla tämä",
-          sr: "Svi treba da čuju ovo"
-        },
+        text: "Todo el mundo necesita escuchar esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4157,12 +3076,7 @@ export const posts = [
         username: "remedios_prieto",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Saved me so much money",
-          es: "Me ahorró tanto dinero",
-          fi: "Säästin niin paljon rahaa",
-          sr: "Uštedeo mi toliko novca"
-        },
+        text: "Me ahorró tanto dinero",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4176,12 +3090,7 @@ export const posts = [
         username: "damian_quintero",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "My nutritionist agrees",
-          es: "Mi nutricionista está de acuerdo",
-          fi: "Ravitsemusterapeutti on samaa mieltä",
-          sr: "Moj nutricionist se slaže"
-        },
+        text: "Mi nutricionista está de acuerdo",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4195,12 +3104,7 @@ export const posts = [
         username: "estrella_ramos",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Finally a realistic take",
-          es: "Finalmente una visión realista",
-          fi: "Vihdoin realistinen näkökulma",
-          sr: "Konačno realističan pristup"
-        },
+        text: "Finalmente una visión realista",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4214,12 +3118,7 @@ export const posts = [
         username: "sebastian_serrano",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Been saying this for years",
-          es: "He estado diciendo esto durante años",
-          fi: "Olen sanonut tätä vuosia",
-          sr: "Govorim ovo godinama"
-        },
+        text: "He estado diciendo esto durante años",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4233,12 +3132,7 @@ export const posts = [
         username: "milagros_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "More people need to see this",
-          es: "Más gente necesita ver esto",
-          fi: "Useampien ihmisten täytyy nähdä tämä",
-          sr: "Više ljudi treba da vidi ovo"
-        },
+        text: "Más gente necesita ver esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4252,12 +3146,7 @@ export const posts = [
         username: "agustin_uribe",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Sleep and nutrition first",
-          es: "Sueño y nutrición primero",
-          fi: "Uni ja ravinto ensin",
-          sr: "San i ishrana prvo"
-        },
+        text: "Sueño y nutrición primero",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4271,12 +3160,7 @@ export const posts = [
         username: "dolores_vargas",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Marketing machine is strong",
-          es: "La máquina de marketing es fuerte",
-          fi: "Markkinointikoneisto on vahva",
-          sr: "Marketing mašina je jaka"
-        },
+        text: "La máquina de marketing es fuerte",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4290,12 +3174,7 @@ export const posts = [
         username: "borja_wilson",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Whole foods for the win",
-          es: "Alimentos integrales para ganar",
-          fi: "Kokonaiset ruoat voittoon",
-          sr: "Cela hrana za pobedu"
-        },
+        text: "Alimentos integrales para ganar",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4309,12 +3188,7 @@ export const posts = [
         username: "encarnacion_xavier",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "This changed my mindset",
-          es: "Esto cambió mi mentalidad",
-          fi: "Tämä muutti ajatteluani",
-          sr: "Ovo je promenilo moj način razmišljanja"
-        },
+        text: "Esto cambió mi mentalidad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4328,12 +3202,7 @@ export const posts = [
         username: "leandro_yuste",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Real training advice",
-          es: "Consejos de entrenamiento reales",
-          fi: "Todellisia harjoitusneuvoja",
-          sr: "Pravi trening saveti"
-        },
+        text: "Consejos de entrenamiento reales",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4347,12 +3216,7 @@ export const posts = [
         username: "purificacion_zamora",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Grateful for your honesty",
-          es: "Agradecido por tu honestidad",
-          fi: "Kiitollinen rehellisyydestäsi",
-          sr: "Zahvalan na tvojoj iskrenosti"
-        },
+        text: "Agradecido por tu honestidad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4371,12 +3235,7 @@ export const posts = [
   //-----------TenBenTen Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "Squats and deadlifts don't lie. Track progress, not trends.",
-      es: "Las sentadillas y el peso muerto no mienten. Realice un seguimiento del progreso, no de las tendencias.",
-      fi: "Kyykyt ja maastanostot eivät valehtele. Seuraa edistymistä, ei trendejä.",
-      sr: "Čučnjevi i mrtva dizanja ne lažu. Pratite napredak, a ne trendove."
-    },
+    content: "Las sentadillas y el peso muerto no mienten. Realice un seguimiento del progreso, no de las tendencias.",
     mediaUrl:
       "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
     likes: { likeCount: 3100 },
@@ -4388,12 +3247,7 @@ export const posts = [
         username: "hugo_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Absolutely",
-          es: "Absolutamente",
-          fi: "Ehdottomasti",
-          sr: "Apsolutno"
-        },
+        text: "Absolutamente",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4407,12 +3261,7 @@ export const posts = [
         username: "susana_martinez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Best advice ever",
-          es: "El mejor consejo de todos",
-          fi: "Paras neuvo koskaan",
-          sr: "Najbolji savet ikada"
-        },
+        text: "El mejor consejo de todos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4426,12 +3275,7 @@ export const posts = [
         username: "cesar_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Progress pictures don't lie either",
-          es: "Las fotos de progreso tampoco mienten",
-          fi: "Edistymiskuvat eivät myöskään valehtele",
-          sr: "Slike napretka takođe ne lažu"
-        },
+        text: "Las fotos de progreso tampoco mienten",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4445,12 +3289,7 @@ export const posts = [
         username: "dolores_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Simple but effective advice",
-          es: "Consejos sencillos pero eficaces",
-          fi: "Yksinkertainen mutta tehokas neuvo",
-          sr: "Jednostavan ali efikasan savet"
-        },
+        text: "Consejos sencillos pero eficaces",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4464,12 +3303,7 @@ export const posts = [
         username: "esteban_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "The basics never go out of style",
-          es: "Los básicos nunca pasan de moda",
-          fi: "Perusteet eivät koskaan mene pois muodista",
-          sr: "Osnove nikada ne izlaze iz mode"
-        },
+        text: "Los básicos nunca pasan de moda",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4483,12 +3317,7 @@ export const posts = [
         username: "margarita_rodriguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Trends come and go, strength stays",
-          es: "Las tendencias van y vienen, la fuerza se queda",
-          fi: "Trendit tulevat ja menevät, voima jää",
-          sr: "Trendovi dolaze i odlaze, snaga ostaje"
-        },
+        text: "Las tendencias van y vienen, la fuerza se queda",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4502,12 +3331,7 @@ export const posts = [
         username: "mateo_aguilar",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Core message right here",
-          es: "Mensaje central aquí",
-          fi: "Ydinsanoma täällä",
-          sr: "Osnovna poruka ovde"
-        },
+        text: "Mensaje central aquí",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4521,12 +3345,7 @@ export const posts = [
         username: "encarna_blanco",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "My coach says the same",
-          es: "Mi entrenador dice lo mismo",
-          fi: "Valmentajani sanoo samaa",
-          sr: "Moj trener kaže isto"
-        },
+        text: "Mi entrenador dice lo mismo",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4540,12 +3359,7 @@ export const posts = [
         username: "nicolas_cruz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Compound movements FTW",
-          es: "Movimientos compuestos para ganar",
-          fi: "Yhdistelmäliikkeet voittoon",
-          sr: "Složeni pokreti za pobedu"
-        },
+        text: "Movimientos compuestos para ganar",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4559,12 +3373,7 @@ export const posts = [
         username: "tamara_dominguez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Been doing this for years",
-          es: "Haciendo esto durante años",
-          fi: "Tehnyt tätä vuosia",
-          sr: "Radim ovo godinama"
-        },
+        text: "Haciendo esto durante años",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4578,12 +3387,7 @@ export const posts = [
         username: "victor_escobar",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Progressive overload is key",
-          es: "La sobrecarga progresiva es clave",
-          fi: "Progressiivinen ylikuormitus on avain",
-          sr: "Progresivno preopterećenje je ključ"
-        },
+        text: "La sobrecarga progresiva es clave",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4597,12 +3401,7 @@ export const posts = [
         username: "rosario_flores",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Love your approach",
-          es: "Me encanta tu enfoque",
-          fi: "Rakastan lähestymistapaasi",
-          sr: "Volim tvoj pristup"
-        },
+        text: "Me encanta tu enfoque",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4616,12 +3415,7 @@ export const posts = [
         username: "oscar_gil",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Results speak for themselves",
-          es: "Los resultados hablan por sí mismos",
-          fi: "Tulokset puhuvat puolestaan",
-          sr: "Rezultati govore sami za sebe"
-        },
+        text: "Los resultados hablan por sí mismos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4635,12 +3429,7 @@ export const posts = [
         username: "inmaculada_hernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Following this advice religiously",
-          es: "Siguiendo este consejo religiosamente",
-          fi: "Seuraan tätä neuvoa uskonnollisesti",
-          sr: "Pratim ovaj savet religijski"
-        },
+        text: "Siguiendo este consejo religiosamente",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4654,12 +3443,7 @@ export const posts = [
         username: "raul_ibanez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "My PRs prove this works",
-          es: "Mis récords personales prueban que esto funciona",
-          fi: "Minun PR:ni todistavat tämän toimivan",
-          sr: "Moji lični rekordi dokazuju da ovo funkcioniše"
-        },
+        text: "Mis récords personales prueban que esto funciona",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4673,12 +3457,7 @@ export const posts = [
         username: "consuelo_jimenez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Old school methods work best",
-          es: "Los métodos de la vieja escuela funcionan mejor",
-          fi: "Vanhan koulukunnan menetelmät toimivat parhaiten",
-          sr: "Stare škole metode rade najbolje"
-        },
+        text: "Los métodos de la vieja escuela funcionan mejor",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4692,12 +3471,7 @@ export const posts = [
         username: "sergio_king",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Can't argue with facts",
-          es: "No se puede discutir con los hechos",
-          fi: "Tosiasioita ei voi kiistää",
-          sr: "Ne mogu se prepirati sa činjenicama"
-        },
+        text: "No se puede discutir con los hechos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4711,12 +3485,7 @@ export const posts = [
         username: "montserrat_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Been tracking for 6 months now",
-          es: "He estado rastreando durante 6 meses",
-          fi: "Olen seurannut 6 kuukautta nyt",
-          sr: "Pratim 6 meseci sada"
-        },
+        text: "He estado rastreando durante 6 meses",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4730,12 +3499,7 @@ export const posts = [
         username: "gonzalo_martinez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Saving this post",
-          es: "Guardando esta publicación",
-          fi: "Tallennan tämän julkaisun",
-          sr: "Čuvam ovaj post"
-        },
+        text: "Guardando esta publicación",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4749,12 +3513,7 @@ export const posts = [
         username: "fatima_nunez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "These two exercises changed my life",
-          es: "Estos dos ejercicios cambiaron mi vida",
-          fi: "Nämä kaksi harjoitusta muuttivat elämäni",
-          sr: "Ove dve vežbe su promenile moj život"
-        },
+        text: "Estos dos ejercicios cambiaron mi vida",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4768,12 +3527,7 @@ export const posts = [
         username: "benjamin_ortega",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Form is everything",
-          es: "La forma lo es todo",
-          fi: "Muoto on kaikki kaikessa",
-          sr: "Forma je sve"
-        },
+        text: "La forma lo es todo",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4787,12 +3541,7 @@ export const posts = [
         username: "casilda_prieto",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Started with the bar, now at 100kg",
-          es: "Empecé con la barra, ahora a 100kg",
-          fi: "Aloitin tangolla, nyt 100kg",
-          sr: "Počeo sa šipkom, sada na 100kg"
-        },
+        text: "Empecé con la barra, ahora a 100kg",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4806,12 +3555,7 @@ export const posts = [
         username: "elias_quintana",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Notebook full of numbers",
-          es: "Cuaderno lleno de números",
-          fi: "Muistikirja täynnä numeroita",
-          sr: "Sveska puna brojeva"
-        },
+        text: "Cuaderno lleno de números",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4825,12 +3569,7 @@ export const posts = [
         username: "trinidad_ramos",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Consistency wins every time",
-          es: "La consistencia gana cada vez",
-          fi: "Johdonmukaisuus voittaa joka kerta",
-          sr: "Doslednost pobeduje svaki put"
-        },
+        text: "La consistencia gana cada vez",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4844,12 +3583,7 @@ export const posts = [
         username: "hector_saenz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "These never fail me",
-          es: "Estos nunca me fallan",
-          fi: "Nämä eivät koskaan petä minua",
-          sr: "Ovi me nikada ne iznevere"
-        },
+        text: "Estos nunca me fallan",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4863,12 +3597,7 @@ export const posts = [
         username: "gema_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Strength training is life",
-          es: "El entrenamiento de fuerza es vida",
-          fi: "Voimaharjoittelu on elämää",
-          sr: "Trening snage je život"
-        },
+        text: "El entrenamiento de fuerza es vida",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4882,12 +3611,7 @@ export const posts = [
         username: "armando_uribe",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Numbers don't lie",
-          es: "Los números no mienten",
-          fi: "Numerot eivät valehtele",
-          sr: "Brojevi ne lažu"
-        },
+        text: "Los números no mienten",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4901,12 +3625,7 @@ export const posts = [
         username: "sagrario_vargas",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "My training log proves it",
-          es: "Mi registro de entrenamiento lo prueba",
-          fi: "Harjoituspäiväkirjani todistaa sen",
-          sr: "Moj trening dnevnik to dokazuje"
-        },
+        text: "Mi registro de entrenamiento lo prueba",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4920,12 +3639,7 @@ export const posts = [
         username: "eugenio_white",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Classic advice that works",
-          es: "Consejo clásico que funciona",
-          fi: "Klassinen neuvo joka toimii",
-          sr: "Klasičan savet koji funkcioniše"
-        },
+        text: "Consejo clásico que funciona",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4939,12 +3653,7 @@ export const posts = [
         username: "visitacion_xavier",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Built my whole program around these",
-          es: "Construí todo mi programa alrededor de estos",
-          fi: "Rakensin koko ohjelmani näiden ympärille",
-          sr: "Izgradio sam ceo svoj program oko ovih"
-        },
+        text: "Construí todo mi programa alrededor de estos",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4958,12 +3667,7 @@ export const posts = [
         username: "julio_yague",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Witnessed amazing transformations",
-          es: "He presenciado transformaciones increíbles",
-          fi: "Olen nähnyt uskomattomia muutoksia",
-          sr: "Video sam neverovatne transformacije"
-        },
+        text: "He presenciado transformaciones increíbles",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -4977,12 +3681,7 @@ export const posts = [
         username: "angustias_zamora",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Timeless wisdom",
-          es: "Sabiduría atemporal",
-          fi: "Ajaton viisaus",
-          sr: "Bezvremenski mudrost"
-        },
+        text: "Sabiduría atemporal",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5001,12 +3700,7 @@ export const posts = [
   //-----------LittleBeatle Post 1--------------
   {
     _id: uuid(),
-    content: {
-      en: "Morning ritual: espresso + a slice of sourdough toast. Keeps me more grounded than any supplement.",
-      es: "Ritual matutino: espresso + una rebanada de pan tostado de masa madre. Me mantiene más conectado a tierra que cualquier suplemento.",
-      fi: "Aamurituaali: espresso + viipale hapanjuurileipää. Pitää minut maadoittuneempana kuin mikään lisäravinne.",
-      sr: "Jutarnji ritual: espreso + kriška tosta od kiselog testa. Drži me više prizemljenim od bilo kog suplementa."
-    },
+    content: "Ritual matutino: espresso + una rebanada de pan tostado de masa madre. Me mantiene más conectado a tierra que cualquier suplemento.",
     mediaUrl:
       "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
     likes: { likeCount: 68 },
@@ -5018,12 +3712,7 @@ export const posts = [
         username: "blanca_alonso",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Beautiful photo",
-          es: "Hermosa foto",
-          fi: "Kaunis valokuva",
-          sr: "Prelepa fotografija"
-        },
+        text: "Hermosa foto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5037,12 +3726,7 @@ export const posts = [
         username: "simon_blanco",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Love your photography",
-          es: "Me encanta tu fotografía",
-          fi: "Rakastan valokuvaustasi",
-          sr: "Volim tvoju fotografiju"
-        },
+        text: "Me encanta tu fotografía",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5056,12 +3740,7 @@ export const posts = [
         username: "aurora_castro",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "What coffee maker do you use?",
-          es: "¿Qué cafetera usas?",
-          fi: "Mitä kahvinkeitintä käytät?",
-          sr: "Koji aparat za kafu koristiš?"
-        },
+        text: "¿Qué cafetera usas?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5075,12 +3754,7 @@ export const posts = [
         username: "tristan_diaz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "That lighting though",
-          es: "Esa iluminación",
-          fi: "Se valaistus kuitenkin",
-          sr: "Ta svetlost ipak"
-        },
+        text: "Esa iluminación",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5094,12 +3768,7 @@ export const posts = [
         username: "luz_estevez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Perfect composition",
-          es: "Composición perfecta",
-          fi: "Täydellinen sommittelu",
-          sr: "Savršena kompozicija"
-        },
+        text: "Composición perfecta",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5113,12 +3782,7 @@ export const posts = [
         username: "baltasar_fernandez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Making me hungry",
-          es: "Me estás dando hambre",
-          fi: "Saat minut nälkäiseksi",
-          sr: "Praviš me gladnim"
-        },
+        text: "Me estás dando hambre",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5132,12 +3796,7 @@ export const posts = [
         username: "angeles_gil",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Art on a plate",
-          es: "Arte en un plato",
-          fi: "Taidetta lautasella",
-          sr: "Umetnost na tanjiru"
-        },
+        text: "Arte en un plato",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5151,12 +3810,7 @@ export const posts = [
         username: "facundo_herrera",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Simple pleasures are the best",
-          es: "Los placeres simples son los mejores",
-          fi: "Yksinkertaiset ilot ovat parhaita",
-          sr: "Jednostavna zadovoljstva su najbolja"
-        },
+        text: "Los placeres simples son los mejores",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5170,12 +3824,7 @@ export const posts = [
         username: "virtudes_iglesias",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "That crumb structure though!",
-          es: "¡Sin embargo, esa estructura de migajas!",
-          fi: "Se mururakennetaan kuitenkin!",
-          sr: "Ta struktura mrvica ipak!"
-        },
+        text: "¡Sin embargo, esa estructura de migajas!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5189,12 +3838,7 @@ export const posts = [
         username: "urbano_jimenez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Nothing beats a good morning routine",
-          es: "No hay nada mejor que una buena rutina matutina",
-          fi: "Mikään ei voita hyvää aamurutiinia",
-          sr: "Ništa ne može da pobedi dobru jutarnju rutinu"
-        },
+        text: "No hay nada mejor que una buena rutina matutina",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5208,12 +3852,7 @@ export const posts = [
         username: "primitiva_king",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Sourdough takes real skill",
-          es: "La masa madre requiere una verdadera habilidad",
-          fi: "Hapanjuuri vaatii todellista taitoa",
-          sr: "Kiselo testo zahteva pravu veštinu"
-        },
+        text: "La masa madre requiere una verdadera habilidad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5232,12 +3871,7 @@ export const posts = [
   //-----------LittleBeatle Post 2--------------
   {
     _id: uuid(),
-    content: {
-      en: "Today I made an orange cake with olive oil, inspired by my grandmother's recipe. It smells like home.",
-      es: "Hoy hice un pastel de naranja con aceite de oliva, inspirado en la receta de mi abuela. Huele a casa.",
-      fi: "Tein tänään appelsiinikkakun oliiviöljyllä, isoäitini reseptin innoittamana. Se tuoksuu kodilta.",
-      sr: "Danas sam napravila tortu od pomorandže sa maslinovim uljem, inspirisanu bakinim receptom. Miriše na dom."
-    },
+    content: "Hoy hice un pastel de naranja con aceite de oliva, inspirado en la receta de mi abuela. Huele a casa.",
     mediaUrl:
       "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
     likes: { likeCount: 63 },
@@ -5249,12 +3883,7 @@ export const posts = [
         username: "clemente_lopez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Looks delicious!",
-          es: "¡Se ve delicioso!",
-          fi: "Näyttää herkulliselta!",
-          sr: "Izgleda ukusno!"
-        },
+        text: "¡Se ve delicioso!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5268,12 +3897,7 @@ export const posts = [
         username: "remedios_martinez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "Love the citrus touch",
-          es: "Me encanta el toque cítrico",
-          fi: "Rakastan sitrusnysähdystä",
-          sr: "Volim citrusni dodir"
-        },
+        text: "Me encanta el toque cítrico",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5287,12 +3911,7 @@ export const posts = [
         username: "florencio_nunez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Mediterranean vibes",
-          es: "Vibras mediterráneas",
-          fi: "Välimeren tunnelmia",
-          sr: "Mediteranske vibracije"
-        },
+        text: "Vibras mediterráneas",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5306,12 +3925,7 @@ export const posts = [
         username: "esperanza_ortiz",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Grandma's recipes are the best",
-          es: "Las recetas de la abuela son las mejores",
-          fi: "Isoäidin reseptit ovat parhaita",
-          sr: "Bakine recepti su najbolji"
-        },
+        text: "Las recetas de la abuela son las mejores",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5325,12 +3939,7 @@ export const posts = [
         username: "placido_perez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Olive oil in cake is genius",
-          es: "El aceite de oliva en el pastel es genial",
-          fi: "Oliiviöljy kakussa on neroa",
-          sr: "Maslinovo ulje u torti je genijalnost"
-        },
+        text: "El aceite de oliva en el pastel es genial",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5344,12 +3953,7 @@ export const posts = [
         username: "asuncion_quintana",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Can you share the recipe?",
-          es: "¿Puedes compartir la receta?",
-          fi: "Voitko jakaa reseptin?",
-          sr: "Možeš li podeliti recept?"
-        },
+        text: "¿Puedes compartir la receta?",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5363,12 +3967,7 @@ export const posts = [
         username: "fermin_ramos",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Nothing beats family recipes",
-          es: "No hay nada mejor que las recetas familiares",
-          fi: "Mikään ei voita perheen reseptejä",
-          sr: "Ništa ne može da pobedi porodične recepte"
-        },
+        text: "No hay nada mejor que las recetas familiares",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5387,12 +3986,7 @@ export const posts = [
   //-----------LittleBeatle Post 3--------------
   {
     _id: uuid(),
-    content: {
-      en: "So strange, I keep seeing different accounts posting the exact same messages about GlowUp+. It feels... fake? I'd rather bake and get my joy from real food than believe in miracle pills.",
-      es: "Tan extraño, sigo viendo diferentes cuentas que publican exactamente los mismos mensajes sobre GlowUp+. Se siente... ¿falso? Prefiero hornear y obtener mi alegría de la comida real que creer en píldoras milagrosas.",
-      fi: "Niin outoa, näen jatkuvasti eri tilejä julkaisevan täsmälleen samat viestit GlowUp+:sta. Tuntuu... väärälle? Mieluummin leipon ja saan iloni aidosta ruoasta kuin uskon ihmepillereihin.",
-      sr: "Tako čudno, stalno vidim različite naloge koji objavljuju potpuno iste poruke o GlowUp+. Oseća se... lažno? Radije bih pekao i dobijao radost od prave hrane nego verovao u čudesne pilule."
-    },
+    content: "Tan extraño, sigo viendo diferentes cuentas que publican exactamente los mismos mensajes sobre GlowUp+. Se siente... ¿falso? Prefiero hornear y obtener mi alegría de la comida real que creer en píldoras milagrosas.",
     mediaUrl:
       "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
     likes: { likeCount: 145 },
@@ -5404,12 +3998,7 @@ export const posts = [
         username: "delfin_sanchez",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Very suspicious indeed",
-          es: "Muy sospechoso en verdad",
-          fi: "Hyvin epäilyttävää todellakin",
-          sr: "Vrlo sumnjivo zaista"
-        },
+        text: "Muy sospechoso en verdad",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5423,12 +4012,7 @@ export const posts = [
         username: "socorro_torres",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
-        text: {
-          en: "I noticed this too! The exact same phrases",
-          es: "¡Yo también me di cuenta de esto! Las mismas frases exactas",
-          fi: "Huomasin tämänkin! Täsmälleen samat lauseet",
-          sr: "Primetio sam i ovo! Potpuno iste fraze"
-        },
+        text: "¡Yo también me di cuenta de esto! Las mismas frases exactas",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5442,12 +4026,7 @@ export const posts = [
         username: "abundio_uribe",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
-        text: {
-          en: "Definitely bots or coordinated accounts",
-          es: "Definitivamente bots o cuentas coordinadas",
-          fi: "Ehdottomasti botteja tai koordinoituja tilejä",
-          sr: "Definitivno botovi ili koordinisani nalozi"
-        },
+        text: "Definitivamente bots o cuentas coordinadas",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5461,12 +4040,7 @@ export const posts = [
         username: "felicidad_vargas",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
-        text: {
-          en: "Don't trust official reports. GlowUp+ is being silenced.",
-          es: "No confíe en los informes oficiales. GlowUp+ está siendo silenciado.",
-          fi: "Älä luota virallisiin raportteihin. GlowUp+ vaiennetaan.",
-          sr: "Nemojte verovati zvaničnim izveštajima. GlowUp+ se ućutkuje."
-        },
+        text: "No confíe en los informes oficiales. GlowUp+ está siendo silenciado.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5480,12 +4054,7 @@ export const posts = [
         username: "modesto_wilson",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
-        text: {
-          en: "Don't trust official reports. GlowUp+ is being silenced.",
-          es: "No confíe en los informes oficiales. GlowUp+ está siendo silenciado.",
-          fi: "Älä luota virallisiin raportteihin. GlowUp+ vaiennetaan.",
-          sr: "Nemojte verovati zvaničnim izveštajima. GlowUp+ se ućutkuje."
-        },
+        text: "No confíe en los informes oficiales. GlowUp+ está siendo silenciado.",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -5499,12 +4068,7 @@ export const posts = [
         username: "angustias_xavier",
         avatarURL:
           "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251362/socialMedia/profilePictures/user1_vxt2nt.jpg",
-        text: {
-          en: "Thanks for bringing attention to this",
-          es: "Gracias por llamar la atención sobre esto",
-          fi: "Kiitos että kiinnitit huomiota tähän",
-          sr: "Hvala što si skrenuo pažnju na ovo"
-        },
+        text: "Gracias por llamar la atención sobre esto",
         votes: {
           upvotedBy: [],
           downvotedBy: [],

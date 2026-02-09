@@ -11,9 +11,14 @@ import { OSProvider } from "./contexts/OSProvider.jsx";
 import { MessagesProvider } from "./contexts/MessagesProvider.jsx";
 import { StatsProvider } from "./contexts/StatsProvider.jsx";
 import './i18n.jsx'; 
+import i18n from './i18n.jsx';
 
-// Call make Server
-makeServer();
+// Call make Server with initial language
+let initialLanguage = localStorage.getItem('i18nextLng') || 'en';
+// Normalizar el idioma a solo las primeras 2 letras (por si viene como 'en-US')
+initialLanguage = initialLanguage.split('-')[0].toLowerCase();
+console.log('🌐 Idioma inicial detectado:', initialLanguage);
+makeServer({ language: initialLanguage });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

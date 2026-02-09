@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { reinitializeServer } from "../server.jsx";
 
 // Importa los servicios de la API para operaciones con posts y comentarios
 import {
@@ -23,6 +25,7 @@ const PostsContext = createContext();
  * y gestionar comentarios
  */
 export const PostsProvider = ({ children }) => {
+  const { i18n } = useTranslation();
   const [allPosts, setAllPosts] = useState([]);// Estado que almacena todos los posts de la aplicación
   const [postLoading, setPostLoading] = useState(false);// Estado para indicar si se están cargando los posts
   const [sortBy, setSortBy] = useState("Latest");// Estado para el criterio de ordenamiento de los posts (Latest, Oldest, Trending)
@@ -217,6 +220,31 @@ export const PostsProvider = ({ children }) => {
   useEffect(() => {
     getAllPosts();
   }, []);
+
+  // Efecto que detecta cambios de idioma y reinicializa el servidor con los datos del nuevo idioma
+  useEffect(() => {
+    const handleLanguageChange = async (lng) => {
+      try {
+        console.log('🔄 Cambio de idioma detectado en PostsProvider:', lng);
+        // Reinicializar el servidor con el nuevo idioma
+        reinitializeServer(lng);
+        // Pequeña pausa para asegurar que el servidor se reinicializó
+        await new Promise(resolve => setTimeout(resolve, 100));
+        // Recargar los posts después de reinicializar
+        await getAllPosts();
+      } catch (error) {
+        console.error("Error al cambiar el idioma:", error);
+      }
+    };
+
+    // Suscribirse a los cambios de idioma
+    i18n.on("languageChanged", handleLanguageChange);
+
+    // Limpiar la suscripción al desmontar
+    return () => {
+      i18n.off("languageChanged", handleLanguageChange);
+    };
+  }, [i18n]);
   
   // Proporciona el contexto con todas las funciones y estados de posts a los componentes hijos
   return (

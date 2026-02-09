@@ -7,17 +7,21 @@ import { useTranslation } from 'react-i18next';
 import { IoMdClose, VscSmiley, ImFilePicture } from "../../utils/icons.jsx";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { usePosts } from "../../contexts/PostsProvider.jsx";
+import { useStats } from "../../contexts/StatsProvider.jsx";
 import { EmojiModal } from "../EmojiModal/EmojiModal";
+import { ConclusionChallenge } from "./ConclusionChallenge";
 
 
 export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
   const { t } = useTranslation();
   const { createPost } = usePosts();
   const { loggedInUserState } = useLoggedInUser();
+  const { challenge1Completed, challenge2Completed } = useStats();
   const navigate = useNavigate();
   const firstName = loggedInUserState?.firstName;
   const lastName = loggedInUserState?.lastName;
   const [showEmojiModal, setShowEmojiModal] = useState(false);
+  const [showChallengeNotification, setShowChallengeNotification] = useState(false);
 
   const [postForm, setPostForm] = useState({
     firstName,
@@ -46,11 +50,20 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
   useEffect(() => {
     setPostForm((prev) => ({ ...prev, firstName, lastName }));
   }, [loggedInUserState]);
+
+  // Si reto 2 no está completado pero reto 1 sí, mostrar el reto de conclusiones
+  if (challenge1Completed && !challenge2Completed) {
+    return <ConclusionChallenge />;
+  }
+
   return (
     <>
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          if (!challenge1Completed) {
+            return; // No hacer nada si el reto 1 no está completado
+          }
           createPost(e, postForm, "admin-token");
           setPostForm({
             firstName: loggedInUserState?.firstName,
@@ -136,7 +149,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
             </div>
             <div className="post-btn-container">
               <button
-                disabled={!postForm.content && !postForm.mediaUrl}
+                disabled={!challenge1Completed || (!postForm.content && !postForm.mediaUrl)}
                 type="submit"
               >
                 {t('createPost.publish')}
@@ -144,12 +157,12 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
             </div>
           </div>
         </div>
+        <EmojiModal
+          showEmojiModal={showEmojiModal}
+          setShowEmojiModal={setShowEmojiModal}
+          setPostForm={setPostForm}
+        />
       </form>
-      <EmojiModal
-        showEmojiModal={showEmojiModal}
-        setShowEmojiModal={setShowEmojiModal}
-        setPostForm={setPostForm}
-      />
     </>
   );
 };

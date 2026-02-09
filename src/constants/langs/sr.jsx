@@ -3,7 +3,9 @@ export const sr = {
     home: "Početna",
     explore: "Istraži",
     profile: "Profil",
-    admin: "Admin",
+    admin: "Sumnjivi Nalozi",
+    aiContent: "AI Generisan Sadržaj",
+    aiIncorrectUses: "Pogrešna Upotreba AI",
     newPost: "Nova Objava",
   },
   header: {
@@ -27,28 +29,25 @@ export const sr = {
     inbox: "Prijemno sanduče",
     selectMessage: "Izaberi poruku za čitanje",
     fromLabel: "Od",
+    newMessageNotification: "Imate novu poruku!",
+    newMessageFromBoss: "Vaš šef ima misiju za vas",
+    congratulationNotification: "Vaš šef vam je poslao čestitke",
     time: {
       minutesAgo: "pre {{count}} min",
       hoursAgo: "pre {{count}} h",
     },
     messages: {
-      welcome: {
+      missionBrief: {
         from: "Šef",
-        subject: "Dobrodošli u tim",
+        subject: "🚨 KRITIČNA MISIJA: Upozorenje o Dezinformaciji!",
         content:
-          "Dobrodošli u naš istraživački tim! Vaša prva misija je da se upoznate sa korporativnom društvenom mrežom. Istražite profile i tražite tragove.",
+          "🚨 HITNO!\n\nŠaljem ti ovu poruku jer je nivo dezinformacije na našoj platformi dostigao KRITIČNE nivoe od 78%. Ovo je ozbiljna pretnja integrnosti naše mreže.\n\nTvoja misija:\nIdi na Admin Panel i ispravno klasifikuj sve profile kao botove ili prave korisnike. Tvoja preciznost je ključna za borbu protiv automatizovane distribucije dezinformacije. Kada savršeno završiš ovaj izazov, smanjićeš nivo dezinformacije.\nSudba mreže je u tvojim rukama.\n\n- Šef",
       },
-      hint1: {
+      congratulations: {
         from: "Šef",
-        subject: "Prvi trag",
+        subject: "🎉 Čestitamo! Izazov Završen",
         content:
-          "Primijetio sam sumnjivu aktivnost na nekim profilima. Proverite najnovije objave i tražite neobične obrasce. Korisnik @admin može imati relevantne informacije.",
-      },
-      hint2: {
-        from: "Šef",
-        subject: "Dodatni trag",
-        content:
-          "Komentari na najpopularnijim objavama mogu sadržati skrivene kodove. Obratite pažnju na REČI VELIKIM SLOVIMA i ponavljane emodžije.",
+          "🎉 ODLIČAN RAD!\n\nIspravno si klasifikovao sve profile. Tvoja preciznost je značajno smanjila nivo dezinformacije na našoj platformi.\n\nSada dolazi ključni deo:\nTrebam da objaviš objavu na društvenoj mreži da EDUKUJEŠ našu zajednicu. Podeli ono što si naučio o:\n\n• Kako prepoznati botove i automatizovane naloge\n• Obrasce dezinformacije koje si primetio\n• Važnost provere informacija\n• Kako se zaštititi od manipulacije\n\nTvoja objava će biti Zajednička Napomena koja će pomoći drugim korisnicima da prepoznaju i bore se protiv dezinformacije. To je tvoja prilika da pokažeš ciljeve učenja i napraviš stvarnu razliku.\n\nZajednica računa na tebe!\n\n- Šef",
       },
     },
   },
@@ -57,6 +56,20 @@ export const sr = {
     fileTooBig: "fajl mora biti manji od 20mb",
     invalidFileType: "fajl mora biti Video (MP4/MOV) ili Slika (JPEG/PNG)",
     publish: "Objavi",
+    challengeLocked: "Izazov Zaključan",
+    completeChallenge1: "Završi Admin izazov da otključaš objavljivanje",
+    selectTwoCorrect: "Izaberi 2 ispravne tvrdnje o dezinformaciji i botovima",
+    selectTwoStatements: "Molim te izaberi tačno 2 tvrdnje",
+    incorrectSelection: "Pogrešan izbor. Pokušaj ponovo!",
+    selected: "izabrano",
+    publishConclusion: "Objavi Zajedničku Belešku",
+    statement1: "Botovi se mogu detektovati konzistentnim i ponovljenim šablonima aktivnosti",
+    statement2: "Verifikovani nalozi su uvek pravi nalozi i nikada ne mogu biti botovi",
+    statement3: "Verifikacija naloga sa više izvora informacija je ključna za borbu protiv dezinformacije",
+    statement4: "Botovi uvek imaju javne profile i nikada privatne",
+    statement5: "Digitalna edukacija je fundamentalna da bi korisnici prepoznali lažan sadržaj",
+    conclusionText: "Za borbu protiv dezinformacije na društvenim mrežama, neophodno je da razvijete kritičko razmišljanje i da verifikujete informacije pre nego što ih podelite. Botovi i lažni nalozi često pokazuju repetitivne šablone, sumnjive aktivnosti u neregularnim vremenima i identičan sadržaj. Naučite da ih prepoznate i štitite svoju zajednicu! 🔍✅",
+    escapeRoomCompleted: "🎉 Escape Room Završen! Hvala što ste naučili prepoznavati dezinformaciju!",
   },
   post: {
     editPost: "Izmeni Objavu",
@@ -86,7 +99,7 @@ export const sr = {
     caughtUp: "Stigli ste do kraja!",
   },
   admin: {
-    title: "Admin Panel",
+    title: "Upravljaj sumnjivim nalozima",
     users: "Korisnici",
     posts: "Objave",
     suspectUsers: "Sumnjivi Korisnici",

@@ -1,6 +1,12 @@
 import { Server, Model, RestSerializer } from "miragejs";
-import { posts } from "./backend/db/posts.jsx";
-import { users } from "./backend/db/users.jsx";
+import { postsES } from "./backend/db/posts_es.jsx";
+import { usersES } from "./backend/db/users_es.jsx";
+import { postsEN } from "./backend/db/posts_en.jsx";
+import { usersEN } from "./backend/db/users_en.jsx";
+import { postsFI } from "./backend/db/posts_fi.jsx";
+import { usersFI } from "./backend/db/users_fi.jsx";
+import { postsSR } from "./backend/db/posts_sr.jsx";
+import { usersSR } from "./backend/db/users_sr.jsx";
 import {
   createPostHandler,
   getAllpostsHandler,
@@ -27,8 +33,37 @@ import {
   downvotePostCommentHandler,
 } from "./backend/controllers/CommentsController.jsx";
 
-export function makeServer({ environment = "development" } = {}) {
-  return new Server({
+// Mapa de datos por idioma
+const dataByLanguage = {
+  en: { users: usersEN, posts: postsEN },
+  es: { users: usersES, posts: postsES },
+  fi: { users: usersFI, posts: postsFI },
+  sr: { users: usersSR, posts: postsSR },
+};
+
+// Variable global para almacenar la instancia del servidor
+let serverInstance = null;
+
+export function makeServer({ environment = "development", language = "es" } = {}) {
+  // Si ya existe una instancia del servidor, detenerla y limpiar
+  if (serverInstance) {
+    try {
+      serverInstance.shutdown();
+      serverInstance = null;
+    } catch (error) {
+      console.error("Error al detener el servidor:", error);
+    }
+  }
+
+  // Obtener los datos según el idioma
+  const normalizedLanguage = language.split('-')[0].toLowerCase();
+  const { users, posts } = dataByLanguage[normalizedLanguage] || dataByLanguage.es;
+  
+  console.log('🔄 Inicializando servidor con idioma:', normalizedLanguage);
+  console.log('📊 Usuarios a cargar:', users.length);
+  console.log('📝 Posts a cargar:', posts.length);
+
+  serverInstance = new Server({
     serializers: {
       application: RestSerializer,
     },
@@ -42,11 +77,17 @@ export function makeServer({ environment = "development" } = {}) {
     // Runs on the start of the server
     seeds(server) {
       server.logging = false;
+      // Limpiar todos los datos existentes antes de cargar nuevos
+      server.db.emptyData();
+      console.log('🗑️  Base de datos limpiada');
+      
       users.forEach((item) =>
         server.create("user", {...item,
         })
       );
       posts.forEach((item) => server.create("post", { ...item }));
+      
+      console.log('✅ Datos cargados - Usuarios:', server.db.users.length, 'Posts:', server.db.posts.length);
     },
 
     routes() {
@@ -99,5 +140,12 @@ export function makeServer({ environment = "development" } = {}) {
       );
     },
   });
+
+  return serverInstance;
+}
+
+// Función para reinicializar el servidor con un nuevo idioma
+export function reinitializeServer(language) {
+  return makeServer({ language });
 }
 

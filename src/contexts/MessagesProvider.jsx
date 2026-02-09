@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useRef } from "react";
+import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 /**
  * Contexto para gestionar los mensajes del jefe
@@ -15,37 +17,43 @@ export const useMessages = () => {
 };
 
 export const MessagesProvider = ({ children }) => {
+  const { t } = useTranslation();
   const [messages, setMessages] = useState([
     {
       id: 1,
-      fromKey: "messagesApp.messages.welcome.from",
-      subjectKey: "messagesApp.messages.welcome.subject",
-      contentKey: "messagesApp.messages.welcome.content",
-      timestamp: new Date(Date.now() - 3600000),
-      read: false,
-    },
-    {
-      id: 2,
-      fromKey: "messagesApp.messages.hint1.from",
-      subjectKey: "messagesApp.messages.hint1.subject",
-      contentKey: "messagesApp.messages.hint1.content",
-      timestamp: new Date(Date.now() - 1800000),
-      read: false,
-    },
-    {
-      id: 3,
-      fromKey: "messagesApp.messages.hint2.from",
-      subjectKey: "messagesApp.messages.hint2.subject",
-      contentKey: "messagesApp.messages.hint2.content",
-      timestamp: new Date(Date.now() - 900000),
+      fromKey: "messagesApp.messages.missionBrief.from",
+      subjectKey: "messagesApp.messages.missionBrief.subject",
+      contentKey: "messagesApp.messages.missionBrief.content",
+      timestamp: new Date(),
       read: false,
     },
   ]);
 
   const [unreadCount, setUnreadCount] = useState(0);
+  const notificationShownRef = useRef(false);
 
+  // Mostrar notificación solo una vez al montar el componente
   useEffect(() => {
-    // Actualizar contador de mensajes no leídos
+    if (!notificationShownRef.current) {
+      toast((toastInstance) => (
+        <div>
+          <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
+            {t("messagesApp.newMessageNotification")}
+          </p>
+          <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
+            {t("messagesApp.newMessageFromBoss")}
+          </p>
+        </div>
+      ), {
+        duration: 4000,
+        icon: "📬",
+      });
+      notificationShownRef.current = true;
+    }
+  }, [t]);
+
+  // Actualizar contador de mensajes no leídos
+  useEffect(() => {
     const count = messages.filter((msg) => !msg.read).length;
     setUnreadCount(count);
   }, [messages]);

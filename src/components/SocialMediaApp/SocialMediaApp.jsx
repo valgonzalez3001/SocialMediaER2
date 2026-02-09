@@ -8,35 +8,37 @@ import { useTranslation } from "react-i18next";
 /**
  * Componente SocialMediaApp - Envuelve la aplicación de red social en una ventana
  */
-export const SocialMediaApp = () => {
+export const SocialMediaApp = ({ mode = "window" }) => {
   const { closeApp, minimizeApp } = useOS();
   const { t } = useTranslation();
+  const isEmbedded = mode === "embedded";
 
   return (
-    <div className="social-app-window">
-      {/* Barra de título */}
-      <div className="window-titlebar">
-        <div className="window-title">
-          <span className="app-icon">📱</span>
-          <span>{t("desktop.apps.social")}</span>
+    <div className={isEmbedded ? "social-app-embedded" : "social-app-window"}>
+      {!isEmbedded && (
+        <div className="window-titlebar">
+          <div className="window-title">
+            <span className="app-icon">📱</span>
+            <span>{t("desktop.apps.social")}</span>
+          </div>
+          <div className="window-controls">
+            <button
+              className="window-button minimize"
+              onClick={minimizeApp}
+              title={t("desktop.window.minimize")}
+            >
+              <FaMinus />
+            </button>
+            <button
+              className="window-button close"
+              onClick={() => closeApp("social")}
+              title={t("desktop.window.close")}
+            >
+              <FaTimes />
+            </button>
+          </div>
         </div>
-        <div className="window-controls">
-          <button
-            className="window-button minimize"
-            onClick={minimizeApp}
-            title={t("desktop.window.minimize")}
-          >
-            <FaMinus />
-          </button>
-          <button
-            className="window-button close"
-            onClick={() => closeApp("social")}
-            title={t("desktop.window.close")}
-          >
-            <FaTimes />
-          </button>
-        </div>
-      </div>
+      )}
 
       {/* Contenido de la aplicación */}
       <div className="social-app-content">

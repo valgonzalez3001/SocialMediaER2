@@ -2,29 +2,217 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   overflow: hidden;
-  background: #000;
+  background: radial-gradient(circle at top, #1b1f3b, #0b0f1a 60%);
 }
 
-.desktop-wallpaper {
-  width: 100%;
-  height: 100%;
-  background-image: url("https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=1920&q=80");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Si quieres un fondo más oscuro o con overlay */
-.desktop-wallpaper::before {
-  content: "";
+.main-social {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  overflow: hidden;
+}
+
+.app-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 10, 22, 0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+}
+
+.app-overlay-content {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-drawer {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  width: min(330px, 90vw);
+  height: var(--drawer-height, 80px);
+  transform: translate(-50%, var(--drawer-translate, 60px));
+  background: rgba(20, 24, 44, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  padding: 2px 12px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: transform 0.2s ease, height 0.3s ease;
+  z-index: 1200;
+}
+
+.app-drawer.has-unread {
+  animation: drawerShake 0.4s cubic-bezier(0.36, 0, 0.66, -0.56);
+}
+
+@keyframes drawerShake {
+  0%, 100% {
+    transform: translate(-50%, var(--drawer-translate, 60px)) translateX(0);
+  }
+  25% {
+    transform: translate(-50%, var(--drawer-translate, 60px)) translateX(-8px);
+  }
+  75% {
+    transform: translate(-50%, var(--drawer-translate, 60px)) translateX(8px);
+  }
+}
+
+.app-drawer.open {
+  height: var(--drawer-height, 300px);
+  transform: translate(-50%, var(--drawer-translate, 0px));
+  color: #fc03b1;
+}
+
+.app-drawer-handle {
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 0 auto 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.app-drawer-handle:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.arrow {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.app-drawer-content {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: auto;
+}
+
+.app-launcher-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 6px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.app-launcher-card:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+.app-launcher-card:disabled {
+  cursor: default;
+}
+
+.app-launcher-card:disabled:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: none;
+}
+
+.lock-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  background: rgba(231, 76, 60, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.launcher-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #e81123;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(232, 17, 35, 0.7);
+  animation: launcherBadgePulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes launcherBadgePulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(232, 17, 35, 0.7);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(232, 17, 35, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 0 8px rgba(232, 17, 35, 0);
+  }
+}
+
+.launcher-image {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px;
+}
+
+.launcher-label {
+  text-align: center;
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .app-drawer {
+    width: 92vw;
+    padding: 6px 12px 16px;
+  }
+
+  .app-launcher-card {
+    padding: 12px 8px;
+    font-size: 13px;
+  }
 }

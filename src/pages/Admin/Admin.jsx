@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useUser } from "../../contexts/UserProvider.jsx";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
+import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
@@ -15,7 +16,8 @@ export const Admin = () => {
     const { t } = useTranslation();
     const { userState } = useUser();
     const { loggedInUserState } = useLoggedInUser();
-    const { reduceMisinformation } = useStats();
+    const { reduceMisinformation, completeChallenge1, challenge1Completed } = useStats();
+    const { addMessage } = useMessages();
     const navigate = useNavigate();
     const [classifiedUsers, setClassifiedUsers] = useState(() => {
         const saved = sessionStorage.getItem('adminGameState');
@@ -29,6 +31,11 @@ export const Admin = () => {
     // Seleccionar 5 usuarios aleatorios del rango 7-16 (índices 6 a 15)
     // 2 usuarios con isBot=false y 3 usuarios con isBot=true
     const suspectUsers = useMemo(() => {
+        // Si el reto ya fue completado, no mostrar usuarios
+        if (challenge1Completed) {
+            return [];
+        }
+
         if (!userState?.allUsers?.length) {
             return [];
         }
@@ -79,12 +86,35 @@ export const Admin = () => {
             sessionStorage.setItem('adminGameUsers', JSON.stringify(result));
         }
         return result;
-    }, [userState?.allUsers, regenerateKey]); // Agregar regenerateKey como dependencia
+    }, [userState?.allUsers, regenerateKey, challenge1Completed]); // Agregar challenge1Completed como dependencia
 
     // Guardar estado de clasificación cuando cambie
     useEffect(() => {
         sessionStorage.setItem('adminGameState', JSON.stringify(classifiedUsers));
     }, [classifiedUsers]);
+
+    // Limpiar clasificaciones que no corresponden a los usuarios actuales
+    useEffect(() => {
+        if (suspectUsers.length > 0) {
+            const currentUserIds = suspectUsers.map(u => u._id);
+            const savedClassifications = Object.keys(classifiedUsers);
+            
+            // Si hay clasificaciones de usuarios que ya no están en la lista actual, limpiar
+            const hasInvalidClassifications = savedClassifications.some(id => !currentUserIds.includes(id));
+            
+            if (hasInvalidClassifications) {
+                // Filtrar solo las clasificaciones válidas
+                const validClassifications = {};
+                currentUserIds.forEach(id => {
+                    if (classifiedUsers[id]) {
+                        validClassifications[id] = classifiedUsers[id];
+                    }
+                });
+                setClassifiedUsers(validClassifications);
+                sessionStorage.setItem('adminGameState', JSON.stringify(validClassifications));
+            }
+        }
+    }, [suspectUsers]);
 
     const handleClassification = (userId, classification) => {
         setClassifiedUsers(prev => {
@@ -124,13 +154,48 @@ export const Admin = () => {
         setGameResult({ correct, incorrect, total: suspectUsers.length });
         setShowResult(true);
 
-        // Si todas las clasificaciones son correctas, reducir el nivel de desinformación
+        // Si todas las clasificaciones son correctas, reducir el nivel de desinformación y marcar reto como completado
         if (correct === suspectUsers.length) {
             reduceMisinformation(30);
+            completeChallenge1();
+            
+            // Limpiar el estado del juego al completar exitosamente
+            sessionStorage.removeItem('adminGameUsers');
+            sessionStorage.removeItem('adminGameState');
+            sessionStorage.removeItem('fromAdmin');
+            setClassifiedUsers({});
+            
+            // Enviar mensaje de felicitación del jefe
+            addMessage({
+                fromKey: "messagesApp.messages.congratulations.from",
+                subjectKey: "messagesApp.messages.congratulations.subject",
+                contentKey: "messagesApp.messages.congratulations.content",
+            });
+            
+            // Mostrar notificación de nuevo mensaje
+            toast((toastInstance) => (
+                <div>
+                    <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
+                        {t("messagesApp.newMessageNotification")}
+                    </p>
+                    <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
+                        {t("messagesApp.congratulationNotification")}
+                    </p>
+                </div>
+            ), {
+                duration: 4000,
+                icon: "📬",
+            });
         }
     };
 
     const handleTryAgain = () => {
+        // Si el reto ya fue completado, solo cerrar el modal
+        if (challenge1Completed) {
+            setShowResult(false);
+            return;
+        }
+
         // Limpiar todo el estado del juego
         sessionStorage.removeItem('adminGameUsers');
         sessionStorage.removeItem('adminGameState');
@@ -153,9 +218,6 @@ export const Admin = () => {
                         <div className="admin-header">
                             <div>
                                 <h2>{t('admin.title')}</h2>
-                                <p style={{ color: 'rgba(255, 255, 255, 0.6)', margin: '0.5rem 0 0 0' }}>
-                                    {t('admin.suspectUsers')}
-                                </p>
                             </div>
                             <button className="hint-button" onClick={() => setShowHint(true)}>
                                 💡 {t('admin.hint')}
@@ -278,7 +340,7 @@ export const Admin = () => {
                             </div>
                             <div className="result-buttons">
                                 <button className="try-again-button" onClick={handleTryAgain}>
-                                    {t('admin.playAgain')}
+                                    {challenge1Completed ? t('desktop.window.close') : t('admin.playAgain')}
                                 </button>
                             </div>
                         </div>

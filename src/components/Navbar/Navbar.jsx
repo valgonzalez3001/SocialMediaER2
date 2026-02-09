@@ -8,11 +8,11 @@ import { useTranslation } from 'react-i18next';
 import { CreatePostForm } from "../CreatePostForm/CreatePostForm";
 import {
   RiHomeWifiLine,
-  BiSearch,
   CgProfile,
   FaFeather,
 } from "../../utils/icons.jsx";
 import { MdAdminPanelSettings } from "react-icons/md";
+import { RiRobot2Line, RiErrorWarningLine } from "react-icons/ri";
 
 export const Navbar = () => {
   const { t } = useTranslation();
@@ -32,12 +32,6 @@ export const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className="navlink" style={getActiveStyle} to="/explore">
-            <BiSearch className="navlink-icon" />
-            <p>{t('nav.explore')}</p>
-          </NavLink>
-        </li>
-        <li>
           <NavLink
             className="navlink"
             style={getActiveStyle}
@@ -51,6 +45,18 @@ export const Navbar = () => {
           <NavLink className="navlink" style={getActiveStyle} to="/admin">
             <MdAdminPanelSettings className="navlink-icon" />
             <p>{t('nav.admin')}</p>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="navlink" style={getActiveStyle} to="/ai-content">
+            <RiRobot2Line className="navlink-icon" />
+            <p>{t('nav.aiContent')}</p>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="navlink" style={getActiveStyle} to="/ai-incorrect-uses">
+            <RiErrorWarningLine className="navlink-icon" />
+            <p>{t('nav.aiIncorrectUses')}</p>
           </NavLink>
         </li>
       </ul>

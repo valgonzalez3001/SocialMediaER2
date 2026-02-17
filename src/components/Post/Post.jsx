@@ -48,9 +48,6 @@ export const Post = ({ post }) => {
     <div className="post-card">
       <div className="profile-picture-container">
         <img
-          onClick={() => {
-            navigate(`/profile/${post?.username}`);
-          }}
           src={userDetails?.avatarURL}
           alt={userDetails?.firstName}
         />{" "}
@@ -59,15 +56,9 @@ export const Post = ({ post }) => {
       <div className="post-card-content">
         <div className="name-container">
           <div
-            onClick={() => {
-              navigate(`/profile/${post?.username}`);
-            }}
             className="username-container"
           >
             <span
-              onClick={() => {
-                navigate(`/profile/${post?.username}`);
-              }}
               className="name"
             >
               {post?.firstName} {post?.lastName}
@@ -83,9 +74,6 @@ export const Post = ({ post }) => {
 
             </span>{" "}
             <span
-              onClick={() => {
-                navigate(`/profile/${post?.username}`);
-              }}
               className="username"
             >
               {" "}
@@ -93,9 +81,6 @@ export const Post = ({ post }) => {
             </span>
             {"  "}
             <span
-              onClick={() => {
-                navigate(`/profile/${post?.username}`);
-              }}
               className="date"
             >
               {getTimeDifference(post?.createdAt)}

@@ -1,5 +1,4 @@
 .conclusion-challenge-form {
-  /* Hereda estilos del formulario normal de post */
   max-height: 85vh;
   overflow-y: auto;
 }
@@ -9,6 +8,16 @@
   max-height: calc(85vh - 100px);
   overflow-y: auto;
   padding-right: 0.5rem;
+}
+
+.conclusion-challenge-form .input-container {
+  position: relative;
+}
+
+.challenge-close-btn {
+  position: absolute;
+  top: -4px;
+  right: 0;
 }
 
 .challenge-content::-webkit-scrollbar {
@@ -107,11 +116,6 @@
 
 .statement-option.selected .statement-text {
   color: #ffffff;
-}
-
-/* El botón hereda los estilos del .post-btn-container button de CreatePostForm.css */
-.conclusion-challenge-form .post-btn-container button {
-  /* Los estilos base ya están heredados */
 }
 
 .conclusion-challenge-form .post-btn-container button:disabled {

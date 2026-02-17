@@ -12,7 +12,17 @@ export const MessagesApp = () => {
   const { closeApp, minimizeApp } = useOS();
   const { messages, markAsRead } = useMessages();
   const [selectedMessage, setSelectedMessage] = useState(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const getLocale = () => {
+    const localeMap = {
+      es: "es-ES",
+      en: "en-US",
+      fi: "fi-FI",
+      sr: "sr-RS",
+    };
+    return localeMap[i18n.language] || undefined;
+  };
 
   // Detectar si hay mensajes sin leer
   const hasUnread = messages.some((msg) => !msg.read);
@@ -41,7 +51,7 @@ export const MessagesApp = () => {
     } else if (diffHours < 24) {
       return t("messagesApp.time.hoursAgo", { count: diffHours });
     } else {
-      return date.toLocaleDateString(undefined, {
+      return date.toLocaleDateString(getLocale(), {
         day: "numeric",
         month: "short",
       });
@@ -118,7 +128,7 @@ export const MessagesApp = () => {
                   </span>
                   <span className="detail-time">
                     {new Date(selectedMessage.timestamp).toLocaleString(
-                      undefined,
+                      getLocale(),
                       {
                         day: "numeric",
                         month: "long",

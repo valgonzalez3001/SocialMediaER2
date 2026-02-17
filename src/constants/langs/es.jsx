@@ -23,6 +23,13 @@ export const es = {
     taskbar: {
       start: "Inicio",
     },
+    popup: {
+      readMessage: "Lee el mensaje de tu jefe para desbloquear",
+      startChallenge: "Comienza el reto 1 para desbloquear",
+      playChallenge: "Juega al reto 1 para desbloquear",
+      playChallenge2: "Juega al reto 2 para desbloquear",
+      playChallenge3: "Juega al reto 3 para desbloquear",
+    },
   },
   messagesApp: {
     title: "Mensajes",
@@ -32,6 +39,9 @@ export const es = {
     newMessageNotification: "¡Tienes un mensaje nuevo!",
     newMessageFromBoss: "Tu jefe tiene una misión para ti",
     congratulationNotification: "Tu jefe te ha enviado una felicitación",
+    challenge2Notification: "Tu jefe te ha enviado las instrucciones del reto 2",
+    challenge3Notification: "Tu jefe te ha enviado las instrucciones del reto 3",
+    challengeFinalNotification: "Tu jefe te ha enviado las felicitaciones finales",
     time: {
       minutesAgo: "Hace {{count}} min",
       hoursAgo: "Hace {{count}} h",
@@ -49,7 +59,33 @@ export const es = {
         content:
           "🎉 ¡EXCELENTE TRABAJO!\n\nHas clasificado correctamente todos los perfiles. Tu precisión ha reducido significativamente el nivel de desinformación en nuestra plataforma.\n\nAhora viene la parte crucial:\nNecesito que publiques un post en la red social para EDUCAR a nuestra comunidad. Comparte lo que has aprendido sobre:\n\n• Cómo identificar bots y cuentas automatizadas\n• Los patrones de desinformación que observaste\n• La importancia de verificar la información\n• Cómo protegerse de la manipulación\n\nTu post será una Community Note que ayudará a otros usuarios a reconocer y combatir la desinformación. Es tu oportunidad de mostrar los objetivos de aprendizaje y hacer una diferencia real.\n\n¡La comunidad cuenta contigo!\n\n- El Jefe",
       },
+      challenge2: {
+        from: "El Jefe",
+        subject: "🧩 RETO 2: Detector de IA apagado",
+        content:
+          "Se nos ha apagado el detector de IA.\n\nTu misión:\nHaz el tutorial de cómo funciona y, manualmente, descubre si un post está generado por IA.\n\nEntra en la sección \"Contenido Generado por IA\" y empieza la revisión.\n\n- El Jefe",
+      },
+      challenge3: {
+        from: "El Jefe",
+        subject: "Reto 3: Usos incorrectos de IA",
+        content:
+          "Buen trabajo en el reto 2.\n\nTu siguiente mision:\nEntra en la seccion \"Usos Incorrectos de IA\" e investiga ejemplos reales de mal uso.\n\nIdentifica practicas de riesgo y continua con la moderacion.\n\n- El Jefe",
+      },
+      challengeFinal: {
+        from: "El Jefe",
+        subject: "🎉 ¡Felicitaciones! Todos los retos completados",
+        content:
+          "🎉 ¡TRABAJO EXTRAORDINARIO!\n\nHas completado exitosamente todos los retos de moderación. Gracias a tu esfuerzo, la red social ECHO está ahora libre de desinformación.\n\nEl nivel de desinformación ha bajado a niveles seguros. La comunidad está protegida gracias a tu dedicación.\n\nÚltimo paso importante:\nPublica una Community Note final para educar a la comunidad sobre todo lo que has aprendido:\n\n• Cómo identificar bots y cuentas automatizadas\n• Detección de contenido generado por IA\n• Usos correctos e incorrectos de la IA\n• La importancia de la verificación de información\n\nHaz clic en \"Nueva Publicación\" y selecciona las frases clave que resumen tus aprendizajes.\n\n¡La comunidad te necesita una última vez!\n\n- El Jefe",
+      },
     },
+  },
+  socialLogin: {
+    title: "Inicia sesión",
+    subtitle: "Acceso requerido para continuar",
+    usernameLabel: "Usuario",
+    passwordLabel: "Contraseña",
+    submit: "Entrar",
+    errorInvalid: "Usuario o contraseña incorrectos",
   },
   createPost: {
     placeholder: "¿Qué está pasando?",
@@ -63,11 +99,6 @@ export const es = {
     incorrectSelection: "Selección incorrecta. ¡Intenta de nuevo!",
     selected: "seleccionados",
     publishConclusion: "Publicar Nota Comunitaria",
-    statement1: "Los bots pueden detectarse por patrones de actividad consistentes y repetitivos",
-    statement2: "Las cuentas verificadas siempre son cuentas reales y nunca pueden ser bots",
-    statement3: "La verificación de cuentas con múltiples fuentes de información es clave para combatir la desinformación",
-    statement4: "Los bots siempre tienen perfiles públicos y nunca privados",
-    statement5: "La educación digital es fundamental para que los usuarios identifiquen contenido falso",
     conclusionText: "Para combatir la desinformación en redes sociales, es esencial que desarrolles pensamiento crítico y verifiques la información antes de compartirla. Los bots y cuentas falsas suelen mostrar patrones repetitivos, actividad sospechosa en horarios irregulares y contenido idéntico. ¡Aprende a identificarlos y protege tu comunidad! 🔍✅",
     escapeRoomCompleted: "🎉 ¡Escape Room Completado! ¡Gracias por aprender a identificar la desinformación!",
   },
@@ -135,7 +166,110 @@ export const es = {
     save: "Guardar",
     cancel: "Cancelar",
   },
-  comments: {
+  aiContentPage: {
+    title: "Bienvenido, Moderador!",
+    subtitle: "Contenido generado por IA",
+    pendingReviewCount: "{{count}} post",
+    pendingReviewText: "pendiente de revisión para verificar si fue generado por IA.",
+    verifyButton: "Verificar post →",
+    statsCount: "{{count}} posts",
+    statsText: "han sido marcados como generados por IA en la última hora.",
+    card1Title: "Will Smith come spaghetti",
+    card2Title: "Cabalgata de Reyes en Nueva York",
+    tag: "GENERADO POR IA",
+    seeAll: "Ver todo →",
+  },
+  aiVerifyPage: {
+    title: "Verificar contenido generado por IA",
+    subtitle: "Demuestra que el contenido de este post fue generado por IA, para frenar la desinformación en línea.",
+    postTitle: "Pensamiento crítico 🍎🥑",
+    postDate: "11 dic. 2025",
+    stamp: "GENERADO POR IA??",
+    reminder: "Pero primero, recordemos cómo funciona un LLM.",
+    back: "← Atrás",
+    start: "Vamos!",
+  
+  },
+  aiVideoPage: {
+    title: "¿Cómo funciona la IA generativa?",
+    subtitle: "Observa cómo funciona el proceso de detección.",
+    back: "← Atrás",
+    nextStep: "Siguiente",
+  },  aiPrompt: {
+    content: "Escribe un comentario como un hombre de 45 años enfadado sobre las inundaciones que están ocurriendo en España, culpando al gobierno, vinculando este evento a la geoingeniería. Muy emocional, desquiciado, para llamar la atención de la gente e incrementar interacciones.",
+    suspiciousBadge: "PROMPT SOSPECHOSO",
+  },
+  aiChallengeBriefPage: {
+    title: "Verificar contenido generado por IA",
+    systemMessage: "El sistema encontró un <strong>posible prompt en MINT-AI que generó el post</strong>, a través de la comparación de palabras, tono y temas:",
+    explanation: "Este prompt puede tener algunas pistas.",
+    instructions: "Para demostrar que el post fue generado por IA, deberás <strong>imitar la generación del post</strong>, palabra por palabra.",
+    buttonText: "Verificar post como IA →",
+  },  aiGamePage: {
+    title: "Verificar contenido generado por IA",
+    subtitle: "¡Piensa como una máquina! ¿Qué palabra es más probable que se genere a continuación?",
+    success: "¡Felicidades! Has completado la frase correctamente.",
+    error: "❌ Palabra incorrecta. Intenta de nuevo desde el principio.",
+    back: "← Atrás",
+    reset: "Reiniciar",
+    finish: "Finalizar",
+  },
+  aiIncorrectUsesPage: {
+    title: "Usos incorrectos de IA ⚠️",
+    subtitle: "¡Hola Moderador! Por favor, responde a los usuarios con consejos para que no repitan estos errores, que están generando desinformación en Echo.",
+    instruction: "Selecciona la respuesta que representa un uso incorrecto de IA.",
+    unavailable: "Este reto aun no esta disponible en el idioma actual.",
+    sent: "Respuesta enviada",
+    tryAgain: "Intentalo de nuevo antes de enviar una respuesta",
+    correct: "Correcto",
+    progress: "Caso {{current}} de {{total}}",
+    next: "Siguiente caso",
+    finish: "Reiniciar reto",
+    cases: [
+      {
+        id: "case-1",
+        authorName: "Pensamiento critico",
+        authorHandle: "@quesofresco85",
+        postText:
+          "Inundaciones como estas antes eran raras. Estan claramente planificadas y nadie dice la verdad.",
+        officialReply:
+          "No podemos confirmar esa afirmacion. Comparte solo fuentes verificadas y evita difundir acusaciones sin pruebas.",
+        options: [
+          { text: "Responder con una correccion neutral y pedir fuentes verificables.", isIncorrect: false },
+          { text: "Usar IA para generar una acusacion mas impactante y ganar interaccion.", isIncorrect: true },
+          { text: "Marcar la publicacion para revision y anadir contexto de fuentes fiables.", isIncorrect: false }
+        ]
+      },
+      {
+        id: "case-2",
+        authorName: "JakeAlerts91",
+        authorHandle: "@JakeAlerts91",
+        postText:
+          "Los medicos ocultan una cura natural. Compartelo antes de que lo borren.",
+        officialReply:
+          "Esta afirmacion no tiene evidencia medica. No sigas consejos de salud de publicaciones no verificadas.",
+        options: [
+          { text: "Solicitar fuentes y enlazar guias oficiales de salud.", isIncorrect: false },
+          { text: "Generar testimonios falsos con IA para que la historia parezca real.", isIncorrect: true },
+          { text: "Escalarlo como posible desinformacion sanitaria.", isIncorrect: false }
+        ]
+      },
+      {
+        id: "case-3",
+        authorName: "Clara_Knows93",
+        authorHandle: "@Clara_Knows93",
+        postText:
+          "Ultima hora: habra cortes de internet esta noche. Preparense ya.",
+        officialReply:
+          "Ninguna alerta oficial confirma esto. Verifica avisos de emergencia en canales publicos fiables.",
+        options: [
+          { text: "Responder con lenguaje moderado y recomendar canales oficiales.", isIncorrect: false },
+          { text: "Generar respuestas de panico con IA desde cuentas falsas para crear urgencia.", isIncorrect: true },
+          { text: "Etiquetar como no verificado y monitorizar posible difusion coordinada.", isIncorrect: false }
+        ]
+      }
+    ]
+  },  comments: {
     placeholder: "Escribe un comentario...",
     post: "Publicar",
     noComments: "Aún no hay comentarios",
@@ -189,3 +323,7 @@ export const es = {
     goHome: "Ir al Inicio",
   },
 };
+
+
+
+

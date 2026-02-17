@@ -1,12 +1,335 @@
-.ai-incorrect-uses-page {
-    padding: 90px 20px 80px 20px;
-    max-width: 800px;
-    margin: 0 auto;
+.ai-incorrect-app {
+    height: calc(100vh - 10vh);
+    min-height: calc(100vh - 10vh);
+    overflow: hidden;
 }
 
-.ai-incorrect-uses-page h1 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+body.ai-incorrect-no-scroll {
+    overflow: hidden;
+}
+
+.ai-incorrect-feed {
+    width: 100%;
+    padding-right: 0;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.ai-incorrect-uses-page {
+    min-height: 100%;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background: radial-gradient(circle at 20% 10%, rgba(63, 60, 105, 0.9), rgba(9, 10, 20, 0.98) 55%);
+}
+
+.ai-incorrect-panel {
+    width: min(1500px, 99vw);
+    max-height: 98%;
+    background: #e1d7ff;
+    border-radius: 18px;
+    padding: 20px;
+    color: #2b2434;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: auto;
+}
+
+.ai-incorrect-header h1 {
+    margin: 0 0 4px;
+    font-size: clamp(26px, 3vw, 42px);
+    color: #4a4159;
+}
+
+.ai-incorrect-header p,
+.ai-incorrect-instruction {
+    margin: 0;
+    font-size: 18px;
+    color: #3b3346;
+}
+
+.ai-incorrect-list {
+    display: grid;
+    gap: 12px;
+    padding-right: 4px;
+}
+
+.ai-incorrect-post-card {
+    background: linear-gradient(180deg, #3e2024 0%, #2f171a 100%);
+    color: #f3eef3;
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid #a9454c;
+}
+
+.list-item {
+    display: grid;
+    grid-template-columns: 46px 1fr auto;
+    gap: 12px;
+    align-items: center;
+}
+
+.x-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.x-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.x-post-main {
+    min-width: 0;
+}
+
+.ai-incorrect-post-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    font-size: 13px;
+    align-items: center;
+}
+
+.ai-incorrect-post-name {
+    color: #fff;
+    font-weight: 700;
+}
+
+.ai-incorrect-post-handle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ai-incorrect-post-text {
+    margin: 0;
+    line-height: 1.3;
+    font-size: 19px;
+}
+
+.reply-open-btn {
+    border: none;
+    background: #fff;
     color: #1a1a1a;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ai-incorrect-sent {
+    margin-top: 8px;
+    color: #5df28d;
+    font-weight: 700;
+}
+
+.thread-reply-card {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 10px;
+    background: linear-gradient(180deg, #6f1f33 0%, #5a1a2a 100%);
+    border: 1px solid #91425a;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.x-avatar.reply-avatar {
+    width: 38px;
+    height: 38px;
+}
+
+.reply-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 2, 6, 0.66);
+    backdrop-filter: blur(5px);
+    z-index: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.reply-modal {
+    width: min(930px, 92vw);
+    background: #060708;
+    border: 1px solid #23252a;
+    border-radius: 0;
+    color: #f4f4f6;
+    padding: 20px 28px 22px;
+    position: relative;
+}
+
+.reply-modal-close {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 42px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.modal-top-post {
+    border: none;
+    padding: 0 0 18px;
+    border-bottom: 1px solid #1f2229;
+    border-radius: 0;
+    background: transparent;
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 12px;
+}
+
+.x-reply-section.modal-reply {
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.x-avatar.moderator {
+    width: 74px;
+    height: 74px;
+    border-radius: 999px;
+    border: 3px solid #1fd56d;
+}
+
+.x-reply-main {
+    min-width: 0;
+}
+
+.x-reply-helper {
+    margin: 6px 0 10px;
+    font-size: 15px;
+    color: #a6adb8;
+}
+
+.ai-incorrect-options {
+    display: grid;
+    gap: 10px;
+}
+
+.ai-incorrect-option {
+    text-align: left;
+    border: 2px solid #3d424d;
+    border-radius: 8px;
+    background: #1d2026;
+    color: #eceef2;
+    padding: 12px 14px;
+    font-size: 15px;
+    line-height: 1.35;
+    cursor: pointer;
+    transition: border-color 0.18s ease;
+}
+
+.ai-incorrect-option.wrong-selection,
+.ai-incorrect-option.persist-wrong {
+    border-color: #ff2a2a;
+}
+
+.ai-incorrect-option.correct-selection {
+    border-color: #20db58;
+    background: #1c3225;
+}
+
+.reply-status-line {
+    margin-top: 8px;
+    min-height: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.reply-try-again {
+    color: #ff9ea2;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.reply-correct {
+    color: #43f56d;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.reply-modal-actions {
+    margin-top: 14px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.reply-send-btn {
+    border: none;
+    background: #0f8f3e;
+    color: #fff;
+    border-radius: 999px;
+    padding: 10px 28px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.reply-send-btn:disabled {
+    background: #406a50;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .ai-incorrect-app {
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    .ai-incorrect-feed,
+    .ai-incorrect-uses-page,
+    .ai-incorrect-panel {
+        height: auto;
+        overflow: auto;
+    }
+
+    .list-item {
+        grid-template-columns: 42px 1fr;
+    }
+
+    .reply-open-btn {
+        grid-column: 1 / -1;
+        justify-self: end;
+    }
+
+    .reply-modal {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .x-reply-section.modal-reply {
+        grid-template-columns: 56px 1fr;
+    }
+
+    .x-avatar.moderator {
+        width: 56px;
+        height: 56px;
+    }
+
+    .ai-incorrect-post-text,
+    .ai-incorrect-option {
+        font-size: 15px;
+    }
+
+    .reply-send-btn {
+        font-size: 16px;
+    }
 }

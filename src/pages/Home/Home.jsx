@@ -7,8 +7,6 @@ import { useTranslation } from 'react-i18next';
 
 import { usePosts } from "../../contexts/PostsProvider.jsx";
 import { Post } from "../../components/Post/Post";
-import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
-import { CreatePostForm } from "../../components/CreatePostForm/CreatePostForm";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Header } from "../../components/Header/Header";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
@@ -16,11 +14,12 @@ import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 export const Home = () => {
   const { t } = useTranslation();
   const { setSortBy, sortBy, allPosts, postLoading } = usePosts();
-  const { loggedInUserState } = useLoggedInUser();
 
 
-  // Mostrar todos los posts ya que no tenemos array following
-  const allPostFromFollowers = allPosts || [];
+  // Filtrar para mostrar solo lau_tech, marti.dev, alex_data y sofia_analysis en el reto 1
+  const ALLOWED_RETO1_ACCOUNTS = ["lau_tech", "marti.dev", "alex_data", "sofia_analysis"];
+  const filteredPosts = (allPosts || []).filter(post => ALLOWED_RETO1_ACCOUNTS.includes(post.username));
+  const allPostFromFollowers = filteredPosts;
 
   const sortedPosts = (sortBy, allPosts) => {
     if (sortBy === "Latest" || sortBy === t('home.sortBy.latest')) {
@@ -62,8 +61,6 @@ export const Home = () => {
         <Navbar />
 
         <main className="feed">
-          <CreatePostForm />
-
           <div className="sorting-container">
             <p>{getCurrentSortLabel()} {t('home.sortBy.posts')}</p>
             <TbAdjustmentsHorizontal

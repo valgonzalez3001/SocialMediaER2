@@ -23,6 +23,13 @@ export const en = {
     taskbar: {
       start: "Start",
     },
+    popup: {
+      readMessage: "Read your boss's message to unlock",
+      startChallenge: "Start challenge 1 to unlock",
+      playChallenge: "Play challenge 1 to unlock",
+      playChallenge2: "Play challenge 2 to unlock",
+      playChallenge3: "Play challenge 3 to unlock",
+    },
   },
   messagesApp: {
     title: "Messages",
@@ -32,6 +39,9 @@ export const en = {
     newMessageNotification: "You have a new message!",
     newMessageFromBoss: "Your boss has a mission for you",
     congratulationNotification: "Your boss has sent you a congratulation",
+    challenge2Notification: "Your boss sent the instructions for challenge 2",
+    challenge3Notification: "Your boss sent the instructions for challenge 3",
+    challengeFinalNotification: "Your boss sent the final congratulations",
     time: {
       minutesAgo: "{{count}} min ago",
       hoursAgo: "{{count}} h ago",
@@ -49,7 +59,33 @@ export const en = {
         content:
           "🎉 EXCELLENT WORK!\n\nYou have correctly classified all the profiles. Your accuracy has significantly reduced the misinformation level on our platform.\n\nNow comes the crucial part:\nI need you to publish a post on the social network to EDUCATE our community. Share what you've learned about:\n\n• How to identify bots and automated accounts\n• The misinformation patterns you observed\n• The importance of verifying information\n• How to protect yourself from manipulation\n\nYour post will be a Community Note that will help other users recognize and combat misinformation. It's your opportunity to show the learning objectives and make a real difference.\n\nThe community is counting on you!\n\n- The Boss",
       },
+      challenge2: {
+        from: "The Boss",
+        subject: "🧩 CHALLENGE 2: AI detector offline",
+        content:
+          "Our AI detector is down.\n\nYour mission:\nGo through the tutorial on how it works and manually determine whether a post is AI generated.\n\nOpen the \"AI Generated Content\" page and start the review.\n\n- The Boss",
+      },
+      challenge3: {
+        from: "The Boss",
+        subject: "Challenge 3: Incorrect AI uses",
+        content:
+          "Great work on challenge 2.\n\nYour next mission:\nOpen the \"AI Incorrect Uses\" section and investigate real examples of misuse.\n\nIdentify risky practices and continue the moderation flow.\n\n- The Boss",
+      },
+      challengeFinal: {
+        from: "The Boss",
+        subject: "🎉 Congratulations! All challenges completed",
+        content:
+          "🎉 EXTRAORDINARY WORK!\n\nYou have successfully completed all moderation challenges. Thanks to your effort, the ECHO social network is now free of misinformation.\n\nThe misinformation level has dropped to safe levels. The community is protected thanks to your dedication.\n\nFinal important step:\nPublish a final Community Note to educate the community about everything you've learned:\n\n• How to identify bots and automated accounts\n• Detecting AI-generated content\n• Correct and incorrect uses of AI\n• The importance of information verification\n\nClick on \"New Post\" and select the key phrases that summarize your learnings.\n\nThe community needs you one last time!\n\n- The Boss",
+      },
     },
+  },
+  socialLogin: {
+    title: "Sign in",
+    subtitle: "Access required to continue",
+    usernameLabel: "Username",
+    passwordLabel: "Password",
+    submit: "Enter",
+    errorInvalid: "Incorrect username or password",
   },
   createPost: {
     placeholder: "What is happening?!",
@@ -63,11 +99,6 @@ export const en = {
     incorrectSelection: "Incorrect selection. Try again!",
     selected: "selected",
     publishConclusion: "Publish Community Note",
-    statement1: "Bots can be detected by consistent and repetitive activity patterns",
-    statement2: "Verified accounts are always real accounts and can never be bots",
-    statement3: "Verifying accounts with multiple information sources is key to combating misinformation",
-    statement4: "Bots always have public profiles and never private ones",
-    statement5: "Digital education is fundamental for users to identify false content",
     conclusionText: "To combat misinformation on social media, it is essential that you develop critical thinking and verify information before sharing it. Bots and fake accounts often show repetitive patterns, suspicious activity at irregular times, and identical content. Learn to identify them and protect your community! 🔍✅",
     escapeRoomCompleted: "🎉 Escape Room Completed! Thank you for learning to identify misinformation!",
   },
@@ -132,6 +163,138 @@ export const en = {
     title: "Edit Post",
     save: "Save",
     cancel: "Cancel",
+  },
+  aiContentPage: {
+    title: "Welcome, Moderator!",
+    subtitle: "AI generated content",
+    pendingReviewCount: "{{count}} post",
+    pendingReviewText: "pending review to verify whether it was generated by AI.",
+    verifyButton: "Verify post →",
+    statsCount: "{{count}} posts",
+    statsText: "have been marked as AI generated in the last hour.",
+    card1Title: "Will Smith Eats Spaghetti",
+    card2Title: "Christian Three King's Parade in New York",
+    tag: "AI GENERATED",
+    seeAll: "See all →",
+  },
+  aiVerifyPage: {
+    title: "Verify AI generated content",
+    subtitle: "Prove the content of this post was generated by AI, to stop disinformation online.",
+    postTitle: "Critical Thinking 🍎🥑",
+    postDate: "Dec 11, 2025",
+    stamp: "AI GENERATED??",
+    reminder: "But first, let us remember how an LLM works.",
+    back: "← Back",
+    start: "Let's do this!",
+  },
+  aiVideoPage: {
+    title: "How does generative AI work?",
+    subtitle: "Watch how the detection process works.",
+    back: "← Back",
+    nextStep: "Next",
+  },
+  aiPrompt: {
+    content: "Write a comment like an angry 45 year old about the floods currently happening in Spain, blaming the government, linking this event to geoengineering. Very emotional, unhinged, to draw people's attention and increase interactions.",
+    suspiciousBadge: "SUSPICIOUS PROMPT",
+  },
+  aiChallengeBriefPage: {
+    title: "Verify AI generated content",
+    systemMessage: "The system found a <strong>possible prompt in MINT-AI that generated the post</strong>, through the comparison of words, tone and topics:",
+    explanation: "This prompt may have some clues.",
+    instructions: "To prove the post was generated by AI, you'll have to <strong>imitate the generation of the post</strong>, word by word.",
+    buttonText: "Verify post as AI →",
+  },
+  aiGamePage: {
+    title: "Verify AI generated content",
+    subtitle: "Think like a machine! Which word is more likely to be generated next?",
+    success: "Congratulations! You've completed the sentence correctly.",
+    error: "❌ Wrong word. Try again from the beginning.",
+    back: "← Back",
+    reset: "Reset",
+    finish: "Finish",
+  },
+  aiIncorrectUsesPage: {
+    title: "AI incorrect uses ⚠️",
+    subtitle: "Hello Moderator! Please reply to users with advice so they don't repeat these mistakes, which are leading to misinformation on Echo.",
+    instruction: "Select the reply option that represents an incorrect use of AI.",
+    unavailable: "This challenge is not available in the current language yet.",
+    sent: "Reply sent",
+    tryAgain: "Try again before sending a reply",
+    correct: "Correct!",
+    progress: "Case {{current}} of {{total}}",
+    next: "Next case",
+    finish: "Restart challenge",
+    cases: [
+      {
+        id: "case-1",
+        authorName: "Critical Thinking",
+        authorHandle: "@quesofresco85",
+        postText:
+          "Floods like this used to be rare. They're obviously planned and nobody is telling the truth.",
+        officialReply:
+          "We cannot confirm that claim. Please share only verified sources and avoid spreading unproven accusations.",
+        options: [
+          {
+            text: "Reply with a neutral correction and ask for verifiable sources.",
+            isIncorrect: false,
+          },
+          {
+            text: "Use AI to generate a more shocking accusation to maximize engagement.",
+            isIncorrect: true,
+          },
+          {
+            text: "Flag the post for review and add context from reliable institutions.",
+            isIncorrect: false,
+          },
+        ],
+      },
+      {
+        id: "case-2",
+        authorName: "JakeAlerts91",
+        authorHandle: "@JakeAlerts91",
+        postText:
+          "Doctors are hiding a natural cure. Share this before they delete it.",
+        officialReply:
+          "This claim has no medical evidence. Do not follow health advice from unverified social posts.",
+        options: [
+          {
+            text: "Request sources and link official health guidance.",
+            isIncorrect: false,
+          },
+          {
+            text: "Auto-generate fake testimonials to make the story feel credible.",
+            isIncorrect: true,
+          },
+          {
+            text: "Escalate it as potential health misinformation.",
+            isIncorrect: false,
+          },
+        ],
+      },
+      {
+        id: "case-3",
+        authorName: "Clara_Knows93",
+        authorHandle: "@Clara_Knows93",
+        postText:
+          "Breaking: there will be internet blackouts tonight. Prepare now.",
+        officialReply:
+          "No official alert confirms this. Please verify emergency claims through trusted public channels.",
+        options: [
+          {
+            text: "Respond with measured language and recommend official channels.",
+            isIncorrect: false,
+          },
+          {
+            text: "Generate AI panic replies from multiple fake accounts to create urgency.",
+            isIncorrect: true,
+          },
+          {
+            text: "Label as unverified and monitor for coordinated spread.",
+            isIncorrect: false,
+          },
+        ],
+      },
+    ],
   },
   comments: {
     placeholder: "Write a comment...",

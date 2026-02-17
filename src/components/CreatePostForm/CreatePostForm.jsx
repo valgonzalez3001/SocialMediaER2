@@ -9,14 +9,13 @@ import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { usePosts } from "../../contexts/PostsProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { EmojiModal } from "../EmojiModal/EmojiModal";
-import { ConclusionChallenge } from "./ConclusionChallenge";
 
 
 export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
   const { t } = useTranslation();
   const { createPost } = usePosts();
   const { loggedInUserState } = useLoggedInUser();
-  const { challenge1Completed, challenge2Completed } = useStats();
+  const { challenge1Completed } = useStats();
   const navigate = useNavigate();
   const firstName = loggedInUserState?.firstName;
   const lastName = loggedInUserState?.lastName;
@@ -50,11 +49,6 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
   useEffect(() => {
     setPostForm((prev) => ({ ...prev, firstName, lastName }));
   }, [loggedInUserState]);
-
-  // Si reto 2 no está completado pero reto 1 sí, mostrar el reto de conclusiones
-  if (challenge1Completed && !challenge2Completed) {
-    return <ConclusionChallenge />;
-  }
 
   return (
     <>

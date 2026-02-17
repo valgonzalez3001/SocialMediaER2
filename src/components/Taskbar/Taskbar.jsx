@@ -5,10 +5,7 @@ import { useMessages } from "../../contexts/MessagesProvider";
 import { FaComments, FaUsers } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
-/**
- * Componente Taskbar - Barra de tareas al estilo Windows
- * Muestra las aplicaciones fijadas y permite abrirlas/cambiar entre ellas
- */
+
 export const Taskbar = () => {
   const { openApps, activeApp, focusApp } = useOS();
   const { unreadCount } = useMessages();

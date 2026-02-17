@@ -20,6 +20,16 @@
   background-color: var(--hover-background);
 }
 
+.navlink.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  /* pointer-events: none; - Removed to allow click events for popup */
+}
+
+.navlink.disabled:hover {
+  background-color: var(--hover-background);
+}
+
 .navlink-icon {
   font-weight: 500;
   font-size: 25px;
@@ -33,6 +43,35 @@
   font-weight: 500;
   margin-left: 20px;
   color: var(--text-color);
+}
+
+.navlink-label {
+  width: 100%;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.navlink-label-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.nav-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  margin-left: auto;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #d32f2f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .navbar ul {
@@ -52,23 +91,28 @@
 }
 
 .create-post-modal {
-  z-index: 10;
   position: fixed;
   inset: 0;
-  width: 100%;
-  margin: auto;
+  z-index: 1300;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(56px, 10vh, 96px) 16px 24px;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.55) !important;
 }
 
-.modal-content {
-  width: 80%;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10%;
-  position: fixed;
-  z-index: 11;
-  background-color: white;
+.create-post-modal .modal-content {
+  position: relative;
+  width: min(900px, calc(100vw - 32px));
+  margin: 0;
+  z-index: 1301;
+  max-height: calc(100vh - clamp(80px, 12vh, 120px));
+  overflow-y: auto;
+  background-color: var(--surface) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 16px;
 }
 
 .create-new-post-btn {
@@ -84,6 +128,17 @@
 }
 .create-new-post-btn:hover {
   background-color: #C6ADFF;
+}
+
+.create-new-post-btn.is-locked {
+  background-color: #8c88a0;
+  color: #e6e2f0;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.create-new-post-btn.is-locked:hover {
+  background-color: #8c88a0;
 }
 
 @media (min-width: 768px) {
@@ -194,13 +249,5 @@
 }
 
 
-.create-post-modal {
-  background-color: rgba(0, 0, 0, 0.55) !important; 
-}
 
-.modal-content {
-  background-color: var(--surface) !important;
-  color: var(--text-color) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 16px;
-}
+

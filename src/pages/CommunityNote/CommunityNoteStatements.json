@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "text": "Los bots pueden detectarse por patrones de actividad consistentes y repetitivos",
+    "correct": true,
+    "category": "bot-detection"
+  },
+  {
+    "id": 2,
+    "text": "Las cuentas verificadas siempre son cuentas reales y nunca pueden ser bots",
+    "correct": false,
+    "category": "verification-misconception"
+  },
+  {
+    "id": 3,
+    "text": "La verificacion de cuentas con multiples fuentes de informacion es clave para combatir la desinformacion",
+    "correct": true,
+    "category": "information-verification"
+  },
+  {
+    "id": 4,
+    "text": "Los bots siempre tienen perfiles publicos y nunca privados",
+    "correct": false,
+    "category": "bot-misconception"
+  },
+  {
+    "id": 5,
+    "text": "La educacion digital es fundamental para que los usuarios identifiquen contenido falso",
+    "correct": false,
+    "category": "digital-education"
+  }
+]

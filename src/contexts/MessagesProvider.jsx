@@ -32,24 +32,44 @@ export const MessagesProvider = ({ children }) => {
   const [unreadCount, setUnreadCount] = useState(0);
   const notificationShownRef = useRef(false);
 
-  // Mostrar notificación solo una vez al montar el componente
-  useEffect(() => {
-    if (!notificationShownRef.current) {
-      toast((toastInstance) => (
-        <div>
-          <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
-            {t("messagesApp.newMessageNotification")}
-          </p>
-          <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
-            {t("messagesApp.newMessageFromBoss")}
-          </p>
-        </div>
-      ), {
-        duration: 4000,
-        icon: "📬",
-      });
-      notificationShownRef.current = true;
+  const showMissionToast = () => {
+    if (notificationShownRef.current) {
+      return;
     }
+    toast(() => (
+      <div>
+        <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
+          {t("messagesApp.newMessageNotification")}
+        </p>
+        <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
+          {t("messagesApp.newMessageFromBoss")}
+        </p>
+      </div>
+    ), {
+      duration: 4000,
+      icon: "📬",
+    });
+    notificationShownRef.current = true;
+  };
+
+  // Mostrar notificación cuando el onboarding se completa
+  useEffect(() => {
+    const handleOnboardingComplete = () => {
+      showMissionToast();
+    };
+
+    const playerData = sessionStorage.getItem("playerData");
+    if (playerData) {
+      const data = JSON.parse(playerData);
+      if (data.onboardingCompleted) {
+        showMissionToast();
+      }
+    }
+
+    window.addEventListener("onboardingComplete", handleOnboardingComplete);
+    return () => {
+      window.removeEventListener("onboardingComplete", handleOnboardingComplete);
+    };
   }, [t]);
 
   // Actualizar contador de mensajes no leídos
@@ -63,11 +83,15 @@ export const MessagesProvider = ({ children }) => {
    * @param {number} messageId - ID del mensaje
    */
   const markAsRead = (messageId) => {
-    setMessages(
-      messages.map((msg) =>
+    setMessages((prev) => {
+      const target = prev.find((msg) => msg.id === messageId);
+      if (target?.contentKey === "messagesApp.messages.missionBrief.content") {
+        sessionStorage.setItem("missionBriefRead", "true");
+      }
+      return prev.map((msg) =>
         msg.id === messageId ? { ...msg, read: true } : msg
-      )
-    );
+      );
+    });
   };
 
   /**

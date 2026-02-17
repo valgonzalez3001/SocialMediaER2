@@ -165,11 +165,11 @@ export const Admin = () => {
             sessionStorage.removeItem('fromAdmin');
             setClassifiedUsers({});
             
-            // Enviar mensaje de felicitación del jefe
+            // Enviar instrucciones del reto 2
             addMessage({
-                fromKey: "messagesApp.messages.congratulations.from",
-                subjectKey: "messagesApp.messages.congratulations.subject",
-                contentKey: "messagesApp.messages.congratulations.content",
+                fromKey: "messagesApp.messages.challenge2.from",
+                subjectKey: "messagesApp.messages.challenge2.subject",
+                contentKey: "messagesApp.messages.challenge2.content",
             });
             
             // Mostrar notificación de nuevo mensaje
@@ -179,7 +179,7 @@ export const Admin = () => {
                         {t("messagesApp.newMessageNotification")}
                     </p>
                     <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
-                        {t("messagesApp.congratulationNotification")}
+                        {t("messagesApp.challenge2Notification")}
                     </p>
                 </div>
             ), {

@@ -3,7 +3,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { AttentionSeeker } from "react-awesome-reveal";
 import { useTranslation } from 'react-i18next';
-import { LanguageSelector } from "../LanguageSelector/LanguageSelector";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -19,8 +18,6 @@ export const Header = () => {
           onClick={() => navigate("/")}
         />
       </AttentionSeeker>
-      
-      <LanguageSelector />
     </div>
   );
 };

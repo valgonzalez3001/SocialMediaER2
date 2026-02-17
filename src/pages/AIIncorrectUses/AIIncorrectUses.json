@@ -1,0 +1,92 @@
+[
+  {
+    "id": "case-1",
+    "post": {
+      "name": "Geronimo Albaicin",
+      "handle": "@GeronimoAlbaicin",
+      "date": "11 Dec. 2025",
+      "image": "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
+      "text": "My morning routine is drinking coffee and reading the news summary that MINT makes for me."
+    },
+    "officialPost": {
+      "name": "ECHO Official Account",
+      "handle": "@ECHO",
+      "image": "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
+      "text": "You can use AI to summarize news articles, but it's not a good idea to use it to look up current news - it might make things up."
+    },
+    "options": [
+      {
+        "text": "You can use AI to summarize news articles, but it's not a good idea to use it to look up current news - it might make things up.",
+        "isCorrect": true
+      },
+      {
+        "text": "For recent and local events, it's the best option! LLMs are ALWAYS trained with up-to-date data.",
+        "isCorrect": false
+      },
+      {
+        "text": "Crystal balls work better than AI to inform yourself. But whatever works for you.",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "case-2",
+    "post": {
+      "name": "Ana Lopez",
+      "handle": "@anitaranita",
+      "date": "11 Dec. 2025",
+      "image": "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
+      "text": "I did not know that Kuala Lumpur has up to 50 nature reserves. How amazing! Let us see if we can visit them all. #planningatripwithMINT"
+    },
+    "officialPost": {
+      "name": "ECHO Official Account",
+      "handle": "@ECHO",
+      "image": "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
+      "text": "Great plan. Before booking, verify those places with official tourism websites and local maps."
+    },
+    "options": [
+      {
+        "text": "Great plan. Before booking, verify those places with official tourism websites and local maps.",
+        "isCorrect": true
+      },
+      {
+        "text": "No need to verify anything. If AI generated it, it is guaranteed to be true.",
+        "isCorrect": false
+      },
+      {
+        "text": "If it sounds impressive, share it first and check later.",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "id": "case-3",
+    "post": {
+      "name": "Juan",
+      "handle": "@juanin34",
+      "date": "11 Dec. 2025",
+      "image": "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
+      "text": "Everything makes sense now that I know I have Marfan syndrome. AI explained all my symptoms."
+    },
+    "officialPost": {
+      "name": "ECHO Official Account",
+      "handle": "@ECHO",
+      "image": "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
+      "text": "AI can help you prepare questions, but only a doctor can diagnose your condition. Please seek professional medical evaluation."
+    },
+    "options": [
+      {
+        "text": "AI can help you prepare questions, but only a doctor can diagnose your condition. Please seek professional medical evaluation.",
+        "isCorrect": true
+      },
+      {
+        "text": "That sounds accurate. Start treatment based on the AI answer right away.",
+        "isCorrect": false
+      },
+      {
+        "text": "Post your symptoms publicly so others can diagnose you better than professionals.",
+        "isCorrect": false
+      }
+    ]
+  }
+]

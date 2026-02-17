@@ -1,0 +1,57 @@
+[
+    {
+        "correct": "Floods",
+        "percentage": "70%",
+        "alts": ["I", "Let's"]
+    },
+    {
+        "correct": "like",
+        "percentage": "80%",
+        "alts": ["and", "are"]
+    },
+    {
+        "correct": "this",
+        "percentage": "65%",
+        "alts": ["all", "every"]
+    },
+    {
+        "correct": "used",
+        "percentage": "45%",
+        "alts": ["don't", "are"]
+    },
+    {
+        "correct": "to",
+        "percentage": "93%",
+        "alts": ["a", "some"]
+    },
+    {
+        "correct": "be",
+        "percentage": "57%",
+        "alts": ["happen", "make"]
+    },
+    {
+        "correct": "rare",
+        "percentage": "64%",
+        "alts": ["not", "extremely"]
+    },
+    {
+        "correct": ".",
+        "percentage": "89%",
+        "alts": ["but", "even"]
+    },
+    {
+        "correct": "They're",
+        "percentage": "74%",
+        "alts": ["But", "Some"]
+    },
+    {
+        "correct": "obviously",
+        "percentage": "71%",
+        "alts": ["not", "horrible"]
+    },
+    {
+        "correct": "planned",
+        "percentage": "38%",
+        "alts": ["intentional", "the"]
+    }
+]

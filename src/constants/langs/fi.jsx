@@ -23,6 +23,12 @@ export const fi = {
     taskbar: {
       start: "Aloita",
     },
+    popup: {
+      readMessage: "Lue pomosi viesti avataksesi",
+      startChallenge: "Aloita haaste 1 avataksesi",
+      playChallenge: "Pelaa haaste 1 avataksesi",
+      playChallenge2: "Pelaa haaste 2 avataksesi",
+    },
   },
   messagesApp: {
     title: "Viestit",
@@ -32,6 +38,8 @@ export const fi = {
     newMessageNotification: "Sinulla on uusi viesti!",
     newMessageFromBoss: "Pomollasi on sinulle tehtävä",
     congratulationNotification: "Pomosi on lähettänyt sinulle onnittelut",
+    challenge2Notification: "Pomosi on lähettänyt ohjeet haasteeseen 2",
+    challenge3Notification: "Pomosi on lähettänyt ohjeet haasteeseen 3",
     time: {
       minutesAgo: "{{count}} min sitten",
       hoursAgo: "{{count}} h sitten",
@@ -49,7 +57,27 @@ export const fi = {
         content:
           "🎉 ERINOMAISTA TYÖTÄ!\n\nOlet luokitellut kaikki profiilit oikein. Tarkkuutesi on merkittävästi pienentänyt dezinformaation tasoa alustallamme.\n\nNyt tulee ratkaiseva osa:\nTarvitsen sinun julkaisevan julkaisun sosiaalisessa verkostossa KOULUTTAAKSESI yhteisöämme. Jaa mitä olet oppinut:\n\n• Kuinka tunnistaa botteja ja automatisoituja tilejä\n• Havaitut dezinformaation mallit\n• Tiedon tarkistamisen tärkeys\n• Kuinka suojautua manipulaatiolta\n\nJulkaisusi on Yhteisön Huomautus, joka auttaa muita käyttäjiä tunnistamaan ja taistelemaan dezinformaatiota vastaan. Tämä on tilaisuutesi näyttää oppimisen tavoitteet ja tehdä todellinen ero.\n\nYhteisö luottaa sinuun!\n\n- Esimies",
       },
+      challenge2: {
+        from: "Esimies",
+        subject: "🧩 HAASTE 2: AI-detektori pois käytöstä",
+        content:
+          "AI-detektorimme on pois käytöstä.\n\nTehtäväsi:\nKäy läpi ohjeet siitä, miten se toimii, ja päätä manuaalisesti onko julkaisu tekoälyn luoma.\n\nAvaa \"AI Generated Content\" -sivu ja aloita tarkistus.\n\n- Esimies",
+      },
+      challenge3: {
+        from: "Esimies",
+        subject: "Haaste 3: AI:n vaara kaytto",
+        content:
+          "Hyvaa tyota haasteessa 2.\n\nSeuraava tehtava:\nAvaa \"AI Incorrect Uses\" -sivu ja tutki todellisia vaarinkayton esimerkkeja.\n\nTunnista riskit ja jatka moderointia.\n\n- Esimies",
+      },
     },
+  },
+  socialLogin: {
+    title: "Kirjaudu sisään",
+    subtitle: "Pääsy vaaditaan jatkamiseksi",
+    usernameLabel: "Käyttäjätunnus",
+    passwordLabel: "Salasana",
+    submit: "Kirjaudu",
+    errorInvalid: "Virheellinen käyttäjätunnus tai salasana",
   },
   createPost: {
     placeholder: "Mitä tapahtuu?",
@@ -63,11 +91,6 @@ export const fi = {
     incorrectSelection: "Väärä valinta. Yritä uudelleen!",
     selected: "valittu",
     publishConclusion: "Julkaise Yhteisömuistion",
-    statement1: "Botit voidaan havaita johdonmukaisista ja toistuvista aktiviteettimuodoista",
-    statement2: "Vahvistetut tilit ovat aina todellisia tilejä eivätkä voi koskaan olla botteja",
-    statement3: "Tilien vahvistaminen useiden tietolähteiden avulla on avainasemassa väärätiedon torjunnassa",
-    statement4: "Boteilla on aina julkiset profiilit eivätkä koskaan yksityiset",
-    statement5: "Digitaalinen koulutus on olennaista, jotta käyttäjät voivat tunnistaa väärää sisältöä",
     conclusionText: "Dezinformaation vastaisesti sosiaalisessa mediassa on välttämätöntä, että kehität kriittistä ajattelua ja vahvistat tiedot ennen jakamista. Botit ja väärät tilit osoittavat usein toistuvia malleja, epäilyttävää toimintaa epäsäännöllisinä aikoina ja identtistä sisältöä. Opi tunnistamaan ne ja suojaa yhteisöäsi! 🔍✅",
     escapeRoomCompleted: "🎉 Escape Room Valmis! Kiitos siitä, että opit tunnistamaan väärätietoa!",
   },
@@ -132,6 +155,55 @@ export const fi = {
     title: "Muokkaa Julkaisua",
     save: "Tallenna",
     cancel: "Peruuta",
+  },
+  aiContentPage: {
+    title: "Tervetuloa, moderaattori!",
+    subtitle: "Tekoälyn luoma sisältö",
+    pendingReviewCount: "{{count}} julkaisu",
+    pendingReviewText: "odottaa tarkistusta, onko se tekoälyn luoma.",
+    verifyButton: "Tarkista julkaisu →",
+    statsCount: "{{count}} julkaisua",
+    statsText: "on merkitty tekoälyn luomaksi viimeisen tunnin aikana.",
+    card1Title: "Will Smith syö spagettia",
+    card2Title: "Kolmen kuninkaan kulkue New Yorkissa",
+    tag: "TEKOÄLYN LUOMA",
+    seeAll: "Katso kaikki →",
+  },
+  aiVerifyPage: {
+    title: "Vahvista tekoälyn luoma sisältö",
+    subtitle: "Todista, että tämän julkaisun sisältö on tekoälyn luoma, jotta verkkodisinformaatio vähenisi.",
+    postTitle: "Kriittinen ajattelu 🍎🥑",
+    postDate: "11.12.2025",
+    stamp: "TEKOÄLY?",
+    reminder: "Mutta ensin, muistetaan miten LLM toimii.",
+    back: "← Takaisin",
+    start: "Aloitetaan!",
+  },
+  aiVideoPage: {
+    title: "Miten generatiivinen tekoäly toimii?",
+    subtitle: "Katso kuinka tunnistusprosessi toimii.",
+    back: "← Takaisin",
+    nextStep: "Seuraava",
+  },
+  aiPrompt: {
+    content: "Kirjoita kommentti kuten 45-vuotias vihainen mies nykyisistä tulvista Espanjassa, syyttäen hallitusta ja kytkien tämän tapahtuman geosuunnitteluun. Hyvin emotionaalinen, järjetön, houkutella ihmisten huomiota ja lisätä vuorovaikutusta.",
+    suspiciousBadge: "EPÄILYTTÄVÄ KEHOTUS",
+  },
+  aiChallengeBriefPage: {
+    title: "Vahvista tekoälyn tuottama sisältö",
+    systemMessage: "Järjestelmä löysi <strong>mahdollisen kehotteen MINT-AI:ssä, joka tuotti viestin</strong>, sanojen, sävyn ja aiheiden vertailulla:",
+    explanation: "Tällä kehotteella voi olla joitain vihjeitä.",
+    instructions: "Todistaaksesi, että viesti luotiin tekoälyn avulla, sinun on <strong>jäljiteltävä viestin luontia</strong>, sana kerrallaan.",
+    buttonText: "Vahvista viesti tekoälyksi →",
+  },
+  aiGamePage: {
+    title: "Vahvista tekoälyn tuottama sisältö",
+    subtitle: "Ajattele kuin kone! Mikä sana todennäköisimmin luodaan seuraavaksi?",
+    success: "Onnittelut! Olet saanut lauseen valmiiksi oikein.",
+    error: "❌ Väärä sana. Yritä uudelleen alusta.",
+    back: "← Takaisin",
+    reset: "Nollaa",
+    finish: "Lopeta",
   },
   comments: {
     placeholder: "Kirjoita kommentti...",

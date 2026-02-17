@@ -4083,4 +4083,245 @@ export const postsEN = [
     createdAt: new Date("February 25 2025 16:10:00"),
     updatedAt: formatDate(),
   },
+
+  //-----------Lau Tech Post 1 Feed--------------
+  {
+    _id: uuid(),
+    content: "OK... I just discovered that this girl DOESN'T EXIST 😳 It's 100% AI-generated. And it has more followers than me. It's increasingly hard to tell if a photo is real or not. Beware of idealizing everything you see on social media, because there might not even be a real person behind it.",
+    type: "image",
+    mediaUrl: "/assets/post1_feed.jpg",
+    likes: { likeCount: 256 },
+    comments: [
+      {
+        _id: uuid(),
+        firstName: "Diego",
+        lastName: "M.",
+        username: "diego_martinez",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
+        text: "This is impressive! They need to make this more visible",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("January 02 2026 13:05:00"),
+      },
+      {
+        _id: uuid(),
+        firstName: "Elena",
+        lastName: "R.",
+        username: "elena_reyes",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
+        text: "Thank you for alerting us to this. It's scary.",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("January 02 2026 13:15:00"),
+      },
+    ],
+    username: "lau_tech",
+    firstName: "Laura",
+    lastName: "T.",
+    avatarURL: "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
+    createdAt: new Date("January 02 2026 12:37:00"),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    type: "image",
+    mediaUrl: "/assets/post2_feed.png",
+    content:
+      "AI doesn't \"lie\"… but it can make things up with brutal confidence 💀\n\nIt's called hallucination.\n\nBasically it predicts words that sound good together, it doesn't verify if they're true.\n\nIf you use AI for work or important info → check your sources.\n\nAlways.",
+    likes: {
+      likeCount: 542,
+    },
+    comments: [
+      {
+        _id: uuid(),
+        firstName: "David",
+        lastName: "Thompson",
+        username: "dthompson92",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251366/socialMedia/profilePictures/user5_kfjdks.jpg",
+        text: "This explains so much! I've seen this happen with fact checking",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("November 23 2025 16:45:00"),
+      },
+      {
+        _id: uuid(),
+        firstName: "Sophie",
+        lastName: "Williams",
+        username: "sophie_writes",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251363/socialMedia/profilePictures/user6_lsjdkf.jpg",
+        text: "Critical reminder! Never trust AI output without verification",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("November 23 2025 17:20:00"),
+      },
+    ],
+    username: "dani.codes",
+    firstName: "Dani",
+    lastName: "C.",
+    avatarURL:
+      "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user7_mnbvcx.jpg",
+    createdAt: new Date("November 23 2025 16:07:00"),
+    updatedAt: formatDate(),
+  },
+
+  //-----------Marti Dev Post 1 Feed --------------
+  {
+    _id: uuid(),
+    content: "Many people think that when an AI gives a wrong answer it's because it \"lies\". But it doesn't actually work that way.\n\nLanguage models don't look for truth, they look for the most probable word according to the data they were trained on. If they don't have enough information or the topic is very specific, they can invent details that sound completely convincing.\n\nThat's called \"hallucination\".\nIt's not malice. It's statistics.\n\nThat's why using AI is fine, but blindly trusting it isn't.",
+    type: "image",
+    mediaUrl: "/assets/post3_feed.gif",
+    likes: { likeCount: 342 },
+    comments: [
+      {
+        _id: uuid(),
+        firstName: "Carlos",
+        lastName: "R.",
+        username: "carlos_rodriguez",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
+        text: "This is super important. People don't understand that AI doesn't think, it just predicts",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("November 23 2025 19:15:00"),
+      },
+      {
+        _id: uuid(),
+        firstName: "Marta",
+        lastName: "L.",
+        username: "marta_lopez",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
+        text: "This happened to me yesterday with ChatGPT. It gave me an answer that sounded perfect but was completely false 😅",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("November 23 2025 19:42:00"),
+      },
+      {
+        _id: uuid(),
+        firstName: "Pedro",
+        lastName: "S.",
+        username: "pedro_sanchez",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
+        text: "Exactly. Verification is always key 👍",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("November 23 2025 20:03:00"),
+      },
+    ],
+    username: "marti.dev",
+    firstName: "Martí",
+    lastName: "Dev",
+    avatarURL: "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251370/socialMedia/profilePictures/user8_mmrqeu.jpg",
+    createdAt: new Date("November 23 2025 18:58:00"),
+    updatedAt: formatDate(),
+  },
+
+  //-----------Alex Data Post 1 Feed --------------
+  {
+    _id: uuid(),
+    content: "Recommendation algorithms analyze much more than just your likes.\n\nThey measure how long you stay looking at something, if you pause a video, if you go back, if you zoom in on an image... even what you ignore.\n\nWith all that they create a predictive profile of your interests.\n\nThey don't show you the most true.\nThey show you the most likely to make you stay.\n\nAnd that completely changes how we consume information.",
+    type: "image",
+    mediaUrl: "/assets/post2_feed.png",
+    likes: { likeCount: 287 },
+    comments: [
+      {
+        _id: uuid(),
+        firstName: "Maria",
+        lastName: "G.",
+        username: "maria_garcia_23",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
+        text: "I had never thought about it this way. Well explained",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("November 24 2025 20:15:00"),
+      },
+      {
+        _id: uuid(),
+        firstName: "David",
+        lastName: "R.",
+        username: "david_ruiz_95",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
+        text: "This is what most people don't understand about social media",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("November 24 2025 20:45:00"),
+      },
+    ],
+    username: "alex_data",
+    firstName: "Alex",
+    lastName: "Data",
+    avatarURL: "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251365/socialMedia/profilePictures/user4_yobn9s.jpg",
+    createdAt: new Date("November 24 2025 19:30:00"),
+    updatedAt: formatDate(),
+  },
+
+  //-----------Sofia Analysis Post 1 Feed --------------
+  {
+    _id: uuid(),
+    content: "A bot isn't always obvious. It's not an account with a weird name and zero photos.\n\nIt can be designed to look completely human: it posts memes, comments news, interacts with other users.\n\nIf hundreds of bots support the same idea, it can seem like there's real consensus.\n\nAnd when we believe that \"everyone thinks this way\", we tend to question it less.\n\nThat's where the key to the problem lies.",
+    type: "image",
+    mediaUrl: "/assets/post4_feed.jpeg",
+    likes: { likeCount: 156 },
+    comments: [
+      {
+        _id: uuid(),
+        firstName: "Lucas",
+        lastName: "T.",
+        username: "lucas_tech_92",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251368/socialMedia/profilePictures/user3_atvsaj.jpg",
+        text: "This is scary. How do you know if the person following you is real or not",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("November 25 2025 18:20:00"),
+      },
+      {
+        _id: uuid(),
+        firstName: "Paula",
+        lastName: "M.",
+        username: "paula_media_23",
+        avatarURL:
+          "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
+        text: "That's why it's important to think critically and not believe everything you see",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+        createdAt: new Date("November 25 2025 18:55:00"),
+      },
+    ],
+    username: "sofia_analysis",
+    firstName: "Sof\u00eda",
+    lastName: "Analysis",
+    avatarURL: "https://res.cloudinary.com/darwtgzlk/image/upload/w_400,f_auto,q_auto/v1686251364/socialMedia/profilePictures/user2_dhebgg.jpg",
+    createdAt: new Date("November 25 2025 17:45:00"),
+    updatedAt: formatDate(),
+  },
 ];

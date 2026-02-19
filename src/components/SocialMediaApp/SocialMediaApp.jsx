@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import "./SocialMediaApp.css";
 import { useOS } from "../../contexts/OSProvider";
 import { NavRoutes } from "../../Routes/NavRoutes";
 import { FaTimes, FaMinus } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useStats } from "../../contexts/StatsProvider";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Componente SocialMediaApp - Envuelve la aplicación de red social en una ventana
@@ -13,6 +14,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
   const { closeApp, minimizeApp } = useOS();
   const { t } = useTranslation();
   const { challenge1Completed } = useStats();
+  const navigate = useNavigate();
   const isEmbedded = mode === "embedded";
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,6 +28,15 @@ export const SocialMediaApp = ({ mode = "window" }) => {
     return missionBriefRead && !challenge1Completed;
   }, [challenge1Completed]);
 
+  // Navegar a home cuando se monta el componente o después del login
+  useEffect(() => {
+    if (loginDone && !sessionStorage.getItem("fromAdmin")) {
+      navigate("/", { replace: true });
+    }
+    // Run only when login state changes; route changes should not trigger redirects.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loginDone]);
+
   const handleLoginSubmit = (event) => {
     event.preventDefault();
     const isValid = username === "echo_official" && password === "1234";
@@ -33,6 +44,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
       sessionStorage.setItem("socialLoginDone", "true");
       setLoginDone(true);
       setLoginErrorKey("");
+      navigate("/", { replace: true });
       return;
     }
     setLoginErrorKey("socialLogin.errorInvalid");

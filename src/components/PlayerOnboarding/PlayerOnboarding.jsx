@@ -169,7 +169,7 @@ export const PlayerOnboarding = ({ onComplete }) => {
                 className={`language-option ${selectedLanguage === "es" ? "selected" : ""}`}
                 onClick={() => setSelectedLanguage("es")}
               >
-                <span className="language-flag">🇪🇸</span>
+                <img src="https://flagcdn.com/w80/es.png" alt="ES" className="language-flag" />
                 <span className="language-name">Español</span>
               </button>
               <button
@@ -177,7 +177,7 @@ export const PlayerOnboarding = ({ onComplete }) => {
                 className={`language-option ${selectedLanguage === "en" ? "selected" : ""}`}
                 onClick={() => setSelectedLanguage("en")}
               >
-                <span className="language-flag">🇬🇧</span>
+                <img src="https://flagcdn.com/w80/gb.png" alt="GB" className="language-flag" />
                 <span className="language-name">English</span>
               </button>
               <button
@@ -185,7 +185,7 @@ export const PlayerOnboarding = ({ onComplete }) => {
                 className={`language-option ${selectedLanguage === "fi" ? "selected" : ""}`}
                 onClick={() => setSelectedLanguage("fi")}
               >
-                <span className="language-flag">🇫🇮</span>
+                <img src="https://flagcdn.com/w80/fi.png" alt="FI" className="language-flag" />
                 <span className="language-name">Suomi</span>
               </button>
               <button
@@ -193,7 +193,7 @@ export const PlayerOnboarding = ({ onComplete }) => {
                 className={`language-option ${selectedLanguage === "sr" ? "selected" : ""}`}
                 onClick={() => setSelectedLanguage("sr")}
               >
-                <span className="language-flag">🇷🇸</span>
+                <img src="https://flagcdn.com/w80/rs.png" alt="RS" className="language-flag" />
                 <span className="language-name">Српски</span>
               </button>
             </div>

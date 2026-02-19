@@ -13,6 +13,7 @@ export const NewPostLauncher = () => {
     challenge2Completed,
     challenge3Completed,
     challengeFinalCompleted,
+    challengeFinalInstructionsRead,
   } = useStats();
   const [isCreateNewPostClicked, setIsCreateNewPostClicked] = useState(false);
   const [popup, setPopup] = useState({
@@ -21,7 +22,18 @@ export const NewPostLauncher = () => {
     position: { top: 0, left: 0 },
   });
 
-  const isLocked = !challenge1Completed || !challenge2Completed || !challenge3Completed;
+  let lockMessageKey = null;
+  if (!challenge1Completed) {
+    lockMessageKey = "desktop.popup.completeChallenge1";
+  } else if (!challenge2Completed) {
+    lockMessageKey = "desktop.popup.completeChallenge2";
+  } else if (!challenge3Completed) {
+    lockMessageKey = "desktop.popup.completeChallenge3";
+  } else if (!challengeFinalCompleted && !challengeFinalInstructionsRead) {
+    lockMessageKey = "desktop.popup.readMessageChallengeFinal";
+  }
+
+  const isLocked = Boolean(lockMessageKey);
   const shouldShowCommunityNote = challenge3Completed && !challengeFinalCompleted;
 
   const handleButtonClick = (event) => {
@@ -34,7 +46,7 @@ export const NewPostLauncher = () => {
     const popupWidth = 280;
     setPopup({
       visible: true,
-      message: t("desktop.popup.playChallenge3"),
+      message: t(lockMessageKey),
       position: {
         top: Math.max(50, rect.top - 60),
         left: Math.max(10, rect.left + rect.width / 2 - popupWidth / 2),

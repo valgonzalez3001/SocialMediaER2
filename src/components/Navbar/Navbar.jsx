@@ -18,7 +18,7 @@ import aiIncorrectUsesCases from "../../pages/AIIncorrectUses/AIIncorrectUses.js
 export const Navbar = () => {
   const { t } = useTranslation();
   const { loggedInUserState } = useLoggedInUser();
-  const { challenge1Completed, challenge2Completed, challenge3Completed } = useStats();
+  const { challenge1Completed, challenge2Completed, challenge3Completed, challenge2InstructionsRead, challenge3InstructionsRead } = useStats();
   const [popup, setPopup] = useState({
     visible: false,
     message: "",
@@ -62,9 +62,9 @@ export const Navbar = () => {
   };
 
   const pendingChallenge1 = challenge1Completed ? 0 : 5;
-  const pendingChallenge2 = challenge1Completed && !challenge2Completed ? 1 : 0;
+  const pendingChallenge2 = challenge2InstructionsRead && !challenge2Completed ? 1 : 0;
   const pendingChallenge3 =
-    challenge2Completed && !challenge3Completed ? aiIncorrectUsesCases.length : 0;
+    challenge3InstructionsRead && !challenge3Completed ? aiIncorrectUsesCases.length : 0;
 
   return (
     <nav className="navbar">
@@ -95,7 +95,7 @@ export const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          {challenge1Completed ? (
+          {challenge2InstructionsRead ? (
             <NavLink 
               className="navlink"
               style={getActiveStyle} 
@@ -111,7 +111,7 @@ export const Navbar = () => {
             <div
               className="navlink disabled"
               style={getDisabledStyle()}
-              onClick={(e) => handleShowBlockedPopup(e, "desktop.popup.playChallenge")}
+              onClick={(e) => handleShowBlockedPopup(e, challenge1Completed ? "desktop.popup.readMessageChallenge2" : "desktop.popup.completeChallenge1")}
               role="button"
             >
               <RiRobot2Line className="navlink-icon" />
@@ -120,7 +120,7 @@ export const Navbar = () => {
           )}
         </li>
         <li>
-          {challenge2Completed ? (
+          {challenge3InstructionsRead ? (
             <NavLink 
               className="navlink"
               style={getActiveStyle} 
@@ -136,7 +136,7 @@ export const Navbar = () => {
             <div
               className="navlink disabled"
               style={getDisabledStyle()}
-              onClick={(e) => handleShowBlockedPopup(e, "desktop.popup.playChallenge2")}
+              onClick={(e) => handleShowBlockedPopup(e, challenge2Completed ? "desktop.popup.readMessageChallenge3" : "desktop.popup.completeChallenge2")}
               role="button"
             >
               <RiErrorWarningLine className="navlink-icon" />

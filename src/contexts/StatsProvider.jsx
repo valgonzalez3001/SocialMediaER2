@@ -71,11 +71,30 @@ export const StatsProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : false;
   });
 
+  // Estados para rastrear la lectura de mensajes de instrucciones
+  const [challenge2InstructionsRead, setChallenge2InstructionsRead] = useState(() => {
+    const saved = sessionStorage.getItem("challenge2InstructionsRead");
+    return saved ? JSON.parse(saved) : false;
+  });
+
+  const [challenge3InstructionsRead, setChallenge3InstructionsRead] = useState(() => {
+    const saved = sessionStorage.getItem("challenge3InstructionsRead");
+    return saved ? JSON.parse(saved) : false;
+  });
+
+  const [challengeFinalInstructionsRead, setChallengeFinalInstructionsRead] = useState(() => {
+    const saved = sessionStorage.getItem("challengeFinalInstructionsRead");
+    return saved ? JSON.parse(saved) : false;
+  });
+
   useEffect(() => {
     const savedChallenge1 = sessionStorage.getItem("challenge1Completed");
     const savedChallenge2 = sessionStorage.getItem("challenge2Completed");
     const savedChallenge3 = sessionStorage.getItem("challenge3Completed");
     const savedChallengeFinal = sessionStorage.getItem("challengeFinalCompleted");
+    const savedChallenge2Instructions = sessionStorage.getItem("challenge2InstructionsRead");
+    const savedChallenge3Instructions = sessionStorage.getItem("challenge3InstructionsRead");
+    const savedChallengeFinalInstructions = sessionStorage.getItem("challengeFinalInstructionsRead");
 
     if (savedChallenge1) {
       setChallenge1Completed(JSON.parse(savedChallenge1));
@@ -88,6 +107,15 @@ export const StatsProvider = ({ children }) => {
     }
     if (savedChallengeFinal) {
       setChallengeFinalCompleted(JSON.parse(savedChallengeFinal));
+    }
+    if (savedChallenge2Instructions) {
+      setChallenge2InstructionsRead(JSON.parse(savedChallenge2Instructions));
+    }
+    if (savedChallenge3Instructions) {
+      setChallenge3InstructionsRead(JSON.parse(savedChallenge3Instructions));
+    }
+    if (savedChallengeFinalInstructions) {
+      setChallengeFinalInstructionsRead(JSON.parse(savedChallengeFinalInstructions));
     }
   }, []);
 
@@ -147,6 +175,21 @@ export const StatsProvider = ({ children }) => {
     sessionStorage.setItem("challengeFinalCompleted", JSON.stringify(true));
   };
 
+  const markChallenge2InstructionsRead = () => {
+    setChallenge2InstructionsRead(true);
+    sessionStorage.setItem("challenge2InstructionsRead", JSON.stringify(true));
+  };
+
+  const markChallenge3InstructionsRead = () => {
+    setChallenge3InstructionsRead(true);
+    sessionStorage.setItem("challenge3InstructionsRead", JSON.stringify(true));
+  };
+
+  const markChallengeFinalInstructionsRead = () => {
+    setChallengeFinalInstructionsRead(true);
+    sessionStorage.setItem("challengeFinalInstructionsRead", JSON.stringify(true));
+  };
+
   const value = {
     stats,
     updateStats,
@@ -159,6 +202,12 @@ export const StatsProvider = ({ children }) => {
     completeChallenge3,
     challengeFinalCompleted,
     completeChallengeFinal,
+    challenge2InstructionsRead,
+    markChallenge2InstructionsRead,
+    challenge3InstructionsRead,
+    markChallenge3InstructionsRead,
+    challengeFinalInstructionsRead,
+    markChallengeFinalInstructionsRead,
   };
 
   return <StatsContext.Provider value={value}>{children}</StatsContext.Provider>;

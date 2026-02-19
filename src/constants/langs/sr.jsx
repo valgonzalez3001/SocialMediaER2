@@ -23,6 +23,20 @@ export const sr = {
     taskbar: {
       start: "Start",
     },
+    popup: {
+      readMessage: "Procitaj poruku svog sefa da otkljucas",
+      startChallenge: "Zapocni izazov 1 da otkljucas",
+      playChallenge: "Igraj izazov 1 da otkljucas",
+      completeChallenge1: "Zavrsi izazov 1 pre otkljucavanja",
+      readMessageChallenge2: "Procitaj uputstva za izazov 2 da otkljucas",
+      playChallenge2: "Igraj izazov 2 da otkljucas",
+      completeChallenge2: "Zavrsi izazov 2 pre otkljucavanja",
+      readMessageChallenge3: "Procitaj uputstva za izazov 3 da otkljucas",
+      readMessageChallengeFinal: "Procitaj uputstva za poslednji izazov da otkljucas",
+      playChallenge3: "Igraj izazov 3 da otkljucas",
+      completeChallenge3: "Zavrsi izazov 3 pre otkljucavanja",
+      completeAllChallenges: "Zavrsi sve izazove da otkljucas",
+    },
   },
   messagesApp: {
     title: "Poruke",

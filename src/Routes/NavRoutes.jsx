@@ -12,9 +12,9 @@ import { AIIncorrectUses } from "../pages/AIIncorrectUses/AIIncorrectUses";
 import { Error } from "../pages/Error/Error";
 
 const ProtectedRoute = ({ children }) => {
-  const { challenge1Completed } = useStats();
+  const { challenge2InstructionsRead } = useStats();
   
-  if (!challenge1Completed) {
+  if (!challenge2InstructionsRead) {
     return <Navigate to="/admin" replace />;
   }
   
@@ -22,9 +22,9 @@ const ProtectedRoute = ({ children }) => {
 };
 
 const Challenge2ProtectedRoute = ({ children }) => {
-  const { challenge2Completed } = useStats();
+  const { challenge3InstructionsRead } = useStats();
 
-  if (!challenge2Completed) {
+  if (!challenge3InstructionsRead) {
     return <Navigate to="/ai-content" replace />;
   }
 

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import { useStats } from "./StatsProvider.jsx";
 
 /**
  * Contexto para gestionar los mensajes del jefe
@@ -18,6 +19,11 @@ export const useMessages = () => {
 
 export const MessagesProvider = ({ children }) => {
   const { t } = useTranslation();
+  const {
+    markChallenge2InstructionsRead,
+    markChallenge3InstructionsRead,
+    markChallengeFinalInstructionsRead,
+  } = useStats();
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -87,6 +93,17 @@ export const MessagesProvider = ({ children }) => {
       const target = prev.find((msg) => msg.id === messageId);
       if (target?.contentKey === "messagesApp.messages.missionBrief.content") {
         sessionStorage.setItem("missionBriefRead", "true");
+      }
+      // Marcar como leídas las instrucciones de reto 2
+      if (target?.contentKey === "messagesApp.messages.challenge2.content") {
+        markChallenge2InstructionsRead();
+      }
+      // Marcar como leídas las instrucciones de reto 3
+      if (target?.contentKey === "messagesApp.messages.challenge3.content") {
+        markChallenge3InstructionsRead();
+      }
+      if (target?.contentKey === "messagesApp.messages.challengeFinal.content") {
+        markChallengeFinalInstructionsRead();
       }
       return prev.map((msg) =>
         msg.id === messageId ? { ...msg, read: true } : msg

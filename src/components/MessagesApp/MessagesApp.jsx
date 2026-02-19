@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import "./MessagesApp.css";
 import { useOS } from "../../contexts/OSProvider";
 import { useMessages } from "../../contexts/MessagesProvider";
-import { FaTimes, FaMinus, FaEnvelope, FaEnvelopeOpen } from "react-icons/fa";
+import { FaTimes, FaMinus, FaComments } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 /**
@@ -11,8 +11,8 @@ import { useTranslation } from "react-i18next";
 export const MessagesApp = () => {
   const { closeApp, minimizeApp } = useOS();
   const { messages, markAsRead } = useMessages();
-  const [selectedMessage, setSelectedMessage] = useState(null);
   const { t, i18n } = useTranslation();
+  const chatThreadRef = useRef(null);
 
   const getLocale = () => {
     const localeMap = {
@@ -24,38 +24,40 @@ export const MessagesApp = () => {
     return localeMap[i18n.language] || undefined;
   };
 
-  // Detectar si hay mensajes sin leer
-  const hasUnread = messages.some((msg) => !msg.read);
+  const sortedMessages = useMemo(
+    () =>
+      [...messages].sort(
+        (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+      ),
+    [messages]
+  );
 
-  const handleSelectMessage = (message) => {
-    setSelectedMessage(message);
-    if (!message.read) {
-      markAsRead(message.id);
-    }
-  };
+  useEffect(() => {
+    const unreadMessages = messages.filter((msg) => !msg.read);
+    if (!unreadMessages.length) return;
+    unreadMessages.forEach((msg) => markAsRead(msg.id));
+  }, [messages, markAsRead]);
+
+  useEffect(() => {
+    if (!chatThreadRef.current) return;
+    chatThreadRef.current.scrollTo({
+      top: chatThreadRef.current.scrollHeight,
+      behavior: "smooth",
+    });
+  }, [sortedMessages.length]);
 
   const handleClose = () => {
     closeApp("messages");
-    setSelectedMessage(null);
   };
 
   const formatTime = (timestamp) => {
     const date = new Date(timestamp);
-    const now = new Date();
-    const diffMs = now - date;
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMs / 3600000);
-
-    if (diffMins < 60) {
-      return t("messagesApp.time.minutesAgo", { count: diffMins });
-    } else if (diffHours < 24) {
-      return t("messagesApp.time.hoursAgo", { count: diffHours });
-    } else {
-      return date.toLocaleDateString(getLocale(), {
-        day: "numeric",
-        month: "short",
-      });
-    }
+    return date.toLocaleString(getLocale(), {
+      day: "numeric",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
   };
 
   return (
@@ -63,7 +65,7 @@ export const MessagesApp = () => {
       {/* Barra de título */}
       <div className="window-titlebar">
         <div className="window-title">
-          <FaEnvelope className="title-icon" />
+          <FaComments className="title-icon" />
           <span>{t("messagesApp.title")}</span>
         </div>
         <div className="window-controls">
@@ -85,71 +87,40 @@ export const MessagesApp = () => {
       </div>
 
       {/* Contenido de la aplicación */}
-      <div className="messages-app-content">
-        {/* Lista de mensajes */}
-        <div className="messages-list">
-          <div className="messages-header">
-            <h2>{t("messagesApp.inbox")}</h2>
-          </div>
-          <div className="messages-items">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`message-item ${
-                  selectedMessage?.id === message.id ? "selected" : ""
-                } ${message.read ? "read" : "unread"}`}
-                onClick={() => handleSelectMessage(message)}
-              >
-                <div className="message-icon">
-                  {message.read ? <FaEnvelopeOpen /> : <FaEnvelope />}
-                </div>
-                <div className="message-info">
-                  <div className="message-from">{t(message.fromKey)}</div>
-                  <div className="message-subject">{t(message.subjectKey)}</div>
-                  <div className="message-preview">
-                    {t(message.contentKey).substring(0, 50)}...
-                  </div>
-                </div>
-                <div className="message-time">{formatTime(message.timestamp)}</div>
-              </div>
-            ))}
+      <div className="messages-chat-content">
+        <div className="messages-chat-header">
+          <div className="messages-chat-avatar">B</div>
+          <div className="messages-chat-header-text">
+            <h2>{t("messagesApp.newMessageFromBoss")}</h2>
+            <span>ECHO</span>
           </div>
         </div>
 
-        {/* Vista detallada del mensaje */}
-        <div className="message-detail">
-          {selectedMessage ? (
-            <>
-              <div className="detail-header">
-                <h3>{t(selectedMessage.subjectKey)}</h3>
-                <div className="detail-meta">
-                  <span className="detail-from">
-                    {t("messagesApp.fromLabel")}: <strong>{t(selectedMessage.fromKey)}</strong>
-                  </span>
-                  <span className="detail-time">
-                    {new Date(selectedMessage.timestamp).toLocaleString(
-                      getLocale(),
-                      {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      }
-                    )}
-                  </span>
-                </div>
+        <div ref={chatThreadRef} className="messages-chat-thread">
+          {sortedMessages.map((message) => (
+            <article key={message.id} className="chat-message boss-message">
+              <div className="chat-message-meta">
+                <strong>{t(message.fromKey)}</strong>
+                <span>{formatTime(message.timestamp)}</span>
               </div>
-              <div className="detail-content">
-                <p>{t(selectedMessage.contentKey)}</p>
+              <h3>{t(message.subjectKey)}</h3>
+              <div className="chat-message-body">
+                <p>{t(message.contentKey)}</p>
               </div>
-            </>
-          ) : (
-            <div className="detail-empty">
-              <FaEnvelope className="empty-icon" />
-              <p>{t("messagesApp.selectMessage")}</p>
-            </div>
-          )}
+            </article>
+          ))}
+        </div>
+
+        <div className="messages-chat-composer">
+          <input
+            type="text"
+            value={t("messagesApp.chatPlaceholder")}
+            readOnly
+            aria-label={t("messagesApp.chatPlaceholder")}
+          />
+          <button type="button" disabled>
+            {t("messagesApp.send")}
+          </button>
         </div>
       </div>
     </div>

@@ -34,7 +34,9 @@ export const fi = {
     title: "Viestit",
     inbox: "Saapuneet",
     selectMessage: "Valitse viesti luettavaksi",
-    fromLabel: "Lähettäjä",
+    fromLabel: "Lahettaja",
+    chatPlaceholder: "Kirjoita viesti...",
+    send: "Laheta",
     newMessageNotification: "Sinulla on uusi viesti!",
     newMessageFromBoss: "Pomollasi on sinulle tehtävä",
     congratulationNotification: "Pomosi on lähettänyt sinulle onnittelut",
@@ -49,25 +51,25 @@ export const fi = {
         from: "Esimies",
         subject: "🚨 KRIITTINEN TEHTÄVÄ: Dezinformaation Hälytys!",
         content:
-          "🚨 KIIREELLINEN!\n\nLähetän sinulle tämän viestin, koska dezinformaation taso alustalla on saavuttanut KRIITTISET tasot 78%. Tämä on vakava uhka verkkomme koskemattomuudelle.\n\nSinun tehtäväsi:\nMene hallintopaneeliin ja luokittele kaikki profiilit oikein botteihin tai oikeisiin käyttäjiin. Tarkkuutesi on ratkaisevan tärkeä automatisoidun dezinformaation leviämisen vastustamisessa. Kun suoritat tämän täydellisesti, pienennät dezinformaation tasoa.\nVerkon kohtalo on sinun käsissäsi.\n\n- Esimies",
+          "KRIITTINEN HATA: verkko on vaarassa.\n\nHaaste 1:\nAvaa Epailyttavat Tilit ja tunnista botit.\n\nJos epaonnistut, disinformaatio kasvaa. Ratkaise nyt.\n\n- Esimies",
       },
       congratulations: {
         from: "Esimies",
         subject: "🎉 Onnittelut! Haaste Suoritettu",
         content:
-          "🎉 ERINOMAISTA TYÖTÄ!\n\nOlet luokitellut kaikki profiilit oikein. Tarkkuutesi on merkittävästi pienentänyt dezinformaation tasoa alustallamme.\n\nNyt tulee ratkaiseva osa:\nTarvitsen sinun julkaisevan julkaisun sosiaalisessa verkostossa KOULUTTAAKSESI yhteisöämme. Jaa mitä olet oppinut:\n\n• Kuinka tunnistaa botteja ja automatisoituja tilejä\n• Havaitut dezinformaation mallit\n• Tiedon tarkistamisen tärkeys\n• Kuinka suojautua manipulaatiolta\n\nJulkaisusi on Yhteisön Huomautus, joka auttaa muita käyttäjiä tunnistamaan ja taistelemaan dezinformaatiota vastaan. Tämä on tilaisuutesi näyttää oppimisen tavoitteet ja tehdä todellinen ero.\n\nYhteisö luottaa sinuun!\n\n- Esimies",
+          "Hyva tyo, ensimmainen uhka pysaytetty.\n\nSiirry heti haasteeseen 2 ja tarkista AI-sisalto.\n\n- Esimies",
       },
       challenge2: {
         from: "Esimies",
         subject: "🧩 HAASTE 2: AI-detektori pois käytöstä",
         content:
-          "AI-detektorimme on pois käytöstä.\n\nTehtäväsi:\nKäy läpi ohjeet siitä, miten se toimii, ja päätä manuaalisesti onko julkaisu tekoälyn luoma.\n\nAvaa \"AI Generated Content\" -sivu ja aloita tarkistus.\n\n- Esimies",
+          "AI-tunnistus on poissa kaytosta.\n\nHaaste 2:\nTee manuaalinen tarkistus sivulla AI Generated Content.\n\nTarvitsemme tuloksen heti.\n\n- Esimies",
       },
       challenge3: {
         from: "Esimies",
         subject: "Haaste 3: AI:n vaara kaytto",
         content:
-          "Hyvaa tyota haasteessa 2.\n\nSeuraava tehtava:\nAvaa \"AI Incorrect Uses\" -sivu ja tutki todellisia vaarinkayton esimerkkeja.\n\nTunnista riskit ja jatka moderointia.\n\n- Esimies",
+          "Hyva, haaste 2 valmis.\n\nHaaste 3:\nVastaa julkaisuihin ja pysayta AI:n vaarinkaytto.\n\nJokainen oikea vastaus estaa uutta disinformaatiota.\n\n- Esimies",
       },
     },
   },
@@ -259,3 +261,5 @@ export const fi = {
     goHome: "Mene Kotiin",
   },
 };
+
+

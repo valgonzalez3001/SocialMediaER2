@@ -36,6 +36,8 @@ export const en = {
     inbox: "Inbox",
     selectMessage: "Select a message to read",
     fromLabel: "From",
+    chatPlaceholder: "Type a message...",
+    send: "Send",
     newMessageNotification: "You have a new message!",
     newMessageFromBoss: "Your boss has a mission for you",
     congratulationNotification: "Your boss has sent you a congratulation",
@@ -51,31 +53,31 @@ export const en = {
         from: "The Boss",
         subject: "🚨 CRITICAL MISSION: Misinformation Alert!",
         content:
-          "🚨 URGENT!\n\nI'm sending you this message because the misinformation level on our platform has reached CRITICAL levels at 78%. This is a serious threat to the integrity of our network.\n\nYour mission:\nGo to the Admin Panel and correctly classify all the profiles as bots or real users. Your accuracy is crucial for fighting automated misinformation spread. Once you complete this perfectly, you'll reduce the misinformation level.\nThe fate of the network is in your hands.\n\n- The Boss",
+          "CRITICAL ALERT: the network is under threat.\n\nChallenge 1 (mandatory):\nOpen Suspicious Accounts and detect infiltrated bots.\n\nIf you fail, misinformation keeps spreading. Solve it now.\n\n- The Boss",
       },
       congratulations: {
         from: "The Boss",
         subject: "🎉 Congratulations! Challenge Completed",
         content:
-          "🎉 EXCELLENT WORK!\n\nYou have correctly classified all the profiles. Your accuracy has significantly reduced the misinformation level on our platform.\n\nNow comes the crucial part:\nI need you to publish a post on the social network to EDUCATE our community. Share what you've learned about:\n\n• How to identify bots and automated accounts\n• The misinformation patterns you observed\n• The importance of verifying information\n• How to protect yourself from manipulation\n\nYour post will be a Community Note that will help other users recognize and combat misinformation. It's your opportunity to show the learning objectives and make a real difference.\n\nThe community is counting on you!\n\n- The Boss",
+          "Good work, first breach contained.\n\nStay focused: start challenge 2 and verify AI-generated content.\n\n- The Boss",
       },
       challenge2: {
         from: "The Boss",
         subject: "🧩 CHALLENGE 2: AI detector offline",
         content:
-          "Our AI detector is down.\n\nYour mission:\nGo through the tutorial on how it works and manually determine whether a post is AI generated.\n\nOpen the \"AI Generated Content\" page and start the review.\n\n- The Boss",
+          "AI detection system is offline.\n\nChallenge 2:\nRun manual verification in AI Generated Content.\n\nWe need results now.\n\n- The Boss",
       },
       challenge3: {
         from: "The Boss",
         subject: "Challenge 3: Incorrect AI uses",
         content:
-          "Great work on challenge 2.\n\nYour next mission:\nOpen the \"AI Incorrect Uses\" section and investigate real examples of misuse.\n\nIdentify risky practices and continue the moderation flow.\n\n- The Boss",
+          "Copy that. Challenge 2 complete.\n\nChallenge 3:\nReply to posts with guidance to stop incorrect AI uses.\n\nEvery correct reply blocks new misinformation.\n\n- The Boss",
       },
       challengeFinal: {
         from: "The Boss",
         subject: "🎉 Congratulations! All challenges completed",
         content:
-          "🎉 EXTRAORDINARY WORK!\n\nYou have successfully completed all moderation challenges. Thanks to your effort, the ECHO social network is now free of misinformation.\n\nThe misinformation level has dropped to safe levels. The community is protected thanks to your dedication.\n\nFinal important step:\nPublish a final Community Note to educate the community about everything you've learned:\n\n• How to identify bots and automated accounts\n• Detecting AI-generated content\n• Correct and incorrect uses of AI\n• The importance of information verification\n\nClick on \"New Post\" and select the key phrases that summarize your learnings.\n\nThe community needs you one last time!\n\n- The Boss",
+          "Mission almost complete.\n\nFinal step:\nPublish the Community Note from New Post with key learnings.\n\nClose the case.\n\n- The Boss",
       },
     },
   },
@@ -350,3 +352,5 @@ export const en = {
     goHome: "Go to Home",
   },
 };
+
+

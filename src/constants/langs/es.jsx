@@ -36,6 +36,8 @@ export const es = {
     inbox: "Bandeja de entrada",
     selectMessage: "Selecciona un mensaje para leer",
     fromLabel: "De",
+    chatPlaceholder: "Escribe un mensaje...",
+    send: "Enviar",
     newMessageNotification: "¡Tienes un mensaje nuevo!",
     newMessageFromBoss: "Tu jefe tiene una misión para ti",
     congratulationNotification: "Tu jefe te ha enviado una felicitación",
@@ -51,31 +53,31 @@ export const es = {
         from: "El Jefe",
         subject: "🚨 MISIÓN CRÍTICA: ¡Alerta de Desinformación!",
         content:
-          "🚨 ¡URGENTE!\n\nTe envío este mensaje porque el nivel de desinformación en nuestra plataforma ha alcanzado niveles CRÍTICOS del 78%. Esta es una amenaza seria para la integridad de nuestra red.\n\nTu misión:\nVe al Panel de Administración y clasifica correctamente todos los perfiles como bots o usuarios reales. Tu precisión es crucial para combatir la propagación automatizada de desinformación. Una vez que completes esto perfectamente, reducirás el nivel de desinformación. \nEl destino de la red está en tus manos.\n\n- El Jefe",
+          "ALERTA CRITICA: la red esta en riesgo.\n\nReto 1 (obligatorio):\nEntra a Cuentas Sospechosas y detecta bots infiltrados.\n\nSi fallas, la desinformacion sigue creciendo. Resuelvelo ahora.\n\n- El Jefe",
       },
       congratulations: {
         from: "El Jefe",
         subject: "🎉 ¡Felicitaciones! Reto Completado",
         content:
-          "🎉 ¡EXCELENTE TRABAJO!\n\nHas clasificado correctamente todos los perfiles. Tu precisión ha reducido significativamente el nivel de desinformación en nuestra plataforma.\n\nAhora viene la parte crucial:\nNecesito que publiques un post en la red social para EDUCAR a nuestra comunidad. Comparte lo que has aprendido sobre:\n\n• Cómo identificar bots y cuentas automatizadas\n• Los patrones de desinformación que observaste\n• La importancia de verificar la información\n• Cómo protegerse de la manipulación\n\nTu post será una Community Note que ayudará a otros usuarios a reconocer y combatir la desinformación. Es tu oportunidad de mostrar los objetivos de aprendizaje y hacer una diferencia real.\n\n¡La comunidad cuenta contigo!\n\n- El Jefe",
+          "Buen trabajo, primer bloqueo neutralizado.\n\nNo bajes la guardia: activa el reto 2 y verifica contenido generado por IA.\n\n- El Jefe",
       },
       challenge2: {
         from: "El Jefe",
         subject: "🧩 RETO 2: Detector de IA apagado",
         content:
-          "Se nos ha apagado el detector de IA.\n\nTu misión:\nHaz el tutorial de cómo funciona y, manualmente, descubre si un post está generado por IA.\n\nEntra en la sección \"Contenido Generado por IA\" y empieza la revisión.\n\n- El Jefe",
+          "Sistema de deteccion IA fuera de servicio.\n\nReto 2:\nHaz la verificacion manual en Contenido Generado por IA.\n\nNecesitamos resultado inmediato.\n\n- El Jefe",
       },
       challenge3: {
         from: "El Jefe",
         subject: "Reto 3: Usos incorrectos de IA",
         content:
-          "Buen trabajo en el reto 2.\n\nTu siguiente mision:\nEntra en la seccion \"Usos Incorrectos de IA\" e investiga ejemplos reales de mal uso.\n\nIdentifica practicas de riesgo y continua con la moderacion.\n\n- El Jefe",
+          "Recibido. Reto 2 completado.\n\nReto 3:\nResponde publicaciones con recomendaciones para frenar usos incorrectos de IA.\n\nCada respuesta correcta evita nueva desinformacion.\n\n- El Jefe",
       },
       challengeFinal: {
         from: "El Jefe",
         subject: "🎉 ¡Felicitaciones! Todos los retos completados",
         content:
-          "🎉 ¡TRABAJO EXTRAORDINARIO!\n\nHas completado exitosamente todos los retos de moderación. Gracias a tu esfuerzo, la red social ECHO está ahora libre de desinformación.\n\nEl nivel de desinformación ha bajado a niveles seguros. La comunidad está protegida gracias a tu dedicación.\n\nÚltimo paso importante:\nPublica una Community Note final para educar a la comunidad sobre todo lo que has aprendido:\n\n• Cómo identificar bots y cuentas automatizadas\n• Detección de contenido generado por IA\n• Usos correctos e incorrectos de la IA\n• La importancia de la verificación de información\n\nHaz clic en \"Nueva Publicación\" y selecciona las frases clave que resumen tus aprendizajes.\n\n¡La comunidad te necesita una última vez!\n\n- El Jefe",
+          "Mision casi completada.\n\nPaso final:\nPublica la Community Note desde Nueva Publicacion con los aprendizajes clave.\n\nCierra el caso.\n\n- El Jefe",
       },
     },
   },
@@ -323,6 +325,8 @@ export const es = {
     goHome: "Ir al Inicio",
   },
 };
+
+
 
 
 

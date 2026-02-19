@@ -11,7 +11,6 @@ export const usersES = [
     firstName: "ECHO",
     lastName: "Cuenta Oficial",
     username: "ECHO",
-    password: "ECHO",
     createdAt: new Date("January 07 2015 09:09:09"),
     updatedAt: formatDate(),
     avatarURL:
@@ -33,7 +32,6 @@ export const usersES = [
     firstName: "Little",
     lastName: "Beatle",
     username: "LittleBeatle",
-    password: "LittleBeatle",
     createdAt: new Date("November 06 2025 12:40:00"),
     updatedAt: formatDate(),
     avatarURL:
@@ -55,7 +53,6 @@ export const usersES = [
     firstName: "Ten",
     lastName: "BenTen",
     username: "TenBenTen",
-    password: "TenBenTen",
     createdAt: new Date("November 08 2025 20:05:00"),
     updatedAt: formatDate(),
     avatarURL:
@@ -77,7 +74,6 @@ export const usersES = [
     firstName: "Anna",
     lastName: "Clarkson",
     username: "AnnaClarkson",
-    password: "AnnaClarkson",
     createdAt: new Date("November 10 2025 09:30:00"),
     updatedAt: formatDate(),
     avatarURL:
@@ -99,7 +95,6 @@ export const usersES = [
     firstName: "Lina",
     lastName: "92",
     username: "Lina_92",
-    password: "Lina_92",
     createdAt: new Date("November 12 2025 18:15:00"),
     updatedAt: formatDate(),
     avatarURL:
@@ -121,7 +116,6 @@ export const usersES = [
     firstName: "Martha",
     lastName: "Cooks",
     username: "marthacooks",
-    password: "marthacooks",
     createdAt: new Date("March 14 2012 10:00:00"),
     updatedAt: formatDate(),
     avatarURL:
@@ -143,7 +137,6 @@ export const usersES = [
     firstName: "James",
     lastName: "Coffee Life",
     username: "james_coffee_life",
-    password: "james_coffee_life",
     createdAt: new Date("June 02 2013 09:20:00"),
     updatedAt: formatDate(),
     avatarURL:
@@ -165,7 +158,6 @@ export const usersES = [
     firstName: "Mike",
     lastName: "Travis Bay",
     username: "Mike_Travis_Bay",
-    password: "Mike_Travis_Bay",
     createdAt: new Date("November 01 2024 06:00:00"),
     updatedAt: formatDate(),
     avatarURL:
@@ -187,7 +179,6 @@ export const usersES = [
     firstName: "Clara",
     lastName: "Knows",
     username: "Clara_Knows93",
-    password: "Clara_Knows93",
     createdAt: new Date("October 28 2024 06:00:00"),
     updatedAt: formatDate(),
     avatarURL:
@@ -209,7 +200,6 @@ export const usersES = [
     firstName: "Jake",
     lastName: "",
     username: "JakeAlerts91",
-    password: "JakeAlerts91",
     createdAt: new Date("December 11 2025 06:00:00"),
     updatedAt: formatDate(),
     avatarURL:
@@ -231,7 +221,6 @@ export const usersES = [
     firstName: "Health",
     lastName: "4Ever Daily",
     username: "health4everdaily",
-    password: "health4everdaily",
     createdAt: new Date("March 06 2025 22:25:00"),
     updatedAt: formatDate(),
     avatarURL: "https://images.pexels.com/photos/3755761/pexels-photo-3755761.jpeg",

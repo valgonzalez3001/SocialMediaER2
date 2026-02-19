@@ -29,6 +29,8 @@ export const sr = {
     inbox: "Prijemno sanduce",
     selectMessage: "Izaberi poruku za citanje",
     fromLabel: "Od",
+    chatPlaceholder: "Napisi poruku...",
+    send: "Posalji",
     newMessageNotification: "Imate novu poruku!",
     newMessageFromBoss: "Va� �ef ima misiju za vas",
     congratulationNotification: "Va� �ef vam je poslao cestitke",
@@ -41,13 +43,13 @@ export const sr = {
         from: "�ef",
         subject: "?? KRITICNA MISIJA: Upozorenje o Dezinformaciji!",
         content:
-          "?? HITNO!\n\n�aljem ti ovu poruku jer je nivo dezinformacije na na�oj platformi dostigao KRITICNE nivoe od 78%. Ovo je ozbiljna pretnja integrnosti na�e mre�e.\n\nTvoja misija:\nIdi na Admin Panel i ispravno klasifikuj sve profile kao botove ili prave korisnike. Tvoja preciznost je kljucna za borbu protiv automatizovane distribucije dezinformacije. Kada savr�eno zavr�i� ovaj izazov, smanjice� nivo dezinformacije.\nSudba mre�e je u tvojim rukama.\n\n- �ef",
+          "KRITICNI ALARM: mreza je ugrozena.\n\nIzazov 1:\nOtvori Sumnjive Naloge i pronadji botove.\n\nAko ne uspes, dezinformacije rastu. Resi odmah.\n\n- Sef",
       },
       congratulations: {
         from: "�ef",
         subject: "?? Cestitamo! Izazov Zavr�en",
         content:
-          "?? ODLICAN RAD!\n\nIspravno si klasifikovao sve profile. Tvoja preciznost je znacajno smanjila nivo dezinformacije na na�oj platformi.\n\nSada dolazi kljucni deo:\nTrebam da objavi� objavu na dru�tvenoj mre�i da EDUKUJE� na�u zajednicu. Podeli ono �to si naucio o:\n\n� Kako prepoznati botove i automatizovane naloge\n� Obrasce dezinformacije koje si primetio\n� Va�nost provere informacija\n� Kako se za�tititi od manipulacije\n\nTvoja objava ce biti Zajednicka Napomena koja ce pomoci drugim korisnicima da prepoznaju i bore se protiv dezinformacije. To je tvoja prilika da poka�e� ciljeve ucenja i napravi� stvarnu razliku.\n\nZajednica racuna na tebe!\n\n- �ef",
+          "Odlican posao, prva pretnja je zaustavljena.\n\nPredji odmah na izazov 2 i proveri AI sadrzaj.\n\n- Sef",
       },
     },
   },
@@ -183,3 +185,5 @@ export const sr = {
     goHome: "Idi na Pocetnu",
   },
 };
+
+

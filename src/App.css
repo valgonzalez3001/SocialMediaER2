@@ -139,7 +139,7 @@ a {
     order: 1;
     position: sticky;
     top: 10vh;
-    width: 20%;
+    width: 330px;
     height: calc(100vh - 10vh);
     align-self: flex-start;
     overflow-y: auto;

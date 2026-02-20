@@ -1,13 +1,20 @@
-
 import ExcelJS from "exceljs";
 import fs from "fs";
 import path from "path";
+import dotenv from "dotenv";
+
+// Load environment variables from .env
+dotenv.config();
 
 /**
  * CONFIG
  */
-const XLSX_URL =
-  "https://docs.google.com/spreadsheets/d/1cyejXqnPeiomz2oEpqOspaZM2gvXrugtfI76zPJf9G0/export?format=xlsx";
+const XLSX_URL = process.env.XLSX_URL;
+
+if (!XLSX_URL) {
+  console.error("Error: XLSX_URL not found in .env file");
+  process.exit(1);
+}
 
 const OUT_DIR = process.cwd(); // adjust if you want output elsewhere
 const INDENT = 2;

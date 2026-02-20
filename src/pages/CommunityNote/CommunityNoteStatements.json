@@ -1,32 +1,130 @@
-[
-  {
-    "id": 1,
-    "text": "Los bots pueden detectarse por patrones de actividad consistentes y repetitivos",
-    "correct": true,
-    "category": "bot-detection"
-  },
-  {
-    "id": 2,
-    "text": "Las cuentas verificadas siempre son cuentas reales y nunca pueden ser bots",
-    "correct": false,
-    "category": "verification-misconception"
-  },
-  {
-    "id": 3,
-    "text": "La verificacion de cuentas con multiples fuentes de informacion es clave para combatir la desinformacion",
-    "correct": true,
-    "category": "information-verification"
-  },
-  {
-    "id": 4,
-    "text": "Los bots siempre tienen perfiles publicos y nunca privados",
-    "correct": false,
-    "category": "bot-misconception"
-  },
-  {
-    "id": 5,
-    "text": "La educacion digital es fundamental para que los usuarios identifiquen contenido falso",
-    "correct": false,
-    "category": "digital-education"
-  }
-]
+{
+  "en": [
+    {
+      "id": 1,
+      "text": "Bots can be detected by consistent and repetitive activity patterns.",
+      "correct": true,
+      "category": "bot-detection"
+    },
+    {
+      "id": 2,
+      "text": "Verified accounts are always real accounts and can never be bots.",
+      "correct": false,
+      "category": "verification-misconception"
+    },
+    {
+      "id": 3,
+      "text": "Account verification using multiple sources of information is key to combating disinformation.",
+      "correct": true,
+      "category": "information-verification"
+    },
+    {
+      "id": 4,
+      "text": "Bots always have public profiles and never private ones.",
+      "correct": false,
+      "category": "bot-misconception"
+    },
+    {
+      "id": 5,
+      "text": "Digital education is essential for users to identify fake content.",
+      "correct": false,
+      "category": "digital-education"
+    }
+  ],
+  "es": [
+    {
+      "id": 1,
+      "text": "Los bots pueden detectarse por patrones de actividad consistentes y repetitivos",
+      "correct": true,
+      "category": "bot-detection"
+    },
+    {
+      "id": 2,
+      "text": "Las cuentas verificadas siempre son cuentas reales y nunca pueden ser bots",
+      "correct": false,
+      "category": "verification-misconception"
+    },
+    {
+      "id": 3,
+      "text": "La verificacion de cuentas con multiples fuentes de informacion es clave para combatir la desinformacion",
+      "correct": true,
+      "category": "information-verification"
+    },
+    {
+      "id": 4,
+      "text": "Los bots siempre tienen perfiles publicos y nunca privados",
+      "correct": false,
+      "category": "bot-misconception"
+    },
+    {
+      "id": 5,
+      "text": "La educacion digital es fundamental para que los usuarios identifiquen contenido falso",
+      "correct": false,
+      "category": "digital-education"
+    }
+  ],
+  "fi": [
+    {
+      "id": 1,
+      "text": "Botit voidaan havaita johdonmukaisten ja toistuvien toimintamallien perusteella.",
+      "correct": true,
+      "category": "bot-detection"
+    },
+    {
+      "id": 2,
+      "text": "Vahvistetut tilit ovat aina oikeita tilejä, eivätkä ne voi koskaan olla botteja.",
+      "correct": false,
+      "category": "verification-misconception"
+    },
+    {
+      "id": 3,
+      "text": "Tilien vahvistaminen useiden tietolähteiden avulla on avainasemassa disinformaation torjunnassa.",
+      "correct": true,
+      "category": "information-verification"
+    },
+    {
+      "id": 4,
+      "text": "Boteilla on aina julkiset profiilit, eivätkä ne ole koskaan yksityisiä.",
+      "correct": false,
+      "category": "bot-misconception"
+    },
+    {
+      "id": 5,
+      "text": "Digitaalinen koulutus on välttämätöntä käyttäjille väärennetyn sisällön tunnistamiseksi.",
+      "correct": false,
+      "category": "digital-education"
+    }
+  ],
+  "sr": [
+    {
+      "id": 1,
+      "text": "Ботови се могу открити по доследним и понављајућим обрасцима активности.",
+      "correct": true,
+      "category": "bot-detection"
+    },
+    {
+      "id": 2,
+      "text": "Верификовани налози су увек прави налози и никада не могу бити ботови.",
+      "correct": false,
+      "category": "verification-misconception"
+    },
+    {
+      "id": 3,
+      "text": "Верификација налога коришћењем више извора информација је кључна за борбу против дезинформација.",
+      "correct": true,
+      "category": "information-verification"
+    },
+    {
+      "id": 4,
+      "text": "Ботови увек имају јавне профиле, а никада приватне.",
+      "correct": false,
+      "category": "bot-misconception"
+    },
+    {
+      "id": 5,
+      "text": "Дигитално образовање је неопходно да би корисници могли да идентификују лажни садржај.",
+      "correct": false,
+      "category": "digital-education"
+    }
+  ]
+}

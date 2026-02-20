@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +11,17 @@ import "./CommunityNote.css";
 
 export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-content" }) => {
   const { t } = useTranslation();
+  const currentLang = t("langKey");
   const { completeChallengeFinal } = useStats();
   const { createPost } = usePosts();
   const { loggedInUserState } = useLoggedInUser();
   const navigate = useNavigate();
   const [selectedStatements, setSelectedStatements] = useState([]);
 
-  const statements = statementsData;
+  const statements = useMemo(
+    () => statementsData[currentLang] || statementsData.en || [],
+    [currentLang]
+  );
 
   const handleStatementClick = (id) => {
     setSelectedStatements((prev) => {

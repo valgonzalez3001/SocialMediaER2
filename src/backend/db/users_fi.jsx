@@ -2,8 +2,27 @@ import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils.jsx";
 
 /**
- * Finnish Users Database
+ *  Users Database
  */
 
 export const usersFI = [
+  {
+    _id: uuid(),
+    firstName: "Example name",
+    lastName: "",
+    bio: "",
+    username: "Example",
+    password: "ECHO",
+    createdAt: "",
+    updatedAt: formatDate(),
+    avatarURL: "",
+    verified: false,
+    stats: {
+      followersCount: 0,
+      followingCount: 0
+    },
+    puzzle: {
+      isBot: true
+    }
+  }
 ];

@@ -1,10 +1,10 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { en } from './constants/langs/en.jsx';
-import { es } from './constants/langs/es.jsx';
-import { sr } from './constants/langs/sr.jsx';
-import { fi } from './constants/langs/fi.jsx';
+import { en } from './constants/langs/en.js';
+import { es } from './constants/langs/es.js';
+import { sr } from './constants/langs/sr.js';
+import { fi } from './constants/langs/fi.js';
 
 // init i18next
 // detect user language

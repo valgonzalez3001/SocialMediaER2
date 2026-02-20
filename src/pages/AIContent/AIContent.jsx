@@ -7,10 +7,13 @@ import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
-import gameData from "./AIContent.json";
+import aiContent from "./AIContent.json";
 
-export const AIContent = () => {
+export const AIContent = ({i18n}) => {
     const { t } = useTranslation();
+    const currentLang = t("langKey");
+    const gameDataAllSentences = aiContent[currentLang] || aiContent.en;
+    const gameData = gameDataAllSentences[Math.floor(Math.random() * gameDataAllSentences.length)];
     const { addMessage } = useMessages();
     const { challenge2Completed, completeChallenge2 } = useStats();
     const [step, setStep] = useState("list");
@@ -27,6 +30,10 @@ export const AIContent = () => {
     const reconstructedSentence = useMemo(
         () => selectedWords.join(" ").replace(/\s([.,!?;:])/g, "$1"),
         [selectedWords]
+    );
+    const correctSentence = useMemo(
+        () => gameData.map((item) => item.correct).join(" ").replace(/\s([.,!?;:])/g, "$1"),
+        [gameData]
     );
     const isCompleted = selectedWords.length === gameData.length;
 
@@ -172,8 +179,7 @@ export const AIContent = () => {
                                                 <span className="ai-verify-date">{t("aiVerifyPage.postDate")}</span>
                                             </div>
                                             <p className="ai-verify-blurred-text" aria-hidden="true">
-                                                Floods like this used to be rare. They're obviously planned and the
-                                                government is hiding what's really happening.
+                                                {correctSentence}
                                             </p>
                                         </div>
                                         <div className="ai-verify-stamp">{t("aiVerifyPage.stamp")}</div>

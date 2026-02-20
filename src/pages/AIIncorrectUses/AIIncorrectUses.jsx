@@ -11,7 +11,8 @@ import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import challengeData from "./AIIncorrectUses.json";
 
 export const AIIncorrectUses = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
+    const currentLang = t("langKey");
     const { userState } = useUser();
     const { challenge3Completed, completeChallenge3 } = useStats();
     const { addMessage } = useMessages();
@@ -20,8 +21,10 @@ export const AIIncorrectUses = () => {
     const [wrongSelections, setWrongSelections] = useState({});
     const [correctSelected, setCorrectSelected] = useState({});
     const [sentReplies, setSentReplies] = useState({});
-
-    const challengeCases = useMemo(() => challengeData, [i18n.language]);
+    const challengeCases = useMemo(
+        () => challengeData[currentLang] || challengeData.en || [],
+        [currentLang]
+    );
     
     useEffect(() => {
         const previousBodyOverflow = document.body.style.overflow;
@@ -76,7 +79,13 @@ export const AIIncorrectUses = () => {
     const isResolved = activeCaseId ? Boolean(correctSelected[activeCaseId]) : false;
     const canSendReply = activeCaseId ? Boolean(correctSelected[activeCaseId]) : false;
 
-    const echoOfficialUser =
+    const echoOfficialUser = {
+        _id: "echo-official",
+        firstName: t("officialAccount.name") || "ECHO Official Account",
+        lastName: "",
+        username: "ECHO",
+        avatarURL: "/assets/echo.png"
+    }
         userState?.allUsers?.find((user) => user.username === "ECHO") || userState?.allUsers?.[0];
 
     const handleOptionClick = (optionIndex) => {
@@ -106,6 +115,8 @@ export const AIIncorrectUses = () => {
         setSentReplies((prev) => ({ ...prev, [activeCase.id]: true }));
         setActiveCaseId(null);
     };
+
+   
 
     return (
         <>
@@ -139,21 +150,21 @@ export const AIIncorrectUses = () => {
                                                 <div className="thread-reply-card">
                                                     <div className="x-avatar reply-avatar">
                                                         <img
-                                                            src={item.officialPost?.image || echoOfficialUser?.avatarURL}
-                                                            alt={item.officialPost?.name || "ECHO"}
+                                                            src={ echoOfficialUser?.avatarURL}
+                                                            alt={ "ECHO"}
                                                         />
                                                     </div>
                                                     <div className="x-post-main">
                                                         <div className="ai-incorrect-post-meta">
                                                             <span className="ai-incorrect-post-name">
-                                                                {item.officialPost?.name || "ECHO Official Account"}
+                                                                {t("officialAccount.name") || "ECHO Official Account"}
                                                             </span>
                                                             <span className="ai-incorrect-post-handle">
-                                                                {item.officialPost?.handle || "@ECHO"}
+                                                                {t("officialAccount.handle") || "@ECHO"}
                                                             </span>
                                                         </div>
                                                         <p className="ai-incorrect-post-text">
-                                                            {item.officialPost?.text}
+                                                            {item.options.find((opt) => opt.isCorrect)?.text || ""}
                                                         </p>
                                                         <p className="ai-incorrect-sent">{t("aiIncorrectUsesPage.sent")}</p>
                                                     </div>
@@ -211,11 +222,11 @@ export const AIIncorrectUses = () => {
                                     <strong>
                                         {activeCase.officialPost?.name ||
                                             `${echoOfficialUser?.firstName || ""} ${echoOfficialUser?.lastName || ""}`.trim()}
-                                    </strong>
+                                    </strong>&nbsp;&nbsp;
                                     <span>
                                         {activeCase.officialPost?.handle ||
                                             `@${echoOfficialUser?.username || "ECHO"}`}
-                                    </span>
+                                    </span>&nbsp;&nbsp;
                                     <span className="ai-incorrect-post-handle">{activeCase.post.date}</span>
                                 </div>
                                 <p className="x-reply-helper">{t("aiIncorrectUsesPage.instruction")}</p>

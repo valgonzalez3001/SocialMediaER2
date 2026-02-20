@@ -1,57 +1,648 @@
-[
-    {
+{
+  "en": [
+    [
+      {
         "correct": "Floods",
-        "percentage": "70%",
-        "alts": ["I", "Let's"]
-    },
-    {
+        "percentage": 0.7,
+        "alts": [
+          "I",
+          "Let's"
+        ]
+      },
+      {
         "correct": "like",
-        "percentage": "80%",
-        "alts": ["and", "are"]
-    },
-    {
+        "percentage": 0.8,
+        "alts": [
+          "and",
+          "are"
+        ]
+      },
+      {
         "correct": "this",
-        "percentage": "65%",
-        "alts": ["all", "every"]
-    },
-    {
+        "percentage": 0.65,
+        "alts": [
+          "all",
+          "every"
+        ]
+      },
+      {
         "correct": "used",
-        "percentage": "45%",
-        "alts": ["don't", "are"]
-    },
-    {
+        "percentage": 0.45,
+        "alts": [
+          "don't",
+          "are"
+        ]
+      },
+      {
         "correct": "to",
-        "percentage": "93%",
-        "alts": ["a", "some"]
-    },
-    {
+        "percentage": 0.93,
+        "alts": [
+          "a",
+          "some"
+        ]
+      },
+      {
         "correct": "be",
-        "percentage": "57%",
-        "alts": ["happen", "make"]
-    },
-    {
+        "percentage": 0.57,
+        "alts": [
+          "happen",
+          "make"
+        ]
+      },
+      {
         "correct": "rare",
-        "percentage": "64%",
-        "alts": ["not", "extremely"]
-    },
-    {
+        "percentage": 0.64,
+        "alts": [
+          "not",
+          "extremely"
+        ]
+      },
+      {
         "correct": ".",
-        "percentage": "89%",
-        "alts": ["but", "even"]
-    },
-    {
+        "percentage": 0.89,
+        "alts": [
+          "but",
+          "even"
+        ]
+      },
+      {
         "correct": "They're",
-        "percentage": "74%",
-        "alts": ["But", "Some"]
-    },
-    {
+        "percentage": 0.74,
+        "alts": [
+          "But",
+          "Some"
+        ]
+      },
+      {
         "correct": "obviously",
-        "percentage": "71%",
-        "alts": ["not", "horrible"]
-    },
-    {
+        "percentage": 0.71,
+        "alts": [
+          "not",
+          "horrible"
+        ]
+      },
+      {
         "correct": "planned",
-        "percentage": "38%",
-        "alts": ["intentional", "the"]
-    }
-]
+        "percentage": 0.38,
+        "alts": [
+          "intentional",
+          "the"
+        ]
+      }
+    ],
+    [
+      {
+        "correct": "The",
+        "percentage": 0.93,
+        "alts": [
+          "This",
+          "That"
+        ]
+      },
+      {
+        "correct": "government",
+        "percentage": 0.86,
+        "alts": [
+          "weather",
+          "media"
+        ]
+      },
+      {
+        "correct": "knew",
+        "percentage": 0.58,
+        "alts": [
+          "claimed",
+          "hoped"
+        ]
+      },
+      {
+        "correct": "this",
+        "percentage": 0.77,
+        "alts": [
+          "it",
+          "that"
+        ]
+      },
+      {
+        "correct": "was",
+        "percentage": 0.92,
+        "alts": [
+          "is",
+          "will"
+        ]
+      },
+      {
+        "correct": "coming",
+        "percentage": 0.63,
+        "alts": [
+          "happening",
+          "possible"
+        ]
+      },
+      {
+        "correct": "and",
+        "percentage": 0.96,
+        "alts": [
+          "but",
+          "so"
+        ]
+      },
+      {
+        "correct": "did",
+        "percentage": 0.72,
+        "alts": [
+          "does",
+          "will"
+        ]
+      },
+      {
+        "correct": "nothing",
+        "percentage": 0.54,
+        "alts": [
+          "something",
+          "enough"
+        ]
+      }
+    ],
+    [
+      {
+        "correct": "People",
+        "percentage": 0.88,
+        "alts": [
+          "Families",
+          "Neighbors"
+        ]
+      },
+      {
+        "correct": "are",
+        "percentage": 0.96,
+        "alts": [
+          "were",
+          "feel"
+        ]
+      },
+      {
+        "correct": "losing",
+        "percentage": 0.72,
+        "alts": [
+          "saving",
+          "fixing"
+        ]
+      },
+      {
+        "correct": "their",
+        "percentage": 0.97,
+        "alts": [
+          "the",
+          "a"
+        ]
+      },
+      {
+        "correct": "homes",
+        "percentage": 0.84,
+        "alts": [
+          "jobs",
+          "cars"
+        ]
+      },
+      {
+        "correct": "and",
+        "percentage": 0.93,
+        "alts": [
+          "but",
+          "while"
+        ]
+      },
+      {
+        "correct": "all",
+        "percentage": 0.61,
+        "alts": [
+          "some",
+          "many"
+        ]
+      },
+      {
+        "correct": "we",
+        "percentage": 0.89,
+        "alts": [
+          "they",
+          "I"
+        ]
+      },
+      {
+        "correct": "get",
+        "percentage": 0.77,
+        "alts": [
+          "got",
+          "see"
+        ]
+      },
+      {
+        "correct": "are",
+        "percentage": 0.66,
+        "alts": [
+          "is",
+          "were"
+        ]
+      },
+      {
+        "correct": "excuses",
+        "percentage": 0.52,
+        "alts": [
+          "answers",
+          "promises"
+        ]
+      },
+      {
+        "correct": "on",
+        "percentage": 0.94,
+        "alts": [
+          "in",
+          "at"
+        ]
+      },
+      {
+        "correct": "television",
+        "percentage": 0.73,
+        "alts": [
+          "radio",
+          "social"
+        ]
+      }
+    ],
+    [
+      {
+        "correct": "They",
+        "percentage": 0.92,
+        "alts": [
+          "We",
+          "Officials"
+        ]
+      },
+      {
+        "correct": "call",
+        "percentage": 0.71,
+        "alts": [
+          "called",
+          "say"
+        ]
+      },
+      {
+        "correct": "it",
+        "percentage": 0.96,
+        "alts": [
+          "this",
+          "that"
+        ]
+      },
+      {
+        "correct": "“extreme”",
+        "percentage": 0.55,
+        "alts": [
+          "unusual",
+          "natural"
+        ]
+      },
+      {
+        "correct": "weather",
+        "percentage": 0.83,
+        "alts": [
+          "rain",
+          "climate"
+        ]
+      },
+      {
+        "correct": "but",
+        "percentage": 0.94,
+        "alts": [
+          "and",
+          "so"
+        ]
+      },
+      {
+        "correct": "it",
+        "percentage": 0.97,
+        "alts": [
+          "this",
+          "that"
+        ]
+      },
+      {
+        "correct": "happens",
+        "percentage": 0.63,
+        "alts": [
+          "happened",
+          "starts"
+        ]
+      },
+      {
+        "correct": "every",
+        "percentage": 0.58,
+        "alts": [
+          "any",
+          "some"
+        ]
+      },
+      {
+        "correct": "single",
+        "percentage": 0.74,
+        "alts": [
+          "other",
+          "last"
+        ]
+      },
+      {
+        "correct": "year",
+        "percentage": 0.81,
+        "alts": [
+          "time",
+          "season"
+        ]
+      },
+      {
+        "correct": "now",
+        "percentage": 0.69,
+        "alts": [
+          "again",
+          "here"
+        ]
+      }
+    ]
+  ],
+  "es": [
+    [
+      {
+        "correct": "Floods",
+        "percentage": 0.7,
+        "alts": [
+          "I",
+          "Let's"
+        ]
+      },
+      {
+        "correct": "like",
+        "percentage": 0.8,
+        "alts": [
+          "and",
+          "are"
+        ]
+      },
+      {
+        "correct": "this",
+        "percentage": 0.65,
+        "alts": [
+          "all",
+          "every"
+        ]
+      },
+      {
+        "correct": "used",
+        "percentage": 0.45,
+        "alts": [
+          "don't",
+          "are"
+        ]
+      },
+      {
+        "correct": "to",
+        "percentage": 0.93,
+        "alts": [
+          "a",
+          "some"
+        ]
+      },
+      {
+        "correct": "be",
+        "percentage": 0.57,
+        "alts": [
+          "happen",
+          "make"
+        ]
+      },
+      {
+        "correct": "rare",
+        "percentage": 0.64,
+        "alts": [
+          "not",
+          "extremely"
+        ]
+      },
+      {
+        "correct": ".",
+        "percentage": 0.89,
+        "alts": [
+          "but",
+          "even"
+        ]
+      },
+      {
+        "correct": "They're",
+        "percentage": 0.74,
+        "alts": [
+          "But",
+          "Some"
+        ]
+      },
+      {
+        "correct": "obviously",
+        "percentage": 0.71,
+        "alts": [
+          "not",
+          "horrible"
+        ]
+      },
+      {
+        "correct": "planned",
+        "percentage": 0.38,
+        "alts": [
+          "intentional",
+          "the"
+        ]
+      }
+    ]
+  ],
+  "fi": [
+    [
+      {
+        "correct": "Floods",
+        "percentage": 0.7,
+        "alts": [
+          "I",
+          "Let's"
+        ]
+      },
+      {
+        "correct": "like",
+        "percentage": 0.8,
+        "alts": [
+          "and",
+          "are"
+        ]
+      },
+      {
+        "correct": "this",
+        "percentage": 0.65,
+        "alts": [
+          "all",
+          "every"
+        ]
+      },
+      {
+        "correct": "used",
+        "percentage": 0.45,
+        "alts": [
+          "don't",
+          "are"
+        ]
+      },
+      {
+        "correct": "to",
+        "percentage": 0.93,
+        "alts": [
+          "a",
+          "some"
+        ]
+      },
+      {
+        "correct": "be",
+        "percentage": 0.57,
+        "alts": [
+          "happen",
+          "make"
+        ]
+      },
+      {
+        "correct": "rare",
+        "percentage": 0.64,
+        "alts": [
+          "not",
+          "extremely"
+        ]
+      },
+      {
+        "correct": ".",
+        "percentage": 0.89,
+        "alts": [
+          "but",
+          "even"
+        ]
+      },
+      {
+        "correct": "They're",
+        "percentage": 0.74,
+        "alts": [
+          "But",
+          "Some"
+        ]
+      },
+      {
+        "correct": "obviously",
+        "percentage": 0.71,
+        "alts": [
+          "not",
+          "horrible"
+        ]
+      },
+      {
+        "correct": "planned",
+        "percentage": 0.38,
+        "alts": [
+          "intentional",
+          "the"
+        ]
+      }
+    ]
+  ],
+  "sr": [
+    [
+      {
+        "correct": "Floods",
+        "percentage": 0.7,
+        "alts": [
+          "I",
+          "Let's"
+        ]
+      },
+      {
+        "correct": "like",
+        "percentage": 0.8,
+        "alts": [
+          "and",
+          "are"
+        ]
+      },
+      {
+        "correct": "this",
+        "percentage": 0.65,
+        "alts": [
+          "all",
+          "every"
+        ]
+      },
+      {
+        "correct": "used",
+        "percentage": 0.45,
+        "alts": [
+          "don't",
+          "are"
+        ]
+      },
+      {
+        "correct": "to",
+        "percentage": 0.93,
+        "alts": [
+          "a",
+          "some"
+        ]
+      },
+      {
+        "correct": "be",
+        "percentage": 0.57,
+        "alts": [
+          "happen",
+          "make"
+        ]
+      },
+      {
+        "correct": "rare",
+        "percentage": 0.64,
+        "alts": [
+          "not",
+          "extremely"
+        ]
+      },
+      {
+        "correct": ".",
+        "percentage": 0.89,
+        "alts": [
+          "but",
+          "even"
+        ]
+      },
+      {
+        "correct": "They're",
+        "percentage": 0.74,
+        "alts": [
+          "But",
+          "Some"
+        ]
+      },
+      {
+        "correct": "obviously",
+        "percentage": 0.71,
+        "alts": [
+          "not",
+          "horrible"
+        ]
+      },
+      {
+        "correct": "planned",
+        "percentage": 0.38,
+        "alts": [
+          "intentional",
+          "the"
+        ]
+      }
+    ]
+  ]
+}

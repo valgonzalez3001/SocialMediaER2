@@ -1,5 +1,5 @@
 import "./AIContent.css";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 
@@ -7,15 +7,21 @@ import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import aiContent from "./AIContent.json";
 
-export const AIContent = ({i18n}) => {
+export const AIContent = () => {
     const { t } = useTranslation();
     const currentLang = t("langKey");
     const gameDataAllSentences = aiContent[currentLang] || aiContent.en;
-    const gameData = gameDataAllSentences[Math.floor(Math.random() * gameDataAllSentences.length)];
+    const gameData = useMemo(
+        () => gameDataAllSentences[Math.floor(Math.random() * gameDataAllSentences.length)],
+        [gameDataAllSentences]
+    );
     const { addMessage } = useMessages();
     const { challenge2Completed, completeChallenge2 } = useStats();
+    const { sendStatement } = useXAPI();
+    const completionSentRef = useRef(false);
     const [step, setStep] = useState("list");
     const [selectedWords, setSelectedWords] = useState([]);
     const [wrongChoice, setWrongChoice] = useState(null);
@@ -53,6 +59,26 @@ export const AIContent = ({i18n}) => {
         const instructionsSent = sessionStorage.getItem("challenge3InstructionsSent");
         if (instructionsSent) return;
 
+        // Send xAPI statement for completing the LLM message challenge
+        if (!completionSentRef.current) {
+            completionSentRef.current = true;
+            sendStatement(
+                XAPI_VERBS.COMPLETED,
+                ECHO_ACTIVITIES.PUZZLE_2,
+                {
+                    success: true,
+                    completion: true,
+                    score: { scaled: 1, raw: gameData.length, min: 0, max: gameData.length },
+                },
+                {
+                    contextActivities: {
+                        parent: [ECHO_ACTIVITIES.GAME],
+                        grouping: [ECHO_ACTIVITIES.GAME],
+                    },
+                }
+            );
+        }
+
         completeChallenge2();
         sessionStorage.setItem("challenge3InstructionsSent", JSON.stringify(true));
         addMessage({
@@ -74,13 +100,39 @@ export const AIContent = ({i18n}) => {
             duration: 4000,
             icon: "📬",
         });
-    }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t]);
+    }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t, sendStatement, gameData.length]);
 
     const handleWordClick = (word) => {
         if (wrongChoice) return;
         const currentStep = selectedWords.length;
+        const isCorrect = word === gameData[currentStep].correct;
 
-        if (word === gameData[currentStep].correct) {
+        // Send xAPI statement for token selection
+        sendStatement(
+            XAPI_VERBS.ANSWERED,
+            {
+                id: `${ECHO_ACTIVITIES.PUZZLE_2.id}/token/${currentStep}`,
+                definition: {
+                    name: { en: `Select Token ${currentStep + 1}` },
+                    type: "http://adlnet.gov/expapi/activities/cmi.interaction",
+                    interactionType: "choice",
+                    correctResponsesPattern: [gameData[currentStep].correct],
+                },
+            },
+            {
+                success: isCorrect,
+                score: { scaled: isCorrect ? 1 : 0, raw: isCorrect ? 1 : 0, min: 0, max: 1 },
+                response: word,
+            },
+            {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.PUZZLE_2],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            }
+        );
+
+        if (isCorrect) {
             setSelectedWords([...selectedWords, word]);
         } else {
             setWrongChoice({ step: currentStep, word });

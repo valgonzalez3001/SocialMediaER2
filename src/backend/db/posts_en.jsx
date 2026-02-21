@@ -9,6 +9,7 @@ export const postsEN = [
   {
     _id: uuid(),
     content: "Content",
+    type: "image",
     mediaUrl: "",
     username: "Example",
     firstName: {
@@ -19,7 +20,7 @@ export const postsEN = [
     },
     lastName: "",
     avatarURL: "",
-    createdAt: "",
+    createdAt: new Date("February 20 2026 23:01:19"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0

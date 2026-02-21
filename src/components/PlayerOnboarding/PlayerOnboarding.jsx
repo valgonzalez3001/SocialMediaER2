@@ -1,9 +1,11 @@
 import "./PlayerOnboarding.css";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES, XAPI_EXTENSIONS } from "../../contexts/XAPIProvider.jsx";
 
 export const PlayerOnboarding = ({ onComplete }) => {
   const { i18n } = useTranslation();
+  const { initializeActor, sendStatement } = useXAPI();
   const [playerName, setPlayerName] = useState("");
   const [playerAge, setPlayerAge] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("es");
@@ -93,7 +95,7 @@ export const PlayerOnboarding = ({ onComplete }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       // Reiniciar credenciales de la red social para cada nueva partida
       sessionStorage.removeItem("socialLoginDone");
@@ -105,15 +107,36 @@ export const PlayerOnboarding = ({ onComplete }) => {
         language: selectedLanguage,
         onboardingCompleted: true,
       };
-      
+
       sessionStorage.setItem("playerData", JSON.stringify(playerData));
-      
+
+      // Initialize xAPI actor with player data and send initial statement
+      const xapiActor = initializeActor(playerData);
+
+      // Send initial xAPI statement for game start (pass actor directly since state hasn't updated yet)
+      sendStatement(
+        XAPI_VERBS.STARTED,
+        ECHO_ACTIVITIES.GAME,
+        null,
+        {
+          contextActivities: {
+            parent: [ECHO_ACTIVITIES.INTRO],
+            grouping: [ECHO_ACTIVITIES.GAME],
+          },
+          extensions: {
+            [XAPI_EXTENSIONS.PLAYER_AGE]: parseInt(playerAge),
+            [XAPI_EXTENSIONS.LANG]: selectedLanguage,
+          },
+        },
+        xapiActor // Pass actor directly to avoid async state issue
+      );
+
       // Cambiar el idioma de la aplicación
       i18n.changeLanguage(selectedLanguage);
 
       // Notificar al resto de la app que el onboarding termino
       window.dispatchEvent(new Event("onboardingComplete"));
-      
+
       // Notificar al componente padre
       onComplete(playerData);
     }

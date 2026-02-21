@@ -8,6 +8,7 @@ import { useUser } from "../../contexts/UserProvider.jsx";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
@@ -18,6 +19,7 @@ export const Admin = () => {
     const { loggedInUserState } = useLoggedInUser();
     const { reduceMisinformation, completeChallenge1, challenge1Completed } = useStats();
     const { addMessage } = useMessages();
+    const { sendStatement } = useXAPI();
     const navigate = useNavigate();
     const [classifiedUsers, setClassifiedUsers] = useState(() => {
         const saved = sessionStorage.getItem('adminGameState');
@@ -117,6 +119,39 @@ export const Admin = () => {
     }, [suspectUsers]);
 
     const handleClassification = (userId, classification) => {
+        const user = suspectUsers.find(u => u._id === userId);
+        const isBot = user?.puzzle?.isBot;
+        const isCorrect = (classification === 'AI' && isBot) || (classification === 'Humano' && !isBot);
+
+        // Send xAPI statement for classification
+        sendStatement(
+            XAPI_VERBS.ANSWERED,
+            {
+                id: `${ECHO_ACTIVITIES.PUZZLE_1.id}/account/${user?.username}`,
+                definition: {
+                    name: { en: `Account Classification: ${user?.username}` },
+                    type: "http://adlnet.gov/expapi/activities/cmi.interaction",
+                    interactionType: "choice",
+                    choices: [
+                        { id: "bot", description: { en: "Bot" } },
+                        { id: "human", description: { en: "Human" } },
+                    ],
+                    correctResponsesPattern: [isBot ? "bot" : "human"],
+                },
+            },
+            {
+                success: isCorrect,
+                score: { scaled: isCorrect ? 1 : 0, raw: isCorrect ? 1 : 0, min: 0, max: 1 },
+                response: classification === 'AI' ? "bot" : "human",
+            },
+            {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.PUZZLE_1],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            }
+        );
+
         setClassifiedUsers(prev => {
             const newState = {
                 ...prev,
@@ -129,6 +164,25 @@ export const Admin = () => {
     };
 
     const handleProfileClick = (username) => {
+        // Send xAPI statement for viewing account
+        sendStatement(
+            XAPI_VERBS.EXPERIENCED,
+            {
+                id: `${ECHO_ACTIVITIES.PUZZLE_1.id}/account/${username}`,
+                definition: {
+                    name: { en: `View Account: ${username}` },
+                    type: "http://adlnet.gov/expapi/activities/profile",
+                },
+            },
+            null,
+            {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.PUZZLE_1],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            }
+        );
+
         // Marcar que venimos del admin
         sessionStorage.setItem('fromAdmin', 'true');
         navigate(`/profile/${username}`);
@@ -151,11 +205,36 @@ export const Admin = () => {
             }
         });
 
+        const isPerfect = correct === suspectUsers.length;
+        const scaledScore = suspectUsers.length > 0 ? correct / suspectUsers.length : 0;
+
+        // Send xAPI statement for challenge submission
+        sendStatement(
+            isPerfect ? XAPI_VERBS.PASSED : XAPI_VERBS.FAILED,
+            ECHO_ACTIVITIES.PUZZLE_1,
+            {
+                success: isPerfect,
+                completion: true,
+                score: {
+                    scaled: scaledScore,
+                    raw: correct,
+                    min: 0,
+                    max: suspectUsers.length,
+                },
+            },
+            {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.GAME],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            }
+        );
+
         setGameResult({ correct, incorrect, total: suspectUsers.length });
         setShowResult(true);
 
         // Si todas las clasificaciones son correctas, reducir el nivel de desinformación y marcar reto como completado
-        if (correct === suspectUsers.length) {
+        if (isPerfect) {
             reduceMisinformation(30);
             completeChallenge1();
             

@@ -10,7 +10,8 @@ import { LoggedInUserProvider } from "./contexts/LoggedInUserProvider.jsx";
 import { OSProvider } from "./contexts/OSProvider.jsx";
 import { MessagesProvider } from "./contexts/MessagesProvider.jsx";
 import { StatsProvider } from "./contexts/StatsProvider.jsx";
-import './i18n.jsx'; 
+import { XAPIProvider } from "./contexts/XAPIProvider.jsx";
+import './i18n.jsx';
 import i18n from './i18n.jsx';
 
 // Call make Server with initial language
@@ -24,19 +25,21 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
-      <UserProvider>
-        <LoggedInUserProvider>
-          <PostsProvider>
-            <StatsProvider>
-              <OSProvider>
-                <MessagesProvider>
-                  <App />
-                </MessagesProvider>
-              </OSProvider>
-            </StatsProvider>
-          </PostsProvider>
-        </LoggedInUserProvider>
-      </UserProvider>
+      <XAPIProvider>
+        <UserProvider>
+          <LoggedInUserProvider>
+            <PostsProvider>
+              <StatsProvider>
+                <OSProvider>
+                  <MessagesProvider>
+                    <App />
+                  </MessagesProvider>
+                </OSProvider>
+              </StatsProvider>
+            </PostsProvider>
+          </LoggedInUserProvider>
+        </UserProvider>
+      </XAPIProvider>
     </Router>
   </React.StrictMode>
 );

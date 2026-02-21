@@ -447,15 +447,21 @@ async function main() {
       const puzzle1Posts = await Promise.all(postsData.map(async (row) => ({
         _id: "uuid()",
         content: row["Text"] || "",
+        type: "image",
         mediaUrl: await processAvatarUrl(row["Multimedia (link)"], postsDir),
         username: row["Handle"] || "",
         firstName: row["Account name"] || "",
         lastName: "",
         avatarURL: await processAvatarUrl(row["Photo (link)"], avatarsDir),
-        createdAt: row["Time"] || "",
+        createdAt: row["Timestamp"] ? new Date(row["Timestamp"]) : new Date(),
         updatedAt: "formatDate()",
-        "likes.likeCount": row["Likes"] || 0,
+        likes: {
+            likeCount: row["Likes"] || 0,
+        }
+        
       })));
+
+
       // Create tmp folder if it does not exist and move file  `src/backend/db/posts_${lang}.jsx`if it exists into it (to avoid being overwritten by git) with a datetime suffix, then write new file
       
       const oldFilePosts = path.join(OUT_DIR, `src/backend/db/posts_${lang}.jsx`);

@@ -211,6 +211,7 @@ export const sr = {
   },
   "officialAccount": {
     "name": "ECHO Official",
-    "handle": "@ECHO"
+    "handle": "@ECHO",
+    "bio": "Otkrijte najnovije na društvenoj mreži i razgovarajte sa MINT AI, našim inteligentnim asistentom."
   }
 };

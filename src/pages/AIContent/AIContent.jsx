@@ -143,11 +143,6 @@ export const AIContent = () => {
         }
     };
 
-    const resetGame = () => {
-        setSelectedWords([]);
-        setWrongChoice(null);
-    };
-
     return (
         <>
             <Header />
@@ -174,11 +169,12 @@ export const AIContent = () => {
                                                 </p>
                                             </div>
                                             <button
-                                                className="ai-content-verify"
+                                                className={`ai-content-verify${challenge2Completed ? " ai-content-verify--done" : ""}`}
                                                 type="button"
-                                                onClick={() => setStep("verify")}
+                                                onClick={() => !challenge2Completed && setStep("verify")}
+                                                disabled={challenge2Completed}
                                             >
-                                                {t("aiContentPage.verifyButton")}
+                                                {challenge2Completed ? `✓ ${t("aiContentPage.verifyButton")}` : t("aiContentPage.verifyButton")}
                                             </button>
                                         </div>
 
@@ -404,12 +400,11 @@ export const AIContent = () => {
                                     </div>
 
                                     <div className="ai-game-actions">
-                                        <button className="ai-verify-back" type="button" onClick={() => setStep("brief")}>
-                                            {t("aiGamePage.back")}
-                                        </button>
-                                        <button className="ai-verify-start" type="button" onClick={resetGame}>
-                                            {t("aiGamePage.reset")}
-                                        </button>
+                                        {!isCompleted && (
+                                            <button className="ai-verify-back" type="button" onClick={() => setStep("brief")}>
+                                                {t("aiGamePage.back")}
+                                            </button>
+                                        )}
                                     </div>
                                 </section>
                             ) : null}

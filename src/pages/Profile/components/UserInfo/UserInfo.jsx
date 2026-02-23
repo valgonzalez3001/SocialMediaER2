@@ -1,70 +1,41 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import { useTranslation } from 'react-i18next';
+import { useUser } from "../../../../contexts/UserProvider.jsx";
 import { getLocalizedContent } from '../../../../utils/i18nHelpers.jsx';
 
-import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider.jsx";
-import { useUser } from "../../../../contexts/UserProvider.jsx";
-import { createdOnDate } from "../../../../utils/date.jsx";
-import { ShowFollowersModal } from "../ShowFollowersModal/ShowFollowersModal";
-import { ShowFollowingModal } from "../ShowFollowingModal/ShowFollowingModal";
-import { CgCalendarDates, RxCross2 } from "../../../../utils/icons.jsx";
-
-
-export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
+export const UserInfo = ({ username, setIsEditProfile, postsByUser }) => {
   const { t, i18n } = useTranslation();
   const { userState } = useUser();
-  const { username } = useParams();
-  const [showFollowers, setShowFollowers] = useState(false);
-  const [showFollowing, setShowFollowing] = useState(false);
-  const { loggedInUserState, followUser, unfollowUser } = useLoggedInUser();
 
-  const isOwnProfile = username === loggedInUserState?.username;
+  const isEchoProfile = username === "ECHO";
 
-  const userDetails = loggedInUserState;
+  // Si es el perfil ECHO, usar datos fijos; si no, buscar en allUsers
+  const user = isEchoProfile
+    ? {
+        _id: "echo-official",
+        firstName: t("officialAccount.name"),
+        lastName: "",
+        username: "ECHO",
+        bio: t("officialAccount.bio", ""),
+        avatarURL: "/assets/echo.png",
+        verified: true,
+        stats: { followersCount: 0, followingCount: 0 },
+      }
+    : userState?.allUsers?.find((u) => u.username === username) || null;
+  if (!user) return null;
 
-  const user = userState?.allUsers?.find(
-    ({ username: user }) => user === username
-  );
-
-  const followingCount =
-    user?.stats?.followingCount ?? 0;
-
-  const followersCount =
-    user?.stats?.followersCount ?? 0;
-
-
-  const canShowFollowingModal = false; // Deshabilitado ya que no hay arrays
-  const canShowFollowersModal = false; // Deshabilitado ya que no hay arrays
-
-
-  const isFollowing = (user) => false; // No podemos verificar sin arrays
-
-  const followUnfollowHandler = (e, user) => {
-    e.stopPropagation();
-    const userFromAllUsers = userState?.allUsers?.find(
-      ({ username }) => username === user?.username
-    );
-    !isFollowing(user)
-      ? followUser(userFromAllUsers?._id)
-      : unfollowUser(userFromAllUsers?._id);
-  };
   return (
     <div className="user-info-container">
       <div className="profilepicture-container">
-        <img src={user?.avatarURL} alt={user?.firstName} />
-        {isOwnProfile ? (
+        <img src={user.avatarURL} alt={user.firstName} />
+        {isEchoProfile && (
           <button onClick={() => setIsEditProfile(true)}>{t('profile.editProfile')}</button>
-        ) : (
-          <button onClick={(e) => followUser(user?._id)}>
-            {t('profile.follow')}
-          </button>
         )}
       </div>
       <div className="username-container">
         <p className="name">
-          {user?.firstName} {user?.lastName}
-          {user?.verified === true && (
+          {user.firstName}{user.lastName ? ` ${user.lastName}` : ""}
+          {user.verified && (
             <img
               src="/assets/verified_badge.png"
               alt={t('profile.verifiedAccount')}
@@ -73,85 +44,26 @@ export const UserInfo = ({ setIsEditProfile, postsByUser }) => {
             />
           )}
         </p>
-
-        <p className="username">@{user?.username}</p>
+        <p className="username">
+          {isEchoProfile ? t("officialAccount.handle") : `@${user.username}`}
+        </p>
       </div>
       <div className="bio-container">
-        <p>{getLocalizedContent(user?.bio, i18n.language)}</p>
-      </div>
-
-      <div className="website-container">
-        <a href={user?.website}>{user?.website}</a>
-        <div className="joining-date-container">
-          <CgCalendarDates />
-          <span>{t('profile.joined')} {createdOnDate(user)}</span>
-        </div>
+        <p>{isEchoProfile ? user.bio : getLocalizedContent(user.bio, i18n.language)}</p>
       </div>
       <div className="post-followers-following-container">
         <p>
           {postsByUser.length}
           <span>{t('profile.posts')}</span>
         </p>
-        <p
-          className="post-following-count"
-          onClick={() => {
-            if (canShowFollowingModal) setShowFollowing(true);
-          }}
-        >
-          {followingCount}
+        <p className="post-following-count">
+          {user.stats?.followingCount ?? 0}
           <span>{t('profile.following')}</span>
         </p>
-        {showFollowing && (
-          <div className="like-modal">
-            <div className="likes-content">
-              {" "}
-              <div className="likes-header">
-                <h2>{t('profile.following')}</h2>
-                <RxCross2
-                  onClick={() => {
-                    setShowFollowing(false);
-                  }}
-                />
-              </div>
-              <ShowFollowingModal
-                user={user}
-                isFollowing={isFollowing}
-                followUnfollowHandler={followUnfollowHandler}
-                setShowFollowing={setShowFollowing}
-              />
-            </div>
-          </div>
-        )}
-        <p
-          className="post-follower-count"
-          onClick={() => {
-            if (canShowFollowersModal) setShowFollowers(true);
-          }}
-        >
-          {followersCount}
+        <p className="post-follower-count">
+          {user.stats?.followersCount ?? 0}
           <span>{t('profile.followers')}</span>
         </p>
-        {showFollowers && (
-          <div className="like-modal">
-            <div className="likes-content">
-              {" "}
-              <div className="likes-header">
-                <h2>{t('profile.followers')}</h2>
-                <RxCross2
-                  onClick={() => {
-                    setShowFollowers(false);
-                  }}
-                />
-              </div>
-              <ShowFollowersModal
-                user={user}
-                isFollowing={isFollowing}
-                followUnfollowHandler={followUnfollowHandler}
-                setShowFollowers={setShowFollowers}
-              />
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

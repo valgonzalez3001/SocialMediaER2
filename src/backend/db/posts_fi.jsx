@@ -12,15 +12,10 @@ export const postsFI = [
     type: "image",
     mediaUrl: "",
     username: "Example",
-    firstName: {
-      formula: "XLOOKUP(A2, 'Puzzle 1 accounts FI'!A:A, 'Puzzle 1 accounts FI'!B:B)",
-      result: "Example name",
-      ref: "B2",
-      shareType: "array"
-    },
+    firstName: "Example name",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("February 20 2026 23:01:33"),
+    createdAt: new Date("February 23 2026 12:46:13"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0

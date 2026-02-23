@@ -109,9 +109,9 @@ export const LoggedInUserProvider = ({ children }) => {
   // Cargar el primer usuario de la base de datos como admin
   useEffect(() => {
     if (userState.allUsers && userState.allUsers.length > 0) {
-      const adminUser = { 
+      const adminUser = {
         ...userState.allUsers[0],
-        isAdmin: true // Marcar como admin para tener permisos especiales
+        isAdmin: true,
       };
       loggedInUserDispatch({ type: "SET_USER", payload: adminUser });
     }

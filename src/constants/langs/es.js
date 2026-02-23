@@ -217,7 +217,6 @@ export const es = {
     "success": "¡Felicidades! Has completado la frase correctamente.",
     "error": "❌ Palabra incorrecta. Intenta de nuevo desde el principio.",
     "back": "← Atrás",
-    "reset": "Reiniciar",
     "finish": "Finalizar"
   },
   "aiIncorrectUsesPage": {
@@ -288,6 +287,7 @@ export const es = {
   },
   "officialAccount": {
     "name": "ECHO Oficial",
-    "handle": "@ECHO"
+    "handle": "@ECHO",
+    "bio": "Descubre lo último de la red social y chatea con MINT AI, nuestro asistente inteligente."
   }
 };

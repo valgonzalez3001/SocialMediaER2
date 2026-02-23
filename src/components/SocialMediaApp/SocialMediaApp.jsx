@@ -39,7 +39,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
 
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-    const isValid = username === "echo_official" && password === "1234";
+    const isValid = username === "echo" && password === "1234";
     if (isValid) {
       sessionStorage.setItem("socialLoginDone", "true");
       setLoginDone(true);
@@ -105,7 +105,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
                   type="text"
                   value={username}
                   onChange={(event) => setUsername(event.target.value)}
-                  placeholder="echo_official"
+                  placeholder="echo"
                   autoComplete="username"
                 />
                 <label className="social-login-label" htmlFor="login-password">

@@ -217,7 +217,6 @@ export const en = {
     "success": "Congratulations! You've completed the sentence correctly.",
     "error": "❌ Wrong word. Try again from the beginning.",
     "back": "← Back",
-    "reset": "Reset",
     "finish": "Finish"
   },
   "aiIncorrectUsesPage": {
@@ -288,6 +287,7 @@ export const en = {
   },
   "officialAccount": {
     "name": "ECHO Official Account",
-    "handle": "@ECHO"
+    "handle": "@ECHO",
+    "bio": "Discover the latest from the social network and chat with MINT AI, our intelligent assistant."
   }
 };

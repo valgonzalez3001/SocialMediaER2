@@ -2,6 +2,12 @@
   border-radius: 1rem;
 }
 
+.profile-feed {
+  flex: 1 !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+
 .back-to-game-container {
   padding: 1rem;
   border-bottom: 1px solid var(--border-color);

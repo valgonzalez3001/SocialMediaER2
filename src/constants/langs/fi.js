@@ -212,7 +212,6 @@ export const fi = {
     "success": "Onnittelut! Olet saanut lauseen valmiiksi oikein.",
     "error": "❌ Väärä sana. Yritä uudelleen alusta.",
     "back": "← Takaisin",
-    "reset": "Nollaa",
     "finish": "Lopeta"
   },
   "aiIncorrectUsesPage": {},
@@ -271,6 +270,7 @@ export const fi = {
   },
   "officialAccount": {
     "name": "ECHO Oy",
-    "handle": "@ECHO"
+    "handle": "@ECHO",
+    "bio": "Tutustu sosiaalisen verkoston uusimpaan ja keskustele MINT AI:n, älykkään assistenttimme, kanssa."
   }
 };

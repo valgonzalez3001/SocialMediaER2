@@ -79,7 +79,7 @@ export const Navbar = () => {
           <NavLink
             className="navlink"
             style={getActiveStyle}
-            to={`/profile/${loggedInUserState.username || 'Katherine'}`}
+            to="/profile/ECHO"
           >
             <CgProfile className="navlink-icon" />
             <p>{t('nav.profile')}</p>

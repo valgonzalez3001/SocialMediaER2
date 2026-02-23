@@ -22,7 +22,6 @@ export const Profile = () => {
   const postsByUser = allPosts?.filter((post) => post.username === username);
 
   useEffect(() => {
-    // Verificar si venimos del admin
     const cameFromAdmin = sessionStorage.getItem('fromAdmin');
     setFromAdmin(cameFromAdmin === 'true');
   }, []);
@@ -38,7 +37,7 @@ export const Profile = () => {
       <div className="app-container">
         <Navbar />
 
-        <main className="feed">
+        <main className="feed profile-feed">
           {fromAdmin && (
             <div className="back-to-game-container">
               <button className="back-to-game-button" onClick={handleBackToGame}>
@@ -47,6 +46,7 @@ export const Profile = () => {
             </div>
           )}
           <UserInfo
+            username={username}
             setIsEditProfile={setIsEditProfile}
             postsByUser={postsByUser}
           />

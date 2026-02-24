@@ -1,5 +1,5 @@
 import "./Admin.css";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useTranslation } from 'react-i18next';
@@ -8,6 +8,7 @@ import { useUser } from "../../contexts/UserProvider.jsx";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
@@ -15,9 +16,9 @@ import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 export const Admin = () => {
     const { t } = useTranslation();
     const { userState } = useUser();
-    const { loggedInUserState } = useLoggedInUser();
     const { reduceMisinformation, completeChallenge1, challenge1Completed } = useStats();
     const { addMessage } = useMessages();
+    const { sendStatement } = useXAPI();
     const navigate = useNavigate();
     const [classifiedUsers, setClassifiedUsers] = useState(() => {
         const saved = sessionStorage.getItem('adminGameState');
@@ -28,65 +29,50 @@ export const Admin = () => {
     const [gameResult, setGameResult] = useState(null);
     const [regenerateKey, setRegenerateKey] = useState(0); // Clave para forzar regeneración
     
-    // Seleccionar 5 usuarios aleatorios del rango 7-16 (índices 6 a 15)
-    // 2 usuarios con isBot=false y 3 usuarios con isBot=true
-    const suspectUsers = useMemo(() => {
-        // Si el reto ya fue completado, no mostrar usuarios
+    const [suspectUsers, setSuspectUsers] = useState(() => []);
+
+    // Seleccionar 5 usuarios: 3 bots y 2 humanos
+    // Usar username como clave estable (los _id cambian en cada reinicio de Mirage)
+    useEffect(() => {
         if (challenge1Completed) {
-            return [];
+            setSuspectUsers([]);
+            return;
         }
+        if (!userState?.allUsers?.length) return;
 
-        if (!userState?.allUsers?.length) {
-            return [];
-        }
-
-        // Intentar restaurar usuarios guardados
-        const savedUsers = sessionStorage.getItem('adminGameUsers');
-        if (savedUsers) {
+        // Restaurar desde sessionStorage si ya fueron elegidos
+        const savedUsernames = sessionStorage.getItem('adminGameUsernames');
+        if (savedUsernames) {
             try {
-                const parsed = JSON.parse(savedUsers);
-                // Verificar que los usuarios guardados aún existen en allUsers
-                const userIds = parsed.map(u => u._id);
-                const stillValid = userIds.every(id => 
-                    userState.allUsers.some(user => user._id === id)
-                );
-                
-                if (stillValid && parsed.length === 5) {
-                    return parsed;
+                const usernames = JSON.parse(savedUsernames);
+                const restored = usernames
+                    .map(uname => userState.allUsers.find(u => u.username === uname))
+                    .filter(Boolean);
+                if (restored.length === 5) {
+                    setSuspectUsers(restored);
+                    return;
                 }
             } catch (e) {
-                console.error('Error parsing saved users:', e);
+                console.error('Error restoring saved usernames:', e);
             }
         }
 
-        const availableUsers = userState.allUsers.slice(1, 11) || [];
-        
-        if (availableUsers.length === 0) {
-            return [];
-        }
-        
-        // Separar usuarios por isBot
-        const bots = availableUsers.filter(user => user.puzzle?.isBot === true);
-        const humans = availableUsers.filter(user => user.puzzle?.isBot === false);
-        
-        // Mezclar aleatoriamente cada grupo
+        // Primera vez: elegir 3 bots y 2 humanos de todos los usuarios
+        const bots = userState.allUsers.filter(u => u.puzzle?.isBot === true);
+        const humans = userState.allUsers.filter(u => u.puzzle?.isBot === false);
+
         const shuffledBots = [...bots].sort(() => Math.random() - 0.5);
         const shuffledHumans = [...humans].sort(() => Math.random() - 0.5);
-        
-        // Seleccionar 3 bots y 2 humanos
-        const selectedBots = shuffledBots.slice(0, 3);
-        const selectedHumans = shuffledHumans.slice(0, 2);
-        
-        // Combinar y mezclar aleatoriamente el resultado final
-        const combined = [...selectedBots, ...selectedHumans];
-        const result = combined.sort(() => Math.random() - 0.5);
-        
-        // Guardar usuarios para mantenerlos al volver
-        if (result.length > 0) {
-            sessionStorage.setItem('adminGameUsers', JSON.stringify(result));
-        }
-        return result;
-    }, [userState?.allUsers, regenerateKey, challenge1Completed]); // Agregar challenge1Completed como dependencia
+
+        const selected = [
+            ...shuffledBots.slice(0, 3),
+            ...shuffledHumans.slice(0, 2),
+        ].sort(() => Math.random() - 0.5);
+
+        sessionStorage.setItem('adminGameUsernames', JSON.stringify(selected.map(u => u.username)));
+        sessionStorage.removeItem('adminGameUsers');
+        setSuspectUsers(selected);
+    }, [userState?.allUsers, regenerateKey, challenge1Completed]);
 
     // Guardar estado de clasificación cuando cambie
     useEffect(() => {
@@ -96,19 +82,13 @@ export const Admin = () => {
     // Limpiar clasificaciones que no corresponden a los usuarios actuales
     useEffect(() => {
         if (suspectUsers.length > 0) {
-            const currentUserIds = suspectUsers.map(u => u._id);
+            const currentUsernames = suspectUsers.map(u => u.username);
             const savedClassifications = Object.keys(classifiedUsers);
-            
-            // Si hay clasificaciones de usuarios que ya no están en la lista actual, limpiar
-            const hasInvalidClassifications = savedClassifications.some(id => !currentUserIds.includes(id));
-            
+            const hasInvalidClassifications = savedClassifications.some(uname => !currentUsernames.includes(uname));
             if (hasInvalidClassifications) {
-                // Filtrar solo las clasificaciones válidas
                 const validClassifications = {};
-                currentUserIds.forEach(id => {
-                    if (classifiedUsers[id]) {
-                        validClassifications[id] = classifiedUsers[id];
-                    }
+                currentUsernames.forEach(uname => {
+                    if (classifiedUsers[uname]) validClassifications[uname] = classifiedUsers[uname];
                 });
                 setClassifiedUsers(validClassifications);
                 sessionStorage.setItem('adminGameState', JSON.stringify(validClassifications));
@@ -116,19 +96,67 @@ export const Admin = () => {
         }
     }, [suspectUsers]);
 
-    const handleClassification = (userId, classification) => {
+    const handleClassification = (username, classification) => {
+        const user = suspectUsers.find(u => u.username === username);
+        const isBot = user?.puzzle?.isBot;
+        const isCorrect = (classification === 'AI' && isBot) || (classification === 'Humano' && !isBot);
+
+        // Send xAPI statement for classification
+        sendStatement(
+            XAPI_VERBS.ANSWERED,
+            {
+                id: `${ECHO_ACTIVITIES.PUZZLE_1.id}/account/${user?.username}`,
+                definition: {
+                    name: { en: `Account Classification: ${user?.username}` },
+                    type: "http://adlnet.gov/expapi/activities/cmi.interaction",
+                    interactionType: "choice",
+                    choices: [
+                        { id: "bot", description: { en: "Bot" } },
+                        { id: "human", description: { en: "Human" } },
+                    ],
+                    correctResponsesPattern: [isBot ? "bot" : "human"],
+                },
+            },
+            {
+                success: isCorrect,
+                score: { scaled: isCorrect ? 1 : 0, raw: isCorrect ? 1 : 0, min: 0, max: 1 },
+                response: classification === 'AI' ? "bot" : "human",
+            },
+            {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.PUZZLE_1],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            }
+        );
+
         setClassifiedUsers(prev => {
-            const newState = {
-                ...prev,
-                [userId]: classification
-            };
-            // Guardar inmediatamente en sessionStorage
+            const newState = { ...prev, [username]: classification };
             sessionStorage.setItem('adminGameState', JSON.stringify(newState));
             return newState;
         });
     };
 
     const handleProfileClick = (username) => {
+        // Send xAPI statement for viewing account
+        sendStatement(
+            XAPI_VERBS.EXPERIENCED,
+            {
+                id: `${ECHO_ACTIVITIES.PUZZLE_1.id}/account/${username}`,
+                definition: {
+                    name: { en: `View Account: ${username}` },
+                    type: "http://adlnet.gov/expapi/activities/profile",
+                },
+            },
+            null,
+            {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.PUZZLE_1],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            }
+        );
+
         // Marcar que venimos del admin
         sessionStorage.setItem('fromAdmin', 'true');
         navigate(`/profile/${username}`);
@@ -141,7 +169,7 @@ export const Admin = () => {
         let incorrect = 0;
 
         suspectUsers.forEach(user => {
-            const userClassification = classifiedUsers[user._id];
+            const userClassification = classifiedUsers[user.username];
             const isBot = user.puzzle?.isBot;
 
             if ((userClassification === 'AI' && isBot) || (userClassification === 'Humano' && !isBot)) {
@@ -151,16 +179,41 @@ export const Admin = () => {
             }
         });
 
+        const isPerfect = correct === suspectUsers.length;
+        const scaledScore = suspectUsers.length > 0 ? correct / suspectUsers.length : 0;
+
+        // Send xAPI statement for challenge submission
+        sendStatement(
+            isPerfect ? XAPI_VERBS.PASSED : XAPI_VERBS.FAILED,
+            ECHO_ACTIVITIES.PUZZLE_1,
+            {
+                success: isPerfect,
+                completion: true,
+                score: {
+                    scaled: scaledScore,
+                    raw: correct,
+                    min: 0,
+                    max: suspectUsers.length,
+                },
+            },
+            {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.GAME],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            }
+        );
+
         setGameResult({ correct, incorrect, total: suspectUsers.length });
         setShowResult(true);
 
         // Si todas las clasificaciones son correctas, reducir el nivel de desinformación y marcar reto como completado
-        if (correct === suspectUsers.length) {
+        if (isPerfect) {
             reduceMisinformation(30);
             completeChallenge1();
             
             // Limpiar el estado del juego al completar exitosamente
-            sessionStorage.removeItem('adminGameUsers');
+            sessionStorage.removeItem('adminGameUsernames');
             sessionStorage.removeItem('adminGameState');
             sessionStorage.removeItem('fromAdmin');
             setClassifiedUsers({});
@@ -197,7 +250,7 @@ export const Admin = () => {
         }
 
         // Limpiar todo el estado del juego
-        sessionStorage.removeItem('adminGameUsers');
+        sessionStorage.removeItem('adminGameUsernames');
         sessionStorage.removeItem('adminGameState');
         sessionStorage.removeItem('fromAdmin');
         setClassifiedUsers({});
@@ -232,7 +285,7 @@ export const Admin = () => {
                             {suspectUsers?.length ? (
                                 suspectUsers?.map((user) => (
                                     <div
-                                        key={user?._id}
+                                        key={user?.username}
                                         className="suspect-user-card"
                                     >
                                         <div
@@ -260,19 +313,19 @@ export const Admin = () => {
                                         </div>
                                         <div className="classification-buttons">
                                             <button
-                                                className={`btn-ai ${classifiedUsers[user._id] === 'AI' ? 'selected' : ''}`}
+                                                className={`btn-ai ${classifiedUsers[user.username] === 'AI' ? 'selected' : ''}`}
                                                 onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleClassification(user?._id, 'AI');
+                                                    handleClassification(user?.username, 'AI');
                                                 }}
                                             >
                                                 {t('admin.bot')}
                                             </button>
                                             <button
-                                                className={`btn-human ${classifiedUsers[user._id] === 'Humano' ? 'selected' : ''}`}
+                                                className={`btn-human ${classifiedUsers[user.username] === 'Humano' ? 'selected' : ''}`}
                                                 onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleClassification(user?._id, 'Humano');
+                                                    handleClassification(user?.username, 'Humano');
                                                 }}
                                             >
                                                 {t('admin.human')}

@@ -88,6 +88,14 @@
     box-shadow: 0 6px 14px rgba(69, 37, 130, 0.35);
 }
 
+.ai-content-verify--done,
+.ai-content-verify:disabled {
+    background: #4caf50;
+    box-shadow: 0 6px 14px rgba(30, 100, 40, 0.25);
+    cursor: default;
+    opacity: 0.85;
+}
+
 .ai-content-stats {
     display: flex;
     align-items: center;

@@ -1,5 +1,5 @@
 import "./AIIncorrectUses.css";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-hot-toast";
 
@@ -8,20 +8,26 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import { useUser } from "../../contexts/UserProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import challengeData from "./AIIncorrectUses.json";
 
 export const AIIncorrectUses = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
+    const currentLang = t("langKey");
     const { userState } = useUser();
     const { challenge3Completed, completeChallenge3 } = useStats();
     const { addMessage } = useMessages();
+    const { sendStatement } = useXAPI();
+    const completionSentRef = useRef(false);
     const [activeCaseId, setActiveCaseId] = useState(null);
     const [selectedWrongOption, setSelectedWrongOption] = useState({});
     const [wrongSelections, setWrongSelections] = useState({});
     const [correctSelected, setCorrectSelected] = useState({});
     const [sentReplies, setSentReplies] = useState({});
-
-    const challengeCases = useMemo(() => challengeData, [i18n.language]);
+    const challengeCases = useMemo(
+        () => challengeData[currentLang] || challengeData.en || [],
+        [currentLang]
+    );
     
     useEffect(() => {
         const previousBodyOverflow = document.body.style.overflow;
@@ -41,10 +47,30 @@ export const AIIncorrectUses = () => {
     useEffect(() => {
         const totalCases = challengeCases.length;
         const completedCases = Object.keys(sentReplies).length;
-        
+
         if (completedCases === totalCases && !challenge3Completed) {
             const instructionsSent = sessionStorage.getItem("challengeFinalInstructionsSent");
             if (instructionsSent) return;
+
+            // Send xAPI statement for completing the AI Incorrect Uses challenge
+            if (!completionSentRef.current) {
+                completionSentRef.current = true;
+                sendStatement(
+                    XAPI_VERBS.COMPLETED,
+                    ECHO_ACTIVITIES.PUZZLE_3,
+                    {
+                        success: true,
+                        completion: true,
+                        score: { scaled: 1, raw: totalCases, min: 0, max: totalCases },
+                    },
+                    {
+                        contextActivities: {
+                            parent: [ECHO_ACTIVITIES.GAME],
+                            grouping: [ECHO_ACTIVITIES.GAME],
+                        },
+                    }
+                );
+            }
 
             completeChallenge3();
             sessionStorage.setItem("challengeFinalInstructionsSent", JSON.stringify(true));
@@ -69,14 +95,20 @@ export const AIIncorrectUses = () => {
                 icon: "📬",
             });
         }
-    }, [sentReplies, challengeCases.length, challenge3Completed, completeChallenge3, addMessage, t]);
+    }, [sentReplies, challengeCases.length, challenge3Completed, completeChallenge3, addMessage, t, sendStatement]);
 
     const activeCase = challengeCases.find((item) => item.id === activeCaseId) || null;
     const activeWrongSelections = activeCaseId ? (wrongSelections[activeCaseId] || {}) : {};
     const isResolved = activeCaseId ? Boolean(correctSelected[activeCaseId]) : false;
     const canSendReply = activeCaseId ? Boolean(correctSelected[activeCaseId]) : false;
 
-    const echoOfficialUser =
+    const echoOfficialUser = {
+        _id: "echo-official",
+        firstName: t("officialAccount.name") || "ECHO Official Account",
+        lastName: "",
+        username: "ECHO",
+        avatarURL: "/assets/echo.png"
+    }
         userState?.allUsers?.find((user) => user.username === "ECHO") || userState?.allUsers?.[0];
 
     const handleOptionClick = (optionIndex) => {
@@ -85,7 +117,39 @@ export const AIIncorrectUses = () => {
         const option = activeCase.options[optionIndex] || null;
         if (!option) return;
 
-        if (option.isCorrect) {
+        const isCorrect = option.isCorrect === true;
+
+        // Send xAPI statement for option selection
+        sendStatement(
+            XAPI_VERBS.ANSWERED,
+            {
+                id: `${ECHO_ACTIVITIES.PUZZLE_3.id}/case/${activeCase.id}/option`,
+                definition: {
+                    name: { en: `Select Response for Case ${activeCase.id}` },
+                    description: { en: activeCase.post.text },
+                    type: "http://adlnet.gov/expapi/activities/cmi.interaction",
+                    interactionType: "choice",
+                    choices: activeCase.options.map((opt, idx) => ({
+                        id: idx.toString(),
+                        description: { en: opt.text },
+                    })),
+                    correctResponsesPattern: [activeCase.options.findIndex(opt => opt.isCorrect).toString()],
+                },
+            },
+            {
+                success: isCorrect,
+                score: { scaled: isCorrect ? 1 : 0, raw: isCorrect ? 1 : 0, min: 0, max: 1 },
+                response: option.text,
+            },
+            {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.PUZZLE_3],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            }
+        );
+
+        if (isCorrect) {
             setCorrectSelected((prev) => ({ ...prev, [activeCase.id]: true }));
             setSelectedWrongOption((prev) => ({ ...prev, [activeCase.id]: null }));
             return;
@@ -106,6 +170,8 @@ export const AIIncorrectUses = () => {
         setSentReplies((prev) => ({ ...prev, [activeCase.id]: true }));
         setActiveCaseId(null);
     };
+
+   
 
     return (
         <>
@@ -139,21 +205,21 @@ export const AIIncorrectUses = () => {
                                                 <div className="thread-reply-card">
                                                     <div className="x-avatar reply-avatar">
                                                         <img
-                                                            src={item.officialPost?.image || echoOfficialUser?.avatarURL}
-                                                            alt={item.officialPost?.name || "ECHO"}
+                                                            src={ echoOfficialUser?.avatarURL}
+                                                            alt={ "ECHO"}
                                                         />
                                                     </div>
                                                     <div className="x-post-main">
                                                         <div className="ai-incorrect-post-meta">
                                                             <span className="ai-incorrect-post-name">
-                                                                {item.officialPost?.name || "ECHO Official Account"}
+                                                                {t("officialAccount.name") || "ECHO Official Account"}
                                                             </span>
                                                             <span className="ai-incorrect-post-handle">
-                                                                {item.officialPost?.handle || "@ECHO"}
+                                                                {t("officialAccount.handle") || "@ECHO"}
                                                             </span>
                                                         </div>
                                                         <p className="ai-incorrect-post-text">
-                                                            {item.officialPost?.text}
+                                                            {item.options.find((opt) => opt.isCorrect)?.text || ""}
                                                         </p>
                                                         <p className="ai-incorrect-sent">{t("aiIncorrectUsesPage.sent")}</p>
                                                     </div>
@@ -164,6 +230,24 @@ export const AIIncorrectUses = () => {
                                             type="button"
                                             className="reply-open-btn"
                                             onClick={() => {
+                                                // Send xAPI statement for viewing the case
+                                                sendStatement(
+                                                    XAPI_VERBS.EXPERIENCED,
+                                                    {
+                                                        id: `${ECHO_ACTIVITIES.PUZZLE_3.id}/case/${item.id}`,
+                                                        definition: {
+                                                            name: { en: `View AI Incorrect Use Case ${item.id}` },
+                                                            type: "http://adlnet.gov/expapi/activities/assessment",
+                                                        },
+                                                    },
+                                                    null,
+                                                    {
+                                                        contextActivities: {
+                                                            parent: [ECHO_ACTIVITIES.PUZZLE_3],
+                                                            grouping: [ECHO_ACTIVITIES.GAME],
+                                                        },
+                                                    }
+                                                );
                                                 setActiveCaseId(item.id);
                                                 setSelectedWrongOption((prev) => ({ ...prev, [item.id]: null }));
                                             }}
@@ -211,11 +295,11 @@ export const AIIncorrectUses = () => {
                                     <strong>
                                         {activeCase.officialPost?.name ||
                                             `${echoOfficialUser?.firstName || ""} ${echoOfficialUser?.lastName || ""}`.trim()}
-                                    </strong>
+                                    </strong>&nbsp;&nbsp;
                                     <span>
                                         {activeCase.officialPost?.handle ||
                                             `@${echoOfficialUser?.username || "ECHO"}`}
-                                    </span>
+                                    </span>&nbsp;&nbsp;
                                     <span className="ai-incorrect-post-handle">{activeCase.post.date}</span>
                                 </div>
                                 <p className="x-reply-helper">{t("aiIncorrectUsesPage.instruction")}</p>

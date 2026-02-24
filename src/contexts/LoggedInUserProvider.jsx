@@ -1,5 +1,6 @@
 import React, { createContext, useContext } from "react";
 import { useReducer, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { loggedInUserReducer, initial } from "../reducers/loggedInUserReducer.jsx";
 import {
   editUserService,
@@ -13,6 +14,7 @@ const LoggedInUserContext = createContext();
 
 export const LoggedInUserProvider = ({ children }) => {
   const { userState, dispatch } = useUser();
+  const { t } = useTranslation();
 
   const [loggedInUserState, loggedInUserDispatch] = useReducer(
     loggedInUserReducer,
@@ -106,16 +108,21 @@ export const LoggedInUserProvider = ({ children }) => {
     },
   ];
 
-  // Cargar el primer usuario de la base de datos como admin
+  // Cargar la cuenta oficial de ECHO como admin
   useEffect(() => {
-    if (userState.allUsers && userState.allUsers.length > 0) {
-      const adminUser = { 
-        ...userState.allUsers[0],
-        isAdmin: true // Marcar como admin para tener permisos especiales
-      };
-      loggedInUserDispatch({ type: "SET_USER", payload: adminUser });
-    }
-  }, [userState.allUsers]);
+    const echoAdmin = {
+      _id: "echo-official",
+      username: "ECHO",
+      firstName: t("officialAccount.name"),
+      handle: t("officialAccount.handle"),
+      bio: t("officialAccount.bio"),
+      avatarURL: "/assets/echo.png",
+      verified: true,
+      isAdmin: true,
+      stats: { followersCount: 0, followingCount: 0 },
+    };
+    loggedInUserDispatch({ type: "SET_USER", payload: echoAdmin });
+  }, [t]);
 
   return (
     <LoggedInUserContext.Provider

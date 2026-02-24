@@ -11,7 +11,7 @@ import {
   CgProfile,
 } from "../../utils/icons.jsx";
 import { MdAdminPanelSettings } from "react-icons/md";
-import { RiRobot2Line, RiErrorWarningLine } from "react-icons/ri";
+import { RiRobotLine, RiErrorWarningLine } from "react-icons/ri";
 import { NewPostLauncher } from "../../pages/NewPost/NewPostLauncher.jsx";
 import aiIncorrectUsesCases from "../../pages/AIIncorrectUses/AIIncorrectUses.json";
 
@@ -79,7 +79,7 @@ export const Navbar = () => {
           <NavLink
             className="navlink"
             style={getActiveStyle}
-            to={`/profile/${loggedInUserState.username || 'Katherine'}`}
+            to="/profile/ECHO"
           >
             <CgProfile className="navlink-icon" />
             <p>{t('nav.profile')}</p>
@@ -101,7 +101,7 @@ export const Navbar = () => {
               style={getActiveStyle} 
               to="/ai-content"
             >
-              <RiRobot2Line className="navlink-icon" />
+              <RiRobotLine className="navlink-icon" />
               <p className="navlink-label">
                 <span className="navlink-label-text">{t('nav.aiContent')}</span>
                 {pendingChallenge2 > 0 && <span className="nav-badge">{pendingChallenge2}</span>}
@@ -114,7 +114,7 @@ export const Navbar = () => {
               onClick={(e) => handleShowBlockedPopup(e, challenge1Completed ? "desktop.popup.readMessageChallenge2" : "desktop.popup.completeChallenge1")}
               role="button"
             >
-              <RiRobot2Line className="navlink-icon" />
+              <RiRobotLine className="navlink-icon" />
               <p>{t('nav.aiContent')}</p>
             </div>
           )}

@@ -138,6 +138,17 @@ export function makeServer({ environment = "development", language = "es" } = {}
         "/users/unfollow/:followUserId/",
         unfollowUserHandler.bind(this)
       );
+
+      // Allow xAPI requests to pass through to the real LRS
+      const xapiEndpoint = import.meta.env.VITE_XAPI_ENDPOINT;
+      if (xapiEndpoint) {
+        try {
+          const url = new URL(xapiEndpoint);
+          this.passthrough(`${url.origin}/**`);
+        } catch (e) {
+          // Invalid URL, skip passthrough
+        }
+      }
     },
   });
 

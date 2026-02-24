@@ -1,5 +1,5 @@
 import "./AIContent.css";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 
@@ -7,12 +7,21 @@ import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
-import gameData from "./AIContent.json";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
+import aiContent from "./AIContent.json";
 
 export const AIContent = () => {
     const { t } = useTranslation();
+    const currentLang = t("langKey");
+    const gameDataAllSentences = aiContent[currentLang] || aiContent.en;
+    const gameData = useMemo(
+        () => gameDataAllSentences[Math.floor(Math.random() * gameDataAllSentences.length)],
+        [gameDataAllSentences]
+    );
     const { addMessage } = useMessages();
     const { challenge2Completed, completeChallenge2 } = useStats();
+    const { sendStatement } = useXAPI();
+    const completionSentRef = useRef(false);
     const [step, setStep] = useState("list");
     const [selectedWords, setSelectedWords] = useState([]);
     const [wrongChoice, setWrongChoice] = useState(null);
@@ -27,6 +36,10 @@ export const AIContent = () => {
     const reconstructedSentence = useMemo(
         () => selectedWords.join(" ").replace(/\s([.,!?;:])/g, "$1"),
         [selectedWords]
+    );
+    const correctSentence = useMemo(
+        () => gameData.map((item) => item.correct).join(" ").replace(/\s([.,!?;:])/g, "$1"),
+        [gameData]
     );
     const isCompleted = selectedWords.length === gameData.length;
 
@@ -45,6 +58,26 @@ export const AIContent = () => {
 
         const instructionsSent = sessionStorage.getItem("challenge3InstructionsSent");
         if (instructionsSent) return;
+
+        // Send xAPI statement for completing the LLM message challenge
+        if (!completionSentRef.current) {
+            completionSentRef.current = true;
+            sendStatement(
+                XAPI_VERBS.COMPLETED,
+                ECHO_ACTIVITIES.PUZZLE_2,
+                {
+                    success: true,
+                    completion: true,
+                    score: { scaled: 1, raw: gameData.length, min: 0, max: gameData.length },
+                },
+                {
+                    contextActivities: {
+                        parent: [ECHO_ACTIVITIES.GAME],
+                        grouping: [ECHO_ACTIVITIES.GAME],
+                    },
+                }
+            );
+        }
 
         completeChallenge2();
         sessionStorage.setItem("challenge3InstructionsSent", JSON.stringify(true));
@@ -67,13 +100,39 @@ export const AIContent = () => {
             duration: 4000,
             icon: "📬",
         });
-    }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t]);
+    }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t, sendStatement, gameData.length]);
 
     const handleWordClick = (word) => {
         if (wrongChoice) return;
         const currentStep = selectedWords.length;
+        const isCorrect = word === gameData[currentStep].correct;
 
-        if (word === gameData[currentStep].correct) {
+        // Send xAPI statement for token selection
+        sendStatement(
+            XAPI_VERBS.ANSWERED,
+            {
+                id: `${ECHO_ACTIVITIES.PUZZLE_2.id}/token/${currentStep}`,
+                definition: {
+                    name: { en: `Select Token ${currentStep + 1}` },
+                    type: "http://adlnet.gov/expapi/activities/cmi.interaction",
+                    interactionType: "choice",
+                    correctResponsesPattern: [gameData[currentStep].correct],
+                },
+            },
+            {
+                success: isCorrect,
+                score: { scaled: isCorrect ? 1 : 0, raw: isCorrect ? 1 : 0, min: 0, max: 1 },
+                response: word,
+            },
+            {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.PUZZLE_2],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            }
+        );
+
+        if (isCorrect) {
             setSelectedWords([...selectedWords, word]);
         } else {
             setWrongChoice({ step: currentStep, word });
@@ -82,11 +141,6 @@ export const AIContent = () => {
                 setWrongChoice(null);
             }, 550);
         }
-    };
-
-    const resetGame = () => {
-        setSelectedWords([]);
-        setWrongChoice(null);
     };
 
     return (
@@ -115,11 +169,12 @@ export const AIContent = () => {
                                                 </p>
                                             </div>
                                             <button
-                                                className="ai-content-verify"
+                                                className={`ai-content-verify${challenge2Completed ? " ai-content-verify--done" : ""}`}
                                                 type="button"
-                                                onClick={() => setStep("verify")}
+                                                onClick={() => !challenge2Completed && setStep("verify")}
+                                                disabled={challenge2Completed}
                                             >
-                                                {t("aiContentPage.verifyButton")}
+                                                {challenge2Completed ? `✓ ${t("aiContentPage.verifyButton")}` : t("aiContentPage.verifyButton")}
                                             </button>
                                         </div>
 
@@ -172,8 +227,7 @@ export const AIContent = () => {
                                                 <span className="ai-verify-date">{t("aiVerifyPage.postDate")}</span>
                                             </div>
                                             <p className="ai-verify-blurred-text" aria-hidden="true">
-                                                Floods like this used to be rare. They're obviously planned and the
-                                                government is hiding what's really happening.
+                                                {correctSentence}
                                             </p>
                                         </div>
                                         <div className="ai-verify-stamp">{t("aiVerifyPage.stamp")}</div>
@@ -346,12 +400,11 @@ export const AIContent = () => {
                                     </div>
 
                                     <div className="ai-game-actions">
-                                        <button className="ai-verify-back" type="button" onClick={() => setStep("brief")}>
-                                            {t("aiGamePage.back")}
-                                        </button>
-                                        <button className="ai-verify-start" type="button" onClick={resetGame}>
-                                            {t("aiGamePage.reset")}
-                                        </button>
+                                        {!isCompleted && (
+                                            <button className="ai-verify-back" type="button" onClick={() => setStep("brief")}>
+                                                {t("aiGamePage.back")}
+                                            </button>
+                                        )}
                                     </div>
                                 </section>
                             ) : null}

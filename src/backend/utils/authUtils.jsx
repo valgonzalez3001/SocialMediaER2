@@ -2,21 +2,18 @@
  * Utility functions for the mock server
  * Sin autenticación - usuario admin por defecto (moderador de la red social)
  */
-
+import i18n from "../../i18n.jsx";
 
 export const formatDate = () => new Date().toISOString();
 
 /**
- * Retorna siempre el usuario admin (sin autenticación real)
- * El admin puede hacer cualquier acción
+ * Retorna siempre la cuenta oficial ECHO (sin autenticación real)
  */
 export const requiresAuth = function (request) {
-  // Siempre retorna el primer usuario (admin) sin verificar token
-  const users = this.db.users;
-  return users[0] || {
-    username: "admin",
-    firstName: "Admin",
-    lastName: "User",
-    avatarURL: "",
+  return {
+    username: "ECHO",
+    firstName: i18n.t("officialAccount.name"),
+    lastName: "",
+    avatarURL: "/assets/echo.png",
   };
 };

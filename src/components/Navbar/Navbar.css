@@ -1,6 +1,6 @@
 .navbar {
   z-index: 1;
-  background-color: #1B1135;
+  background-color: #13101a;
   border-right: 1px solid var(--border-color);
   padding: 0.5rem;
   display: flex;
@@ -23,7 +23,7 @@
 .navlink {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 2rem;
   color: var(--text-color);
 }
@@ -45,6 +45,7 @@
 @media (min-width: 1200px) {
   .navlink {
     margin: 0 0.5rem;
+
   }
 }
 
@@ -55,18 +56,19 @@
   color: var(--text-color);
 }
 
-@media (min-width: 768px) {
-  .navlink-icon {
-    font-size: 30px;
-  }
-}
 
-@media (min-width: 1200px) {
-  .navlink-icon {
+.navlink-icon {
+  font-weight: 500;
+  font-size: 25px;
+  padding: 0rem;
+  color: var(--text-color);
+  
+  @media screen and (min-width: 1200px) {
     font-size: 30px;
-    min-width: 30px;
-    margin-left: 1vw;
+    min-width: 25px;
+    /* margin-left: 1vw; */
   }
+
 }
 
 .navlink p {
@@ -188,7 +190,7 @@
   border: none;
   padding: 1.5rem 1.5rem 1.2rem 1.5rem;
   border-radius: 2rem;
-  background-color: #D4C2FF;
+  background-color: #d4c2ff;
   font-weight: 700;
   font-size: 1.1rem;
   color: #361696;
@@ -197,7 +199,7 @@
 }
 
 .create-new-post-btn:hover {
-  background-color: #C6ADFF;
+  background-color: #c6adff;
 }
 
 .create-new-post-btn.is-locked {
@@ -216,7 +218,7 @@
     border: none;
     padding: 1.5rem 1.5rem 1.2rem 1.5rem;
     border-radius: 2rem;
-    background-color: #D4C2FF;
+    background-color: #d4c2ff;
     font-weight: 700;
     font-size: 1.1rem;
     color: #361696;
@@ -238,9 +240,9 @@
   .create-new-post-btn {
     cursor: pointer;
     border: none;
-    padding: 0.9rem;
+    padding: 0.9rem 2.4rem;
     border-radius: 2rem;
-    background-color: #D4C2FF;
+    background-color: #d4c2ff;
     font-weight: 700;
     font-size: 1.1rem;
     color: #361696;
@@ -248,7 +250,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    align-self: stretch;
   }
 
   .create-new-post-btn span {
@@ -268,7 +269,8 @@
 
 @media (min-width: 1200px) {
   .navbar li {
-    margin-bottom: 8px;
+    margin-bottom: 0px;
+    max-width: 280px;
   }
 }
 
@@ -306,7 +308,3 @@
     width: 80%;
   }
 }
-
-
-
-

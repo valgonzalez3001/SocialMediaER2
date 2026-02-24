@@ -144,8 +144,9 @@ export const Navbar = () => {
             </div>
           )}
         </li>
+            <NewPostLauncher />
       </ul>
-      <NewPostLauncher />
+  
 
       {popup.visible && (
         <PopupNotification

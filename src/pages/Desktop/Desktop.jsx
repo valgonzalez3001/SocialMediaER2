@@ -194,7 +194,7 @@ export const Desktop = () => {
           >
             <img
               className="launcher-image"
-              src="/assets/social-media-logo.png"
+              src="/assets/echo-logo-short-neg.png"
               alt={t("desktop.apps.social")}
             />
             <span className="launcher-label">

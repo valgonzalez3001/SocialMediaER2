@@ -50,13 +50,18 @@ a {
   color: var(--text-color);
   order: 2;
   min-height: 100vh;
-  padding-right: 1.5rem;
+  overflow-y: scroll;
+  height: 100%
+  /* padding-right: 1.5rem; */
 }
 
 .navbar {
   order: 3;
   position: sticky;
   bottom: 0px;
+}
+.post-listing-container {
+  margin: 1rem
 }
 
 .discover {
@@ -92,9 +97,9 @@ a {
   .navbar {
     order: 1;
     position: sticky;
-    top: 10vh;
+    top: 7vh;
     width: 20%;
-    height: calc(100vh - 10vh);
+    height: calc(100vh - 7vh);
     align-self: flex-start;
     overflow-y: auto;
     z-index: 50;
@@ -110,9 +115,9 @@ a {
   .navbar {
     order: 1;
     position: sticky;
-    top: 10vh;
+    top: 7vh;
     width: 15%;
-    height: calc(100vh - 10vh);
+    height: calc(100vh - 7vh);
     align-self: flex-start;
     overflow-y: auto;
     z-index: 50;
@@ -132,19 +137,20 @@ a {
   .feed {
     width: 50%;
     min-height: 100vh;
-    padding-right: 1rem;
+    /* padding-right: 1rem; */
   }
 
   .navbar {
     order: 1;
     position: sticky;
-    top: 10vh;
+    top: 7vh ;
     width: 330px;
-    height: calc(100vh - 10vh);
+    height: calc(100vh - 7vh);
     align-self: flex-start;
     overflow-y: auto;
     z-index: 50;
   }
+ 
 
   .discover {
     display: flex;

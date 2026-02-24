@@ -16,7 +16,6 @@ import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 export const Admin = () => {
     const { t } = useTranslation();
     const { userState } = useUser();
-    const { loggedInUserState } = useLoggedInUser();
     const { reduceMisinformation, completeChallenge1, challenge1Completed } = useStats();
     const { addMessage } = useMessages();
     const { sendStatement } = useXAPI();
@@ -32,7 +31,7 @@ export const Admin = () => {
     
     const [suspectUsers, setSuspectUsers] = useState(() => []);
 
-    // Seleccionar 5 usuarios UNA SOLA VEZ: 3 bots y 2 humanos
+    // Seleccionar 5 usuarios: 3 bots y 2 humanos
     // Usar username como clave estable (los _id cambian en cada reinicio de Mirage)
     useEffect(() => {
         if (challenge1Completed) {

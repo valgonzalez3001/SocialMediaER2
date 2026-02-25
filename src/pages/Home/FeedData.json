@@ -1,0 +1,138 @@
+{
+  "en": [
+    {
+      "handle": "lau_tech",
+      "firstName": "Laura",
+      "lastName": "Tech",
+      "imageUser": "/assets/feed/feed_user1.png",
+      "text": "Alright… I just found out this girl DOESN’T EXIST 😳\nShe’s 100% AI-generated.\n\nAnd she has more followers than me.\n\nIt’s getting harder and harder to tell whether a photo is real or not. Be careful about idealizing everything you see on social media, because there might not even be a real person behind it.",
+      "imageURL": "/assets/feed/feed_post1.png"
+    },
+    {
+      "handle": "alex_data",
+      "firstName": "Alex",
+      "lastName": "Data",
+      "imageUser": "/assets/feed/feed_user2.png",
+      "text": "Recommendation algorithms analyze much more than just your likes.\n\nThey measure how long you look at something, whether you pause a video, scroll back, zoom in on an image… even what you ignore.\n\nWith all of that, they build a predictive profile of your interests.\n\nThey don’t show you what’s most true.\nThey show you what’s most likely to keep you there.\n\nAnd that completely changes how we consume information.",
+      "imageURL": "/assets/feed/feed_post2.png"
+    },
+    {
+      "handle": "marti.dev",
+      "firstName": "Marti",
+      "lastName": "Developer",
+      "imageUser": "/assets/feed/feed_user3.png",
+      "text": "Many people think that when an AI gives an incorrect answer, it’s because it’s “lying.” But that’s not really how it works.\n\nLanguage models don’t search for the truth — they search for the most probable next word based on the data they were trained on. If they don’t have enough information or the topic is very specific, they can generate details that sound completely convincing.\n\nThis is called a “hallucination.”\nIt’s not malice. It’s statistics.\n\nSo using AI is fine — but trusting it blindly isn’t.",
+      "imageURL": "/assets/feed/feed_post3.gif"
+    },
+    {
+      "handle": "olaiaplan",
+      "firstName": "Olaia",
+      "lastName": "Plan",
+      "imageUser": "/assets/feed/feed_user4.png",
+      "text": "A bot isn’t always obvious. It’s not just an account with a weird username and zero photos.\n\nIt can be designed to look completely human: posting memes, commenting on news, interacting with other users.\n\nIf hundreds of bots support the same idea, it can create the illusion of real consensus.\n\nAnd when we believe that “everyone thinks this way,” we’re much less likely to question it.\n\nThat’s where the real problem begins.",
+      "imageURL": "/assets/feed/feed_post4.png"
+    }
+  ],
+  "es": [
+    {
+      "handle": "lau_tech",
+      "firstName": "Laura",
+      "lastName": "Tech",
+      "imageUser": "/assets/feed/feed_user1.png",
+      "text": "Vale… acabo de descubrir que esta chica NO EXISTE 😳\nEs 100% generada por IA.\n\nY tiene más seguidores que yo.\n\nCada vez es más difícil saber si una foto es real o no. Ojo con idealizar todo lo que ves en redes, porque puede que ni siquiera haya una persona detrás.",
+      "imageURL": "/assets/feed/feed_post1.png"
+    },
+    {
+      "handle": "alex_data",
+      "firstName": "Alex",
+      "lastName": "Data",
+      "imageUser": "/assets/feed/feed_user2.png",
+      "text": "Los algoritmos de recomendación analizan muchísimo más que tus likes.\n\nMiden cuánto tiempo te quedas mirando algo, si haces pausa en un vídeo, si vuelves atrás, si amplías una imagen… incluso lo que ignoras.\n\nCon todo eso crean un perfil predictivo de tus intereses.\n\nNo te enseñan lo más verdadero.\nTe enseñan lo más probable que te haga quedarte.\n\nY eso cambia completamente cómo consumimos información.",
+      "imageURL": "/assets/feed/feed_post2.png"
+    },
+    {
+      "handle": "marti.dev",
+      "firstName": "Marti",
+      "lastName": "Developer",
+      "imageUser": "/assets/feed/feed_user3.png",
+      "text": "Mucha gente piensa que cuando una IA da una respuesta incorrecta es porque “miente”. Pero en realidad no funciona así.\n\nLos modelos de lenguaje no buscan la verdad, buscan la palabra más probable según los datos con los que fueron entrenados. Si no tienen suficiente información o el tema es muy específico, pueden inventar detalles que suenan completamente convincentes.\n\nA eso se le llama “alucinación”.\nNo es malicia. Es estadística.\n\nPor eso usar IA está bien, pero confiar ciegamente no.",
+      "imageURL": "/assets/feed/feed_post3.gif"
+    },
+    {
+      "handle": "olaiaplan",
+      "firstName": "Olaia",
+      "lastName": "Plan",
+      "imageUser": "/assets/feed/feed_user4.png",
+      "text": "Un bot no siempre es obvio. No es una cuenta con nombre raro y cero fotos.\n\nPuede estar diseñado para parecer totalmente humano: publica memes, comenta noticias, interactúa con otros usuarios.\n\nSi cientos de bots apoyan una misma idea, puede parecer que hay un consenso real.\n\nY cuando creemos que “todo el mundo piensa así”, tendemos a cuestionarlo menos.\n\nAhí está la clave del problema.",
+      "imageURL": "/assets/feed/feed_post4.png"
+    }
+  ],
+  "fi": [
+    {
+      "handle": "lau_tech",
+      "firstName": "Laura",
+      "lastName": "Tech",
+      "imageUser": "/assets/feed/feed_user1.png",
+      "text": "",
+      "imageURL": "/assets/feed/feed_post1.png"
+    },
+    {
+      "handle": "alex_data",
+      "firstName": "Alex",
+      "lastName": "Data",
+      "imageUser": "/assets/feed/feed_user2.png",
+      "text": "",
+      "imageURL": "/assets/feed/feed_post2.png"
+    },
+    {
+      "handle": "marti.dev",
+      "firstName": "Marti",
+      "lastName": "Developer",
+      "imageUser": "/assets/feed/feed_user3.png",
+      "text": "",
+      "imageURL": "/assets/feed/feed_post3.gif"
+    },
+    {
+      "handle": "olaiaplan",
+      "firstName": "Olaia",
+      "lastName": "Plan",
+      "imageUser": "/assets/feed/feed_user4.png",
+      "text": "",
+      "imageURL": "/assets/feed/feed_post4.png"
+    }
+  ],
+  "sr": [
+    {
+      "handle": "lau_tech",
+      "firstName": "Laura",
+      "lastName": "Tech",
+      "imageUser": "/assets/feed/feed_user1.png",
+      "text": "",
+      "imageURL": "/assets/feed/feed_post1.png"
+    },
+    {
+      "handle": "alex_data",
+      "firstName": "Alex",
+      "lastName": "Data",
+      "imageUser": "/assets/feed/feed_user2.png",
+      "text": "",
+      "imageURL": "/assets/feed/feed_post2.png"
+    },
+    {
+      "handle": "marti.dev",
+      "firstName": "Marti",
+      "lastName": "Developer",
+      "imageUser": "/assets/feed/feed_user3.png",
+      "text": "",
+      "imageURL": "/assets/feed/feed_post3.gif"
+    },
+    {
+      "handle": "olaiaplan",
+      "firstName": "Olaia",
+      "lastName": "Plan",
+      "imageUser": "/assets/feed/feed_user4.png",
+      "text": "",
+      "imageURL": "/assets/feed/feed_post4.png"
+    }
+  ]
+}

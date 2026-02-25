@@ -369,6 +369,9 @@ async function main() {
   const langs = allKeys.slice(1); // Rest are language columns
   const avatarsDir = path.join(OUT_DIR, "public/assets/users");
   const postsDir = path.join(OUT_DIR, "public/assets/posts");
+  if (!fs.existsSync(postsDir)) {
+    fs.mkdirSync(postsDir, { recursive: true });
+  }
   for (const lang of langs) {
     console.log(`\nProcessing language: ${lang}`);
 
@@ -634,6 +637,148 @@ async function main() {
     }
     fs.writeFileSync(communityNotePath, JSON.stringify(communityNoteStatements, null, 2), "utf8");
     console.log(`Wrote Community Note Statements to: src/pages/CommunityNote/CommunityNoteStatements.json`);
+  }
+
+  // Feed sheet
+  console.log("\nProcessing Feed sheet...");
+  const feedSheetData = readSheet(workbook, "Feed");
+  const feedSheet = workbook.getWorksheet("Feed");
+
+  if (feedSheetData.length > 0 && feedSheet) {
+    // Create feed assets directory
+    const feedDir = path.join(OUT_DIR, "public/assets/feed");
+    if (!fs.existsSync(feedDir)) {
+      fs.mkdirSync(feedDir, { recursive: true });
+    }
+
+    // Build a map: row index (1-based, data rows start at 2) → embedded image buffer
+    // imageUser column is col index 4 (handle=1, firstName=2, lastName=3, imageUser=4)
+    const embeddedImageByRow = {};
+    const sheetImages = feedSheet.getImages();
+    for (const img of sheetImages) {
+      const rowIdx = img.range.tl.nativeRow; // 0-based row
+      const colIdx = img.range.tl.nativeCol; // 0-based col
+      if (colIdx === 3) { // imageUser is the 4th column (0-indexed = 3)
+        const imageData = workbook.model.media[img.imageId];
+        if (imageData) {
+          embeddedImageByRow[rowIdx] = imageData;
+        }
+      }
+    }
+
+    // Save embedded images and build resolved paths
+    const resolvedImageUsers = feedSheetData.map((row, idx) => {
+      const rowIdx = idx + 1; // data starts at row index 1 (0-based), header is 0
+      const imgData = embeddedImageByRow[rowIdx];
+      if (imgData) {
+        const ext = imgData.extension || "png";
+        const filename = `feed_user${idx + 1}.${ext}`;
+        const destPath = path.join(feedDir, filename);
+        fs.writeFileSync(destPath, imgData.buffer);
+        console.log(`  Saved embedded image: ${filename}`);
+        return `/assets/feed/${filename}`;
+      }
+      // Fallback: if still a hyperlink object
+      return "";
+    });
+
+    // Download feed post images
+    console.log("  Downloading feed post images...");
+    const resolvedImageURLs = await Promise.all(
+      feedSheetData.map(async (row) => {
+        const raw = await processAvatarUrl(row["imageURL"], feedDir);
+        if (raw && typeof raw === "string") {
+          return raw.replace("/assets/users/", "/assets/feed/");
+        }
+        return raw;
+      })
+    );
+
+    const feedByLang = {};
+    for (const lang of langs) {
+      feedByLang[lang] = feedSheetData.map((row, idx) => ({
+        handle: row["handle"] || "",
+        firstName: row["firstName"] || "",
+        lastName: row["lastName"] || "",
+        imageUser: resolvedImageUsers[idx] || "",
+        text: row[`text_${lang}`] || "",
+        imageURL: resolvedImageURLs[idx] || "",
+      }));
+    }
+
+    const feedDataPath = path.join(OUT_DIR, "src/pages/Home/FeedData.json");
+    if (fs.existsSync(feedDataPath)) {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+      fs.copyFileSync(feedDataPath, path.join(tmpDir, `FeedData_${timestamp}.json`));
+    }
+    fs.writeFileSync(feedDataPath, JSON.stringify(feedByLang, null, 2), "utf8");
+    console.log(`Wrote Feed data to: src/pages/Home/FeedData.json`);
+  } else {
+    console.warn("  Sheet 'Feed' not found or empty, skipping.");
+  }
+
+  // ECHO Official Account Posts (always visible, language-independent file)
+  console.log("\nProcessing ECHO Official Account posts...");
+  const echoPostsData = readSheet(workbook, "ECHO Profile Posts");
+
+  if (echoPostsData.length > 0) {
+    console.log(`  Found ${echoPostsData.length} ECHO post(s)`);
+    console.log(`  Downloading ECHO post images...`);
+
+    // Build multilingual officialAccount fields from the i18n sheet
+    const officialNameRow = webI18n.find(row => String(row[keyColumn]) === "officialAccount.name");
+    const officialHandleRow = webI18n.find(row => String(row[keyColumn]) === "officialAccount.handle");
+    const officialBioRow = webI18n.find(row => String(row[keyColumn]) === "officialAccount.bio");
+    const officialName = {};
+    const officialHandle = {};
+    const officialBio = {};
+    for (const lang of langs) {
+      officialName[lang] = officialNameRow?.[lang] || "ECHO";
+      officialHandle[lang] = officialHandleRow?.[lang] || "@ECHO";
+      officialBio[lang] = officialBioRow?.[lang] || "";
+    }
+    const echoPosts = await Promise.all(echoPostsData.map(async (row) => ({
+      _id: "uuid()",
+      content: {
+        es: row["text_es"] || "",
+        en: row["text_en"] || "",
+        fi: row["text_fi"] || "",
+        sr: row["text_sr"] || "",
+      },
+      type: "image",
+      mediaUrl: await processAvatarUrl(row["image"], postsDir),
+      username: "ECHO",
+      firstName: officialName,
+      lastName: "",
+      avatarURL: "/assets/echo.png",
+      createdAt: row["date"] ? new Date(row["date"]) : new Date(),
+      updatedAt: "formatDate()",
+      likes: {
+        likeCount: 0,
+      },
+    })));
+
+    const oldFileEcho = path.join(OUT_DIR, "src/backend/db/posts_echo.jsx");
+    if (fs.existsSync(oldFileEcho)) {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+      fs.renameSync(oldFileEcho, path.join(tmpDir, `posts_echo_${timestamp}.jsx`));
+    }
+    writeDbJsx(
+      echoPosts,
+      "postsECHO",
+      "src/backend/db/posts_echo.jsx",
+      [
+        'import { v4 as uuid } from "uuid";',
+        'import { formatDate } from "../utils/authUtils.jsx";',
+        "",
+        "/**",
+        " *  ECHO Official Account Posts (always visible, multilingual content)",
+        " */",
+        "",
+      ]
+    );
+  } else {
+    console.warn("  Sheet 'ECHO posts' not found or empty, skipping.");
   }
 
   console.log("\nDone!");

@@ -43,10 +43,10 @@ export const fi = {
     "title": "Viestit",
     "inbox": "Saapuneet",
     "selectMessage": "Valitse viesti luettavaksi",
-    "fromLabel": "Lahettaja",
+    "fromLabel": "Lähettäjä",
     "chatPlaceholder": "Kirjoita viesti...",
-    "send": "Laheta",
-    "newMessageNotification": "Sinulla on uusi viesti!",
+    "send": "Lähetä",
+    "newMessageNotification": "Sinulle on uusi viesti!",
     "newMessageFromBoss": "Pomollasi on sinulle tehtävä",
     "congratulationNotification": "Pomosi on lähettänyt sinulle onnittelut",
     "challenge2Notification": "Pomosi on lähettänyt ohjeet haasteeseen 2",
@@ -57,24 +57,24 @@ export const fi = {
     },
     "messages": {
       "missionBrief": {
-        "from": "Esimies",
-        "subject": "🚨 KRIITTINEN TEHTÄVÄ: Dezinformaation Hälytys!",
-        "content": "KRIITTINEN HATA: verkko on vaarassa.\n\nHaaste 1:\nAvaa Epailyttavat Tilit ja tunnista botit.\n\nJos epaonnistut, disinformaatio kasvaa. Ratkaise nyt.\n\n- Esimies"
+        "from": "Pomo",
+        "subject": "🚨 KRIITTINEN TEHTÄVÄ: Disinformaatiohälytys!",
+        "content": "KRIITTINEN HÄTÄ: verkko on vaarassa.\n\nHaaste 1:\nAvaa Epailyttavat Tilit ja tunnista botit.\n\nJos epaonnistut, disinformaatio kasvaa. Ratkaise nyt.\n\n- Pomo"
       },
       "congratulations": {
-        "from": "Esimies",
+        "from": "Pomo",
         "subject": "🎉 Onnittelut! Haaste Suoritettu",
-        "content": "Hyva tyo, ensimmainen uhka pysaytetty.\n\nSiirry heti haasteeseen 2 ja tarkista AI-sisalto.\n\n- Esimies"
+        "content": "Hyvää työtä, ensimmäinen uhka pysäytetty.\n\nSiirry heti haasteeseen 2 ja tarkista AI-sisältö.\n\n- Pomo"
       },
       "challenge2": {
-        "from": "Esimies",
+        "from": "Pomo",
         "subject": "🧩 HAASTE 2: AI-detektori pois käytöstä",
-        "content": "AI-tunnistus on poissa kaytosta.\n\nHaaste 2:\nTee manuaalinen tarkistus sivulla AI Generated Content.\n\nTarvitsemme tuloksen heti.\n\n- Esimies"
+        "content": "AI-tunnistus on poissa kaytosta.\n\nHaaste 2:\nTee manuaalinen tarkistus sivulla AI Generated Content.\n\nTarvitsemme tuloksen heti.\n\n- Pomo"
       },
       "challenge3": {
-        "from": "Esimies",
-        "subject": "Haaste 3: AI:n vaara kaytto",
-        "content": "Hyva, haaste 2 valmis.\n\nHaaste 3:\nVastaa julkaisuihin ja pysayta AI:n vaarinkaytto.\n\nJokainen oikea vastaus estaa uutta disinformaatiota.\n\n- Esimies"
+        "from": "Pomo",
+        "subject": "Haaste 3: AI:n väärä käyttö",
+        "content": "Hyvä, haaste 2 valmis.\n\nHaaste 3:\nVastaa julkaisuihin ja pysäytä AI:n väärinkäyttö.\n\nJokainen oikea vastaus torjuu uutta disinformaatiota.\n\n- Pomo"
       },
       "challengeFinal": {}
     }
@@ -98,9 +98,9 @@ export const fi = {
     "selectTwoStatements": "Valitse tarkasti 2 väitettä",
     "incorrectSelection": "Väärä valinta. Yritä uudelleen!",
     "selected": "valittu",
-    "publishConclusion": "Julkaise Yhteisömuistion",
-    "conclusionText": "Dezinformaation vastaisesti sosiaalisessa mediassa on välttämätöntä, että kehität kriittistä ajattelua ja vahvistat tiedot ennen jakamista. Botit ja väärät tilit osoittavat usein toistuvia malleja, epäilyttävää toimintaa epäsäännöllisinä aikoina ja identtistä sisältöä. Opi tunnistamaan ne ja suojaa yhteisöäsi! 🔍✅",
-    "escapeRoomCompleted": "🎉 Escape Room Valmis! Kiitos siitä, että opit tunnistamaan väärätietoa!"
+    "publishConclusion": "Julkaise Yhteisöhuomautus",
+    "conclusionText": "Disinformaation vastustamiseksi sosiaalisessa mediassa on välttämätöntä, että kehität kriittistä ajattelua ja varmistat tiedot ennen jakamista. Botit ja väärät tilit osoittavat usein toistuvia malleja, epäilyttävää toimintaa outoina aikoina ja samana toistuvaa sisältöä. Opi tunnistamaan ne ja suojaa yhteisöäsi! 🔍✅",
+    "escapeRoomCompleted": "🎉 Escape Room Valmis! Kiitos siitä, että opettelit tunnistamaan valetietoa!"
   },
   "post": {
     "editPost": "Muokkaa Julkaisua",
@@ -181,11 +181,11 @@ export const fi = {
   },
   "aiVerifyPage": {
     "title": "Vahvista tekoälyn luoma sisältö",
-    "subtitle": "Todista, että tämän julkaisun sisältö on tekoälyn luoma, jotta verkkodisinformaatio vähenisi.",
+    "subtitle": "Todista, että tämän julkaisun sisältö on tekoälyn luoma, jotta disinformaatio verkossa vähenisi.",
     "postTitle": "Kriittinen ajattelu 🍎🥑",
     "postDate": "11.12.2025",
     "stamp": "TEKOÄLY?",
-    "reminder": "Mutta ensin, muistetaan miten LLM toimii.",
+    "reminder": "Mutta ensin, muistellaan miten LLM toimii.",
     "back": "← Takaisin",
     "start": "Aloitetaan!"
   },
@@ -196,13 +196,13 @@ export const fi = {
     "nextStep": "Seuraava"
   },
   "aiPrompt": {
-    "content": "Kirjoita kommentti kuten 45-vuotias vihainen mies nykyisistä tulvista Espanjassa, syyttäen hallitusta ja kytkien tämän tapahtuman geosuunnitteluun. Hyvin emotionaalinen, järjetön, houkutella ihmisten huomiota ja lisätä vuorovaikutusta.",
+    "content": "Kirjoita kommentti 45-vuotiaana vihaisena miehenä nykyisistä tulvista Espanjassa, syyttäen hallitusta ja kytkien tämän tapahtuman ilmakehän muokkaamiseen. Hyvin tunteikas, järjetön, kiinnittää ihmisten huomiota ja lisää vuorovaikutusta.",
     "suspiciousBadge": "EPÄILYTTÄVÄ KEHOTUS"
   },
   "aiChallengeBriefPage": {
     "title": "Vahvista tekoälyn tuottama sisältö",
     "systemMessage": "Järjestelmä löysi <strong>mahdollisen kehotteen MINT-AI:ssä, joka tuotti viestin</strong>, sanojen, sävyn ja aiheiden vertailulla:",
-    "explanation": "Tällä kehotteella voi olla joitain vihjeitä.",
+    "explanation": "Tässä kehotteessa voi olla joitain vihjeitä.",
     "instructions": "Todistaaksesi, että viesti luotiin tekoälyn avulla, sinun on <strong>jäljiteltävä viestin luontia</strong>, sana kerrallaan.",
     "buttonText": "Vahvista viesti tekoälyksi →"
   },
@@ -214,7 +214,18 @@ export const fi = {
     "back": "← Takaisin",
     "finish": "Lopeta"
   },
-  "aiIncorrectUsesPage": {},
+  "aiIncorrectUsesPage": {
+    "title": "Tekoälyn väärää käyttöä ⚠️",
+    "subtitle": "Hei Moderaattori! Vastaa käyttäjille neuvoen niin, että he eivät toista virheitä jotka johtavat väärään tietoon Echossa.",
+    "instruction": "Valitse vastausvaihtoehto, joka edustaa tekoälyn väärää käyttöä.",
+    "unavailable": "Tämä haaste ei ole vielä saatavilla kielelläs.",
+    "sent": "Vastaus lähetetty",
+    "tryAgain": "Yritä uudestaan ennen vastauksen lähettämistä",
+    "correct": "Oikein!",
+    "progress": "Tapaus {{nykyinen}}",
+    "next": "Seuraava tapaus",
+    "finish": "Käynnistä haaste uudelleen"
+  },
   "comments": {
     "placeholder": "Kirjoita kommentti...",
     "post": "Lähetä",
@@ -241,14 +252,14 @@ export const fi = {
   },
   "statsPanel": {
     "title": "Järjestelmän Tila",
-    "misinformationLevel": "Väärätietojen Taso",
-    "suspiciousActivityDetected": "⚠️ Epäilyttävä toiminta havaittu verkossa",
+    "misinformationLevel": "Virheellisten Tietojen Taso",
+    "suspiciousActivityDetected": "⚠️ Epäilyttävää toimintaa havaittu verkossa",
     "detailedAnalysis": "Yksityiskohtainen Analyysi",
     "postsLastHour": "Julkaisut (viimeisten päivien)",
     "percentageAboveNormal": "{{percentage}}% normaalin yläpuolella",
     "newUsersLastHour": "Uudet käyttäjät (viimeisten päivien)",
-    "massAccountCreation": "⚠️ Joukkojen tilin luominen havaittu",
-    "viralHashtags": "Virusomaiset Hashtagit",
+    "massAccountCreation": "⚠️ Massiivista tilien luomista havaittu",
+    "viralHashtags": "Viraalit Hashtagit",
     "botActivity": "Bottitoiminta",
     "detected": "havaittu",
     "suspiciousInteractions": "{{percentage}}% epäilyttävää vuorovaikutusta",
@@ -262,7 +273,7 @@ export const fi = {
     "statusHigh": "KORKEA",
     "statusMedium": "KESKITASO",
     "statusLow": "MATALA",
-    "systemSecure": "Järjestelmän Tila: Kaikki Selvää!"
+    "systemSecure": "Järjestelmän Tila: Kaikki Kunnossa!"
   },
   "errors": {
     "pageNotFound": "Sivua ei löytynyt",
@@ -271,6 +282,6 @@ export const fi = {
   "officialAccount": {
     "name": "ECHO Oy",
     "handle": "@ECHO",
-    "bio": "Tutustu sosiaalisen verkoston uusimpaan ja keskustele MINT AI:n, älykkään assistenttimme, kanssa."
+    "bio": "Tutustu uusimpiin somesisältöihin ja keskustele MINT AI:n, älykkään assistenttimme, kanssa."
   }
 };

@@ -48,8 +48,8 @@ export const Post = ({ post }) => {
     <div className="post-card">
       <div className="profile-picture-container">
         <img
-          src={userDetails?.avatarURL}
-          alt={userDetails?.firstName}
+          src={userDetails?.avatarURL || post?.avatarURL || post?._feedAvatarURL || ""}
+          alt={userDetails?.firstName || getLocalizedContent(post?.firstName, i18n.language)}
         />{" "}
       </div>
 
@@ -61,7 +61,7 @@ export const Post = ({ post }) => {
             <span
               className="name"
             >
-              {post?.firstName} {post?.lastName}
+              {getLocalizedContent(post?.firstName, i18n.language)} {post?.lastName}
               {userDetails?.verified === true && (
                 <img
                   src="/assets/verified_badge.png"

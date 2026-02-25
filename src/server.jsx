@@ -7,6 +7,7 @@ import { postsFI } from "./backend/db/posts_fi.jsx";
 import { usersFI } from "./backend/db/users_fi.jsx";
 import { postsSR } from "./backend/db/posts_sr.jsx";
 import { usersSR } from "./backend/db/users_sr.jsx";
+import { postsECHO } from "./backend/db/posts_echo.jsx";
 import {
   createPostHandler,
   getAllpostsHandler,
@@ -86,6 +87,7 @@ export function makeServer({ environment = "development", language = "es" } = {}
         })
       );
       posts.forEach((item) => server.create("post", { ...item }));
+      postsECHO.forEach((item) => server.create("post", { ...item }));
       
       console.log('✅ Datos cargados - Usuarios:', server.db.users.length, 'Posts:', server.db.posts.length);
     },

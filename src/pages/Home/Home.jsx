@@ -1,6 +1,6 @@
 import "./Home.css";
 import React from "react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { AttentionSeeker } from "react-awesome-reveal";
 import { TbAdjustmentsHorizontal } from "react-icons/tb";
 import { useTranslation } from 'react-i18next';
@@ -10,16 +10,47 @@ import { Post } from "../../components/Post/Post";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { Header } from "../../components/Header/Header";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
+import feedDataRaw from "./FeedData.json";
 
 export const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { setSortBy, sortBy, allPosts, postLoading } = usePosts();
 
+  // Posts estáticos del feed (hoja "feed" del Excel), según idioma activo
+  const feedPosts = useMemo(() => {
+    const lang = i18n.language?.slice(0, 2) || "en";
+    const entries = feedDataRaw[lang] || [];
 
-  // Filtrar para mostrar solo lau_tech, marti.dev, alex_data y sofia_analysis en el reto 1
-  const ALLOWED_RETO1_ACCOUNTS = ["lau_tech", "marti.dev", "alex_data", "sofia_analysis"];
-  const filteredPosts = (allPosts || []).filter(post => ALLOWED_RETO1_ACCOUNTS.includes(post.username));
-  const allPostFromFollowers = filteredPosts;
+    const resolveImageUrl = (imageURL) => {
+      if (!imageURL) return "";
+      if (typeof imageURL === "string") return imageURL;
+      if (imageURL.hyperlink) return imageURL.hyperlink;
+      return "";
+    };
+
+    return entries.map((item, idx) => {
+      const imageUrl = resolveImageUrl(item.imageURL);
+      return {
+        _id: `feed-${idx}`,
+        content: item.text,
+        mediaUrl: imageUrl,
+        type: imageUrl ? "image" : "",
+        username: item.handle,
+        firstName: item.firstName,
+        lastName: item.lastName,
+        _feedAvatarURL: item.imageUser || "",
+        createdAt: new Date().toISOString(),
+        likes: { likeCount: 0 },
+        comments: [],
+        _isFeedPost: true,
+      };
+    });
+  }, [i18n.language]);
+
+
+  const FEED_DB_ACCOUNTS = ["lau_tech", "marti.dev", "alex_data", "sofia_analysis"];
+  const filteredPosts = (allPosts || []).filter(post => FEED_DB_ACCOUNTS.includes(post.username));
+  const allPostFromFollowers = [...filteredPosts, ...feedPosts];
 
   const sortedPosts = (sortBy, allPosts) => {
     if (sortBy === "Latest" || sortBy === t('home.sortBy.latest')) {

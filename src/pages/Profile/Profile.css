@@ -6,12 +6,15 @@
   flex: 1 !important;
   width: auto !important;
   max-width: 100% !important;
+  overflow: auto !important;
 }
 
 .back-to-game-container {
   padding: 1rem;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--surface);
+  position: fixed;
+  width: 100%
 }
 
 .back-to-game-button {
@@ -79,6 +82,10 @@
   font-weight: 800;
   font-size: 1.4rem;
 }
+/* .user-posts-container {
+  border-top: 1px solid var(--border-color);
+  padding: 1rem;
+} */
 
 .username-container .username {
   color: grey;

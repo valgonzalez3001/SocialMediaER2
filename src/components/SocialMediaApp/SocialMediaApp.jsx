@@ -55,7 +55,8 @@ export const SocialMediaApp = ({ mode = "window" }) => {
       {!isEmbedded && (
         <div className="window-titlebar">
           <div className="window-title">
-            <span className="window-title-text">ECHO</span>
+          
+            <img src="/assets/echo-logo-short.png" alt="ECHO" className="window-title-logo" />
           </div>
           <div className="window-controls">
             <button
@@ -84,7 +85,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
               <div className="social-login-header">
                 <div className="social-login-brand">
                   <img
-                    src="/assets/social-media-logo.png"
+                    src="/assets/echo-logo-bg.png"
                     alt="ECHO"
                     className="social-login-logo"
                   />

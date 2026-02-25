@@ -54,8 +54,9 @@ export const Profile = () => {
             {!postLoading &&
               (postsByUser.length ? (
                 postsByUser.map((post) => <Post key={post._id} post={post} />)
-              ) : (
-                <p className="no-bookmarks">{t('profile.noPosts')}</p>
+              ) : (<>
+                <p className="no-bookmarks">{t('profile.noPosts')}</p>   
+       </>
               ))}
           </div>
           {isEditProfile && (
@@ -66,7 +67,7 @@ export const Profile = () => {
               />
             </div>
           )}
-        </main>
+       </main>
       </div>
     </>
   );

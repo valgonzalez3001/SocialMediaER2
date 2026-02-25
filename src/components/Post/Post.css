@@ -1,20 +1,13 @@
+.post-card:first-child {
+  border-top: 1px solid var(--border-color);
+}
+
 .post-card {
   display: flex;
   width: 100%;
   padding: 1rem;
-  border: 1px solid var(--border-color);
-  background-color: var(--surface);
+  border-bottom: 1px solid var(--border-color);
   color: var(--text-color);
-}
-
-
-.post-card:first-child {
-  border-radius: 1rem 1rem 0 0;
-}
-
-.post-card:last-child {
-  border-radius: 0 0 1rem 1rem;
-  margin-bottom: 1rem;
 }
 
 .post-card-content {

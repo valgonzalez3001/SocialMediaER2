@@ -12,7 +12,7 @@ export const Header = () => {
     <div className="header">
       <AttentionSeeker effect="swing">
         <img
-          src="/assets/social-media-logo.png"
+          src="/assets/echo-logo.png"
           alt="ECHO logo"
           className="header-logo"
           onClick={() => navigate("/")}

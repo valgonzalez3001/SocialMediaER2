@@ -294,7 +294,10 @@ async function processAvatarUrl(avatarData, assetsDir) {
     // Download the image
     const success = await downloadImage(avatarData.hyperlink, destPath);
     if (success) {
-      return `/assets/users/${filename}`;
+      // Derive relative URL from assetsDir relative to public/
+      const publicDir = path.join(OUT_DIR, "public");
+      const relPath = path.relative(publicDir, path.join(assetsDir, filename)).replace(/\\/g, "/");
+      return `/${relPath}`;
     }
   }
 
@@ -369,9 +372,6 @@ async function main() {
   const langs = allKeys.slice(1); // Rest are language columns
   const avatarsDir = path.join(OUT_DIR, "public/assets/users");
   const postsDir = path.join(OUT_DIR, "public/assets/posts");
-  if (!fs.existsSync(postsDir)) {
-    fs.mkdirSync(postsDir, { recursive: true });
-  }
   for (const lang of langs) {
     console.log(`\nProcessing language: ${lang}`);
 
@@ -725,6 +725,25 @@ async function main() {
     console.log(`  Found ${echoPostsData.length} ECHO post(s)`);
     console.log(`  Downloading ECHO post images...`);
 
+    // Ensure postsDir exists
+    if (!fs.existsSync(postsDir)) {
+      fs.mkdirSync(postsDir, { recursive: true });
+    }
+
+    // Handle embedded images in the ECHO posts sheet (column index 0 = "image")
+    const echoSheet = workbook.getWorksheet("ECHO Profile Posts");
+    const embeddedEchoImages = {};
+    if (echoSheet) {
+      for (const img of echoSheet.getImages()) {
+        const rowIdx = img.range.tl.nativeRow; // 0-based
+        const colIdx = img.range.tl.nativeCol; // 0-based, image column = 0
+        if (colIdx === 0) {
+          const imageData = workbook.model.media[img.imageId];
+          if (imageData) embeddedEchoImages[rowIdx] = imageData;
+        }
+      }
+    }
+
     // Build multilingual officialAccount fields from the i18n sheet
     const officialNameRow = webI18n.find(row => String(row[keyColumn]) === "officialAccount.name");
     const officialHandleRow = webI18n.find(row => String(row[keyColumn]) === "officialAccount.handle");
@@ -737,26 +756,41 @@ async function main() {
       officialHandle[lang] = officialHandleRow?.[lang] || "@ECHO";
       officialBio[lang] = officialBioRow?.[lang] || "";
     }
-    const echoPosts = await Promise.all(echoPostsData.map(async (row) => ({
-      _id: "uuid()",
-      content: {
-        es: row["text_es"] || "",
-        en: row["text_en"] || "",
-        fi: row["text_fi"] || "",
-        sr: row["text_sr"] || "",
-      },
-      type: "image",
-      mediaUrl: await processAvatarUrl(row["image"], postsDir),
-      username: "ECHO",
-      firstName: officialName,
-      lastName: "",
-      avatarURL: "/assets/echo.png",
-      createdAt: row["date"] ? new Date(row["date"]) : new Date(),
-      updatedAt: "formatDate()",
-      likes: {
-        likeCount: 0,
-      },
-    })));
+    const echoPosts = await Promise.all(echoPostsData.map(async (row, idx) => {
+      // Try embedded image first (rowIdx for data rows starts at 1, header is 0)
+      let mediaUrl = "";
+      const embeddedImg = embeddedEchoImages[idx + 1];
+      if (embeddedImg) {
+        const ext = embeddedImg.extension || "png";
+        const filename = `echo_post${idx + 1}.${ext}`;
+        const destPath = path.join(postsDir, filename);
+        fs.writeFileSync(destPath, embeddedImg.buffer);
+        console.log(`  Saved embedded ECHO post image: ${filename}`);
+        mediaUrl = `/assets/posts/${filename}`;
+      } else {
+        mediaUrl = await processAvatarUrl(row["image"], postsDir);
+      }
+      return {
+        _id: "uuid()",
+        content: {
+          es: row["text_es"] || "",
+          en: row["text_en"] || "",
+          fi: row["text_fi"] || "",
+          sr: row["text_sr"] || "",
+        },
+        type: "image",
+        mediaUrl,
+        username: "ECHO",
+        firstName: officialName,
+        lastName: "",
+        avatarURL: "/assets/echo-logo-bg.png",
+        createdAt: row["date"] ? new Date(row["date"]) : new Date(),
+        updatedAt: "formatDate()",
+        likes: {
+          likeCount: row["likes"] || 0,
+        },
+      };
+    }));
 
     const oldFileEcho = path.join(OUT_DIR, "src/backend/db/posts_echo.jsx");
     if (fs.existsSync(oldFileEcho)) {

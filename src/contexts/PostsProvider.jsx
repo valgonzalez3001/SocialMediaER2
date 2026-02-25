@@ -167,7 +167,7 @@ export const PostsProvider = ({ children }) => {
     try {
       const response = await addCommentsService(postId, commentData, token);
       if (response.status === 201) {
-        setAllPosts(response.data.posts);
+        setAllPosts([...response.data.posts]);
       }
     } catch (error) {
       console.error(error);
@@ -185,7 +185,7 @@ export const PostsProvider = ({ children }) => {
     try {
       const response = await deleteCommentService(postId, commentId, token);
       if (response.status === 201) {
-        setAllPosts(response.data.posts);
+        setAllPosts([...response.data.posts]);
       }
     } catch (error) {
       console.error(error);
@@ -208,7 +208,7 @@ export const PostsProvider = ({ children }) => {
         token
       );
       if (response.status === 201) {
-        setAllPosts(response.data.posts);
+        setAllPosts([...response.data.posts]);
       }
     } catch (error) {
       console.error(error);

@@ -31,6 +31,10 @@ export const Post = ({ post }) => {
   const { loggedInUserState } = useLoggedInUser();
   const { addComment } = usePosts();
   const { userState } = useUser();
+  const likedBy = Array.isArray(post?.likes?.likedBy) ? post.likes.likedBy : [];
+  const isLikedByCurrentUser = likedBy.some(
+    (user) => user?._id === loggedInUserState?._id
+  );
 
   const userDetails = userState?.allUsers?.find(
     (user) => user?.username === post?.username
@@ -83,7 +87,7 @@ export const Post = ({ post }) => {
             <span
               className="date"
             >
-              {getTimeDifference(post?.createdAt)}
+              {getTimeDifference(post?.createdAt, i18n.language)}
             </span>
             {/* El admin siempre puede editar/borrar cualquier post */}
             {isAdmin && (
@@ -176,11 +180,30 @@ export const Post = ({ post }) => {
               </span>
             </div>
             <div className="comments-container">
-              <RiHeart3Line
-                className="like-icon"
-                onClick={() => likePost(post?._id, "admin-token")}
-              />
-              <span>{post?.likes?.likeCount}</span>
+              {isLikedByCurrentUser ? (
+                <RiHeart3Fill
+                  className="like-icon like-done-icon"
+                  onClick={() => dislikePost(post?._id, "admin-token")}
+                />
+              ) : (
+                <RiHeart3Line
+                  className="like-icon"
+                  onClick={() => likePost(post?._id, "admin-token")}
+                />
+              )}
+              <span>{(() => {
+                const raw = post?.likes?.likeCount ?? 0;
+                let num;
+                if (typeof raw === "number") {
+                  num = raw;
+                } else {
+                  const s = String(raw).trim().toLowerCase();
+                  if (s.endsWith("m")) num = parseFloat(s) * 1_000_000;
+                  else if (s.endsWith("k")) num = parseFloat(s) * 1_000;
+                  else num = parseFloat(s) || 0;
+                }
+                return Intl.NumberFormat(i18n.language, { notation: "compact" }).format(num);
+              })()}</span>
             </div>
           </Slide>
         </div>

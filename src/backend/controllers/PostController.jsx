@@ -3,6 +3,20 @@ import { formatDate, requiresAuth } from "../utils/authUtils.jsx";
 import { v4 as uuid } from "uuid";
 
 /**
+ * Parse a likeCount value that may be a number or a compact string ("751.4k", "2M")
+ */
+function parseLikeCount(val) {
+  if (typeof val === "number") return val;
+  if (typeof val === "string") {
+    const lower = val.trim().toLowerCase();
+    if (lower.endsWith("m")) return Math.round(parseFloat(lower) * 1_000_000);
+    if (lower.endsWith("k")) return Math.round(parseFloat(lower) * 1_000);
+    return parseInt(lower) || 0;
+  }
+  return 0;
+}
+
+/**
  * All the routes related to post are present here.
  * */
 
@@ -210,7 +224,17 @@ export const likePostHandler = function (schema, request) {
     }
     const postId = request.params.postId;
     const post = schema.posts.findBy({ _id: postId }).attrs;
-    post.likes.likeCount += 1;
+    const likedBy = Array.isArray(post.likes.likedBy) ? post.likes.likedBy : [];
+    const alreadyLiked = likedBy.some((currUser) => currUser._id === user._id);
+    if (alreadyLiked) {
+      return new Response(
+        400,
+        {},
+        { errors: ["Cannot like a post that is already liked. "] }
+      );
+    }
+    post.likes.likeCount = parseLikeCount(post.likes.likeCount) + 1;
+    post.likes.likedBy = [...likedBy, user];
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
@@ -294,14 +318,25 @@ export const dislikePostHandler = function (schema, request) {
     }
     const postId = request.params.postId;
     let post = schema.posts.findBy({ _id: postId }).attrs;
-    if (post.likes.likeCount === 0) {
+    const likedBy = Array.isArray(post.likes.likedBy) ? post.likes.likedBy : [];
+    const hasLikeFromUser = likedBy.some((currUser) => currUser._id === user._id);
+    if (!hasLikeFromUser) {
+      return new Response(
+        400,
+        {},
+        { errors: ["Cannot dislike a post that is not liked by the user."] }
+      );
+    }
+    const currentCount = parseLikeCount(post.likes.likeCount);
+    if (currentCount === 0) {
       return new Response(
         400,
         {},
         { errors: ["Cannot decrement like less than 0."] }
       );
     }
-    post.likes.likeCount -= 1;
+    post.likes.likeCount = currentCount - 1;
+    post.likes.likedBy = likedBy.filter((currUser) => currUser._id !== user._id);
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {

@@ -62,6 +62,9 @@ export const addPostCommentHandler = function (schema, request) {
       updatedAt: formatDate(),
     };
     const post = schema.posts.findBy({ _id: postId }).attrs;
+    if (!Array.isArray(post.comments)) {
+      post.comments = [];
+    }
     post.comments.push(comment);
 
     this.db.posts.update({ _id: postId }, post);

@@ -1,4 +1,4 @@
-export const createdOnDate = (user) => {
+export const createdOnDate = (user, lang = "en") => {
   if (!user?.createdAt) return "Unknown";
   const createdOn = new Date(user?.createdAt);
   if (isNaN(createdOn.getTime())) return "Unknown";
@@ -7,11 +7,11 @@ export const createdOnDate = (user) => {
     month: "short",
     day: "numeric",
   };
-  return createdOn.toLocaleDateString("en-US", options);
+  return createdOn.toLocaleDateString(lang, options);
 };
 
 
-export const getTimeDifference = (date) => {
+export const getTimeDifference = (date, lang = "en") => {
   const datePosted = new Date(date);
   const options = {
     year: "numeric",
@@ -20,5 +20,5 @@ export const getTimeDifference = (date) => {
     hour: "2-digit",
     minute: "2-digit",
   };
-  return datePosted.toLocaleDateString("en-US", options);
+  return datePosted.toLocaleDateString(lang, options);
 };

@@ -49,7 +49,7 @@ export const Comment = ({ comment, post }) => {
           >
             @{username}
           </span>{" "}
-          <span className="date"> {getTimeDifference(createdAt)}</span>
+          <span className="date"> {getTimeDifference(createdAt, i18n.language)}</span>
           {/* El admin puede borrar cualquier comentario, pero solo editar el propio */}
           {isAdmin && (
             <div className="comment-toolbar">

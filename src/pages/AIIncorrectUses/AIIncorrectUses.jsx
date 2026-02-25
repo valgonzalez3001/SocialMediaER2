@@ -107,7 +107,7 @@ export const AIIncorrectUses = () => {
         firstName: t("officialAccount.name") || "ECHO Official Account",
         lastName: "",
         username: "ECHO",
-        avatarURL: "/assets/echo.png"
+        avatarURL: "/assets/echo-logo-bg.png"
     }
         userState?.allUsers?.find((user) => user.username === "ECHO") || userState?.allUsers?.[0];
 

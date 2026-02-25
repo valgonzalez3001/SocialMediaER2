@@ -14,6 +14,6 @@ export const requiresAuth = function (request) {
     username: "ECHO",
     firstName: i18n.t("officialAccount.name"),
     lastName: "",
-    avatarURL: "/assets/echo.png",
+    avatarURL: "/assets/echo-logo-bg.png",
   };
 };

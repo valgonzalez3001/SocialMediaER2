@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 
 import { usePosts } from "../../contexts/PostsProvider.jsx";
 import { Post } from "../../components/Post/Post";
-import { EditProfileModal } from "./components/EditProfileModal/EditProfileModal";
 import { UserInfo } from "./components/UserInfo/UserInfo";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
@@ -13,7 +12,6 @@ import { Navbar } from "../../components/Navbar/Navbar";
 export const Profile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [isEditProfile, setIsEditProfile] = useState(false);
   const [fromAdmin, setFromAdmin] = useState(false);
 
   const { allPosts, postLoading } = usePosts();
@@ -47,7 +45,6 @@ export const Profile = () => {
           )}
           <UserInfo
             username={username}
-            setIsEditProfile={setIsEditProfile}
             postsByUser={postsByUser}
           />
           <div className="user-posts-container">
@@ -59,14 +56,6 @@ export const Profile = () => {
        </>
               ))}
           </div>
-          {isEditProfile && (
-            <div className="create-post-modal">
-              <EditProfileModal
-                className="modal-content"
-                setIsEditProfile={setIsEditProfile}
-              />
-            </div>
-          )}
        </main>
       </div>
     </>

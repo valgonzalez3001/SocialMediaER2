@@ -16,7 +16,7 @@ export const usersES = [
     createdAt: new Date("Enero 2013"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/aemet.jpg",
-    verified: "X",
+    verified: true,
     stats: {
       followersCount: "624K",
       followingCount: 629
@@ -35,7 +35,7 @@ export const usersES = [
     createdAt: new Date("Noviembre 2018"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/proteccioncivil.jpg",
-    verified: "X",
+    verified: true,
     stats: {
       followersCount: "73K",
       followingCount: 631

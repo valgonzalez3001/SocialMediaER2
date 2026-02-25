@@ -116,7 +116,7 @@ export const LoggedInUserProvider = ({ children }) => {
       firstName: t("officialAccount.name"),
       handle: t("officialAccount.handle"),
       bio: t("officialAccount.bio"),
-      avatarURL: "/assets/echo.png",
+      avatarURL: "/assets/echo-logo-bg.png",
       verified: true,
       isAdmin: true,
       stats: { followersCount: 0, followingCount: 0 },

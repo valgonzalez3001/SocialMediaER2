@@ -25,7 +25,7 @@ export const postsECHO = [
     },
     lastName: "",
     avatarURL: "/assets/echo-logo-bg.png",
-    createdAt: new Date("December 03 2026 11:45:00"),
+    createdAt: new Date("March 12 2026 11:45:00"),
     updatedAt: formatDate(),
     likes: {
       likeCount: "751.4k"

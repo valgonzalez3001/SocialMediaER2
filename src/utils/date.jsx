@@ -1,3 +1,14 @@
+// Maps i18next language codes to BCP 47 locale identifiers
+const LOCALE_MAP = {
+  en: "en-GB",
+  es: "es-ES",
+  fi: "fi-FI",
+  sr: "sr-Latn-RS",
+};
+
+const resolveLocale = (lang = "en") =>
+  LOCALE_MAP[lang?.slice(0, 2)] ?? LOCALE_MAP.en;
+
 export const createdOnDate = (user, lang = "en") => {
   if (!user?.createdAt) return "Unknown";
   const createdOn = new Date(user?.createdAt);
@@ -7,7 +18,7 @@ export const createdOnDate = (user, lang = "en") => {
     month: "short",
     day: "numeric",
   };
-  return createdOn.toLocaleDateString(lang, options);
+  return createdOn.toLocaleDateString(resolveLocale(lang), options);
 };
 
 
@@ -20,5 +31,5 @@ export const getTimeDifference = (date, lang = "en") => {
     hour: "2-digit",
     minute: "2-digit",
   };
-  return datePosted.toLocaleDateString(lang, options);
+  return datePosted.toLocaleDateString(resolveLocale(lang), options);
 };

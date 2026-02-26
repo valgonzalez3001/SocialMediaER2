@@ -39,8 +39,8 @@ export const Home = () => {
         firstName: item.firstName,
         lastName: item.lastName,
         _feedAvatarURL: item.imageUser || "",
-        createdAt: new Date().toISOString(),
-        likes: { likeCount: 0 },
+        createdAt: item.date ? new Date(item.date).toISOString() : new Date().toISOString(),
+        likes: { likeCount: item.likes ?? "0" },
         comments: [],
         _isFeedPost: true,
       };
@@ -51,6 +51,14 @@ export const Home = () => {
   const FEED_DB_ACCOUNTS = ["lau_tech", "marti.dev", "alex_data", "sofia_analysis"];
   const filteredPosts = (allPosts || []).filter(post => FEED_DB_ACCOUNTS.includes(post.username));
   const allPostFromFollowers = [...filteredPosts, ...feedPosts];
+
+  const parseLikeCount = (val) => {
+    if (typeof val === "number") return val;
+    const s = String(val ?? "0").trim().toLowerCase();
+    if (s.endsWith("m")) return parseFloat(s) * 1_000_000;
+    if (s.endsWith("k")) return parseFloat(s) * 1_000;
+    return parseFloat(s) || 0;
+  };
 
   const sortedPosts = (sortBy, allPosts) => {
     if (sortBy === "Latest" || sortBy === t('home.sortBy.latest')) {
@@ -66,7 +74,7 @@ export const Home = () => {
       return sortedPosts;
     } else {
       const sortedPosts = allPosts.sort(
-        (a, b) => b.likes.likeCount - a.likes.likeCount
+        (a, b) => parseLikeCount(b.likes.likeCount) - parseLikeCount(a.likes.likeCount)
       );
       return sortedPosts;
     }

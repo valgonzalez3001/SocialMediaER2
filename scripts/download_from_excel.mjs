@@ -703,6 +703,8 @@ async function main() {
         imageUser: resolvedImageUsers[idx] || "",
         text: row[`text_${lang}`] || "",
         imageURL: resolvedImageURLs[idx] || "",
+        date: row["date"] instanceof Date ? row["date"].toISOString() : (row["date"] || null),
+        likes: row["likes"] != null && row["likes"] !== "" ? String(row["likes"]) : "0",
       }));
     }
 

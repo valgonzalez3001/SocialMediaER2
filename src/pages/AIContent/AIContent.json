@@ -556,7 +556,7 @@
   "sr": [
     [
       {
-        "correct": "Floods",
+        "correct": "Poplave",
         "percentage": 0.7,
         "alts": [
           "I",
@@ -564,7 +564,7 @@
         ]
       },
       {
-        "correct": "like",
+        "correct": "poput",
         "percentage": 0.8,
         "alts": [
           "and",
@@ -572,7 +572,7 @@
         ]
       },
       {
-        "correct": "this",
+        "correct": "ovih",
         "percentage": 0.65,
         "alts": [
           "all",
@@ -580,7 +580,7 @@
         ]
       },
       {
-        "correct": "used",
+        "correct": "su",
         "percentage": 0.45,
         "alts": [
           "don't",
@@ -588,7 +588,7 @@
         ]
       },
       {
-        "correct": "to",
+        "correct": "nekada",
         "percentage": 0.93,
         "alts": [
           "a",
@@ -596,7 +596,7 @@
         ]
       },
       {
-        "correct": "be",
+        "correct": "bile",
         "percentage": 0.57,
         "alts": [
           "happen",
@@ -604,7 +604,7 @@
         ]
       },
       {
-        "correct": "rare",
+        "correct": "retke",
         "percentage": 0.64,
         "alts": [
           "not",
@@ -620,7 +620,7 @@
         ]
       },
       {
-        "correct": "They're",
+        "correct": "Očigledno",
         "percentage": 0.74,
         "alts": [
           "But",
@@ -628,7 +628,7 @@
         ]
       },
       {
-        "correct": "obviously",
+        "correct": "su ",
         "percentage": 0.71,
         "alts": [
           "not",
@@ -636,7 +636,7 @@
         ]
       },
       {
-        "correct": "planned",
+        "correct": "planirane",
         "percentage": 0.38,
         "alts": [
           "intentional",

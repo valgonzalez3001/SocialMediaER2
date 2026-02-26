@@ -202,7 +202,9 @@ export const Post = ({ post }) => {
                   else if (s.endsWith("k")) num = parseFloat(s) * 1_000;
                   else num = parseFloat(s) || 0;
                 }
-                return Intl.NumberFormat(i18n.language, { notation: "compact" }).format(num);
+                if (num >= 1_000_000) return (num / 1_000_000).toFixed(num % 1_000_000 === 0 ? 0 : 1).replace(/\.0$/, "") + "M";
+                if (num >= 1_000) return (num / 1_000).toFixed(num % 1_000 === 0 ? 0 : 1).replace(/\.0$/, "") + "k";
+                return String(num);
               })()}</span>
             </div>
           </Slide>

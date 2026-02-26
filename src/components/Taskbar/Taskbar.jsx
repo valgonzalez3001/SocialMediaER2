@@ -2,7 +2,7 @@ import React from "react";
 import "./Taskbar.css";
 import { useOS } from "../../contexts/OSProvider";
 import { useMessages } from "../../contexts/MessagesProvider";
-import { FaComments, FaUsers } from "react-icons/fa";
+import { FaComments, FaUsers, FaLightbulb } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 
@@ -22,6 +22,11 @@ export const Taskbar = () => {
       id: "social",
       name: t("desktop.apps.social"),
       icon: <FaUsers />,
+    },
+    {
+      id: "hints",
+      name: t("hintsApp.title"),
+      icon: <FaLightbulb />,
     },
   ];
 

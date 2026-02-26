@@ -4,10 +4,10 @@ export const sr = {
     "home": "Početna",
     "explore": "Istraži",
     "profile": "Profil",
-    "admin": "Sumnjivi Nalozi",
-    "aiContent": "AI Generisan Sadržaj",
-    "aiIncorrectUses": "Pogrešna Upotreba AI",
-    "newPost": "Nova Objava"
+    "admin": "Sumnjivi nalozi",
+    "aiContent": "AI generisan sadržaj",
+    "aiIncorrectUses": "Pogrešna upotreba AI",
+    "newPost": "Nova objava"
   },
   "header": {
     "appName": "ECHO"
@@ -18,37 +18,40 @@ export const sr = {
       "social": "Društvena mreža"
     },
     "window": {
-      "minimize": "Minimizuj",
+      "minimize": "Smanji",
       "close": "Zatvori"
     },
     "taskbar": {
       "start": "Start"
     },
     "popup": {
-      "readMessage": "Procitaj poruku svog sefa da otkljucas",
-      "startChallenge": "Zapocni izazov 1 da otkljucas",
-      "playChallenge": "Igraj izazov 1 da otkljucas",
-      "completeChallenge1": "Zavrsi izazov 1 pre otkljucavanja",
-      "readMessageChallenge2": "Procitaj uputstva za izazov 2 da otkljucas",
-      "playChallenge2": "Igraj izazov 2 da otkljucas",
-      "completeChallenge2": "Zavrsi izazov 2 pre otkljucavanja",
-      "readMessageChallenge3": "Procitaj uputstva za izazov 3 da otkljucas",
-      "readMessageChallengeFinal": "Procitaj uputstva za poslednji izazov da otkljucas",
-      "playChallenge3": "Igraj izazov 3 da otkljucas",
-      "completeChallenge3": "Zavrsi izazov 3 pre otkljucavanja",
-      "completeAllChallenges": "Zavrsi sve izazove da otkljucas"
+      "readMessage": "Pročitaj poruku svog šefa da otključaš",
+      "startChallenge": "Započni izazov 1 da otključaš",
+      "playChallenge": "Igraj izazov 1 da otključaš",
+      "completeChallenge1": "Završi izazov 1 pre otključavanja",
+      "readMessageChallenge2": "Pročitaj uputstva za izazov 2 da otključaš",
+      "playChallenge2": "Igraj izazov 2 da otključaš",
+      "completeChallenge2": "Završi izazov 2 pre otključavanja",
+      "readMessageChallenge3": "Pročitaj uputstva za izazov 3 da otključaš",
+      "readMessageChallengeFinal": "Pročitaj uputstva za poslednji izazov da otključaš",
+      "playChallenge3": "Igraj izazov 3 da otključaš",
+      "completeChallenge3": "Završi izazov 3 pre otključavanja",
+      "completeAllChallenges": "Završi sve izazove da otključaš"
     }
   },
   "messagesApp": {
     "title": "Poruke",
-    "inbox": "Prijemno sanduce",
-    "selectMessage": "Izaberi poruku za citanje",
+    "inbox": "Prijemno sanduče",
+    "selectMessage": "Izaberi poruku za čitanje",
     "fromLabel": "Od",
-    "chatPlaceholder": "Napisi poruku...",
-    "send": "Posalji",
+    "chatPlaceholder": "Napiši poruku...",
+    "send": "Pošalji",
     "newMessageNotification": "Imate novu poruku!",
     "newMessageFromBoss": "Vaš šef ima misiju za vas",
     "congratulationNotification": "Vaš šef vam je poslao čestitke",
+    "challenge2Notification": "Vaš šef je poslao uputstva za izazov 2",
+    "challenge3Notification": "Vaš šef je poslao uputstva za izazov 3",
+    "challengeFinalNotification": "Vaš šef je poslao završne čestitke",
     "time": {
       "minutesAgo": "pre {{count}} min",
       "hoursAgo": "pre {{count}} h"
@@ -56,38 +59,57 @@ export const sr = {
     "messages": {
       "missionBrief": {
         "from": "Šef",
-        "subject": "?? KRITICNA MISIJA: Upozorenje o Dezinformaciji!",
-        "content": "KRITICNI ALARM: mreza je ugrozena.\n\nIzazov 1:\nOtvori Sumnjive Naloge i pronadji botove.\n\nAko ne uspes, dezinformacije rastu. Resi odmah.\n\n- Sef"
+        "subject": "🚨 KRITIČNA MISIJA: Upozorenje o Dezinformaciji!",
+        "content": "KRITIČNI ALARM: mreža je ugrožena.\n\nIzazov 1:\nOtvori Sumnjive naloge i pronađi botove.\n\nAko ne uspeš, dezinformacije rastu. Reši odmah.\n\n- Sef"
       },
       "congratulations": {
         "from": "Šef",
-        "subject": " 🎉 Čestitamo! Izazov Završen",
-        "content": "Odlican posao, prva pretnja je zaustavljena.\n\nPredji odmah na izazov 2 i proveri AI sadrzaj.\n\n- Sef"
+        "subject": " 🎉 Čestitamo! Izazov završen",
+        "content": "Odličan posao, prva pretnja je zaustavljena.\n\nPređi odmah na izazov 2 i proveri AI sadržaj.\n\n- Sef"
       },
-      "challenge2": {},
-      "challenge3": {},
-      "challengeFinal": {}
+      "challenge2": {
+        "from": "Šef",
+        "subject": "🧩 IZAZOV 2: AI detektor van mreže",
+        "content": "Sistem za detekciju veštačke inteligencije je van mreže.\n\nIzazov 2:\nPokrenite ručnu proveru u delu Sadržaj generisan veštačkom inteligencijom.\n\nPotrebni su nam rezultati odmah.\n\n- Šef"
+      },
+      "challenge3": {
+        "from": "Šef",
+        "subject": "Izazov 3: Nepravilne upotrebe veštačke inteligencije",
+        "content": "Primljeno. Izazov 2 završen.\n\nIzazov 3:\nOdgovorite na objave smernicama kako biste zaustavili nepravilnu upotrebu veštačke inteligencije.\n\nSvaki tačan odgovor blokira nove dezinformacije.\n\n- Šef"
+      },
+      "challengeFinal": {
+        "from": "Šef",
+        "subject": "🎉 Čestitamo! Svi izazovi su završeni",
+        "content": "Misija je skoro završena.\n\nZavršni korak:\nObjavite Napomenu zajednice iz Nove objave sa ključnim poukama.\n\nZatvorite slučaj.\n\n- Šef"
+      }
     }
   },
-  "socialLogin": {},
+  "socialLogin": {
+    "title": "Prijavite se",
+    "subtitle": "Potreban je pristup za nastavak",
+    "usernameLabel": "Korisničko ime",
+    "passwordLabel": "Lozinka",
+    "submit": "Unesite",
+    "errorInvalid": "Neispravno korisničko ime ili lozinka"
+  },
   "createPost": {
     "placeholder": "Šta se dešava?",
     "fileTooBig": "fajl mora biti manji od 20mb",
-    "invalidFileType": "fajl mora biti Video (MP4/MOV) ili Slika (JPEG/PNG)",
+    "invalidFileType": "fajl mora biti video (MP4/MOV) ili slika (JPEG/PNG)",
     "publish": "Objavi",
-    "challengeLocked": "Izazov Zakljucan",
+    "challengeLocked": "Izazov zakljucan",
     "completeChallenge1": "Završi Admin izazov da otključaš objavljivanje",
     "selectTwoCorrect": "Izaberi 2 ispravne tvrdnje o dezinformaciji i botovima",
     "selectTwoStatements": "Molim te izaberi tačno 2 tvrdnje",
     "incorrectSelection": "Pogrešan izbor. Pokušaj ponovo!",
     "selected": "izabrano",
-    "publishConclusion": "Objavi Zajedničku Belešku",
-    "conclusionText": "Za borbu protiv dezinformacije na dru�tvenim mre�ama, neophodno je da razvijete kriticko razmi�ljanje i da verifikujete informacije pre nego �to ih podelite. Botovi i la�ni nalozi cesto pokazuju repetitivne �ablone, sumnjive aktivnosti u neregularnim vremenima i identican sadr�aj. Naucite da ih prepoznate i �titite svoju zajednicu! ???",
-    "escapeRoomCompleted": "🎉 Escape Room Završen! Hvala što ste naučili prepoznavati dezinformaciju!"
+    "publishConclusion": "Objavi zajedničku belešku",
+    "conclusionText": "Za borbu protiv dezinformacija na društvenim mrežama, neophodno je da razvijete kriticko razmišljanje i da verifikujete informacije pre nego što ih podelite. Botovi i lažni nalozi često pokazuju repetitivne šablone, sumnjive aktivnosti u neregularnim vremenima i identican sadržaj. Naučite da ih prepoznate i zaštitite svoju zajednicu! ???",
+    "escapeRoomCompleted": "🎉 Escape Room Završen! Hvala što ste naučili de prepoznate dezinformacije!"
   },
   "post": {
-    "editPost": "Izmeni Objavu",
-    "deletePost": "Obriši Objavu",
+    "editPost": "Izmeni objavu",
+    "deletePost": "Obriši objavu",
     "verifiedAccount": "Verifikovan nalog",
     "linkCopied": "Link uspešno kopiran"
   },
@@ -102,7 +124,7 @@ export const sr = {
   },
   "profile": {
     "noPosts": "Niste dodali nijednu objavu!",
-    "editProfile": "Izmeni Profil",
+    "editProfile": "Izmeni profil",
     "following": "Pratim",
     "followers": "Pratioci",
     "posts": "Objave",
@@ -118,21 +140,21 @@ export const sr = {
     "title": "Upravljaj sumnjivim nalozima",
     "users": "Korisnici",
     "posts": "Objave",
-    "suspectUsers": "Sumnjivi Korisnici",
+    "suspectUsers": "Sumnjivi korisnici",
     "hint": "Savet",
     "bot": "Bot",
-    "human": "Covek",
+    "human": "Čovek",
     "noSuspects": "Nema sumnjivih korisnika u ovom trenutku",
     "userBlocked": "Korisnik blokiran kao AI",
     "userClassified": "Korisnik klasifikovan kao čovek",
     "classified": "Klasifikovano",
-    "submit": "Pošalji Klasifikaciju",
-    "resultTitle": "Rezultat Vaše Klasifikacije",
-    "perfectScore": "Savršen Rezultat!",
+    "submit": "Pošalji klasifikaciju",
+    "resultTitle": "Rezultat vaše klasifikacije",
+    "perfectScore": "Savršen rezultat!",
     "score": "Rezultat",
-    "allCorrect": "Odlicno! Pravilno ste identifikovali sve korisnike.",
+    "allCorrect": "Odlično! Pravilno ste identifikovali sve korisnike.",
     "tryAgain": "Neke klasifikacije su netačne. Pokušajte ponovo!",
-    "playAgain": "Igraj Ponovo",
+    "playAgain": "Igraj ponovo",
     "hintTitle": "Indikatori Bot naloga",
     "hintContent": {
       "temporalActivity": "Sumnjiva vremenska aktivnost: Objave u veoma redovnim intervalima ili neprirodno vreme",
@@ -145,73 +167,129 @@ export const sr = {
     }
   },
   "editPost": {
-    "title": "Izmeni Objavu",
+    "title": "Izmeni objavu",
     "save": "Sačuvaj",
     "cancel": "Otkaži"
   },
-  "aiContentPage": {},
-  "aiVerifyPage": {},
-  "aiVideoPage": {},
-  "aiPrompt": {},
-  "aiChallengeBriefPage": {},
-  "aiGamePage": {},
-  "aiIncorrectUsesPage": {},
+  "aiContentPage": {
+    "title": "Dobrodošli, Moderatore!",
+    "subtitle": "Sadržaj generisan veštačkom inteligencijom",
+    "pendingReviewCount": "{{count}} objava",
+    "pendingReviewText": "čeka proveru kako bi se utvrdilo da li je generisana veštačkom inteligencijom.",
+    "verifyButton": "Proveri objavu →",
+    "statsCount": "{{count}} objava",
+    "statsText": "označeno je kao generisano veštačkom inteligencijom u poslednjem satu.",
+    "card1Title": "Vil Smit jede špagete",
+    "card2Title": "Hrišćanska parada Tri kralja u Njujorku",
+    "tag": "GENERISANO VEŠTAČKOM INTELIGENCIJOM",
+    "seeAll": "Pogledaj sve →"
+  },
+  "aiVerifyPage": {
+    "title": "Proveri sadržaj generisan veštačkom inteligencijom",
+    "subtitle": "Dokažite da je sadržaj ove objave generisan veštačkom inteligencijom, kako biste zaustavili dezinformacije na internetu.",
+    "postTitle": "Kritičko razmišljanje 🍎🥑",
+    "postDate": "11.12.2025.",
+    "stamp": "GENERISANO VEŠTAČKOM INTELIGENCIJOM??",
+    "reminder": "Ali prvo, podsetimo se kako funkcioniše veliki jezički model (LLM).",
+    "back": "← Nazad",
+    "start": "Hajde da to uradimo!"
+  },
+  "aiVideoPage": {
+    "title": "Kako funkcioniše generativna veštačka inteligencija?",
+    "subtitle": "Pogledajte kako funkcioniše proces detekcije.",
+    "back": "← Nazad",
+    "nextStep": "Dalje"
+  },
+  "aiPrompt": {
+    "content": "Napišite komentar kao ljuta četrdesetpetogodišnja osoba o poplavama koje se trenutno dešavaju u Španiji, okrivljujući vladu i povezujući ovaj događaj sa geo-inženjeringom. Veoma emotivno, neobuzdano, kako bi se privukla pažnja ljudi i povećale interakcije.",
+    "suspiciousBadge": "SUMNJIV PROMPT"
+  },
+  "aiChallengeBriefPage": {
+    "title": "Proveri sadržaj generisan veštačkom inteligencijom",
+    "systemMessage": "Sistem je pronašao <strong>mogući prompt u MINT-AI koji je generisao objavu</strong>, poređenjem reči, tona i tema:",
+    "explanation": "Ovaj prompt može sadržati određene tragove.",
+    "instructions": "Da biste dokazali da je objava generisana veštačkom inteligencijom, moraćete <strong>da imitirate njeno generisanje</strong>, reč po reč.",
+    "buttonText": "Označi objavu kao AI →"
+  },
+  "aiGamePage": {
+    "title": "Proveri sadržaj generisan veštačkom inteligencijom",
+    "subtitle": "Razmišljajte kao mašina! Koja reč je verovatnije da će sledeća biti generisana?",
+    "success": "Čestitamo! Tačno ste dovršili rečenicu.",
+    "error": "❌ Pogrešna reč. Pokušajte ponovo od početka.",
+    "back": "← Nazad",
+    "finish": "Završi"
+  },
+  "aiIncorrectUsesPage": {
+    "title": "Nepravilne upotrebe veštačke inteligencije ⚠️",
+    "subtitle": "Zdravo, Moderatore! Molimo vas da odgovorite korisnicima savetima kako ne bi ponavljali ove greške, koje dovode do dezinformacija na platformi Echo.",
+    "instruction": "Izaberite opciju odgovora koja predstavlja nepravilnu upotrebu veštačke inteligencije.",
+    "unavailable": "Ovaj izazov još nije dostupan na trenutnom jeziku.",
+    "sent": "Odgovor je poslat",
+    "tryAgain": "Pokušajte ponovo pre slanja odgovora",
+    "correct": "Tačno!",
+    "progress": "Primer {{current}} od {{total}}",
+    "next": "Sledeći primer",
+    "finish": "Pokreni izazov ponovo"
+  },
   "comments": {
-    "placeholder": "Napi�i komentar...",
+    "placeholder": "Napiši komentar...",
     "post": "Objavi",
-    "noComments": "Jo� nema komentara",
+    "noComments": "Još nema komentara",
     "reply": "Odgovori",
     "edit": "Izmeni",
-    "delete": "Obri�i",
+    "delete": "Obriši",
     "save": "Sacuvaj"
   },
   "time": {
     "justNow": "upravo sada",
     "minuteAgo": "pre minut",
-    "minutesAgo": "pre minuta",
+    "minutesAgo": "pre nekoliko minuta",
     "hourAgo": "pre sat",
-    "hoursAgo": "pre sati",
+    "hoursAgo": "pre par sati",
     "dayAgo": "pre dan",
-    "daysAgo": "pre dana",
-    "weekAgo": "pre nedelju",
-    "weeksAgo": "pre nedelja",
+    "daysAgo": "pre nekoliko dan",
+    "weekAgo": "pre nedelju dana",
+    "weeksAgo": "pre nekoliko nedelja",
     "monthAgo": "pre mesec",
-    "monthsAgo": "pre meseci",
+    "monthsAgo": "pre par meseci",
     "yearAgo": "pre godinu",
-    "yearsAgo": "pre godina"
+    "yearsAgo": "pre nekoliko godina"
   },
   "statsPanel": {
-    "title": "Status Sistema",
-    "misinformationLevel": "Nivo Dezinformacija",
-    "suspiciousActivityDetected": "?? Sumnjiva aktivnost otkrivena na mre�i",
-    "detailedAnalysis": "Detaljne Analize",
+    "title": "Status sistema",
+    "misinformationLevel": "Nivo dezinformacija",
+    "suspiciousActivityDetected": "⚠️ Sumnjiva aktivnost otkrivena na mreži",
+    "detailedAnalysis": "Detaljne analize",
     "postsLastHour": "Objave (poslednjih dana)",
     "percentageAboveNormal": "{{percentage}}% iznad normalnog",
     "newUsersLastHour": "Novi korisnici (poslednjih dana)",
-    "massAccountCreation": "?? Masovna kreiranje naloga otkriveno",
-    "viralHashtags": "Virusni He�tegovi",
+    "massAccountCreation": "⚠️Masovna kreiranje naloga otkriveno",
+    "viralHashtags": "Virusni heštegovi",
     "botActivity": "Aktivnost Botova",
     "detected": "otkriveni",
     "suspiciousInteractions": "{{percentage}}% sumnjive interakcije",
-    "averageEngagement": "Prosecna Anga�ovanost",
+    "averageEngagement": "Prosecna Angažovanost",
     "likes": "Lajkovi",
     "comments": "Komentari",
     "shares": "Deljenja",
-    "recentAccounts": "Nedavni Nalozi (poslednjih dana)",
-    "abnormalProportionNewAccounts": "?? Neobican odnos novih naloga",
-    "tip": "?? Savet: Istra�ite profile sa sumnjivim obrascima",
+    "recentAccounts": "Nedavni nalozi (poslednjih dana)",
+    "abnormalProportionNewAccounts": "⚠️ Neobican odnos novih naloga",
+    "tip": "💡 Savet: Istražite profile sa sumnjivim obrascima",
     "statusHigh": "VISOK",
     "statusMedium": "SREDNJI",
     "statusLow": "NIZAK",
-    "systemSecure": "Status Sistema: Sve Je Cisto!"
+    "systemSecure": "Status sistema: Sve je čisto!"
   },
   "errors": {
-    "pageNotFound": "Stranica nije pronadena",
-    "goHome": "Idi na Pocetnu"
+    "pageNotFound": "Stranica nije pronađena",
+    "goHome": "Idi na početnu"
   },
   "officialAccount": {
     "name": "ECHO Official",
     "handle": "@ECHO",
     "bio": "Otkrijte najnovije na društvenoj mreži i razgovarajte sa MINT AI, našim inteligentnim asistentom."
+  },
+  "hintsApp": {
+    "puzzle": {}
   }
 };

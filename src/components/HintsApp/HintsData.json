@@ -1,0 +1,266 @@
+{
+  "en": {
+    "1": [
+      {
+        "context": "I don't know how to start",
+        "clue": "Read the instructions provided in the Messages application"
+      },
+      {
+        "context": "I don't remember the credentials to log in to the social network",
+        "clue": "Username: echo. Password: 1234"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "2": [
+      {
+        "context": "I don't know how to continue",
+        "clue": "Read the instructions provided in the Messages application"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "3": [
+      {
+        "context": "I don't know how to continue",
+        "clue": "Read the instructions provided in the Messages application"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "4": [
+      {
+        "context": "I don't know how to continue",
+        "clue": "Read the instructions provided in the Messages application"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ]
+  },
+  "es": {
+    "1": [
+      {
+        "context": "No sé cómo empezar",
+        "clue": "Lee las instrucciones indicadas en la aplicación de mensajes"
+      },
+      {
+        "context": "No recuerdo las credenciales para iniciar sesión en la red social",
+        "clue": "Usuario: echo. Contraseña: 1234"
+      },
+      {
+        "context": "No encuentro el reto dentro de la red social ",
+        "clue": "Dentro de la red social, dirígete a la barra lateral izquierda. Haz click en Usuarios Sospechosos. "
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "2": [
+      {
+        "context": "No sé cómo continuar",
+        "clue": "Lee las instrucciones indicadas en la aplicación de mensajes"
+      },
+      {
+        "context": "No encuentro el reto dentro de la red social ",
+        "clue": "Dentro de la red social, dirígete a la barra lateral izquierda. Haz click en Contenido Gnerado por IA. "
+      },
+      {
+        "context": "Una vez que he accedido al panel de Contenido Generado por IA, no se qué hacer",
+        "clue": ""
+      },
+      {
+        "context": "No entiendo el juego",
+        "clue": "El reto consiste en verificar si una publicación fue generada por IA. Tu misión es entender cómo funciona un LLM de forma interna y jugar, por memoria, a generar una frase como si fueras la IA. "
+      }
+    ],
+    "3": [
+      {
+        "context": "No sé cómo continuar",
+        "clue": "Lee las instrucciones indicadas en la aplicación de mensajes"
+      },
+      {
+        "context": "No encuentro el reto dentro de la red social ",
+        "clue": "Dentro de la red social, dirígete a la barra lateral izquierda. Haz click en Usos Incorrectos de IA. "
+      },
+      {
+        "context": "No entiendo el juego",
+        "clue": "Tu deber como moderador es aconsejar a los usuarios de ECHO sobre cuándo es correcto usar la IA para consultas y cuándo no. "
+      }
+    ],
+    "4": [
+      {
+        "context": "No sé cómo continuar",
+        "clue": "Lee las instrucciones indicadas en la aplicación de mensajes"
+      },
+      {
+        "context": "No encuentro el reto dentro de la red social ",
+        "clue": "Dentro de la red social, dirígete a la barra lateral izquierda. Haz click en Nueva Publicación. "
+      },
+      {
+        "context": "No sé cómo identificar la(s) frase(s) correcta(s)",
+        "clue": "Recuerda lo que has aprendido a lo largo de los retos: "
+      }
+    ]
+  },
+  "fi": {
+    "1": [
+      {
+        "context": "En tiedä miten aloittaa",
+        "clue": "Lue viestisovelluksessa annetut ohjeet"
+      },
+      {
+        "context": "En muista tunnuksia, joilla kirjaudun sosiaaliseen mediaan",
+        "clue": "Käyttäjätunnus: echo. Salasana: 1234"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "2": [
+      {
+        "context": "",
+        "clue": "Lue viestisovelluksessa annetut ohjeet"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "3": [
+      {
+        "context": "",
+        "clue": "Lue viestisovelluksessa annetut ohjeet"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "4": [
+      {
+        "context": "",
+        "clue": "Lue viestisovelluksessa annetut ohjeet"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ]
+  },
+  "sr": {
+    "1": [
+      {
+        "context": "Ne znam kako da počnem",
+        "clue": "Pročitajte uputstva koja se nalaze u aplikaciji za razmenu poruka"
+      },
+      {
+        "context": "Ne sećam se podataka za prijavu na društvenu mrežu",
+        "clue": "Password: 1234 Lozinka: 1234"
+      },
+      {
+        "context": "Ne mogu da pronađem izazov na društvenoj mreži.",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "2": [
+      {
+        "context": "Ne znam kako da nastavim",
+        "clue": "Pročitajte uputstva koja se nalaze u aplikaciji za razmenu poruka"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "3": [
+      {
+        "context": "Ne znam kako da nastavim",
+        "clue": "Pročitajte uputstva koja se nalaze u aplikaciji za razmenu poruka"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ],
+    "4": [
+      {
+        "context": "Ne znam kako da nastavim",
+        "clue": "Pročitajte uputstva koja se nalaze u aplikaciji za razmenu poruka"
+      },
+      {
+        "context": "",
+        "clue": ""
+      },
+      {
+        "context": "",
+        "clue": ""
+      }
+    ]
+  }
+}

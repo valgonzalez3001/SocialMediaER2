@@ -559,88 +559,88 @@
         "correct": "Poplave",
         "percentage": 0.7,
         "alts": [
-          "I",
-          "Let's"
+          "Ja",
+          "Hajde"
         ]
       },
       {
         "correct": "poput",
         "percentage": 0.8,
         "alts": [
-          "and",
-          "are"
+          "i",
+          "su"
         ]
       },
       {
         "correct": "ovih",
         "percentage": 0.65,
         "alts": [
-          "all",
-          "every"
+          "sve",
+          "svaki"
         ]
       },
       {
         "correct": "su",
         "percentage": 0.45,
         "alts": [
-          "don't",
-          "are"
+          "ne",
+          "su"
         ]
       },
       {
         "correct": "nekada",
         "percentage": 0.93,
         "alts": [
-          "a",
-          "some"
+          "jedan",
+          "neke"
         ]
       },
       {
         "correct": "bile",
         "percentage": 0.57,
         "alts": [
-          "happen",
-          "make"
+          "dogodi se",
+          "napraviti"
         ]
       },
       {
         "correct": "retke",
         "percentage": 0.64,
         "alts": [
-          "not",
-          "extremely"
+          "nije",
+          "ekstremno"
         ]
       },
       {
         "correct": ".",
         "percentage": 0.89,
         "alts": [
-          "but",
-          "even"
+          "ali",
+          "iako"
         ]
       },
       {
         "correct": "Očigledno",
         "percentage": 0.74,
         "alts": [
-          "But",
-          "Some"
+          "Ali",
+          "Neke"
         ]
       },
       {
         "correct": "su ",
         "percentage": 0.71,
         "alts": [
-          "not",
-          "horrible"
+          "ne",
+          "užasne"
         ]
       },
       {
         "correct": "planirane",
         "percentage": 0.38,
         "alts": [
-          "intentional",
-          "the"
+          "namerno",
+          "To"
         ]
       }
     ]

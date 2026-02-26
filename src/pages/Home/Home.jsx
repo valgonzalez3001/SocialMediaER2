@@ -61,23 +61,18 @@ export const Home = () => {
   };
 
   const sortedPosts = (sortBy, allPosts) => {
+    // Community Note siempre aparece la primera
+    const pinned = allPosts.filter((p) => p.isCommunityNote);
+    const rest = allPosts.filter((p) => !p.isCommunityNote);
+
     if (sortBy === "Latest" || sortBy === t('home.sortBy.latest')) {
-      const sortedPosts = allPosts.sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-      );
-      return sortedPosts;
-    }
-    if (sortBy === "Oldest" || sortBy === t('home.sortBy.oldest')) {
-      const sortedPosts = allPosts.sort(
-        (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-      );
-      return sortedPosts;
+      rest.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    } else if (sortBy === "Oldest" || sortBy === t('home.sortBy.oldest')) {
+      rest.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
     } else {
-      const sortedPosts = allPosts.sort(
-        (a, b) => parseLikeCount(b.likes.likeCount) - parseLikeCount(a.likes.likeCount)
-      );
-      return sortedPosts;
+      rest.sort((a, b) => parseLikeCount(b.likes.likeCount) - parseLikeCount(a.likes.likeCount));
     }
+    return [...pinned, ...rest];
   };
 
   const [isAjustmentOn, setIsAdjustmentOn] = useState(false);

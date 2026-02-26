@@ -101,7 +101,7 @@ export const createPostHandler = function (schema, request) {
       //this is add on
       comments: [],
       username: user.username,
-      createdAt: formatDate(),
+      createdAt: postData.createdAt ?? formatDate(),
       updatedAt: formatDate(),
     };
     this.db.posts.insert(post);

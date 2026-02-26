@@ -229,19 +229,19 @@
         "handle": "@GeronimoAlbaicin",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/GeronimoAlbaicin.jpg",
-        "text": "My morning routine is drinking coffee and reading the news summary that MINT makes for me"
+        "text": "Moja jutarnja rutina je ispijanje kafe i čitanje pregleda vesti koji mi MINT priprema"
       },
       "options": [
         {
-          "text": "You can use AI to summarize news articles, but it's not a good idea to use it to look up current news - it might make things up",
+          "text": "Možete koristiti veštačku inteligenciju za sažimanje novinskih članaka, ali nije dobra ideja da je koristite za pretraživanje aktuelnih vesti – može da izmišlja informacije",
           "isCorrect": true
         },
         {
-          "text": "Crystal balls work better than AI to inform yourself. But whatever works for you",
+          "text": "Kristalne kugle rade bolje od veštačke inteligencije kada je u pitanju informisanje. Ali kako god vama odgovara",
           "isCorrect": false
         },
         {
-          "text": "For recent and local events, it's the best option! LLMs are ALWAYS trained with up-to-date data.",
+          "text": "Za nedavne i lokalne događaje, to je najbolja opcija! LLM-ovi su UVEK obučeni na ažurnim podacima.",
           "isCorrect": false
         }
       ]
@@ -253,19 +253,19 @@
         "handle": "@anitaranita",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/anotaranita.jpg",
-        "text": "I did not know that Kuala Lumpur has up to 50 nature reserves. How amazing! Let us see if we can visit them all. #planningatripwithMINT"
+        "text": "Nisam znao/la da Kuala Lumpur ima čak do 50 rezervata prirode. Kako neverovatno! Hajde da vidimo da li možemo da ih posetimo sve. #planiranjaputovanjasaMINT"
       },
       "options": [
         {
-          "text": "Great plan. Before booking, verify those places with official tourism websites and local maps",
+          "text": "Odličan plan. Pre rezervacije proverite ta mesta na zvaničnim turističkim sajtovima i lokalnim mapama",
           "isCorrect": true
         },
         {
-          "text": "Whatever floats your boat!",
+          "text": "Kako god vama odgovara!",
           "isCorrect": false
         },
         {
-          "text": "No need to verify anything. If AI generated it, it is guaranteed to be true",
+          "text": "Nema potrebe ništa proveravati. Ako je generisano veštačkom inteligencijom, garantovano je tačno.",
           "isCorrect": false
         }
       ]
@@ -277,19 +277,19 @@
         "handle": "@juanin34",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/juanin34.jpg",
-        "text": "Everything makes sense now that I know I have Marfan syndrome. AI explained all my symptoms"
+        "text": "Sada sve ima smisla otkako znam da imam Marfanov sindrom. Veštačka inteligencija je objasnila sve moje simptome"
       },
       "options": [
         {
-          "text": "AI can help you prepare questions, but only a doctor can diagnose your condition. Please seek professional medical evaluation",
+          "text": "Veštačka inteligencija vam može pomoći da pripremite pitanja, ali samo lekar može postaviti dijagnozu. Molimo vas da potražite stručnu medicinsku procenu",
           "isCorrect": true
         },
         {
-          "text": "Post your symptoms publicly so others can diagnose you better than professionals",
+          "text": "Objavite svoje simptome javno kako bi vas drugi mogli dijagnostikovati bolje od stručnjaka",
           "isCorrect": false
         },
         {
-          "text": "That sounds accurate. Start treatment based on the AI answer right away",
+          "text": "To zvuči tačno. Započnite terapiju odmah na osnovu odgovora veštačke inteligencije",
           "isCorrect": false
         }
       ]

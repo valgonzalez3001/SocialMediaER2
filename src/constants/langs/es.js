@@ -289,5 +289,16 @@ export const es = {
     "name": "ECHO Oficial",
     "handle": "@ECHO",
     "bio": "Descubre lo último de la red social y chatea con MINT AI, nuestro asistente inteligente."
+  },
+  "hintsApp": {
+    "title": "Pistas",
+    "selectContext": "¿En qué te ayudamos?",
+    "puzzle": {
+      "1": "Reto 1: Usuarios Sospechosos",
+      "2": "Reto 2: Contenido Generado por IA",
+      "3": "Reto 3: Usos Incorrectos de IA",
+      "4": "Reto 4: Community Note"
+    },
+    "back": "Volver"
   }
 };

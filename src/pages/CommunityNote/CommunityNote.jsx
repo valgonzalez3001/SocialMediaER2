@@ -59,6 +59,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
       content: t("createPost.conclusionText"),
       mediaUrl: "",
       isCommunityNote: true,
+      avatarURL: "/assets/echo-logo-bg.png",
     };
 
     createPost(new Event("submit"), conclusionPost, "admin-token");

@@ -817,6 +817,40 @@ async function main() {
     console.warn("  Sheet 'ECHO posts' not found or empty, skipping.");
   }
 
+  // App Hints sheet
+  console.log("\nProcessing App Hints sheet...");
+  const pistasSheetData = readSheet(workbook, "App Hints");
+
+  if (pistasSheetData.length > 0) {
+    console.log(`  Found ${pistasSheetData.length} hint(s)`);
+
+    const hintsResult = {};
+    for (const lang of langs) {
+      hintsResult[lang] = {};
+      for (const row of pistasSheetData) {
+        const puzzleId = String(row["puzzle_id"] ?? "").trim();
+        if (!puzzleId) continue;
+        if (!hintsResult[lang][puzzleId]) hintsResult[lang][puzzleId] = [];
+        hintsResult[lang][puzzleId].push({
+          context: row[`context_${lang}`] || "",
+          clue: row[`clue_${lang}`] || "",
+        });
+      }
+    }
+
+    const hintsDataPath = path.join(OUT_DIR, "src/components/HintsApp/HintsData.json");
+    const hintsDir = path.dirname(hintsDataPath);
+    if (!fs.existsSync(hintsDir)) fs.mkdirSync(hintsDir, { recursive: true });
+    if (fs.existsSync(hintsDataPath)) {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+      fs.copyFileSync(hintsDataPath, path.join(tmpDir, `HintsData_${timestamp}.json`));
+    }
+    fs.writeFileSync(hintsDataPath, JSON.stringify(hintsResult, null, 2), "utf8");
+    console.log(`  Wrote hints data to: src/components/HintsApp/HintsData.json`);
+  } else {
+    console.warn("  Sheet 'App Pistas' not found or empty, skipping.");
+  }
+
   console.log("\nDone!");
 }
 

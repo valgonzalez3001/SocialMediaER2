@@ -283,5 +283,8 @@ export const fi = {
     "name": "ECHO Oy",
     "handle": "@ECHO",
     "bio": "Tutustu uusimpiin somesisältöihin ja keskustele MINT AI:n, älykkään assistenttimme, kanssa."
+  },
+  "hintsApp": {
+    "puzzle": {}
   }
 };

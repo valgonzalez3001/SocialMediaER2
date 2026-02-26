@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import "./Desktop.css";
 import { MessagesApp } from "../../components/MessagesApp/MessagesApp";
 import { SocialMediaApp } from "../../components/SocialMediaApp/SocialMediaApp";
+import { HintsApp } from "../../components/HintsApp/HintsApp";
 import { PopupNotification } from "../../components/PopupNotification/PopupNotification";
 import { useOS } from "../../contexts/OSProvider";
 import { useMessages } from "../../contexts/MessagesProvider";
@@ -83,22 +84,9 @@ export const Desktop = () => {
     syncDrawer(false);
   };
 
-  const handleOpenTips = (e) => {
-    if (!challenge1Completed) {
-      // Mostrar popup: posición arriba del botón y centrado horizontalmente
-      const rect = e.currentTarget.getBoundingClientRect();
-      const popupWidth = 280;
-      setPopup({
-        visible: true,
-        message: t("desktop.popup.startChallenge"),
-        position: {
-          top: rect.top - 70,
-          left: rect.left + rect.width / 2 - popupWidth / 2,
-        },
-      });
-      return;
-    }
-    // Aquí iría la lógica para abrir pistas cuando esté habilitado
+  const handleOpenTips = () => {
+    openApp("hints");
+    syncDrawer(false);
   };
 
   const handleClosePopup = () => {
@@ -149,6 +137,17 @@ export const Desktop = () => {
             onClick={(event) => event.stopPropagation()}
           >
             <SocialMediaApp />
+          </div>
+        </div>
+      )}
+
+      {activeApp === "hints" && (
+        <div className="app-overlay" onClick={minimizeApp}>
+          <div
+            className="app-overlay-content"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <HintsApp />
           </div>
         </div>
       )}
@@ -215,16 +214,16 @@ export const Desktop = () => {
             <span className="launcher-label">Llamadas</span>
           </button>
           <button
-            className={`app-launcher-card ${!challenge1Completed ? "is-locked" : ""}`}
+            className="app-launcher-card"
             onClick={handleOpenTips}
-            title="Pistas"
+            title={t("hintsApp.title")}
           >
             <img
               className="launcher-image"
               src="/assets/tips-icon.png"
-              alt="Pistas"
+              alt={t("hintsApp.title")}
             />
-            <span className="launcher-label">Pistas</span>
+            <span className="launcher-label">{t("hintsApp.title")}</span>
           </button>
         </div>
       </div>

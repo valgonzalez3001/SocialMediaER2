@@ -98,31 +98,31 @@
   "sr": [
     {
       "id": 1,
-      "text": "Ботови се могу открити по доследним и понављајућим обрасцима активности.",
-      "correct": true,
+      "text": "Botovi se mogu otkriti po doslednim i ponavljajućim obrascima aktivnosti.",
+      "correct": false,
       "category": "bot-detection"
     },
     {
       "id": 2,
-      "text": "Верификовани налози су увек прави налози и никада не могу бити ботови.",
+      "text": "Verifikovani nalozi su uvek pravi nalozi i nikada ne mogu biti botovi.",
       "correct": false,
       "category": "verification-misconception"
     },
     {
       "id": 3,
-      "text": "Верификација налога коришћењем више извора информација је кључна за борбу против дезинформација.",
-      "correct": true,
+      "text": "Verifikacija naloga korišćenjem više izvora informacija je ključna za borbu protiv dezinformacija.",
+      "correct": false,
       "category": "information-verification"
     },
     {
       "id": 4,
-      "text": "Ботови увек имају јавне профиле, а никада приватне.",
+      "text": "Botovi uvek imaju javne profile, a nikada privatne.",
       "correct": false,
       "category": "bot-misconception"
     },
     {
       "id": 5,
-      "text": "Дигитално образовање је неопходно да би корисници могли да идентификују лажни садржај.",
+      "text": "Digitalno obrazovanje je neophodno da bi korisnici mogli da identifikuju lažni sadržaj.",
       "correct": false,
       "category": "digital-education"
     }

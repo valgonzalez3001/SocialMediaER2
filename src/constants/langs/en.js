@@ -289,5 +289,10 @@ export const en = {
     "name": "ECHO Official Account",
     "handle": "@ECHO",
     "bio": "Discover the latest from the social network and chat with MINT AI, our intelligent assistant."
+  },
+  "hintsApp": {
+    "title": "Hints",
+    "puzzle": {},
+    "back": "Back"
   }
 };

@@ -19,6 +19,13 @@ export const Profile = () => {
 
   const postsByUser = allPosts?.filter((post) => post.username === username);
 
+  const sortedPostsByUser = postsByUser ? [
+    ...postsByUser.filter((p) => p.isCommunityNote),
+    ...postsByUser.filter((p) => !p.isCommunityNote).sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    ),
+  ] : [];
+
   useEffect(() => {
     const cameFromAdmin = sessionStorage.getItem('fromAdmin');
     setFromAdmin(cameFromAdmin === 'true');
@@ -49,8 +56,8 @@ export const Profile = () => {
           />
           <div className="user-posts-container">
             {!postLoading &&
-              (postsByUser.length ? (
-                postsByUser.map((post) => <Post key={post._id} post={post} />)
+              (sortedPostsByUser.length ? (
+                sortedPostsByUser.map((post) => <Post key={post._id} post={post} />)
               ) : (<>
                 <p className="no-bookmarks">{t('profile.noPosts')}</p>   
        </>

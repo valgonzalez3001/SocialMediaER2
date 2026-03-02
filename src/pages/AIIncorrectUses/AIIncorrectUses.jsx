@@ -93,6 +93,7 @@ export const AIIncorrectUses = () => {
             ), {
                 duration: 4000,
                 icon: "📬",
+                position: "bottom-center",
             });
         }
     }, [sentReplies, challengeCases.length, challenge3Completed, completeChallenge3, addMessage, t, sendStatement]);

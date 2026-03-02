@@ -3,8 +3,6 @@ import "./App.css";
 import { Desktop } from "./pages/Desktop/Desktop";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop.jsx";
 import { Toaster } from "react-hot-toast";
-import { usePosts } from "./contexts/PostsProvider.jsx";
-import { Loader } from "./components/Loader/Loader";
 import { PlayerOnboarding } from "./components/PlayerOnboarding/PlayerOnboarding";
 import { useTranslation } from "react-i18next";
 
@@ -18,28 +16,19 @@ import { useTranslation } from "react-i18next";
  * - Sistema de notificaciones toast
  */
 function App() {
-  const { postLoading } = usePosts();
   const { i18n } = useTranslation();
   const [onboardingComplete, setOnboardingComplete] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
-  // Verificar si el jugador ya completó el onboarding en esta sesión
+  // Resetear siempre los datos al montar el componente principal
+  // Esto asegura que cada vez que se inicia el proyecto, todo comienza desde cero
   useEffect(() => {
-    // Resetear siempre los datos al montar el componente principal
-    // Esto asegura que cada vez que se inicia el proyecto, todo comienza desde cero
     sessionStorage.clear();
     setOnboardingComplete(false);
-    setIsLoading(false);
   }, []);
 
   const handleOnboardingComplete = (playerData) => {
     setOnboardingComplete(true);
   };
-
-  // Mostrar loader mientras se verifica el estado
-  if (isLoading) {
-    return <div className="App" />;
-  }
 
   return (
     <div className="App">
@@ -52,9 +41,6 @@ function App() {
       {/* Sistema de escritorio con aplicaciones */}
       <Desktop />
       
-      {/* Muestra el loader solo cuando se están cargando posts */}
-      {postLoading && <Loader />}
-      
       {/* Configuración del sistema de notificaciones toast */}
       <Toaster
         position="top-center"
@@ -65,6 +51,7 @@ function App() {
         }}
         containerStyle={{
           top: "6rem",
+          bottom: "70px",
         }}
       />
     </div>

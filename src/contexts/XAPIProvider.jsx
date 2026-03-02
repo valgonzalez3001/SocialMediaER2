@@ -34,6 +34,10 @@ export const XAPI_VERBS = {
     id: "http://adlnet.gov/expapi/verbs/experienced",
     display: { en: "experienced" },
   },
+  ASKED: {
+    id: "https://xapi.elearn.rwth-aachen.de/definitions/generic/verbs/asked",
+    display: { en: "asked" },
+  },
   ATTEMPTED: {
     id: "http://adlnet.gov/expapi/verbs/attempted",
     display: { en: "attempted" },

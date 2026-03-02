@@ -99,6 +99,7 @@ export const AIContent = () => {
         ), {
             duration: 4000,
             icon: "📬",
+            position: "bottom-center",
         });
     }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t, sendStatement, gameData.length]);
 

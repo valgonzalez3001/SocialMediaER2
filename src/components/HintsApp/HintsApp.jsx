@@ -5,6 +5,7 @@ import { useStats } from "../../contexts/StatsProvider";
 import { useTranslation } from "react-i18next";
 import { FaTimes, FaMinus, FaLightbulb, FaChevronLeft } from "react-icons/fa";
 import hintsDataRaw from "./HintsData.json";
+import { useXAPI, XAPI_VERBS } from "../../contexts/XAPIProvider";
 
 /**
  * HintsApp – App de pistas del escape room.
@@ -35,6 +36,38 @@ export const HintsApp = () => {
 
   const handleClose = () => closeApp("hints");
   const handleMinimize = () => minimizeApp();
+
+  const { sendStatement } = useXAPI();
+
+  const trackHintAsked = async (puzzleId, hintIdx, hintTitle) => {
+    await sendStatement(
+      XAPI_VERBS.ASKED,
+      {
+        id: `https://endgameproject.github.io/xapi/escape-rooms/echo/objects/hint-${puzzleId}-${hintIdx + 1}`,
+        definition: {
+          name: { en: `Hint: ${hintTitle}` },
+          type: "https://xapi.elearn.rwth-aachen.de/definitions/generic/activities/tip",
+        },
+      },
+      null,
+      {
+        contextActivities: {
+          parent: [
+            {
+              id: `https://endgameproject.github.io/xapi/escape-rooms/echo/rooms/puzzle-${puzzleId}`,
+              definition: { name: { en: `Puzzle ${puzzleId}` } },
+            },
+          ],
+          grouping: [
+            {
+              id: "https://endgameproject.github.io/xapi/escape-rooms/echo",
+              definition: { name: { en: "ECHO" } },
+            },
+          ],
+        },
+      }
+    );
+  };
 
   return (
     <div className="hints-app-window">
@@ -85,7 +118,10 @@ export const HintsApp = () => {
                 <li key={idx}>
                   <button
                     className="hints-context-btn"
-                    onClick={() => setSelectedContext(idx)}
+                    onClick={() => {
+                      trackHintAsked(currentPuzzleId, idx, hint.context);
+                      setSelectedContext(idx);
+                    }}
                   >
                     <FaLightbulb className="hints-context-icon" />
                     <span>{hint.context}</span>

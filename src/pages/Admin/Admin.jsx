@@ -238,6 +238,7 @@ export const Admin = () => {
             ), {
                 duration: 4000,
                 icon: "📬",
+                position: "bottom-center",
             });
         }
     };

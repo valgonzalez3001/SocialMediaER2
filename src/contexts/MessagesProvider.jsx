@@ -56,6 +56,7 @@ export const MessagesProvider = ({ children }) => {
     ), {
       duration: 4000,
       icon: "📬",
+      position: "bottom-center",
     });
     notificationShownRef.current = true;
   };

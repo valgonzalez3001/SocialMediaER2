@@ -18,7 +18,7 @@ import { useXAPI } from "../../contexts/XAPIProvider.jsx";
 
 export const Navbar = () => {
   const { t } = useTranslation();
-  const { challenge1Completed, challenge2Completed, challenge3Completed, challenge2InstructionsRead, challenge3InstructionsRead } = useStats();
+  const { challenge1Completed, challenge2Completed, challenge3Completed, challenge2InstructionsRead, challenge3InstructionsRead, suspectUsersCount } = useStats();
   const { trackChallengeStarted } = useXAPI();
 
   const startIfNotStarted = (id, name, completed = false) => {
@@ -69,7 +69,7 @@ export const Navbar = () => {
     setPopup({ ...popup, visible: false });
   };
 
-  const pendingChallenge1 = challenge1Completed ? 0 : 5;
+  const pendingChallenge1 = challenge1Completed ? 0 : suspectUsersCount;
   const pendingChallenge2 = challenge2InstructionsRead && !challenge2Completed ? 1 : 0;
   const pendingChallenge3 =
     challenge3InstructionsRead && !challenge3Completed ? aiIncorrectUsesCases.length : 0;

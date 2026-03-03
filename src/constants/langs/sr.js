@@ -292,7 +292,7 @@ export const sr = {
   },
   "hintsApp": {
     "title": "Saveti",
-    "selectContext": "Kako vam možemo pomoći?",
+    "selectContext": "Kako vam možemo pomoći?",
     "puzzle": {
       "1": "Izazov 1: Sumnjivi korisnici",
       "2": "Izazov 2: Sadržaj generisan veštačkom inteligencijom",

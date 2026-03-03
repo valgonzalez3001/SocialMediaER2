@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
+import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
@@ -15,11 +16,28 @@ export const AIContent = () => {
     const { t } = useTranslation();
     const { openApp } = useOS();
     const currentLang = t("langKey");
-    const gameDataAllSentences = aiContent[currentLang] || aiContent.en;
-    const gameData = useMemo(
-        () => gameDataAllSentences[Math.floor(Math.random() * gameDataAllSentences.length)],
-        [gameDataAllSentences]
-    );
+
+    // Pick a random sentence ONCE per session and persist the index so navigating
+    // away and back always shows the same sentence.  Languages with only one
+    // sentence always get index 0.
+    const gameData = useMemo(() => {
+        const allSentences = aiContent[currentLang] || aiContent.en;
+
+        const storedIdx = sessionStorage.getItem("echo:puzzle2:sentenceIndex");
+        let idx;
+        if (storedIdx !== null) {
+            // Clamp in case the stored index is out of range for the current language
+            idx = Math.min(Number(storedIdx), allSentences.length - 1);
+        } else {
+            idx = allSentences.length > 1
+                ? Math.floor(Math.random() * allSentences.length)
+                : 0;
+            sessionStorage.setItem("echo:puzzle2:sentenceIndex", String(idx));
+        }
+
+        return allSentences[idx];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentLang]);
     const { addMessage } = useMessages();
     const { challenge2Completed, completeChallenge2 } = useStats();
     const { sendStatement, trackChallengeStarted } = useXAPI();
@@ -33,7 +51,7 @@ export const AIContent = () => {
             gameData.map((item) =>
                 [item.correct, ...item.alts].sort(() => Math.random() - 0.5)
             ),
-        []
+        [gameData]
     );
     const reconstructedSentence = useMemo(
         () => selectedWords.join(" ").replace(/\s([.,!?;:])/g, "$1"),
@@ -448,6 +466,11 @@ export const AIContent = () => {
                         </div>
                     </div>
                 </main>
+
+                {/* Panel de estadísticas lateral */}
+                <aside className="stats-sidebar">
+                    <StatsPanel />
+                </aside>
             </div>
         </>
     );

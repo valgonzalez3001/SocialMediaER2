@@ -51,7 +51,7 @@ function App() {
         }}
         containerStyle={{
           top: "6rem",
-          bottom: "70px",
+          bottom: "175px",
         }}
       />
     </div>

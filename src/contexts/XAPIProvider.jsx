@@ -137,6 +137,13 @@ export const ECHO_ACTIVITIES = {
       type: XAPI_ACTIVITY_TYPES.PUZZLE,
     },
   },
+  FILES_APP: {
+    id: `${ENDGAME_BASE}/escape-rooms/echo/files-app`,
+    definition: {
+      name: { en: "ECHO File Explorer" },
+      type: XAPI_ACTIVITY_TYPES.GAME,
+    },
+  },
 };
 
 // Extension URIs

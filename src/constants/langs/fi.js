@@ -286,7 +286,14 @@ export const fi = {
     "bio": "Tutustu uusimpiin somesisältöihin ja keskustele MINT AI:n, älykkään assistenttimme, kanssa."
   },
   "hintsApp": {
-    "puzzle": {}
+    "title": "Vihjeet",
+    "selectContext": "Miten voimme auttaa sinua?",
+    "puzzle": {
+      "1": "Haaste 1: Epäilyttävät käyttäjät",
+      "2": "Haaste 2: Tekoälyn luoma sisältö",
+      "3": "Haaste 3: Tekoälyn väärinkäytöt",
+      "4": "Haaste 4: Yhteisömuistiinpano"
+    }
   },
   "filesApp": {
     "title": "Tiedostonhallinta",

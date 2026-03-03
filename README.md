@@ -100,7 +100,7 @@ npm install
 Crea un archivo `.env` en la raíz del proyecto (basándote en `example.env`):
 
 ```env
-# LRS � xAPI (opcional, el juego funciona sin estas variables)
+# LRS - xAPI (opcional, el juego funciona sin estas variables)
 VITE_XAPI_ENDPOINT=https://tu-lrs.example.com/xapi
 VITE_XAPI_KEY=tu_key_base64
 VITE_XAPI_SECRET=tu_secret_base64
@@ -136,36 +136,36 @@ La aplicación de desarrollo estará disponible en `http://localhost:5173`.
 ```
 src/
 +-- backend/            # Mock API con MirageJS (controllers, DB, utils)
-�   +-- db/             # Datos de usuarios y posts por idioma
+   +-- db/             # Datos de usuarios y posts por idioma
 +-- components/         # Componentes reutilizables
-�   +-- FilesApp/       # Explorador de archivos simulado
-�   +-- Header/         # Cabecera de la red social
-�   +-- HintsApp/       # App de pistas del escape room
-�   +-- MessagesApp/    # App de mensajes del jefe
-�   +-- Navbar/         # Navegación lateral
-�   +-- Post/           # Tarjeta de publicación
-�   +-- SocialMediaApp/ # Contenedor de la red social
-�   +-- StatsPanel/     # Panel lateral de estadísticas
-�   +-- Taskbar/        # Barra de tareas del escritorio
+   +-- FilesApp/       # Explorador de archivos simulado
+   +-- Header/         # Cabecera de la red social
+   +-- HintsApp/       # App de pistas del escape room
+   +-- MessagesApp/    # App de mensajes del jefe
+   +-- Navbar/         # Navegación lateral
+   +-- Post/           # Tarjeta de publicación
+   +-- SocialMediaApp/ # Contenedor de la red social
+   +-- StatsPanel/     # Panel lateral de estadísticas
+   +-- Taskbar/        # Barra de tareas del escritorio
 +-- constants/
-�   +-- langs/          # Traducciones (es, en, fi, sr)
+   +-- langs/          # Traducciones (es, en, fi, sr)
 +-- contexts/           # Providers de estado global
-�   +-- LoggedInUserProvider
-�   +-- MessagesProvider
-�   +-- OSProvider      # Estado del escritorio simulado
-�   +-- PostsProvider
-�   +-- StatsProvider   # Progreso y puntuación del jugador
-�   +-- UserProvider
-�   +-- XAPIProvider    # Integración xAPI
+   +-- LoggedInUserProvider
+   +-- MessagesProvider
+   +-- OSProvider      # Estado del escritorio simulado
+   +-- PostsProvider
+   +-- StatsProvider   # Progreso y puntuación del jugador
+   +-- UserProvider
+   +-- XAPIProvider    # Integración xAPI
 +-- pages/
-�   +-- Admin/          # Reto 1: Detección de bots
-�   +-- AIContent/      # Reto 2: Verificación de contenido IA
-�   +-- AIIncorrectUses/# Reto 3: Usos incorrectos de IA
-�   +-- CommunityNote/  # Reto 4: Community Note
-�   +-- Desktop/        # Escritorio simulado
-�   +-- Home/           # Feed principal
-�   +-- Profile/        # Perfil de usuario
-�   +-- PostDetail/     # Detalle de publicación
+   +-- Admin/          # Reto 1: Detección de bots
+   +-- AIContent/      # Reto 2: Verificación de contenido IA
+   +-- AIIncorrectUses/# Reto 3: Usos incorrectos de IA
+   +-- CommunityNote/  # Reto 4: Community Note
+   +-- Desktop/        # Escritorio simulado
+   +-- Home/           # Feed principal
+   +-- Profile/        # Perfil de usuario
+   +-- PostDetail/     # Detalle de publicación
 +-- scripts/
     +-- download_from_excel.mjs  # Genera traducciones desde Excel
     +-- js_to_csv.mjs            # Exporta traducciones a CSV

@@ -110,11 +110,17 @@ export const MessagesProvider = ({ children }) => {
         sessionStorage.setItem("missionBriefRead", "true");
         sendStatement(
           XAPI_VERBS.LOOKED_AT,
-          ECHO_ACTIVITIES.INTRO,
+          {
+            id: `${ECHO_ACTIVITIES.PUZZLE_1.id}/instructions`,
+            definition: {
+              name: { en: "Puzzle 1 Instructions" },
+              type: "http://adlnet.gov/expapi/activities/lesson",
+            },
+          },
           null,
           {
             contextActivities: {
-              parent: [ECHO_ACTIVITIES.GAME],
+              parent: [ECHO_ACTIVITIES.PUZZLE_1],
               grouping: [ECHO_ACTIVITIES.GAME],
             },
           }

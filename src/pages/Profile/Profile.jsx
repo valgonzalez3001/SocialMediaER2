@@ -25,7 +25,13 @@ export const Profile = () => {
     lookedAtSentRef.current.add(username);
     sendStatement(
       XAPI_VERBS.LOOKED_AT,
-      ECHO_ACTIVITIES.PROFILE,
+      {
+        id: `${ECHO_ACTIVITIES.PROFILE.id}/${username}`,
+        definition: {
+          name: { en: `Account: ${username}` },
+          type: "http://adlnet.gov/expapi/activities/profile",
+        },
+      },
       null,
       {
         contextActivities: {

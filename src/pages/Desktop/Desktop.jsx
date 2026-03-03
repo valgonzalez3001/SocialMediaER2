@@ -45,8 +45,8 @@ export const Desktop = () => {
     []
   );
   const closedTranslate = 90;
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [drawerTranslate, setDrawerTranslate] = useState(closedTranslate);
+  const [drawerOpen, setDrawerOpen] = useState(true);
+  const [drawerTranslate, setDrawerTranslate] = useState(0);
   const [now, setNow] = useState(() => new Date());
 
   const clampTranslate = (value) =>

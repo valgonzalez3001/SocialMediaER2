@@ -18,7 +18,7 @@ export const Admin = () => {
     const { t } = useTranslation();
     const { openApp } = useOS();
     const { userState } = useUser();
-    const { reduceMisinformation, completeChallenge1, challenge1Completed } = useStats();
+    const { reduceMisinformation, completeChallenge1, challenge1Completed, setSuspectUsersCount } = useStats();
     const { addMessage } = useMessages();
     const { sendStatement, trackChallengeStarted } = useXAPI();
     const navigate = useNavigate();
@@ -60,6 +60,7 @@ export const Admin = () => {
                     .map(uname => userState.allUsers.find(u => u.username === uname))
                     .filter(Boolean);
                 if (restored.length === 5) {
+                    setSuspectUsersCount(restored.length);
                     setSuspectUsers(restored);
                     return;
                 }
@@ -80,8 +81,10 @@ export const Admin = () => {
             ...shuffledHumans.slice(0, 2),
         ].sort(() => Math.random() - 0.5);
 
-        sessionStorage.setItem('adminGameUsernames', JSON.stringify(selected.map(u => u.username)));
+        const selectedUsernames = selected.map(u => u.username);
+        sessionStorage.setItem('adminGameUsernames', JSON.stringify(selectedUsernames));
         sessionStorage.removeItem('adminGameUsers');
+        setSuspectUsersCount(selected.length);
         setSuspectUsers(selected);
     }, [userState?.allUsers, challenge1Completed]);
 
@@ -149,25 +152,6 @@ export const Admin = () => {
     };
 
     const handleProfileClick = (username) => {
-        // Send xAPI statement for viewing account
-        sendStatement(
-            XAPI_VERBS.EXPERIENCED,
-            {
-                id: `${ECHO_ACTIVITIES.PUZZLE_1.id}/account/${username}`,
-                definition: {
-                    name: { en: `View Account: ${username}` },
-                    type: "http://adlnet.gov/expapi/activities/profile",
-                },
-            },
-            null,
-            {
-                contextActivities: {
-                    parent: [ECHO_ACTIVITIES.PUZZLE_1],
-                    grouping: [ECHO_ACTIVITIES.GAME],
-                },
-            }
-        );
-
         // Marcar que venimos del admin
         sessionStorage.setItem('fromAdmin', 'true');
         navigate(`/profile/${username}`);

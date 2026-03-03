@@ -5,6 +5,7 @@ import { NavRoutes } from "../../Routes/NavRoutes";
 import { FaTimes, FaMinus } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useStats } from "../../contexts/StatsProvider";
+import { useUser } from "../../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider";
 
@@ -14,9 +15,19 @@ import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvide
 export const SocialMediaApp = ({ mode = "window" }) => {
   const { closeApp, minimizeApp } = useOS();
   const { t } = useTranslation();
-  const { challenge1Completed } = useStats();
+  const { challenge1Completed, setSuspectUsersCount } = useStats();
+  const { userState } = useUser();
   const { sendStatement } = useXAPI();
   const navigate = useNavigate();
+
+  // Calcular el número de cuentas sospechosas en cuanto los usuarios carguen
+  useEffect(() => {
+    if (challenge1Completed || !userState?.allUsers?.length) return;
+    const bots = userState.allUsers.filter(u => u.puzzle?.isBot === true);
+    const humans = userState.allUsers.filter(u => u.puzzle?.isBot === false);
+    const count = Math.min(bots.length, 3) + Math.min(humans.length, 2);
+    setSuspectUsersCount(count);
+  }, [userState?.allUsers, challenge1Completed]);
   const isEmbedded = mode === "embedded";
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

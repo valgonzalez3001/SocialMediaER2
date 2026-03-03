@@ -140,7 +140,7 @@ a {
 
 @media (min-width: 1200px) {
   .feed {
-    width: 50%;
+    flex: 1;
     min-height: 100vh;
     /* padding-right: 1rem; */
   }

@@ -293,7 +293,13 @@ export const en = {
   },
   "hintsApp": {
     "title": "Hints",
-    "puzzle": {},
+    "selectContext": "How can we help you?",
+    "puzzle": {
+      "1": "Challenge 1: Suspicious Users",
+      "2": "Challenge 2: AI-Generated Content",
+      "3": "Challenge 3: Incorrect AI Uses",
+      "4": "Challenge 4: Community Note"
+    },
     "back": "Back"
   },
   "filesApp": {

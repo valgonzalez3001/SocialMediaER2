@@ -56,6 +56,8 @@ export const StatsProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : false;
   });
 
+  const [suspectUsersCount, setSuspectUsersCount] = useState(0);
+
   const [challenge2Completed, setChallenge2Completed] = useState(() => {
     const saved = sessionStorage.getItem("challenge2Completed");
     return saved ? JSON.parse(saved) : false;
@@ -194,6 +196,8 @@ export const StatsProvider = ({ children }) => {
     stats,
     updateStats,
     reduceMisinformation,
+    suspectUsersCount,
+    setSuspectUsersCount,
     challenge1Completed,
     completeChallenge1,
     challenge2Completed,

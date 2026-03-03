@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
+import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 import { useUser } from "../../contexts/UserProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
@@ -298,6 +299,11 @@ export const AIIncorrectUses = () => {
                         </section>
                     </div>
                 </main>
+
+                {/* Panel de estadísticas lateral */}
+                <aside className="stats-sidebar">
+                    <StatsPanel />
+                </aside>
             </div>
 
             {activeCase && (

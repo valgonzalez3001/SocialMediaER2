@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./FilesApp.css";
 import { useOS } from "../../contexts/OSProvider";
 import { useTranslation } from "react-i18next";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider";
 import { FaTimes, FaMinus, FaFolder, FaFolderOpen, FaLock, FaChevronRight, FaHome, FaArrowLeft } from "react-icons/fa";
 
 const FOLDERS = [
@@ -13,7 +14,20 @@ const FOLDERS = [
 export const FilesApp = () => {
   const { closeApp, minimizeApp } = useOS();
   const { t } = useTranslation();
-  const [openFolder, setOpenFolder] = useState(null); 
+  const { sendStatement } = useXAPI();
+  const [openFolder, setOpenFolder] = useState(null);
+  const sentRef = useRef(false);
+
+  useEffect(() => {
+    if (sentRef.current) return;
+    sentRef.current = true;
+    sendStatement(
+      XAPI_VERBS.LOOKED_AT,
+      ECHO_ACTIVITIES.FILES_APP,
+      null,
+      { contextActivities: { grouping: [ECHO_ACTIVITIES.GAME] } }
+    );
+  }, []);
 
   const handleClose = () => closeApp("files");
 

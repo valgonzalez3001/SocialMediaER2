@@ -1,5 +1,5 @@
 import "./Profile.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 
@@ -8,14 +8,32 @@ import { Post } from "../../components/Post/Post";
 import { UserInfo } from "./components/UserInfo/UserInfo";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 
 export const Profile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [fromAdmin, setFromAdmin] = useState(false);
+  const { sendStatement } = useXAPI();
+  const lookedAtSentRef = useRef(new Set());
 
   const { allPosts, postLoading } = usePosts();
   const { username } = useParams();
+
+  useEffect(() => {
+    if (lookedAtSentRef.current.has(username)) return;
+    lookedAtSentRef.current.add(username);
+    sendStatement(
+      XAPI_VERBS.LOOKED_AT,
+      ECHO_ACTIVITIES.PROFILE,
+      null,
+      {
+        contextActivities: {
+          grouping: [ECHO_ACTIVITIES.GAME],
+        },
+      }
+    );
+  }, [username]);
 
   const postsByUser = allPosts?.filter((post) => post.username === username);
 

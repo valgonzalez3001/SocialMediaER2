@@ -9,15 +9,17 @@ import { useUser } from "../../contexts/UserProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
+import { useOS } from "../../contexts/OSProvider.jsx";
 import challengeData from "./AIIncorrectUses.json";
 
 export const AIIncorrectUses = () => {
     const { t } = useTranslation();
+    const { openApp } = useOS();
     const currentLang = t("langKey");
     const { userState } = useUser();
     const { challenge3Completed, completeChallenge3 } = useStats();
     const { addMessage } = useMessages();
-    const { sendStatement } = useXAPI();
+    const { sendStatement, trackChallengeStarted } = useXAPI();
     const completionSentRef = useRef(false);
     const [activeCaseId, setActiveCaseId] = useState(null);
     const [selectedWrongOption, setSelectedWrongOption] = useState({});
@@ -29,6 +31,15 @@ export const AIIncorrectUses = () => {
         [currentLang]
     );
     
+    // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
+    useEffect(() => {
+        if (challenge3Completed) return;
+        if (!sessionStorage.getItem('echo:challengeStart:3')) {
+            trackChallengeStarted('3', 'Puzzle 3 - AI Incorrect Uses');
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     useEffect(() => {
         const previousBodyOverflow = document.body.style.overflow;
         const previousHtmlOverflow = document.documentElement.style.overflow;
@@ -55,21 +66,44 @@ export const AIIncorrectUses = () => {
             // Send xAPI statement for completing the AI Incorrect Uses challenge
             if (!completionSentRef.current) {
                 completionSentRef.current = true;
+            } else {
+                return;
+            }
+
+            // Guard dedup
+            const completedKey = 'echo:challengeCompleted:3';
+            if (!sessionStorage.getItem(completedKey)) {
+                sessionStorage.setItem(completedKey, '1');
+
+                const context = {
+                    contextActivities: {
+                        parent: [ECHO_ACTIVITIES.GAME],
+                        grouping: [ECHO_ACTIVITIES.GAME],
+                    },
+                };
+
+                // succeeded: resolución correcta con score detallado
                 sendStatement(
-                    XAPI_VERBS.COMPLETED,
+                    XAPI_VERBS.SUCCEEDED,
                     ECHO_ACTIVITIES.PUZZLE_3,
                     {
                         success: true,
                         completion: true,
                         score: { scaled: 1, raw: totalCases, min: 0, max: totalCases },
                     },
-                    {
-                        contextActivities: {
-                            parent: [ECHO_ACTIVITIES.GAME],
-                            grouping: [ECHO_ACTIVITIES.GAME],
-                        },
-                    }
+                    context
                 );
+
+                // completed: duración desde que se inició el reto
+                const startRaw = sessionStorage.getItem('echo:challengeStart:3');
+                const completedResult = { completion: true };
+                if (startRaw && Number.isFinite(Number(startRaw))) {
+                    const durationMs = Date.now() - Number(startRaw);
+                    completedResult.duration = `PT${Math.max(0, Math.round(durationMs / 1000))}S`;
+                    completedResult.extensions = { "https://endgameproject.github.io/xapi/ext/durationMs": durationMs };
+                }
+                sessionStorage.removeItem('echo:challengeStart:3');
+                sendStatement(XAPI_VERBS.COMPLETED, ECHO_ACTIVITIES.PUZZLE_3, completedResult, context);
             }
 
             completeChallenge3();
@@ -81,8 +115,11 @@ export const AIIncorrectUses = () => {
                 contentKey: "messagesApp.messages.challengeFinal.content",
             });
 
-            toast(() => (
-                <div>
+            toast((toastInstance) => (
+                <div
+                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); }}
+                    style={{ cursor: "pointer" }}
+                >
                     <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
                         {t("messagesApp.newMessageNotification")}
                     </p>

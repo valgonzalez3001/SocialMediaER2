@@ -14,6 +14,10 @@ const RWTH_ACTIVITIES = "https://xapi.elearn.rwth-aachen.de/definitions/seriousG
 
 // Common xAPI verbs
 export const XAPI_VERBS = {
+  ACCESSED: {
+    id: "https://xapi.elearn.rwth-aachen.de/definitions/lms/verbs/accessed",
+    display: { en: "accessed" },
+  },
   STARTED: {
     id: `${RWTH_VERBS}/started`,
     display: { en: "started" },
@@ -38,13 +42,17 @@ export const XAPI_VERBS = {
     id: "https://xapi.elearn.rwth-aachen.de/definitions/generic/verbs/asked",
     display: { en: "asked" },
   },
+  LOOKED_AT: {
+    id: "https://xapi.elearn.rwth-aachen.de/definitions/generic/verbs/lookedAt",
+    display: { en: "looked at" },
+  },
   ATTEMPTED: {
     id: "http://adlnet.gov/expapi/verbs/attempted",
     display: { en: "attempted" },
   },
-  PASSED: {
-    id: "http://adlnet.gov/expapi/verbs/passed",
-    display: { en: "passed" },
+  SUCCEEDED: {
+    id: "https://w3id.org/xapi/adl/verbs/succeeded",
+    display: { en: "succeeded" },
   },
   FAILED: {
     id: "http://adlnet.gov/expapi/verbs/failed",
@@ -80,6 +88,20 @@ export const ECHO_ACTIVITIES = {
       type: XAPI_ACTIVITY_TYPES.GAME,
     },
   },
+  SOCIAL_APP: {
+    id: `${ENDGAME_BASE}/escape-rooms/echo/social-media-app`,
+    definition: {
+      name: { en: "ECHO Social Media App" },
+      type: XAPI_ACTIVITY_TYPES.GAME,
+    },
+  },
+  PROFILE: {
+    id: `${ENDGAME_BASE}/escape-rooms/echo/profile`,
+    definition: {
+      name: { en: "ECHO Profile" },
+      type: "http://adlnet.gov/expapi/activities/profile",
+    },
+  },
   INTRO: {
     id: `${ENDGAME_BASE}/escape-rooms/echo/intro`,
     definition: {
@@ -111,7 +133,7 @@ export const ECHO_ACTIVITIES = {
   FINAL: {
     id: `${ENDGAME_BASE}/escape-rooms/echo/final`,
     definition: {
-      name: { en: "Final Puzzle" },
+      name: { en: "Puzzle 4 - Community Note" },
       type: XAPI_ACTIVITY_TYPES.PUZZLE,
     },
   },
@@ -158,8 +180,8 @@ export const XAPIProvider = ({ children }) => {
 
     // Store actor extensions for additional context
     newActor.extensions = {
-      [`${ENDGAME_BASE}/extensions/age`]: age,
-      [`${ENDGAME_BASE}/extensions/language`]: language,
+      [XAPI_EXTENSIONS.PLAYER_AGE]: age,
+      [XAPI_EXTENSIONS.LANG]: language,
     };
 
     setActor(newActor);
@@ -267,6 +289,9 @@ export const XAPIProvider = ({ children }) => {
 
   // Helper functions for common statements
   const trackChallengeStarted = useCallback((puzzleId, puzzleName) => {
+    sessionStorage.setItem(`echo:challengeStart:${puzzleId}`, Date.now().toString());
+    sessionStorage.removeItem(`echo:challengeCompleted:${puzzleId}`);
+
     return sendStatement(
       XAPI_VERBS.INITIALIZED,
       {
@@ -280,23 +305,40 @@ export const XAPIProvider = ({ children }) => {
   }, [sendStatement]);
 
   const trackChallengeCompleted = useCallback((puzzleId, puzzleName, success = true, score = null) => {
-    const result = { success };
-    if (score !== null) {
-      result.score = { scaled: score };
-    }
+  // Evita dobles envíos (doble click / rerender)
+  const completedKey = `echo:challengeCompleted:${puzzleId}`;
+  if (sessionStorage.getItem(completedKey)) return null;
+  sessionStorage.setItem(completedKey, "1");
 
-    return sendStatement(
-      success ? XAPI_VERBS.PASSED : XAPI_VERBS.FAILED,
-      {
-        id: `${ENDGAME_BASE}/activities/puzzle/${puzzleId}`,
-        definition: {
-          name: { "en-US": puzzleName },
-          type: "http://adlnet.gov/expapi/activities/assessment",
-        },
-      },
-      result
-    );
-  }, [sendStatement]);
+  const activityObject = {
+    id: `${ENDGAME_BASE}/activities/puzzle/${puzzleId}`,
+    definition: {
+      name: { "en-US": puzzleName },
+      type: "http://adlnet.gov/expapi/activities/assessment",
+    },
+  };
+
+  // Statement 1: succeeded — indica que el jugador lo resolvió correctamente
+  const succeededResult = { success: true, completion: true };
+  if (score !== null) {
+    succeededResult.score = { scaled: score };
+  }
+  sendStatement(XAPI_VERBS.SUCCEEDED, activityObject, succeededResult);
+
+  // Statement 2: completed — indica la duración desde que se inició el reto
+  const completedResult = { completion: true };
+  const startRaw = sessionStorage.getItem(`echo:challengeStart:${puzzleId}`);
+  const startedAtMs = startRaw ? Number(startRaw) : null;
+  if (startedAtMs && Number.isFinite(startedAtMs)) {
+    const durationMs = Date.now() - startedAtMs;
+    completedResult.duration = `PT${Math.max(0, Math.round(durationMs / 1000))}S`;
+    completedResult.extensions = {
+      [`${ENDGAME_BASE}/ext/durationMs`]: durationMs,
+    };
+  }
+  sessionStorage.removeItem(`echo:challengeStart:${puzzleId}`);
+  return sendStatement(XAPI_VERBS.COMPLETED, activityObject, completedResult);
+}, [sendStatement]);
 
   const trackInteraction = useCallback((activityId, activityName, response = null) => {
     const result = response ? { response } : null;

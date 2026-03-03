@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { usePosts } from "../../contexts/PostsProvider.jsx";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import { IoMdClose } from "../../utils/icons.jsx";
 import statementsData from "./CommunityNoteStatements.json";
 import "./CommunityNote.css";
@@ -15,8 +16,17 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
   const { completeChallengeFinal } = useStats();
   const { createPost } = usePosts();
   const { loggedInUserState } = useLoggedInUser();
+  const { trackChallengeStarted, sendStatement } = useXAPI();
   const navigate = useNavigate();
   const [selectedStatements, setSelectedStatements] = useState([]);
+
+  // Fallback: asegurar que el timer empieza aunque el modal se abra sin pasar por NewPostLauncher
+  useEffect(() => {
+    if (!sessionStorage.getItem('echo:challengeStart:4')) {
+      trackChallengeStarted('4', 'Puzzle 4 - Community Note');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const statements = useMemo(
     () => statementsData[currentLang] || statementsData.en || [],
@@ -48,6 +58,30 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
     });
 
     if (!correctSelections) {
+      // failed: frases incorrectas seleccionadas
+      const wrongIds = selectedStatements.filter((id) => {
+        const s = statements.find((st) => st.id === id);
+        return s && !s.correct;
+      });
+      const wrongTexts = wrongIds.map((id) => {
+        const s = statements.find((st) => st.id === id);
+        return s ? s.text : id;
+      });
+      sendStatement(
+        XAPI_VERBS.FAILED,
+        ECHO_ACTIVITIES.FINAL,
+        {
+          success: false,
+          completion: false,
+          response: wrongTexts.join(' | '),
+        },
+        {
+          contextActivities: {
+            parent: [ECHO_ACTIVITIES.FINAL],
+            grouping: [ECHO_ACTIVITIES.GAME],
+          },
+        }
+      );
       toast.error(t("createPost.incorrectSelection"));
       setSelectedStatements([]);
       return;
@@ -64,6 +98,38 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
 
     createPost(new Event("submit"), conclusionPost, "admin-token");
     completeChallengeFinal();
+
+    // Guard dedup
+    const completedKey4 = 'echo:challengeCompleted:4';
+    if (!sessionStorage.getItem(completedKey4)) {
+      sessionStorage.setItem(completedKey4, '1');
+
+      const context4 = {
+        contextActivities: {
+          parent: [ECHO_ACTIVITIES.FINAL],
+          grouping: [ECHO_ACTIVITIES.GAME],
+        },
+      };
+
+      // succeeded: resolución correcta
+      sendStatement(
+        XAPI_VERBS.SUCCEEDED,
+        ECHO_ACTIVITIES.FINAL,
+        { success: true, completion: true },
+        context4
+      );
+
+      // completed: duración desde que se inició el reto
+      const startRaw4 = sessionStorage.getItem('echo:challengeStart:4');
+      const completedResult4 = { completion: true };
+      if (startRaw4 && Number.isFinite(Number(startRaw4))) {
+        const durationMs4 = Date.now() - Number(startRaw4);
+        completedResult4.duration = `PT${Math.max(0, Math.round(durationMs4 / 1000))}S`;
+        completedResult4.extensions = { "https://endgameproject.github.io/xapi/ext/durationMs": durationMs4 };
+      }
+      sessionStorage.removeItem('echo:challengeStart:4');
+      sendStatement(XAPI_VERBS.COMPLETED, ECHO_ACTIVITIES.FINAL, completedResult4, context4);
+    }
     setIsCreateNewPostClicked && setIsCreateNewPostClicked(false);
     navigate(`/profile/${loggedInUserState?.username || "Katherine"}`);
   };

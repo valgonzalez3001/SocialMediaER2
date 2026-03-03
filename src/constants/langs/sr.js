@@ -97,14 +97,14 @@ export const sr = {
     "fileTooBig": "fajl mora biti manji od 20mb",
     "invalidFileType": "fajl mora biti video (MP4/MOV) ili slika (JPEG/PNG)",
     "publish": "Objavi",
-    "challengeLocked": "Izazov zakljucan",
+    "challengeLocked": "Izazov zaključan",
     "completeChallenge1": "Završi Admin izazov da otključaš objavljivanje",
     "selectTwoCorrect": "Izaberi 2 ispravne tvrdnje o dezinformaciji i botovima",
     "selectTwoStatements": "Molim te izaberi tačno 2 tvrdnje",
     "incorrectSelection": "Pogrešan izbor. Pokušaj ponovo!",
     "selected": "izabrano",
     "publishConclusion": "Objavi zajedničku belešku",
-    "conclusionText": "Za borbu protiv dezinformacija na društvenim mrežama, neophodno je da razvijete kriticko razmišljanje i da verifikujete informacije pre nego što ih podelite. Botovi i lažni nalozi često pokazuju repetitivne šablone, sumnjive aktivnosti u neregularnim vremenima i identican sadržaj. Naučite da ih prepoznate i zaštitite svoju zajednicu! ???",
+    "conclusionText": "Za borbu protiv dezinformacija na društvenim mrežama, neophodno je da razvijete kriticko razmišljanje i da verifikujete informacije pre nego što ih podelite. Botovi i lažni nalozi često pokazuju ponavljajuće šablone, sumnjive aktivnosti u neregularnim vremenima i identičan sadržaj. Naučite da ih prepoznate i zaštitite svoju zajednicu! ???",
     "escapeRoomCompleted": "🎉 Escape Room Završen! Hvala što ste naučili de prepoznate dezinformacije!"
   },
   "post": {
@@ -159,11 +159,11 @@ export const sr = {
     "hintContent": {
       "temporalActivity": "Sumnjiva vremenska aktivnost: Objave u veoma redovnim intervalima ili neprirodno vreme",
       "repetitiveContent": "Ponavljajući sadržaj: Veoma slične ili identične poruke između objava",
-      "excessLinks": "Previše linkova: Mnogo objava sa spoljšnjim linkovima",
+      "excessLinks": "Previše linkova: Mnogo objava sa spoljašnjim linkovima",
       "noInteraction": "Bez interakcije: Ne odgovara na komentare ili pominjanja",
       "abnormalRatio": "Nenormalan odnos: Mnogo pratilaca ali malo prave interakcije",
       "singleTopic": "Jedna tema: Objavljuje samo o veoma specificnoj temi",
-      "recentAccount": "Skorija nalog: Nov nalog sa trenutnom visokom aktivnošću"
+      "recentAccount": "Skoriji nalog: Nov nalog sa trenutnom visokom aktivnošću"
     }
   },
   "editPost": {
@@ -238,21 +238,21 @@ export const sr = {
     "reply": "Odgovori",
     "edit": "Izmeni",
     "delete": "Obriši",
-    "save": "Sacuvaj"
+    "save": "Sačuvaj"
   },
   "time": {
     "justNow": "upravo sada",
-    "minuteAgo": "pre minut",
+    "minuteAgo": "pre jedan minut",
     "minutesAgo": "pre nekoliko minuta",
-    "hourAgo": "pre sat",
+    "hourAgo": "pre jedan sat",
     "hoursAgo": "pre par sati",
-    "dayAgo": "pre dan",
-    "daysAgo": "pre nekoliko dan",
+    "dayAgo": "pre jedan dan",
+    "daysAgo": "pre nekoliko dana",
     "weekAgo": "pre nedelju dana",
     "weeksAgo": "pre nekoliko nedelja",
-    "monthAgo": "pre mesec",
+    "monthAgo": "pre mesec dana",
     "monthsAgo": "pre par meseci",
-    "yearAgo": "pre godinu",
+    "yearAgo": "pre jednu godinu",
     "yearsAgo": "pre nekoliko godina"
   },
   "statsPanel": {
@@ -268,12 +268,12 @@ export const sr = {
     "botActivity": "Aktivnost Botova",
     "detected": "otkriveni",
     "suspiciousInteractions": "{{percentage}}% sumnjive interakcije",
-    "averageEngagement": "Prosecna Angažovanost",
+    "averageEngagement": "Prosečna Angažovanost",
     "likes": "Lajkovi",
     "comments": "Komentari",
     "shares": "Deljenja",
     "recentAccounts": "Nedavni nalozi (poslednjih dana)",
-    "abnormalProportionNewAccounts": "⚠️ Neobican odnos novih naloga",
+    "abnormalProportionNewAccounts": "⚠️ Neobičan odnos novih naloga",
     "tip": "💡 Savet: Istražite profile sa sumnjivim obrascima",
     "statusHigh": "VISOK",
     "statusMedium": "SREDNJI",
@@ -290,6 +290,14 @@ export const sr = {
     "bio": "Otkrijte najnovije na društvenoj mreži i razgovarajte sa MINT AI, našim inteligentnim asistentom."
   },
   "hintsApp": {
-    "puzzle": {}
+    "title": "Saveti",
+    "selectContext": "Kako vam možemo pomoći?",
+    "puzzle": {
+      "1": "Izazov 1: Sumnjivi korisnici",
+      "2": "Izazov 2: Sadržaj generisan veštačkom inteligencijom",
+      "3": "Izazov 3: Nepravilna upotreba veštačke inteligencije",
+      "4": "Izazov 4: Beleška zajednice"
+    },
+    "back": "Nazad"
   }
 };

@@ -8,10 +8,12 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
+import { useOS } from "../../contexts/OSProvider.jsx";
 import aiContent from "./AIContent.json";
 
 export const AIContent = () => {
     const { t } = useTranslation();
+    const { openApp } = useOS();
     const currentLang = t("langKey");
     const gameDataAllSentences = aiContent[currentLang] || aiContent.en;
     const gameData = useMemo(
@@ -20,7 +22,7 @@ export const AIContent = () => {
     );
     const { addMessage } = useMessages();
     const { challenge2Completed, completeChallenge2 } = useStats();
-    const { sendStatement } = useXAPI();
+    const { sendStatement, trackChallengeStarted } = useXAPI();
     const completionSentRef = useRef(false);
     const [step, setStep] = useState("list");
     const [selectedWords, setSelectedWords] = useState([]);
@@ -43,6 +45,15 @@ export const AIContent = () => {
     );
     const isCompleted = selectedWords.length === gameData.length;
 
+    // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
+    useEffect(() => {
+        if (challenge2Completed) return;
+        if (!sessionStorage.getItem('echo:challengeStart:2')) {
+            trackChallengeStarted('2', 'Puzzle 2 - AI Content Generated');
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     useEffect(() => {
         if (!isCompleted) {
             setShowMatch(false);
@@ -59,27 +70,49 @@ export const AIContent = () => {
         const instructionsSent = sessionStorage.getItem("challenge3InstructionsSent");
         if (instructionsSent) return;
 
-        // Send xAPI statement for completing the LLM message challenge
         if (!completionSentRef.current) {
             completionSentRef.current = true;
+        } else {
+            return;
+        }
+
+        completeChallenge2();
+
+        // Guard dedup
+        const completedKey2 = 'echo:challengeCompleted:2';
+        if (!sessionStorage.getItem(completedKey2)) {
+            sessionStorage.setItem(completedKey2, '1');
+
+            const context2 = {
+                contextActivities: {
+                    parent: [ECHO_ACTIVITIES.PUZZLE_2],
+                    grouping: [ECHO_ACTIVITIES.GAME],
+                },
+            };
+
+            // succeeded: resolución correcta con score detallado
             sendStatement(
-                XAPI_VERBS.COMPLETED,
+                XAPI_VERBS.SUCCEEDED,
                 ECHO_ACTIVITIES.PUZZLE_2,
                 {
                     success: true,
                     completion: true,
                     score: { scaled: 1, raw: gameData.length, min: 0, max: gameData.length },
                 },
-                {
-                    contextActivities: {
-                        parent: [ECHO_ACTIVITIES.GAME],
-                        grouping: [ECHO_ACTIVITIES.GAME],
-                    },
-                }
+                context2
             );
-        }
 
-        completeChallenge2();
+            // completed: duración desde que se inició el reto
+            const startRaw2 = sessionStorage.getItem('echo:challengeStart:2');
+            const completedResult2 = { completion: true };
+            if (startRaw2 && Number.isFinite(Number(startRaw2))) {
+                const durationMs2 = Date.now() - Number(startRaw2);
+                completedResult2.duration = `PT${Math.max(0, Math.round(durationMs2 / 1000))}S`;
+                completedResult2.extensions = { "https://endgameproject.github.io/xapi/ext/durationMs": durationMs2 };
+            }
+            sessionStorage.removeItem('echo:challengeStart:2');
+            sendStatement(XAPI_VERBS.COMPLETED, ECHO_ACTIVITIES.PUZZLE_2, completedResult2, context2);
+        }
         sessionStorage.setItem("challenge3InstructionsSent", JSON.stringify(true));
         addMessage({
             fromKey: "messagesApp.messages.challenge3.from",
@@ -87,8 +120,11 @@ export const AIContent = () => {
             contentKey: "messagesApp.messages.challenge3.content",
         });
 
-        toast(() => (
-            <div>
+        toast((toastInstance) => (
+            <div
+                onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); }}
+                style={{ cursor: "pointer" }}
+            >
                 <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
                     {t("messagesApp.newMessageNotification")}
                 </p>
@@ -101,7 +137,7 @@ export const AIContent = () => {
             icon: "📬",
             position: "bottom-center",
         });
-    }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t, sendStatement, gameData.length]);
+    }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t, gameData.length]);
 
     const handleWordClick = (word) => {
         if (wrongChoice) return;

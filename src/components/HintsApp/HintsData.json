@@ -209,7 +209,7 @@
       },
       {
         "context": "Ne mogu da pronađem izazov na društvenoj mreži.",
-        "clue": ""
+        "clue": "Unutar društvene mreže, idite na levu bočnu traku. Kliknite na Sumnjivi korisnici."
       },
       {
         "context": "",
@@ -222,16 +222,16 @@
         "clue": "Pročitajte uputstva koja se nalaze u aplikaciji za razmenu poruka"
       },
       {
-        "context": "",
+        "context": "Ne vidim izazov u ​​društvenim mrežama",
+        "clue": "Unutar društvene mreže, idite na levu bočnu traku. Kliknite na Sadržaj generisan veštačkom inteligencijom."
+      },
+      {
+        "context": "Kada pristupim panelu \"Sadržaj generisan veštačkom inteligencijom\", ne znam šta da radim.",
         "clue": ""
       },
       {
-        "context": "",
-        "clue": ""
-      },
-      {
-        "context": "",
-        "clue": ""
+        "context": "Ne razumem igru",
+        "clue": "Izazov je proveriti da li je objavu generisala veštačka inteligencija. Vaša misija je da razumete kako LLM funkcioniše interno i, koristeći memoriju, generišete rečenicu kao da ste vi veštačka inteligencija."
       }
     ],
     "3": [
@@ -240,12 +240,12 @@
         "clue": "Pročitajte uputstva koja se nalaze u aplikaciji za razmenu poruka"
       },
       {
-        "context": "",
-        "clue": ""
+        "context": "Ne vidim izazov u ​​društvenim mrežama",
+        "clue": "Unutar društvene mreže, idite na levu bočnu traku. Kliknite na Zloupotrebe veštačke inteligencije."
       },
       {
-        "context": "",
-        "clue": ""
+        "context": "Ne razumem igru",
+        "clue": "Vaša dužnost kao moderatora je da savetujete korisnike ECHO-a kada je prikladno koristiti veštačku inteligenciju za upite, a kada nije."
       }
     ],
     "4": [
@@ -254,12 +254,12 @@
         "clue": "Pročitajte uputstva koja se nalaze u aplikaciji za razmenu poruka"
       },
       {
-        "context": "",
-        "clue": ""
+        "context": "Ne vidim izazov u ​​društvenim mrežama",
+        "clue": "Unutar društvene mreže, idite na levu bočnu traku. Kliknite na Nova objava."
       },
       {
-        "context": "",
-        "clue": ""
+        "context": "Ne znam kako da identifikujem ispravnu frazu (fraze).",
+        "clue": "Setite se šta ste naučili tokom izazova:"
       }
     ]
   }

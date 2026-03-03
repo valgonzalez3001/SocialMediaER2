@@ -9,16 +9,18 @@ import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
+import { useOS } from "../../contexts/OSProvider.jsx";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 
 export const Admin = () => {
     const { t } = useTranslation();
+    const { openApp } = useOS();
     const { userState } = useUser();
     const { reduceMisinformation, completeChallenge1, challenge1Completed } = useStats();
     const { addMessage } = useMessages();
-    const { sendStatement } = useXAPI();
+    const { sendStatement, trackChallengeStarted } = useXAPI();
     const navigate = useNavigate();
     const [classifiedUsers, setClassifiedUsers] = useState(() => {
         const saved = sessionStorage.getItem('adminGameState');
@@ -28,6 +30,16 @@ export const Admin = () => {
     const [showResult, setShowResult] = useState(false);
     const [gameResult, setGameResult] = useState(null);
     const [regenerateKey, setRegenerateKey] = useState(0); // Clave para forzar regeneración
+
+    // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
+    // No inicializar si el reto ya fue completado
+    useEffect(() => {
+        if (challenge1Completed) return;
+        if (!sessionStorage.getItem('echo:challengeStart:1')) {
+            trackChallengeStarted('1', 'Puzzle 1 - Bot Detection');
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     
     const [suspectUsers, setSuspectUsers] = useState(() => []);
 
@@ -182,28 +194,6 @@ export const Admin = () => {
         const isPerfect = correct === suspectUsers.length;
         const scaledScore = suspectUsers.length > 0 ? correct / suspectUsers.length : 0;
 
-        // Send xAPI statement for challenge submission
-        sendStatement(
-            isPerfect ? XAPI_VERBS.PASSED : XAPI_VERBS.FAILED,
-            ECHO_ACTIVITIES.PUZZLE_1,
-            {
-                success: isPerfect,
-                completion: true,
-                score: {
-                    scaled: scaledScore,
-                    raw: correct,
-                    min: 0,
-                    max: suspectUsers.length,
-                },
-            },
-            {
-                contextActivities: {
-                    parent: [ECHO_ACTIVITIES.GAME],
-                    grouping: [ECHO_ACTIVITIES.GAME],
-                },
-            }
-        );
-
         setGameResult({ correct, incorrect, total: suspectUsers.length });
         setShowResult(true);
 
@@ -211,6 +201,42 @@ export const Admin = () => {
         if (isPerfect) {
             reduceMisinformation(30);
             completeChallenge1();
+
+            // Guard dedup
+            const completedKey1 = 'echo:challengeCompleted:1';
+            if (!sessionStorage.getItem(completedKey1)) {
+                sessionStorage.setItem(completedKey1, '1');
+
+                const context1 = {
+                    contextActivities: {
+                        parent: [ECHO_ACTIVITIES.PUZZLE_1],
+                        grouping: [ECHO_ACTIVITIES.GAME],
+                    },
+                };
+
+                // succeeded: resolución correcta con score detallado
+                sendStatement(
+                    XAPI_VERBS.SUCCEEDED,
+                    ECHO_ACTIVITIES.PUZZLE_1,
+                    {
+                        success: true,
+                        completion: true,
+                        score: { scaled: scaledScore, raw: correct, min: 0, max: suspectUsers.length },
+                    },
+                    context1
+                );
+
+                // completed: duración desde que se inició el reto
+                const startRaw1 = sessionStorage.getItem('echo:challengeStart:1');
+                const completedResult1 = { completion: true };
+                if (startRaw1 && Number.isFinite(Number(startRaw1))) {
+                    const durationMs1 = Date.now() - Number(startRaw1);
+                    completedResult1.duration = `PT${Math.max(0, Math.round(durationMs1 / 1000))}S`;
+                    completedResult1.extensions = { "https://endgameproject.github.io/xapi/ext/durationMs": durationMs1 };
+                }
+                sessionStorage.removeItem('echo:challengeStart:1');
+                sendStatement(XAPI_VERBS.COMPLETED, ECHO_ACTIVITIES.PUZZLE_1, completedResult1, context1);
+            }
             
             // Limpiar el estado del juego al completar exitosamente
             sessionStorage.removeItem('adminGameUsernames');
@@ -227,7 +253,10 @@ export const Admin = () => {
             
             // Mostrar notificación de nuevo mensaje
             toast((toastInstance) => (
-                <div>
+                <div
+                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); }}
+                    style={{ cursor: "pointer" }}
+                >
                     <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
                         {t("messagesApp.newMessageNotification")}
                     </p>
@@ -240,6 +269,29 @@ export const Admin = () => {
                 icon: "📬",
                 position: "bottom-center",
             });
+        } else {
+            // Intento fallido: enviar "failed" con duración acumulada (sin borrar la clave de inicio para que el retry siga midiendo)
+            const startRaw = sessionStorage.getItem('echo:challengeStart:1');
+            const failResult = {
+                success: false,
+                completion: false,
+                score: { scaled: scaledScore },
+            };
+            if (startRaw && Number.isFinite(Number(startRaw))) {
+                const durationMs = Date.now() - Number(startRaw);
+                failResult.duration = `PT${Math.max(0, Math.round(durationMs / 1000))}S`;
+            }
+            sendStatement(
+                XAPI_VERBS.FAILED,
+                ECHO_ACTIVITIES.PUZZLE_1,
+                failResult,
+                {
+                    contextActivities: {
+                        parent: [ECHO_ACTIVITIES.GAME],
+                        grouping: [ECHO_ACTIVITIES.GAME],
+                    },
+                }
+            );
         }
     };
 

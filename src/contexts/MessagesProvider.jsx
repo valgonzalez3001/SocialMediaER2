@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { useStats } from "./StatsProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "./XAPIProvider.jsx";
+import { useOS } from "./OSProvider.jsx";
 
 /**
  * Contexto para gestionar los mensajes del jefe
@@ -20,6 +21,7 @@ export const useMessages = () => {
 
 export const MessagesProvider = ({ children }) => {
   const { t } = useTranslation();
+  const { openApp } = useOS();
   const {
     markChallenge2InstructionsRead,
     markChallenge3InstructionsRead,
@@ -39,13 +41,17 @@ export const MessagesProvider = ({ children }) => {
 
   const [unreadCount, setUnreadCount] = useState(0);
   const notificationShownRef = useRef(false);
+  const xapiSentRef = useRef(new Set());
 
   const showMissionToast = () => {
     if (notificationShownRef.current) {
       return;
     }
-    toast(() => (
-      <div>
+    toast((toastInstance) => (
+      <div
+        onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); }}
+        style={{ cursor: "pointer" }}
+      >
         <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
           {t("messagesApp.newMessageNotification")}
         </p>
@@ -92,14 +98,15 @@ export const MessagesProvider = ({ children }) => {
    * @param {number} messageId - ID del mensaje
    */
   const markAsRead = (messageId) => {
-    setMessages((prev) => {
-      const target = prev.find((msg) => msg.id === messageId);
+    const target = messages.find((msg) => msg.id === messageId);
+    if (!target || target.read) return;
 
-      // Skip if already read
-      if (target?.read) return prev;
+    // Guard síncrono: evita duplicados si markAsRead se llama dos veces
+    // antes de que React procese el setMessages (p.ej. Strict Mode)
+    if (!xapiSentRef.current.has(messageId)) {
+      xapiSentRef.current.add(messageId);
 
-      // Send xAPI statement based on message type
-      if (target?.contentKey === "messagesApp.messages.missionBrief.content") {
+      if (target.contentKey === "messagesApp.messages.missionBrief.content") {
         sessionStorage.setItem("missionBriefRead", "true");
         sendStatement(
           XAPI_VERBS.EXPERIENCED,
@@ -113,8 +120,7 @@ export const MessagesProvider = ({ children }) => {
           }
         );
       }
-      // Marcar como leídas las instrucciones de reto 2
-      if (target?.contentKey === "messagesApp.messages.challenge2.content") {
+      if (target.contentKey === "messagesApp.messages.challenge2.content") {
         markChallenge2InstructionsRead();
         sendStatement(
           XAPI_VERBS.EXPERIENCED,
@@ -134,8 +140,7 @@ export const MessagesProvider = ({ children }) => {
           }
         );
       }
-      // Marcar como leídas las instrucciones de reto 3
-      if (target?.contentKey === "messagesApp.messages.challenge3.content") {
+      if (target.contentKey === "messagesApp.messages.challenge3.content") {
         markChallenge3InstructionsRead();
         sendStatement(
           XAPI_VERBS.EXPERIENCED,
@@ -155,7 +160,7 @@ export const MessagesProvider = ({ children }) => {
           }
         );
       }
-      if (target?.contentKey === "messagesApp.messages.challengeFinal.content") {
+      if (target.contentKey === "messagesApp.messages.challengeFinal.content") {
         markChallengeFinalInstructionsRead();
         sendStatement(
           XAPI_VERBS.EXPERIENCED,
@@ -175,10 +180,11 @@ export const MessagesProvider = ({ children }) => {
           }
         );
       }
-      return prev.map((msg) =>
-        msg.id === messageId ? { ...msg, read: true } : msg
-      );
-    });
+    }
+
+    setMessages((prev) =>
+      prev.map((msg) => (msg.id === messageId ? { ...msg, read: true } : msg))
+    );
   };
 
   /**

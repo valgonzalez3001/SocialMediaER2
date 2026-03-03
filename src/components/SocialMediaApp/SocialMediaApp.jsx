@@ -6,6 +6,7 @@ import { FaTimes, FaMinus } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useStats } from "../../contexts/StatsProvider";
 import { useNavigate } from "react-router-dom";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider";
 
 /**
  * Componente SocialMediaApp - Envuelve la aplicación de red social en una ventana
@@ -14,6 +15,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
   const { closeApp, minimizeApp } = useOS();
   const { t } = useTranslation();
   const { challenge1Completed } = useStats();
+  const { sendStatement } = useXAPI();
   const navigate = useNavigate();
   const isEmbedded = mode === "embedded";
   const [username, setUsername] = useState("");
@@ -44,6 +46,16 @@ export const SocialMediaApp = ({ mode = "window" }) => {
       sessionStorage.setItem("socialLoginDone", "true");
       setLoginDone(true);
       setLoginErrorKey("");
+      sendStatement(
+        XAPI_VERBS.ACCESSED,
+        ECHO_ACTIVITIES.SOCIAL_APP,
+        null,
+        {
+          contextActivities: {
+            grouping: [ECHO_ACTIVITIES.GAME],
+          },
+        }
+      );
       navigate("/", { replace: true });
       return;
     }

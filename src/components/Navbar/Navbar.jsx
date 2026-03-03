@@ -14,11 +14,19 @@ import { MdAdminPanelSettings } from "react-icons/md";
 import { RiRobotLine, RiErrorWarningLine } from "react-icons/ri";
 import { NewPostLauncher } from "../../pages/NewPost/NewPostLauncher.jsx";
 import aiIncorrectUsesCases from "../../pages/AIIncorrectUses/AIIncorrectUses.json";
+import { useXAPI } from "../../contexts/XAPIProvider.jsx";
 
 export const Navbar = () => {
   const { t } = useTranslation();
-  const { loggedInUserState } = useLoggedInUser();
   const { challenge1Completed, challenge2Completed, challenge3Completed, challenge2InstructionsRead, challenge3InstructionsRead } = useStats();
+  const { trackChallengeStarted } = useXAPI();
+
+  const startIfNotStarted = (id, name, completed = false) => {
+    if (completed) return;
+    if (!sessionStorage.getItem(`echo:challengeStart:${id}`)) {
+      trackChallengeStarted(id, name);
+    }
+  };
   const [popup, setPopup] = useState({
     visible: false,
     message: "",
@@ -86,7 +94,7 @@ export const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className="navlink" style={getActiveStyle} to="/admin">
+          <NavLink className="navlink" style={getActiveStyle} to="/admin" onClick={() => startIfNotStarted('1', 'Puzzle 1 - Bot Detection', challenge1Completed)}>
             <MdAdminPanelSettings className="navlink-icon" />
             <p className="navlink-label">
               <span className="navlink-label-text">{t('nav.admin')}</span>
@@ -100,6 +108,7 @@ export const Navbar = () => {
               className="navlink"
               style={getActiveStyle} 
               to="/ai-content"
+              onClick={() => startIfNotStarted('2', 'Puzzle 2 - AI Content Generated', challenge2Completed)}
             >
               <RiRobotLine className="navlink-icon" />
               <p className="navlink-label">
@@ -125,6 +134,7 @@ export const Navbar = () => {
               className="navlink"
               style={getActiveStyle} 
               to="/ai-incorrect-uses"
+              onClick={() => startIfNotStarted('3', 'Puzzle 3 - AI Incorrect Uses', challenge3Completed)}
             >
               <RiErrorWarningLine className="navlink-icon" />
               <p className="navlink-label">

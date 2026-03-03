@@ -4,6 +4,7 @@ import { FaFeather } from "../../utils/icons.jsx";
 import { CreatePostForm } from "../../components/CreatePostForm/CreatePostForm";
 import { CommunityNote } from "../CommunityNote/CommunityNote.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
+import { useXAPI } from "../../contexts/XAPIProvider.jsx";
 import { PopupNotification } from "../../components/PopupNotification/PopupNotification";
 
 export const NewPostLauncher = () => {
@@ -15,6 +16,7 @@ export const NewPostLauncher = () => {
     challengeFinalCompleted,
     challengeFinalInstructionsRead,
   } = useStats();
+  const { trackChallengeStarted } = useXAPI();
   const [isCreateNewPostClicked, setIsCreateNewPostClicked] = useState(false);
   const [popup, setPopup] = useState({
     visible: false,
@@ -38,6 +40,9 @@ export const NewPostLauncher = () => {
 
   const handleButtonClick = (event) => {
     if (!isLocked) {
+      if (shouldShowCommunityNote && !sessionStorage.getItem('echo:challengeStart:4')) {
+        trackChallengeStarted('4', 'Puzzle 4 - Community Note');
+      }
       setIsCreateNewPostClicked((prev) => !prev);
       return;
     }

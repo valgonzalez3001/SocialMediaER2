@@ -43,7 +43,7 @@ ECHO registra la actividad del jugador en un LRS (Learning Record Store) compati
 - Éxito/fracaso de cada reto (`succeeded`, `failed`, `completed`)
 - Consulta de pistas (`asked`)
 - Navegación por perfiles (`experienced`)
-- Duración de cada reto (extensi�n `durationMs`)
+- Duración de cada reto (extensión `durationMs`)
 
 La configuración del LRS se realiza mediante variables de entorno (ver sección de configuración). Si no están definidas, el juego funciona normalmente sin enviar *statements*.
 
@@ -114,13 +114,13 @@ VITE_XAPI_SECRET=tu_secret_base64
 # Servidor de desarrollo con hot-reload
 npm run dev
 
-# Build de producci�n
+# Build de producción
 npm run build
 
-# Preview del build de producci�n
+# Preview del build de producción
 npm run preview
 
-# Regenerar archivos de traducci�n desde el Excel
+# Regenerar archivos de traducción desde el Excel
 npm run update-i18n
 
 # Exportar traducciones actuales a CSV
@@ -142,10 +142,10 @@ src/
 �   +-- Header/         # Cabecera de la red social
 �   +-- HintsApp/       # App de pistas del escape room
 �   +-- MessagesApp/    # App de mensajes del jefe
-�   +-- Navbar/         # Navegaci�n lateral
-�   +-- Post/           # Tarjeta de publicaci�n
+�   +-- Navbar/         # Navegación lateral
+�   +-- Post/           # Tarjeta de publicación
 �   +-- SocialMediaApp/ # Contenedor de la red social
-�   +-- StatsPanel/     # Panel lateral de estad�sticas
+�   +-- StatsPanel/     # Panel lateral de estadísticas
 �   +-- Taskbar/        # Barra de tareas del escritorio
 +-- constants/
 �   +-- langs/          # Traducciones (es, en, fi, sr)
@@ -154,18 +154,18 @@ src/
 �   +-- MessagesProvider
 �   +-- OSProvider      # Estado del escritorio simulado
 �   +-- PostsProvider
-�   +-- StatsProvider   # Progreso y puntuaci�n del jugador
+�   +-- StatsProvider   # Progreso y puntuación del jugador
 �   +-- UserProvider
-�   +-- XAPIProvider    # Integraci�n xAPI
+�   +-- XAPIProvider    # Integración xAPI
 +-- pages/
-�   +-- Admin/          # Reto 1: Detecci�n de bots
-�   +-- AIContent/      # Reto 2: Verificaci�n de contenido IA
+�   +-- Admin/          # Reto 1: Detección de bots
+�   +-- AIContent/      # Reto 2: Verificación de contenido IA
 �   +-- AIIncorrectUses/# Reto 3: Usos incorrectos de IA
 �   +-- CommunityNote/  # Reto 4: Community Note
 �   +-- Desktop/        # Escritorio simulado
 �   +-- Home/           # Feed principal
 �   +-- Profile/        # Perfil de usuario
-�   +-- PostDetail/     # Detalle de publicaci�n
+�   +-- PostDetail/     # Detalle de publicación
 +-- scripts/
     +-- download_from_excel.mjs  # Genera traducciones desde Excel
     +-- js_to_csv.mjs            # Exporta traducciones a CSV

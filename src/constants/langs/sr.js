@@ -15,7 +15,8 @@ export const sr = {
   "desktop": {
     "apps": {
       "messages": "Poruke",
-      "social": "Društvena mreža"
+      "social": "Društvena mreža",
+      "files": "Datoteke"
     },
     "window": {
       "minimize": "Smanji",
@@ -298,6 +299,21 @@ export const sr = {
       "3": "Izazov 3: Nepravilna upotreba veštačke inteligencije",
       "4": "Izazov 4: Beleška zajednice"
     },
+    "back": "Nazad"
+  },
+  "filesApp": {
+    "title": "Istraživač datoteka",
+    "thisPC": "Ovaj računar",
+    "folders": {
+      "documents": "Dokumenti",
+      "images": "Slike",
+      "echo": "ECHO"
+    },
+    "empty": "Ova fascikla je prazna",
+    "locked": "Ograničen pristup",
+    "lockedTitle": "Privatna fascikla",
+    "lockedMessage": "Nemate dozvolu za pristup ovoj fascikli.",
+    "items": "{{count}} stavki",
     "back": "Nazad"
   }
 };

@@ -70,7 +70,8 @@ export const HintsApp = () => {
   };
 
   return (
-    <div className="hints-app-window">
+    <div className="hints-app-backdrop" onClick={handleClose}>
+    <div className="hints-app-window" onClick={(e) => e.stopPropagation()}>
       {/* Title bar */}
       <div className="hints-titlebar">
         <div className="hints-window-title">
@@ -150,6 +151,7 @@ export const HintsApp = () => {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 };

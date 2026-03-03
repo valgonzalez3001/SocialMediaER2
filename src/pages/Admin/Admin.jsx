@@ -29,7 +29,6 @@ export const Admin = () => {
     const [showHint, setShowHint] = useState(false);
     const [showResult, setShowResult] = useState(false);
     const [gameResult, setGameResult] = useState(null);
-    const [regenerateKey, setRegenerateKey] = useState(0); // Clave para forzar regeneración
 
     // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
     // No inicializar si el reto ya fue completado
@@ -84,7 +83,7 @@ export const Admin = () => {
         sessionStorage.setItem('adminGameUsernames', JSON.stringify(selected.map(u => u.username)));
         sessionStorage.removeItem('adminGameUsers');
         setSuspectUsers(selected);
-    }, [userState?.allUsers, regenerateKey, challenge1Completed]);
+    }, [userState?.allUsers, challenge1Completed]);
 
     // Guardar estado de clasificación cuando cambie
     useEffect(() => {
@@ -296,21 +295,10 @@ export const Admin = () => {
     };
 
     const handleTryAgain = () => {
-        // Si el reto ya fue completado, solo cerrar el modal
-        if (challenge1Completed) {
-            setShowResult(false);
-            return;
-        }
-
-        // Limpiar todo el estado del juego
-        sessionStorage.removeItem('adminGameUsernames');
-        sessionStorage.removeItem('adminGameState');
-        sessionStorage.removeItem('fromAdmin');
-        setClassifiedUsers({});
+        // Cerrar el modal sin modificar usuarios ni selecciones,
+        // para que el jugador pueda corregir solo los errores
         setShowResult(false);
         setGameResult(null);
-        // Incrementar la clave para forzar regeneración de usuarios
-        setRegenerateKey(prev => prev + 1);
     };
 
     return (

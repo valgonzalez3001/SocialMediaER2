@@ -15,7 +15,8 @@ export const fi = {
   "desktop": {
     "apps": {
       "messages": "Viestit",
-      "social": "Sosiaalinen verkko"
+      "social": "Sosiaalinen verkko",
+      "files": "Tiedostot"
     },
     "window": {
       "minimize": "Pienennä",
@@ -286,5 +287,20 @@ export const fi = {
   },
   "hintsApp": {
     "puzzle": {}
+  },
+  "filesApp": {
+    "title": "Tiedostonhallinta",
+    "thisPC": "Tämä tietokone",
+    "folders": {
+      "documents": "Asiakirjat",
+      "images": "Kuvat",
+      "echo": "ECHO"
+    },
+    "empty": "Tämä kansio on tyhjä",
+    "locked": "Rajoitettu pääsy",
+    "lockedTitle": "Yksityinen kansio",
+    "lockedMessage": "Sinulla ei ole oikeuksia avata tätä kansiota.",
+    "items": "{{count}} kohdetta",
+    "back": "Takaisin"
   }
 };

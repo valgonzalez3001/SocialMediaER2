@@ -15,7 +15,8 @@ export const es = {
   "desktop": {
     "apps": {
       "messages": "Mensajes",
-      "social": "Red Social"
+      "social": "Red Social",
+      "files": "Archivos"
     },
     "window": {
       "minimize": "Minimizar",
@@ -300,5 +301,20 @@ export const es = {
       "4": "Reto 4: Community Note"
     },
     "back": "Volver"
+  },
+  "filesApp": {
+    "title": "Explorador de archivos",
+    "thisPC": "Este equipo",
+    "folders": {
+      "documents": "Documentos",
+      "images": "Imágenes",
+      "echo": "ECHO"
+    },
+    "empty": "Esta carpeta está vacía",
+    "locked": "Acceso restringido",
+    "lockedTitle": "Carpeta privada",
+    "lockedMessage": "No tienes permisos para acceder a esta carpeta.",
+    "items": "{{count}} elementos",
+    "back": "Atrás"
   }
 };

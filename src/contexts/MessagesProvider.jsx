@@ -109,7 +109,7 @@ export const MessagesProvider = ({ children }) => {
       if (target.contentKey === "messagesApp.messages.missionBrief.content") {
         sessionStorage.setItem("missionBriefRead", "true");
         sendStatement(
-          XAPI_VERBS.EXPERIENCED,
+          XAPI_VERBS.LOOKED_AT,
           ECHO_ACTIVITIES.INTRO,
           null,
           {
@@ -123,7 +123,7 @@ export const MessagesProvider = ({ children }) => {
       if (target.contentKey === "messagesApp.messages.challenge2.content") {
         markChallenge2InstructionsRead();
         sendStatement(
-          XAPI_VERBS.EXPERIENCED,
+          XAPI_VERBS.LOOKED_AT,
           {
             id: `${ECHO_ACTIVITIES.PUZZLE_2.id}/instructions`,
             definition: {
@@ -143,7 +143,7 @@ export const MessagesProvider = ({ children }) => {
       if (target.contentKey === "messagesApp.messages.challenge3.content") {
         markChallenge3InstructionsRead();
         sendStatement(
-          XAPI_VERBS.EXPERIENCED,
+          XAPI_VERBS.LOOKED_AT,
           {
             id: `${ECHO_ACTIVITIES.PUZZLE_3.id}/instructions`,
             definition: {
@@ -163,7 +163,7 @@ export const MessagesProvider = ({ children }) => {
       if (target.contentKey === "messagesApp.messages.challengeFinal.content") {
         markChallengeFinalInstructionsRead();
         sendStatement(
-          XAPI_VERBS.EXPERIENCED,
+          XAPI_VERBS.LOOKED_AT,
           {
             id: `${ECHO_ACTIVITIES.FINAL.id}/instructions`,
             definition: {

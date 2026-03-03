@@ -15,7 +15,8 @@ export const en = {
   "desktop": {
     "apps": {
       "messages": "Messages",
-      "social": "Social Network"
+      "social": "Social Network",
+      "files": "Files"
     },
     "window": {
       "minimize": "Minimize",
@@ -293,6 +294,21 @@ export const en = {
   "hintsApp": {
     "title": "Hints",
     "puzzle": {},
+    "back": "Back"
+  },
+  "filesApp": {
+    "title": "File Explorer",
+    "thisPC": "This PC",
+    "folders": {
+      "documents": "Documents",
+      "images": "Images",
+      "echo": "ECHO"
+    },
+    "empty": "This folder is empty",
+    "locked": "Restricted access",
+    "lockedTitle": "Private folder",
+    "lockedMessage": "You do not have permission to access this folder.",
+    "items": "{{count}} items",
     "back": "Back"
   }
 };

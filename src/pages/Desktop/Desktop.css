@@ -241,6 +241,10 @@
   padding: 8px;
 }
 
+.launcher-image.launcher-image--messages {
+  padding: 2px;
+}
+
 .launcher-label {
   text-align: center;
   display: none;

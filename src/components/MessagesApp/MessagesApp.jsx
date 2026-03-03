@@ -61,7 +61,8 @@ export const MessagesApp = () => {
   };
 
   return (
-    <div className="messages-app-window">
+    <div className="messages-app-backdrop" onClick={handleClose}>
+    <div className="messages-app-window" onClick={(e) => e.stopPropagation()}>
       {/* Barra de título */}
       <div className="window-titlebar">
         <div className="window-title">
@@ -89,23 +90,26 @@ export const MessagesApp = () => {
       {/* Contenido de la aplicación */}
       <div className="messages-chat-content">
         <div className="messages-chat-header">
-          <div className="messages-chat-avatar">B</div>
+          <div className="messages-chat-avatar boss-avatar">
+            <span>{t("messagesApp.messages.missionBrief.from").charAt(0)}</span>
+          </div>
           <div className="messages-chat-header-text">
-            <h2>{t("messagesApp.newMessageFromBoss")}</h2>
+            <h2>{t("messagesApp.messages.missionBrief.from")}</h2>
             <span>ECHO</span>
           </div>
         </div>
 
         <div ref={chatThreadRef} className="messages-chat-thread">
           {sortedMessages.map((message) => (
-            <article key={message.id} className="chat-message boss-message">
-              <div className="chat-message-meta">
-                <strong>{t(message.fromKey)}</strong>
-                <span>{formatTime(message.timestamp)}</span>
-              </div>
-              <h3>{t(message.subjectKey)}</h3>
-              <div className="chat-message-body">
-                <p>{t(message.contentKey)}</p>
+            <article key={message.id} className="chat-message-row">
+              <div className="chat-bubble-avatar">B</div>
+              <div className="chat-bubble-group">
+                <span className="chat-bubble-sender">{t(message.fromKey)}</span>
+                <div className="chat-bubble incoming">
+                  <p className="chat-bubble-subject">{t(message.subjectKey)}</p>
+                  <p className="chat-bubble-body">{t(message.contentKey)}</p>
+                  <span className="chat-bubble-time">{formatTime(message.timestamp)}</span>
+                </div>
               </div>
             </article>
           ))}
@@ -123,6 +127,7 @@ export const MessagesApp = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

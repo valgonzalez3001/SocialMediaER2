@@ -3,6 +3,7 @@ import "./Desktop.css";
 import { MessagesApp } from "../../components/MessagesApp/MessagesApp";
 import { SocialMediaApp } from "../../components/SocialMediaApp/SocialMediaApp";
 import { HintsApp } from "../../components/HintsApp/HintsApp";
+import { FilesApp } from "../../components/FilesApp/FilesApp";
 import { PopupNotification } from "../../components/PopupNotification/PopupNotification";
 import { useOS } from "../../contexts/OSProvider";
 import { useMessages } from "../../contexts/MessagesProvider";
@@ -89,6 +90,11 @@ export const Desktop = () => {
     syncDrawer(false);
   };
 
+  const handleOpenFiles = () => {
+    openApp("files");
+    syncDrawer(false);
+  };
+
   const handleClosePopup = () => {
     setPopup({ ...popup, visible: false });
   };
@@ -152,6 +158,17 @@ export const Desktop = () => {
         </div>
       )}
 
+      {activeApp === "files" && (
+        <div className="app-overlay" onClick={minimizeApp}>
+          <div
+            className="app-overlay-content"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <FilesApp />
+          </div>
+        </div>
+      )}
+
       <div
         className={`app-drawer ${drawerOpen ? "open" : ""} ${unreadCount > 0 ? "has-unread" : ""}`}
         style={{
@@ -175,7 +192,7 @@ export const Desktop = () => {
             title={t("desktop.apps.messages")}
           >
             <img
-              className="launcher-image"
+              className="launcher-image launcher-image--messages"
               src="/assets/messages-icon.png"
               alt={t("desktop.apps.messages")}
             />
@@ -203,15 +220,15 @@ export const Desktop = () => {
           <button
             className="app-launcher-card"
             type="button"
-            onClick={() => {}}
-            title="Llamadas"
+            onClick={handleOpenFiles}
+            title={t("desktop.apps.files")}
           >
             <img
               className="launcher-image"
-              src="/assets/calls-icon.png"
-              alt="Llamadas"
+              src="/assets/folder.png"
+              alt={t("desktop.apps.files")}
             />
-            <span className="launcher-label">Llamadas</span>
+            <span className="launcher-label">{t("desktop.apps.files")}</span>
           </button>
           <button
             className="app-launcher-card"

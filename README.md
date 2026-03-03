@@ -1,155 +1,202 @@
-# ECHO - Red Social con Detección de Bots
+# ECHO � Escape Room de Red Social
 
-ECHO es una aplicación de red social desarrollada con React que incluye un innovador sistema de juego educativo para identificar bots y cuentas automatizadas. La aplicación combina funcionalidades tradicionales de redes sociales con un enfoque educativo sobre la desinformación digital.
+ECHO es una aplicación web educativa de tipo *escape room* que simula una red social. Los jugadores asumen el rol de un moderador de contenido que debe resolver cuatro retos progresivos relacionados con la desinformación digital y el uso de la inteligencia artificial.
 
-## 🎮 Características Principales
+---
 
-### Red Social Completa
-- **Feed de Usuario**: Visualización de publicaciones con ordenamiento por fecha y tendencias
-- **Crear Publicaciones**: Soporte para texto, imágenes y videos
-- **Interacciones**: Like, comentarios, edición y eliminación de posts
-- **Perfil de Usuario**: Avatar personalizado, biografía, URL de portfolio
-- **Sistema de Seguimiento**: Follow/Unfollow de usuarios
-- **Feed de Exploración**: Descubre contenido de toda la red
-- **Scroll Infinito**: Carga dinámica de contenido
-- **Emojis y GIFs**: Enriquece tus publicaciones
-- **Multiidioma**: Soporte para Español, Inglés, Finés y Serbio
-- **Juego de Detección de Bots**: Panel educativo para identificar cuentas automatizadas
+## ?? Descripción del Juego
 
-## 🛠️ Stack Tecnológico
+El juego se ambienta en un escritorio de sistema operativo simulado. Al iniciarlo, el jugador realiza un *onboarding* (nombre, edad e idioma) y recibe instrucciones de su jefe a través de la app de mensajes. A partir de ahí, navega por la red social ECHO completando los retos en orden.
 
-- **Frontend**: React.js, HTML, CSS
-- **Gestión de Estado**: Context API, React Hooks
-- **Backend**: MockBee (Mock API)
-- **Internacionalización**: i18next, react-i18next
-- **Routing**: React Router v6
-- **Notificaciones**: React Hot Toast
-- **Build Tool**: Vite
-- **Otras Librerías**: 
-  - Axios para peticiones HTTP
-  - React Icons para iconografía
-  - React Player para reproducción de videos
-  - Day.js para manejo de fechas
-  - UUID para generación de IDs únicos
+### Retos
 
-## 📦 Instalación
+| # | Nombre | Descripción |
+|---|--------|-------------|
+| 1 | **Cuentas Sospechosas** | Clasifica 5 cuentas (3 bots, 2 humanos) investigando sus perfiles. |
+| 2 | **Contenido Generado por IA** | Verifica si un post fue generado por IA completando su texto palabra a palabra. |
+| 3 | **Usos Incorrectos de IA** | Actúa como moderador: responde a publicaciones que difunden desinformación generada por IA. |
+| 4 | **Community Note** | Publica una nota comunitaria final con los aprendizajes clave del escape room. |
+
+El nivel de desinformación del sistema disminuye con cada reto superado y se muestra en el panel lateral de estadísticas en tiempo real.
+
+---
+
+## ??? Escritorio Simulado
+
+El escritorio incluye un drawer de apps con las siguientes aplicaciones:
+
+| App | Descripción |
+|-----|-------------|
+| **Mensajes** | Recibe instrucciones del jefe antes y después de cada reto. Los mensajes se marcan automáticamente como leídos al abrirlos. |
+| **Red Social (ECHO)** | App principal donde se desarrollan todos los retos. |
+| **Archivos** | Explorador de archivos simulado con carpetas (Documentos, Imágenes) y una carpeta privada bloqueada (ECHO). |
+| **Pistas** | Muestra pistas contextuales para el reto activo. Registra en xAPI cuando el jugador consulta una pista. |
+---
+
+## ?? Integración xAPI
+
+ECHO registra la actividad del jugador en un LRS (Learning Record Store) compatible con xAPI 1.0. Los *statements* cubren:
+
+- Inicio y finalización del juego (`initialized`, `started`, `completed`)
+- Lectura de mensajes del jefe (`looked at`)
+- Clasificación de cuentas y respuestas (`answered`)
+- Éxito/fracaso de cada reto (`succeeded`, `failed`, `completed`)
+- Consulta de pistas (`asked`)
+- Navegación por perfiles (`experienced`)
+- Duración de cada reto (extensi�n `durationMs`)
+
+La configuración del LRS se realiza mediante variables de entorno (ver sección de configuración). Si no están definidas, el juego funciona normalmente sin enviar *statements*.
+
+---
+
+## ?? Idiomas Soportados
+
+| Código | Idioma |
+|--------|--------|
+| `es` | Español |
+| `en` | Inglés |
+| `fi` | Finés |
+| `sr` | Serbio |
+
+El idioma se selecciona durante el *onboarding* y puede cambiarse desde el selector del header. Las traducciones se gestionan mediante **i18next** y se generan desde un archivo Excel con el script `update-i18n`.
+
+---
+
+## ??? Stack Tecnológico
+
+| Capa | Tecnología |
+|------|-----------|
+| Framework | React 18 + Vite |
+| Routing | React Router v6 |
+| Estado global | Context API + Hooks |
+| Backend simulado | MirageJS (mock API in-memory) |
+| Internacionalización | i18next + react-i18next |
+| xAPI | Implementación propia sobre Fetch API |
+| Notificaciones | react-hot-toast |
+| Animaciones | react-awesome-reveal |
+| Iconos | react-icons |
+| Fechas | Day.js |
+| IDs únicos | uuid |
+
+---
+
+## ?? Instalación
 
 ### Prerrequisitos
-- Node.js (versión 18.3 o superior)
-- npm o yarn
 
-### Clonar el Repositorio
+- Node.js >= 18.3
+- npm >= 9
+
+### Clonar e instalar
 
 ```bash
 git clone https://github.com/valgonzalez3001/SocialMediaER2.git
 cd SocialMediaER2
-```
-
-### Instalar Dependencias
-
-```bash
 npm install
 ```
 
-## 🚀 Comandos de Ejecución
+### Variables de entorno
 
-### Modo Desarrollo
-Inicia el servidor de desarrollo con hot-reload:
+Crea un archivo `.env` en la raíz del proyecto (basándote en `example.env`):
+
+```env
+# LRS � xAPI (opcional, el juego funciona sin estas variables)
+VITE_XAPI_ENDPOINT=https://tu-lrs.example.com/xapi
+VITE_XAPI_KEY=tu_key_base64
+VITE_XAPI_SECRET=tu_secret_base64
+```
+
+---
+
+## ?? Comandos
 
 ```bash
+# Servidor de desarrollo con hot-reload
 npm run dev
-```
 
-La aplicación estará disponible en `http://localhost:5173`
-
-### Build de Producción
-Genera los archivos optimizados para producción:
-
-```bash
+# Build de producci�n
 npm run build
+
+# Preview del build de producci�n
+npm run preview
+
+# Regenerar archivos de traducci�n desde el Excel
+npm run update-i18n
+
+# Exportar traducciones actuales a CSV
+npm run update-i18n-inverse
 ```
 
-### Preview de Build
-Previsualiza la versión de producción localmente:
+La aplicación de desarrollo estará disponible en `http://localhost:5173`.
+
+---
+
+## ??? Estructura del Proyecto
+
+```
+src/
++-- backend/            # Mock API con MirageJS (controllers, DB, utils)
+�   +-- db/             # Datos de usuarios y posts por idioma
++-- components/         # Componentes reutilizables
+�   +-- FilesApp/       # Explorador de archivos simulado
+�   +-- Header/         # Cabecera de la red social
+�   +-- HintsApp/       # App de pistas del escape room
+�   +-- MessagesApp/    # App de mensajes del jefe
+�   +-- Navbar/         # Navegaci�n lateral
+�   +-- Post/           # Tarjeta de publicaci�n
+�   +-- SocialMediaApp/ # Contenedor de la red social
+�   +-- StatsPanel/     # Panel lateral de estad�sticas
+�   +-- Taskbar/        # Barra de tareas del escritorio
++-- constants/
+�   +-- langs/          # Traducciones (es, en, fi, sr)
++-- contexts/           # Providers de estado global
+�   +-- LoggedInUserProvider
+�   +-- MessagesProvider
+�   +-- OSProvider      # Estado del escritorio simulado
+�   +-- PostsProvider
+�   +-- StatsProvider   # Progreso y puntuaci�n del jugador
+�   +-- UserProvider
+�   +-- XAPIProvider    # Integraci�n xAPI
++-- pages/
+�   +-- Admin/          # Reto 1: Detecci�n de bots
+�   +-- AIContent/      # Reto 2: Verificaci�n de contenido IA
+�   +-- AIIncorrectUses/# Reto 3: Usos incorrectos de IA
+�   +-- CommunityNote/  # Reto 4: Community Note
+�   +-- Desktop/        # Escritorio simulado
+�   +-- Home/           # Feed principal
+�   +-- Profile/        # Perfil de usuario
+�   +-- PostDetail/     # Detalle de publicaci�n
++-- scripts/
+    +-- download_from_excel.mjs  # Genera traducciones desde Excel
+    +-- js_to_csv.mjs            # Exporta traducciones a CSV
+```
+
+---
+
+## ?? Gestión de Traducciones
+
+Las traducciones se almacenan en `src/constants/langs/` (un archivo por idioma). Para actualizar desde el Excel maestro:
 
 ```bash
-npm run preview
+npm run update-i18n
 ```
 
-## 🎯 Cómo Usar el Juego de Detección de Bots
+Para exportar el estado actual a CSV:
 
-1. **Accede al Panel Admin**: Navega a la sección "Admin" desde el menú
-2. **Observa los Usuarios**: Se presentarán 5 usuarios sospechosos
-3. **Investiga**: Haz clic en cualquier usuario para ver su perfil completo
-   - Examina sus publicaciones
-   - Revisa su biografía y estadísticas
-   - Busca patrones sospechosos
-4. **Vuelve al Juego**: Usa el botón "Volver al Juego" para continuar
-5. **Clasifica**: Marca cada usuario como "Bot" o "Humano"
-6. **Envía tu Respuesta**: Una vez clasificados los 5, haz clic en "Enviar Clasificación"
-7. **Revisa el Resultado**: 
-   - ✅ Si aciertas todos: ¡Excelente! Juega de nuevo con usuarios diferentes
-   - ❌ Si fallas: Intenta de nuevo con los mismos usuarios
-
-### 💡 Pistas para Identificar Bots
-
-Haz clic en el botón "Pista" para ver indicadores clave:
-
-
-## 🌍 Idiomas Soportados
-
-- 🇪🇸 Español
-- 🇬🇧 English
-- 🇫🇮 Suomi (Finés)
-- 🇷🇸 Српски (Serbio)
-
-El idioma se detecta automáticamente del navegador y puede cambiarse desde el selector de idioma.
-
-## 📱 Responsive Design
-
-La aplicación está completamente optimizada para:
-- 💻 Desktop
-- 📱 Tablets
-- 📱 Móviles
-
-
-## 📂 Estructura del Proyecto
-
-```
-react-social-media/
-├── public/              # Archivos estáticos
-├── src/
-│   ├── backend/         # Mock API y datos
-│   │   ├── controllers/ # Controladores de Posts, Users, Comments
-│   │   ├── db/          # Base de datos mock (users, posts)
-│   │   └── utils/       # Utilidades de autenticación
-│   ├── components/      # Componentes reutilizables
-│   │   ├── CreatePostForm/
-│   │   ├── Discover/
-│   │   ├── Header/
-│   │   ├── Navbar/
-│   │   ├── Post/
-│   │   └── ...
-│   ├── constants/       # Constantes y traducciones
-│   │   └── langs/       # Archivos de idioma (es, en, fi, sr)
-│   ├── contexts/        # Context API providers
-│   ├── pages/           # Páginas principales
-│   │   ├── Admin/       # Juego de detección de bots
-│   │   ├── Home/
-│   │   ├── Profile/
-│   │   ├── Explore/
-│   │   └── ...
-│   ├── services/        # Servicios de API
-│   ├── utils/           # Funciones utilitarias
-│   └── Routes/          # Configuración de rutas
-├── package.json
-└── README.md
+```bash
+npm run update-i18n-inverse
 ```
 
-## 📄 Licencia
+---
 
-Este proyecto está bajo licencia MIT.
+## ?? Tests
 
+```bash
+npm test
+```
 
+---
 
+## ?? Licencia
 
+Proyecto desarrollado en el marco del proyecto **ENDGAME**. Uso académico e investigador.

@@ -1,10 +1,10 @@
-# ECHO � Escape Room de Red Social
+# ECHO - Escape Room de Red Social
 
 ECHO es una aplicación web educativa de tipo *escape room* que simula una red social. Los jugadores asumen el rol de un moderador de contenido que debe resolver cuatro retos progresivos relacionados con la desinformación digital y el uso de la inteligencia artificial.
 
 ---
 
-## ?? Descripción del Juego
+## Descripción del Juego
 
 El juego se ambienta en un escritorio de sistema operativo simulado. Al iniciarlo, el jugador realiza un *onboarding* (nombre, edad e idioma) y recibe instrucciones de su jefe a través de la app de mensajes. A partir de ahí, navega por la red social ECHO completando los retos en orden.
 
@@ -21,7 +21,7 @@ El nivel de desinformación del sistema disminuye con cada reto superado y se mu
 
 ---
 
-## ??? Escritorio Simulado
+## Escritorio Simulado
 
 El escritorio incluye un drawer de apps con las siguientes aplicaciones:
 
@@ -33,7 +33,7 @@ El escritorio incluye un drawer de apps con las siguientes aplicaciones:
 | **Pistas** | Muestra pistas contextuales para el reto activo. Registra en xAPI cuando el jugador consulta una pista. |
 ---
 
-## ?? Integración xAPI
+## Integración xAPI
 
 ECHO registra la actividad del jugador en un LRS (Learning Record Store) compatible con xAPI 1.0. Los *statements* cubren:
 
@@ -49,7 +49,7 @@ La configuración del LRS se realiza mediante variables de entorno (ver sección
 
 ---
 
-## ?? Idiomas Soportados
+## Idiomas Soportados
 
 | Código | Idioma |
 |--------|--------|
@@ -62,7 +62,7 @@ El idioma se selecciona durante el *onboarding* y puede cambiarse desde el selec
 
 ---
 
-## ??? Stack Tecnológico
+## Stack Tecnológico
 
 | Capa | Tecnología |
 |------|-----------|
@@ -80,7 +80,7 @@ El idioma se selecciona durante el *onboarding* y puede cambiarse desde el selec
 
 ---
 
-## ?? Instalación
+## Instalación
 
 ### Prerrequisitos
 
@@ -108,7 +108,7 @@ VITE_XAPI_SECRET=tu_secret_base64
 
 ---
 
-## ?? Comandos
+## Comandos
 
 ```bash
 # Servidor de desarrollo con hot-reload
@@ -131,7 +131,7 @@ La aplicación de desarrollo estará disponible en `http://localhost:5173`.
 
 ---
 
-## ??? Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 src/
@@ -173,7 +173,7 @@ src/
 
 ---
 
-## ?? Gestión de Traducciones
+## Gestión de Traducciones
 
 Las traducciones se almacenan en `src/constants/langs/` (un archivo por idioma). Para actualizar desde el Excel maestro:
 
@@ -189,7 +189,7 @@ npm run update-i18n-inverse
 
 ---
 
-## ?? Tests
+## Tests
 
 ```bash
 npm test
@@ -197,6 +197,6 @@ npm test
 
 ---
 
-## ?? Licencia
+## Licencia
 
 Proyecto desarrollado en el marco del proyecto **ENDGAME**. Uso académico e investigador.

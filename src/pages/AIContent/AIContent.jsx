@@ -48,7 +48,7 @@ export const AIContent = () => {
     const [showMatch, setShowMatch] = useState(false);
     const optionsByStep = useMemo(
         () =>
-            gameData.map((item) =>
+            gameData.words.map((item) =>
                 [item.correct, ...item.alts].sort(() => Math.random() - 0.5)
             ),
         [gameData]
@@ -58,10 +58,20 @@ export const AIContent = () => {
         [selectedWords]
     );
     const correctSentence = useMemo(
-        () => gameData.map((item) => item.correct).join(" ").replace(/\s([.,!?;:])/g, "$1"),
+        () => gameData.words.map((item) => item.correct).join(" ").replace(/\s([.,!?;:])/g, "$1"),
         [gameData]
     );
-    const isCompleted = selectedWords.length === gameData.length;
+    const isCompleted = selectedWords.length === gameData.words.length;
+
+    // Lock body scroll while on this page
+    useEffect(() => {
+        document.body.classList.add("ai-content-no-scroll");
+        document.documentElement.classList.add("ai-content-no-scroll");
+        return () => {
+            document.body.classList.remove("ai-content-no-scroll");
+            document.documentElement.classList.remove("ai-content-no-scroll");
+        };
+    }, []);
 
     // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
     useEffect(() => {
@@ -115,7 +125,7 @@ export const AIContent = () => {
                 {
                     success: true,
                     completion: true,
-                    score: { scaled: 1, raw: gameData.length, min: 0, max: gameData.length },
+                    score: { scaled: 1, raw: gameData.words.length, min: 0, max: gameData.words.length },
                 },
                 context2
             );
@@ -140,13 +150,13 @@ export const AIContent = () => {
 
         toast((toastInstance) => (
             <div
-                onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); }}
-                style={{ cursor: "pointer" }}
+                onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
+                className="ai-content-toast"
             >
-                <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
+                <p className="ai-content-toast-title">
                     {t("messagesApp.newMessageNotification")}
                 </p>
-                <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
+                <p className="ai-content-toast-subtitle">
                     {t("messagesApp.challenge3Notification")}
                 </p>
             </div>
@@ -155,12 +165,12 @@ export const AIContent = () => {
             icon: "📬",
             position: "bottom-center",
         });
-    }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t, gameData.length]);
+    }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t, gameData.words.length]);
 
     const handleWordClick = (word) => {
         if (wrongChoice) return;
         const currentStep = selectedWords.length;
-        const isCorrect = word === gameData[currentStep].correct;
+        const isCorrect = word === gameData.words[currentStep].correct;
 
         // Send xAPI statement for token selection
         sendStatement(
@@ -171,7 +181,7 @@ export const AIContent = () => {
                     name: { en: `Select Token ${currentStep + 1}` },
                     type: "http://adlnet.gov/expapi/activities/cmi.interaction",
                     interactionType: "choice",
-                    correctResponsesPattern: [gameData[currentStep].correct],
+                    correctResponsesPattern: [gameData.words[currentStep].correct],
                 },
             },
             {
@@ -375,7 +385,7 @@ export const AIContent = () => {
                                             </div>
                                             <div className="ai-brief-prompt-box">
                                                 <p>
-                                                    {t("aiPrompt.content")}
+                                                    {gameData.prompt}
                                                 </p>
                                             </div>
                                         </div>
@@ -392,7 +402,7 @@ export const AIContent = () => {
                                         <div className="ai-game-prompt-container">
                                             <div className="ai-game-prompt">
                                                 <p className="ai-game-prompt-text">
-                                                    {t("aiPrompt.content")}
+                                                    {gameData.prompt}
                                                 </p>
                                             </div>
                                             <div className="ai-game-badge">
@@ -410,7 +420,7 @@ export const AIContent = () => {
                                                     >
                                                         <span className="ai-game-selected-word">{word}</span>
                                                         <span className="ai-game-word-percentage">
-                                                            {gameData[idx].percentage}
+                                                            {gameData.words[idx].percentage}
                                                         </span>
                                                     </div>
                                                 ))}

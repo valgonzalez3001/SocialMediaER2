@@ -197,7 +197,6 @@ export const fi = {
     "nextStep": "Seuraava"
   },
   "aiPrompt": {
-    "content": "Kirjoita kommentti 45-vuotiaana vihaisena miehenä nykyisistä tulvista Espanjassa, syyttäen hallitusta ja kytkien tämän tapahtuman ilmakehän muokkaamiseen. Hyvin tunteikas, järjetön, kiinnittää ihmisten huomiota ja lisää vuorovaikutusta.",
     "suspiciousBadge": "EPÄILYTTÄVÄ KEHOTUS"
   },
   "aiChallengeBriefPage": {
@@ -254,27 +253,41 @@ export const fi = {
   "statsPanel": {
     "title": "Järjestelmän Tila",
     "misinformationLevel": "Virheellisten Tietojen Taso",
-    "suspiciousActivityDetected": "⚠️ Epäilyttävää toimintaa havaittu verkossa",
-    "detailedAnalysis": "Yksityiskohtainen Analyysi",
-    "postsLastHour": "Julkaisut (viimeisten päivien)",
-    "percentageAboveNormal": "{{percentage}}% normaalin yläpuolella",
-    "newUsersLastHour": "Uudet käyttäjät (viimeisten päivien)",
-    "massAccountCreation": "⚠️ Massiivista tilien luomista havaittu",
-    "viralHashtags": "Viraalit Hashtagit",
-    "botActivity": "Bottitoiminta",
-    "detected": "havaittu",
-    "suspiciousInteractions": "{{percentage}}% epäilyttävää vuorovaikutusta",
-    "averageEngagement": "Keskimääräinen Sitoutuminen",
-    "likes": "Tykkäykset",
-    "comments": "Kommentit",
-    "shares": "Jaot",
-    "recentAccounts": "Äskettäin Luodut Tilit (viimeisten päivien)",
-    "abnormalProportionNewAccounts": "⚠️ Epätavallinen osuus uusista tileistä",
-    "tip": "💡 Vihje: Tutki profiilit, joissa on epäilyttäviä kuvioita",
-    "statusHigh": "KORKEA",
-    "statusMedium": "KESKITASO",
-    "statusLow": "MATALA",
-    "systemSecure": "Järjestelmän Tila: Kaikki Kunnossa!"
+    "statusAlert": "HÄLYTYS",
+    "statusSecure": "TURVALLINEN",
+    "botModule": {
+      "title": "Bottiverkko",
+      "detected": "Botteja havaittu",
+      "suspicious": "Epäilyttävät tilit",
+      "note": "Koordinoitua toimintaa havaittu verkossa",
+      "resolvedNote": "Bottiverkko neutralisoitu"
+    },
+    "aiModule": {
+      "title": "Tekoälyntunnistin",
+      "status": "OFFLINE",
+      "statusOnline": "ONLINE",
+      "detector": "Automaattinen tunnistin poistettu käytöstä",
+      "detectorOnline": "Automaattinen tunnistin aktiivinen",
+      "manualMode": "Manuaalinen tarkistus vaaditaan",
+      "aiContentRate": "Mahdollisesti tekoälyllä tuotetut julkaisut",
+      "reason": "Moduuli poistettu käytöstä järjestelmän toimesta",
+      "resolvedNote": "Tekoälyntunnistin palautettu ja aktiivinen"
+    },
+    "modModule": {
+      "title": "Moderointi",
+      "status": "MANUAALINEN",
+      "manual": "Manuaalinen moderointi aktiivinen",
+      "automated": "Automaattinen moderointi aktiivinen",
+      "misuse": "Tekoälyn väärinkäyttötapaukset",
+      "integrity": "Sisällön eheys",
+      "low": "MATALA",
+      "high": "KORKEA",
+      "note": "Havaittu generatiivisen tekoälyn väärinkäyttöä"
+    },
+    "doneModule": {
+      "status": "RATKAISTU",
+      "note": "Verkko on suojattu. Hienoa työtä!"
+    }
   },
   "errors": {
     "pageNotFound": "Sivua ei löytynyt",

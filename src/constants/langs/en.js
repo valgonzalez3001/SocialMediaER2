@@ -202,7 +202,6 @@ export const en = {
     "nextStep": "Next"
   },
   "aiPrompt": {
-    "content": "Write a comment like an angry 45 year old about the floods currently happening in Spain, blaming the government, linking this event to geoengineering. Very emotional, unhinged, to draw people's attention and increase interactions.",
     "suspiciousBadge": "SUSPICIOUS PROMPT"
   },
   "aiChallengeBriefPage": {
@@ -260,27 +259,41 @@ export const en = {
   "statsPanel": {
     "title": "System Status",
     "misinformationLevel": "Misinformation Level",
-    "suspiciousActivityDetected": "⚠️ Suspicious activity detected on the network",
-    "detailedAnalysis": "Detailed Analysis",
-    "postsLastHour": "Posts (recent days)",
-    "percentageAboveNormal": "{{percentage}}% above normal",
-    "newUsersLastHour": "New users (recent days)",
-    "massAccountCreation": "⚠️ Massive account creation detected",
-    "viralHashtags": "Viral Hashtags",
-    "botActivity": "Bot Activity",
-    "detected": "detected",
-    "suspiciousInteractions": "{{percentage}}% of suspicious interactions",
-    "averageEngagement": "Average Engagement",
-    "likes": "Likes",
-    "comments": "Comments",
-    "shares": "Shares",
-    "recentAccounts": "Recent Accounts (recent days)",
-    "abnormalProportionNewAccounts": "⚠️ Abnormal proportion of new accounts",
-    "tip": "💡 Tip: Investigate profiles with suspicious patterns",
-    "statusHigh": "HIGH",
-    "statusMedium": "MEDIUM",
-    "statusLow": "LOW",
-    "systemSecure": "System Status: All Clear!"
+    "statusAlert": "ALERT",
+    "statusSecure": "SECURE",
+    "botModule": {
+      "title": "Bot Network",
+      "detected": "Bots detected",
+      "suspicious": "Suspicious accounts",
+      "note": "Coordinated activity detected on the network",
+      "resolvedNote": "Bot network neutralized"
+    },
+    "aiModule": {
+      "title": "AI Detector",
+      "status": "OFFLINE",
+      "statusOnline": "ONLINE",
+      "detector": "Automatic detector disabled",
+      "detectorOnline": "Automatic detector active",
+      "manualMode": "Manual verification required",
+      "aiContentRate": "Possible AI-generated posts",
+      "reason": "Module disabled by the system",
+      "resolvedNote": "AI detector restored and active"
+    },
+    "modModule": {
+      "title": "Moderation",
+      "status": "MANUAL",
+      "manual": "Manual moderation active",
+      "automated": "Automated moderation active",
+      "misuse": "AI misuse cases",
+      "integrity": "Content integrity",
+      "low": "LOW",
+      "high": "HIGH",
+      "note": "Improper generative AI uses detected"
+    },
+    "doneModule": {
+      "status": "RESOLVED",
+      "note": "The network is protected. Great job!"
+    }
   },
   "errors": {
     "pageNotFound": "Page not found",

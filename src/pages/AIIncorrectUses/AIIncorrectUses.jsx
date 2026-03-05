@@ -42,16 +42,12 @@ export const AIIncorrectUses = () => {
     }, []);
 
     useEffect(() => {
-        const previousBodyOverflow = document.body.style.overflow;
-        const previousHtmlOverflow = document.documentElement.style.overflow;
         document.body.classList.add("ai-incorrect-no-scroll");
-        document.body.style.overflow = "hidden";
-        document.documentElement.style.overflow = "hidden";
+        document.documentElement.classList.add("ai-incorrect-no-scroll");
 
         return () => {
             document.body.classList.remove("ai-incorrect-no-scroll");
-            document.body.style.overflow = previousBodyOverflow;
-            document.documentElement.style.overflow = previousHtmlOverflow;
+            document.documentElement.classList.remove("ai-incorrect-no-scroll");
         };
     }, []);
 
@@ -118,13 +114,13 @@ export const AIIncorrectUses = () => {
 
             toast((toastInstance) => (
                 <div
-                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); }}
-                    style={{ cursor: "pointer" }}
+                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
+                    className="toast-clickable"
                 >
-                    <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
+                    <p className="toast-title">
                         {t("messagesApp.newMessageNotification")}
                     </p>
-                    <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
+                    <p className="toast-subtitle">
                         {t("messagesApp.challengeFinalNotification")}
                     </p>
                 </div>

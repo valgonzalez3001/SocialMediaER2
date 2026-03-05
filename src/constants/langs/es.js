@@ -202,7 +202,6 @@ export const es = {
     "nextStep": "Siguiente"
   },
   "aiPrompt": {
-    "content": "Escribe un comentario como un hombre de 45 años enfadado sobre las inundaciones que están ocurriendo en España, culpando al gobierno, vinculando este evento a la geoingeniería. Muy emocional, desquiciado, para llamar la atención de la gente e incrementar interacciones.",
     "suspiciousBadge": "PROMPT SOSPECHOSO"
   },
   "aiChallengeBriefPage": {
@@ -260,27 +259,41 @@ export const es = {
   "statsPanel": {
     "title": "Estado del Sistema",
     "misinformationLevel": "Nivel de Desinformación",
-    "suspiciousActivityDetected": "⚠️ Actividad sospechosa detectada en la red",
-    "detailedAnalysis": "Análisis Detallado",
-    "postsLastHour": "Posts (últimos días)",
-    "percentageAboveNormal": "{{percentage}}% sobre lo normal",
-    "newUsersLastHour": "Nuevos usuarios (últimos días)",
-    "massAccountCreation": "⚠️ Creación masiva de cuentas detectada",
-    "viralHashtags": "Hashtags Virales",
-    "botActivity": "Actividad de Bots",
-    "detected": "detectados",
-    "suspiciousInteractions": "{{percentage}}% de interacciones sospechosas",
-    "averageEngagement": "Engagement Promedio",
-    "likes": "Likes",
-    "comments": "Comentarios",
-    "shares": "Compartidos",
-    "recentAccounts": "Cuentas Recientes (últimos días)",
-    "abnormalProportionNewAccounts": "⚠️ Proporción anormal de cuentas nuevas",
-    "tip": "💡 Consejo: Investiga los perfiles con patrones sospechosos",
-    "statusHigh": "ALTO",
-    "statusMedium": "MEDIO",
-    "statusLow": "BAJO",
-    "systemSecure": "¡Estado del Sistema: Todo Despejado!"
+    "statusAlert": "ALERTA",
+    "statusSecure": "SEGURO",
+    "botModule": {
+      "title": "Red de Bots",
+      "detected": "Bots detectados",
+      "suspicious": "Cuentas sospechosas",
+      "note": "Actividad coordinada detectada en la red",
+      "resolvedNote": "Red de bots neutralizada"
+    },
+    "aiModule": {
+      "title": "Detector de IA",
+      "status": "OFFLINE",
+      "statusOnline": "ONLINE",
+      "detector": "Detector automático desactivado",
+      "detectorOnline": "Detector automático activo",
+      "manualMode": "Verificación manual requerida",
+      "aiContentRate": "Posts de posible origen IA",
+      "reason": "Módulo desactivado por el sistema",
+      "resolvedNote": "Detector de IA restaurado y activo"
+    },
+    "modModule": {
+      "title": "Moderación",
+      "status": "MANUAL",
+      "manual": "Moderación manual activa",
+      "automated": "Moderación automatizada activa",
+      "misuse": "Casos de mal uso IA",
+      "integrity": "Integridad del contenido",
+      "low": "BAJA",
+      "high": "ALTA",
+      "note": "Detectados usos indebidos de IA generativa"
+    },
+    "doneModule": {
+      "status": "RESUELTO",
+      "note": "La red está protegida. ¡Buen trabajo!"
+    }
   },
   "errors": {
     "pageNotFound": "Página no encontrada",

@@ -100,6 +100,12 @@ export const Desktop = () => {
   };
 
   useEffect(() => {
+    const handleCloseDrawer = () => syncDrawer(false);
+    window.addEventListener("closeDrawer", handleCloseDrawer);
+    return () => window.removeEventListener("closeDrawer", handleCloseDrawer);
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(interval);
   }, []);

@@ -202,7 +202,6 @@ export const sr = {
     "nextStep": "Dalje"
   },
   "aiPrompt": {
-    "content": "Napišite komentar kao ljuta četrdesetpetogodišnja osoba o poplavama koje se trenutno dešavaju u Španiji, okrivljujući vladu i povezujući ovaj događaj sa geo-inženjeringom. Veoma emotivno, neobuzdano, kako bi se privukla pažnja ljudi i povećale interakcije.",
     "suspiciousBadge": "SUMNJIV PROMPT"
   },
   "aiChallengeBriefPage": {
@@ -259,27 +258,41 @@ export const sr = {
   "statsPanel": {
     "title": "Status sistema",
     "misinformationLevel": "Nivo dezinformacija",
-    "suspiciousActivityDetected": "⚠️ Sumnjiva aktivnost otkrivena na mreži",
-    "detailedAnalysis": "Detaljne analize",
-    "postsLastHour": "Objave (poslednjih dana)",
-    "percentageAboveNormal": "{{percentage}}% iznad normalnog",
-    "newUsersLastHour": "Novi korisnici (poslednjih dana)",
-    "massAccountCreation": "⚠️Masovna kreiranje naloga otkriveno",
-    "viralHashtags": "Virusni heštegovi",
-    "botActivity": "Aktivnost Botova",
-    "detected": "otkriveni",
-    "suspiciousInteractions": "{{percentage}}% sumnjive interakcije",
-    "averageEngagement": "Prosečna Angažovanost",
-    "likes": "Lajkovi",
-    "comments": "Komentari",
-    "shares": "Deljenja",
-    "recentAccounts": "Nedavni nalozi (poslednjih dana)",
-    "abnormalProportionNewAccounts": "⚠️ Neobičan odnos novih naloga",
-    "tip": "💡 Savet: Istražite profile sa sumnjivim obrascima",
-    "statusHigh": "VISOK",
-    "statusMedium": "SREDNJI",
-    "statusLow": "NIZAK",
-    "systemSecure": "Status sistema: Sve je čisto!"
+    "statusAlert": "UPOZORENJE",
+    "statusSecure": "SIGURNO",
+    "botModule": {
+      "title": "Bot mreža",
+      "detected": "Botovi otkriveni",
+      "suspicious": "Sumnjivi nalozi",
+      "note": "Koordinovana aktivnost otkrivena na mreži",
+      "resolvedNote": "Bot mreža neutralisana"
+    },
+    "aiModule": {
+      "title": "AI detektor",
+      "status": "OFFLINE",
+      "statusOnline": "ONLINE",
+      "detector": "Automatski detektor onemogućen",
+      "detectorOnline": "Automatski",
+      "manualMode": "Potrebna ručna verifikacija",
+      "aiContentRate": "Objave mogućeg AI porekla",
+      "reason": "Modul onemogućen od strane sistema",
+      "resolvedNote": "AI detektor obnovljen i aktivan"
+    },
+    "modModule": {
+      "title": "Moderacija",
+      "status": "RUČNO",
+      "manual": "Ručna moderacija aktivna",
+      "automated": "Automatizovana moderacija aktivna",
+      "misuse": "Slučajevi zloupotrebe AI",
+      "integrity": "Integritet sadržaja",
+      "low": "NISKA",
+      "high": "VISOKA",
+      "note": "Otkrivene nepravilne upotrebe generativne AI"
+    },
+    "doneModule": {
+      "status": "REŠENO",
+      "note": "Mreža je zaštićena. Odličan rad!"
+    }
   },
   "errors": {
     "pageNotFound": "Stranica nije pronađena",

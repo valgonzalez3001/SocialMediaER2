@@ -510,7 +510,12 @@ async function main() {
         if (sentenceNum === undefined || sentenceNum === null) continue;
 
         if (!sentencesMap[sentenceNum]) {
-          sentencesMap[sentenceNum] = [];
+          sentencesMap[sentenceNum] = { words: [], prompt: "" };
+        }
+
+        // Capture the prompt from the first row of each sentence (it's the same for all rows)
+        if (row["Prompt"] && !sentencesMap[sentenceNum].prompt) {
+          sentencesMap[sentenceNum].prompt = String(row["Prompt"]);
         }
 
         const word = {
@@ -519,7 +524,7 @@ async function main() {
           alts: [row["Alt1"] || "", row["Alt2"] || ""].filter(Boolean),
         };
 
-        sentencesMap[sentenceNum].push(word);
+        sentencesMap[sentenceNum].words.push(word);
       }
 
       // Convert to array of sentences (sorted by sentence number)

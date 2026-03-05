@@ -237,7 +237,7 @@ export const Admin = () => {
             // Mostrar notificación de nuevo mensaje
             toast((toastInstance) => (
                 <div
-                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); }}
+                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
                     style={{ cursor: "pointer" }}
                 >
                     <p style={{ fontWeight: "bold", marginBottom: "8px" }}>

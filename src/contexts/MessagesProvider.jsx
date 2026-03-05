@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from "react";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import i18n from "../i18n.jsx";
 import { useStats } from "./StatsProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "./XAPIProvider.jsx";
 import { useOS } from "./OSProvider.jsx";
@@ -26,6 +27,7 @@ export const MessagesProvider = ({ children }) => {
     markChallenge2InstructionsRead,
     markChallenge3InstructionsRead,
     markChallengeFinalInstructionsRead,
+    challenge1Completed,
   } = useStats();
   const { sendStatement } = useXAPI();
   const [messages, setMessages] = useState([
@@ -49,20 +51,21 @@ export const MessagesProvider = ({ children }) => {
     }
     toast((toastInstance) => (
       <div
-        onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); }}
+        onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
         style={{ cursor: "pointer" }}
       >
         <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
-          {t("messagesApp.newMessageNotification")}
+          {i18n.t("messagesApp.newMessageNotification")}
         </p>
         <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
-          {t("messagesApp.newMessageFromBoss")}
+          {i18n.t("messagesApp.newMessageFromBoss")}
         </p>
       </div>
     ), {
       duration: 4000,
       icon: "📬",
       position: "bottom-center",
+      style: challenge1Completed ? {} : { marginBottom: "100px" },
     });
     notificationShownRef.current = true;
   };

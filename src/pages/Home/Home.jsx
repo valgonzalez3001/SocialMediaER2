@@ -39,7 +39,7 @@ export const Home = () => {
         firstName: item.firstName,
         lastName: item.lastName,
         _feedAvatarURL: item.imageUser || "",
-        createdAt: item.date ? new Date(item.date).toISOString() : new Date().toISOString(),
+        createdAt: (() => { const d = new Date(item.date); return item.date && !isNaN(d) ? d.toISOString() : new Date().toISOString(); })(),
         likes: { likeCount: item.likes ?? "0" },
         comments: [],
         _isFeedPost: true,

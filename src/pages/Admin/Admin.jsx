@@ -29,6 +29,7 @@ export const Admin = () => {
     const [showHint, setShowHint] = useState(false);
     const [showResult, setShowResult] = useState(false);
     const [gameResult, setGameResult] = useState(null);
+    const [isPerfectResult, setIsPerfectResult] = useState(false);
 
     // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
     // No inicializar si el reto ya fue completado
@@ -182,9 +183,7 @@ export const Admin = () => {
 
         // Si todas las clasificaciones son correctas, reducir el nivel de desinformación y marcar reto como completado
         if (isPerfect) {
-            reduceMisinformation(30);
-            completeChallenge1();
-
+            setIsPerfectResult(true);
             // Guard dedup
             const completedKey1 = 'echo:challengeCompleted:1';
             if (!sessionStorage.getItem(completedKey1)) {
@@ -220,38 +219,6 @@ export const Admin = () => {
                 sessionStorage.removeItem('echo:challengeStart:1');
                 sendStatement(XAPI_VERBS.COMPLETED, ECHO_ACTIVITIES.PUZZLE_1, completedResult1, context1);
             }
-            
-            // Limpiar el estado del juego al completar exitosamente
-            sessionStorage.removeItem('adminGameUsernames');
-            sessionStorage.removeItem('adminGameState');
-            sessionStorage.removeItem('fromAdmin');
-            setClassifiedUsers({});
-            
-            // Enviar instrucciones del reto 2
-            addMessage({
-                fromKey: "messagesApp.messages.challenge2.from",
-                subjectKey: "messagesApp.messages.challenge2.subject",
-                contentKey: "messagesApp.messages.challenge2.content",
-            });
-            
-            // Mostrar notificación de nuevo mensaje
-            toast((toastInstance) => (
-                <div
-                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
-                    style={{ cursor: "pointer" }}
-                >
-                    <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
-                        {t("messagesApp.newMessageNotification")}
-                    </p>
-                    <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
-                        {t("messagesApp.challenge2Notification")}
-                    </p>
-                </div>
-            ), {
-                duration: 4000,
-                icon: "📬",
-                position: "bottom-center",
-            });
         } else {
             // Intento fallido: enviar "failed" con duración acumulada (sin borrar la clave de inicio para que el retry siga midiendo)
             const startRaw = sessionStorage.getItem('echo:challengeStart:1');
@@ -279,10 +246,42 @@ export const Admin = () => {
     };
 
     const handleTryAgain = () => {
-        // Cerrar el modal sin modificar usuarios ni selecciones,
-        // para que el jugador pueda corregir solo los errores
         setShowResult(false);
         setGameResult(null);
+        if (isPerfectResult) {
+            setIsPerfectResult(false);
+            reduceMisinformation(30);
+            completeChallenge1();
+            // Limpiar el estado del juego al completar exitosamente
+            sessionStorage.removeItem('adminGameUsernames');
+            sessionStorage.removeItem('adminGameState');
+            sessionStorage.removeItem('fromAdmin');
+            setClassifiedUsers({});
+            // Enviar instrucciones del reto 2
+            addMessage({
+                fromKey: "messagesApp.messages.challenge2.from",
+                subjectKey: "messagesApp.messages.challenge2.subject",
+                contentKey: "messagesApp.messages.challenge2.content",
+            });
+            // Mostrar notificación de nuevo mensaje
+            toast((toastInstance) => (
+                <div
+                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
+                    style={{ cursor: "pointer" }}
+                >
+                    <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
+                        {t("messagesApp.newMessageNotification")}
+                    </p>
+                    <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
+                        {t("messagesApp.challenge2Notification")}
+                    </p>
+                </div>
+            ), {
+                duration: 4000,
+                icon: "📬",
+                position: "bottom-center",
+            });
+        }
     };
 
     return (
@@ -402,26 +401,23 @@ export const Admin = () => {
             )}
 
             {showResult && gameResult && (
-                <div className="result-modal-overlay">
-                    <div className="result-modal">
-                        <div className="result-modal-header">
-                            <h3>{gameResult.correct === gameResult.total ? t('admin.perfectScore') : t('admin.resultTitle')}</h3>
+                <div className="challenge-completion-overlay">
+                    <div className="challenge-completion-modal">
+                        <div className="challenge-completion-icon">
+                            {isPerfectResult ? '🎉' : '❌'}
                         </div>
-                        <div className="result-modal-content">
-                            <div className="result-score">
-                                <p className="score-text">{t('admin.score')}: {gameResult.correct} / {gameResult.total}</p>
-                                {gameResult.correct === gameResult.total ? (
-                                    <p className="result-message success">🎉 {t('admin.allCorrect')}</p>
-                                ) : (
-                                    <p className="result-message error">❌ {t('admin.tryAgain')}</p>
-                                )}
-                            </div>
-                            <div className="result-buttons">
-                                <button className="try-again-button" onClick={handleTryAgain}>
-                                    {challenge1Completed ? t('desktop.window.close') : t('admin.playAgain')}
-                                </button>
-                            </div>
-                        </div>
+                        <h3 className="challenge-completion-title">
+                            {isPerfectResult ? t('admin.perfectScore') : t('admin.resultTitle')}
+                        </h3>
+                        <p className="challenge-completion-desc">
+                            {isPerfectResult ? t('admin.allCorrect') : t('admin.tryAgain')}
+                        </p>
+                        <p className="challenge-completion-desc">
+                            {t('admin.score')}: {gameResult.correct} / {gameResult.total}
+                        </p>
+                        <button className={`challenge-completion-close${isPerfectResult ? '' : ' challenge-completion-close--error'}`} onClick={handleTryAgain}>
+                            {isPerfectResult ? t('desktop.window.close') : t('admin.playAgain')}
+                        </button>
                     </div>
                 </div>
             )}

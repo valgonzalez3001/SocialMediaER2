@@ -44,6 +44,7 @@ export const AIContent = () => {
     const completionSentRef = useRef(false);
     const [step, setStep] = useState("list");
     const [selectedWords, setSelectedWords] = useState([]);
+    const [showCompletionModal, setShowCompletionModal] = useState(false);
     const [wrongChoice, setWrongChoice] = useState(null);
     const [showMatch, setShowMatch] = useState(false);
     const optionsByStep = useMemo(
@@ -92,6 +93,34 @@ export const AIContent = () => {
         return () => clearTimeout(timer);
     }, [isCompleted]);
 
+    const handleCompletionClose = () => {
+        setShowCompletionModal(false);
+        completeChallenge2();
+        sessionStorage.setItem("challenge3InstructionsSent", JSON.stringify(true));
+        addMessage({
+            fromKey: "messagesApp.messages.challenge3.from",
+            subjectKey: "messagesApp.messages.challenge3.subject",
+            contentKey: "messagesApp.messages.challenge3.content",
+        });
+        toast((toastInstance) => (
+            <div
+                onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
+                className="ai-content-toast"
+            >
+                <p className="ai-content-toast-title">
+                    {t("messagesApp.newMessageNotification")}
+                </p>
+                <p className="ai-content-toast-subtitle">
+                    {t("messagesApp.challenge3Notification")}
+                </p>
+            </div>
+        ), {
+            duration: 4000,
+            icon: "📬",
+            position: "bottom-center",
+        });
+    };
+
     useEffect(() => {
         if (!isCompleted || challenge2Completed) return;
 
@@ -104,9 +133,7 @@ export const AIContent = () => {
             return;
         }
 
-        completeChallenge2();
-
-        // Guard dedup
+        // Guard dedup + xAPI (immediate — records actual completion time)
         const completedKey2 = 'echo:challengeCompleted:2';
         if (!sessionStorage.getItem(completedKey2)) {
             sessionStorage.setItem(completedKey2, '1');
@@ -141,31 +168,9 @@ export const AIContent = () => {
             sessionStorage.removeItem('echo:challengeStart:2');
             sendStatement(XAPI_VERBS.COMPLETED, ECHO_ACTIVITIES.PUZZLE_2, completedResult2, context2);
         }
-        sessionStorage.setItem("challenge3InstructionsSent", JSON.stringify(true));
-        addMessage({
-            fromKey: "messagesApp.messages.challenge3.from",
-            subjectKey: "messagesApp.messages.challenge3.subject",
-            contentKey: "messagesApp.messages.challenge3.content",
-        });
 
-        toast((toastInstance) => (
-            <div
-                onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
-                className="ai-content-toast"
-            >
-                <p className="ai-content-toast-title">
-                    {t("messagesApp.newMessageNotification")}
-                </p>
-                <p className="ai-content-toast-subtitle">
-                    {t("messagesApp.challenge3Notification")}
-                </p>
-            </div>
-        ), {
-            duration: 4000,
-            icon: "📬",
-            position: "bottom-center",
-        });
-    }, [addMessage, challenge2Completed, completeChallenge2, isCompleted, t, gameData.words.length]);
+        setShowCompletionModal(true);
+    }, [isCompleted, challenge2Completed, sendStatement, gameData.words.length]);
 
     const handleWordClick = (word) => {
         if (wrongChoice) return;
@@ -225,23 +230,31 @@ export const AIContent = () => {
                                     </div>
 
                                     <section className="ai-content-panel">
-                                        <div className="ai-content-alert">
-                                            <div className="ai-content-alert-left">
-                                                <span className="ai-alert-icon">!</span>
-                                                <p>
-                                                    <strong>{t("aiContentPage.pendingReviewCount", { count: 1 })}</strong>{" "}
-                                                    {t("aiContentPage.pendingReviewText")}
-                                                </p>
+                                        {challenge2Completed ? (
+                                            <div className="ai-content-alert ai-content-alert--resolved">
+                                                <div className="ai-content-alert-left">
+                                                    <span className="ai-alert-icon ai-alert-icon--ok">✓</span>
+                                                    <p>{t("aiContentPage.noPendingReview")}</p>
+                                                </div>
                                             </div>
-                                            <button
-                                                className={`ai-content-verify${challenge2Completed ? " ai-content-verify--done" : ""}`}
-                                                type="button"
-                                                onClick={() => !challenge2Completed && setStep("verify")}
-                                                disabled={challenge2Completed}
-                                            >
-                                                {challenge2Completed ? `✓ ${t("aiContentPage.verifyButton")}` : t("aiContentPage.verifyButton")}
-                                            </button>
-                                        </div>
+                                        ) : (
+                                            <div className="ai-content-alert">
+                                                <div className="ai-content-alert-left">
+                                                    <span className="ai-alert-icon">!</span>
+                                                    <p>
+                                                        <strong>{t("aiContentPage.pendingReviewCount", { count: 1 })}</strong>{" "}
+                                                        {t("aiContentPage.pendingReviewText")}
+                                                    </p>
+                                                </div>
+                                                <button
+                                                    className="ai-content-verify"
+                                                    type="button"
+                                                    onClick={() => setStep("verify")}
+                                                >
+                                                    {t("aiContentPage.verifyButton")}
+                                                </button>
+                                            </div>
+                                        )}
 
                                         <div className="ai-content-stats">
                                             <span className="ai-content-check">✓</span>
@@ -482,6 +495,19 @@ export const AIContent = () => {
                     <StatsPanel />
                 </aside>
             </div>
+
+            {showCompletionModal && (
+                <div className="challenge-completion-overlay">
+                    <div className="challenge-completion-modal">
+                        <div className="challenge-completion-icon">🎉</div>
+                        <h3 className="challenge-completion-title">{t("aiGamePage.challengeCompleted")}</h3>
+                        <p className="challenge-completion-desc">{t("aiGamePage.challengeCompletedMsg")}</p>
+                        <button className="challenge-completion-close" onClick={handleCompletionClose}>
+                            {t("desktop.window.close")}
+                        </button>
+                    </div>
+                </div>
+            )}
         </>
     );
 };

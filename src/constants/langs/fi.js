@@ -178,7 +178,8 @@ export const fi = {
     "card1Title": "Will Smith syö spagettia",
     "card2Title": "Kolmen kuninkaan kulkue New Yorkissa",
     "tag": "TEKOÄLYN LUOMA",
-    "seeAll": "Katso kaikki →"
+    "seeAll": "Katso kaikki →",
+    "noPendingReview": "Uusia tarkistettavia julkaisuja ei havaittu."
   },
   "aiVerifyPage": {
     "title": "Vahvista tekoälyn luoma sisältö",
@@ -212,7 +213,9 @@ export const fi = {
     "success": "Onnittelut! Olet saanut lauseen valmiiksi oikein.",
     "error": "❌ Väärä sana. Yritä uudelleen alusta.",
     "back": "← Takaisin",
-    "finish": "Lopeta"
+    "finish": "Lopeta",
+    "challengeCompleted": "Haaste suoritettu! 🎉",
+    "challengeCompletedMsg": "Olet todistanut, että julkaisun sisältö on generatiivisen tekoälyn tuottamaa."
   },
   "aiIncorrectUsesPage": {
     "title": "Tekoälyn väärää käyttöä ⚠️",
@@ -224,7 +227,9 @@ export const fi = {
     "correct": "Oikein!",
     "progress": "Tapaus {{nykyinen}}",
     "next": "Seuraava tapaus",
-    "finish": "Käynnistä haaste uudelleen"
+    "finish": "Käynnistä haaste uudelleen",
+    "challengeCompleted": "Haaste suoritettu! 🎉",
+    "challengeCompletedMsg": "Olet vastannut oikein kaikkiin tekoälyn väärinkäyttötapauksiin."
   },
   "comments": {
     "placeholder": "Kirjoita kommentti...",

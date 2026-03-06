@@ -27,6 +27,7 @@ export const AIIncorrectUses = () => {
     const [wrongSelections, setWrongSelections] = useState({});
     const [correctSelected, setCorrectSelected] = useState({});
     const [sentReplies, setSentReplies] = useState({});
+    const [showCompletionModal, setShowCompletionModal] = useState(false);
     const challengeCases = useMemo(
         () => challengeData[currentLang] || challengeData.en || [],
         [currentLang]
@@ -50,6 +51,34 @@ export const AIIncorrectUses = () => {
             document.documentElement.classList.remove("ai-incorrect-no-scroll");
         };
     }, []);
+
+    const handleCompletionClose = () => {
+        setShowCompletionModal(false);
+        completeChallenge3();
+        sessionStorage.setItem("challengeFinalInstructionsSent", JSON.stringify(true));
+        addMessage({
+            fromKey: "messagesApp.messages.challengeFinal.from",
+            subjectKey: "messagesApp.messages.challengeFinal.subject",
+            contentKey: "messagesApp.messages.challengeFinal.content",
+        });
+        toast((toastInstance) => (
+            <div
+                onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
+                className="toast-clickable"
+            >
+                <p className="toast-title">
+                    {t("messagesApp.newMessageNotification")}
+                </p>
+                <p className="toast-subtitle">
+                    {t("messagesApp.challengeFinalNotification")}
+                </p>
+            </div>
+        ), {
+            duration: 4000,
+            icon: "📬",
+            position: "bottom-center",
+        });
+    };
 
     // Detectar cuando se completan todos los casos
     useEffect(() => {
@@ -103,34 +132,9 @@ export const AIIncorrectUses = () => {
                 sendStatement(XAPI_VERBS.COMPLETED, ECHO_ACTIVITIES.PUZZLE_3, completedResult, context);
             }
 
-            completeChallenge3();
-            sessionStorage.setItem("challengeFinalInstructionsSent", JSON.stringify(true));
-            
-            addMessage({
-                fromKey: "messagesApp.messages.challengeFinal.from",
-                subjectKey: "messagesApp.messages.challengeFinal.subject",
-                contentKey: "messagesApp.messages.challengeFinal.content",
-            });
-
-            toast((toastInstance) => (
-                <div
-                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
-                    className="toast-clickable"
-                >
-                    <p className="toast-title">
-                        {t("messagesApp.newMessageNotification")}
-                    </p>
-                    <p className="toast-subtitle">
-                        {t("messagesApp.challengeFinalNotification")}
-                    </p>
-                </div>
-            ), {
-                duration: 4000,
-                icon: "📬",
-                position: "bottom-center",
-            });
+            setShowCompletionModal(true);
         }
-    }, [sentReplies, challengeCases.length, challenge3Completed, completeChallenge3, addMessage, t, sendStatement]);
+    }, [sentReplies, challengeCases.length, challenge3Completed, sendStatement]);
 
     const activeCase = challengeCases.find((item) => item.id === activeCaseId) || null;
     const activeWrongSelections = activeCaseId ? (wrongSelections[activeCaseId] || {}) : {};
@@ -211,7 +215,7 @@ export const AIIncorrectUses = () => {
     return (
         <>
             <Header />
-            <div className="app-container ai-incorrect-app">
+            <div className="app-container">
                 <Navbar />
 
                 <main className="feed ai-incorrect-feed">
@@ -377,6 +381,19 @@ export const AIIncorrectUses = () => {
                                 Reply
                             </button>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {showCompletionModal && (
+                <div className="challenge-completion-overlay">
+                    <div className="challenge-completion-modal">
+                        <div className="challenge-completion-icon">🎉</div>
+                        <h3 className="challenge-completion-title">{t("aiIncorrectUsesPage.challengeCompleted")}</h3>
+                        <p className="challenge-completion-desc">{t("aiIncorrectUsesPage.challengeCompletedMsg")}</p>
+                        <button className="challenge-completion-close" onClick={handleCompletionClose}>
+                            {t("desktop.window.close")}
+                        </button>
                     </div>
                 </div>
             )}

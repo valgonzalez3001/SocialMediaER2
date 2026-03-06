@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useRef } from "react";
 
 /**
  * Contexto para gestionar el estado del "Sistema Operativo" simulado
@@ -18,6 +18,7 @@ export const OSProvider = ({ children }) => {
   // Estado de las aplicaciones abiertas
   const [openApps, setOpenApps] = useState([]);
   const [activeApp, setActiveApp] = useState(null);
+  const previousActiveAppRef = useRef(null);
 
   /**
    * Abre una aplicación
@@ -27,17 +28,23 @@ export const OSProvider = ({ children }) => {
     if (!openApps.includes(appId)) {
       setOpenApps([...openApps, appId]);
     }
+    previousActiveAppRef.current = activeApp;
     setActiveApp(appId);
   };
 
   /**
-   * Cierra una aplicación
+   * Cierra una aplicación y restaura el foco a la app que estaba activa antes
    * @param {string} appId - ID de la aplicación a cerrar
    */
   const closeApp = (appId) => {
-    setOpenApps(openApps.filter((id) => id !== appId));
+    const remaining = openApps.filter((id) => id !== appId);
+    setOpenApps(remaining);
     if (activeApp === appId) {
-      setActiveApp(openApps.length > 1 ? openApps[0] : null);
+      const prev = previousActiveAppRef.current;
+      const target = remaining.includes(prev)
+        ? prev
+        : remaining.length > 0 ? remaining[remaining.length - 1] : null;
+      setActiveApp(target);
     }
   };
 

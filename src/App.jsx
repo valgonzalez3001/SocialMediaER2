@@ -5,6 +5,7 @@ import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop.jsx";
 import { Toaster } from "react-hot-toast";
 import { PlayerOnboarding } from "./components/PlayerOnboarding/PlayerOnboarding";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Componente principal de la aplicación
@@ -17,6 +18,7 @@ import { useTranslation } from "react-i18next";
  */
 function App() {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
   const [onboardingComplete, setOnboardingComplete] = useState(false);
 
   // Resetear siempre los datos al montar el componente principal
@@ -24,6 +26,7 @@ function App() {
   useEffect(() => {
     sessionStorage.clear();
     setOnboardingComplete(false);
+    navigate("/", { replace: true });
   }, []);
 
   const handleOnboardingComplete = (playerData) => {

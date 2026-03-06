@@ -15,7 +15,7 @@ export const postsSR = [
     firstName: "Example name",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 05 2026 11:04:18"),
+    createdAt: new Date("March 06 2026 11:46:18"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0

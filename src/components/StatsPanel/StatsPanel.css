@@ -257,7 +257,38 @@
   color: #a08040;
 }
 
+/* ── SVG helpers ── */
+.sp-gauge-svg { display: block; }
+.sp-gauge-arc  { transition: stroke-dasharray 0.6s ease, stroke 0.5s ease; }
+.sp-donut-arc  { transition: stroke-dasharray 0.6s ease, stroke 0.5s ease; }
+
+/* ── Dynamic colour classes (used via currentColor in SVG) ── */
+.sp-color--danger  { color: #e74c3c; }
+.sp-color--warn    { color: #f39c12; }
+.sp-color--ok      { color: #27ae60; }
+.sp-color--offline { color: #95a5a6; }
+
 /* ── Responsive hide ── */
 @media (max-width: 1200px) {
   .stats-panel { display: none; }
+}
+
+/* ── Celebrate animation (triggered when a challenge completes) ── */
+@keyframes sp-celebrate {
+  0%   { transform: scale(1);    box-shadow: none;                                       opacity: 1; }
+  8%   { transform: scale(1.07); box-shadow: 0 0 28px rgba(39, 174, 96, 0.8);            opacity: 1; }
+  20%  { transform: scale(1.06); box-shadow: 0 0 16px rgba(255, 255, 255, 0.55);         opacity: 0.82; }
+  35%  { transform: scale(1.07); box-shadow: 0 0 32px rgba(39, 174, 96, 0.9);            opacity: 1; }
+  50%  { transform: scale(1.05); box-shadow: 0 0 16px rgba(255, 255, 255, 0.45);         opacity: 0.80; }
+  65%  { transform: scale(1.06); box-shadow: 0 0 24px rgba(39, 174, 96, 0.7);            opacity: 1; }
+  80%  { transform: scale(1.02); box-shadow: 0 0 10px rgba(39, 174, 96, 0.35);           opacity: 1; }
+  100% { transform: scale(1);    box-shadow: none;                                       opacity: 1; }
+}
+
+.sp-module--celebrating {
+  animation: sp-celebrate 2.4s ease-in-out forwards;
+  position: relative;
+  z-index: 5;
+  /* ensure overflow is visible so the glow shadow isn't clipped */
+  overflow: visible;
 }

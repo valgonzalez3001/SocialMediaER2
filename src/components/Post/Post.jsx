@@ -146,10 +146,7 @@ export const Post = ({ post }) => {
           <p>{getLocalizedContent(post?.content, i18n.language)}</p>
         </div>
 
-        <div
-          onClick={() => navigate(`/post-detail/${post?.id}`)}
-          className="media"
-        >
+        <div className="media">
           {post?.mediaUrl && post.type !== "image" && (
             <video controls autoPlay muted loop>
               <source src={post?.mediaUrl} />

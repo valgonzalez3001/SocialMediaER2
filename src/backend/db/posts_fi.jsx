@@ -15,7 +15,7 @@ export const postsFI = [
     firstName: "Example name",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 05 2026 11:04:17"),
+    createdAt: new Date("March 06 2026 11:46:17"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0

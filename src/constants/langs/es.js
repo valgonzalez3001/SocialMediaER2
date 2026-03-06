@@ -183,7 +183,8 @@ export const es = {
     "card1Title": "Will Smith come spaghetti",
     "card2Title": "Cabalgata de Reyes en Nueva York",
     "tag": "GENERADO POR IA",
-    "seeAll": "Ver todo →"
+    "seeAll": "Ver todo →",
+    "noPendingReview": "No new posts detected for review."
   },
   "aiVerifyPage": {
     "title": "Verificar contenido generado por IA",
@@ -217,7 +218,9 @@ export const es = {
     "success": "¡Felicidades! Has completado la frase correctamente.",
     "error": "❌ Palabra incorrecta. Intenta de nuevo desde el principio.",
     "back": "← Atrás",
-    "finish": "Finalizar"
+    "finish": "Finalizar",
+    "challengeCompleted": "¡Reto superado! 🎉",
+    "challengeCompletedMsg": "Has demostrado que el contenido de la publicación fue generada por IA generativa."
   },
   "aiIncorrectUsesPage": {
     "title": "Usos incorrectos de IA ⚠️",
@@ -230,7 +233,9 @@ export const es = {
     "progress": "Caso {{current}} de {{total}}",
     "next": "Siguiente caso",
     "finish": "Reiniciar reto",
-    "cases": "[object Object],[object Object],[object Object]"
+    "cases": "[object Object],[object Object],[object Object]",
+    "challengeCompleted": "¡Reto superado! 🎉",
+    "challengeCompletedMsg": "Has respondido correctamente a todos los casos de uso incorrecto de IA."
   },
   "comments": {
     "placeholder": "Escribe un comentario...",

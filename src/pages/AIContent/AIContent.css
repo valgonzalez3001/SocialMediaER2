@@ -101,6 +101,15 @@
     opacity: 0.85;
 }
 
+.ai-content-alert--resolved {
+    background: #d4f0d4;
+    color: #1a3d1a;
+}
+
+.ai-alert-icon--ok {
+    background: #4caf50;
+}
+
 .ai-content-stats {
     display: flex;
     align-items: center;

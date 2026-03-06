@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import "./SocialMediaApp.css";
 import { useOS } from "../../contexts/OSProvider";
 import { NavRoutes } from "../../Routes/NavRoutes";
@@ -35,15 +35,18 @@ export const SocialMediaApp = ({ mode = "window" }) => {
   const [loginDone, setLoginDone] = useState(
     () => sessionStorage.getItem("socialLoginDone") === "true"
   );
+  const prevLoginDoneRef = useRef(loginDone);
 
   const shouldRequireLogin = useMemo(() => {
     const missionBriefRead = sessionStorage.getItem("missionBriefRead") === "true";
     return missionBriefRead && !challenge1Completed;
   }, [challenge1Completed]);
 
-  // Navegar a home cuando se monta el componente o después del login
+  // Solo navegar a home cuando loginDone acaba de cambiar de false a true (login real)
   useEffect(() => {
-    if (loginDone && !sessionStorage.getItem("fromAdmin")) {
+    const prev = prevLoginDoneRef.current;
+    prevLoginDoneRef.current = loginDone;
+    if (loginDone && !prev && !sessionStorage.getItem("fromAdmin")) {
       navigate("/", { replace: true });
     }
     // Run only when login state changes; route changes should not trigger redirects.

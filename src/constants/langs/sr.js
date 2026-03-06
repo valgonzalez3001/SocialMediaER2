@@ -183,7 +183,8 @@ export const sr = {
     "card1Title": "Vil Smit jede špagete",
     "card2Title": "Hrišćanska parada Tri kralja u Njujorku",
     "tag": "GENERISANO VEŠTAČKOM INTELIGENCIJOM",
-    "seeAll": "Pogledaj sve →"
+    "seeAll": "Pogledaj sve →",
+    "noPendingReview": "Nisu pronađene nove objave za pregled."
   },
   "aiVerifyPage": {
     "title": "Proveri sadržaj generisan veštačkom inteligencijom",
@@ -217,7 +218,9 @@ export const sr = {
     "success": "Čestitamo! Tačno ste dovršili rečenicu.",
     "error": "❌ Pogrešna reč. Pokušajte ponovo od početka.",
     "back": "← Nazad",
-    "finish": "Završi"
+    "finish": "Završi",
+    "challengeCompleted": "Izazov završen! 🎉",
+    "challengeCompletedMsg": "Dokazao/la si da je sadržaj objave generisala generativna veštačka inteligencija."
   },
   "aiIncorrectUsesPage": {
     "title": "Nepravilne upotrebe veštačke inteligencije ⚠️",
@@ -229,7 +232,9 @@ export const sr = {
     "correct": "Tačno!",
     "progress": "Primer {{current}} od {{total}}",
     "next": "Sledeći primer",
-    "finish": "Pokreni izazov ponovo"
+    "finish": "Pokreni izazov ponovo",
+    "challengeCompleted": "Izazov završen! 🎉",
+    "challengeCompletedMsg": "Ispravno si odgovorio/la na sve slučajeve pogrešne upotrebe veštačke inteligencije."
   },
   "comments": {
     "placeholder": "Napiši komentar...",

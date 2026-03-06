@@ -1,6 +1,5 @@
 import "./AIContent.css";
 import React, { useEffect, useMemo, useState, useRef } from "react";
-import { toast } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 
 import { Header } from "../../components/Header/Header";
@@ -9,12 +8,10 @@ import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
-import { useOS } from "../../contexts/OSProvider.jsx";
 import aiContent from "./AIContent.json";
 
 export const AIContent = () => {
     const { t } = useTranslation();
-    const { openApp } = useOS();
     const currentLang = t("langKey");
 
     // Pick a random sentence ONCE per session and persist the index so navigating
@@ -102,23 +99,8 @@ export const AIContent = () => {
             subjectKey: "messagesApp.messages.challenge3.subject",
             contentKey: "messagesApp.messages.challenge3.content",
         });
-        toast((toastInstance) => (
-            <div
-                onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
-                className="ai-content-toast"
-            >
-                <p className="ai-content-toast-title">
-                    {t("messagesApp.newMessageNotification")}
-                </p>
-                <p className="ai-content-toast-subtitle">
-                    {t("messagesApp.challenge3Notification")}
-                </p>
-            </div>
-        ), {
-            duration: 4000,
-            icon: "📬",
-            position: "bottom-center",
-        });
+        window.dispatchEvent(new Event("openDrawer"));
+        window.dispatchEvent(new Event("bossMessage"));
     };
 
     useEffect(() => {
@@ -425,35 +407,58 @@ export const AIContent = () => {
 
                                         <div className="ai-game-words-container">
                                             <div className={`ai-game-sentence ${isCompleted ? "completed" : ""}`}>
-                                                {selectedWords.map((word, idx) => (
-                                                    <div
-                                                        key={idx}
-                                                        className="ai-game-selected-word-group"
-                                                        style={isCompleted ? { "--word-index": idx } : undefined}
-                                                    >
-                                                        <span className="ai-game-selected-word">{word}</span>
-                                                        <span className="ai-game-word-percentage">
-                                                            {gameData.words[idx].percentage}
-                                                        </span>
-                                                    </div>
-                                                ))}
-                                                {!isCompleted && (
-                                                    <div className="ai-game-options-column">
-                                                        {optionsByStep[selectedWords.length].map((word) => (
-                                                            <button
-                                                                key={`${selectedWords.length}-${word}`}
-                                                                className={`ai-game-word-button ${
-                                                                    wrongChoice?.step === selectedWords.length &&
-                                                                    wrongChoice?.word === word
-                                                                        ? "wrong-word"
-                                                                        : ""
-                                                                }`}
-                                                                onClick={() => handleWordClick(word)}
-                                                            >
-                                                                <span className="ai-game-word-text">{word}</span>
-                                                            </button>
+                                                {isCompleted ? (
+                                                    selectedWords.map((word, idx) => (
+                                                        <div
+                                                            key={idx}
+                                                            className="ai-game-selected-word-group"
+                                                            style={{ "--word-index": idx }}
+                                                        >
+                                                            <span className="ai-game-selected-word">{word}</span>
+                                                            <span className="ai-game-word-percentage">
+                                                                {gameData.words[idx].percentage}
+                                                            </span>
+                                                        </div>
+                                                    ))
+                                                ) : (
+                                                    <>
+                                                        {selectedWords.slice(0, -1).map((word, idx) => (
+                                                            <div key={idx} className="ai-game-selected-word-group">
+                                                                <span className="ai-game-selected-word">{word}</span>
+                                                                <span className="ai-game-word-percentage">
+                                                                    {gameData.words[idx].percentage}
+                                                                </span>
+                                                            </div>
                                                         ))}
-                                                    </div>
+                                                        <div className="ai-game-active-group">
+                                                            {selectedWords.length > 0 && (
+                                                                <div className="ai-game-selected-word-group">
+                                                                    <span className="ai-game-selected-word">
+                                                                        {selectedWords[selectedWords.length - 1]}
+                                                                    </span>
+                                                                    <span className="ai-game-word-percentage">
+                                                                        {gameData.words[selectedWords.length - 1].percentage}
+                                                                    </span>
+                                                                </div>
+                                                            )}
+                                                            <div className="ai-game-options-column">
+                                                                {optionsByStep[selectedWords.length].map((word) => (
+                                                                    <button
+                                                                        key={`${selectedWords.length}-${word}`}
+                                                                        className={`ai-game-word-button ${
+                                                                            wrongChoice?.step === selectedWords.length &&
+                                                                            wrongChoice?.word === word
+                                                                                ? "wrong-word"
+                                                                                : ""
+                                                                        }`}
+                                                                        onClick={() => handleWordClick(word)}
+                                                                    >
+                                                                        <span className="ai-game-word-text">{word}</span>
+                                                                    </button>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    </>
                                                 )}
                                             </div>
 

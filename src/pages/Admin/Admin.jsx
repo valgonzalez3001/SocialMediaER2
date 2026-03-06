@@ -1,7 +1,6 @@
 import "./Admin.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
 import { useTranslation } from 'react-i18next';
 
 import { useUser } from "../../contexts/UserProvider.jsx";
@@ -264,23 +263,8 @@ export const Admin = () => {
                 contentKey: "messagesApp.messages.challenge2.content",
             });
             // Mostrar notificación de nuevo mensaje
-            toast((toastInstance) => (
-                <div
-                    onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
-                    style={{ cursor: "pointer" }}
-                >
-                    <p style={{ fontWeight: "bold", marginBottom: "8px" }}>
-                        {t("messagesApp.newMessageNotification")}
-                    </p>
-                    <p style={{ fontSize: "0.9rem", color: "#7f8c8d" }}>
-                        {t("messagesApp.challenge2Notification")}
-                    </p>
-                </div>
-            ), {
-                duration: 4000,
-                icon: "📬",
-                position: "bottom-center",
-            });
+            window.dispatchEvent(new Event("openDrawer"));
+            window.dispatchEvent(new Event("bossMessage"));
         }
     };
 

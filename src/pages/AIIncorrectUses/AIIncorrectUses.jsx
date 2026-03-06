@@ -1,7 +1,6 @@
 import "./AIIncorrectUses.css";
 import React, { useEffect, useMemo, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-hot-toast";
 
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
@@ -10,12 +9,10 @@ import { useUser } from "../../contexts/UserProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
-import { useOS } from "../../contexts/OSProvider.jsx";
 import challengeData from "./AIIncorrectUses.json";
 
 export const AIIncorrectUses = () => {
     const { t } = useTranslation();
-    const { openApp } = useOS();
     const currentLang = t("langKey");
     const { userState } = useUser();
     const { challenge3Completed, completeChallenge3 } = useStats();
@@ -61,23 +58,8 @@ export const AIIncorrectUses = () => {
             subjectKey: "messagesApp.messages.challengeFinal.subject",
             contentKey: "messagesApp.messages.challengeFinal.content",
         });
-        toast((toastInstance) => (
-            <div
-                onClick={() => { toast.dismiss(toastInstance.id); openApp("messages"); window.dispatchEvent(new Event("closeDrawer")); }}
-                className="toast-clickable"
-            >
-                <p className="toast-title">
-                    {t("messagesApp.newMessageNotification")}
-                </p>
-                <p className="toast-subtitle">
-                    {t("messagesApp.challengeFinalNotification")}
-                </p>
-            </div>
-        ), {
-            duration: 4000,
-            icon: "📬",
-            position: "bottom-center",
-        });
+        window.dispatchEvent(new Event("openDrawer"));
+        window.dispatchEvent(new Event("bossMessage"));
     };
 
     // Detectar cuando se completan todos los casos

@@ -48,10 +48,6 @@ export const fi = {
     "chatPlaceholder": "Kirjoita viesti...",
     "send": "Lähetä",
     "newMessageNotification": "Sinulle on uusi viesti!",
-    "newMessageFromBoss": "Pomollasi on sinulle tehtävä",
-    "congratulationNotification": "Pomosi on lähettänyt sinulle onnittelut",
-    "challenge2Notification": "Pomosi on lähettänyt ohjeet haasteeseen 2",
-    "challenge3Notification": "Pomosi on lähettänyt ohjeet haasteeseen 3",
     "time": {
       "minutesAgo": "{{count}} min sitten",
       "hoursAgo": "{{count}} h sitten"

@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "./Desktop.css";
 import { MessagesApp } from "../../components/MessagesApp/MessagesApp";
 import { SocialMediaApp } from "../../components/SocialMediaApp/SocialMediaApp";
 import { HintsApp } from "../../components/HintsApp/HintsApp";
 import { FilesApp } from "../../components/FilesApp/FilesApp";
 import { PopupNotification } from "../../components/PopupNotification/PopupNotification";
+import { BossNotification } from "../../components/BossNotification/BossNotification";
 import { useOS } from "../../contexts/OSProvider";
 import { useMessages } from "../../contexts/MessagesProvider";
 import { useStats } from "../../contexts/StatsProvider";
@@ -48,6 +49,8 @@ export const Desktop = () => {
   const [drawerOpen, setDrawerOpen] = useState(true);
   const [drawerTranslate, setDrawerTranslate] = useState(0);
   const [now, setNow] = useState(() => new Date());
+  const [bossNotifVisible, setBossNotifVisible] = useState(false);
+  const handleBossNotifDismiss = useCallback(() => setBossNotifVisible(false), []);
 
   const clampTranslate = (value) =>
     Math.min(Math.max(value, 0), closedTranslate);
@@ -101,8 +104,16 @@ export const Desktop = () => {
 
   useEffect(() => {
     const handleCloseDrawer = () => syncDrawer(false);
+    const handleOpenDrawer = () => syncDrawer(true);
+    const handleBossMessage = () => setBossNotifVisible(true);
     window.addEventListener("closeDrawer", handleCloseDrawer);
-    return () => window.removeEventListener("closeDrawer", handleCloseDrawer);
+    window.addEventListener("openDrawer", handleOpenDrawer);
+    window.addEventListener("bossMessage", handleBossMessage);
+    return () => {
+      window.removeEventListener("closeDrawer", handleCloseDrawer);
+      window.removeEventListener("openDrawer", handleOpenDrawer);
+      window.removeEventListener("bossMessage", handleBossMessage);
+    };
   }, []);
 
   useEffect(() => {
@@ -258,6 +269,11 @@ export const Desktop = () => {
           onClose={handleClosePopup}
         />
       )}
+
+      <BossNotification
+        visible={bossNotifVisible}
+        onDismiss={handleBossNotifDismiss}
+      />
     </div>
   );
 };

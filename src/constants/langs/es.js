@@ -48,11 +48,6 @@ export const es = {
     "chatPlaceholder": "Escribe un mensaje...",
     "send": "Enviar",
     "newMessageNotification": "¡Tienes un mensaje nuevo!",
-    "newMessageFromBoss": "Tu jefe tiene una misión para ti",
-    "congratulationNotification": "Tu jefe te ha enviado una felicitación",
-    "challenge2Notification": "Tu jefe te ha enviado las instrucciones del reto 2",
-    "challenge3Notification": "Tu jefe te ha enviado las instrucciones del reto 3",
-    "challengeFinalNotification": "Tu jefe te ha enviado las felicitaciones finales",
     "time": {
       "minutesAgo": "Hace {{count}} min",
       "hoursAgo": "Hace {{count}} h"
@@ -184,7 +179,7 @@ export const es = {
     "card2Title": "Cabalgata de Reyes en Nueva York",
     "tag": "GENERADO POR IA",
     "seeAll": "Ver todo →",
-    "noPendingReview": "No new posts detected for review."
+    "noPendingReview": "No se han detectado nuevos posts para revisar."
   },
   "aiVerifyPage": {
     "title": "Verificar contenido generado por IA",

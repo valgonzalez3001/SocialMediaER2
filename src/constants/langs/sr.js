@@ -48,11 +48,6 @@ export const sr = {
     "chatPlaceholder": "Napiši poruku...",
     "send": "Pošalji",
     "newMessageNotification": "Imate novu poruku!",
-    "newMessageFromBoss": "Vaš šef ima misiju za vas",
-    "congratulationNotification": "Vaš šef vam je poslao čestitke",
-    "challenge2Notification": "Vaš šef je poslao uputstva za izazov 2",
-    "challenge3Notification": "Vaš šef je poslao uputstva za izazov 3",
-    "challengeFinalNotification": "Vaš šef je poslao završne čestitke",
     "time": {
       "minutesAgo": "pre {{count}} min",
       "hoursAgo": "pre {{count}} h"

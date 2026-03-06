@@ -48,11 +48,6 @@ export const en = {
     "chatPlaceholder": "Type a message...",
     "send": "Send",
     "newMessageNotification": "You have a new message!",
-    "newMessageFromBoss": "Your boss has a mission for you",
-    "congratulationNotification": "Your boss has sent you a congratulation",
-    "challenge2Notification": "Your boss sent the instructions for challenge 2",
-    "challenge3Notification": "Your boss sent the instructions for challenge 3",
-    "challengeFinalNotification": "Your boss sent the final congratulations",
     "time": {
       "minutesAgo": "{{count}} min ago",
       "hoursAgo": "{{count}} h ago"
@@ -184,7 +179,7 @@ export const en = {
     "card2Title": "Christian Three King's Parade in New York",
     "tag": "AI GENERATED",
     "seeAll": "See all →",
-    "noPendingReview": "No se han detectado nuevos posts para revisar."
+    "noPendingReview": "No new posts detected for review."
   },
   "aiVerifyPage": {
     "title": "Verify AI generated content",

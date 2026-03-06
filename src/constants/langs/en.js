@@ -95,11 +95,10 @@ export const en = {
     "publish": "Post",
     "challengeLocked": "Challenge Locked",
     "completeChallenge1": "Complete the Admin challenge to unlock posting",
-    "selectTwoCorrect": "Select 2 correct statements about misinformation and bots",
-    "selectTwoStatements": "Please select exactly 2 statements",
+    "selectTwoCorrect": "You've protected ECHO from misinformation. Throughout this mission you learned to detect bots, verify sources and think critically. Now share that knowledge: select the 2 correct statements and publish your Community Note.",
     "incorrectSelection": "Incorrect selection. Try again!",
     "selected": "selected",
-    "publishConclusion": "Publish Community Note",
+    "publishConclusion": "Publish ",
     "conclusionText": "To combat misinformation on social media, it is essential that you develop critical thinking and verify information before sharing it. Bots and fake accounts often show repetitive patterns, suspicious activity at irregular times, and identical content. Learn to identify them and protect your community! 🔍✅",
     "escapeRoomCompleted": "🎉 Escape Room Completed! Thank you for learning to identify misinformation!"
   },

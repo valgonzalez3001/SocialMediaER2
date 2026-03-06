@@ -95,11 +95,10 @@ export const es = {
     "publish": "Publicar",
     "challengeLocked": "Reto Bloqueado",
     "completeChallenge1": "Completa el reto de Admin para desbloquear publicaciones",
-    "selectTwoCorrect": "Selecciona 2 afirmaciones correctas sobre desinformación y bots",
-    "selectTwoStatements": "Por favor selecciona exactamente 2 afirmaciones",
+    "selectTwoCorrect": "Has protegido ECHO de la desinformación. A lo largo de esta misión aprendiste a detectar bots, verificar fuentes y pensar de forma crítica. Ahora comparte ese conocimiento: selecciona las 2 afirmaciones correctas y publica tu Nota Comunitaria.",
     "incorrectSelection": "Selección incorrecta. ¡Intenta de nuevo!",
     "selected": "seleccionados",
-    "publishConclusion": "Publicar Nota Comunitaria",
+    "publishConclusion": "Publicar",
     "conclusionText": "Para combatir la desinformación en redes sociales, es esencial que desarrolles pensamiento crítico y verifiques la información antes de compartirla. Los bots y cuentas falsas suelen mostrar patrones repetitivos, actividad sospechosa en horarios irregulares y contenido idéntico. ¡Aprende a identificarlos y protege tu comunidad! 🔍✅",
     "escapeRoomCompleted": "🎉 ¡Escape Room Completado! ¡Gracias por aprender a identificar la desinformación!"
   },

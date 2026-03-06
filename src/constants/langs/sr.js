@@ -95,11 +95,10 @@ export const sr = {
     "publish": "Objavi",
     "challengeLocked": "Izazov zaključan",
     "completeChallenge1": "Završi Admin izazov da otključaš objavljivanje",
-    "selectTwoCorrect": "Izaberi 2 ispravne tvrdnje o dezinformaciji i botovima",
-    "selectTwoStatements": "Molim te izaberi tačno 2 tvrdnje",
+    "selectTwoCorrect": "Zaštitio si ECHO od dezinformacija. Tokom ove misije naučio si da prepoznaš botove, proveriš izvore i razmišljaš kritički. Sada podeli to znanje: izaberi 2 ispravne tvrdnje i objavi svoju Belešku.",
     "incorrectSelection": "Pogrešan izbor. Pokušaj ponovo!",
     "selected": "izabrano",
-    "publishConclusion": "Objavi zajedničku belešku",
+    "publishConclusion": "Objavi ",
     "conclusionText": "Za borbu protiv dezinformacija na društvenim mrežama, neophodno je da razvijete kriticko razmišljanje i da verifikujete informacije pre nego što ih podelite. Botovi i lažni nalozi često pokazuju ponavljajuće šablone, sumnjive aktivnosti u neregularnim vremenima i identičan sadržaj. Naučite da ih prepoznate i zaštitite svoju zajednicu! ???",
     "escapeRoomCompleted": "🎉 Escape Room Završen! Hvala što ste naučili de prepoznate dezinformacije!"
   },

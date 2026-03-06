@@ -154,7 +154,15 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
           />
         )}
         <div className="challenge-content">
-          <p className="challenge-description">{t("createPost.selectTwoCorrect")}</p>
+          <div className="cn-header">
+            <div className="cn-header-top">
+              <span className="cn-badge">📋 Community Note</span>
+              <span className={`cn-counter${selectedStatements.length === 2 ? " ready" : ""}`}>
+                {selectedStatements.length}/2 {t("createPost.selected")}
+              </span>
+            </div>
+            <p className="challenge-description">{t("createPost.selectTwoCorrect")}</p>
+          </div>
 
           <div className="statements-list">
             {statements.map((statement) => (
@@ -164,6 +172,8 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
                   selectedStatements.includes(statement.id) ? "selected" : ""
                 }`}
                 onClick={() => handleStatementClick(statement.id)}
+                role="checkbox"
+                aria-checked={selectedStatements.includes(statement.id)}
               >
                 <div className="statement-check">
                   {selectedStatements.includes(statement.id) && (
@@ -175,14 +185,16 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
             ))}
           </div>
 
-          <div className="post-btn-container">
-            <button
-              onClick={handleSubmit}
-              disabled={selectedStatements.length !== 2}
-              type="button"
-            >
-              {t("createPost.publishConclusion")}
-            </button>
+          <div className="cn-footer">
+            <div className="post-btn-container">
+              <button
+                onClick={handleSubmit}
+                disabled={selectedStatements.length !== 2}
+                type="button"
+              >
+                {t("createPost.publishConclusion")}
+              </button>
+            </div>
           </div>
         </div>
       </div>

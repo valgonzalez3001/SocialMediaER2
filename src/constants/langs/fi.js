@@ -91,11 +91,10 @@ export const fi = {
     "publish": "Julkaise",
     "challengeLocked": "Haaste Lukittu",
     "completeChallenge1": "Suorita Admin-haaste voidaksesi lähettää viestejä",
-    "selectTwoCorrect": "Valitse 2 oikeaa väitettä väärätiedoista ja boteista",
-    "selectTwoStatements": "Valitse tarkasti 2 väitettä",
+    "selectTwoCorrect": "Olet suojannut ECHOn väärältä tiedolta. Tässä tehtävässä opit tunnistamaan botteja, tarkistamaan lähteitä ja ajattelemaan kriittisesti. Jaa nyt tuo tieto: valitse 2 oikeaa väitettä ja julkaise Yhteisömuistiinpanosi.",
     "incorrectSelection": "Väärä valinta. Yritä uudelleen!",
     "selected": "valittu",
-    "publishConclusion": "Julkaise Yhteisöhuomautus",
+    "publishConclusion": "Julkaise ",
     "conclusionText": "Disinformaation vastustamiseksi sosiaalisessa mediassa on välttämätöntä, että kehität kriittistä ajattelua ja varmistat tiedot ennen jakamista. Botit ja väärät tilit osoittavat usein toistuvia malleja, epäilyttävää toimintaa outoina aikoina ja samana toistuvaa sisältöä. Opi tunnistamaan ne ja suojaa yhteisöäsi! 🔍✅",
     "escapeRoomCompleted": "🎉 Escape Room Valmis! Kiitos siitä, että opettelit tunnistamaan valetietoa!"
   },

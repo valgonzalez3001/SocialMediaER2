@@ -11,6 +11,13 @@ import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import challengeData from "./AIIncorrectUses.json";
 
+const formatDate = (iso) => {
+  if (!iso) return iso;
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+};
+
 export const AIIncorrectUses = () => {
     const { t } = useTranslation();
     const currentLang = t("langKey");
@@ -20,10 +27,18 @@ export const AIIncorrectUses = () => {
     const { sendStatement, trackChallengeStarted } = useXAPI();
     const completionSentRef = useRef(false);
     const [activeCaseId, setActiveCaseId] = useState(null);
-    const [selectedWrongOption, setSelectedWrongOption] = useState({});
-    const [wrongSelections, setWrongSelections] = useState({});
-    const [correctSelected, setCorrectSelected] = useState({});
-    const [sentReplies, setSentReplies] = useState({});
+    const [selectedWrongOption, setSelectedWrongOption] = useState(() => {
+        try { return JSON.parse(sessionStorage.getItem("ai-incorrect:selectedWrongOption") || "null") || {}; } catch { return {}; }
+    });
+    const [wrongSelections, setWrongSelections] = useState(() => {
+        try { return JSON.parse(sessionStorage.getItem("ai-incorrect:wrongSelections") || "null") || {}; } catch { return {}; }
+    });
+    const [correctSelected, setCorrectSelected] = useState(() => {
+        try { return JSON.parse(sessionStorage.getItem("ai-incorrect:correctSelected") || "null") || {}; } catch { return {}; }
+    });
+    const [sentReplies, setSentReplies] = useState(() => {
+        try { return JSON.parse(sessionStorage.getItem("ai-incorrect:sentReplies") || "null") || {}; } catch { return {}; }
+    });
     const [showCompletionModal, setShowCompletionModal] = useState(false);
     const challengeCases = useMemo(
         () => challengeData[currentLang] || challengeData.en || [],
@@ -139,8 +154,6 @@ export const AIIncorrectUses = () => {
         if (!option) return;
 
         const isCorrect = option.isCorrect === true;
-
-        // Send xAPI statement for option selection
         sendStatement(
             XAPI_VERBS.ANSWERED,
             {
@@ -171,24 +184,34 @@ export const AIIncorrectUses = () => {
         );
 
         if (isCorrect) {
-            setCorrectSelected((prev) => ({ ...prev, [activeCase.id]: true }));
-            setSelectedWrongOption((prev) => ({ ...prev, [activeCase.id]: null }));
+            const next = { ...correctSelected, [activeCase.id]: true };
+            setCorrectSelected(next);
+            sessionStorage.setItem("ai-incorrect:correctSelected", JSON.stringify(next));
+            const next2 = { ...selectedWrongOption, [activeCase.id]: null };
+            setSelectedWrongOption(next2);
+            sessionStorage.setItem("ai-incorrect:selectedWrongOption", JSON.stringify(next2));
             return;
         }
 
-        setWrongSelections((prev) => ({
-            ...prev,
+        const nextWrong = {
+            ...wrongSelections,
             [activeCase.id]: {
-                ...(prev[activeCase.id] || {}),
+                ...(wrongSelections[activeCase.id] || {}),
                 [optionIndex]: true,
             },
-        }));
-        setSelectedWrongOption((prev) => ({ ...prev, [activeCase.id]: optionIndex }));
+        };
+        setWrongSelections(nextWrong);
+        sessionStorage.setItem("ai-incorrect:wrongSelections", JSON.stringify(nextWrong));
+        const nextSelected = { ...selectedWrongOption, [activeCase.id]: optionIndex };
+        setSelectedWrongOption(nextSelected);
+        sessionStorage.setItem("ai-incorrect:selectedWrongOption", JSON.stringify(nextSelected));
     };
 
     const handleSendReply = () => {
         if (!activeCase || !canSendReply) return;
-        setSentReplies((prev) => ({ ...prev, [activeCase.id]: true }));
+        const next = { ...sentReplies, [activeCase.id]: true };
+        setSentReplies(next);
+        sessionStorage.setItem("ai-incorrect:sentReplies", JSON.stringify(next));
         setActiveCaseId(null);
     };
 
@@ -219,7 +242,7 @@ export const AIIncorrectUses = () => {
                                             <div className="ai-incorrect-post-meta">
                                                 <span className="ai-incorrect-post-name">{item.post.name}</span>
                                                 <span className="ai-incorrect-post-handle">{item.post.handle}</span>
-                                                <span className="ai-incorrect-post-handle">{item.post.date}</span>
+                                                <span className="ai-incorrect-post-handle">{formatDate(item.post.date)}</span>
                                             </div>
                                             <p className="ai-incorrect-post-text">{item.post.text}</p>
                                             {sentReplies[item.id] && (
@@ -303,7 +326,7 @@ export const AIIncorrectUses = () => {
                                 <div className="ai-incorrect-post-meta">
                                     <span className="ai-incorrect-post-name">{activeCase.post.name}</span>
                                     <span className="ai-incorrect-post-handle">{activeCase.post.handle}</span>
-                                    <span className="ai-incorrect-post-handle">{activeCase.post.date}</span>
+                                    <span className="ai-incorrect-post-handle">{formatDate(activeCase.post.date)}</span>
                                 </div>
                                 <p className="ai-incorrect-post-text">{activeCase.post.text}</p>
                             </div>
@@ -326,7 +349,7 @@ export const AIIncorrectUses = () => {
                                         {activeCase.officialPost?.handle ||
                                             `@${echoOfficialUser?.username || "ECHO"}`}
                                     </span>&nbsp;&nbsp;
-                                    <span className="ai-incorrect-post-handle">{activeCase.post.date}</span>
+                                    <span className="ai-incorrect-post-handle">{formatDate(activeCase.post.date)}</span>
                                 </div>
                                 <p className="x-reply-helper">{t("aiIncorrectUsesPage.instruction")}</p>
 

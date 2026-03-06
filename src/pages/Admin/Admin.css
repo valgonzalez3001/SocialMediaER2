@@ -155,10 +155,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;          /* importante */
+  z-index: 1000;          
 }
 
-/* Modal: modo día + asegurar que está encima del overlay */
+
 .hint-modal {
   background-color: var(--surface);
   color: var(--text-color);
@@ -170,7 +170,7 @@
   overflow-y: auto;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   position: relative;
-  z-index: 1001;          /* importante */
+  z-index: 1001;     
 }
 
 .hint-modal-header {
@@ -214,8 +214,8 @@
 .hint-modal-content li {
   padding: 0.75rem;
   margin-bottom: 0.5rem;
-  background-color: rgba(29, 155, 240, 0.08);
-  border: 1px solid rgba(29, 155, 240, 0.15);
+  background-color: #1d9bf014;
+  border: 1px solid #1d9bf026;
   border-radius: 8px;
   line-height: 1.5;
 }
@@ -261,7 +261,7 @@
   font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(29, 155, 240, 0.3);
+  box-shadow: 0 4px 15px #1d9bf04d;
 }
 
 .submit-button:hover {

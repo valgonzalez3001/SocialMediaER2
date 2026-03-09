@@ -54,26 +54,30 @@ export const fi = {
     },
     "messages": {
       "missionBrief": {
-        "from": "Pomo",
-        "subject": "🚨 KRIITTINEN TEHTÄVÄ: Disinformaatiohälytys!",
-        "content": "KRIITTINEN HÄTÄ: verkko on vaarassa.\n\nHaaste 1:\nAvaa Epailyttavat Tilit ja tunnista botit.\n\nJos epaonnistut, disinformaatio kasvaa. Ratkaise nyt.\n\n- Pomo"
+        "from": "Turvatiimi",
+        "subject": "🛡️ Epäilyttäviä käyttäjiä havaittu ECHOssa",
+        "content": "Moderaattori,\n\nECHO-verkko on havainnut useita epäilyttäviä käyttäjiä, jotka saattavat olla botteja levittämässä disinformaatiota.\n\nTehtäväsi on tutkia heitä ja estää heitä manipuloimasta keskusteluja alustalla.\n\n🔎 Siirry kohtaan Epäilyttävät käyttäjät ja analysoi profiilit.\n\n💡 Jos tarvitset apua bottien tunnistamiseen, käytä vihjepainiketta haasteessa."
       },
       "congratulations": {
-        "from": "Pomo",
-        "subject": "🎉 Onnittelut! Haaste Suoritettu",
-        "content": "Hyvää työtä, ensimmäinen uhka pysäytetty.\n\nSiirry heti haasteeseen 2 ja tarkista AI-sisältö.\n\n- Pomo"
+        "from": "Turvatiimi",
+        "subject": "🎉 Tehtävä suoritettu",
+        "content": "Moderaattori,\n\nOlet suorittanut kaikki haasteet onnistuneesti ja auttanut vähentämään disinformaatiota ECHOssa.\n\nPäätöstesi ansiosta alusta on nyt turvallisempi yhteisölle."
       },
       "challenge2": {
-        "from": "Pomo",
-        "subject": "🧩 HAASTE 2: AI-detektori pois käytöstä",
-        "content": "AI-tunnistus on poissa kaytosta.\n\nHaaste 2:\nTee manuaalinen tarkistus sivulla AI Generated Content.\n\nTarvitsemme tuloksen heti.\n\n- Pomo"
+        "from": "Turvatiimi",
+        "subject": "🤖 Mahdollisesti tekoälyn tuottamia julkaisuja havaittu",
+        "content": "Moderaattori,\n\nHavaitsemme julkaisuja, jotka saattavat olla tekoälyn tuottamia ja levittää disinformaatiota.\n\nAutomaattinen tunnistimemme on huollossa, joten tarvitsemme sinua tarkistamaan julkaisun käsin.\n\n🧠 Siirry kohtaan Tekoälyn tuottama sisältö ja analysoi julkaisu."
       },
       "challenge3": {
-        "from": "Pomo",
-        "subject": "Haaste 3: AI:n väärä käyttö",
-        "content": "Hyvä, haaste 2 valmis.\n\nHaaste 3:\nVastaa julkaisuihin ja pysäytä AI:n väärinkäyttö.\n\nJokainen oikea vastaus torjuu uutta disinformaatiota.\n\n- Pomo"
+        "from": "Turvatiimi",
+        "subject": "⚠️ Tekoälyn virheellinen käyttö havaittu",
+        "content": "Moderaattori,\n\nJotkut käyttäjät käyttävät tekoälyä tiedon hankkimiseen, mutta eivät aina vastuullisesti.\n\nSokea luottamus tekoälyyn voi johtaa virheisiin tai disinformaatioon.\n\n🧭 Siirry kohtaan Tekoälyn virheellinen käyttö ja tarkastele tilanteita."
       },
-      "challengeFinal": {}
+      "challengeFinal": {
+        "from": "Turvatiimi",
+        "subject": "📝 Viimeinen tehtävä: Community Note",
+        "content": "Moderaattori,\n\nOlet auttanut tunnistamaan botteja ja analysoimaan tekoälyn käyttöä verkossa.\n\nNyt tarvitsemme selkeän viestin, joka auttaa muita käyttäjiä tunnistamaan disinformaation.\n\n📝 Siirry kohtaan Uusi julkaisu ja valitse kaksi oikeaa väittämää."
+      }
     }
   },
   "socialLogin": {
@@ -223,6 +227,7 @@ export const fi = {
     "progress": "Tapaus {{nykyinen}}",
     "next": "Seuraava tapaus",
     "finish": "Käynnistä haaste uudelleen",
+    "reply": "Vastaa",
     "challengeCompleted": "Haaste suoritettu! 🎉",
     "challengeCompletedMsg": "Olet vastannut oikein kaikkiin tekoälyn väärinkäyttötapauksiin."
   },

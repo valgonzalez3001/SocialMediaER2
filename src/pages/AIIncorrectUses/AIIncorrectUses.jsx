@@ -226,11 +226,13 @@ export const AIIncorrectUses = () => {
                 <main className="feed ai-incorrect-feed">
                     <div className="ai-incorrect-uses-page">
                         <section className="ai-incorrect-panel">
-                            <header className="ai-incorrect-header">
-                                <h1>{t("aiIncorrectUsesPage.title")}</h1>
-                                <p>{t("aiIncorrectUsesPage.subtitle")}</p>
-                            </header>
-                            <p className="ai-incorrect-instruction">{t("aiIncorrectUsesPage.instruction")}</p>
+                            <div className="ai-incorrect-panel-header">
+                                <header className="ai-incorrect-header">
+                                    <h1>{t("aiIncorrectUsesPage.title")}</h1>
+                                    <p>{t("aiIncorrectUsesPage.subtitle")}</p>
+                                </header>
+                                <p className="ai-incorrect-instruction">{t("aiIncorrectUsesPage.instruction")}</p>
+                            </div>
 
                             <div className="ai-incorrect-list">
                                 {challengeCases.map((item) => (
@@ -269,35 +271,37 @@ export const AIIncorrectUses = () => {
                                                     </div>
                                                 </div>
                                             )}
+                                            <div className="post-actions-bar">
+                                                <button
+                                                    type="button"
+                                                    className="reply-open-btn"
+                                                    onClick={() => {
+                                                        // Send xAPI statement for viewing the case
+                                                        sendStatement(
+                                                            XAPI_VERBS.EXPERIENCED,
+                                                            {
+                                                                id: `${ECHO_ACTIVITIES.PUZZLE_3.id}/case/${item.id}`,
+                                                                definition: {
+                                                                    name: { en: `View AI Incorrect Use Case ${item.id}` },
+                                                                    type: "http://adlnet.gov/expapi/activities/assessment",
+                                                                },
+                                                            },
+                                                            null,
+                                                            {
+                                                                contextActivities: {
+                                                                    parent: [ECHO_ACTIVITIES.PUZZLE_3],
+                                                                    grouping: [ECHO_ACTIVITIES.GAME],
+                                                                },
+                                                            }
+                                                        );
+                                                        setActiveCaseId(item.id);
+                                                        setSelectedWrongOption((prev) => ({ ...prev, [item.id]: null }));
+                                                    }}
+                                                >
+                                                    💬 {t("aiIncorrectUsesPage.reply")}
+                                                </button>
+                                            </div>
                                         </div>
-                                        <button
-                                            type="button"
-                                            className="reply-open-btn"
-                                            onClick={() => {
-                                                // Send xAPI statement for viewing the case
-                                                sendStatement(
-                                                    XAPI_VERBS.EXPERIENCED,
-                                                    {
-                                                        id: `${ECHO_ACTIVITIES.PUZZLE_3.id}/case/${item.id}`,
-                                                        definition: {
-                                                            name: { en: `View AI Incorrect Use Case ${item.id}` },
-                                                            type: "http://adlnet.gov/expapi/activities/assessment",
-                                                        },
-                                                    },
-                                                    null,
-                                                    {
-                                                        contextActivities: {
-                                                            parent: [ECHO_ACTIVITIES.PUZZLE_3],
-                                                            grouping: [ECHO_ACTIVITIES.GAME],
-                                                        },
-                                                    }
-                                                );
-                                                setActiveCaseId(item.id);
-                                                setSelectedWrongOption((prev) => ({ ...prev, [item.id]: null }));
-                                            }}
-                                        >
-                                            Reply
-                                        </button>
                                     </article>
                                 ))}
                             </div>

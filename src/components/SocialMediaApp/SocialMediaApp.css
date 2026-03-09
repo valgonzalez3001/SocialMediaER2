@@ -81,7 +81,7 @@
 }
 
 .window-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #ffffff33;
 }
 
 .window-button.close:hover {
@@ -110,7 +110,7 @@
 .social-login-card {
   width: min(420px, 92vw);
   background: rgba(18, 18, 26, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #ffffff14;
   border-radius: 16px;
   padding: 24px;
   display: flex;

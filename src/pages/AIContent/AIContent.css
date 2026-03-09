@@ -140,17 +140,17 @@
 }
 
 .ai-content-card-image {
-    height: 110px;
+    height: 400px;
     background-size: cover;
     background-position: center;
 }
 
 .ai-image-one {
-    background-image: linear-gradient(120deg, #5a3b1f 0%, #b27d3d 45%, #f4d8b4 100%);
+    background-image: url('/assets/willsmith.png');
 }
 
 .ai-image-two {
-    background-image: linear-gradient(120deg, #2b2c2f 0%, #6a6a70 50%, #c5c7cc 100%);
+    background-image: url('/assets/christianparade.jpg');
 }
 
 .ai-content-card-body {

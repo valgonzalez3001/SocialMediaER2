@@ -54,29 +54,29 @@ export const sr = {
     },
     "messages": {
       "missionBrief": {
-        "from": "Šef",
-        "subject": "🚨 KRITIČNA MISIJA: Upozorenje o Dezinformaciji!",
-        "content": "KRITIČNI ALARM: mreža je ugrožena.\n\nIzazov 1:\nOtvori Sumnjive naloge i pronađi botove.\n\nAko ne uspeš, dezinformacije rastu. Reši odmah.\n\n- Sef"
+        "from": "Bezbednosni tim",
+        "subject": "🛡️ Sumnjivi korisnici otkriveni na mreži ECHO",
+        "content": "Moderatore,\n\nMreža ECHO je otkrila nekoliko sumnjivih korisnika koji bi mogli biti botovi koji šire dezinformacije.\n\nTvoja misija je da ih istražiš i sprečiš da manipulišu razgovorima na platformi.\n\n🔎 Idi na Sumnjivi korisnici i analiziraj profile.\n\n💡 Ako ti treba pomoć da prepoznaš botove, koristi dugme za tragove u izazovu."
       },
       "congratulations": {
-        "from": "Šef",
-        "subject": " 🎉 Čestitamo! Izazov završen",
-        "content": "Odličan posao, prva pretnja je zaustavljena.\n\nPređi odmah na izazov 2 i proveri AI sadržaj.\n\n- Sef"
+        "from": "Bezbednosni tim",
+        "subject": "🎉 Misija završena",
+        "content": "Moderatore,\n\nUspešno si završio/la sve izazove i pomogao/la da se smanji dezinformisanje na mreži ECHO.\n\nZahvaljujući tvojim odlukama, platforma je sada bezbednije mesto za zajednicu."
       },
       "challenge2": {
-        "from": "Šef",
-        "subject": "🧩 IZAZOV 2: AI detektor van mreže",
-        "content": "Sistem za detekciju veštačke inteligencije je van mreže.\n\nIzazov 2:\nPokrenite ručnu proveru u delu Sadržaj generisan veštačkom inteligencijom.\n\nPotrebni su nam rezultati odmah.\n\n- Šef"
+        "from": "Bezbednosni tim",
+        "subject": "🤖 Moguće objave generisane veštačkom inteligencijom",
+        "content": "Moderatore,\n\nOtkrivamo objave koje bi mogle biti generisane veštačkom inteligencijom i širiti dezinformacije.\n\nNaš automatski detektor je na održavanju, pa je potrebno da ručno pregledaš objavu.\n\n🧠 Idi na Sadržaj generisan veštačkom inteligencijom i analiziraj objavu."
       },
       "challenge3": {
-        "from": "Šef",
-        "subject": "Izazov 3: Nepravilne upotrebe veštačke inteligencije",
-        "content": "Primljeno. Izazov 2 završen.\n\nIzazov 3:\nOdgovorite na objave smernicama kako biste zaustavili nepravilnu upotrebu veštačke inteligencije.\n\nSvaki tačan odgovor blokira nove dezinformacije.\n\n- Šef"
+        "from": "Bezbednosni tim",
+        "subject": "⚠️ Zloupotreba veštačke inteligencije",
+        "content": "Moderatore,\n\nNeki korisnici koriste veštačku inteligenciju da bi dobili informacije, ali ne uvek odgovorno.\n\nSlepo poverenje u AI može dovesti do grešaka ili dezinformacija.\n\n🧭 Idi na Zloupotrebe veštačke inteligencije i pregledaj situacije."
       },
       "challengeFinal": {
-        "from": "Šef",
-        "subject": "🎉 Čestitamo! Svi izazovi su završeni",
-        "content": "Misija je skoro završena.\n\nZavršni korak:\nObjavite Napomenu zajednice iz Nove objave sa ključnim poukama.\n\nZatvorite slučaj.\n\n- Šef"
+        "from": "Bezbednosni tim",
+        "subject": "📝 Završni zadatak: Community Note",
+        "content": "Moderatore,\n\nPomogao/la si da identifikujemo botove i analiziramo upotrebu veštačke inteligencije.\n\nSada nam je potrebna jasna poruka koja će pomoći drugim korisnicima da prepoznaju dezinformacije.\n\n📝 Idi na Nova objava i izaberi dve tačne tvrdnje."
       }
     }
   },
@@ -227,6 +227,7 @@ export const sr = {
     "progress": "Primer {{current}} od {{total}}",
     "next": "Sledeći primer",
     "finish": "Pokreni izazov ponovo",
+    "reply": "Odgovori",
     "challengeCompleted": "Izazov završen! 🎉",
     "challengeCompletedMsg": "Ispravno si odgovorio/la na sve slučajeve pogrešne upotrebe veštačke inteligencije."
   },

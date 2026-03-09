@@ -54,29 +54,29 @@ export const es = {
     },
     "messages": {
       "missionBrief": {
-        "from": "El Jefe",
-        "subject": "🚨 MISIÓN CRÍTICA: ¡Alerta de Desinformación!",
-        "content": "ALERTA CRITICA: la red esta en riesgo.\n\nReto 1 (obligatorio):\nEntra a Cuentas Sospechosas y detecta bots infiltrados.\n\nSi fallas, la desinformacion sigue creciendo. Resuelvelo ahora.\n\n- El Jefe"
+        "from": "Equipo de Seguridad",
+        "subject": "🛡️ Usuarios sospechosos detectados en ECHO",
+        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\nTu misión es investigarlos para evitar que sigan manipulando la conversación en la plataforma.\n\n🔎 Accede a Usuarios Sospechosos y analiza los perfiles para determinar cuáles podrían ser bots y cuáles parecen cuentas reales.\n\n💡 Si necesitas ayuda para identificar los parámetros que caracterizan a un bot, utiliza el botón de pistas dentro del reto."
       },
       "congratulations": {
-        "from": "El Jefe",
-        "subject": "🎉 ¡Felicitaciones! Reto Completado",
-        "content": "Buen trabajo, primer bloqueo neutralizado.\n\nNo bajes la guardia: activa el reto 2 y verifica contenido generado por IA.\n\n- El Jefe"
+        "from": "Equipo de Seguridad",
+        "subject": "🎉 Misión completada",
+        "content": "Moderador,\n\nHas completado con éxito todos los retos y has ayudado a reducir la desinformación en ECHO.\n\nGracias a tus decisiones, la plataforma es ahora un lugar más seguro para la comunidad."
       },
       "challenge2": {
-        "from": "El Jefe",
-        "subject": "🧩 RETO 2: Detector de IA apagado",
-        "content": "Sistema de deteccion IA fuera de servicio.\n\nReto 2:\nHaz la verificacion manual en Contenido Generado por IA.\n\nNecesitamos resultado inmediato.\n\n- El Jefe"
+        "from": "Equipo de Seguridad",
+        "subject": "🤖 Posibles publicaciones generadas por IA detectadas",
+        "content": "Moderador,\n\nEstamos detectando publicaciones que podrían haber sido generadas por inteligencia artificial y estar difundiendo desinformación.\n\nNuestro detector automático está en mantenimiento, por lo que necesitamos que revises una publicación manualmente.\n\n🧠 Accede a Contenido Generado por IA y analiza el post para determinar si podría haber sido generado por una IA."
       },
       "challenge3": {
-        "from": "El Jefe",
-        "subject": "Reto 3: Usos incorrectos de IA",
-        "content": "Recibido. Reto 2 completado.\n\nReto 3:\nResponde publicaciones con recomendaciones para frenar usos incorrectos de IA.\n\nCada respuesta correcta evita nueva desinformacion.\n\n- El Jefe"
+        "from": "Equipo de Seguridad",
+        "subject": "⚠️ Uso incorrecto de IA detectado",
+        "content": "Moderador,\n\nAlgunos usuarios están utilizando inteligencia artificial para obtener información, pero no siempre de forma responsable.\n\nConfiar ciegamente en la IA puede provocar errores o desinformación.\n\n🧭 Accede a Usos Incorrectos de IA y revisa cada situación para elegir la respuesta que mejor aconseje al usuario."
       },
       "challengeFinal": {
-        "from": "El Jefe",
-        "subject": "🎉 ¡Felicitaciones! Todos los retos completados",
-        "content": "Mision casi completada.\n\nPaso final:\nPublica la Community Note desde Nueva Publicacion con los aprendizajes clave.\n\nCierra el caso.\n\n- El Jefe"
+        "from": "Equipo de Seguridad",
+        "subject": "📝 Misión final: Community Note",
+        "content": "Moderador,\n\nHas ayudado a identificar bots y a analizar el uso de la inteligencia artificial en la red.\n\nAhora necesitamos una conclusión clara que ayude a otros usuarios a reconocer la desinformación.\n\n📝 Accede a Nueva Publicación y selecciona las dos afirmaciones correctas para crear una Community Note para la comunidad de ECHO."
       }
     }
   },
@@ -228,6 +228,7 @@ export const es = {
     "next": "Siguiente caso",
     "finish": "Reiniciar reto",
     "cases": "[object Object],[object Object],[object Object]",
+    "reply": "Responder",
     "challengeCompleted": "¡Reto superado! 🎉",
     "challengeCompletedMsg": "Has respondido correctamente a todos los casos de uso incorrecto de IA."
   },

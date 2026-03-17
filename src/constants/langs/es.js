@@ -175,7 +175,7 @@ export const es = {
     "statsCount": "{{count}} posts",
     "statsText": "han sido marcados como generados por IA en la última hora.",
     "card1Title": "Will Smith come spaghetti",
-    "card2Title": "Cabalgata de Reyes en Nueva York",
+    "card2Title": "Madrid sufre esta mañana el impacto de un meteorito",
     "tag": "GENERADO POR IA",
     "seeAll": "Ver todo →",
     "noPendingReview": "No se han detectado nuevos posts para revisar."

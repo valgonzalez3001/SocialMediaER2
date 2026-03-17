@@ -2,33 +2,57 @@
   "en": [
     {
       "id": 1,
-      "text": "Bots can be detected by consistent and repetitive activity patterns.",
+      "text": "Bots can be detected through consistent and repetitive activity patterns.",
       "correct": true,
       "category": "bot-detection"
     },
     {
       "id": 2,
-      "text": "Verified accounts are always real accounts and can never be bots.",
+      "text": "Verified accounts are always real and can never be bots.",
       "correct": false,
       "category": "verification-misconception"
     },
     {
       "id": 3,
-      "text": "Account verification using multiple sources of information is key to combating disinformation.",
+      "text": "Verifying what we read on social media with multiple sources of information is key to combating misinformation.",
       "correct": true,
       "category": "information-verification"
     },
     {
       "id": 4,
-      "text": "Bots always have public profiles and never private ones.",
+      "text": "Artificial intelligence always generates content based on evidence.",
       "correct": false,
       "category": "bot-misconception"
     },
     {
       "id": 5,
-      "text": "Digital education is essential for users to identify fake content.",
+      "text": "Moderation of digital platforms is not necessary and can be fully automated with AI.",
       "correct": false,
-      "category": "digital-education"
+      "category": "media-literacy"
+    },
+    {
+      "id": 6,
+      "text": "Artificial intelligence generates content based on statistical patterns learned from its training data.",
+      "correct": true,
+      "category": "ai-misconception"
+    },
+    {
+      "id": 7,
+      "text": "Artificial intelligence is always up to date with the latest news in real time.",
+      "correct": false,
+      "category": "ai-usage"
+    },
+    {
+      "id": 8,
+      "text": "Artificial intelligence can be used to summarize information, but its results should be verified.",
+      "correct": true,
+      "category": "ai-usage"
+    },
+    {
+      "id": 9,
+      "text": "Accounts that spread misinformation use language that aims to provoke strong emotions.",
+      "correct": true,
+      "category": "misinformation-style"
     }
   ],
   "es": [
@@ -46,21 +70,45 @@
     },
     {
       "id": 3,
-      "text": "La verificacion de cuentas con multiples fuentes de informacion es clave para combatir la desinformacion",
+      "text": "La verificación de lo que leemos en las redes sociales con multiples fuentes de informacion es clave para combatir la desinformacion",
       "correct": true,
       "category": "information-verification"
     },
     {
       "id": 4,
-      "text": "Los bots siempre tienen perfiles publicos y nunca privados",
+      "text": "La inteligencia artificial genera contenidos siempre basados en evidencia",
       "correct": false,
       "category": "bot-misconception"
     },
     {
       "id": 5,
-      "text": "La educacion digital es fundamental para que los usuarios identifiquen contenido falso",
+      "text": "La moderación de plataformas digitales no es necesaria y se puede automatizar completamente con una IA",
       "correct": false,
-      "category": "digital-education"
+      "category": "media-literacy"
+    },
+    {
+      "id": 6,
+      "text": "La inteligencia artificial genera contenido a partir de patrones estadísticos aprendidos de sus datos de entrenamiento",
+      "correct": true,
+      "category": "ai-misconception"
+    },
+    {
+      "id": 7,
+      "text": "La inteligencia artificial siempre está al tanto de las últimas noticias en tiempo real.",
+      "correct": false,
+      "category": "ai-usage"
+    },
+    {
+      "id": 8,
+      "text": "La inteligencia artificial puede usarse para resumir información, pero sus resultados deben verificarse.",
+      "correct": true,
+      "category": "ai-usage"
+    },
+    {
+      "id": 9,
+      "text": "Las cuentas que difunden desinformación usan lenguaje que busca provocar emociones fuertes",
+      "correct": true,
+      "category": "misinformation-style"
     }
   ],
   "fi": [

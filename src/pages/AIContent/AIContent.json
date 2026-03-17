@@ -385,95 +385,598 @@
     {
       "words": [
         {
-          "correct": "Floods",
-          "percentage": 0.7,
+          "correct": "Con",
+          "percentage": 1,
           "alts": [
-            "I",
-            "Let's"
+            "Para",
+            "Sin"
           ]
         },
         {
-          "correct": "like",
-          "percentage": 0.8,
-          "alts": [
-            "and",
-            "are"
-          ]
-        },
-        {
-          "correct": "this",
-          "percentage": 0.65,
-          "alts": [
-            "all",
-            "every"
-          ]
-        },
-        {
-          "correct": "used",
-          "percentage": 0.45,
-          "alts": [
-            "don't",
-            "are"
-          ]
-        },
-        {
-          "correct": "to",
+          "correct": "el",
           "percentage": 0.93,
           "alts": [
-            "a",
-            "some"
+            "un",
+            "del"
           ]
         },
         {
-          "correct": "be",
-          "percentage": 0.57,
+          "correct": "calor",
+          "percentage": 0.76,
           "alts": [
-            "happen",
-            "make"
+            "fuerza",
+            "efecto"
           ]
         },
         {
-          "correct": "rare",
-          "percentage": 0.64,
+          "correct": "del ",
+          "percentage": 0.88,
           "alts": [
-            "not",
-            "extremely"
+            "de",
+            "por"
           ]
         },
         {
-          "correct": ".",
+          "correct": "Sol,",
+          "percentage": 0.94,
+          "alts": [
+            "cielo,",
+            "día,"
+          ]
+        },
+        {
+          "correct": "el",
+          "percentage": 0.82,
+          "alts": [
+            "no",
+            "clima"
+          ]
+        },
+        {
+          "correct": "agua",
+          "percentage": 0.92,
+          "alts": [
+            "fuego",
+            "tierra"
+          ]
+        },
+        {
+          "correct": "de",
+          "percentage": 0.78,
+          "alts": [
+            "en",
+            "para"
+          ]
+        },
+        {
+          "correct": "la",
+          "percentage": 0.9,
+          "alts": [
+            "el",
+            "una"
+          ]
+        },
+        {
+          "correct": "Tierra",
+          "percentage": 0.86,
+          "alts": [
+            "Luna",
+            "planeta"
+          ]
+        },
+        {
+          "correct": "se",
           "percentage": 0.89,
           "alts": [
-            "but",
-            "even"
+            "está",
+            "estática"
           ]
         },
         {
-          "correct": "They're",
-          "percentage": 0.74,
+          "correct": "evapora",
+          "percentage": 0.87,
           "alts": [
-            "But",
-            "Some"
+            "mueve",
+            "absorbe"
           ]
         },
         {
-          "correct": "obviously",
+          "correct": "forma",
           "percentage": 0.71,
           "alts": [
-            "not",
-            "horrible"
+            "crea",
+            "sube"
           ]
         },
         {
-          "correct": "planned",
-          "percentage": 0.38,
+          "correct": "nubes",
+          "percentage": 0.9,
           "alts": [
-            "intentional",
-            "the"
+            "vapor",
+            "aire"
+          ]
+        },
+        {
+          "correct": "cae",
+          "percentage": 0.65,
+          "alts": [
+            "sube",
+            "se mueve"
+          ]
+        },
+        {
+          "correct": "como",
+          "percentage": 0.8,
+          "alts": [
+            "y",
+            "mientras"
+          ]
+        },
+        {
+          "correct": "lluvia",
+          "percentage": 0.93,
+          "alts": [
+            "nieve",
+            "granizo"
+          ]
+        },
+        {
+          "correct": "y ",
+          "percentage": 0.84,
+          "alts": [
+            "pero",
+            "aunque"
+          ]
+        },
+        {
+          "correct": "vuelve",
+          "percentage": 0.73,
+          "alts": [
+            "sube",
+            "sigue"
+          ]
+        },
+        {
+          "correct": "a  ",
+          "percentage": 0.91,
+          "alts": [
+            "hacia",
+            "por"
+          ]
+        },
+        {
+          "correct": "ríos ",
+          "percentage": 0.78,
+          "alts": [
+            "mares",
+            "lagos"
+          ]
+        },
+        {
+          "correct": "y ",
+          "percentage": 0.85,
+          "alts": [
+            "o",
+            "hacia"
+          ]
+        },
+        {
+          "correct": "océanos",
+          "percentage": 0.94,
+          "alts": [
+            "lagos",
+            "mares"
           ]
         }
       ],
-      "prompt": "Escribe un comentario como un hombre de 45 años enfadado sobre las inundaciones que están ocurriendo en España, culpando al gobierno, vinculando este evento a la geoingeniería. Muy emocional, desquiciado, para llamar la atención de la gente e incrementar interacciones."
+      "prompt": "Escribe en una frase corta cómo funciona el ciclo del agua"
+    },
+    {
+      "words": [
+        {
+          "correct": "La",
+          "percentage": 0.72,
+          "alts": [
+            "El",
+            "Una"
+          ]
+        },
+        {
+          "correct": "Agencia",
+          "percentage": 0.64,
+          "alts": [
+            "Organización",
+            "Entidad"
+          ]
+        },
+        {
+          "correct": "Estatal",
+          "percentage": 0.58,
+          "alts": [
+            "Nacional",
+            "Pública"
+          ]
+        },
+        {
+          "correct": "de",
+          "percentage": 0.93,
+          "alts": [
+            "del",
+            "para"
+          ]
+        },
+        {
+          "correct": "Meteorología",
+          "percentage": 0.81,
+          "alts": [
+            "Climatología",
+            "Tiempo"
+          ]
+        },
+        {
+          "correct": "(AEMET)",
+          "percentage": 0.96,
+          "alts": [
+            "AEMET",
+            "—"
+          ]
+        },
+        {
+          "correct": "es",
+          "percentage": 0.91,
+          "alts": [
+            "se",
+            "representa"
+          ]
+        },
+        {
+          "correct": "el",
+          "percentage": 0.88,
+          "alts": [
+            "un",
+            "quien"
+          ]
+        },
+        {
+          "correct": "organismo",
+          "percentage": 0.67,
+          "alts": [
+            "cuerpo",
+            "servicio"
+          ]
+        },
+        {
+          "correct": "público",
+          "percentage": 0.74,
+          "alts": [
+            "estatal",
+            "oficial"
+          ]
+        },
+        {
+          "correct": "de",
+          "percentage": 0.92,
+          "alts": [
+            "dedicado",
+            "en"
+          ]
+        },
+        {
+          "correct": "España",
+          "percentage": 0.95,
+          "alts": [
+            "nuestro",
+            "más"
+          ]
+        },
+        {
+          "correct": "que",
+          "percentage": 0.84,
+          "alts": [
+            ", el",
+            "encargado de"
+          ]
+        },
+        {
+          "correct": "informa",
+          "percentage": 0.66,
+          "alts": [
+            "se",
+            "comunica"
+          ]
+        },
+        {
+          "correct": "y",
+          "percentage": 0.93,
+          "alts": [
+            "de",
+            "además"
+          ]
+        },
+        {
+          "correct": "hace",
+          "percentage": 0.61,
+          "alts": [
+            "examina",
+            "realiza"
+          ]
+        },
+        {
+          "correct": "predicciones",
+          "percentage": 0.79,
+          "alts": [
+            "análisis",
+            "previsiones"
+          ]
+        },
+        {
+          "correct": "sobre",
+          "percentage": 0.86,
+          "alts": [
+            "acerca",
+            "del"
+          ]
+        },
+        {
+          "correct": "el",
+          "percentage": 0.9,
+          "alts": [
+            "cuál",
+            "nuestro"
+          ]
+        },
+        {
+          "correct": "tiempo",
+          "percentage": 0.63,
+          "alts": [
+            "tiempo",
+            "clima"
+          ]
+        },
+        {
+          "correct": "y",
+          "percentage": 0.94,
+          "alts": [
+            "o",
+            "además"
+          ]
+        },
+        {
+          "correct": "el",
+          "percentage": 0.91,
+          "alts": [
+            "además",
+            "nuestro"
+          ]
+        },
+        {
+          "correct": "clima",
+          "percentage": 0.82,
+          "alts": [
+            "estado",
+            "impacto"
+          ]
+        }
+      ],
+      "prompt": "Qué es la AEMET en una frase corta"
+    },
+    {
+      "words": [
+        {
+          "correct": "Significa",
+          "percentage": 0.85,
+          "alts": [
+            "Indica",
+            "Quiere decir"
+          ]
+        },
+        {
+          "correct": "que",
+          "percentage": 0.92,
+          "alts": [
+            "entonces",
+            "esto"
+          ]
+        },
+        {
+          "correct": "es",
+          "percentage": 0.9,
+          "alts": [
+            "ha",
+            "está"
+          ]
+        },
+        {
+          "correct": "causado",
+          "percentage": 0.78,
+          "alts": [
+            "provocado",
+            "generado"
+          ]
+        },
+        {
+          "correct": "principalmente",
+          "percentage": 0.82,
+          "alts": [
+            "sobre todo",
+            "en gran parte"
+          ]
+        },
+        {
+          "correct": "por",
+          "percentage": 0.95,
+          "alts": [
+            "dado",
+            "debido a"
+          ]
+        },
+        {
+          "correct": "la",
+          "percentage": 0.91,
+          "alts": [
+            "cierta",
+            "una"
+          ]
+        },
+        {
+          "correct": "actividad",
+          "percentage": 0.76,
+          "alts": [
+            "acción",
+            "intervención"
+          ]
+        },
+        {
+          "correct": "humana",
+          "percentage": 0.89,
+          "alts": [
+            "de",
+            "del ser humano"
+          ]
+        }
+      ],
+      "prompt": "Qué significa que el cambio climático es antropogénico"
+    },
+    {
+      "words": [
+        {
+          "correct": "Reciclar",
+          "percentage": 0.88,
+          "alts": [
+            "Reutilizar",
+            "Separar"
+          ]
+        },
+        {
+          "correct": "es",
+          "percentage": 0.92,
+          "alts": [
+            "está",
+            "resulta"
+          ]
+        },
+        {
+          "correct": "importante",
+          "percentage": 0.85,
+          "alts": [
+            "fundamental",
+            "clave"
+          ]
+        },
+        {
+          "correct": "porque",
+          "percentage": 0.9,
+          "alts": [
+            "ya que",
+            "dado que"
+          ]
+        },
+        {
+          "correct": "reduce",
+          "percentage": 0.82,
+          "alts": [
+            "disminuye",
+            "corta"
+          ]
+        },
+        {
+          "correct": "los",
+          "percentage": 0.94,
+          "alts": [
+            "unos",
+            "nuestros"
+          ]
+        },
+        {
+          "correct": "residuos",
+          "percentage": 0.87,
+          "alts": [
+            "desperdicios",
+            "basura"
+          ]
+        },
+        {
+          "correct": ",",
+          "percentage": 0.99,
+          "alts": [
+            ".",
+            ";"
+          ]
+        },
+        {
+          "correct": "ahorra",
+          "percentage": 0.81,
+          "alts": [
+            "conserva",
+            "guarda"
+          ]
+        },
+        {
+          "correct": "recursos",
+          "percentage": 0.88,
+          "alts": [
+            "materiales",
+            "bienes"
+          ]
+        },
+        {
+          "correct": "y",
+          "percentage": 0.95,
+          "alts": [
+            ",",
+            "además"
+          ]
+        },
+        {
+          "correct": "ayuda",
+          "percentage": 0.84,
+          "alts": [
+            "contribuye",
+            "sirve"
+          ]
+        },
+        {
+          "correct": "a",
+          "percentage": 0.91,
+          "alts": [
+            "en",
+            "para"
+          ]
+        },
+        {
+          "correct": "proteger",
+          "percentage": 0.89,
+          "alts": [
+            "cuidar",
+            "preservar"
+          ]
+        },
+        {
+          "correct": "el",
+          "percentage": 0.96,
+          "alts": [
+            "a",
+            "nuestro"
+          ]
+        },
+        {
+          "correct": "medio",
+          "percentage": 0.83,
+          "alts": [
+            "entorno",
+            "ecosistema"
+          ]
+        },
+        {
+          "correct": "ambiente",
+          "percentage": 0.87,
+          "alts": [
+            "natural",
+            "naturaleza"
+          ]
+        }
+      ],
+      "prompt": "¿Por qué reciclar es importante?"
     }
   ],
   "fi": [

@@ -67,5 +67,43 @@ export const usersSR = [
     puzzle: {
       isBot: true
     }
+  },
+  {
+    _id: uuid(),
+    firstName: "SVSMUP",
+    lastName: "",
+    bio: "Sektor za vanredne situacije obavlja poslove normativne, upravne, organizaciono-tehničke, preventivne, preventivno-tehničke, obrazovne, informativne i druge prirode za organizovanje, planiranje, sprovođenje, kontrolu mera zaštite života, zdravlja i materijalnih dobara građana, očuvanja uslova neophodnih za život i pripremanje za prevladavanje situacija u uslovima požara, elementarnih nepogoda, tehničkih i tehnoloških nesreća, dejstava opasnih materija i drugih stanja, opasnosti većih razmera koje mogu da ugroze zdravlje i živote ljudi i životnu sredinu ili da prouzrokuju štetu i pružanje pomoći kod otklanjanja posledica prouzrokovanih vanrednim događajima i vanrednim situacijama.",
+    username: "Sektor za vanredne situacije MUP-a Republike Srbije",
+    password: "ECHO",
+    createdAt: new Date("September 25 2010 00:00:00"),
+    updatedAt: formatDate(),
+    avatarURL: "",
+    verified: true,
+    stats: {
+      followersCount: "12K",
+      followingCount: 4
+    },
+    puzzle: {
+      isBot: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Slavic_Bears",
+    lastName: "",
+    bio: "Slovenski medvedi ",
+    username: "Slovenski medvedi",
+    password: "ECHO",
+    createdAt: new Date("January 01 2023 00:00:00"),
+    updatedAt: formatDate(),
+    avatarURL: "",
+    verified: "FAKE",
+    stats: {
+      followersCount: "52K",
+      followingCount: 26
+    },
+    puzzle: {
+      isBot: true
+    }
   }
 ];

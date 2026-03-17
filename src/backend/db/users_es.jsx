@@ -53,7 +53,7 @@ export const usersES = [
     password: "ECHO",
     createdAt: new Date("Marzo 2020"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
     verified: false,
     stats: {
       followersCount: "27K",
@@ -72,7 +72,7 @@ export const usersES = [
     password: "ECHO",
     createdAt: new Date("Julio 2021"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarURL: "/assets/users/AlertaRural.png",
     verified: false,
     stats: {
       followersCount: "18K",
@@ -91,7 +91,7 @@ export const usersES = [
     password: "ECHO",
     createdAt: new Date("Enero 2020"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarURL: "/assets/users/Agenda2030.png",
     verified: false,
     stats: {
       followersCount: "42K",

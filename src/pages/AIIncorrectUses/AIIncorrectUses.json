@@ -77,57 +77,9 @@
     {
       "id": "case-1",
       "post": {
-        "name": "Geronimo Albaicin",
-        "handle": "@GeronimoAlbaicin",
-        "date": "2025-12-11T00:00:00.000Z",
-        "image": "/assets/users/GeronimoAlbaicin.jpg",
-        "text": "My morning routine is drinking coffee and reading the news summary that MINT makes for me"
-      },
-      "options": [
-        {
-          "text": "You can use AI to summarize news articles, but it's not a good idea to use it to look up current news - it might make things up",
-          "isCorrect": true
-        },
-        {
-          "text": "Crystal balls work better than AI to inform yourself. But whatever works for you",
-          "isCorrect": false
-        },
-        {
-          "text": "For recent and local events, it's the best option! LLMs are ALWAYS trained with up-to-date data.",
-          "isCorrect": false
-        }
-      ]
-    },
-    {
-      "id": "case-2",
-      "post": {
-        "name": "Ana Lopez",
-        "handle": "@anitaranita",
-        "date": "2025-12-11T00:00:00.000Z",
-        "image": "/assets/users/anotaranita.jpg",
-        "text": "I did not know that Kuala Lumpur has up to 50 nature reserves. How amazing! Let us see if we can visit them all. #planningatripwithMINT"
-      },
-      "options": [
-        {
-          "text": "Great plan. Before booking, verify those places with official tourism websites and local maps",
-          "isCorrect": true
-        },
-        {
-          "text": "Whatever floats your boat!",
-          "isCorrect": false
-        },
-        {
-          "text": "No need to verify anything. If AI generated it, it is guaranteed to be true",
-          "isCorrect": false
-        }
-      ]
-    },
-    {
-      "id": "case-3",
-      "post": {
         "name": "Juan",
         "handle": "@juanin34",
-        "date": "2025-12-11T00:00:00.000Z",
+        "date": "11.12.25",
         "image": "/assets/users/juanin34.jpg",
         "text": "Everything makes sense now that I know I have Marfan syndrome. AI explained all my symptoms"
       },
@@ -142,6 +94,150 @@
         },
         {
           "text": "That sounds accurate. Start treatment based on the AI answer right away",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-2",
+      "post": {
+        "name": "Marina ",
+        "handle": "@SunsetVibes",
+        "date": "14.03.26",
+        "image": "/assets/users/SunsetVibes.png",
+        "text": "No sabía analizar sintácticamente una frase de los deberes de lengua y la IA ha resuelto mi problema en menos de un minuto, pero mi profesor me ha dicho que el análsis estaba mal. No tiene ni idea!!! ¿Cómo va a saber más él que la IA?"
+      },
+      "options": [
+        {
+          "text": "La IA a veces puede cometer errores o tener \"alucinaciones\". Aprender es un proceso complejo y hay muchas excepciones, detalles y contexto que un chatbot de IA no conoce. Contrasta las respuestas que te da siempre con lo que te dicen tus profesores.",
+          "isCorrect": true
+        },
+        {
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "text": "",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-3",
+      "post": {
+        "name": "Luca",
+        "handle": "@GamerLuca",
+        "date": "14.03.26",
+        "image": "/assets/users/GamerLuca.png",
+        "text": "Mirad, MINT me ha dicho que mañana habrá tormentas extremas en España. ¡Preparad todo! (captura chatbot)"
+      },
+      "options": [
+        {
+          "text": "Una captura sin contexto de un chatbot de IA no es una fuente fiable para saber el tiempo. Las IAs no pueden predecir tormentas concretas en tiempo real. Es mejor consultar siempre fuentes oficiales como AEMET para alertas meteorológicas",
+          "isCorrect": true
+        },
+        {
+          "text": "No leo bien lo que dice la captura de pantalla",
+          "isCorrect": false
+        },
+        {
+          "text": "¡Genial! Entonces mejor preparad todo como dice la IA, seguro que va a pasar.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-4",
+      "post": {
+        "name": "Pedro Martínez",
+        "handle": "@PedroMM124",
+        "date": "14.03.26",
+        "image": "/assets/users/PedroMM124.png",
+        "text": "Hay que ir mañana al instituto??? Le he preguntado a la IA si las clases siguen suspendidas por las lluvias y dice que sí"
+      },
+      "options": [
+        {
+          "text": "Para saber si las clases están suspendidas, consulta siempre el aviso oficial del instituto o de Protección Civil, que tiene la información real y actualizada. Un chatbot de IA no es igual que un buscador",
+          "isCorrect": true
+        },
+        {
+          "text": "Fíate de tu intuición o pregúntale a tu madre o padre",
+          "isCorrect": false
+        },
+        {
+          "text": "Entonces puedes quedarte en casa, la IA te aconseja bien",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-5",
+      "post": {
+        "name": "Alex",
+        "handle": "@TechAlex",
+        "date": "14.03.26",
+        "image": "/assets/users/TechAlex.png",
+        "text": "En clase hemos hecho un experimento sobre cambios temperatura y humedad durante el mes, usé la IA para organizar los datos en tablas y gráficos y me quedó una presentación INCREÍBLE"
+      },
+      "options": [
+        {
+          "text": "Usar la IA para organizar y visualizar datos es útil porque te ayuda a interpretar mejor los resultados.",
+          "isCorrect": true
+        },
+        {
+          "text": "No te olvides de poner también tus datos personales en la tabla",
+          "isCorrect": false
+        },
+        {
+          "text": "Genial, deja que la IA haga todo el análisis por ti y ya no te preocupes por entender nada",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-6",
+      "post": {
+        "name": "Paula",
+        "handle": "@ArtisticPaula",
+        "date": "14.03.26",
+        "image": "/assets/users/ArtisticPaula.png",
+        "text": "La IA me ayudó a organizar mi horario de clases y hacer un calendario de exámenes, así sé cuándo estudiar y qué preparar"
+      },
+      "options": [
+        {
+          "text": "Usar la IA para organizar tu horario y calendario de exámenes te ayuda a planificarte, pero el aprendizaje sigue siendo tu responsabilidad",
+          "isCorrect": true
+        },
+        {
+          "text": "Pon colores bonitos también, que no se te olvide",
+          "isCorrect": false
+        },
+        {
+          "text": "Ese es un uso de la IA que no sirve para nada",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-7",
+      "post": {
+        "name": "Gema",
+        "handle": "@gemita2045",
+        "date": "14.03.26",
+        "image": "/assets/users/gemita2045.png",
+        "text": "Para el examen de Naturales, le pedí a la IA que me resumiera y esquematizara los temas que tenía que estudiarme. Aún así, lo revisé para asegurarme que había incluido todos correctamente"
+      },
+      "options": [
+        {
+          "text": "Utilizar la IA para resumir y esquematizar te ayuda a organizar los temas, pero leerlos tú mismo/a asegura que comprendes todo y evitas posibles fallos o alucinaciones",
+          "isCorrect": true
+        },
+        {
+          "text": "Qué bien, ya nos contarás que nota sacas",
+          "isCorrect": false
+        },
+        {
+          "text": "No te pares a leerlo, tampoco era necesario",
           "isCorrect": false
         }
       ]

@@ -6,7 +6,7 @@
       "lastName": "Tech",
       "imageUser": "/assets/feed/feed_user1.png",
       "text": "Alright… I just found out this girl DOESN’T EXIST 😳\nShe’s 100% AI-generated.\n\nAnd she has more followers than me.\n\nIt’s getting harder and harder to tell whether a photo is real or not. Be careful about idealizing everything you see on social media, because there might not even be a real person behind it.",
-      "imageURL": "/assets/feed/feed_post1.png",
+      "imageURL": "/assets/feed/lau_tech_post.jpg",
       "date": "10/07/2025. 17:45:00",
       "likes": "4.8k"
     },
@@ -26,7 +26,7 @@
       "lastName": "Developer",
       "imageUser": "/assets/feed/feed_user3.png",
       "text": "Many people think that when an AI gives an incorrect answer, it’s because it’s “lying.” But that’s not really how it works.\n\nLanguage models don’t search for the truth — they search for the most probable next word based on the data they were trained on. If they don’t have enough information or the topic is very specific, they can generate details that sound completely convincing.\n\nThis is called a “hallucination.”\nIt’s not malice. It’s statistics.\n\nSo using AI is fine — but trusting it blindly isn’t.",
-      "imageURL": "/assets/feed/feed_post3.gif",
+      "imageURL": "/assets/feed/latent_variations.gif",
       "date": "01/07/2026. 09:30:00",
       "likes": "98.6k"
     },
@@ -39,6 +39,36 @@
       "imageURL": "/assets/feed/feed_post4.png",
       "date": "03/05/2026. 10:31:00",
       "likes": "3.1k"
+    },
+    {
+      "handle": "granny",
+      "firstName": "Lola",
+      "lastName": "García",
+      "imageUser": "/assets/feed/feed_user5.png",
+      "text": "Oh honey, back in my day we had real intelligence — it was called ‘asking your grandma.’ Now you all ask a toaster with Wi-Fi and act impressed when it doesn’t burn the house down.",
+      "imageURL": "",
+      "date": "02/05/2026. 10:31:00",
+      "likes": "123"
+    },
+    {
+      "handle": "kleo.patra",
+      "firstName": "Kleopatra",
+      "lastName": "",
+      "imageUser": "/assets/feed/feed_user6.png",
+      "text": "AI or not… still the most iconic.",
+      "imageURL": "",
+      "date": "01/05/2026. 12:11:00",
+      "likes": "222"
+    },
+    {
+      "handle": "CarlosEmpire",
+      "firstName": "Carlos",
+      "lastName": "Teacher",
+      "imageUser": "/assets/feed/feed_user7.png",
+      "text": "I went from 0 to building a digital income stream with just a laptop and AI.\nNo excuses. Just strategy.\nIf you’re ready, I’ll show you how 👇",
+      "imageURL": "",
+      "date": "03/05/2026. 21:45:00",
+      "likes": "5.2k"
     }
   ],
   "es": [
@@ -48,7 +78,7 @@
       "lastName": "Tech",
       "imageUser": "/assets/feed/feed_user1.png",
       "text": "Vale… acabo de descubrir que esta chica NO EXISTE 😳\nEs 100% generada por IA.\n\nY tiene más seguidores que yo.\n\nCada vez es más difícil saber si una foto es real o no. Ojo con idealizar todo lo que ves en redes, porque puede que ni siquiera haya una persona detrás.",
-      "imageURL": "/assets/feed/feed_post1.png",
+      "imageURL": "/assets/feed/lau_tech_post.jpg",
       "date": "10/07/2025. 17:45:00",
       "likes": "4.8k"
     },
@@ -68,7 +98,7 @@
       "lastName": "Developer",
       "imageUser": "/assets/feed/feed_user3.png",
       "text": "Mucha gente piensa que cuando una IA da una respuesta incorrecta es porque “miente”. Pero en realidad no funciona así.\n\nLos modelos de lenguaje no buscan la verdad, buscan la palabra más probable según los datos con los que fueron entrenados. Si no tienen suficiente información o el tema es muy específico, pueden inventar detalles que suenan completamente convincentes.\n\nA eso se le llama “alucinación”.\nNo es malicia. Es estadística.\n\nPor eso usar IA está bien, pero confiar ciegamente no.",
-      "imageURL": "/assets/feed/feed_post3.gif",
+      "imageURL": "/assets/feed/latent_variations.gif",
       "date": "01/07/2026. 09:30:00",
       "likes": "98.6k"
     },
@@ -81,6 +111,36 @@
       "imageURL": "/assets/feed/feed_post4.png",
       "date": "03/05/2026. 10:31:00",
       "likes": "3.1k"
+    },
+    {
+      "handle": "granny",
+      "firstName": "Lola",
+      "lastName": "García",
+      "imageUser": "/assets/feed/feed_user5.png",
+      "text": "Ay hijo, antes la inteligencia venía con arrugas y recetas… ahora viene con Wi-Fi y todavía no sabe hacer ni una tortilla decente.",
+      "imageURL": "",
+      "date": "02/05/2026. 10:31:00",
+      "likes": "123"
+    },
+    {
+      "handle": "kleo.patra",
+      "firstName": "Kleopatra",
+      "lastName": "",
+      "imageUser": "/assets/feed/feed_user6.png",
+      "text": "IA o no… sigo siendo la más icónica.",
+      "imageURL": "",
+      "date": "01/05/2026. 12:11:00",
+      "likes": "222"
+    },
+    {
+      "handle": "CarlosEmpire",
+      "firstName": "Carlos",
+      "lastName": "Teacher",
+      "imageUser": "/assets/feed/feed_user7.png",
+      "text": "Pasé de 0 a crear ingresos digitales solo con un portátil e IA.\nSin excusas. Solo estrategia.\nSi estás listo, te enseño cómo 👇",
+      "imageURL": "",
+      "date": "03/05/2026. 21:45:00",
+      "likes": "5.2k"
     }
   ],
   "fi": [
@@ -90,7 +150,7 @@
       "lastName": "Tech",
       "imageUser": "/assets/feed/feed_user1.png",
       "text": "",
-      "imageURL": "/assets/feed/feed_post1.png",
+      "imageURL": "/assets/feed/lau_tech_post.jpg",
       "date": "10/07/2025. 17:45:00",
       "likes": "4.8k"
     },
@@ -110,7 +170,7 @@
       "lastName": "Developer",
       "imageUser": "/assets/feed/feed_user3.png",
       "text": "",
-      "imageURL": "/assets/feed/feed_post3.gif",
+      "imageURL": "/assets/feed/latent_variations.gif",
       "date": "01/07/2026. 09:30:00",
       "likes": "98.6k"
     },
@@ -123,6 +183,36 @@
       "imageURL": "/assets/feed/feed_post4.png",
       "date": "03/05/2026. 10:31:00",
       "likes": "3.1k"
+    },
+    {
+      "handle": "granny",
+      "firstName": "Lola",
+      "lastName": "García",
+      "imageUser": "/assets/feed/feed_user5.png",
+      "text": "",
+      "imageURL": "",
+      "date": "02/05/2026. 10:31:00",
+      "likes": "123"
+    },
+    {
+      "handle": "kleo.patra",
+      "firstName": "Kleopatra",
+      "lastName": "",
+      "imageUser": "/assets/feed/feed_user6.png",
+      "text": "",
+      "imageURL": "",
+      "date": "01/05/2026. 12:11:00",
+      "likes": "222"
+    },
+    {
+      "handle": "CarlosEmpire",
+      "firstName": "Carlos",
+      "lastName": "Teacher",
+      "imageUser": "/assets/feed/feed_user7.png",
+      "text": "",
+      "imageURL": "",
+      "date": "03/05/2026. 21:45:00",
+      "likes": "5.2k"
     }
   ],
   "sr": [
@@ -132,7 +222,7 @@
       "lastName": "Tech",
       "imageUser": "/assets/feed/feed_user1.png",
       "text": "U redu… upravo sam saznao/la da ova devojka NE POSTOJI 😳\nOna je 100% generisana veštačkom inteligencijom.\nI ima više pratilaca od mene.\nSve je teže i teže prepoznati da li je neka fotografija stvarna ili ne. Budite oprezni kada idealizujete sve što vidite na društvenim mrežama, jer možda iza toga uopšte ne stoji stvarna osoba.",
-      "imageURL": "/assets/feed/feed_post1.png",
+      "imageURL": "/assets/feed/lau_tech_post.jpg",
       "date": "10/07/2025. 17:45:00",
       "likes": "4.8k"
     },
@@ -152,7 +242,7 @@
       "lastName": "Developer",
       "imageUser": "/assets/feed/feed_user3.png",
       "text": "Mnogi ljudi misle da kada veštačka inteligencija da netačan odgovor, to znači da „laže“. Ali to zapravo nije način na koji funkcioniše.\nJezički modeli ne traže istinu — oni traže najverovatniju sledeću reč na osnovu podataka na kojima su obučeni. Ako nemaju dovoljno informacija ili je tema veoma specifična, mogu generisati detalje koji zvuče potpuno uverljivo.\nTo se naziva „halucinacija“.\nTo nije zlonamernost. To je statistika.\nDakle, korišćenje veštačke inteligencije je u redu — ali slepo poverenje nije.",
-      "imageURL": "/assets/feed/feed_post3.gif",
+      "imageURL": "/assets/feed/latent_variations.gif",
       "date": "01/07/2026. 09:30:00",
       "likes": "98.6k"
     },
@@ -165,6 +255,36 @@
       "imageURL": "/assets/feed/feed_post4.png",
       "date": "03/05/2026. 10:31:00",
       "likes": "3.1k"
+    },
+    {
+      "handle": "granny",
+      "firstName": "Lola",
+      "lastName": "García",
+      "imageUser": "/assets/feed/feed_user5.png",
+      "text": "",
+      "imageURL": "",
+      "date": "02/05/2026. 10:31:00",
+      "likes": "123"
+    },
+    {
+      "handle": "kleo.patra",
+      "firstName": "Kleopatra",
+      "lastName": "",
+      "imageUser": "/assets/feed/feed_user6.png",
+      "text": "",
+      "imageURL": "",
+      "date": "01/05/2026. 12:11:00",
+      "likes": "222"
+    },
+    {
+      "handle": "CarlosEmpire",
+      "firstName": "Carlos",
+      "lastName": "Teacher",
+      "imageUser": "/assets/feed/feed_user7.png",
+      "text": "",
+      "imageURL": "",
+      "date": "03/05/2026. 21:45:00",
+      "likes": "5.2k"
     }
   ]
 }

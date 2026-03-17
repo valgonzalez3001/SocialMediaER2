@@ -15,7 +15,7 @@ export const postsECHO = [
       sr: "🚀 ECHO predstavlja MINT AI, naš novi inteligentni chat integrisan direktno u platformu.\n\nUz MINT AI možete postavljati pitanja, proveravati informacije i unaprediti svoje objave bez napuštanja društvene mreže.\n\nVerujemo u zajednicu koja je informisanija, kritičnija i svesnija.\n\n🌿 MINT AI je sada dostupan. Da li ste ga već isprobali?"
     },
     type: "image",
-    mediaUrl: "/assets/posts/echo_post1.jpg",
+    mediaUrl: "/assets/posts/MINT.png",
     username: "ECHO",
     firstName: {
       en: "ECHO Official Account",
@@ -25,7 +25,7 @@ export const postsECHO = [
     },
     lastName: "",
     avatarURL: "/assets/echo-logo-bg.png",
-    createdAt: new Date("March 12 2026 11:45:00"),
+    createdAt: new Date("March 12 2026 10:45:00"),
     updatedAt: formatDate(),
     likes: {
       likeCount: "751.4k"

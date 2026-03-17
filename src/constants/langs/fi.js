@@ -175,7 +175,7 @@ export const fi = {
     "statsCount": "{{count}} julkaisua",
     "statsText": "on merkitty tekoälyn luomaksi viimeisen tunnin aikana.",
     "card1Title": "Will Smith syö spagettia",
-    "card2Title": "Kolmen kuninkaan kulkue New Yorkissa",
+    "card2Title": "Meteoriitti iski Madridiin tänä aamuna",
     "tag": "TEKOÄLYN LUOMA",
     "seeAll": "Katso kaikki →",
     "noPendingReview": "Uusia tarkistettavia julkaisuja ei havaittu."

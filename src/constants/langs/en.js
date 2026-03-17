@@ -175,7 +175,7 @@ export const en = {
     "statsCount": "{{count}} posts",
     "statsText": "have been marked as AI generated in the last hour.",
     "card1Title": "Will Smith Eats Spaghetti",
-    "card2Title": "Christian Three King's Parade in New York",
+    "card2Title": "Madrid Hit by Meteorite Strike This Morning",
     "tag": "AI GENERATED",
     "seeAll": "See all →",
     "noPendingReview": "No new posts detected for review."

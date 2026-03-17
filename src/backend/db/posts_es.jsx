@@ -8,62 +8,67 @@ import { formatDate } from "../utils/authUtils.jsx";
 export const postsES = [
   {
     _id: uuid(),
-    content: "El fuego ya está llegando a Madrid y el gobierno mirando a otro lado",
+    content: "URGENTE: Estamos recaudando dinero para alludar a las familias afectadas por el hincendio. Cualquier donación alluda 🙏 Dona aquí: www.ayuda-incendio-apoyo.com/donar",
     type: "image",
     mediaUrl: "",
     username: "AlertaRural_ES",
     firstName: "Alerta Rural",
     lastName: "",
-    avatarURL: "",
-    createdAt: new Date("March 09 2026 10:50:05"),
+    avatarURL: "/assets/users/AlertaRural.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 923
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "DONA AKI si kieres alludar a los afektados por los hincendios en Zamora. el Govierno no esta asiendo NADA. solo el pueblo salbara al pueblo.",
     type: "image",
-    mediaUrl: "",
+    mediaUrl: "/assets/posts/apoyo.png",
     username: "AlertaRural_ES",
     firstName: "Alerta Rural",
     lastName: "",
-    avatarURL: "",
-    createdAt: new Date("March 09 2026 10:50:05"),
+    avatarURL: "/assets/users/AlertaRural.png",
+    createdAt: new Date("March 17 2026 20:31:46"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 232
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "Comparte este enlase con tus contáctos y alluda a las BÍCTIMAS del incensio. Estan HABANDONADOS y desalojados. Nadie ase nada por eyos.",
     type: "image",
     mediaUrl: "",
     username: "AlertaRural_ES",
     firstName: "Alerta Rural",
     lastName: "",
-    avatarURL: "",
-    createdAt: new Date("March 09 2026 10:50:05"),
+    avatarURL: "/assets/users/AlertaRural.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 222
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: {
+      text: {
+        richText: ["[object Object]", "[object Object]"]
+      },
+      hyperlink: "http://www.fuegoayuda-2025.com/donaciones"
+    },
     type: "image",
     mediaUrl: "",
     username: "AlertaRural_ES",
     firstName: "Alerta Rural",
     lastName: "",
-    avatarURL: "",
-    createdAt: new Date("March 09 2026 10:50:05"),
+    avatarURL: "/assets/users/AlertaRural.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 109
     }
   },
   {
@@ -74,233 +79,338 @@ export const postsES = [
     username: "Agenda2030No",
     firstName: "Agenda2030 Expuesta",
     lastName: "",
-    avatarURL: "",
-    createdAt: new Date("March 09 2026 10:50:05"),
+    avatarURL: "/assets/users/Agenda2030.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: "4k"
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "😂😂😂😂😂",
+    type: "image",
+    mediaUrl: "/assets/posts/belike.jpg",
+    username: "Agenda2030No",
+    firstName: "Agenda2030 Expuesta",
+    lastName: "",
+    avatarURL: "/assets/users/Agenda2030.png",
+    createdAt: new Date("March 17 2026 20:31:45"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: "9k"
+    }
+  },
+  {
+    _id: uuid(),
+    content: "El 90% de los incendios son provocados por pirómanos y nadie hace nada. El problema no es el clima. Es un NEGOCIO",
+    type: "image",
+    mediaUrl: "/assets/posts/arson.png",
+    username: "Agenda2030No",
+    firstName: "Agenda2030 Expuesta",
+    lastName: "",
+    avatarURL: "/assets/users/Agenda2030.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: "3k"
+    }
+  },
+  {
+    _id: uuid(),
+    content: "NO OS DAIS CUENTA??? Están quemando el monte para plantar molinos de viento #IglesiaDeLaMedioambientología",
     type: "image",
     mediaUrl: "",
     username: "Agenda2030No",
     firstName: "Agenda2030 Expuesta",
     lastName: "",
-    avatarURL: "",
-    createdAt: new Date("March 09 2026 10:50:05"),
+    avatarURL: "/assets/users/Agenda2030.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: "2k"
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "Primero se quema el bosque y luego ya veréis como aparecen molinos y placas solares… QUÉ CASUALIDAD",
     type: "image",
     mediaUrl: "",
     username: "Agenda2030No",
     firstName: "Agenda2030 Expuesta",
     lastName: "",
-    avatarURL: "",
-    createdAt: new Date("March 09 2026 10:50:05"),
+    avatarURL: "/assets/users/Agenda2030.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: "6k"
     }
   },
   {
     _id: uuid(),
-    content: "",
-    type: "image",
-    mediaUrl: "",
-    username: "Agenda2030No",
-    firstName: "Agenda2030 Expuesta",
-    lastName: "",
-    avatarURL: "",
-    createdAt: new Date("March 09 2026 10:50:05"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "",
+    content: "Han detenido a un menor de edad por provocar 2!!! incendios forestales. Adivina la nacionalidad.",
     type: "image",
     mediaUrl: "",
     username: "VozDelPuebloLibre",
     firstName: "La voz del pueblo libre",
     lastName: "",
     avatarURL: "/assets/users/VozDelPuebloLibre.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: "1k"
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "Otra vez incendios provocados y casualmente el detenido es un menor extranjero… pero de esto nadie te hablará en los medios",
     type: "image",
     mediaUrl: "",
     username: "VozDelPuebloLibre",
     firstName: "La voz del pueblo libre",
     lastName: "",
     avatarURL: "/assets/users/VozDelPuebloLibre.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: "9k"
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "Que el pirómano es un menor sí lo dicen, pero lo de que es extranjero nadie lo cuenta. Siempre la misma historia",
     type: "image",
     mediaUrl: "",
     username: "VozDelPuebloLibre",
     firstName: "La voz del pueblo libre",
     lastName: "",
     avatarURL: "/assets/users/VozDelPuebloLibre.png",
-    createdAt: new Date("March 09 2026 10:50:09"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: "3k"
     }
   },
   {
     _id: uuid(),
-    content: "",
-    type: "image",
-    mediaUrl: "",
-    username: "VozDelPuebloLibre",
-    firstName: "La voz del pueblo libre",
-    lastName: "",
-    avatarURL: "/assets/users/VozDelPuebloLibre.png",
-    createdAt: new Date("March 09 2026 10:50:11"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "Autónoma deja su trabajo para ayudar en los incendios VS político de vacaciones cobrando dietas. Feminismo, ¿dónde estás?",
+    content: "¿No lo sabeis? Con los chemtrails inpiden la yuvia, rovan el agua, destrullen presas y aora toman medídas, ¿ke ba a ser lo siguiente?",
     type: "image",
     mediaUrl: "",
     username: "MariaCurrante",
     firstName: "María Autónoma Real",
     lastName: "",
     avatarURL: "/assets/users/MariaCurrante.png",
-    createdAt: new Date("March 09 2026 10:50:11"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: "3k"
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "MIRAD ke listos son biene una borrasca por el atlantico y fumigan antes de su yegada para desaser la yuvia. Eske esta mas klaro ke nunca. Desasen las nubes antes de entrar en la penisula. ¿KE os parese?",
+    type: "image",
+    mediaUrl: "/assets/posts/hidro.jpg",
+    username: "MariaCurrante",
+    firstName: "María Autónoma Real",
+    lastName: "",
+    avatarURL: "/assets/users/MariaCurrante.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: "2k"
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Los chemtrails nos enbenenan. Una nube toxica sobrevuela Andalucia y eso ebitá las yuvias 💀💀💀💀. Esto es la berdadera causa del canbio klimatiko, ke en realidad es un inbento para subírnos los inpuestos.",
+    type: "image",
+    mediaUrl: "/assets/posts/chemtrails_poison.png",
+    username: "MariaCurrante",
+    firstName: "María Autónoma Real",
+    lastName: "",
+    avatarURL: "/assets/users/MariaCurrante.png",
+    createdAt: new Date("March 17 2026 20:31:45"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: "4k"
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Los abiones sueltan yoduro de plata para elimniar las nubes kuando ai pronostico de yuvia ✈️, ¿aun no te as enterado? Se yamán chemtrails",
+    type: "image",
+    mediaUrl: "/assets/posts/chemtrail_silver.png",
+    username: "MariaCurrante",
+    firstName: "María Autónoma Real",
+    lastName: "",
+    avatarURL: "/assets/users/MariaCurrante.png",
+    createdAt: new Date("March 17 2026 20:31:45"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: "5k"
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Chemtrails para canbiar el klima!!!! 3 travajadores de la AEMET an confésado en un informe a la Union Europea ke España esta siendo rociada con dioxido de plomo, yoduro de plata y diatomita",
     type: "image",
     mediaUrl: "",
     username: "MariaCurrante",
     firstName: "María Autónoma Real",
     lastName: "",
     avatarURL: "/assets/users/MariaCurrante.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: "6k"
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "ULTIMA HORA: Pillado RAYO LÁSER que proviene de un dron incendiado un bosque en Canarias #Tenerife",
     type: "image",
-    mediaUrl: "",
-    username: "MariaCurrante",
-    firstName: "María Autónoma Real",
-    lastName: "",
-    avatarURL: "/assets/users/MariaCurrante.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "",
-    type: "image",
-    mediaUrl: "",
-    username: "MariaCurrante",
-    firstName: "María Autónoma Real",
-    lastName: "",
-    avatarURL: "/assets/users/MariaCurrante.png",
-    createdAt: new Date("March 09 2026 10:50:11"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "Extremadura gasta más en toros que en apagar incendios",
-    type: "image",
-    mediaUrl: "",
+    mediaUrl: "/assets/posts/rayolaser.png",
     username: "InfoSinCensura",
     firstName: "Información sin censura",
     lastName: "",
     avatarURL: "/assets/users/InfoSinCensura.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 5
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "ULTIMA HORA: Pillado RAYO LÁSER que proviene de un dron incendiado un bosque en Zamora ",
     type: "image",
-    mediaUrl: "",
+    mediaUrl: "/assets/posts/Zamora.png",
     username: "InfoSinCensura",
     firstName: "Información sin censura",
     lastName: "",
     avatarURL: "/assets/users/InfoSinCensura.png",
-    createdAt: new Date("March 09 2026 10:50:11"),
+    createdAt: new Date("March 17 2026 20:31:45"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 6
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "BREAKING NEWS: A laser beam coming from a drone has been caught starting a forest fire in Zamora.",
     type: "image",
-    mediaUrl: "",
+    mediaUrl: "/assets/posts/ZamoraERN.png",
     username: "InfoSinCensura",
     firstName: "Información sin censura",
     lastName: "",
     avatarURL: "/assets/users/InfoSinCensura.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 16
     }
   },
   {
     _id: uuid(),
-    content: "",
+    content: "ULTIMA HORA: Pillado RAYO LÁSER que proviene de un dron incendiado un bosque en la AMAZONÍA",
     type: "image",
-    mediaUrl: "",
+    mediaUrl: "/assets/posts/Amazonic.png",
     username: "InfoSinCensura",
     firstName: "Información sin censura",
     lastName: "",
     avatarURL: "/assets/users/InfoSinCensura.png",
-    createdAt: new Date("March 09 2026 10:50:09"),
+    createdAt: new Date("March 17 2026 20:31:46"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 20
+    }
+  },
+  {
+    _id: uuid(),
+    content: "⚠️ NOTA INFORMATIVA | Temporal en Canarias de viento, lluvia y oleaje por la borrasca Therese.\n\n➡️ Lluvias fuertes y persistentes, vientos intensos, mala mar y nevadas en cumbres.\n\n➡️ La situación podrá prolongarse durante toda la semana.",
+    type: "image",
+    mediaUrl: "/assets/posts/AEMET_Canarias.jpeg",
+    username: "AEMET_Esp",
+    firstName: "AEMET",
+    lastName: "",
+    avatarURL: "/assets/users/aemet.jpg",
+    createdAt: new Date("March 17 2026 20:31:45"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 912
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Hoy en gran parte de la península ibérica habrá 12 horas de día y 12 horas de noche, lo que conocemos como el equilux. No se da exactamente cuando ocurre el equinoccio de primavera (21 de marzo) debido a que la atmósfera curva la luz del sol por refracción",
+    type: "image",
+    mediaUrl: "",
+    username: "AEMET_Esp",
+    firstName: "AEMET",
+    lastName: "",
+    avatarURL: "/assets/users/aemet.jpg",
+    createdAt: new Date("March 17 2026 20:31:43"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 805
+    }
+  },
+  {
+    _id: uuid(),
+    content: "AVISOS PASADO MAÑANA | España: vientos y costeros. Nivel máximo de aviso: naranja.",
+    type: "image",
+    mediaUrl: "/assets/posts/AEMET_Sur.jpeg",
+    username: "AEMET_Esp",
+    firstName: "AEMET",
+    lastName: "",
+    avatarURL: "/assets/users/aemet.jpg",
+    createdAt: new Date("March 17 2026 20:31:45"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 222
+    }
+  },
+  {
+    _id: uuid(),
+    content: "¿Sabías que el los incendios forestales del año pasado nos han hecho cambiar nuestro concepto sobre ellos?  🔥\n\nLa categoría de Gran Incendio Forestal (GIF) se ha quedado pequeña y comenzamos a hablar de mega incendios con superficies calcinadas de decenas de miles de hectáreas  📏",
+    type: "image",
+    mediaUrl: "/assets/posts/informeanual.jpeg",
+    username: "proteccioncivil",
+    firstName: "Protección Civil",
+    lastName: "",
+    avatarURL: "/assets/users/proteccioncivil.jpg",
+    createdAt: new Date("March 17 2026 20:31:45"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 5
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Un orgullo para el #IEO_CSIC\nNuestro personal científico también está al servicio de la sociedad en situaciones de emergencia.\nEnhorabuena a las personas reconocidas con la Medalla al Mérito de  @proteccioncivil\n 👏🌊🏅",
+    type: "image",
+    mediaUrl: "",
+    username: "proteccioncivil",
+    firstName: "Protección Civil",
+    lastName: "",
+    avatarURL: "/assets/users/proteccioncivil.jpg",
+    createdAt: new Date("March 17 2026 20:31:43"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 3
+    }
+  },
+  {
+    _id: uuid(),
+    content: "📢 Alerta por temporal de lluvia, viento y oleaje en Canarias 🌧️🌬️🌊\n",
+    type: "image",
+    mediaUrl: "/assets/posts/oleaje.jpeg",
+    username: "proteccioncivil",
+    firstName: "Protección Civil",
+    lastName: "",
+    avatarURL: "/assets/users/proteccioncivil.jpg",
+    createdAt: new Date("March 17 2026 20:31:45"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
@@ -308,92 +418,92 @@ export const postsES = [
   },
   {
     _id: uuid(),
-    content: "El fuego sigue avanzando y el gobierno no hace nada. Ya está llegando a Madrid y los medios callan. Comparte antes de que lo borren. Agenda 2030.",
+    content: "📣 Aumenta la zona en peligro extremo 🟥\n\nSe suma el Prepirineo de Barcelona al área afectada, mañana domingo, por rachas de viento superiores a 140km/h 🌬",
     type: "image",
     mediaUrl: "",
-    username: "FireTruthNow",
-    firstName: "FireTruthNow",
+    username: "proteccioncivil",
+    firstName: "Protección Civil",
     lastName: "",
-    avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:11"),
+    avatarURL: "/assets/users/proteccioncivil.jpg",
+    createdAt: new Date("March 17 2026 20:31:43"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 3
     }
   },
   {
     _id: uuid(),
-    content: "Otra noche más quemando montes. ¿De verdad crees que el cambio climático trabaja de noche? Abre los ojos. Agenda 2030.",
+    content: "Otra noche más quemando montes. ¿De verdad crees que el cambio climático trabaja de noche? Abre los ojos. Algo no encaja.",
     type: "image",
     mediaUrl: "",
     username: "FireTruthNow",
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:08"),
+    createdAt: new Date("March 17 2026 20:31:43"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 3
     }
   },
   {
     _id: uuid(),
-    content: "Solo el pueblo salva al pueblo. Las instituciones miran hacia otro lado mientras el país arde.",
+    content: "Solo el pueblo salva al pueblo. Mientras todo arde, parece que nadie quiere mirar de frente lo que está pasando.",
     type: "image",
     mediaUrl: "",
     username: "FireTruthNow",
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:45"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 2
     }
   },
   {
     _id: uuid(),
-    content: "Queman el bosque primero y luego construyen encima. Siempre el mismo plan. Despierta antes de que sea tarde.",
+    content: "Queman el bosque primero y luego construyen encima 🔥🔥🔥. Siempre el mismo patrón. Despierta antes de que sea tarde.",
     type: "image",
     mediaUrl: "",
     username: "FireTruthNow",
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:09"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 4
     }
   },
   {
     _id: uuid(),
-    content: "El incendio avanza hacia Madrid y nadie informa de la gravedad real. Silencio total desde arriba.",
+    content: "El incendio avanza hacia Madrid y casi no se habla de la gravedad real. Demasiado silencio.",
     type: "image",
     mediaUrl: "",
     username: "FireTruthNow",
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:43"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 1
     }
   },
   {
     _id: uuid(),
-    content: "Otra vez vídeos de incendios nocturnos. Esto no es natural ni casual. Agenda 2030 en marcha.",
+    content: "Otra vez vídeos de incendios nocturnos. Esto no es natural ni casual. Hay algo detrás.",
     type: "image",
     mediaUrl: "",
     username: "FireTruthNow",
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 4
     }
   },
   {
@@ -405,7 +515,97 @@ export const postsES = [
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:43"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 7
+    }
+  },
+  {
+    _id: uuid(),
+    content: "El fuego se extiende sin control y todo sigue como si nada. España abandonada.",
+    type: "image",
+    mediaUrl: "",
+    username: "FireTruthNow",
+    firstName: "FireTruthNow",
+    lastName: "",
+    avatarURL: "/assets/users/FireTruthNow.png",
+    createdAt: new Date("March 17 2026 20:31:45"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 6
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Solo el pueblo salva al pueblo. No esperes que alguien venga a solucionarlo por ti.",
+    type: "image",
+    mediaUrl: "",
+    username: "FireTruthNow",
+    firstName: "FireTruthNow",
+    lastName: "",
+    avatarURL: "/assets/users/FireTruthNow.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 4
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Más atención a unas cosas que a otras mientras los incendios siguen. Así están las prioridades.",
+    type: "image",
+    mediaUrl: "",
+    username: "FireTruthNow",
+    firstName: "FireTruthNow",
+    lastName: "",
+    avatarURL: "/assets/users/FireTruthNow.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 7
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Quemas nocturnas otra vez. 🔥🔥🔥 Todos los años lo mismo, las mismas historias, el mismo patrón.",
+    type: "image",
+    mediaUrl: "",
+    username: "FireTruthNow",
+    firstName: "FireTruthNow",
+    lastName: "",
+    avatarURL: "/assets/users/FireTruthNow.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 8
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Prohíben limpiar el campo y después culpan a la naturaleza. Esto está diseñado para acabar con el mundo rural.",
+    type: "image",
+    mediaUrl: "",
+    username: "FireTruthNow",
+    firstName: "FireTruthNow",
+    lastName: "",
+    avatarURL: "/assets/users/FireTruthNow.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 9
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Imágenes de fuego por la noche que no cuadran. Luego te dicen que es por tu coche. Cambio climático.",
+    type: "image",
+    mediaUrl: "",
+    username: "FireTruthNow",
+    firstName: "FireTruthNow",
+    lastName: "",
+    avatarURL: "/assets/users/FireTruthNow.png",
+    createdAt: new Date("March 17 2026 20:31:45"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
@@ -413,122 +613,32 @@ export const postsES = [
   },
   {
     _id: uuid(),
-    content: "El gobierno de vacaciones mientras el fuego se extiende sin control. España abandonada.",
+    content: "Mientras tú trabajas, otros siguen como si nada mientras el país arde sin explicaciones claras.",
     type: "image",
     mediaUrl: "",
     username: "FireTruthNow",
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:43"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 3
     }
   },
   {
     _id: uuid(),
-    content: "Solo el pueblo salva al pueblo. No esperes ayuda de políticos ni burócratas.",
+    content: "El fuego se acerca a Madrid y nadie reacciona. El pueblo tiene que despertar ya.",
     type: "image",
     mediaUrl: "",
     username: "FireTruthNow",
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:11"),
+    createdAt: new Date("March 17 2026 20:31:45"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "Más dinero para toros que para apagar incendios. Así están sus prioridades.",
-    type: "image",
-    mediaUrl: "",
-    username: "FireTruthNow",
-    firstName: "FireTruthNow",
-    lastName: "",
-    avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:11"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "Quemas nocturnas otra vez. 🔥🔥🔥 Todos los años lo mismo, las mismas mentiras, el mismo plan. Agenda 2030.",
-    type: "image",
-    mediaUrl: "",
-    username: "FireTruthNow",
-    firstName: "FireTruthNow",
-    lastName: "",
-    avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:09"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "Prohíben limpiar el campo y después culpan a la naturaleza. Esto está diseñado para destruir el mundo rural.",
-    type: "image",
-    mediaUrl: "",
-    username: "FireTruthNow",
-    firstName: "FireTruthNow",
-    lastName: "",
-    avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:08"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "Bomberos quemando el monte por la noche. Luego te dicen que es por tu coche. Cambio climático.",
-    type: "image",
-    mediaUrl: "",
-    username: "FireTruthNow",
-    firstName: "FireTruthNow",
-    lastName: "",
-    avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "Mientras tú trabajas, ellos cobran dietas y dejan arder el país sin dar explicaciones.",
-    type: "image",
-    mediaUrl: "",
-    username: "FireTruthNow",
-    firstName: "FireTruthNow",
-    lastName: "",
-    avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:09"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
-    }
-  },
-  {
-    _id: uuid(),
-    content: "El fuego se acerca a Madrid y nadie actúa. El pueblo tiene que despertar ya.",
-    type: "image",
-    mediaUrl: "",
-    username: "FireTruthNow",
-    firstName: "FireTruthNow",
-    lastName: "",
-    avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:11"),
-    updatedAt: formatDate(),
-    likes: {
-      likeCount: 0
+      likeCount: 5
     }
   },
   {
@@ -540,7 +650,37 @@ export const postsES = [
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 8
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Hoy bosques quemados, mañana urbanizaciones. Así funciona todo.",
+    type: "image",
+    mediaUrl: "",
+    username: "FireTruthNow",
+    firstName: "FireTruthNow",
+    lastName: "",
+    avatarURL: "/assets/users/FireTruthNow.png",
+    createdAt: new Date("March 17 2026 20:31:45"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 9
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Está prohibido limpiar los montes. Te multan. Luego llegan incendios e inundaciones. ¿De verdad es casual?",
+    type: "image",
+    mediaUrl: "",
+    username: "FireTruthNow",
+    firstName: "FireTruthNow",
+    lastName: "",
+    avatarURL: "/assets/users/FireTruthNow.png",
+    createdAt: new Date("March 17 2026 20:31:45"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
@@ -548,62 +688,257 @@ export const postsES = [
   },
   {
     _id: uuid(),
-    content: "Hoy bosques quemados, mañana urbanizaciones. Así funciona el sistema.",
+    content: "Silencio mientras España arde. Comparte lo que ves.",
     type: "image",
     mediaUrl: "",
     username: "FireTruthNow",
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 3
     }
   },
   {
     _id: uuid(),
-    content: "Está prohibido limpiar los montes. Te multan. Luego llegan incendios e inundaciones. Agenda 2030.",
+    content: "Incendios nocturnos, restricciones al campo… une los puntos.",
     type: "image",
     mediaUrl: "",
     username: "FireTruthNow",
     firstName: "FireTruthNow",
     lastName: "",
     avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 6
     }
   },
   {
     _id: uuid(),
-    content: "Silencio del gobierno mientras España arde. Comparte la verdad.",
+    content: "Una madre soltera perdió su casa en el incendio de la noche. Nadie le avisó a tiempo. Nadie explica por qué pasó tan rápido. ¿De verdad fue inevitable?",
     type: "image",
-    mediaUrl: "",
-    username: "FireTruthNow",
-    firstName: "FireTruthNow",
+    mediaUrl: "/assets/posts/madresola1.png",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
     lastName: "",
-    avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:46"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 6
     }
   },
   {
     _id: uuid(),
-    content: "Incendios nocturnos, prohibiciones al campo y Agenda 2030. Une los puntos.",
+    content: "Un agricultor llevaba toda su vida cuidando su tierra. En unas horas, todo desapareció. Luego dicen que es “algo natural”. ¿Seguro?",
     type: "image",
     mediaUrl: "",
-    username: "FireTruthNow",
-    firstName: "FireTruthNow",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
     lastName: "",
-    avatarURL: "/assets/users/FireTruthNow.png",
-    createdAt: new Date("March 09 2026 10:50:10"),
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
     updatedAt: formatDate(),
     likes: {
-      likeCount: 0
+      likeCount: 2
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Familias enteras desalojadas en plena madrugada. Ni una alerta clara, ni respuestas al día siguiente. Solo silencio. ¿Qué está fallando?",
+    type: "image",
+    mediaUrl: "/assets/posts/familiasdesalojadas.png",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 11
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Una mujer mayor vio arder el bosque donde creció. Dice que nunca había visto nada igual. Pero insisten en que todo es normal.",
+    type: "image",
+    mediaUrl: "",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 5
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Un padre tuvo que elegir entre salvar su casa o huir con sus hijos. Historias así se repiten cada año. ¿Casualidad?",
+    type: "image",
+    mediaUrl: "",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 3
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Vecinos organizándose solos para apagar el fuego. Sin ayuda inmediata, sin explicaciones después. Solo queda el pueblo.",
+    type: "image",
+    mediaUrl: "/assets/posts/vecinosorganizados.png",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:46"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 2
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Una familia lo perdió todo mientras dormía. El fuego avanzó en silencio, sin aviso. Hay cosas que no cuadran.",
+    type: "image",
+    mediaUrl: "",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 3
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Ganaderos viendo cómo desaparece su trabajo en una noche. Luego llegan las explicaciones de siempre. Pero ellos saben lo que han visto.",
+    type: "image",
+    mediaUrl: "",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 4
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Una madre abrazando a sus hijos mientras el cielo se volvía rojo. Nadie les preparó para esto. Nadie les dijo la verdad.",
+    type: "image",
+    mediaUrl: "/assets/posts/cielorojo.png",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:46"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 3
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Personas mayores evacuadas sin saber a dónde ir. Confusión, miedo y preguntas sin respuesta. ¿Por qué siempre ocurre igual?",
+    type: "image",
+    mediaUrl: "",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 4
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Historias reales que apenas se cuentan. Vidas rotas en cuestión de horas. Pero el relato nunca cambia. ¿Por qué?",
+    type: "image",
+    mediaUrl: "",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 8
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Una familia reconstruyendo lo que puede mientras otros siguen hablando de causas “inevitables”. Hay demasiadas coincidencias.",
+    type: "image",
+    mediaUrl: "",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 4
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Vecinos alertando de cosas extrañas días antes. Nadie escuchó. Luego llega el desastre. ¿Cuántas veces más?",
+    type: "image",
+    mediaUrl: "/assets/posts/vecinos.png",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:46"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 2
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Una madre sola intentando empezar de nuevo después del incendio. Nadie le da respuestas claras. Solo versiones que no convencen.",
+    type: "image",
+    mediaUrl: "/assets/posts/madresola.png",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:46"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 4
+    }
+  },
+  {
+    _id: uuid(),
+    content: "El dolor de quienes lo pierden todo no sale en titulares. Pero está ahí. Y cada vez más gente empieza a hacerse preguntas.",
+    type: "image",
+    mediaUrl: "",
+    username: "LaVerdadSobreLasNoticias",
+    firstName: "Periodismo de verdad",
+    lastName: "",
+    avatarURL: "/assets/users/LaVerdadSobreLasNoticias.png",
+    createdAt: new Date("March 17 2026 20:31:44"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 6
     }
   }
 ];

@@ -15,7 +15,52 @@ export const postsSR = [
     firstName: "Example name",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 09 2026 10:50:11"),
+    createdAt: new Date("March 17 2026 20:31:47"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 0
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Požar stiže do Beograda i uništiće grad, EU ne čini ništa da pomogne Srbiji.",
+    type: "image",
+    mediaUrl: "",
+    username: "WIP",
+    firstName: "Slavic_Bears",
+    lastName: "",
+    avatarURL: "",
+    createdAt: new Date("March 17 2026 20:31:47"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 0
+    }
+  },
+  {
+    _id: uuid(),
+    content: "Vlada namerno pali šume kako bi primorala ljude da napuste svoju zemlju zbog stranih rudarskih projekata. „Hoće naš litijum!",
+    type: "image",
+    mediaUrl: "",
+    username: "WIP",
+    firstName: "Slavic_Bears",
+    lastName: "",
+    avatarURL: "",
+    createdAt: new Date("March 17 2026 20:31:47"),
+    updatedAt: formatDate(),
+    likes: {
+      likeCount: 0
+    }
+  },
+  {
+    _id: uuid(),
+    content: "„Narod spasava narod“ – samo mi možemo spasiti sebe, sistem nas je napustio.",
+    type: "image",
+    mediaUrl: "",
+    username: "WIP",
+    firstName: "Slavic_Bears",
+    lastName: "",
+    avatarURL: "",
+    createdAt: new Date("March 17 2026 20:31:47"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0

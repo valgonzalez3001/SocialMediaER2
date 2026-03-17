@@ -8,18 +8,18 @@ import { formatDate } from "../utils/authUtils.jsx";
 export const usersEN = [
   {
     _id: uuid(),
-    firstName: "Example name",
+    firstName: "FireTruthNow",
     lastName: "",
-    bio: "",
-    username: "Example",
+    bio: "Breaking news | fires | freedom | Agenda2030 | truth",
+    username: "FireTruthNow",
     password: "ECHO",
-    createdAt: "",
+    createdAt: new Date("Diciembre 2024"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarURL: "/assets/users/FireTruthNow.png",
     verified: false,
     stats: {
-      followersCount: 0,
-      followingCount: 0
+      followersCount: "4K",
+      followingCount: "4K"
     },
     puzzle: {
       isBot: true

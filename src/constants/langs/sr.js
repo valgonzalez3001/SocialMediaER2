@@ -175,7 +175,7 @@ export const sr = {
     "statsCount": "{{count}} objava",
     "statsText": "označeno je kao generisano veštačkom inteligencijom u poslednjem satu.",
     "card1Title": "Vil Smit jede špagete",
-    "card2Title": "Hrišćanska parada Tri kralja u Njujorku",
+    "card2Title": "Madrid jutros pogođen udarom meteorita",
     "tag": "GENERISANO VEŠTAČKOM INTELIGENCIJOM",
     "seeAll": "Pogledaj sve →",
     "noPendingReview": "Nisu pronađene nove objave za pregled."

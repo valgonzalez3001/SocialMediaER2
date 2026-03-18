@@ -90,7 +90,7 @@ export const Home = () => {
 
   return (
     <>
-      <Header />
+
       <div className="app-container">
         <Navbar />
 

@@ -62,7 +62,7 @@ export const Profile = () => {
 
   return (
     <>
-      <Header />
+
       <div className="app-container">
         <Navbar />
 

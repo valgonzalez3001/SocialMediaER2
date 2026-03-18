@@ -15,7 +15,7 @@ export const PostDetail = () => {
   const post = allPosts?.find((post) => post?.id === postId);
   return (
     <>
-      <Header />
+
       <div className="app-container">
         <Navbar />
 

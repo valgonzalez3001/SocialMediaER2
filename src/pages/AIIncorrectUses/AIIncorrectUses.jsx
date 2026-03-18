@@ -241,7 +241,7 @@ export const AIIncorrectUses = () => {
 
     return (
         <>
-            <Header />
+        
             <div className="app-container">
                 <Navbar />
 

@@ -270,7 +270,7 @@ export const Admin = () => {
 
     return (
         <>
-            <Header />
+   
             <div className="app-container">
                 <Navbar />
 

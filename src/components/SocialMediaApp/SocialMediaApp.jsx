@@ -82,8 +82,14 @@ export const SocialMediaApp = ({ mode = "window" }) => {
       {!isEmbedded && (
         <div className="window-titlebar">
           <div className="window-title">
+               <img
+          src="/assets/echo-logo.png"
+          alt="ECHO logo"
           
-            <img src="/assets/echo-logo-short.png" alt="ECHO" className="window-title-logo" />
+          onClick={() => navigate("/")}
+          className="window-title-logo"
+        />
+
           </div>
           <div className="window-controls">
             <button

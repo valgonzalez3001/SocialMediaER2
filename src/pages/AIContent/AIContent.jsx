@@ -197,7 +197,7 @@ export const AIContent = () => {
 
     return (
         <>
-            <Header />
+          
             <div className="app-container">
                 <Navbar />
 

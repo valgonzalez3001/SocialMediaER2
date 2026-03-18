@@ -11,6 +11,15 @@ import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import challengeData from "./AIIncorrectUses.json";
 
+const shuffleArray = (items) => {
+    const shuffled = [...items];
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+};
+
 const formatDate = (iso) => {
   if (!iso) return iso;
   const d = new Date(iso);
@@ -44,6 +53,16 @@ export const AIIncorrectUses = () => {
         () => challengeData[currentLang] || challengeData.en || [],
         [currentLang]
     );
+    const shuffledOptionsByCase = useMemo(() => {
+        return challengeCases.reduce((acc, item) => {
+            const optionsWithId = (item.options || []).map((option, index) => ({
+                ...option,
+                optionId: `${item.id}-${index}`,
+            }));
+            acc[item.id] = shuffleArray(optionsWithId);
+            return acc;
+        }, {});
+    }, [challengeCases]);
     
     // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
     useEffect(() => {
@@ -134,6 +153,7 @@ export const AIIncorrectUses = () => {
     }, [sentReplies, challengeCases.length, challenge3Completed, sendStatement]);
 
     const activeCase = challengeCases.find((item) => item.id === activeCaseId) || null;
+    const activeCaseOptions = activeCase ? (shuffledOptionsByCase[activeCase.id] || []) : [];
     const activeWrongSelections = activeCaseId ? (wrongSelections[activeCaseId] || {}) : {};
     const isResolved = activeCaseId ? Boolean(correctSelected[activeCaseId]) : false;
     const canSendReply = activeCaseId ? Boolean(correctSelected[activeCaseId]) : false;
@@ -147,10 +167,10 @@ export const AIIncorrectUses = () => {
     }
         userState?.allUsers?.find((user) => user.username === "ECHO") || userState?.allUsers?.[0];
 
-    const handleOptionClick = (optionIndex) => {
+    const handleOptionClick = (selectedOptionId) => {
         if (!activeCase || isResolved) return;
 
-        const option = activeCase.options[optionIndex] || null;
+        const option = activeCaseOptions.find((opt) => opt.optionId === selectedOptionId) || null;
         if (!option) return;
 
         const isCorrect = option.isCorrect === true;
@@ -163,11 +183,13 @@ export const AIIncorrectUses = () => {
                     description: { en: activeCase.post.text },
                     type: "http://adlnet.gov/expapi/activities/cmi.interaction",
                     interactionType: "choice",
-                    choices: activeCase.options.map((opt, idx) => ({
-                        id: idx.toString(),
+                    choices: activeCaseOptions.map((opt) => ({
+                        id: opt.optionId,
                         description: { en: opt.text },
                     })),
-                    correctResponsesPattern: [activeCase.options.findIndex(opt => opt.isCorrect).toString()],
+                    correctResponsesPattern: [
+                        activeCaseOptions.find((opt) => opt.isCorrect)?.optionId || "",
+                    ],
                 },
             },
             {
@@ -197,12 +219,12 @@ export const AIIncorrectUses = () => {
             ...wrongSelections,
             [activeCase.id]: {
                 ...(wrongSelections[activeCase.id] || {}),
-                [optionIndex]: true,
+                [selectedOptionId]: true,
             },
         };
         setWrongSelections(nextWrong);
         sessionStorage.setItem("ai-incorrect:wrongSelections", JSON.stringify(nextWrong));
-        const nextSelected = { ...selectedWrongOption, [activeCase.id]: optionIndex };
+        const nextSelected = { ...selectedWrongOption, [activeCase.id]: selectedOptionId };
         setSelectedWrongOption(nextSelected);
         sessionStorage.setItem("ai-incorrect:selectedWrongOption", JSON.stringify(nextSelected));
     };
@@ -358,15 +380,15 @@ export const AIIncorrectUses = () => {
                                 <p className="x-reply-helper">{t("aiIncorrectUsesPage.instruction")}</p>
 
                                 <div className="ai-incorrect-options">
-                                    {activeCase.options.map((option, index) => (
+                                    {activeCaseOptions.map((option) => (
                                         <button
-                                            key={`${activeCase.id}-${index}`}
+                                            key={option.optionId}
                                             className={`ai-incorrect-option ${
-                                                selectedWrongOption[activeCase.id] === index ? "wrong-selection" : ""
+                                                selectedWrongOption[activeCase.id] === option.optionId ? "wrong-selection" : ""
                                             } ${option.isCorrect && correctSelected[activeCase.id] ? "correct-selection" : ""} ${
-                                                activeWrongSelections[index] ? "persist-wrong" : ""
+                                                activeWrongSelections[option.optionId] ? "persist-wrong" : ""
                                             }`}
-                                            onClick={() => handleOptionClick(index)}
+                                            onClick={() => handleOptionClick(option.optionId)}
                                             type="button"
                                         >
                                             {option.text}
@@ -387,7 +409,7 @@ export const AIIncorrectUses = () => {
 
                         <div className="reply-modal-actions">
                             <button type="button" className="reply-send-btn" disabled={!canSendReply} onClick={handleSendReply}>
-                                Reply
+                                {t("aiIncorrectUsesPage.reply")}
                             </button>
                         </div>
                     </div>

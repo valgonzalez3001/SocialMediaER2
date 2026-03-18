@@ -32,6 +32,23 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
     () => statementsData[currentLang] || statementsData.en || [],
     [currentLang]
   );
+  const requiredCorrectCount = useMemo(
+    () => statements.filter((statement) => statement.correct).length,
+    [statements]
+  );
+  const challengeDescription = useMemo(
+    () => t("createPost.selectTwoCorrect").replace(/\b2\b/, String(requiredCorrectCount)),
+    [t, requiredCorrectCount]
+  );
+
+  useEffect(() => {
+    // Keep only valid ids for the active language and enforce the current cap.
+    const validIds = new Set(statements.map((statement) => statement.id));
+    setSelectedStatements((prev) => {
+      const filtered = prev.filter((id) => validIds.has(id));
+      return filtered.slice(0, requiredCorrectCount);
+    });
+  }, [statements, requiredCorrectCount]);
 
   const handleStatementClick = (id) => {
     setSelectedStatements((prev) => {
@@ -39,7 +56,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
       if (isSelected) {
         return prev.filter((statementId) => statementId !== id);
       }
-      if (prev.length < 2) {
+      if (prev.length < requiredCorrectCount) {
         return [...prev, id];
       }
       return prev;
@@ -47,8 +64,10 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
   };
 
   const handleSubmit = () => {
-    if (selectedStatements.length !== 2) {
-      toast.error(t("createPost.selectTwoStatements"));
+    if (selectedStatements.length !== requiredCorrectCount) {
+      toast.error(
+        t("createPost.incorrectSelection") + ` (${selectedStatements.length}/${requiredCorrectCount})`
+      );
       return;
     }
 
@@ -157,11 +176,11 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
           <div className="cn-header">
             <div className="cn-header-top">
               <span className="cn-badge">📋 Community Note</span>
-              <span className={`cn-counter${selectedStatements.length === 2 ? " ready" : ""}`}>
-                {selectedStatements.length}/2 {t("createPost.selected")}
+              <span className={`cn-counter${selectedStatements.length === requiredCorrectCount ? " ready" : ""}`}>
+                {selectedStatements.length}/{requiredCorrectCount} {t("createPost.selected")}
               </span>
             </div>
-            <p className="challenge-description">{t("createPost.selectTwoCorrect")}</p>
+            <p className="challenge-description">{challengeDescription}</p>
           </div>
 
           <div className="statements-list">
@@ -189,7 +208,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
             <div className="post-btn-container">
               <button
                 onClick={handleSubmit}
-                disabled={selectedStatements.length !== 2}
+                disabled={selectedStatements.length !== requiredCorrectCount}
                 type="button"
               >
                 {t("createPost.publishConclusion")}

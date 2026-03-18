@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect, useRef } from "react";
 import "./SocialMediaApp.css";
 import { useOS } from "../../contexts/OSProvider";
 import { NavRoutes } from "../../Routes/NavRoutes";
-import { FaTimes, FaMinus } from "react-icons/fa";
+import { FaTimes, FaMinus, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { useStats } from "../../contexts/StatsProvider";
 import { useUser } from "../../contexts/UserProvider";
@@ -31,6 +31,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
   const isEmbedded = mode === "embedded";
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loginErrorKey, setLoginErrorKey] = useState("");
   const [loginDone, setLoginDone] = useState(
     () => sessionStorage.getItem("socialLoginDone") === "true"
@@ -138,15 +139,25 @@ export const SocialMediaApp = ({ mode = "window" }) => {
                 <label className="social-login-label" htmlFor="login-password">
                   {t("socialLogin.passwordLabel")}
                 </label>
-                <input
-                  id="login-password"
-                  className="social-login-input"
-                  type="password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  placeholder="1234"
-                  autoComplete="current-password"
-                />
+                <div className="social-login-password-field">
+                  <input
+                    id="login-password"
+                    className="social-login-input social-login-password-input"
+                    type={isPasswordVisible ? "text" : "password"}
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    placeholder="1234"
+                    autoComplete="current-password"
+                  />
+                  <button
+                    type="button"
+                    className="social-login-password-toggle"
+                    onClick={() => setIsPasswordVisible((prev) => !prev)}
+                    aria-label={isPasswordVisible ? "Hide password" : "Show password"}
+                  >
+                    {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+                  </button>
+                </div>
                 {loginErrorKey && (
                   <span className="social-login-error">{t(loginErrorKey)}</span>
                 )}

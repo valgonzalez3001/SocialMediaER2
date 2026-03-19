@@ -180,7 +180,7 @@ export const es = {
     "verifyButton": "Verificar post →",
     "statsCount": "{{count}} posts",
     "statsText": "han sido marcados como generados por IA en la última hora.",
-    "card1Title": "Will Smith come spaghetti",
+    "card1Title": "Vídeo de Will Smith comiendo spaghetti",
     "card2Title": "Madrid sufre esta mañana el impacto de un meteorito",
     "tag": "GENERADO POR IA",
     "seeAll": "Ver todo →",

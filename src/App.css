@@ -12,13 +12,13 @@
 :root {
   --primary-color: #7F55FF;
   --primary-color-hover: #9370FF;
-
+  --primary-color-text: #d1c0ff;
 
   --white: #ffffff;
   --text-color: #ffffff;
   --muted-text: #b0b0b0;
 
-  --hover-background: #251a42;
+  --hover-background: #251c41;
   --border-color: rgba(255, 255, 255, 0.08);
   --surface: #130f26;
   --page-bg: #1b1135;

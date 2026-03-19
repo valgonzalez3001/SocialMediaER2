@@ -278,11 +278,7 @@
   /* base styles */
 }
 
-@media (min-width: 1200px) {
-  .navbar a:hover {
-    background: rgb(13, 5, 34);
-  }
-}
+
 
 .modal-content {
   position: relative;

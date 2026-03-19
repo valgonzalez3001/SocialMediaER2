@@ -12,6 +12,7 @@ import { useOS } from "../../contexts/OSProvider.jsx";
 import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
+import { RxInfoCircled } from "../../utils/icons.jsx";
 
 export const Admin = () => {
     const { t } = useTranslation();
@@ -335,7 +336,10 @@ export const Admin = () => {
                 <div className="hint-modal-overlay" onClick={() => setShowHint(false)}>
                     <div className="hint-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="hint-modal-header">
-                            <h3>{t('admin.hintTitle')}</h3>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                         <RxInfoCircled/>
+                                <h3>{t('admin.hintTitle')}</h3>
+                            </div>
                             <button className="close-button" onClick={() => setShowHint(false)}>×</button>
                         </div>
                         <div className="hint-modal-content">

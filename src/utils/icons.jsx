@@ -14,6 +14,8 @@ import { BiSearch } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { IoMdLogOut } from "react-icons/io";
 import { FaFeather } from "react-icons/fa";
+import { RxInfoCircled } from "react-icons/rx";
+
 
 export {
   RxCross2,
@@ -31,5 +33,6 @@ export {
   BiSearch,
   CgProfile,
   IoMdLogOut,
-  FaFeather
+  FaFeather,
+  RxInfoCircled,
 };

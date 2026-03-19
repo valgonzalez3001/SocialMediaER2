@@ -96,7 +96,7 @@ export const Home = () => {
 
         <main className="feed">
           <div className="sorting-container">
-            <p>{getCurrentSortLabel()} {t('home.sortBy.posts')}</p>
+            <p>{t('home.sortBy.posts')}  {getCurrentSortLabel()} </p>
             <TbAdjustmentsHorizontal
               onClick={() => setIsAdjustmentOn(!isAjustmentOn)}
               className="adjustment-btn"

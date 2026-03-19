@@ -180,7 +180,7 @@ export const en = {
     "verifyButton": "Verify post →",
     "statsCount": "{{count}} posts",
     "statsText": "have been marked as AI generated in the last hour.",
-    "card1Title": "Will Smith Eats Spaghetti",
+    "card1Title": "Footage of Will Smith Eating Spaghetti",
     "card2Title": "Madrid Hit by Meteorite Strike This Morning",
     "tag": "AI GENERATED",
     "seeAll": "See all →",

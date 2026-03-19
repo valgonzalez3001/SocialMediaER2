@@ -10,6 +10,7 @@ import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import { useUser } from "../../contexts/UserProvider.jsx";
+import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 
 export const Profile = () => {
   const { t } = useTranslation();
@@ -242,6 +243,10 @@ export const Profile = () => {
             </div>
           )}
        </main>
+        {/* Panel de estadísticas lateral */}
+                <aside className="stats-sidebar">
+                    <StatsPanel />
+                </aside>
       </div>
     </>
   );

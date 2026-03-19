@@ -116,6 +116,8 @@
 .caption-container {
   width: 100%;
   padding: 0.2rem 0 0.6rem 0;
+  line-height: 1.4rem;
+  padding-bottom: 1.3rem;
 }
 
 .post-card .media {
@@ -123,12 +125,16 @@
 }
 
 .three-dots-icon {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: grey;
+  padding: 0.2em
 }
 .three-dots-icon:hover {
   color: var(--primary-color);
+  background: var(--hover-background);
+  border-radius: 50%;
+
 }
 
 .post-card .media video {
@@ -404,7 +410,8 @@
   }
 
   .three-dots-icon {
-    font-size: 1.5rem;
+    margin-top: -0.3rem;
+    font-size: 2rem;
   }
 
   .comment-button-container > button {

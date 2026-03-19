@@ -33,11 +33,11 @@
 }
 
 .sp-header-title {
-  font-size: 0.65rem;
+  font-size: 1.3rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #8888aa;
+  color: #cab3ff;
 }
 
 .sp-sys-badge {

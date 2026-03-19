@@ -19,7 +19,8 @@ export const usersES = [
     verified: true,
     stats: {
       followersCount: "624K",
-      followingCount: 629
+      followingCount: 629,
+      postsCount: "500+"
     },
     puzzle: {
       isBot: false
@@ -38,7 +39,8 @@ export const usersES = [
     verified: true,
     stats: {
       followersCount: "73K",
-      followingCount: 631
+      followingCount: 631,
+      postsCount: "500+"
     },
     puzzle: {
       isBot: false
@@ -57,7 +59,8 @@ export const usersES = [
     verified: false,
     stats: {
       followersCount: "27K",
-      followingCount: 400
+      followingCount: 400,
+      postsCount: 0
     },
     puzzle: {
       isBot: true
@@ -76,7 +79,8 @@ export const usersES = [
     verified: true,
     stats: {
       followersCount: "18K",
-      followingCount: 900
+      followingCount: 900,
+      postsCount: 0
     },
     puzzle: {
       isBot: true
@@ -95,7 +99,8 @@ export const usersES = [
     verified: false,
     stats: {
       followersCount: "42K",
-      followingCount: 300
+      followingCount: 300,
+      postsCount: 0
     },
     puzzle: {
       isBot: true
@@ -114,7 +119,8 @@ export const usersES = [
     verified: true,
     stats: {
       followersCount: 33,
-      followingCount: 1200
+      followingCount: 1200,
+      postsCount: 0
     },
     puzzle: {
       isBot: true
@@ -133,7 +139,8 @@ export const usersES = [
     verified: false,
     stats: {
       followersCount: "1K",
-      followingCount: 200
+      followingCount: 200,
+      postsCount: 0
     },
     puzzle: {
       isBot: true
@@ -152,7 +159,8 @@ export const usersES = [
     verified: true,
     stats: {
       followersCount: "12K",
-      followingCount: 150
+      followingCount: 150,
+      postsCount: 0
     },
     puzzle: {
       isBot: true
@@ -171,7 +179,8 @@ export const usersES = [
     verified: false,
     stats: {
       followersCount: "4K",
-      followingCount: "4K"
+      followingCount: "4K",
+      postsCount: 0
     },
     puzzle: {
       isBot: true

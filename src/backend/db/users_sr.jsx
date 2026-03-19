@@ -46,7 +46,8 @@ export const usersSR = [
     verified: true,
     stats: {
       followersCount: "17K",
-      followingCount: 0
+      followingCount: 0,
+      postsCount: 0
     },
     puzzle: {
       isBot: false
@@ -65,7 +66,8 @@ export const usersSR = [
     verified: true,
     stats: {
       followersCount: "5,2K",
-      followingCount: 13
+      followingCount: 13,
+      postsCount: 0
     },
     puzzle: {
       isBot: false
@@ -84,7 +86,8 @@ export const usersSR = [
     verified: "FAKE",
     stats: {
       followersCount: "1.1K",
-      followingCount: 91
+      followingCount: 91,
+      postsCount: 0
     },
     puzzle: {
       isBot: true
@@ -103,7 +106,8 @@ export const usersSR = [
     verified: true,
     stats: {
       followersCount: "12K",
-      followingCount: 4
+      followingCount: 4,
+      postsCount: 0
     },
     puzzle: {
       isBot: false
@@ -122,7 +126,8 @@ export const usersSR = [
     verified: "FAKE",
     stats: {
       followersCount: "52K",
-      followingCount: 26
+      followingCount: 26,
+      postsCount: 0
     },
     puzzle: {
       isBot: true

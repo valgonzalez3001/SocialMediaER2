@@ -6,11 +6,23 @@ import { useTranslation } from 'react-i18next';
 import { usePosts } from "../../contexts/PostsProvider.jsx";
 import { Post } from "../../components/Post/Post";
 import { UserInfo } from "./components/UserInfo/UserInfo";
-import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import { useUser } from "../../contexts/UserProvider.jsx";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
+
+const CLASSIFICATION = {
+  YES: 'yes',
+  NO: 'no',
+};
+
+const normalizeClassification = (value) => {
+  if (value === 'AI') return CLASSIFICATION.YES;
+  if (value === 'Humano') return CLASSIFICATION.NO;
+  return value;
+};
+
+const isBotClassification = (value) => normalizeClassification(value) === CLASSIFICATION.YES;
 
 export const Profile = () => {
   const { t } = useTranslation();
@@ -22,7 +34,11 @@ export const Profile = () => {
   const [selectedQuizOptions, setSelectedQuizOptions] = useState([]);
   const [classifiedUsers, setClassifiedUsers] = useState(() => {
     const saved = sessionStorage.getItem('adminGameState');
-    return saved ? JSON.parse(saved) : {};
+    if (!saved) return {};
+    const parsed = JSON.parse(saved);
+    return Object.fromEntries(
+      Object.entries(parsed).map(([uname, classification]) => [uname, normalizeClassification(classification)])
+    );
   });
   const { sendStatement } = useXAPI();
   const lookedAtSentRef = useRef(new Set());
@@ -75,10 +91,10 @@ export const Profile = () => {
 
   const isClassificationLocked = (() => {
     if (!currentUser) return false;
-    const currentClassification = classifiedUsers[username];
+    const currentClassification = normalizeClassification(classifiedUsers[username]);
     if (!currentClassification) return false;
     const isBot = currentUser?.puzzle?.isBot;
-    return (currentClassification === 'AI' && isBot) || (currentClassification === 'Humano' && !isBot);
+    return (currentClassification === CLASSIFICATION.YES && isBot) || (currentClassification === CLASSIFICATION.NO && !isBot);
   })();
 
   useEffect(() => {
@@ -95,8 +111,9 @@ export const Profile = () => {
     if (!currentUser) return;
     if (isClassificationLocked) return;
 
+    const normalizedClassification = normalizeClassification(classification);
     const isBot = currentUser?.puzzle?.isBot;
-    const isCorrect = (classification === 'AI' && isBot) || (classification === 'Humano' && !isBot);
+    const isCorrect = (normalizedClassification === CLASSIFICATION.YES && isBot) || (normalizedClassification === CLASSIFICATION.NO && !isBot);
 
     sendStatement(
       XAPI_VERBS.ANSWERED,
@@ -116,7 +133,7 @@ export const Profile = () => {
       {
         success: isCorrect,
         score: { scaled: isCorrect ? 1 : 0, raw: isCorrect ? 1 : 0, min: 0, max: 1 },
-        response: classification === 'AI' ? "bot" : "human",
+        response: isBotClassification(normalizedClassification) ? "bot" : "human",
       },
       {
         contextActivities: {
@@ -127,7 +144,7 @@ export const Profile = () => {
     );
 
     setClassifiedUsers((prev) => {
-      const newState = { ...prev, [currentUser.username]: classification };
+      const newState = { ...prev, [currentUser.username]: normalizedClassification };
       sessionStorage.setItem('adminGameState', JSON.stringify(newState));
       return newState;
     });
@@ -139,7 +156,7 @@ export const Profile = () => {
     }
 
     setClassificationFeedback('correct');
-    const shouldRequireQuiz = classification === 'AI';
+    const shouldRequireQuiz = normalizedClassification === CLASSIFICATION.YES;
     if (shouldRequireQuiz && !quizSubmittedByUser[currentUser.username]) {
       setShowClassificationQuiz(true);
       return;
@@ -163,7 +180,7 @@ export const Profile = () => {
     setShowClassificationQuiz(false);
   };
 
-  const shouldRequireQuizForCurrentProfile = classifiedUsers[username] === 'AI';
+  const shouldRequireQuizForCurrentProfile = normalizeClassification(classifiedUsers[username]) === CLASSIFICATION.YES;
 
   const canOpenQuiz =
     classificationFeedback === 'correct' &&
@@ -187,7 +204,6 @@ export const Profile = () => {
           )}
           <UserInfo
             username={username}
-            postsByUser={postsByUser}
             showClassificationControls={fromAdmin && isSuspectUser && username !== 'ECHO'}
             selectedClassification={classifiedUsers[username]}
             onClassify={handleClassification}

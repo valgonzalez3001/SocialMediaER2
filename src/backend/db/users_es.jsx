@@ -73,7 +73,7 @@ export const usersES = [
     createdAt: new Date("Julio 2021"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/AlertaRural.png",
-    verified: false,
+    verified: true,
     stats: {
       followersCount: "18K",
       followingCount: 900
@@ -111,9 +111,9 @@ export const usersES = [
     createdAt: new Date("Mayo 2022"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/VozDelPuebloLibre.png",
-    verified: false,
+    verified: true,
     stats: {
-      followersCount: "10k",
+      followersCount: 33,
       followingCount: 1200
     },
     puzzle: {
@@ -127,13 +127,13 @@ export const usersES = [
     bio: "Autónoma, madre y española",
     username: "MariaCurrante",
     password: "ECHO",
-    createdAt: new Date("Diciembre 2019"),
+    createdAt: new Date("Diciembre 2025"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/MariaCurrante.png",
     verified: false,
     stats: {
-      followersCount: "7K",
-      followingCount: 700
+      followersCount: "1K",
+      followingCount: 200
     },
     puzzle: {
       isBot: true
@@ -149,7 +149,7 @@ export const usersES = [
     createdAt: new Date("Marzo 2023"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/InfoSinCensura.png",
-    verified: false,
+    verified: true,
     stats: {
       followersCount: "12K",
       followingCount: 150
@@ -165,7 +165,7 @@ export const usersES = [
     bio: "Breaking news | fires | freedom | Agenda2030 | truth",
     username: "FireTruthNow",
     password: "ECHO",
-    createdAt: new Date("Diciembre 2024"),
+    createdAt: new Date("Enero 2026"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/FireTruthNow.png",
     verified: false,

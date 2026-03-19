@@ -11,7 +11,7 @@
       },
       {
         "context": "I can't find the challenge in the social network",
-        "clue": "As a moderator, you have access to special tools to investigate suspicious behavior. Explore the left sidebar of the social network and click on “Possible Bots” to begin the analysis."
+        "clue": "As a moderator, you have access to special tools to investigate suspicious behavior. Explore the left sidebar of the social network and click on “Suspicious Accounts” to begin the analysis."
       },
       {
         "context": "I don't know how to identify suspicious accounts",
@@ -25,7 +25,7 @@
       },
       {
         "context": "I can't find the challenge in the social network",
-        "clue": "To investigate this new problem, you must access the panel where suspicious posts are reviewed. Within the social network, go to the left sidebar and click on \"Possible AI-Generated Content\". There you will find the next challenge."
+        "clue": "To investigate this new problem, you must access the panel where suspicious posts are reviewed. Within the social network, go to the left sidebar and click on \"AI-Generated Content\". There you will find the next challenge."
       },
       {
         "context": "Once I have opened the AI-Generated Content panel, I don't know what to do",
@@ -43,7 +43,7 @@
       },
       {
         "context": "I can't find the challenge in the social network",
-        "clue": "To investigate this new issue, you must access the panel where suspicious posts are reviewed. Within the social network, go to the left sidebar and click on “Possible AI-Generated Content.” There you will find the next challenge."
+        "clue": "To analyze these cases, you must access the corresponding moderation tool. Within the social network, go to the left sidebar and click on \"AI incorrect Uses\". There you will find the situations that require your intervention."
       },
       {
         "context": "I don't understand the game",
@@ -85,7 +85,7 @@
       },
       {
         "context": "No encuentro el reto dentro de la red social",
-        "clue": "Como moderador tienes acceso a herramientas especiales para investigar comportamientos sospechosos. Explora la barra lateral izquierda de la red social y haz clic en \"Posibles Bots\" para comenzar el análisis."
+        "clue": "Como moderador tienes acceso a herramientas especiales para investigar comportamientos sospechosos. Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis."
       },
       {
         "context": "No sé cómo identificar qué cuentas son sospechosas",
@@ -99,7 +99,7 @@
       },
       {
         "context": "No encuentro el reto dentro de la red social",
-        "clue": "Para investigar este nuevo problema debes acceder al panel donde se revisan publicaciones sospechosas. Dentro de la red social, dirígete a la barra lateral izquierda y haz clic en \"Posible Contenido Generado por IA\". Ahí encontrarás el siguiente desafío."
+        "clue": "Para investigar este nuevo problema debes acceder al panel donde se revisan publicaciones sospechosas. Dentro de la red social, dirígete a la barra lateral izquierda y haz clic en \"Contenido Generado por IA\". Ahí encontrarás el siguiente desafío."
       },
       {
         "context": "Una vez que he accedido al panel de Contenido Generado por IA, no sé qué hacer",
@@ -117,7 +117,7 @@
       },
       {
         "context": "No encuentro el reto dentro de la red social",
-        "clue": "Para analizar estos casos debes acceder a la herramienta de moderación correspondiente. Dentro de la red social, dirígete a la barra lateral izquierda y haz clic en \"Usos recomendado de la IA\". Allí encontrarás las situaciones que necesitan tu intervención."
+        "clue": "Para analizar estos casos debes acceder a la herramienta de moderación correspondiente. Dentro de la red social, dirígete a la barra lateral izquierda y haz clic en \"Usos incorrectos de IA\". Allí encontrarás las situaciones que necesitan tu intervención."
       },
       {
         "context": "No entiendo el juego",
@@ -159,7 +159,7 @@
       },
       {
         "context": "En löydä haastetta sosiaalisesta mediasta",
-        "clue": "Moderaattorina sinulla on pääsy erityisiin työkaluihin epäilyttävän toiminnan tutkimiseksi. Tutki sosiaalisen verkoston vasenta sivupalkkia ja napsauta \"Epäilyttävät käyttäjät\" aloittaaksesi analyysin."
+        "clue": "Moderaattorina sinulla on pääsy erityisiin työkaluihin epäilyttävän toiminnan tutkimiseksi. Tutki sosiaalisen verkoston vasenta sivupalkkia ja napsauta \"Epäilyttävät tilit\" aloittaaksesi analyysin."
       },
       {
         "context": "En tiedä miten tunnistaa epäilyttävät tilit",
@@ -173,7 +173,7 @@
       },
       {
         "context": "En löydä haastetta sosiaalisesta mediasta",
-        "clue": "Tutkiaksesi tätä uutta ongelmaa sinun täytyy siirtyä paneeliin, jossa epäilyttäviä julkaisuja tarkastellaan. Mene sosiaalisessa verkostossa vasempaan sivupalkkiin ja napsauta \"Mahdollinen tekoälyn luoma sisältö\". Sieltä löydät seuraavan haasteen."
+        "clue": "Tutkiaksesi tätä uutta ongelmaa sinun tulee siirtyä paneeliin, jossa epäilyttäviä julkaisuja tarkastellaan. Sosiaalisessa verkostossa siirry vasempaan sivupalkkiin ja napsauta \"Tekoälyn tuottama sisältö\". Sieltä löydät seuraavan haasteen."
       },
       {
         "context": "Kun olen avannut tekoälyn tuottaman sisällön paneelin, en tiedä mitä tehdä",
@@ -191,7 +191,7 @@
       },
       {
         "context": "En löydä haastetta sosiaalisesta mediasta",
-        "clue": "Näiden tapausten analysoimiseksi sinun täytyy käyttää vastaavaa moderointityökalua. Mene sosiaalisessa verkostossa vasempaan sivupalkkiin ja napsauta \"Tekoälyn virheellinen käyttö\". Sieltä löydät tilanteet, jotka vaativat puuttumistasi."
+        "clue": "Näiden tapausten analysoimiseksi sinun tulee siirtyä vastaavaan moderointityökaluun. Sosiaalisessa verkostossa siirry vasempaan sivupalkkiin ja napsauta \"Tekoälyn väärinkäyttö\". Sieltä löydät tilanteet, jotka vaativat puuttumistasi."
       },
       {
         "context": "En ymmärrä peliä",
@@ -233,7 +233,7 @@
       },
       {
         "context": "Ne mogu da pronađem izazov na društvenoj mreži",
-        "clue": "Kao moderator imaš pristup posebnim alatima za istraživanje sumnjivog ponašanja. Pregledaj levu bočnu traku društvene mreže i klikni na „Sumnjivi korisnici“ da započneš analizu."
+        "clue": "Kao moderator imaš pristup posebnim alatima za istraživanje sumnjivog ponašanja. Istraži levi bočni panel društvene mreže i klikni na „Sumnjivi nalozi“ da započneš analizu."
       },
       {
         "context": "Ne znam kako da identifikujem sumnjive naloge",
@@ -247,7 +247,7 @@
       },
       {
         "context": "Ne mogu da pronađem izazov na društvenoj mreži",
-        "clue": "Da bi istražio ovaj novi problem, moraš da pristupiš panelu gde se pregledaju sumnjive objave. Unutar društvene mreže idi na levu bočnu traku i klikni na „Moguć sadržaj generisan veštačkom inteligencijom“. Tamo ćeš pronaći sledeći izazov."
+        "clue": "Da bi istražio ovaj novi problem, moraš pristupiti panelu gde se pregledaju sumnjive objave. Unutar društvene mreže, idi na levi bočni panel i klikni na „Sadržaj generisan veštačkom inteligencijom“. Tamo ćeš pronaći sledeći izazov."
       },
       {
         "context": "Kada pristupim panelu \"Sadržaj generisan veštačkom inteligencijom\", ne znam šta da radim",
@@ -265,7 +265,7 @@
       },
       {
         "context": "Ne mogu da pronađem izazov na društvenoj mreži",
-        "clue": "Da bi analizirao ove slučajeve, moraš da pristupiš odgovarajućem alatu za moderaciju. Unutar društvene mreže idi na levu bočnu traku i klikni na „Nepravilna upotreba veštačke inteligencije“. Tamo ćeš pronaći situacije koje zahtevaju tvoju intervenciju."
+        "clue": "Da bi analizirao ove slučajeve, moraš pristupiti odgovarajućem alatu za moderaciju. Unutar društvene mreže, idi na levi bočni panel i klikni na „Zloupotreba veštačke inteligencije“. Tamo ćeš pronaći situacije koje zahtevaju tvoju intervenciju."
       },
       {
         "context": "Ne razumem igru",

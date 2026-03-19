@@ -126,7 +126,10 @@ export const es = {
     "joined": "Se unió",
     "follow": "Seguir",
     "verifiedAccount": "Cuenta verificada",
-    "backToGame": "Volver al Juego"
+    "backToGame": "Volver al Juego",
+    "misinfoQuestion": "¿Este perfil genera desinformación?",
+    "yes": "Sí",
+    "no": "No"
   },
   "explore": {
     "caughtUp": "¡Estás al día!"
@@ -136,12 +139,8 @@ export const es = {
     "users": "Usuarios",
     "posts": "Publicaciones",
     "suspectUsers": "Usuarios Sospechosos",
-    "hint": "Pista",
-    "bot": "Bot",
-    "human": "Humano",
+    "beforeStart": "Antes de empezar...",
     "noSuspects": "No hay usuarios sospechosos en este momento",
-    "userBlocked": "Usuario bloqueado clasificado como IA",
-    "userClassified": "Usuario clasificado como Humano",
     "classified": "Clasificados",
     "submit": "Enviar Clasificación",
     "resultTitle": "Resultado de tu Clasificación",
@@ -158,7 +157,9 @@ export const es = {
       "noInteraction": "Interacción nula: No responde a comentarios o menciones",
       "abnormalRatio": "Ratio anormal: Muchos seguidos pero poca interacción real",
       "singleTopic": "Tema único: Solo publica sobre un tema muy específico",
-      "recentAccount": "Cuenta reciente: Cuenta nueva con mucha actividad inmediata"
+      "recentAccount": "Cuenta reciente: Cuenta nueva con mucha actividad inmediata",
+      "verified": "Cuenta verificada",
+      "official": "Cuenta oficial: Pertenece a un organismo público/estatal"
     }
   },
   "editPost": {

@@ -126,7 +126,10 @@ export const en = {
     "joined": "Joined",
     "follow": "Follow",
     "verifiedAccount": "Verified account",
-    "backToGame": "Back to Game"
+    "backToGame": "Back to Game",
+    "misinfoQuestion": "Does this profile spread misinformation?",
+    "yes": "Yes",
+    "no": "No"
   },
   "explore": {
     "caughtUp": "You are all caught up!"
@@ -136,12 +139,8 @@ export const en = {
     "users": "Users",
     "posts": "Posts",
     "suspectUsers": "Suspicious Users",
-    "hint": "Hint",
-    "bot": "Bot",
-    "human": "Human",
+    "beforeStart": "Before you start...",
     "noSuspects": "No suspicious users at this time",
-    "userBlocked": "User blocked as AI",
-    "userClassified": "User classified as Human",
     "classified": "Classified",
     "submit": "Submit Classification",
     "resultTitle": "Your Classification Result",
@@ -158,7 +157,9 @@ export const en = {
       "noInteraction": "No interaction: Doesn't respond to comments or mentions",
       "abnormalRatio": "Abnormal ratio: Many followers but little real interaction",
       "singleTopic": "Single topic: Only posts about a very specific topic",
-      "recentAccount": "Recent account: New account with immediate high activity"
+      "recentAccount": "Recent account: New account with immediate high activity",
+      "verified": "Verification batch:",
+      "official": "Official account: It belongs to an official/public organisation"
     }
   },
   "editPost": {

@@ -8,13 +8,12 @@ import { getLocalizedContent } from '../../../../utils/i18nHelpers.jsx';
 import { usePosts } from "../../../../contexts/PostsProvider.jsx";
 import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider.jsx";
 import { useUser } from "../../../../contexts/UserProvider.jsx";
-import { getTimeDifference } from "../../../../utils/date.jsx";
 
 export const Comment = ({ comment, post }) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { userState } = useUser();
-  const { _id, avatarURL, username, firstName, lastName, text, createdAt } =
+  const { _id, avatarURL, username, firstName, lastName, text } =
     comment;
   const { deleteComment, editComment } = usePosts();
   const [showCommentToolbar, setShowCommentToolbar] = useState(false);
@@ -23,33 +22,57 @@ export const Comment = ({ comment, post }) => {
   const { loggedInUserState } = useLoggedInUser();
   const isAdmin = loggedInUserState.isAdmin;
 
+  const normalizeText = (value) => {
+    if (value === null || value === undefined) return "";
+    if (typeof value === "string") return value;
+    if (typeof value === "number" || typeof value === "boolean") return String(value);
+    if (Array.isArray(value)) {
+      return value
+        .map((item) => normalizeText(item))
+        .filter(Boolean)
+        .join(" ")
+        .trim();
+    }
+    if (typeof value === "object") {
+      if (value.text !== undefined) return normalizeText(value.text);
+      if (value.richText !== undefined) return normalizeText(value.richText);
+      if (value.hyperlink !== undefined) return normalizeText(value.hyperlink);
+      return "";
+    }
+    return "";
+  };
+
   const [userComment, setUserComment] = useState({ text: text });
 
+  const normalizedUsername = normalizeText(username).replace(/^@/, "").trim();
   const userDetails = userState?.allUsers?.find(
-    (user) => user?.username === username
+    (user) => (user?.username || "").replace(/^@/, "") === normalizedUsername
   );
+  const displayUsername = normalizedUsername ? `@${normalizedUsername}` : "";
+  const displayAvatar = userDetails?.avatarURL || normalizeText(avatarURL) || "/assets/users/TechAlex.png";
+  const displayName = `${firstName || ""} ${lastName || ""}`.trim() || displayUsername;
+  const displayComment = getLocalizedContent(text, i18n.language) || normalizeText(text) || "...";
 
   return (
     <div className="comment-card">
       <div>
         <img
           className="comment-user-image"
-          src={userDetails?.avatarURL}
-          alt={userDetails?.firstName}
+          src={displayAvatar}
+          alt={displayName || "User"}
         />
       </div>
 
       <div className="comment-main-section">
         <div className="username-container">
           <p className="name">
-            {firstName} {lastName}
+            {displayName}
           </p>
           <span
             className="username"
           >
-            @{username}
+            {displayUsername}
           </span>{" "}
-          <span className="date"> {getTimeDifference(createdAt, i18n.language)}</span>
           {/* El admin puede borrar cualquier comentario, pero solo editar el propio */}
           {isAdmin && (
             <div className="comment-toolbar">
@@ -87,7 +110,7 @@ export const Comment = ({ comment, post }) => {
         </div>
 
         {!isEditComment ? (
-          <div className="user-comment">{getLocalizedContent(text, i18n.language)}</div>
+          <div className="user-comment">{displayComment}</div>
         ) : (
           <div className="edit-comment-container">
             <textarea

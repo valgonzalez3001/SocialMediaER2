@@ -126,7 +126,10 @@ export const sr = {
     "joined": "Pridružio se",
     "follow": "Prati",
     "verifiedAccount": "Verifikovan nalog",
-    "backToGame": "Nazad na Igru"
+    "backToGame": "Nazad na Igru",
+    "misinfoQuestion": "Da li ovaj profil širi dezinformacije?",
+    "yes": "Da",
+    "no": "Ne"
   },
   "explore": {
     "caughtUp": "Stigli ste do kraja!"
@@ -136,12 +139,8 @@ export const sr = {
     "users": "Korisnici",
     "posts": "Objave",
     "suspectUsers": "Sumnjivi korisnici",
-    "hint": "Savet",
-    "bot": "Bot",
-    "human": "Čovek",
+    "beforeStart": "Pre nego što počneš...",
     "noSuspects": "Nema sumnjivih korisnika u ovom trenutku",
-    "userBlocked": "Korisnik blokiran kao AI",
-    "userClassified": "Korisnik klasifikovan kao čovek",
     "classified": "Klasifikovano",
     "submit": "Pošalji klasifikaciju",
     "resultTitle": "Rezultat vaše klasifikacije",

@@ -29,11 +29,13 @@ export const Admin = () => {
     const [showResult, setShowResult] = useState(false);
     const [gameResult, setGameResult] = useState(null);
     const [isPerfectResult, setIsPerfectResult] = useState(false);
+    const [isFirstVisit, setIsFirstVisit] = useState(true);
 
     // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
     // No inicializar si el reto ya fue completado
     useEffect(() => {
         if (challenge1Completed) return;
+        setIsFirstVisit(false);
         if (!sessionStorage.getItem('echo:challengeStart:1')) {
             trackChallengeStarted('1', 'Puzzle 1 - Bot Detection');
         }
@@ -110,45 +112,10 @@ export const Admin = () => {
         }
     }, [suspectUsers]);
 
-    const handleClassification = (username, classification) => {
-        const user = suspectUsers.find(u => u.username === username);
+    const isCorrectClassification = (user) => {
+        const classification = classifiedUsers[user.username];
         const isBot = user?.puzzle?.isBot;
-        const isCorrect = (classification === 'AI' && isBot) || (classification === 'Humano' && !isBot);
-
-        // Send xAPI statement for classification
-        sendStatement(
-            XAPI_VERBS.ANSWERED,
-            {
-                id: `${ECHO_ACTIVITIES.PUZZLE_1.id}/account/${user?.username}`,
-                definition: {
-                    name: { en: `Account Classification: ${user?.username}` },
-                    type: "http://adlnet.gov/expapi/activities/cmi.interaction",
-                    interactionType: "choice",
-                    choices: [
-                        { id: "bot", description: { en: "Bot" } },
-                        { id: "human", description: { en: "Human" } },
-                    ],
-                    correctResponsesPattern: [isBot ? "bot" : "human"],
-                },
-            },
-            {
-                success: isCorrect,
-                score: { scaled: isCorrect ? 1 : 0, raw: isCorrect ? 1 : 0, min: 0, max: 1 },
-                response: classification === 'AI' ? "bot" : "human",
-            },
-            {
-                contextActivities: {
-                    parent: [ECHO_ACTIVITIES.PUZZLE_1],
-                    grouping: [ECHO_ACTIVITIES.GAME],
-                },
-            }
-        );
-
-        setClassifiedUsers(prev => {
-            const newState = { ...prev, [username]: classification };
-            sessionStorage.setItem('adminGameState', JSON.stringify(newState));
-            return newState;
-        });
+        return (classification === 'AI' && isBot) || (classification === 'Humano' && !isBot);
     };
 
     const handleProfileClick = (username) => {
@@ -277,16 +244,14 @@ export const Admin = () => {
                 <main className="feed">
                     <div className="admin-container">
                         <div className="admin-header">
-                            <div>
-                                <h2>{t('admin.title')}</h2>
-                            </div>
-                            <button className="hint-button" onClick={() => setShowHint(true)}>
-                                💡 {t('admin.hint')}
-                            </button>
+                            <h2>{t('admin.title')}</h2>
                         </div>
 
                         <div className="game-status">
                             <p>{t('admin.classified')}: {Object.keys(classifiedUsers).length} / {suspectUsers.length}</p>
+                            <button className={`hint-button ${isFirstVisit ? 'hint-button--pulse' : ''}`} onClick={() => setShowHint(true)}>
+                                {t('admin.beforeStart')}
+                            </button>
                         </div>
 
                         <div className="suspect-users-container">
@@ -319,25 +284,8 @@ export const Admin = () => {
                                             </p>
                                             <p className="username">@{user?.username}</p>
                                         </div>
-                                        <div className="classification-buttons">
-                                            <button
-                                                className={`btn-ai ${classifiedUsers[user.username] === 'AI' ? 'selected' : ''}`}
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    handleClassification(user?.username, 'AI');
-                                                }}
-                                            >
-                                                {t('admin.bot')}
-                                            </button>
-                                            <button
-                                                className={`btn-human ${classifiedUsers[user.username] === 'Humano' ? 'selected' : ''}`}
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    handleClassification(user?.username, 'Humano');
-                                                }}
-                                            >
-                                                {t('admin.human')}
-                                            </button>
+                                        <div className={`classification-status ${isCorrectClassification(user) ? 'correct' : ''}`} title={isCorrectClassification(user) ? t('admin.classificationCorrect') : t('admin.classificationPending')}>
+                                            <span aria-hidden="true">✓</span>
                                         </div>
                                     </div>
                                 ))

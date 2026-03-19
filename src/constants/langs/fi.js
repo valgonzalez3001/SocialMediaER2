@@ -126,7 +126,10 @@ export const fi = {
     "joined": "Liittynyt",
     "follow": "Seuraa",
     "verifiedAccount": "Vahvistettu tili",
-    "backToGame": "Takaisin Peliin"
+    "backToGame": "Takaisin Peliin",
+    "misinfoQuestion": "Levittääkö tämä profiili disinformaatiota?",
+    "yes": "Kyllä",
+    "no": "Ei"
   },
   "explore": {
     "caughtUp": "Olet ajan tasalla!"
@@ -136,12 +139,8 @@ export const fi = {
     "users": "Käyttäjät",
     "posts": "Julkaisut",
     "suspectUsers": "Epäillyttävät Käyttäjät",
-    "hint": "Vihje",
-    "bot": "Botti",
-    "human": "Ihminen",
+    "beforeStart": "Ennen kuin aloitat...",
     "noSuspects": "Ei epäiltyjä käyttäjiä tällä hetkellä",
-    "userBlocked": "Käyttäjä estetty tekolynä",
-    "userClassified": "Käyttäjä luokiteltu ihmiseksi",
     "classified": "Luokiteltu",
     "submit": "Lähetä Luokittelu",
     "resultTitle": "Luokittelusi Tulos",

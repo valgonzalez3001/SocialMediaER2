@@ -143,9 +143,31 @@ function renderJsObject(obj, indent = INDENT, level = 0) {
 
     if (v !== null && typeof v === "object" && !v.__jsraw__ && !(v instanceof Date)) {
       if (Array.isArray(v)) {
-        // Array
-        const arrItems = v.map((item) => toJsLiteral(item));
-        lines.push(`${nextIndent}${k}: [${arrItems.join(", ")}]${comma}`);
+        // Array (supports object items, e.g. comments)
+        const arrItems = v.map((item) => {
+          if (
+            item !== null &&
+            typeof item === "object" &&
+            !item.__jsraw__ &&
+            !(item instanceof Date)
+          ) {
+            const nestedObjLines = renderJsObject(item, indent, level + 2);
+            return nestedObjLines.join("\n");
+          }
+          return `${pad((level + 2) * indent)}${toJsLiteral(item)}`;
+        });
+
+        if (arrItems.length === 0) {
+          lines.push(`${nextIndent}${k}: []${comma}`);
+        } else {
+          lines.push(`${nextIndent}${k}: [`);
+          arrItems.forEach((itemStr, itemIdx) => {
+            const isLastItem = itemIdx === arrItems.length - 1;
+            const itemComma = isLastItem ? "" : ",";
+            lines.push(`${itemStr}${itemComma}`);
+          });
+          lines.push(`${nextIndent}]${comma}`);
+        }
       } else {
         // Nested object
         const nested = renderJsObject(v, indent, level + 1);
@@ -447,22 +469,55 @@ async function main() {
 
     if (postsData.length > 0) {
       console.log(`  Downloading post media...`);
-      const puzzle1Posts = await Promise.all(postsData.map(async (row) => ({
-        _id: "uuid()",
-        content: row["Text"] || "",
-        type: "image",
-        mediaUrl: await processAvatarUrl(row["Multimedia (link)"], postsDir),
-        username: row["Handle"] || "",
-        firstName: row["Account name"] || "",
-        lastName: "",
-        avatarURL: await processAvatarUrl(row["Photo (link)"], avatarsDir),
-        createdAt: row["Timestamp"] ? new Date(row["Timestamp"]) : new Date(),
-        updatedAt: "formatDate()",
-        likes: {
-            likeCount: row["Likes"] || 0,
+      const puzzle1Posts = await Promise.all(postsData.map(async (row) => {
+        // Extract comments from Comment1By/Text, Comment2By/Text, Comment3By/Text
+        const comments = [];
+        for (let i = 1; i <= 3; i++) {
+          const commentByKey = `Comment${i}By`;
+          const commentTextKey = `Comment${i}Text`;
+          const commentBy = row[commentByKey];
+          const commentText = row[commentTextKey];
+          
+          if (commentBy && commentText) {
+            // Try to find the commenter in accountsData to get their avatar
+            const commenterData = accountsData.find(
+              (acc) => acc["Handle"] === commentBy
+            );
+            const commenterAvatar = commenterData 
+              ? await processAvatarUrl(commenterData["Photo (link)"], avatarsDir)
+              : "/assets/users/default-avatar.jpg";
+            
+            comments.push({
+              _id: "uuid()",
+              text: commentText,
+              username: commentBy,
+              firstName: commenterData?.["Account name"] || commentBy,
+              lastName: "",
+              avatarURL: commenterAvatar,
+              votes: { upvotedBy: [], downvotedBy: [] },
+                createdAt: new Date(),
+                updatedAt: "formatDate()"
+            });
+          }
         }
         
-      })));
+        return {
+          _id: "uuid()",
+          content: row["Text"] || "",
+          type: "image",
+          mediaUrl: await processAvatarUrl(row["Multimedia (link)"], postsDir),
+          username: row["Handle"] || "",
+          firstName: row["Account name"] || "",
+          lastName: "",
+          avatarURL: await processAvatarUrl(row["Photo (link)"], avatarsDir),
+          createdAt: row["Timestamp"] ? new Date(row["Timestamp"]) : new Date(),
+          updatedAt: "formatDate()",
+          likes: {
+              likeCount: row["Likes"] || 0,
+          },
+          comments: comments
+        };
+      }));
 
 
       // Create tmp folder if it does not exist and move file  `src/backend/db/posts_${lang}.jsx`if it exists into it (to avoid being overwritten by git) with a datetime suffix, then write new file

@@ -77,30 +77,6 @@
     {
       "id": "case-1",
       "post": {
-        "name": "Juan",
-        "handle": "@juanin34",
-        "date": "11.12.25",
-        "image": "/assets/users/juanin34.jpg",
-        "text": "Everything makes sense now that I know I have Marfan syndrome. AI explained all my symptoms"
-      },
-      "options": [
-        {
-          "text": "AI can help you prepare questions, but only a doctor can diagnose your condition. Please seek professional medical evaluation",
-          "isCorrect": true
-        },
-        {
-          "text": "Post your symptoms publicly so others can diagnose you better than professionals",
-          "isCorrect": false
-        },
-        {
-          "text": "That sounds accurate. Start treatment based on the AI answer right away",
-          "isCorrect": false
-        }
-      ]
-    },
-    {
-      "id": "case-2",
-      "post": {
         "name": "Marina ",
         "handle": "@SunsetVibes",
         "date": "14.03.26",
@@ -113,17 +89,17 @@
           "isCorrect": true
         },
         {
-          "text": "",
+          "text": "La IA puede ser útil para hacer ejercicios, aunque a veces puede equivocarse al igual que las personas, así que está bien tener en cuenta otras opiniones.",
           "isCorrect": false
         },
         {
-          "text": "",
+          "text": "La IA siempre tiene todas las respuestas y es la que nos puede orientar mejor en nuestro aprendizaje.",
           "isCorrect": false
         }
       ]
     },
     {
-      "id": "case-3",
+      "id": "case-2",
       "post": {
         "name": "Luca",
         "handle": "@GamerLuca",
@@ -147,7 +123,7 @@
       ]
     },
     {
-      "id": "case-4",
+      "id": "case-3",
       "post": {
         "name": "Pedro Martínez",
         "handle": "@PedroMM124",
@@ -171,7 +147,7 @@
       ]
     },
     {
-      "id": "case-5",
+      "id": "case-4",
       "post": {
         "name": "Alex",
         "handle": "@TechAlex",
@@ -195,7 +171,7 @@
       ]
     },
     {
-      "id": "case-6",
+      "id": "case-5",
       "post": {
         "name": "Paula",
         "handle": "@ArtisticPaula",
@@ -219,7 +195,7 @@
       ]
     },
     {
-      "id": "case-7",
+      "id": "case-6",
       "post": {
         "name": "Gema",
         "handle": "@gemita2045",

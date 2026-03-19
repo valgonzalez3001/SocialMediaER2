@@ -44,11 +44,19 @@
   padding: 1rem;
 }
 
+.profile-header-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+}
+
 .user-info-container .profilepicture-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  flex: 0 0 auto;
 }
 
 .user-info-container .profilepicture-container img {
@@ -76,6 +84,85 @@
 .user-info-container .website-container {
   margin-bottom: 1rem;
 }
+
+.profile-classification-panel {
+  justify-self: end;
+  width: min(560px, 100%);
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.2rem 1.5rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(29, 155, 240, 0.14) 0%, rgba(29, 155, 240, 0.06) 100%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 0.45rem;
+  margin-right: 0.5rem;
+}
+
+.profile-classification-question {
+  margin: 0;
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.profile-classification-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.profile-classification-buttons button {
+  padding: 0.7rem 1.6rem;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0.6;
+}
+
+.profile-classification-buttons button.selected {
+  opacity: 1;
+  box-shadow: 0 0 0 2px white;
+  transform: scale(1.05);
+}
+
+.profile-classification-buttons .btn-yes {
+  background-color: #ff4444;
+  color: white;
+}
+
+.profile-classification-buttons .btn-yes:hover {
+  background-color: #cc0000;
+  opacity: 0.8;
+}
+
+.profile-classification-buttons .btn-yes.selected {
+  background-color: #ff0000;
+  opacity: 1;
+}
+
+.profile-classification-buttons .btn-no {
+  background-color: #02ac2c;
+  color: white;
+}
+
+.profile-classification-buttons .btn-no:hover {
+  background-color: #02ac2c;
+  opacity: 0.8;
+}
+
+.profile-classification-buttons .btn-no.selected {
+  background-color: #00b32d;
+  opacity: 1;
+}
+
 .post-followers-following-container {
   margin-bottom: 1.5rem;
 }
@@ -145,6 +232,24 @@
   .modal-content {
     top: 5%;
     width: 60%;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile-header-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profile-classification-panel {
+    align-items: flex-start;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .profile-classification-question {
+    text-align: left;
   }
 }
 

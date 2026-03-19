@@ -13,7 +13,29 @@ export const usersSR = [
     bio: "RHMZ Srbije je referentna ustanova sa punom odgovornošću za izradu i prezentovanje prognoza vremena i voda, davanje upozorenja i najava za vanredne i opasne meteorološke i hidrološke pojave.",
     username: {
       text: {
-        richText: ["[object Object]", "[object Object]"]
+        richText: [
+          {
+            font: {
+              name: "'DM Sans',sans-serif",
+              color: {
+                argb: "FF6AA84F"
+              },
+              size: 11,
+              underline: true
+            },
+            text: "Republic Hydrometeorological Service of Serbia (RHMZ)"
+          },
+          {
+            font: {
+              name: "'DM Sans',sans-serif",
+              color: {
+                argb: "FF6AA84F"
+              },
+              size: 11
+            },
+            text: ","
+          }
+        ]
       },
       hyperlink: "https://www.hidmet.gov.rs/index_eng.php"
     },

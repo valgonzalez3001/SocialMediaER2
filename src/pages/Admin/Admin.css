@@ -5,11 +5,8 @@
 }
 
 .admin-header {
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .admin-header h2 {
@@ -19,21 +16,50 @@
 }
 
 .hint-button {
-  padding: 0.6rem 1.2rem;
-  background-color: #1d9bf0;
-  color: white;
+  padding: 0.75rem 1.5rem;
+  background-color: #7F55FF;
+  color: #ffffff;
   border: none;
-  border-radius: 20px;
-  font-weight: 600;
+  border-radius: 25px;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 12px rgba(127, 85, 255, 0.3);
 }
 
 .hint-button:hover {
-  background-color: #1d9bf0;
+  background-color: #9370FF;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px #1d9bf0;
+  box-shadow: 0 6px 20px rgba(127, 85, 255, 0.5);
+}
+
+.hint-button--pulse {
+  animation: pulse-glow 1.2s ease-in-out infinite, scale-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0% {
+    background-color: #7F55FF;
+    box-shadow: 0 4px 12px #7F55FF, 0 0 0 0 rgba(127, 85, 255, 0.8);
+  }
+  50% {
+    background-color: #d4c2ff;
+    box-shadow: 0 6px 25px #d4c2ff, 0 0 0 20px rgba(212, 194, 255, 0);
+  }
+  100% {
+    background-color: #7F55FF;
+    box-shadow: 0 4px 12px #7F55FF, 0 0 0 0 rgba(127, 85, 255, 0.8);
+  }
+}
+
+@keyframes scale-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
 }
 
 .suspect-users-container {
@@ -86,55 +112,25 @@
 }
 
 
-.classification-buttons {
+.classification-status {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #9ca3af;
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.classification-buttons button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  opacity: 0.6;
-}
-
-.classification-buttons button.selected {
-  opacity: 1;
-  box-shadow: 0 0 0 2px white;
-  transform: scale(1.05);
-}
-
-.btn-ai {
-  background-color: #ff4444;
+.classification-status span {
   color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
-.btn-ai:hover {
-  background-color: #cc0000;
-  opacity: 0.8;
-}
-
-.btn-ai.selected {
-  background-color: #ff0000;
-  opacity: 1;
-}
-
-.btn-human {
-  background-color: #02ac2c;
-  color: white;
-}
-
-.btn-human:hover {
-  background-color: #02ac2c;
-  opacity: 0.8;
-}
-
-.btn-human.selected {
-  background-color: #00b32d;
-  opacity: 1;
+.classification-status.correct {
+  background-color: #16a34a;
 }
 
 .no-suspects {
@@ -214,14 +210,14 @@
 .hint-modal-content li {
   padding: 0.75rem;
   margin-bottom: 0.5rem;
-  background-color: #1d9bf014;
-  border: 1px solid #1d9bf026;
+  background-color: #7F55FF1a;
+  border: 1px solid #7F55FF40;
   border-radius: 8px;
   line-height: 1.5;
 }
 
 .hint-modal-content strong {
-  color: #1d9bf0;
+  color: #7F55FF;
 }
 
 .hint-modal-content ul {
@@ -231,8 +227,11 @@
 
 /* Game status */
 .game-status {
-  padding: 1rem;
-  text-align: center;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-color);
@@ -241,7 +240,7 @@
 
 .game-status p {
   margin: 0;
-  color: #1d9bf0;
+  color: #7F55FF;
 }
 
 /* Submit button container */
@@ -253,7 +252,7 @@
 
 .submit-button {
   padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, #1d9bf0 0%, #0d8bd9 100%);
+  background: linear-gradient(135deg, #7F55FF 0%, #6d28d9 100%);
   color: white;
   border: none;
   border-radius: 25px;
@@ -261,12 +260,12 @@
   font-size: 1.1rem;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 4px 15px #1d9bf04d;
+  box-shadow: 0 4px 15px #7F55FF4d;
 }
 
 .submit-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(29, 155, 240, 0.4);
+  box-shadow: 0 6px 20px #7F55FF66;
 }
 
 /* Result modal */
@@ -342,7 +341,7 @@
 .score-text {
   font-size: 2rem;
   font-weight: 700;
-  color: #1d9bf0;
+  color: #7F55FF;
   margin: 0 0 1rem 0;
 }
 
@@ -374,7 +373,7 @@
 
 .try-again-button {
   padding: 0.8rem 2rem;
-  background: linear-gradient(135deg, #1d9bf0 0%, #0d8bd9 100%);
+  background: linear-gradient(135deg, #7F55FF 0%, #6d28d9 100%);
   color: white;
   border: none;
   border-radius: 25px;
@@ -382,10 +381,10 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(29, 155, 240, 0.3);
+  box-shadow: 0 4px 15px #7F55FF4d;
 }
 
 .try-again-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(29, 155, 240, 0.4);
+  box-shadow: 0 6px 20px #7F55FF66;
 }

@@ -15,11 +15,12 @@ export const postsSR = [
     firstName: "Example name",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 17 2026 20:31:47"),
+    createdAt: new Date("March 19 2026 08:44:33"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
-    }
+    },
+    comments: []
   },
   {
     _id: uuid(),
@@ -30,11 +31,12 @@ export const postsSR = [
     firstName: "Slavic_Bears",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 17 2026 20:31:47"),
+    createdAt: new Date("March 19 2026 08:44:33"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
-    }
+    },
+    comments: []
   },
   {
     _id: uuid(),
@@ -45,11 +47,12 @@ export const postsSR = [
     firstName: "Slavic_Bears",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 17 2026 20:31:47"),
+    createdAt: new Date("March 19 2026 08:44:33"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
-    }
+    },
+    comments: []
   },
   {
     _id: uuid(),
@@ -60,10 +63,11 @@ export const postsSR = [
     firstName: "Slavic_Bears",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 17 2026 20:31:47"),
+    createdAt: new Date("March 19 2026 08:44:33"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
-    }
+    },
+    comments: []
   }
 ];

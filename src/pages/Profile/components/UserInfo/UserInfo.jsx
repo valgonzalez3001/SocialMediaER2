@@ -4,7 +4,7 @@ import { useUser } from "../../../../contexts/UserProvider.jsx";
 import { getLocalizedContent } from '../../../../utils/i18nHelpers.jsx';
 import { createdOnDate } from '../../../../utils/date.jsx';
 
-export const UserInfo = ({ username, postsByUser }) => {
+export const UserInfo = ({ username, postsByUser, showClassificationControls = false, selectedClassification, onClassify }) => {
   const { t, i18n } = useTranslation();
   const { userState } = useUser();
 
@@ -27,10 +27,33 @@ export const UserInfo = ({ username, postsByUser }) => {
 
   return (
     <div className="user-info-container">
-      <div className="profilepicture-container">
-        <img src={user.avatarURL} alt={user.firstName} />
-        {isEchoProfile && (
-          <button>{t('profile.editProfile')}</button>
+      <div className="profile-header-row">
+        <div className="profilepicture-container">
+          <img src={user.avatarURL} alt={user.firstName} />
+          {isEchoProfile && (
+            <button>{t('profile.editProfile')}</button>
+          )}
+        </div>
+        {showClassificationControls && !isEchoProfile && (
+          <div className="profile-classification-panel">
+            <p className="profile-classification-question">
+              {t('profile.misinfoQuestion')}
+            </p>
+            <div className="profile-classification-buttons">
+              <button
+                className={`btn-yes ${selectedClassification === 'AI' ? 'selected' : ''}`}
+                onClick={() => onClassify?.('AI')}
+              >
+                {t('profile.yes')}
+              </button>
+              <button
+                className={`btn-no ${selectedClassification === 'Humano' ? 'selected' : ''}`}
+                onClick={() => onClassify?.('Humano')}
+              >
+                {t('profile.no')}
+              </button>
+            </div>
+          </div>
         )}
       </div>
       <div className="username-container">

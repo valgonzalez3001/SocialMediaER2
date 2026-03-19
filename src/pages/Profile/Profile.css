@@ -10,34 +10,31 @@
 }
 
 .back-to-game-container {
-  padding: 1rem;
+  padding: 0.6rem;
   border-bottom: 1px solid var(--border-color);
-  background-color: var(--surface);
   position: sticky;
   top: 0;
+  background-color: var(--page-bg);
   z-index: 50;
   width: 100%;
 }
 
 .back-to-game-button {
   padding: 0.6rem 1.2rem;
-  background: linear-gradient(135deg, #1d9bf0 0%, #0d8bd9 100%);
   color: white;
   border: none;
-  border-radius: 20px;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(29, 155, 240, 0.3);
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background:transparent
 }
 
 .back-to-game-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(29, 155, 240, 0.4);
+  text-decoration: underline;
 }
 
 .user-info-container {

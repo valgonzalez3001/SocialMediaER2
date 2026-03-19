@@ -1,6 +1,6 @@
 .navbar {
   z-index: 1;
-  background-color: #0f0c20;
+  background-color: var(--bg-dark);
   border-right: 1px solid rgba(255, 255, 255, 0.06);
   padding: 0.5rem;
   display: flex;

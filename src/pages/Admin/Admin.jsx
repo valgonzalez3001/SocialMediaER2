@@ -313,9 +313,11 @@ export const Admin = () => {
                                             </p>
                                             <p className="username">@{user?.username}</p>
                                         </div>
-                                        <div className={`classification-status ${isCorrectClassification(user) ? 'correct' : ''}`} title={isCorrectClassification(user) ? t('admin.classificationCorrect') : t('admin.classificationPending')}>
-                                            <span aria-hidden="true">✓</span>
-                                        </div>
+                                        {isCorrectClassification(user) && (
+                                            <div className="classification-status" title={t('admin.classificationCorrect')}>
+                                                <span aria-hidden="true">✓</span>
+                                            </div>
+                                        )}
                                     </div>
                                 ))
                             ) : (

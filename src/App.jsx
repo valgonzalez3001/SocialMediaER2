@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Desktop } from "./pages/Desktop/Desktop";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop.jsx";
 import { Toaster } from "react-hot-toast";
 import { PlayerOnboarding } from "./components/PlayerOnboarding/PlayerOnboarding";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
 /**
  * Componente principal de la aplicación
@@ -18,16 +17,7 @@ import { useNavigate } from "react-router-dom";
  */
 function App() {
   const { i18n } = useTranslation();
-  const navigate = useNavigate();
   const [onboardingComplete, setOnboardingComplete] = useState(false);
-
-  // Resetear siempre los datos al montar el componente principal
-  // Esto asegura que cada vez que se inicia el proyecto, todo comienza desde cero
-  useEffect(() => {
-    sessionStorage.clear();
-    setOnboardingComplete(false);
-    navigate("/", { replace: true });
-  }, []);
 
   const handleOnboardingComplete = (playerData) => {
     setOnboardingComplete(true);

@@ -2,6 +2,7 @@
   "en": [
     {
       "id": "case-1",
+      "aiOk": false,
       "post": {
         "name": "Geronimo Albaicin",
         "handle": "@GeronimoAlbaicin",
@@ -27,6 +28,7 @@
     },
     {
       "id": "case-2",
+      "aiOk": false,
       "post": {
         "name": "Ana Lopez",
         "handle": "@anitaranita",
@@ -52,6 +54,7 @@
     },
     {
       "id": "case-3",
+      "aiOk": false,
       "post": {
         "name": "Juan",
         "handle": "@juanin34",
@@ -79,6 +82,7 @@
   "es": [
     {
       "id": "case-1",
+      "aiOk": false,
       "post": {
         "name": "Marina ",
         "handle": "@SunsetVibes",
@@ -104,6 +108,7 @@
     },
     {
       "id": "case-2",
+      "aiOk": false,
       "post": {
         "name": "Luca",
         "handle": "@GamerLuca",
@@ -129,6 +134,7 @@
     },
     {
       "id": "case-3",
+      "aiOk": false,
       "post": {
         "name": "Pedro Martínez",
         "handle": "@PedroMM124",
@@ -154,6 +160,7 @@
     },
     {
       "id": "case-4",
+      "aiOk": true,
       "post": {
         "name": "Alex",
         "handle": "@TechAlex",
@@ -179,6 +186,7 @@
     },
     {
       "id": "case-5",
+      "aiOk": true,
       "post": {
         "name": "Paula",
         "handle": "@ArtisticPaula",
@@ -204,6 +212,7 @@
     },
     {
       "id": "case-6",
+      "aiOk": true,
       "post": {
         "name": "Gema",
         "handle": "@gemita2045",
@@ -231,6 +240,7 @@
   "fi": [
     {
       "id": "case-1",
+      "aiOk": false,
       "post": {
         "name": "Geronimo Albaicin",
         "handle": "@GeronimoAlbaicin",
@@ -256,6 +266,7 @@
     },
     {
       "id": "case-2",
+      "aiOk": false,
       "post": {
         "name": "Ana Lopez",
         "handle": "@anitaranita",
@@ -281,6 +292,7 @@
     },
     {
       "id": "case-3",
+      "aiOk": false,
       "post": {
         "name": "Juan",
         "handle": "@juanin34",
@@ -308,6 +320,7 @@
   "sr": [
     {
       "id": "case-1",
+      "aiOk": false,
       "post": {
         "name": "Geronimo Albaicin",
         "handle": "@GeronimoAlbaicin",
@@ -333,6 +346,7 @@
     },
     {
       "id": "case-2",
+      "aiOk": false,
       "post": {
         "name": "Ana Lopez",
         "handle": "@anitaranita",
@@ -358,6 +372,7 @@
     },
     {
       "id": "case-3",
+      "aiOk": false,
       "post": {
         "name": "Juan",
         "handle": "@juanin34",
@@ -383,6 +398,7 @@
     },
     {
       "id": "case-4",
+      "aiOk": false,
       "post": {
         "name": "Iva",
         "handle": "",

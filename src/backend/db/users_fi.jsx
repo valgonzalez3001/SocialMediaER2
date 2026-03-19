@@ -19,7 +19,8 @@ export const usersFI = [
     verified: false,
     stats: {
       followersCount: 0,
-      followingCount: 0
+      followingCount: 0,
+      postsCount: 0
     },
     puzzle: {
       isBot: true

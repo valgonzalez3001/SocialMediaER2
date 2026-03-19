@@ -1,8 +1,7 @@
 import "./Navbar.css";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import React from "react";
-import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useTranslation } from 'react-i18next';
 import { PopupNotification } from "../PopupNotification/PopupNotification";
@@ -13,7 +12,6 @@ import {
 import { MdAdminPanelSettings } from "react-icons/md";
 import { RiRobotLine, RiErrorWarningLine } from "react-icons/ri";
 import { NewPostLauncher } from "../../pages/NewPost/NewPostLauncher.jsx";
-import aiIncorrectUsesCases from "../../pages/AIIncorrectUses/AIIncorrectUses.json";
 import { useXAPI } from "../../contexts/XAPIProvider.jsx";
 
 export const Navbar = () => {
@@ -70,9 +68,8 @@ export const Navbar = () => {
   };
 
   const pendingChallenge1 = challenge1Completed ? 0 : suspectUsersCount;
-  const pendingChallenge2 = challenge2InstructionsRead && !challenge2Completed ? 1 : 0;
-  const pendingChallenge3 =
-    challenge3InstructionsRead && !challenge3Completed ? aiIncorrectUsesCases.length : 0;
+  const pendingChallenge2 = challenge2Completed ? 0 : 1;
+  const pendingChallenge3 = challenge3Completed ? 0 : 3;
 
   return (
     <nav className="navbar">
@@ -124,7 +121,10 @@ export const Navbar = () => {
               role="button"
             >
               <RiRobotLine className="navlink-icon" />
-              <p>{t('nav.aiContent')}</p>
+              <p className="navlink-label">
+                <span className="navlink-label-text">{t('nav.aiContent')}</span>
+                {pendingChallenge2 > 0 && <span className="nav-badge">{pendingChallenge2}</span>}
+              </p>
             </div>
           )}
         </li>
@@ -150,7 +150,10 @@ export const Navbar = () => {
               role="button"
             >
               <RiErrorWarningLine className="navlink-icon" />
-              <p>{t('nav.aiIncorrectUses')}</p>
+              <p className="navlink-label">
+                <span className="navlink-label-text">{t('nav.aiIncorrectUses')}</span>
+                {pendingChallenge3 > 0 && <span className="nav-badge">{pendingChallenge3}</span>}
+              </p>
             </div>
           )}
         </li>

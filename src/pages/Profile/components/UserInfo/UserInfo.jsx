@@ -4,7 +4,7 @@ import { useUser } from "../../../../contexts/UserProvider.jsx";
 import { getLocalizedContent } from '../../../../utils/i18nHelpers.jsx';
 import { createdOnDate } from '../../../../utils/date.jsx';
 
-export const UserInfo = ({ username, postsByUser, showClassificationControls = false, selectedClassification, onClassify, isClassificationLocked = false, classificationFeedback, canOpenClassificationQuiz = false, onOpenClassificationQuiz }) => {
+export const UserInfo = ({ username, showClassificationControls = false, selectedClassification, onClassify, isClassificationLocked = false, classificationFeedback, canOpenClassificationQuiz = false, onOpenClassificationQuiz }) => {
   const { t, i18n } = useTranslation();
   const { userState } = useUser();
 
@@ -41,16 +41,16 @@ export const UserInfo = ({ username, postsByUser, showClassificationControls = f
             </p>
             <div className="profile-classification-buttons">
               <button
-                className={`btn-yes ${selectedClassification === 'AI' ? 'selected' : ''}`}
+                className={`btn-yes ${selectedClassification === 'yes' ? 'selected' : ''}`}
                 disabled={isClassificationLocked}
-                onClick={() => onClassify?.('AI')}
+                onClick={() => onClassify?.('yes')}
               >
                 {t('profile.yes')}
               </button>
               <button
-                className={`btn-no ${selectedClassification === 'Humano' ? 'selected' : ''}`}
+                className={`btn-no ${selectedClassification === 'no' ? 'selected' : ''}`}
                 disabled={isClassificationLocked}
-                onClick={() => onClassify?.('Humano')}
+                onClick={() => onClassify?.('no')}
               >
                 {t('profile.no')}
               </button>
@@ -86,9 +86,17 @@ export const UserInfo = ({ username, postsByUser, showClassificationControls = f
             />
           )}
         </p>
-        <p className="username">
-          {isEchoProfile ? t("officialAccount.handle") : `@${user.username}`}
-        </p>
+        <div className="username-row">
+          <p className="username">
+            {isEchoProfile ? t("officialAccount.handle") : `@${user.username}`}
+          </p>
+          {!isEchoProfile && selectedClassification === 'yes' && (
+            <p className="profile-automation-label" title={t('admin.suspectUsers')}>
+              <span aria-hidden="true">🤖</span>
+              <span>{t('admin.suspectUsers')}</span>
+            </p>
+          )}
+        </div>
       </div>
       <div className="bio-container">
         <p>{isEchoProfile ? user.bio : getLocalizedContent(user.bio, i18n.language)}</p>
@@ -98,7 +106,7 @@ export const UserInfo = ({ username, postsByUser, showClassificationControls = f
       </div>
       <div className="post-followers-following-container">
         <p>
-          {postsByUser.length}
+          {user.stats?.postsCount ?? 0}
           <span>{t('profile.posts')}</span>
         </p>
         <p className="post-following-count">

@@ -19,7 +19,8 @@ export const usersEN = [
     verified: false,
     stats: {
       followersCount: "4K",
-      followingCount: "4K"
+      followingCount: "4K",
+      postsCount: 0
     },
     puzzle: {
       isBot: true

@@ -80,8 +80,7 @@
 }
 
 .user-info-container .username-container,
-.user-info-container .bio-container,
-.user-info-container .website-container {
+.user-info-container .bio-container {
   margin-bottom: 1rem;
 }
 
@@ -310,23 +309,34 @@
   padding: 1rem;
 } */
 
+.username-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  max-width: 100%;
+}
+
 .username-container .username {
+  margin: 0;
   color: grey;
 }
 
-.website-container {
-  display: flex;
-  flex-wrap: wrap;
+.profile-automation-label {
+  margin: 0;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-}
-.website-container a {
-  color: var(--primary-color);
-}
-.joining-date-container {
-  display: flex;
-  align-items: center;
-  color: grey;
+  gap: 0.35rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid #ef4444;
+  background: rgba(239, 68, 68, 0.14);
+  color: #f87171;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .post-followers-following-container {

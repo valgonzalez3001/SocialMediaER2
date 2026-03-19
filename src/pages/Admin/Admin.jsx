@@ -9,9 +9,19 @@ import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import { useOS } from "../../contexts/OSProvider.jsx";
-import { Header } from "../../components/Header/Header";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
+
+const CLASSIFICATION = {
+    YES: 'yes',
+    NO: 'no',
+};
+
+const normalizeClassification = (value) => {
+    if (value === 'AI') return CLASSIFICATION.YES;
+    if (value === 'Humano') return CLASSIFICATION.NO;
+    return value;
+};
 
 export const Admin = () => {
     const { t } = useTranslation();
@@ -23,7 +33,11 @@ export const Admin = () => {
     const navigate = useNavigate();
     const [classifiedUsers, setClassifiedUsers] = useState(() => {
         const saved = sessionStorage.getItem('adminGameState');
-        return saved ? JSON.parse(saved) : {};
+        if (!saved) return {};
+        const parsed = JSON.parse(saved);
+        return Object.fromEntries(
+            Object.entries(parsed).map(([uname, classification]) => [uname, normalizeClassification(classification)])
+        );
     });
     const [showHint, setShowHint] = useState(false);
     const [showResult, setShowResult] = useState(false);
@@ -121,9 +135,9 @@ export const Admin = () => {
     }, [suspectUsers]);
 
     const isCorrectClassification = (user) => {
-        const classification = classifiedUsers[user.username];
+        const classification = normalizeClassification(classifiedUsers[user.username]);
         const isBot = user?.puzzle?.isBot;
-        return (classification === 'AI' && isBot) || (classification === 'Humano' && !isBot);
+        return (classification === CLASSIFICATION.YES && isBot) || (classification === CLASSIFICATION.NO && !isBot);
     };
 
     const handleProfileClick = (username) => {
@@ -158,10 +172,10 @@ export const Admin = () => {
         let incorrect = 0;
 
         suspectUsers.forEach(user => {
-            const userClassification = classifiedUsers[user.username];
+            const userClassification = normalizeClassification(classifiedUsers[user.username]);
             const isBot = user.puzzle?.isBot;
 
-            if ((userClassification === 'AI' && isBot) || (userClassification === 'Humano' && !isBot)) {
+            if ((userClassification === CLASSIFICATION.YES && isBot) || (userClassification === CLASSIFICATION.NO && !isBot)) {
                 correct++;
             } else {
                 incorrect++;

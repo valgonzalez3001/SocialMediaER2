@@ -487,6 +487,7 @@ async function main() {
         verified: row["Verified"] || false,
         "stats.followersCount": row["Followers"] || 0,
         "stats.followingCount": row["Following"] || 0,
+        "stats.postsCount": getRowValue(row, "NumPosts") || 0,
         "puzzle.isBot": row["Official"] === undefined || row["Official"] === null,
       })));
       const oldFileUsers = path.join(OUT_DIR, `src/backend/db/users_${lang}.jsx`);

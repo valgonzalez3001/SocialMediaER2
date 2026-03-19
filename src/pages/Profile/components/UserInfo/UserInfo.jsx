@@ -35,7 +35,7 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
           )}
         </div>
         {showClassificationControls && !isEchoProfile && (
-          <div className="profile-classification-panel">
+          <div className="profile-classification-panel--pulse">
             <p className="profile-classification-question">
               {t('profile.misinfoQuestion')}
             </p>

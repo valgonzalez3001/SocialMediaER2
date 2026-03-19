@@ -79,30 +79,49 @@
 .user-info-container .username-container,
 .user-info-container .bio-container {
   margin-bottom: 1rem;
-}
-
-.profile-classification-panel {
-  justify-self: end;
-  width: min(560px, 100%);
-  max-width: 560px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 0.3rem
+}
+
+
+.profile-classification-panel--pulse {
+  min-width: 411px;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
   gap: 0.75rem;
-  padding: 1.2rem 1.5rem;
+  padding: 0.8rem 1.1rem;
   border-radius: 14px;
   border: 1px solid var(--border-color);
-  background: linear-gradient(180deg, rgba(29, 155, 240, 0.14) 0%, rgba(29, 155, 240, 0.06) 100%);
+  background: linear-gradient(180deg, rgba(78, 49, 158, 0.459) 0%, rgba(29, 155, 240, 0.06) 100%);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   margin-top: 0.45rem;
   margin-right: 0.5rem;
+  animation: pulse-glow-box 2s ease-in-out infinite;
 }
+
+
+@keyframes  pulse-glow-box{
+  0% {
+    border: #7f55ff8f 1px solid;
+  }
+  50% {
+    border: rgba(255, 255, 255, 0.589) 1px solid;
+  }
+  100% {
+    border: #7f55ff8f 1px solid;
+  }
+}
+
+
 
 .profile-classification-question {
   margin: 0;
-  font-weight: 800;
-  font-size: 1.25rem;
+  font-weight: 500;
+  font-size: 1rem;
   text-align: center;
   color: var(--text-color);
 }
@@ -114,25 +133,25 @@
 
 .profile-classification-feedback {
   margin: 0;
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: left;
 }
 
 .profile-classification-feedback--error {
   width: 100%;
-  color: #ffd7d7;
-  background: linear-gradient(180deg, rgba(255, 59, 59, 0.28) 0%, rgba(255, 59, 59, 0.12) 100%);
-  border: 1px solid rgba(255, 89, 89, 0.9);
+   color: #ff4545;
+  /* background: linear-gradient(180deg, rgba(255, 59, 59, 0.28) 0%, rgba(255, 59, 59, 0.12) 100%); */
+  /* border: 1px solid rgba(255, 89, 89, 0.267); */
   border-radius: 10px;
-  padding: 0.6rem 0.75rem;
-  box-shadow: 0 0 0 1px rgba(255, 89, 89, 0.25), 0 8px 20px rgba(255, 59, 59, 0.2);
-  animation: classificationErrorShake 0.32s ease, classificationErrorPulse 1.5s ease-in-out infinite;
+  padding: 0.2rem ;
+  /* box-shadow: 0 0 0 1px rgba(255, 89, 89, 0.25), 0 8px 20px rgba(255, 59, 59, 0.2); */
+  /* animation: classificationErrorShake 0.32s ease, classificationErrorPulse 1.5s ease-in-out infinite; */
 }
 
 .profile-classification-feedback--error::before {
   content: "⚠ ";
-  color: #ffb8b8;
+  color: #ff6145;
   font-weight: 800;
 }
 
@@ -241,19 +260,19 @@
 }
 
 .profile-classification-buttons button {
-  padding: 0.7rem 1.6rem;
+  padding: 0.5rem 1.2rem;
   border: none;
   border-radius: 999px;
   font-weight: 700;
   font-size: 1.05rem;
   cursor: pointer;
   transition: all 0.2s;
-  opacity: 0.6;
+  /* opacity: 0.6; */
 }
 
 .profile-classification-buttons button.selected {
   opacity: 1;
-  box-shadow: 0 0 0 2px white;
+  box-shadow: 0 0 0 2px #9279ff;
   transform: scale(1.05);
 }
 
@@ -264,32 +283,32 @@
 }
 
 .profile-classification-buttons .btn-yes {
-  background-color: #ff4444;
-  color: white;
+  background-color: #ff44445d;
+  color: rgb(255, 168, 168);
 }
 
 .profile-classification-buttons .btn-yes:hover {
-  background-color: #cc0000;
+  background-color: #cc00006e;
   opacity: 0.8;
 }
 
 .profile-classification-buttons .btn-yes.selected {
-  background-color: #ff0000;
+  background-color: #ff00005b;
   opacity: 1;
 }
 
 .profile-classification-buttons .btn-no {
-  background-color: #02ac2c;
-  color: white;
+  background-color: #02ac2d59;
+  color: rgb(214, 255, 181);
 }
 
 .profile-classification-buttons .btn-no:hover {
-  background-color: #02ac2c;
+  background-color: #02ac2d57;
   opacity: 0.8;
 }
 
 .profile-classification-buttons .btn-no.selected {
-  background-color: #00b32d;
+  background-color: #00b32d54;
   opacity: 1;
 }
 
@@ -307,8 +326,9 @@
 } */
 
 .username-row {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   gap: 0.45rem;
   width: fit-content;
   max-width: 100%;
@@ -326,7 +346,7 @@
   gap: 0.35rem;
   padding: 0.15rem 0.55rem;
   border-radius: 999px;
-  border: 1px solid #ef4444;
+  border: 1px solid #ef444446;
   background: rgba(239, 68, 68, 0.14);
   color: #f87171;
   font-size: 0.78rem;

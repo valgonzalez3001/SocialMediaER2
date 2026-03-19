@@ -398,6 +398,17 @@ function getHeaderColumnIndex(sheet, headerName) {
 }
 
 /**
+ * Normalize AI OK? value from Excel to boolean/null.
+ */
+function parseAiOkValue(value) {
+  if (typeof value === "boolean") return value;
+  const normalized = String(value ?? "").trim().toUpperCase();
+  if (normalized === "TRUE") return true;
+  if (normalized === "FALSE") return false;
+  return null;
+}
+
+/**
  * Main processing function
  */
 async function main() {
@@ -657,8 +668,7 @@ async function main() {
       // Resolve embedded images from Postimage/imagePreview column (if present)
       const embeddedPostImageByRow = {};
       const postImageColIdx = puzzle3Sheet ? getHeaderColumnIndex(puzzle3Sheet, "Postimage") : -1;
-      const imagePreviewColIdx = puzzle3Sheet ? getHeaderColumnIndex(puzzle3Sheet, "imagePreview") : -1;
-      const candidateCols = [postImageColIdx, imagePreviewColIdx].filter((idx) => idx >= 0);
+      const candidateCols = [postImageColIdx].filter((idx) => idx >= 0);
 
       if (puzzle3Sheet && candidateCols.length > 0) {
         for (const img of puzzle3Sheet.getImages()) {
@@ -680,13 +690,14 @@ async function main() {
 
       aiIncorrectUses[lang] = await Promise.all(puzzle3Data.map(async (row, index) => ({
         id: `case-${index + 1}`,
+        aiOk: parseAiOkValue(getRowValue(row, "AI OK?")),
         post: {
           name: getRowValue(row, "name") || "",
           handle: getRowValue(row, "handle") || "",
           date: getRowValue(row, "date") || "",
           image: await processAvatarUrl(getRowValue(row, "image"), avatarsDir),
           postImage: embeddedPostImageByRow[index + 1] || await processAvatarUrl(
-            getRowValue(row, "Postimage") || getRowValue(row, "imagePreview"),
+            getRowValue(row, "Postimage"),
             postsDir
           ),
           text: getRowValue(row, "text") || "",

@@ -27,6 +27,39 @@ const formatDate = (iso) => {
   return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
 };
 
+const parseAiOk = (value) => {
+    if (typeof value === "boolean") return value;
+    if (value === null || value === undefined) return null;
+    const normalized = String(value).trim().toLowerCase();
+    if (["si", "sí", "yes", "true", "ok", "1"].includes(normalized)) return true;
+    if (["no", "false", "0"].includes(normalized)) return false;
+    return null;
+};
+
+const pickThreeCasesWithAiConstraint = (allCases) => {
+    if (allCases.length <= 3) return allCases;
+
+    const yesCases = allCases.filter((item) => parseAiOk(item.aiOk) === true);
+    const noCases = allCases.filter((item) => parseAiOk(item.aiOk) === false);
+
+    // If we cannot satisfy the condition, fallback to random 3.
+    if (yesCases.length === 0 || noCases.length === 0) {
+        return shuffleArray(allCases).slice(0, 3);
+    }
+
+    const firstYes = shuffleArray(yesCases)[0];
+    const firstNo = shuffleArray(noCases)[0];
+    const baseSelection = [firstYes, firstNo];
+
+    const remainingPool = allCases.filter(
+        (item) => !baseSelection.some((selected) => selected.id === item.id)
+    );
+    const third = shuffleArray(remainingPool)[0];
+
+    if (!third) return shuffleArray(baseSelection);
+    return shuffleArray([...baseSelection, third]);
+};
+
 export const AIIncorrectUses = () => {
     const { t } = useTranslation();
     const currentLang = t("langKey");
@@ -49,10 +82,39 @@ export const AIIncorrectUses = () => {
         try { return JSON.parse(sessionStorage.getItem("ai-incorrect:sentReplies") || "null") || {}; } catch { return {}; }
     });
     const [showCompletionModal, setShowCompletionModal] = useState(false);
-    const challengeCases = useMemo(
-        () => challengeData[currentLang] || challengeData.en || [],
-        [currentLang]
-    );
+    const challengeCases = useMemo(() => {
+        const allCases = challengeData[currentLang] || challengeData.en || [];
+        if (allCases.length <= 3) return allCases;
+
+        const previousSelectionKey = `ai-incorrect:lastCaseSelection:${currentLang}`;
+        let previousSelection = [];
+        try {
+            previousSelection = JSON.parse(sessionStorage.getItem(previousSelectionKey) || "[]");
+        } catch {
+            previousSelection = [];
+        }
+
+        const targetSize = 3;
+        let picked = [];
+        let attempts = 0;
+
+        do {
+            picked = pickThreeCasesWithAiConstraint(allCases);
+            attempts += 1;
+            if (attempts > 20) break;
+        } while (
+            previousSelection.length === targetSize &&
+            picked.length === targetSize &&
+            picked.map((c) => c.id).sort().join("|") === previousSelection.slice().sort().join("|")
+        );
+
+        sessionStorage.setItem(
+            previousSelectionKey,
+            JSON.stringify(picked.map((c) => c.id))
+        );
+
+        return picked;
+    }, [currentLang]);
     const shuffledOptionsByCase = useMemo(() => {
         return challengeCases.reduce((acc, item) => {
             const optionsWithId = (item.options || []).map((option, index) => ({

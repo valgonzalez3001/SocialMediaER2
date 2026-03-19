@@ -269,6 +269,11 @@ export const AIIncorrectUses = () => {
                                                 <span className="ai-incorrect-post-handle">{formatDate(item.post.date)}</span>
                                             </div>
                                             <p className="ai-incorrect-post-text">{item.post.text}</p>
+                                            {item.post?.postImage && (
+                                                <div className="ai-incorrect-post-image-wrap">
+                                                    <img className="ai-incorrect-post-image" src={item.post.postImage} alt={item.post.name} />
+                                                </div>
+                                            )}
                                             {sentReplies[item.id] && (
                                                 <div className="thread-reply-card">
                                                     <div className="x-avatar reply-avatar">
@@ -355,6 +360,11 @@ export const AIIncorrectUses = () => {
                                     <span className="ai-incorrect-post-handle">{formatDate(activeCase.post.date)}</span>
                                 </div>
                                 <p className="ai-incorrect-post-text">{activeCase.post.text}</p>
+                                {activeCase.post?.postImage && (
+                                    <div className="ai-incorrect-post-image-wrap">
+                                        <img className="ai-incorrect-post-image" src={activeCase.post.postImage} alt={activeCase.post.name} />
+                                    </div>
+                                )}
                             </div>
                         </article>
 

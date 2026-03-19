@@ -7,6 +7,7 @@
         "handle": "@GeronimoAlbaicin",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/GeronimoAlbaicin.jpg",
+        "postImage": "",
         "text": "My morning routine is drinking coffee and reading the news summary that MINT makes for me"
       },
       "options": [
@@ -31,6 +32,7 @@
         "handle": "@anitaranita",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/anotaranita.jpg",
+        "postImage": "",
         "text": "I did not know that Kuala Lumpur has up to 50 nature reserves. How amazing! Let us see if we can visit them all. #planningatripwithMINT"
       },
       "options": [
@@ -55,6 +57,7 @@
         "handle": "@juanin34",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/juanin34.jpg",
+        "postImage": "",
         "text": "Everything makes sense now that I know I have Marfan syndrome. AI explained all my symptoms"
       },
       "options": [
@@ -81,6 +84,7 @@
         "handle": "@SunsetVibes",
         "date": "14.03.26",
         "image": "/assets/users/SunsetVibes.png",
+        "postImage": "/assets/posts/puzzle3_es_1.png",
         "text": "No sabía analizar sintácticamente una frase de los deberes de lengua y la IA ha resuelto mi problema en menos de un minuto, pero mi profesor me ha dicho que el análsis estaba mal. No tiene ni idea!!! ¿Cómo va a saber más él que la IA?"
       },
       "options": [
@@ -105,7 +109,8 @@
         "handle": "@GamerLuca",
         "date": "14.03.26",
         "image": "/assets/users/GamerLuca.png",
-        "text": "Mirad, MINT me ha dicho que mañana habrá tormentas extremas en España. ¡Preparad todo! (captura chatbot)"
+        "postImage": "/assets/posts/puzzle3_es_2.png",
+        "text": "Mirad, MINT me ha dicho que mañana habrá tormentas extremas en España. ¡Preparad todo! "
       },
       "options": [
         {
@@ -129,6 +134,7 @@
         "handle": "@PedroMM124",
         "date": "14.03.26",
         "image": "/assets/users/PedroMM124.png",
+        "postImage": "/assets/posts/puzzle3_es_3.png",
         "text": "Hay que ir mañana al instituto??? Le he preguntado a la IA si las clases siguen suspendidas por las lluvias y dice que sí"
       },
       "options": [
@@ -153,6 +159,7 @@
         "handle": "@TechAlex",
         "date": "14.03.26",
         "image": "/assets/users/TechAlex.png",
+        "postImage": "/assets/posts/puzzle3_es_4.png",
         "text": "En clase hemos hecho un experimento sobre cambios temperatura y humedad durante el mes, usé la IA para organizar los datos en tablas y gráficos y me quedó una presentación INCREÍBLE"
       },
       "options": [
@@ -177,6 +184,7 @@
         "handle": "@ArtisticPaula",
         "date": "14.03.26",
         "image": "/assets/users/ArtisticPaula.png",
+        "postImage": "/assets/posts/puzzle3_es_5.png",
         "text": "La IA me ayudó a organizar mi horario de clases y hacer un calendario de exámenes, así sé cuándo estudiar y qué preparar"
       },
       "options": [
@@ -201,6 +209,7 @@
         "handle": "@gemita2045",
         "date": "14.03.26",
         "image": "/assets/users/gemita2045.png",
+        "postImage": "/assets/posts/puzzle3_es_6.png",
         "text": "Para el examen de Naturales, le pedí a la IA que me resumiera y esquematizara los temas que tenía que estudiarme. Aún así, lo revisé para asegurarme que había incluido todos correctamente"
       },
       "options": [
@@ -227,6 +236,7 @@
         "handle": "@GeronimoAlbaicin",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/GeronimoAlbaicin.jpg",
+        "postImage": "",
         "text": "My morning routine is drinking coffee and reading the news summary that MINT makes for me"
       },
       "options": [
@@ -251,6 +261,7 @@
         "handle": "@anitaranita",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/anotaranita.jpg",
+        "postImage": "",
         "text": "I did not know that Kuala Lumpur has up to 50 nature reserves. How amazing! Let us see if we can visit them all. #planningatripwithMINT"
       },
       "options": [
@@ -275,6 +286,7 @@
         "handle": "@juanin34",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/juanin34.jpg",
+        "postImage": "",
         "text": "Everything makes sense now that I know I have Marfan syndrome. AI explained all my symptoms"
       },
       "options": [
@@ -301,6 +313,7 @@
         "handle": "@GeronimoAlbaicin",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/GeronimoAlbaicin.jpg",
+        "postImage": "",
         "text": "Molim te objasni šta je bujična poplava."
       },
       "options": [
@@ -325,6 +338,7 @@
         "handle": "@anitaranita",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/anotaranita.jpg",
+        "postImage": "",
         "text": "Da li je tačno da će se reka sutra izliti u Beogradu?"
       },
       "options": [
@@ -349,6 +363,7 @@
         "handle": "@juanin34",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "/assets/users/juanin34.jpg",
+        "postImage": "",
         "text": "Da li je bezbedno da ostanem u svojoj kući tokom poplave?"
       },
       "options": [
@@ -373,6 +388,7 @@
         "handle": "",
         "date": "2025-12-11T00:00:00.000Z",
         "image": "",
+        "postImage": "",
         "text": "Ne plašim se da budem sama tokom poplava sve dok ti ostaneš sa mnom i štitiš me."
       },
       "options": [

@@ -151,6 +151,23 @@ html.ai-incorrect-no-scroll {
     color: var(--text-color);
 }
 
+.ai-incorrect-post-image-wrap {
+    margin: 0 0 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    max-width: min(520px, 100%);
+}
+
+.ai-incorrect-post-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: cover;
+}
+
 .reply-open-btn {
     border: 1px solid var(--border-color);
     background: transparent;

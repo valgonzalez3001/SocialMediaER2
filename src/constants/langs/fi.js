@@ -129,7 +129,12 @@ export const fi = {
     "backToGame": "Takaisin Peliin",
     "misinfoQuestion": "Levittääkö tämä profiili disinformaatiota?",
     "yes": "Kyllä",
-    "no": "Ei"
+    "no": "Ei",
+    "classificationIncorrect": "Väärä valinta. Tarkista profiili uudelleen.",
+    "openQuiz": "Jatka testiä",
+    "classificationQuizTitle": "Mitkä tämän profiilin ominaisuudet saavat sen luokiteltua disinformaatiota levittäväksi?",
+    "sendQuizAnswer": "Lähetä vastaus",
+    "closeQuiz": "Sulje testi"
   },
   "explore": {
     "caughtUp": "Olet ajan tasalla!"

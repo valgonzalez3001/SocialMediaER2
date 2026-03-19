@@ -361,6 +361,43 @@ function readSheet(workbook, sheetName) {
 }
 
 /**
+ * Read a value from a row by header name, tolerating case/spacing differences.
+ */
+function getRowValue(row, headerName) {
+  if (!row || !headerName) return undefined;
+
+  if (Object.prototype.hasOwnProperty.call(row, headerName)) {
+    return row[headerName];
+  }
+
+  const normalize = (value) => String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+
+  const expected = normalize(headerName);
+  const matchedKey = Object.keys(row).find((key) => normalize(key) === expected);
+  return matchedKey ? row[matchedKey] : undefined;
+}
+
+/**
+ * Get zero-based column index from a sheet header name.
+ */
+function getHeaderColumnIndex(sheet, headerName) {
+  if (!sheet || !headerName) return -1;
+  const normalize = (value) => String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+
+  const expected = normalize(headerName);
+  const headerRow = sheet.getRow(1);
+  const values = headerRow?.values?.slice(1) || [];
+  for (let i = 0; i < values.length; i += 1) {
+    if (normalize(values[i]) === expected) return i;
+  }
+  return -1;
+}
+
+/**
  * Main processing function
  */
 async function main() {
@@ -611,31 +648,60 @@ async function main() {
     const langUpper = lang.toUpperCase();
     const puzzle3SheetName = `Puzzle 3 ${langUpper}`;
     const puzzle3Data = readSheet(workbook, puzzle3SheetName);
+    const puzzle3Sheet = workbook.getWorksheet(puzzle3SheetName);
 
     if (puzzle3Data.length > 0) {
       console.log(`  Processing ${lang}...`);
       console.log(`  Downloading Puzzle 3 images...`);
 
+      // Resolve embedded images from Postimage/imagePreview column (if present)
+      const embeddedPostImageByRow = {};
+      const postImageColIdx = puzzle3Sheet ? getHeaderColumnIndex(puzzle3Sheet, "Postimage") : -1;
+      const imagePreviewColIdx = puzzle3Sheet ? getHeaderColumnIndex(puzzle3Sheet, "imagePreview") : -1;
+      const candidateCols = [postImageColIdx, imagePreviewColIdx].filter((idx) => idx >= 0);
+
+      if (puzzle3Sheet && candidateCols.length > 0) {
+        for (const img of puzzle3Sheet.getImages()) {
+          const rowIdx = img.range.tl.nativeRow; // 0-based row index
+          const colIdx = img.range.tl.nativeCol; // 0-based col index
+          if (candidateCols.includes(colIdx)) {
+            const imageData = workbook.model.media[img.imageId];
+            if (imageData) {
+              const ext = imageData.extension || "png";
+              const filename = `puzzle3_${lang}_${rowIdx}.${ext}`;
+              const destPath = path.join(postsDir, filename);
+              fs.writeFileSync(destPath, imageData.buffer);
+              embeddedPostImageByRow[rowIdx] = `/assets/posts/${filename}`;
+              console.log(`  Saved embedded Puzzle 3 post image: ${filename}`);
+            }
+          }
+        }
+      }
+
       aiIncorrectUses[lang] = await Promise.all(puzzle3Data.map(async (row, index) => ({
         id: `case-${index + 1}`,
         post: {
-          name: row["name"] || "",
-          handle: row["handle"] || "",
-          date: row["date"] || "",
-          image: await processAvatarUrl(row["image"], avatarsDir),
-          text: row["text"] || "",
+          name: getRowValue(row, "name") || "",
+          handle: getRowValue(row, "handle") || "",
+          date: getRowValue(row, "date") || "",
+          image: await processAvatarUrl(getRowValue(row, "image"), avatarsDir),
+          postImage: embeddedPostImageByRow[index + 1] || await processAvatarUrl(
+            getRowValue(row, "Postimage") || getRowValue(row, "imagePreview"),
+            postsDir
+          ),
+          text: getRowValue(row, "text") || "",
         },
         options: [
           {
-            text: row["Correct"] || "",
+            text: getRowValue(row, "Correct") || "",
             isCorrect: true,
           },
           {
-            text: row["Neutral"] || "",
+            text: getRowValue(row, "Neutral") || "",
             isCorrect: false,
           },
           {
-            text: row["Incorrect"] || "",
+            text: getRowValue(row, "Incorrect") || "",
             isCorrect: false,
           },
         ],

@@ -1,5 +1,5 @@
 import "./Admin.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 
@@ -29,18 +29,26 @@ export const Admin = () => {
     const [showResult, setShowResult] = useState(false);
     const [gameResult, setGameResult] = useState(null);
     const [isPerfectResult, setIsPerfectResult] = useState(false);
-    const [isFirstVisit, setIsFirstVisit] = useState(true);
+    const [isFirstVisit, setIsFirstVisit] = useState(() => !sessionStorage.getItem('echo:adminHintSeen:1'));
+    const autoSubmitTriggeredRef = useRef(false);
 
     // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
     // No inicializar si el reto ya fue completado
     useEffect(() => {
         if (challenge1Completed) return;
-        setIsFirstVisit(false);
         if (!sessionStorage.getItem('echo:challengeStart:1')) {
             trackChallengeStarted('1', 'Puzzle 1 - Bot Detection');
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const handleOpenHint = () => {
+        setShowHint(true);
+        if (isFirstVisit) {
+            setIsFirstVisit(false);
+            sessionStorage.setItem('echo:adminHintSeen:1', '1');
+        }
+    };
     
     const [suspectUsers, setSuspectUsers] = useState(() => []);
 
@@ -124,7 +132,26 @@ export const Admin = () => {
         navigate(`/profile/${username}`);
     };
 
-    const allUsersClassified = suspectUsers.length > 0 && suspectUsers.length === Object.keys(classifiedUsers).length;
+    const allUsersCorrectlyClassified =
+        suspectUsers.length > 0 &&
+        suspectUsers.every((user) => {
+            const classification = classifiedUsers[user.username];
+            if (!classification) return false;
+            return isCorrectClassification(user);
+        });
+
+    useEffect(() => {
+        if (challenge1Completed) return;
+
+        if (!allUsersCorrectlyClassified) {
+            autoSubmitTriggeredRef.current = false;
+            return;
+        }
+
+        if (autoSubmitTriggeredRef.current) return;
+        autoSubmitTriggeredRef.current = true;
+        handleSubmit();
+    }, [allUsersCorrectlyClassified, challenge1Completed]);
 
     const handleSubmit = () => {
         let correct = 0;
@@ -214,6 +241,7 @@ export const Admin = () => {
     const handleTryAgain = () => {
         setShowResult(false);
         setGameResult(null);
+        autoSubmitTriggeredRef.current = false;
         if (isPerfectResult) {
             setIsPerfectResult(false);
             reduceMisinformation(30);
@@ -249,7 +277,7 @@ export const Admin = () => {
 
                         <div className="game-status">
                             <p>{t('admin.classified')}: {Object.keys(classifiedUsers).length} / {suspectUsers.length}</p>
-                            <button className={`hint-button ${isFirstVisit ? 'hint-button--pulse' : ''}`} onClick={() => setShowHint(true)}>
+                            <button className={`hint-button ${isFirstVisit ? 'hint-button--pulse' : ''}`} onClick={handleOpenHint}>
                                 {t('admin.beforeStart')}
                             </button>
                         </div>
@@ -294,13 +322,6 @@ export const Admin = () => {
                             )}
                         </div>
 
-                        {allUsersClassified && (
-                            <div className="submit-container">
-                                <button className="submit-button" onClick={handleSubmit}>
-                                    {t('admin.submit')}
-                                </button>
-                            </div>
-                        )}
                     </div>
                 </main>
 

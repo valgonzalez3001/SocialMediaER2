@@ -129,7 +129,12 @@ export const en = {
     "backToGame": "Back to Game",
     "misinfoQuestion": "Does this profile spread misinformation?",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "classificationIncorrect": "Incorrect selection. Review the profile again.",
+    "openQuiz": "Continue quiz",
+    "classificationQuizTitle": "What characteristics of this profile make it classified as a disinformation account?",
+    "sendQuizAnswer": "Submit answer",
+    "closeQuiz": "Close quiz"
   },
   "explore": {
     "caughtUp": "You are all caught up!"

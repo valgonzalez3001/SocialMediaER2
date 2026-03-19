@@ -129,7 +129,12 @@ export const sr = {
     "backToGame": "Nazad na Igru",
     "misinfoQuestion": "Da li ovaj profil širi dezinformacije?",
     "yes": "Da",
-    "no": "Ne"
+    "no": "Ne",
+    "classificationIncorrect": "Netačan izbor. Ponovo pregledaj profil.",
+    "openQuiz": "Nastavi test",
+    "classificationQuizTitle": "Koje karakteristike ovog profila dovode do toga da se klasifikuje kao nalog koji širi dezinformacije?",
+    "sendQuizAnswer": "Pošalji odgovor",
+    "closeQuiz": "Zatvori test"
   },
   "explore": {
     "caughtUp": "Stigli ste do kraja!"

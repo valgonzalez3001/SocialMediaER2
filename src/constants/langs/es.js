@@ -129,7 +129,12 @@ export const es = {
     "backToGame": "Volver al Juego",
     "misinfoQuestion": "¿Este perfil genera desinformación?",
     "yes": "Sí",
-    "no": "No"
+    "no": "No",
+    "classificationIncorrect": "Selección incorrecta. Vuelve a mirar el perfil.",
+    "openQuiz": "Continuar test",
+    "classificationQuizTitle": "¿Qué características de este perfil hace que se clasifique como desinformador?",
+    "sendQuizAnswer": "Enviar respuesta",
+    "closeQuiz": "Cerrar cuestionario"
   },
   "explore": {
     "caughtUp": "¡Estás al día!"

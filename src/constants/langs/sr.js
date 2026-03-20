@@ -1,5 +1,8 @@
 export const sr = {
   "langKey": "sr",
+  "shared": {
+    "timeLeft": "Preostalo vreme"
+  },
   "nav": {
     "home": "Početna",
     "explore": "Istraži",

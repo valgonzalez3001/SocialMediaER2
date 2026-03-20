@@ -1,5 +1,8 @@
 export const fi = {
   "langKey": "fi",
+  "shared": {
+    "timeLeft": "Aikaa jäljellä"
+  },
   "nav": {
     "home": "Koti",
     "explore": "Tutki",

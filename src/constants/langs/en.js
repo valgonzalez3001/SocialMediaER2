@@ -1,5 +1,8 @@
 export const en = {
   "langKey": "en",
+  "shared": {
+    "timeLeft": "Time left"
+  },
   "nav": {
     "home": "Home",
     "explore": "Explore",

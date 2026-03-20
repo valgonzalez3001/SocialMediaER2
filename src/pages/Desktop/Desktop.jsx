@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./Desktop.css";
 import { MessagesApp } from "../../components/MessagesApp/MessagesApp";
 import { SocialMediaApp } from "../../components/SocialMediaApp/SocialMediaApp";
@@ -19,7 +19,12 @@ import { useTranslation } from "react-i18next";
 export const Desktop = () => {
   const { activeApp, openApp, minimizeApp } = useOS();
   const { unreadCount } = useMessages();
-  const { challenge1Completed } = useStats();
+  const {
+    challengeFinalCompleted,
+    escapeTimerStarted,
+    escapeTimerRemainingMs,
+    escapeTimerFlashTick,
+  } = useStats();
   const { t, i18n } = useTranslation();
   const missionBriefRead = sessionStorage.getItem("missionBriefRead") === "true";
   
@@ -50,6 +55,8 @@ export const Desktop = () => {
   const [drawerTranslate, setDrawerTranslate] = useState(0);
   const [now, setNow] = useState(() => new Date());
   const [bossNotifVisible, setBossNotifVisible] = useState(false);
+  const [countdownFlash, setCountdownFlash] = useState(false);
+  const lastHandledFlashTickRef = useRef(escapeTimerFlashTick);
   const handleBossNotifDismiss = useCallback(() => setBossNotifVisible(false), []);
 
   const clampTranslate = (value) =>
@@ -121,6 +128,22 @@ export const Desktop = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (!escapeTimerStarted || challengeFinalCompleted || !escapeTimerFlashTick) return;
+    if (escapeTimerFlashTick <= lastHandledFlashTickRef.current) return;
+    lastHandledFlashTickRef.current = escapeTimerFlashTick;
+    setCountdownFlash(true);
+    const timeoutId = setTimeout(() => setCountdownFlash(false), 1300);
+    return () => clearTimeout(timeoutId);
+  }, [escapeTimerFlashTick, escapeTimerStarted, challengeFinalCompleted]);
+
+  const countdownText = useMemo(() => {
+    const totalSeconds = Math.max(0, Math.ceil(escapeTimerRemainingMs / 1000));
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }, [escapeTimerRemainingMs]);
+
   const formattedDate = now.toLocaleDateString(locale, {
     weekday: "long",
     day: "numeric",
@@ -140,6 +163,12 @@ export const Desktop = () => {
           <span className="desktop-clock-time">{formattedTime}</span>
           <span className="desktop-clock-date">{formattedDate}</span>
         </div>
+        {escapeTimerStarted && !challengeFinalCompleted && activeApp !== "social" && (
+          <div className={`desktop-countdown ${countdownFlash ? "desktop-countdown--flash" : ""}`}>
+            <span className="desktop-countdown-label">{t("shared.timeLeft")}</span>
+            <span className="desktop-countdown-value">{countdownText}</span>
+          </div>
+        )}
       </div>
 
       {activeApp === "messages" && (

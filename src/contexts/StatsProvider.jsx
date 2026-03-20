@@ -1,4 +1,13 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useRef } from "react";
+
+const ESCAPE_TIMER_DURATION_MS = 20 * 60 * 1000;
+const ESCAPE_TIMER_FLASH_INTERVAL_MS = 5 * 60 * 1000;
+
+const getStoredTimerStart = () => {
+  const raw = sessionStorage.getItem("escapeTimerStartedAt");
+  const parsed = Number(raw);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+};
 
 /**
  * Contexto para gestionar las estadisticas del sistema
@@ -89,6 +98,17 @@ export const StatsProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : false;
   });
 
+  const [escapeTimerStartedAt, setEscapeTimerStartedAt] = useState(() => getStoredTimerStart());
+  const [escapeTimerRemainingMs, setEscapeTimerRemainingMs] = useState(() => {
+    const startedAt = getStoredTimerStart();
+    if (!startedAt) return ESCAPE_TIMER_DURATION_MS;
+    return Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - startedAt));
+  });
+  const [escapeTimerFlashTick, setEscapeTimerFlashTick] = useState(0);
+  const lastFlashBucketRef = useRef(
+    Math.floor(Math.max(0, escapeTimerRemainingMs) / ESCAPE_TIMER_FLASH_INTERVAL_MS)
+  );
+
   useEffect(() => {
     const savedChallenge1 = sessionStorage.getItem("challenge1Completed");
     const savedChallenge2 = sessionStorage.getItem("challenge2Completed");
@@ -172,10 +192,50 @@ export const StatsProvider = ({ children }) => {
   };
 
   const completeChallengeFinal = () => {
+    if (escapeTimerStartedAt) {
+      const remaining = Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - escapeTimerStartedAt));
+      setEscapeTimerRemainingMs(remaining);
+    }
     reduceMisinformation(78);
     setChallengeFinalCompleted(true);
     sessionStorage.setItem("challengeFinalCompleted", JSON.stringify(true));
   };
+
+  const startEscapeTimer = () => {
+    if (challengeFinalCompleted) return;
+
+    const alreadyStartedAt = getStoredTimerStart();
+    if (alreadyStartedAt || escapeTimerStartedAt) return;
+
+    const startedAt = Date.now();
+    sessionStorage.setItem("escapeTimerStartedAt", String(startedAt));
+    setEscapeTimerStartedAt(startedAt);
+    setEscapeTimerRemainingMs(ESCAPE_TIMER_DURATION_MS);
+    lastFlashBucketRef.current = Math.floor(ESCAPE_TIMER_DURATION_MS / ESCAPE_TIMER_FLASH_INTERVAL_MS);
+  };
+
+  useEffect(() => {
+    if (!escapeTimerStartedAt) return;
+
+    const tick = () => {
+      const remaining = Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - escapeTimerStartedAt));
+      setEscapeTimerRemainingMs(remaining);
+
+      if (!challengeFinalCompleted && remaining > 0) {
+        const currentBucket = Math.floor(remaining / ESCAPE_TIMER_FLASH_INTERVAL_MS);
+        if (currentBucket < lastFlashBucketRef.current) {
+          setEscapeTimerFlashTick((prev) => prev + 1);
+        }
+        lastFlashBucketRef.current = currentBucket;
+      }
+    };
+
+    tick();
+    if (challengeFinalCompleted) return;
+
+    const intervalId = setInterval(tick, 1000);
+    return () => clearInterval(intervalId);
+  }, [escapeTimerStartedAt, challengeFinalCompleted]);
 
   const markChallenge2InstructionsRead = () => {
     setChallenge2InstructionsRead(true);
@@ -212,6 +272,17 @@ export const StatsProvider = ({ children }) => {
     markChallenge3InstructionsRead,
     challengeFinalInstructionsRead,
     markChallengeFinalInstructionsRead,
+    escapeTimerDurationMs: ESCAPE_TIMER_DURATION_MS,
+    escapeTimerStarted: Boolean(escapeTimerStartedAt),
+    escapeTimerStartedAt,
+    escapeTimerRemainingMs,
+    // "active" means the run is ongoing until the final challenge is completed,
+    // even if the countdown reached 00:00.
+    escapeTimerActive: Boolean(escapeTimerStartedAt) && !challengeFinalCompleted,
+    escapeTimerExpired:
+      Boolean(escapeTimerStartedAt) && !challengeFinalCompleted && escapeTimerRemainingMs <= 0,
+    escapeTimerFlashTick,
+    startEscapeTimer,
   };
 
   return <StatsContext.Provider value={value}>{children}</StatsContext.Provider>;

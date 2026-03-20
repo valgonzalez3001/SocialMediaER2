@@ -79,9 +79,32 @@ export const StatsPanel = () => {
     challenge1Completed,
     challenge2Completed,
     challenge3Completed,
+    challengeFinalCompleted,
     suspectUsersCount,
+    escapeTimerStarted,
+    escapeTimerRemainingMs,
+    escapeTimerExpired,
+    escapeTimerFlashTick,
   } = useStats();
   const { t } = useTranslation();
+  const [countdownFlash, setCountdownFlash] = useState(false);
+  const lastHandledFlashTickRef = useRef(escapeTimerFlashTick);
+
+  useEffect(() => {
+    if (!escapeTimerStarted || challengeFinalCompleted || !escapeTimerFlashTick) return;
+    if (escapeTimerFlashTick <= lastHandledFlashTickRef.current) return;
+    lastHandledFlashTickRef.current = escapeTimerFlashTick;
+    setCountdownFlash(true);
+    const timeoutId = setTimeout(() => setCountdownFlash(false), 1300);
+    return () => clearTimeout(timeoutId);
+  }, [escapeTimerFlashTick, escapeTimerStarted, challengeFinalCompleted]);
+
+  const countdownText = (() => {
+    const totalSeconds = Math.max(0, Math.ceil(escapeTimerRemainingMs / 1000));
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  })();
 
   /* ── Animated display values ── */
   const [animBotPct,      setAnimBotPct]      = useState(() => challenge1Completed ? 0  : stats.botActivity.percentage);
@@ -156,6 +179,16 @@ export const StatsPanel = () => {
   return (
     <div className="stats-panel">
 
+      {escapeTimerStarted && !challengeFinalCompleted && (
+        <div className={`sp-countdown-hero ${countdownFlash ? "sp-countdown-hero--flash" : ""}`}>
+          <span className="sp-countdown-hero-label">{t("shared.timeLeft")}</span>
+          <span className="sp-countdown-hero-value">{countdownText}</span>
+          {escapeTimerExpired && (
+            <p className="sp-countdown-hero-hint">{t("statsPanel.timerExpiredContinue")}</p>
+          )}
+        </div>
+      )}
+
       {/* ── Header ── */}
       <div className="sp-header">
         <span className="sp-header-title">{t("statsPanel.title")}</span>
@@ -166,8 +199,8 @@ export const StatsPanel = () => {
 
       {/* ── Gauge de amenaza ── */}
       <div className="sp-threat">
-        <span className="sp-threat-name">{t("statsPanel.misinformationLevel")}</span>
         <div className="sp-gauge-wrap">
+          <span className="sp-threat-name">{t("statsPanel.misinformationLevel")}</span>
           <HalfGauge value={animThreat} colorClass={threatClass} />
         </div>
       </div>

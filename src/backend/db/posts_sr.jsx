@@ -15,7 +15,7 @@ export const postsSR = [
     firstName: "Example name",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 20 2026 10:24:08"),
+    createdAt: new Date("March 20 2026 11:05:41"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
@@ -31,7 +31,7 @@ export const postsSR = [
     firstName: "Slavic_Bears",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 20 2026 10:24:08"),
+    createdAt: new Date("March 20 2026 11:05:41"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
@@ -47,7 +47,7 @@ export const postsSR = [
     firstName: "Slavic_Bears",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 20 2026 10:24:08"),
+    createdAt: new Date("March 20 2026 11:05:41"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0
@@ -63,7 +63,7 @@ export const postsSR = [
     firstName: "Slavic_Bears",
     lastName: "",
     avatarURL: "",
-    createdAt: new Date("March 20 2026 10:24:08"),
+    createdAt: new Date("March 20 2026 11:05:41"),
     updatedAt: formatDate(),
     likes: {
       likeCount: 0

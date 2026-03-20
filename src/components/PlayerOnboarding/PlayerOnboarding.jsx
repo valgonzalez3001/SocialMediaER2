@@ -2,11 +2,13 @@ import "./PlayerOnboarding.css";
 import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES, XAPI_EXTENSIONS } from "../../contexts/XAPIProvider.jsx";
+import { useStats } from "../../contexts/StatsProvider.jsx";
 import statementsData from "../../pages/CommunityNote/CommunityNoteStatements.json";
 
 export const PlayerOnboarding = ({ onComplete }) => {
   const { i18n, t } = useTranslation();
   const { initializeActor, sendStatement } = useXAPI();
+  const { startEscapeTimer } = useStats();
   const [step, setStep] = useState("playerForm");
   const [playerName, setPlayerName] = useState("");
   const [playerAge, setPlayerAge] = useState("");
@@ -114,6 +116,9 @@ export const PlayerOnboarding = ({ onComplete }) => {
 
     // Notificar al resto de la app que el onboarding termino
     window.dispatchEvent(new Event("onboardingComplete"));
+
+    // El countdown del escape room comienza al terminar la intro final.
+    startEscapeTimer();
 
     // Notificar al componente padre
     onComplete(finalizedPlayerData);
@@ -255,7 +260,7 @@ export const PlayerOnboarding = ({ onComplete }) => {
 
   return (
     <div className="onboarding-overlay">
-      <div className="onboarding-container">
+      <div className={`onboarding-container ${step === "pretest" ? "onboarding-container--wide" : ""}`}>
         {step === "playerForm" && (
           <>
             <div className="onboarding-header">

@@ -70,6 +70,18 @@
   gap: 6px;
 }
 
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  padding: 0.7rem 0rem 0.4rem;
+  background-color: rgba(11, 1, 29, 0.774);
+  border: 2px solid rgba(255, 255, 255, 0.171);
+  border-radius: 6px;
+}
 .sp-countdown-hero {
   display: flex;
   flex-direction: column;

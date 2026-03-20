@@ -180,6 +180,7 @@ export const StatsPanel = () => {
     <div className="stats-panel">
 
       {escapeTimerStarted && !challengeFinalCompleted && (
+        <div className="timer-container">
         <div className={`sp-countdown-hero ${countdownFlash ? "sp-countdown-hero--flash" : ""}`}>
           <span className="sp-countdown-hero-label">{t("shared.timeLeft")}</span>
           <span className="sp-countdown-hero-value">{countdownText}</span>
@@ -187,6 +188,7 @@ export const StatsPanel = () => {
             <p className="sp-countdown-hero-hint">{t("statsPanel.timerExpiredContinue")}</p>
           )}
         </div>
+            </div>
       )}
 
       {/* ── Header ── */}

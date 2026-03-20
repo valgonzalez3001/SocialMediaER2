@@ -29,7 +29,7 @@ export const fi = {
       "start": "Aloita"
     },
     "popup": {
-      "readMessage": "Lue pomosi viesti avataksesi",
+      "readMessage": "Lue turvallisuustiimin viesti avataksesi",
       "startChallenge": "Aloita haaste 1 avataksesi",
       "playChallenge": "Pelaa haaste 1 avataksesi",
       "completeChallenge1": "Suorita haaste 1 ennen avaamista",

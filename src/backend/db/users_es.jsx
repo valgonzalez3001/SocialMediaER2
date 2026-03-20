@@ -203,7 +203,7 @@ export const usersES = [
       postsCount: 34
     },
     puzzle: {
-      isBot: true
+      isBot: false
     }
   },
   {
@@ -223,7 +223,7 @@ export const usersES = [
       postsCount: 0
     },
     puzzle: {
-      isBot: true
+      isBot: false
     }
   }
 ];

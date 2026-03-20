@@ -488,7 +488,7 @@ async function main() {
         "stats.followersCount": row["Followers"] || 0,
         "stats.followingCount": row["Following"] || 0,
         "stats.postsCount": getRowValue(row, "NumPosts") || 0,
-        "puzzle.isBot": row["Official"] === undefined || row["Official"] === null,
+        "puzzle.isBot": row["isBot"] === true,
       })));
       const oldFileUsers = path.join(OUT_DIR, `src/backend/db/users_${lang}.jsx`);
       if (fs.existsSync(oldFileUsers)) {

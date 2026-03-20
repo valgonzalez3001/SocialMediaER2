@@ -23,7 +23,7 @@ export const usersEN = [
       postsCount: 0
     },
     puzzle: {
-      isBot: true
+      isBot: false
     }
   }
 ];

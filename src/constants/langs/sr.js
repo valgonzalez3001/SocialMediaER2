@@ -29,7 +29,7 @@ export const sr = {
       "start": "Start"
     },
     "popup": {
-      "readMessage": "Pročitaj poruku svog šefa da otključaš",
+      "readMessage": "Pročitaj poruku sigurnosnog tima da otključaš",
       "startChallenge": "Započni izazov 1 da otključaš",
       "playChallenge": "Igraj izazov 1 da otključaš",
       "completeChallenge1": "Završi izazov 1 pre otključavanja",

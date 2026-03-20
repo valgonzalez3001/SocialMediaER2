@@ -29,7 +29,7 @@ export const en = {
       "start": "Start"
     },
     "popup": {
-      "readMessage": "Read your boss's message to unlock",
+      "readMessage": "Read the security team's message to unlock",
       "startChallenge": "Start challenge 1 to unlock",
       "playChallenge": "Play challenge 1 to unlock",
       "completeChallenge1": "Complete challenge 1 before unlocking",

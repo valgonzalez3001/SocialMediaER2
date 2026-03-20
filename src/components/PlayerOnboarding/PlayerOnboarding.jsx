@@ -97,23 +97,6 @@ export const PlayerOnboarding = ({ onComplete }) => {
 
     sessionStorage.setItem("playerData", JSON.stringify(finalizedPlayerData));
 
-    // El actor ya fue inicializado en handleSubmit, enviamos el statement de inicio del juego
-    sendStatement(
-      XAPI_VERBS.STARTED,
-      ECHO_ACTIVITIES.GAME,
-      null,
-      {
-        contextActivities: {
-          parent: [ECHO_ACTIVITIES.INTRO],
-          grouping: [ECHO_ACTIVITIES.GAME],
-        },
-        extensions: {
-          [XAPI_EXTENSIONS.PLAYER_AGE]: parseInt(finalizedPlayerData.age, 10),
-          [XAPI_EXTENSIONS.LANG]: finalizedPlayerData.language,
-        },
-      }
-    );
-
     // Notificar al resto de la app que el onboarding termino
     window.dispatchEvent(new Event("onboardingComplete"));
 
@@ -139,7 +122,13 @@ export const PlayerOnboarding = ({ onComplete }) => {
   const handlePretestSubmit = () => {
     const selectedDetails = statements
       .filter((statement) => selectedStatements.includes(statement.id))
-      .map((statement) => ({ id: statement.id, text: statement.text }));
+      .map((statement) => ({
+        id: statement.id,
+        text: statement.text,
+        correct: Boolean(statement.correct),
+      }));
+    const correctTrueCount = selectedDetails.filter((s) => s.correct).length;
+    const correctFalseCount = selectedDetails.length - correctTrueCount;
 
     const responseText = selectedDetails.map((s) => `${s.id}: ${s.text}`).join(" | ");
 
@@ -156,6 +145,17 @@ export const PlayerOnboarding = ({ onComplete }) => {
       {
         response: responseText,
         completion: true,
+        extensions: {
+          "https://endgameproject.github.io/xapi/ext/onboardingPretestSelections": selectedDetails.map(
+            (s) => ({
+              id: s.id,
+              text: s.text,
+              correct: s.correct,
+            })
+          ),
+          "https://endgameproject.github.io/xapi/ext/onboardingPretestCorrectTrueCount": correctTrueCount,
+          "https://endgameproject.github.io/xapi/ext/onboardingPretestCorrectFalseCount": correctFalseCount,
+        },
       },
       {
         contextActivities: {
@@ -170,7 +170,7 @@ export const PlayerOnboarding = ({ onComplete }) => {
       JSON.stringify({
         language: selectedLanguage,
         selectedStatementIds: selectedStatements,
-        selectedStatements: selectedDetails,
+        selectedStatements: selectedDetails.map(({ id, text }) => ({ id, text })),
         submittedAt: new Date().toISOString(),
       })
     );
@@ -199,7 +199,28 @@ export const PlayerOnboarding = ({ onComplete }) => {
       i18n.changeLanguage(selectedLanguage);
 
       // Inicializar el actor xAPI temprano para que esté disponible en el pre-test
-      initializeActor(nextPlayerData);
+      const initializedActor = initializeActor(nextPlayerData);
+
+      // Enviar STARTED del juego una sola vez al completar el formulario de onboarding.
+      if (!sessionStorage.getItem("echo:gameStarted")) {
+        sessionStorage.setItem("echo:gameStarted", "1");
+        sendStatement(
+          XAPI_VERBS.STARTED,
+          ECHO_ACTIVITIES.GAME,
+          null,
+          {
+            contextActivities: {
+              parent: [ECHO_ACTIVITIES.INTRO],
+              grouping: [ECHO_ACTIVITIES.GAME],
+            },
+            extensions: {
+              [XAPI_EXTENSIONS.PLAYER_AGE]: parseInt(nextPlayerData.age, 10),
+              [XAPI_EXTENSIONS.LANG]: nextPlayerData.language,
+            },
+          },
+          initializedActor
+        );
+      }
 
       const intro1Path = getVideoPath(1, selectedLanguage);
       const intro2Path = getVideoPath(2, selectedLanguage);

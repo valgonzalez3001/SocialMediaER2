@@ -23,7 +23,7 @@ export const usersFI = [
       postsCount: 0
     },
     puzzle: {
-      isBot: true
+      isBot: false
     }
   }
 ];

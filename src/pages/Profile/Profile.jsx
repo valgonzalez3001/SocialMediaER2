@@ -22,6 +22,10 @@ const normalizeClassification = (value) => {
   return value;
 };
 
+const expectedClassificationFromIsBot = (isBot) => (
+  isBot ? CLASSIFICATION.YES : CLASSIFICATION.NO
+);
+
 const isBotClassification = (value) => normalizeClassification(value) === CLASSIFICATION.YES;
 
 export const Profile = () => {
@@ -94,7 +98,7 @@ export const Profile = () => {
     const currentClassification = normalizeClassification(classifiedUsers[username]);
     if (!currentClassification) return false;
     const isBot = currentUser?.puzzle?.isBot;
-    return (currentClassification === CLASSIFICATION.YES && isBot) || (currentClassification === CLASSIFICATION.NO && !isBot);
+    return currentClassification === expectedClassificationFromIsBot(isBot);
   })();
 
   useEffect(() => {
@@ -113,7 +117,8 @@ export const Profile = () => {
 
     const normalizedClassification = normalizeClassification(classification);
     const isBot = currentUser?.puzzle?.isBot;
-    const isCorrect = (normalizedClassification === CLASSIFICATION.YES && isBot) || (normalizedClassification === CLASSIFICATION.NO && !isBot);
+    const expectedClassification = expectedClassificationFromIsBot(isBot);
+    const isCorrect = normalizedClassification === expectedClassification;
 
     sendStatement(
       XAPI_VERBS.ANSWERED,
@@ -124,16 +129,16 @@ export const Profile = () => {
           type: "http://adlnet.gov/expapi/activities/cmi.interaction",
           interactionType: "choice",
           choices: [
-            { id: "bot", description: { en: "Bot" } },
-            { id: "human", description: { en: "Human" } },
+            { id: "yes", description: { en: "Yes" } },
+            { id: "no", description: { en: "No" } },
           ],
-          correctResponsesPattern: [isBot ? "bot" : "human"],
+          correctResponsesPattern: [expectedClassification],
         },
       },
       {
         success: isCorrect,
         score: { scaled: isCorrect ? 1 : 0, raw: isCorrect ? 1 : 0, min: 0, max: 1 },
-        response: isBotClassification(normalizedClassification) ? "bot" : "human",
+        response: normalizedClassification,
       },
       {
         contextActivities: {

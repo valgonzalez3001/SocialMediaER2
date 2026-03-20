@@ -29,7 +29,7 @@ export const es = {
       "start": "Inicio"
     },
     "popup": {
-      "readMessage": "Lee el mensaje de tu jefe para desbloquear",
+      "readMessage": "Lee el mensaje del equipo de seguridad para desbloquear",
       "startChallenge": "Comienza el reto 1 para desbloquear",
       "playChallenge": "Juega al reto 1 para desbloquear",
       "completeChallenge1": "Resuelve el reto 1 antes de desbloquear",

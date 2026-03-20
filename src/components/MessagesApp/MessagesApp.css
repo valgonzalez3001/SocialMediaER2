@@ -10,7 +10,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(92vw, 420px);
+  width: min(94vw, 560px);
   height: min(82vh, 680px);
   background: #0b141a;
   border-radius: 12px;
@@ -169,7 +169,7 @@
   display: flex;
   align-items: flex-end;
   gap: 8px;
-  max-width: 88%;
+  max-width: 96%;
 }
 
 .chat-bubble-avatar {
@@ -292,7 +292,7 @@
 
 @media (max-width: 720px) {
   .messages-app-window {
-    width: 95vw;
+    width: 96vw;
     height: 85vh;
     border-radius: 10px;
   }

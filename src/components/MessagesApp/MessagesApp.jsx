@@ -91,10 +91,10 @@ export const MessagesApp = () => {
       <div className="messages-chat-content">
         <div className="messages-chat-header">
           <div className="messages-chat-avatar boss-avatar">
-            <span>{t("messagesApp.messages.missionBrief.from").charAt(0)}</span>
+            <span>{t("messagesApp.author.name").charAt(0)}</span>
           </div>
           <div className="messages-chat-header-text">
-            <h2>{t("messagesApp.messages.missionBrief.from")}</h2>
+            <h2>{t("messagesApp.author.name")}</h2>
             <span>ECHO</span>
           </div>
         </div>

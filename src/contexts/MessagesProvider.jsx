@@ -28,7 +28,7 @@ export const MessagesProvider = ({ children }) => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      fromKey: "messagesApp.messages.missionBrief.from",
+      fromKey: "messagesApp.author.name",
       subjectKey: "messagesApp.messages.missionBrief.subject",
       contentKey: "messagesApp.messages.missionBrief.content",
       timestamp: new Date(),

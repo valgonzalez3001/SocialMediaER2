@@ -20,7 +20,7 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
         bio: t("officialAccount.bio", ""),
         avatarURL: "/assets/echo-logo-bg.png",
         verified: true,
-        stats: { followersCount: "7.25M", followingCount: 0 },
+        stats: { followersCount: "7.25M", followingCount: 0, postsCount: "500+" },
       }
     : userState?.allUsers?.find((u) => u.username === username) || null;
   if (!user) return null;
@@ -30,9 +30,6 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
       <div className="profile-header-row">
         <div className="profilepicture-container">
           <img src={user.avatarURL} alt={user.firstName} />
-          {isEchoProfile && (
-            <button>{t('profile.editProfile')}</button>
-          )}
         </div>
         {showClassificationControls && !isEchoProfile && (
           <div className="profile-classification-panel--pulse">
@@ -90,7 +87,7 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
           <p className="username">
             {isEchoProfile ? t("officialAccount.handle") : `@${user.username}`}
           </p>
-          {!isEchoProfile && selectedClassification === 'yes' && (
+          {!isEchoProfile && selectedClassification === 'yes' && isClassificationLocked && (
             <p className="profile-automation-label" title={t('admin.suspectUsers')}>
               <span aria-hidden="true">🤖</span>
               <span>{t('admin.suspectUsers')}</span>

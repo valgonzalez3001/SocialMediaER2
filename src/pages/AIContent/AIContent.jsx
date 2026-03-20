@@ -95,7 +95,7 @@ export const AIContent = () => {
         completeChallenge2();
         sessionStorage.setItem("challenge3InstructionsSent", JSON.stringify(true));
         addMessage({
-            fromKey: "messagesApp.messages.challenge3.from",
+            fromKey: "messagesApp.author.name",
             subjectKey: "messagesApp.messages.challenge3.subject",
             contentKey: "messagesApp.messages.challenge3.content",
         });

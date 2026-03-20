@@ -185,5 +185,45 @@ export const usersES = [
     puzzle: {
       isBot: true
     }
+  },
+  {
+    _id: uuid(),
+    firstName: "Laura González",
+    lastName: "",
+    bio: "(˶ᵔ ᵕ ᵔ˶)(˶ᵔ ᵕ ᵔ˶)(˶ᵔ ᵕ ᵔ˶)",
+    username: "Laurita07",
+    password: "ECHO",
+    createdAt: new Date("Marzo 2021"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/Laura07.png",
+    verified: false,
+    stats: {
+      followersCount: 33,
+      followingCount: 102,
+      postsCount: 34
+    },
+    puzzle: {
+      isBot: true
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Carlos xD",
+    lastName: "",
+    bio: "Corredor amateur 🏃‍♂️ | 3 maratones y contando",
+    username: "CarlosRunner92",
+    password: "ECHO",
+    createdAt: new Date("Enero 2015"),
+    updatedAt: formatDate(),
+    avatarURL: "Madrid",
+    verified: false,
+    stats: {
+      followersCount: 0,
+      followingCount: 0,
+      postsCount: 0
+    },
+    puzzle: {
+      isBot: true
+    }
   }
 ];

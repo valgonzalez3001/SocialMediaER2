@@ -27,7 +27,7 @@ export const BossNotification = ({ visible, onDismiss }) => {
         alt="Boss"
       />
       <div className="boss-notification-body">
-        <p className="boss-notification-name">{t("messagesApp.messages.missionBrief.from")}</p>
+        <p className="boss-notification-name">{t("messagesApp.author.name")}</p>
         <p className="boss-notification-text">{t("messagesApp.newMessageNotification")}</p>
       </div>
     </div>

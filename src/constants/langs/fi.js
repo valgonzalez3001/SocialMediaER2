@@ -45,6 +45,9 @@ export const fi = {
     "inbox": "Saapuneet",
     "selectMessage": "Valitse viesti luettavaksi",
     "fromLabel": "Lähettäjä",
+    "author": {
+      "name": "Turvatiimi"
+    },
     "chatPlaceholder": "Kirjoita viesti...",
     "send": "Lähetä",
     "newMessageNotification": "Sinulle on uusi viesti!",
@@ -54,29 +57,20 @@ export const fi = {
     },
     "messages": {
       "missionBrief": {
-        "from": "Turvatiimi",
         "subject": "🛡️ Epäilyttäviä käyttäjiä havaittu ECHOssa",
-        "content": "Moderaattori,\n\nECHO-verkko on havainnut useita epäilyttäviä käyttäjiä, jotka saattavat olla botteja levittämässä disinformaatiota.\n\nTehtäväsi on tutkia heitä ja estää heitä manipuloimasta keskusteluja alustalla.\n\n🔎 Siirry kohtaan Epäilyttävät käyttäjät ja analysoi profiilit.\n\n💡 Jos tarvitset apua bottien tunnistamiseen, käytä vihjepainiketta haasteessa."
-      },
-      "congratulations": {
-        "from": "Turvatiimi",
-        "subject": "🎉 Tehtävä suoritettu",
-        "content": "Moderaattori,\n\nOlet suorittanut kaikki haasteet onnistuneesti ja auttanut vähentämään disinformaatiota ECHOssa.\n\nPäätöstesi ansiosta alusta on nyt turvallisempi yhteisölle."
+        "content": "Moderaattori,\n\nECHO-verkko on havainnut useita epäilyttäviä käyttäjiä, jotka voivat olla botteja levittämässä väärää tietoa.\n\nTehtäväsi on analysoida jokainen profiili ja määrittää, onko se botti vai todellinen tili. Jokaisen näkemäsi tilin osalta sinun on:\n\n1. Tutkia profiilia\n2. Päättää: Näyttääkö tämä tili botilta?\n3. Jos luulet sen olevan botti, selitä miksi indikaattoreiden perusteella\n\n🔍 Ennen kuin aloitat, tarkista bot-tilin indikaattorit. Ne auttavat sinua tunnistamaan epäilyttäviä kuvioita.\n\nSuojaa ECHO-yhteisöä tunnistamalla oikein pahalliset tilit!"
       },
       "challenge2": {
-        "from": "Turvatiimi",
         "subject": "🤖 Mahdollisesti tekoälyn tuottamia julkaisuja havaittu",
         "content": "Moderaattori,\n\nHavaitsemme julkaisuja, jotka saattavat olla tekoälyn tuottamia ja levittää disinformaatiota.\n\nAutomaattinen tunnistimemme on huollossa, joten tarvitsemme sinua tarkistamaan julkaisun käsin.\n\n🧠 Siirry kohtaan Tekoälyn tuottama sisältö ja analysoi julkaisu."
       },
       "challenge3": {
-        "from": "Turvatiimi",
         "subject": "⚠️ Tekoälyn virheellinen käyttö havaittu",
         "content": "Moderaattori,\n\nJotkut käyttäjät käyttävät tekoälyä tiedon hankkimiseen, mutta eivät aina vastuullisesti.\n\nSokea luottamus tekoälyyn voi johtaa virheisiin tai disinformaatioon.\n\n🧭 Siirry kohtaan Tekoälyn virheellinen käyttö ja tarkastele tilanteita."
       },
       "challengeFinal": {
-        "from": "Turvatiimi",
         "subject": "📝 Viimeinen tehtävä: Community Note",
-        "content": "Moderaattori,\n\nOlet auttanut tunnistamaan botteja ja analysoimaan tekoälyn käyttöä verkossa.\n\nNyt tarvitsemme selkeän viestin, joka auttaa muita käyttäjiä tunnistamaan disinformaation.\n\n📝 Siirry kohtaan Uusi julkaisu ja valitse kaksi oikeaa väittämää."
+        "content": "Moderaattori,\n\nOlet auttanut tunnistamaan botteja ja analysoimaan tekoälyn käyttöä verkossa.\n\nNyt tarvitsemme selkeän yhteenvedon, joka auttaa muita käyttäjiä tunnistamaan disinformaation.\n\n📝 Siirry kohtaan Uusi julkaisu ja valitse oikeat väittämät kouluttaaksesi ECHO-yhteisöä."
       }
     }
   },
@@ -331,5 +325,22 @@ export const fi = {
     "lockedMessage": "Sinulla ei ole oikeuksia avata tätä kansiota.",
     "items": "{{count}} kohdetta",
     "back": "Takaisin"
+  },
+  "playerOnboarding": {
+    "subtitle": "Tervetuloa ECHOn pakopeliin.",
+    "nameLabel": "Pelaajan nimi",
+    "namePlaceholder": "Syota nimesi",
+    "nameErrorEmpty": "Ole hyva ja syota nimesi",
+    "nameErrorShort": "Nimen on oltava vahintaan 2 merkkia",
+    "ageLabel": "Ika",
+    "agePlaceholder": "Syota ikasi",
+    "ageErrorEmpty": "Ole hyva ja syota ikasi",
+    "ageErrorInvalid": "Ole hyva ja syota kelvollinen ika",
+    "languageLabel": "Pelin kieli",
+    "submitButton": "Aloita peli",
+    "pretestCounter": "valittu",
+    "moderatorFormTitle": "Moderaattorin lomake",
+    "moderatorFormDescription": "Osoita tietosi sosiaalisen median disinformaatiosta.",
+    "moderatorFormSubmit": "Lähetä"
   }
 };

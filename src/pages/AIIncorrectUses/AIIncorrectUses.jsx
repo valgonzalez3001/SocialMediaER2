@@ -150,7 +150,7 @@ export const AIIncorrectUses = () => {
         completeChallenge3();
         sessionStorage.setItem("challengeFinalInstructionsSent", JSON.stringify(true));
         addMessage({
-            fromKey: "messagesApp.messages.challengeFinal.from",
+            fromKey: "messagesApp.author.name",
             subjectKey: "messagesApp.messages.challengeFinal.subject",
             contentKey: "messagesApp.messages.challengeFinal.content",
         });

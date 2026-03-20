@@ -45,6 +45,9 @@ export const sr = {
     "inbox": "Prijemno sanduče",
     "selectMessage": "Izaberi poruku za čitanje",
     "fromLabel": "Od",
+    "author": {
+      "name": "Bezbednosni tim"
+    },
     "chatPlaceholder": "Napiši poruku...",
     "send": "Pošalji",
     "newMessageNotification": "Imate novu poruku!",
@@ -54,29 +57,20 @@ export const sr = {
     },
     "messages": {
       "missionBrief": {
-        "from": "Bezbednosni tim",
         "subject": "🛡️ Sumnjivi korisnici otkriveni na mreži ECHO",
-        "content": "Moderatore,\n\nMreža ECHO je otkrila nekoliko sumnjivih korisnika koji bi mogli biti botovi koji šire dezinformacije.\n\nTvoja misija je da ih istražiš i sprečiš da manipulišu razgovorima na platformi.\n\n🔎 Idi na Sumnjivi korisnici i analiziraj profile.\n\n💡 Ako ti treba pomoć da prepoznaš botove, koristi dugme za tragove u izazovu."
-      },
-      "congratulations": {
-        "from": "Bezbednosni tim",
-        "subject": "🎉 Misija završena",
-        "content": "Moderatore,\n\nUspešno si završio/la sve izazove i pomogao/la da se smanji dezinformisanje na mreži ECHO.\n\nZahvaljujući tvojim odlukama, platforma je sada bezbednije mesto za zajednicu."
+        "content": "Moderatore,\n\nECHO mreža je detektovala nekoliko sumnjivих korisnika koji bi mogli biti botovi koji šire dezinformacije.\n\nTvoja misija je da analiziрaš svaki profil i odrediš da li je to bot ili pravi nalog. Za svaki nalog koji vidiš, moraš:\n\n1. Pregledati profil\n2. Odlučiti: Da li ovaj nalog izgleda kao bot?\n3. Ako misliš da je bot, objasni zašto na osnovu indikatora\n\n🔍 Pre nego što počneš, pregledi indikatore bot naloga. Oni će ti pomoći da identifikuješ sumnjive obrasce.\n\nZaštiti ECHO zajednicu tako što ćeš pravilno identifikovati zlonamerne naloge!"
       },
       "challenge2": {
-        "from": "Bezbednosni tim",
         "subject": "🤖 Moguće objave generisane veštačkom inteligencijom",
         "content": "Moderatore,\n\nOtkrivamo objave koje bi mogle biti generisane veštačkom inteligencijom i širiti dezinformacije.\n\nNaš automatski detektor je na održavanju, pa je potrebno da ručno pregledaš objavu.\n\n🧠 Idi na Sadržaj generisan veštačkom inteligencijom i analiziraj objavu."
       },
       "challenge3": {
-        "from": "Bezbednosni tim",
         "subject": "⚠️ Zloupotreba veštačke inteligencije",
         "content": "Moderatore,\n\nNeki korisnici koriste veštačku inteligenciju da bi dobili informacije, ali ne uvek odgovorno.\n\nSlepo poverenje u AI može dovesti do grešaka ili dezinformacija.\n\n🧭 Idi na Zloupotrebe veštačke inteligencije i pregledaj situacije."
       },
       "challengeFinal": {
-        "from": "Bezbednosni tim",
         "subject": "📝 Završni zadatak: Community Note",
-        "content": "Moderatore,\n\nPomogao/la si da identifikujemo botove i analiziramo upotrebu veštačke inteligencije.\n\nSada nam je potrebna jasna poruka koja će pomoći drugim korisnicima da prepoznaju dezinformacije.\n\n📝 Idi na Nova objava i izaberi dve tačne tvrdnje."
+        "content": "Moderatore,\n\nPomogao/la si da identifikujemo botove i analiziramo upotrebu veštačke inteligencije na mreži.\n\nSada nam je potreban jasan zaključak koji će pomoći drugim korisnicima da prepoznaju dezinformacije.\n\n📝 Idi na Nova objava i izaberi tačne tvrdnje kako bi edukovao/la ECHO zajednicu."
       }
     }
   },
@@ -332,5 +326,22 @@ export const sr = {
     "lockedMessage": "Nemate dozvolu za pristup ovoj fascikli.",
     "items": "{{count}} stavki",
     "back": "Nazad"
+  },
+  "playerOnboarding": {
+    "subtitle": "Dobrodosli u ECHO-ov Escape Room.",
+    "nameLabel": "Ime igraca",
+    "namePlaceholder": "Unesite svoje ime",
+    "nameErrorEmpty": "Molimo unesite svoje ime",
+    "nameErrorShort": "Ime mora imati najmanje 2 karaktera",
+    "ageLabel": "Godine",
+    "agePlaceholder": "Unesite svoje godine",
+    "ageErrorEmpty": "Molimo unesite svoje godine",
+    "ageErrorInvalid": "Molimo unesite validne godine",
+    "languageLabel": "Jezik igre",
+    "submitButton": "Zapocni igru",
+    "pretestCounter": "izabrano",
+    "moderatorFormTitle": "Formular moderatora",
+    "moderatorFormDescription": "Pokazi svoje znanje o dezinformacijama na drustvenim mrezama.",
+    "moderatorFormSubmit": "Pošalji"
   }
 };

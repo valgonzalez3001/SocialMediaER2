@@ -45,6 +45,9 @@ export const es = {
     "inbox": "Bandeja de entrada",
     "selectMessage": "Selecciona un mensaje para leer",
     "fromLabel": "De",
+    "author": {
+      "name": "Equipo de Seguridad"
+    },
     "chatPlaceholder": "Escribe un mensaje...",
     "send": "Enviar",
     "newMessageNotification": "¡Tienes un mensaje nuevo!",
@@ -54,29 +57,20 @@ export const es = {
     },
     "messages": {
       "missionBrief": {
-        "from": "Equipo de Seguridad",
         "subject": "🛡️ Usuarios sospechosos detectados en ECHO",
-        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\nTu misión es investigarlos para evitar que sigan manipulando la conversación en la plataforma.\n\n🔎 Accede a Usuarios Sospechosos y analiza los perfiles para determinar cuáles podrían ser bots y cuáles parecen cuentas reales.\n\n💡 Si necesitas ayuda para identificar los parámetros que caracterizan a un bot, utiliza el botón de pistas dentro del reto."
-      },
-      "congratulations": {
-        "from": "Equipo de Seguridad",
-        "subject": "🎉 Misión completada",
-        "content": "Moderador,\n\nHas completado con éxito todos los retos y has ayudado a reducir la desinformación en ECHO.\n\nGracias a tus decisiones, la plataforma es ahora un lugar más seguro para la comunidad."
+        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\nTu misión es analizar cada perfil y determinar si se trata de un bot o una cuenta real. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta parece un bot?\n3. Si consideras que es un bot, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta bot. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
       },
       "challenge2": {
-        "from": "Equipo de Seguridad",
         "subject": "🤖 Posibles publicaciones generadas por IA detectadas",
         "content": "Moderador,\n\nEstamos detectando publicaciones que podrían haber sido generadas por inteligencia artificial y estar difundiendo desinformación.\n\nNuestro detector automático está en mantenimiento, por lo que necesitamos que revises una publicación manualmente.\n\n🧠 Accede a Contenido Generado por IA y analiza el post para determinar si podría haber sido generado por una IA."
       },
       "challenge3": {
-        "from": "Equipo de Seguridad",
         "subject": "⚠️ Uso incorrecto de IA detectado",
         "content": "Moderador,\n\nAlgunos usuarios están utilizando inteligencia artificial para obtener información, pero no siempre de forma responsable.\n\nConfiar ciegamente en la IA puede provocar errores o desinformación.\n\n🧭 Accede a Usos Incorrectos de IA y revisa cada situación para elegir la respuesta que mejor aconseje al usuario."
       },
       "challengeFinal": {
-        "from": "Equipo de Seguridad",
         "subject": "📝 Misión final: Community Note",
-        "content": "Moderador,\n\nHas ayudado a identificar bots y a analizar el uso de la inteligencia artificial en la red.\n\nAhora necesitamos una conclusión clara que ayude a otros usuarios a reconocer la desinformación.\n\n📝 Accede a Nueva Publicación y selecciona las dos afirmaciones correctas para crear una Community Note para la comunidad de ECHO."
+        "content": "Moderador,\n\nHas ayudado a identificar bots y a analizar el uso de la inteligencia artificial en la red.\n\nAhora necesitamos una conclusión clara que ayude a otros usuarios a reconocer la desinformación.\n\n📝 Accede a Nueva Publicación y selecciona las afirmaciones correctas para educar a la comunidad de ECHO."
       }
     }
   },
@@ -180,7 +174,7 @@ export const es = {
     "verifyButton": "Verificar post →",
     "statsCount": "{{count}} posts",
     "statsText": "han sido marcados como generados por IA en la última hora.",
-    "card1Title": "Vídeo de Will Smith comiendo spaghetti",
+    "card1Title": "Will Smith come spaghetti",
     "card2Title": "Madrid sufre esta mañana el impacto de un meteorito",
     "tag": "GENERADO POR IA",
     "seeAll": "Ver todo →",
@@ -335,5 +329,22 @@ export const es = {
     "lockedMessage": "No tienes permisos para acceder a esta carpeta.",
     "items": "{{count}} elementos",
     "back": "Atrás"
+  },
+  "playerOnboarding": {
+    "subtitle": "Bienvenido al Escaperoom de ECHO.",
+    "nameLabel": "Nombre del jugador",
+    "namePlaceholder": "Ingresa tu nombre",
+    "nameErrorEmpty": "Por favor ingresa tu nombre",
+    "nameErrorShort": "El nombre debe tener al menos 2 caracteres",
+    "ageLabel": "Edad",
+    "agePlaceholder": "Ingresa tu edad",
+    "ageErrorEmpty": "Por favor ingresa tu edad",
+    "ageErrorInvalid": "Por favor ingresa una edad valida",
+    "languageLabel": "Idioma del juego",
+    "submitButton": "Comenzar juego",
+    "pretestCounter": "seleccionadas",
+    "moderatorFormTitle": "Formulario Moderador",
+    "moderatorFormDescription": "Demuestra tus conocimientos sobre desinformacion en redes sociales.",
+    "moderatorFormSubmit": "Enviar"
   }
 };

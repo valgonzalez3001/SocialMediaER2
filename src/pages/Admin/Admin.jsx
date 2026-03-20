@@ -268,7 +268,7 @@ export const Admin = () => {
             setClassifiedUsers({});
             // Enviar instrucciones del reto 2
             addMessage({
-                fromKey: "messagesApp.messages.challenge2.from",
+                fromKey: "messagesApp.author.name",
                 subjectKey: "messagesApp.messages.challenge2.subject",
                 contentKey: "messagesApp.messages.challenge2.content",
             });

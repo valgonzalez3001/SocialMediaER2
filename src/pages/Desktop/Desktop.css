@@ -357,6 +357,61 @@
   display: none;
 }
 
+/* Survey balloon */
+.survey-balloon {
+  position: fixed;
+  bottom: 160px;
+  right: 24px;
+  background: linear-gradient(135deg, var(--primary-color), #9370ff);
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(127, 85, 255, 0.5);
+  z-index: 1100;
+  animation: balloonBounce 2s ease-in-out infinite, balloonFadeIn 0.5s ease-out;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.survey-balloon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 28px rgba(127, 85, 255, 0.7);
+}
+
+.survey-balloon-icon {
+  font-size: 1.3rem;
+}
+
+.survey-balloon-text {
+  white-space: nowrap;
+}
+
+@keyframes balloonBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes balloonFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 600px) {
   .desktop-shell {
     padding: 48px 16px 140px;

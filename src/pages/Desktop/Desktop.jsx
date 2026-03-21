@@ -6,9 +6,11 @@ import { HintsApp } from "../../components/HintsApp/HintsApp";
 import { FilesApp } from "../../components/FilesApp/FilesApp";
 import { PopupNotification } from "../../components/PopupNotification/PopupNotification";
 import { BossNotification } from "../../components/BossNotification/BossNotification";
+import { SurveyModal } from "../../components/SurveyModal/SurveyModal";
 import { useOS } from "../../contexts/OSProvider";
 import { useMessages } from "../../contexts/MessagesProvider";
 import { useStats } from "../../contexts/StatsProvider";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider";
 import { FaChevronUp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
@@ -25,6 +27,7 @@ export const Desktop = () => {
     escapeTimerRemainingMs,
     escapeTimerFlashTick,
   } = useStats();
+  const { sendStatement } = useXAPI();
   const { t, i18n } = useTranslation();
   const missionBriefRead = sessionStorage.getItem("missionBriefRead") === "true";
   
@@ -56,9 +59,34 @@ export const Desktop = () => {
   const [now, setNow] = useState(() => new Date());
   const [bossNotifVisible, setBossNotifVisible] = useState(false);
   const [countdownFlash, setCountdownFlash] = useState(false);
+  const [showSurveyModal, setShowSurveyModal] = useState(false);
+  const [surveyCompleted, setSurveyCompleted] = useState(() => {
+    return sessionStorage.getItem('surveyCompleted') === 'true';
+  });
   const lastHandledFlashTickRef = useRef(escapeTimerFlashTick);
   const isCountdownCritical = escapeTimerRemainingMs <= 5 * 60 * 1000;
   const handleBossNotifDismiss = useCallback(() => setBossNotifVisible(false), []);
+
+  const handleOpenSurvey = () => setShowSurveyModal(true);
+  const handleCloseSurvey = () => setShowSurveyModal(false);
+  const handleSurveySubmit = (answers) => {
+    console.log('Survey answers:', answers);
+    sessionStorage.setItem('surveyCompleted', 'true');
+    setSurveyCompleted(true);
+    setShowSurveyModal(false);
+
+    // Send survey results to LRS
+    sendStatement(
+      XAPI_VERBS.EVALUATED,
+      ECHO_ACTIVITIES.SURVEY,
+      {
+        response: JSON.stringify(answers),
+        extensions: {
+          "https://endgameproject.github.io/xapi/ext/surveyAnswers": answers,
+        },
+      }
+    );
+  };
 
   const clampTranslate = (value) =>
     Math.min(Math.max(value, 0), closedTranslate);
@@ -306,6 +334,26 @@ export const Desktop = () => {
         visible={bossNotifVisible}
         onDismiss={handleBossNotifDismiss}
       />
+
+      {/* Survey balloon - shows when game is complete and survey not done */}
+      {challengeFinalCompleted && !surveyCompleted && (
+        <button
+          className="survey-balloon"
+          onClick={handleOpenSurvey}
+          title={t('survey.balloonTitle', 'Share your feedback!')}
+        >
+          <span className="survey-balloon-icon">📋</span>
+          <span className="survey-balloon-text">{t('survey.balloonText', 'Survey')}</span>
+        </button>
+      )}
+
+      {/* Survey modal */}
+      {showSurveyModal && (
+        <SurveyModal
+          onClose={handleCloseSurvey}
+          onSubmit={handleSurveySubmit}
+        />
+      )}
     </div>
   );
 };

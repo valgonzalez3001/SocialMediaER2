@@ -349,5 +349,41 @@ export const es = {
     "moderatorFormTitle": "Formulario Moderador",
     "moderatorFormDescription": "Demuestra tus conocimientos sobre desinformacion en redes sociales.",
     "moderatorFormSubmit": "Enviar"
+  },
+  "survey": {
+    "opinionTitle": "What is your general opinion about the escape room? ",
+    "opinionRange": "1 = Very poor, 2 = Poor, 3 = Neutral, 4 = Good, 5 = Very good",
+    "rateTitle": "Rate the following statements on a scale of 1-7",
+    "rateRange": "1 = Strongly Disagree, 2 = Disagree, 3 = Somewhat Disagree , 4 = Neutral, 5 = Somewhat Agree, 6 = Agree, 7 = Strongly Agree).",
+    "learningTitle": "How much did you learn?",
+    "learningItems": {
+      "0": "The escape room increased my knowledge of how AI works",
+      "1": "The escape room increased my knowledge of how AI is used in social media",
+      "2": "The escape room increased my knowledge of what the appropriate uses of AI are"
+    },
+    "guessTitle": "How did you like the gameplay?",
+    "guessItems": {
+      "0": "I find the controls of the escape room to be straightforward.",
+      "1": "I find the escape room's interface to be easy to navigate.",
+      "2": "I am captivated by the escape room’s story from the beginning.",
+      "3": "I enjoy the story provided by the escape room.",
+      "4": "I feel detached from the outside world while playing the escape room.",
+      "5": "I do not care to check events that are happening in the real world during the escape room.",
+      "6": "I think the escape room is fun.",
+      "7": "I feel bored while playing the escape room.",
+      "8": "I feel the escape room allows me to be imaginative.",
+      "9": "I feel creative while playing the escape room.",
+      "10": "I am very focused on my own performance while playing the escape room.",
+      "11": "I want to do as well as possible during the escape room.",
+      "12": "I enjoy the escape room’s graphics.",
+      "13": "I think the escape room is visually appealing."
+    },
+    "comments": "Any additional comments or suggestions?"
+  },
+  "sessionDialog": {
+    "title": "Bienvenido de nuevo",
+    "message": "Tienes una sesión anterior. ¿Te gustaría continuar donde la dejaste?",
+    "resume": "Reanudar",
+    "startOver": "Volver a empezar"
   }
 };

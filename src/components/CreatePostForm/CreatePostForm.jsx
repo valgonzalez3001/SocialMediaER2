@@ -25,6 +25,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
   const [postForm, setPostForm] = useState({
     firstName,
     lastName,
+    avatarURL: loggedInUserState?.avatarURL,
     content: "",
     mediaUrl: "",
   });
@@ -47,7 +48,12 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
   };
 
   useEffect(() => {
-    setPostForm((prev) => ({ ...prev, firstName, lastName }));
+    setPostForm((prev) => ({
+      ...prev,
+      firstName,
+      lastName,
+      avatarURL: loggedInUserState?.avatarURL,
+    }));
   }, [loggedInUserState]);
 
   return (
@@ -62,6 +68,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
           setPostForm({
             firstName: loggedInUserState?.firstName,
             lastName: loggedInUserState?.lastName,
+            avatarURL: loggedInUserState?.avatarURL,
             content: "",
             mediaUrl: "",
           });

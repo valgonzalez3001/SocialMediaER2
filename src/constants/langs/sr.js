@@ -160,7 +160,8 @@ export const sr = {
       "targetAudience": "Nema jasne ciljne publike: Ponavlja isti sadržaj na više jezika",
       "temporalActivity": "Sumnjiva vremenska aktivnost: Objavljivanje u vrlo redovitim intervalima ili neobičnim vremenima",
       "abnormalRatio": "Nenormalan odnos: Mnogo pratilaca ali malo prave interakcije",
-      "recentAccount": "Skoriji nalog: Nov nalog sa trenutnom visokom aktivnošću"
+      "recentAccount": "Skoriji nalog: Nov nalog sa trenutnom visokom aktivnošću",
+      "official": "Službeni račun: Pripada službenoj/javnoj organizaciji"
     }
   },
   "editPost": {

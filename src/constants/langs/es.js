@@ -227,7 +227,6 @@ export const es = {
     "progress": "Caso {{current}} de {{total}}",
     "next": "Siguiente caso",
     "finish": "Reiniciar reto",
-    "cases": "[object Object],[object Object],[object Object]",
     "reply": "Responder",
     "challengeCompleted": "¡Reto superado! 🎉",
     "challengeCompletedMsg": "Has respondido correctamente a todos los casos de uso incorrecto de IA."
@@ -356,17 +355,11 @@ export const es = {
     "learningTitle": "¿Cuánto has aprendido?",
     "learningItems": {
       "0": "La escape room aumentó mi conocimiento sobre cómo funciona la IA.",
-      "1": {
-        "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B263,\"\"en\"\",\"\"es\"\")\"),\"La experiencia en la sala de escape aumentó mi conocimiento sobre cómo se utiliza la IA en las redes sociales.\")",
-        "result": "La experiencia en la sala de escape aumentó mi conocimiento sobre cómo se utiliza la IA en las redes sociales."
-      },
-      "2": {
-        "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B264,\"\"en\"\",\"\"es\"\")\"),\"La sala de escape aumentó mi conocimiento sobre cuáles son los usos apropiados de la IA.\")",
-        "result": "La sala de escape aumentó mi conocimiento sobre cuáles son los usos apropiados de la IA."
-      }
+      "1": "La escape room aumentó mi conocimiento sobre cómo se utiliza la IA en las redes sociales.",
+      "2": "La escape room aumentó mi conocimiento sobre cuáles son los usos apropiados de la IA."
     },
     "guessTitle": {
-      "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B265,\"\"en\"\",\"\"es\"\")\"),\"¿Qué te pareció la jugabilidad?\")",
+      "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B264,\"\"en\"\",\"\"es\"\")\"),\"¿Qué te pareció la jugabilidad?\")",
       "result": "¿Qué te pareció la jugabilidad?"
     },
     "guessItems": {

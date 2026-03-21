@@ -227,7 +227,6 @@ export const en = {
     "progress": "Case {{current}} of {{total}}",
     "next": "Next case",
     "finish": "Restart challenge",
-    "cases": "[object Object],[object Object],[object Object]",
     "reply": "Reply",
     "challengeCompleted": "Challenge complete! 🎉",
     "challengeCompletedMsg": "You've correctly replied to all AI incorrect use cases."

@@ -92,7 +92,7 @@ export const es = {
     "publish": "Publicar",
     "challengeLocked": "Reto Bloqueado",
     "completeChallenge1": "Completa el reto de Admin para desbloquear publicaciones",
-    "selectTwoCorrect": "Has protegido ECHO de la desinformación. A lo largo de esta misión aprendiste a detectar bots, verificar fuentes y pensar de forma crítica. Ahora comparte ese conocimiento: selecciona las 2 afirmaciones correctas y publica tu Nota Comunitaria.",
+    "selectCorrectCount": "Has protegido ECHO de la desinformación. A lo largo de esta misión aprendiste a detectar bots, verificar fuentes y pensar de forma crítica. Ahora comparte ese conocimiento: selecciona las {{count}} afirmaciones correctas y publica tu Nota Comunitaria.",
     "incorrectSelection": "Selección incorrecta. ¡Intenta de nuevo!",
     "selected": "seleccionados",
     "publishConclusion": "Publicar",

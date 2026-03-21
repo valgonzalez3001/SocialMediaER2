@@ -89,15 +89,16 @@ export const StatsPanel = () => {
   const { t } = useTranslation();
   const [countdownFlash, setCountdownFlash] = useState(false);
   const lastHandledFlashTickRef = useRef(escapeTimerFlashTick);
+  const isCountdownCritical = escapeTimerRemainingMs <= 5 * 60 * 1000;
 
   useEffect(() => {
     if (!escapeTimerStarted || challengeFinalCompleted || !escapeTimerFlashTick) return;
     if (escapeTimerFlashTick <= lastHandledFlashTickRef.current) return;
     lastHandledFlashTickRef.current = escapeTimerFlashTick;
     setCountdownFlash(true);
-    const timeoutId = setTimeout(() => setCountdownFlash(false), 1300);
+    const timeoutId = setTimeout(() => setCountdownFlash(false), isCountdownCritical ? 1700 : 1300);
     return () => clearTimeout(timeoutId);
-  }, [escapeTimerFlashTick, escapeTimerStarted, challengeFinalCompleted]);
+  }, [escapeTimerFlashTick, escapeTimerStarted, challengeFinalCompleted, isCountdownCritical]);
 
   const countdownText = (() => {
     const totalSeconds = Math.max(0, Math.ceil(escapeTimerRemainingMs / 1000));
@@ -181,7 +182,7 @@ export const StatsPanel = () => {
 
       {escapeTimerStarted && !challengeFinalCompleted && (
         <div className="timer-container">
-        <div className={`sp-countdown-hero ${countdownFlash ? "sp-countdown-hero--flash" : ""}`}>
+        <div className={`sp-countdown-hero ${isCountdownCritical ? "sp-countdown-hero--critical" : ""} ${countdownFlash ? "sp-countdown-hero--flash" : ""}`}>
           <span className="sp-countdown-hero-label">{t("shared.timeLeft")}</span>
           <span className="sp-countdown-hero-value">{countdownText}</span>
           {escapeTimerExpired && (

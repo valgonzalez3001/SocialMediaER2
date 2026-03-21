@@ -92,7 +92,7 @@ export const sr = {
     "publish": "Objavi",
     "challengeLocked": "Izazov zaključan",
     "completeChallenge1": "Završi Admin izazov da otključaš objavljivanje",
-    "selectTwoCorrect": "Zaštitio si ECHO od dezinformacija. Tokom ove misije naučio si da prepoznaš botove, proveriš izvore i razmišljaš kritički. Sada podeli to znanje: izaberi 2 ispravne tvrdnje i objavi svoju Belešku.",
+    "selectCorrectCount": "Zaštitio si ECHO od dezinformacija. Tokom ove misije naučio si da prepoznaš botove, proveriš izvore i razmišljaš kritički. Sada podeli to znanje: izaberi {{count}} ispravne tvrdnje i objavi svoju Belešku.",
     "incorrectSelection": "Pogrešan izbor. Pokušaj ponovo!",
     "selected": "izabrano",
     "publishConclusion": "Objavi ",

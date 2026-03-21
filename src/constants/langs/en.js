@@ -92,7 +92,7 @@ export const en = {
     "publish": "Post",
     "challengeLocked": "Challenge Locked",
     "completeChallenge1": "Complete the Admin challenge to unlock posting",
-    "selectTwoCorrect": "You've protected ECHO from misinformation. Throughout this mission you learned to detect bots, verify sources and think critically. Now share that knowledge: select the 2 correct statements and publish your Community Note.",
+    "selectCorrectCount": "You've protected ECHO from misinformation. Throughout this mission you learned to detect bots, verify sources and think critically. Now share that knowledge: select the {{count}} correct statements and publish your Community Note.",
     "incorrectSelection": "Incorrect selection. Try again!",
     "selected": "selected",
     "publishConclusion": "Publish ",

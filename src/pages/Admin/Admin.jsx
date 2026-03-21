@@ -360,13 +360,12 @@ export const Admin = () => {
                         </div>
                         <div className="hint-modal-content">
                             <ul>
+                                <li><strong>{t('admin.hintContent.emotions').split(':')[0]}:</strong> {t('admin.hintContent.emotions').split(':')[1]}</li>
+                                <li><strong>{t('admin.hintContent.targetAudience').split(':')[0]}:</strong> {t('admin.hintContent.targetAudience').split(':')[1]}</li>
                                 <li><strong>{t('admin.hintContent.temporalActivity').split(':')[0]}:</strong> {t('admin.hintContent.temporalActivity').split(':')[1]}</li>
-                                <li><strong>{t('admin.hintContent.repetitiveContent').split(':')[0]}:</strong> {t('admin.hintContent.repetitiveContent').split(':')[1]}</li>
-                                <li><strong>{t('admin.hintContent.excessLinks').split(':')[0]}:</strong> {t('admin.hintContent.excessLinks').split(':')[1]}</li>
-                                <li><strong>{t('admin.hintContent.noInteraction').split(':')[0]}:</strong> {t('admin.hintContent.noInteraction').split(':')[1]}</li>
                                 <li><strong>{t('admin.hintContent.abnormalRatio').split(':')[0]}:</strong> {t('admin.hintContent.abnormalRatio').split(':')[1]}</li>
-                                <li><strong>{t('admin.hintContent.singleTopic').split(':')[0]}:</strong> {t('admin.hintContent.singleTopic').split(':')[1]}</li>
                                 <li><strong>{t('admin.hintContent.recentAccount').split(':')[0]}:</strong> {t('admin.hintContent.recentAccount').split(':')[1]}</li>
+                                <li><strong>{t('admin.hintContent.official').split(':')[0]}:</strong> {t('admin.hintContent.official').split(':')[1]}</li>
                             </ul>
                         </div>
                     </div>

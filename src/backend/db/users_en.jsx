@@ -23,7 +23,13 @@ export const usersEN = [
       postsCount: 0
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   }
 ];

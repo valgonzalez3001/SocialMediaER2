@@ -28,13 +28,41 @@ const expectedClassificationFromIsBot = (isBot) => (
 
 const isBotClassification = (value) => normalizeClassification(value) === CLASSIFICATION.YES;
 
+const QUIZ_INDICATOR_KEYS = [
+  'official',
+  'abnormalRatio',
+  'recentAccount',
+  'temporalActivity',
+  'targetAudience',
+  'emotions',
+];
+
+const normalizeBooleanFromSpreadsheet = (value) => {
+  if (typeof value === 'boolean') return value;
+  if (typeof value === 'number') return value === 1;
+
+  const normalized = String(value ?? '').trim().toLowerCase();
+  if (!normalized) return false;
+
+  return ['true', '1', 'x', 'yes', 'si', 'da'].includes(normalized);
+};
+
 export const Profile = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [fromAdmin, setFromAdmin] = useState(false);
-  const [classificationFeedback, setClassificationFeedback] = useState(null);
   const [showClassificationQuiz, setShowClassificationQuiz] = useState(false);
-  const [quizSubmittedByUser, setQuizSubmittedByUser] = useState({});
+  const [quizSubmittedByUser, setQuizSubmittedByUser] = useState(() => {
+    const saved = sessionStorage.getItem('adminGameQuizState');
+    if (!saved) return {};
+
+    try {
+      const parsed = JSON.parse(saved);
+      return parsed && typeof parsed === 'object' ? parsed : {};
+    } catch {
+      return {};
+    }
+  });
   const [selectedQuizOptions, setSelectedQuizOptions] = useState([]);
   const [classifiedUsers, setClassifiedUsers] = useState(() => {
     const saved = sessionStorage.getItem('adminGameState');
@@ -154,13 +182,6 @@ export const Profile = () => {
       return newState;
     });
 
-    if (!isCorrect) {
-      setClassificationFeedback('incorrect');
-      setShowClassificationQuiz(false);
-      return;
-    }
-
-    setClassificationFeedback('correct');
     const shouldRequireQuiz = normalizedClassification === CLASSIFICATION.YES;
     if (shouldRequireQuiz && !quizSubmittedByUser[currentUser.username]) {
       setShowClassificationQuiz(true);
@@ -181,17 +202,32 @@ export const Profile = () => {
 
   const handleSubmitQuiz = () => {
     if (!currentUser) return;
-    setQuizSubmittedByUser((prev) => ({ ...prev, [currentUser.username]: true }));
+
+    setQuizSubmittedByUser((prev) => {
+      const newState = { ...prev, [currentUser.username]: true };
+      sessionStorage.setItem('adminGameQuizState', JSON.stringify(newState));
+      return newState;
+    });
     setShowClassificationQuiz(false);
   };
 
-  const shouldRequireQuizForCurrentProfile = normalizeClassification(classifiedUsers[username]) === CLASSIFICATION.YES;
+  const currentClassification = normalizeClassification(classifiedUsers[username]);
+  const hasClassificationForCurrentProfile = Boolean(currentClassification);
+  const shouldRequireQuizForCurrentProfile = currentClassification === CLASSIFICATION.YES;
+  const isPuzzleProfile = fromAdmin && isSuspectUser && username !== 'ECHO';
+  const isQuizCompletedForCurrentProfile = Boolean(currentUser && quizSubmittedByUser[currentUser.username]);
+  const canReturnToGame =
+    !isPuzzleProfile ||
+    (hasClassificationForCurrentProfile && (!shouldRequireQuizForCurrentProfile || isQuizCompletedForCurrentProfile));
 
   const canOpenQuiz =
-    classificationFeedback === 'correct' &&
     shouldRequireQuizForCurrentProfile &&
     currentUser &&
     !quizSubmittedByUser[currentUser.username];
+
+  useEffect(() => {
+    setSelectedQuizOptions([]);
+  }, [username]);
 
   return (
     <>
@@ -202,7 +238,7 @@ export const Profile = () => {
         <main className="feed profile-feed">
           {fromAdmin && (
             <div className="back-to-game-container">
-              <button className="back-to-game-button" onClick={handleBackToGame}>
+              <button className="back-to-game-button" onClick={handleBackToGame} disabled={!canReturnToGame}>
                 ← {t('profile.backToGame')}
               </button>
             </div>
@@ -213,7 +249,6 @@ export const Profile = () => {
             selectedClassification={classifiedUsers[username]}
             onClassify={handleClassification}
             isClassificationLocked={isClassificationLocked}
-            classificationFeedback={classificationFeedback}
             canOpenClassificationQuiz={canOpenQuiz}
             onOpenClassificationQuiz={() => setShowClassificationQuiz(true)}
           />
@@ -241,14 +276,14 @@ export const Profile = () => {
                 <h3 className="classification-quiz-title">{t('profile.classificationQuizTitle')}</h3>
 
                 <div className="classification-quiz-options">
-                  {[1, 2, 3, 4, 5].map((option) => (
-                    <label key={option} className="classification-quiz-option">
+                  {QUIZ_INDICATOR_KEYS.map((optionKey) => (
+                    <label key={optionKey} className="classification-quiz-option">
                       <input
                         type="checkbox"
-                        checked={selectedQuizOptions.includes(option)}
-                        onChange={() => toggleQuizOption(option)}
+                        checked={selectedQuizOptions.includes(optionKey)}
+                        onChange={() => toggleQuizOption(optionKey)}
                       />
-                      <span className="classification-quiz-option-placeholder" aria-hidden="true" />
+                      <span>{String(t(`admin.hintContent.${optionKey}`)).split(':')[0]}</span>
                     </label>
                   ))}
                 </div>

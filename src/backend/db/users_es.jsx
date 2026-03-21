@@ -23,7 +23,13 @@ export const usersES = [
       postsCount: "500+"
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: true,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   },
   {
@@ -43,7 +49,13 @@ export const usersES = [
       postsCount: "500+"
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: true,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   },
   {
@@ -63,7 +75,13 @@ export const usersES = [
       postsCount: "500+"
     },
     puzzle: {
-      isBot: true
+      isBot: true,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: true
     }
   },
   {
@@ -83,7 +101,13 @@ export const usersES = [
       postsCount: "500+"
     },
     puzzle: {
-      isBot: true
+      isBot: true,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: true,
+      targetAudience: false,
+      emotions: true
     }
   },
   {
@@ -103,7 +127,13 @@ export const usersES = [
       postsCount: "500+"
     },
     puzzle: {
-      isBot: true
+      isBot: true,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: true,
+      targetAudience: false,
+      emotions: true
     }
   },
   {
@@ -123,7 +153,13 @@ export const usersES = [
       postsCount: "500+"
     },
     puzzle: {
-      isBot: true
+      isBot: true,
+      official: false,
+      abnormalRatio: true,
+      recentAccount: false,
+      temporalActivity: true,
+      targetAudience: false,
+      emotions: true
     }
   },
   {
@@ -143,7 +179,13 @@ export const usersES = [
       postsCount: 20
     },
     puzzle: {
-      isBot: true
+      isBot: true,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: true,
+      temporalActivity: false,
+      targetAudience: true,
+      emotions: true
     }
   },
   {
@@ -163,7 +205,13 @@ export const usersES = [
       postsCount: 190
     },
     puzzle: {
-      isBot: true
+      isBot: true,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: true,
+      targetAudience: true,
+      emotions: true
     }
   },
   {
@@ -183,7 +231,13 @@ export const usersES = [
       postsCount: "500+"
     },
     puzzle: {
-      isBot: true
+      isBot: true,
+      official: false,
+      abnormalRatio: true,
+      recentAccount: true,
+      temporalActivity: true,
+      targetAudience: false,
+      emotions: true
     }
   },
   {
@@ -203,7 +257,13 @@ export const usersES = [
       postsCount: 34
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   },
   {
@@ -223,7 +283,13 @@ export const usersES = [
       postsCount: 22
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   },
   {
@@ -243,7 +309,13 @@ export const usersES = [
       postsCount: 340
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   },
   {
@@ -263,7 +335,13 @@ export const usersES = [
       postsCount: 47
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   },
   {
@@ -283,7 +361,13 @@ export const usersES = [
       postsCount: 87
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   },
   {
@@ -303,7 +387,13 @@ export const usersES = [
       postsCount: 67
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   },
   {
@@ -323,7 +413,13 @@ export const usersES = [
       postsCount: 44
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   },
   {
@@ -343,7 +439,13 @@ export const usersES = [
       postsCount: 123
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   }
 ];

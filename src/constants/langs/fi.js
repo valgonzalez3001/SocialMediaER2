@@ -61,18 +61,18 @@ export const fi = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Epäilyttäviä käyttäjiä havaittu ECHOssa",
-        "content": "Moderaattori,\n\nECHO-verkko on havainnut useita epäilyttäviä käyttäjiä, jotka voivat olla botteja levittämässä väärää tietoa.\n\nTehtäväsi on analysoida jokainen profiili ja määrittää, onko se botti vai todellinen tili. Jokaisen näkemäsi tilin osalta sinun on:\n\n1. Tutkia profiilia\n2. Päättää: Näyttääkö tämä tili botilta?\n3. Jos luulet sen olevan botti, selitä miksi indikaattoreiden perusteella\n\n🔍 Ennen kuin aloitat, tarkista bot-tilin indikaattorit. Ne auttavat sinua tunnistamaan epäilyttäviä kuvioita.\n\nSuojaa ECHO-yhteisöä tunnistamalla oikein pahalliset tilit!"
+        "content": "Moderaattori,\n\nECHO-verkko on havainnut useita epäilyttäviä käyttäjiä, jotka voivat olla disinformaatiota levittäviä botteja.\n\n📌 Avaa sosiaalisen verkoston vasen sivupalkki ja klikkaa \"Epäilyttävät tilit\" aloittaaksesi analyysin. Jokaisen tarkastelemasi tilin kohdalla sinun tulee:\n\n1. Tutkia profiili\n2. Päättää: Vaikuttaako tämä tili botilta?\n3. Jos pidät sitä bottina, perustele miksi indikaattorien perusteella\n\n🔍 Ennen aloittamista tarkista bottitilin indikaattorit, jotka löytyvät Epäilyttävät tilit -paneelista. Ne auttavat sinua tunnistamaan epäilyttäviä toimintamalleja.\n\nSuojele ECHO-yhteisöä tunnistamalla haitalliset tilit oikein!"
       },
       "challenge2": {
         "subject": "🤖 Mahdollisesti tekoälyn tuottamia julkaisuja havaittu",
         "content": "Moderaattori,\n\nHavaitsemme julkaisuja, jotka saattavat olla tekoälyn tuottamia ja levittää disinformaatiota.\n\nAutomaattinen tunnistimemme on huollossa, joten tarvitsemme sinua tarkistamaan julkaisun käsin.\n\n🧠 Siirry kohtaan Tekoälyn tuottama sisältö ja analysoi julkaisu."
       },
       "challenge3": {
-        "subject": "⚠️ Tekoälyn virheellinen käyttö havaittu",
-        "content": "Moderaattori,\n\nJotkut käyttäjät käyttävät tekoälyä tiedon hankkimiseen, mutta eivät aina vastuullisesti.\n\nSokea luottamus tekoälyyn voi johtaa virheisiin tai disinformaatioon.\n\n🧭 Siirry kohtaan Tekoälyn virheellinen käyttö ja tarkastele tilanteita."
+        "subject": "⚠️ Mahdollinen tekoälyn virheellinen käyttö havaittu",
+        "content": "Moderaattori,\n\nJotkut käyttäjät käyttävät tekoälyä tiedon hankintaan, mutta eivät aina vastuullisesti.\n\nSokea luottamus tekoälyyn voi aiheuttaa virheitä tai disinformaatiota.\n\n🧭 Siirry kohtaan Tekoälyn virheelliset käyttötavat sosiaalisen verkoston vasemmassa sivupaneelissa ja käy jokainen tilanne läpi valitaksesi vastauksen, joka neuvoo käyttäjää parhaiten."
       },
       "challengeFinal": {
-        "subject": "📝 Viimeinen tehtävä: Community Note",
+        "subject": "📝 Viimeinen tehtävä: Yhteisöhuomautus",
         "content": "Moderaattori,\n\nOlet auttanut tunnistamaan botteja ja analysoimaan tekoälyn käyttöä verkossa.\n\nNyt tarvitsemme selkeän yhteenvedon, joka auttaa muita käyttäjiä tunnistamaan disinformaation.\n\n📝 Siirry kohtaan Uusi julkaisu ja valitse oikeat väittämät kouluttaaksesi ECHO-yhteisöä."
       }
     }
@@ -96,8 +96,7 @@ export const fi = {
     "incorrectSelection": "Väärä valinta. Yritä uudelleen!",
     "selected": "valittu",
     "publishConclusion": "Julkaise ",
-    "conclusionText": "Disinformaation vastustamiseksi sosiaalisessa mediassa on välttämätöntä, että kehität kriittistä ajattelua ja varmistat tiedot ennen jakamista. Botit ja väärät tilit osoittavat usein toistuvia malleja, epäilyttävää toimintaa outoina aikoina ja samana toistuvaa sisältöä. Opi tunnistamaan ne ja suojaa yhteisöäsi! 🔍✅",
-    "escapeRoomCompleted": "🎉 Escape Room Valmis! Kiitos siitä, että opettelit tunnistamaan valetietoa!"
+    "conclusionText": "Jotta voimme suojella yhteisöämme disinformaatiolta, on olennaista tarkistaa näkemämme ennen jakamista. Automaattiset tilit näyttävät usein toistuvia toimintamalleja, ja monet harhaanjohtavat viestit pyrkivät herättämään voimakkaita tunnereaktioita. Lisäksi tekoälytyökalut tuottavat sisältöä tilastollisten mallien perusteella, joten niiden tulokset on aina varmistettava luotettavista lähteistä. ECHOssa vastuullinen tiedon jakaminen on myös toisista välittämistä."
   },
   "post": {
     "editPost": "Muokkaa Julkaisua",
@@ -128,6 +127,7 @@ export const fi = {
     "yes": "Kyllä",
     "no": "Ei",
     "classificationIncorrect": "Väärä valinta. Tarkista profiili uudelleen.",
+    "classificationCorrectHuman": "Ispravno ste klasifikovali profil",
     "openQuiz": "Jatka testiä",
     "classificationQuizTitle": "Mitkä tämän profiilin ominaisuudet saavat sen luokiteltua disinformaatiota levittäväksi?",
     "sendQuizAnswer": "Lähetä vastaus",
@@ -153,12 +153,10 @@ export const fi = {
     "playAgain": "Pelaa Uudelleen",
     "hintTitle": "Bottitilin indikaattorit",
     "hintContent": {
+      "emotions": "Tunteisiin vetoaminen: Tunnetasolla manipuloivan tai sensaatiohakuisen kielen käyttö",
+      "targetAudience": "Ei selkeää kohdeyleisöä: Toistaa samaa sisältöä useilla kielillä",
       "temporalActivity": "Epäilyttävä ajallinen toiminta: Julkaisut hyvin säännöllisin väliajoin tai epätavallisina aikoina",
-      "repetitiveContent": "Toistuva sisältö: Hyvin samankaltaisia tai identtisiä viestejä julkaisujen välillä",
-      "excessLinks": "Liikaa linkkejä: Monia julkaisuja ulkoisilla linkeillä",
-      "noInteraction": "Ei vuorovaikutusta: Ei vastaa kommentteihin tai mainintoihin",
       "abnormalRatio": "Epänormaali suhde: Monta seuraajaa mutta vähän todellista vuorovaikutusta",
-      "singleTopic": "Yksi aihe: Julkaisee vain hyvin tietystä aiheesta",
       "recentAccount": "Tuore tili: Uusi tili välittömällä korkealla aktiivisuudella"
     }
   },
@@ -293,7 +291,8 @@ export const fi = {
     "doneModule": {
       "status": "RATKAISTU",
       "note": "Verkko on suojattu. Hienoa työtä!"
-    }
+    },
+    "timerExpiredContinue": "Vreme je isteklo. Nastavi do završnog izazova čak i ako nisi uspeo/la da kontrolišeš dezinformacije."
   },
   "errors": {
     "pageNotFound": "Sivua ei löytynyt",

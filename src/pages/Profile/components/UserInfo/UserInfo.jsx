@@ -4,7 +4,7 @@ import { useUser } from "../../../../contexts/UserProvider.jsx";
 import { getLocalizedContent } from '../../../../utils/i18nHelpers.jsx';
 import { createdOnDate } from '../../../../utils/date.jsx';
 
-export const UserInfo = ({ username, showClassificationControls = false, selectedClassification, onClassify, isClassificationLocked = false, classificationFeedback, canOpenClassificationQuiz = false, onOpenClassificationQuiz }) => {
+export const UserInfo = ({ username, showClassificationControls = false, selectedClassification, onClassify, isClassificationLocked = false, canOpenClassificationQuiz = false, onOpenClassificationQuiz }) => {
   const { t, i18n } = useTranslation();
   const { userState } = useUser();
 
@@ -52,12 +52,6 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
                 {t('profile.no')}
               </button>
             </div>
-
-            {classificationFeedback === 'incorrect' && (
-              <p className="profile-classification-feedback profile-classification-feedback--error">
-                {t('profile.classificationIncorrect')}
-              </p>
-            )}
 
             {canOpenClassificationQuiz && (
               <button

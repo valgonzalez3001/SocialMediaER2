@@ -8,22 +8,418 @@ import { formatDate } from "../utils/authUtils.jsx";
 export const usersFI = [
   {
     _id: uuid(),
-    firstName: "Example name",
+    firstName: "Aino Lehtinen",
     lastName: "",
-    bio: "",
-    username: "Example",
+    bio: "Talvikävelyjä ja rauhallisia iltoja.",
+    username: "aino.lehtinen",
     password: "ECHO",
-    createdAt: "",
+    createdAt: new Date("maalis 2016"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarURL: "/assets/users/fi_snowman.png",
     verified: false,
     stats: {
-      followersCount: 0,
-      followingCount: 0,
-      postsCount: 0
+      followersCount: 184,
+      followingCount: 210,
+      postsCount: 96
     },
     puzzle: {
-      isBot: false
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Eero Mäkinen",
+    lastName: "",
+    bio: "Kalastusta, kahvia ja aikaisia aamuja.",
+    username: "eero.makinen",
+    password: "ECHO",
+    createdAt: new Date("marras 2013"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_fishing.png",
+    verified: false,
+    stats: {
+      followersCount: 132,
+      followingCount: 89,
+      postsCount: 54
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Veera Koskinen",
+    lastName: "",
+    bio: "Musiikkia, keikkoja ja hyvää fiilistä.",
+    username: "veerakoskinen",
+    password: "ECHO",
+    createdAt: new Date("kesä 2018"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_friends.png",
+    verified: false,
+    stats: {
+      followersCount: 742,
+      followingCount: 315,
+      postsCount: 420
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Juhani Nieminen",
+    lastName: "",
+    bio: "Kavereita ja viikonloppuja.",
+    username: "juhani.nieminen",
+    password: "ECHO",
+    createdAt: new Date("huhti 2012"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_rock.png",
+    verified: false,
+    stats: {
+      followersCount: 388,
+      followingCount: 401,
+      postsCount: 275
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Oskari Virtanen",
+    lastName: "",
+    bio: "Töitä, projekteja ja tekemistä.",
+    username: "oskari.virtanen",
+    password: "ECHO",
+    createdAt: new Date("syys 2015"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_shovel.png",
+    verified: false,
+    stats: {
+      followersCount: 165,
+      followingCount: 143,
+      postsCount: 88
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Satu Leinoenn",
+    lastName: "",
+    bio: "Ystävällisyyttä, perhettä ja pieniä asioita.",
+    username: "satu.leinoenn",
+    password: "ECHO",
+    createdAt: new Date("tammi 2020"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_heart.png",
+    verified: false,
+    stats: {
+      followersCount: 256,
+      followingCount: 290,
+      postsCount: 180
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Helmi Rautio",
+    lastName: "",
+    bio: "Neulomista ja rauhallisia iltoja.",
+    username: "helmirautio",
+    password: "ECHO",
+    createdAt: new Date("elo 2017"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_knit.png",
+    verified: false,
+    stats: {
+      followersCount: 198,
+      followingCount: 175,
+      postsCount: 120
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Mikael Salonen",
+    lastName: "",
+    bio: "Uutisia, kirjoittamista ja uteliaisuutta.",
+    username: "mikaelsalonen",
+    password: "ECHO",
+    createdAt: new Date("helmi 2014"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_mm1.png",
+    verified: false,
+    stats: {
+      followersCount: "1.2K",
+      followingCount: 620,
+      postsCount: "500+"
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Iida Kallio",
+    lastName: "",
+    bio: "Opettamista ja arkea.",
+    username: "iida.kallio",
+    password: "ECHO",
+    createdAt: new Date("loka 2019"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_mm2.png",
+    verified: false,
+    stats: {
+      followersCount: 310,
+      followingCount: 280,
+      postsCount: 210
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Aleksi Hämäläinen",
+    lastName: "",
+    bio: "Muotoilua ja yksinkertaista estetiikkaa.",
+    username: "aleksi.hamalainen",
+    password: "ECHO",
+    createdAt: new Date("touko 2016"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_mm3.png",
+    verified: false,
+    stats: {
+      followersCount: 520,
+      followingCount: 340,
+      postsCount: 305
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Sanni Laaksonen",
+    lastName: "",
+    bio: "Perinteitä ja hitaita päiviä.",
+    username: "sannilaaksonen",
+    password: "ECHO",
+    createdAt: new Date("joulu 2021"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_knitold.png",
+    verified: false,
+    stats: {
+      followersCount: 145,
+      followingCount: 160,
+      postsCount: 72
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Aisha Khan",
+    lastName: "",
+    bio: "Perhettä, kulttuuria ja arkea.",
+    username: "aishakhan",
+    password: "ECHO",
+    createdAt: new Date("heinä 2018"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_pak.png",
+    verified: false,
+    stats: {
+      followersCount: 680,
+      followingCount: 450,
+      postsCount: 390
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Elisa S",
+    lastName: "",
+    bio: "Luontoa, lettejä ja rauhaa.",
+    username: "elisas",
+    password: "ECHO",
+    createdAt: new Date("maalis 2022"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_braid.png",
+    verified: false,
+    stats: {
+      followersCount: 220,
+      followingCount: 200,
+      postsCount: 110
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Sauna Lovers",
+    lastName: "",
+    bio: "Saunaa, uintia ja rentoutumista.",
+    username: "saunalovers",
+    password: "ECHO",
+    createdAt: new Date("kesä 2015"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_sauna.png",
+    verified: false,
+    stats: {
+      followersCount: "2.1K",
+      followingCount: 180,
+      postsCount: "400+"
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Mikko Karjalainen",
+    lastName: "",
+    bio: "Ulkoilua, kavereita ja huumoria.",
+    username: "mikkokarjalainen",
+    password: "ECHO",
+    createdAt: new Date("syys 2025"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_boy.png",
+    verified: false,
+    stats: {
+      followersCount: 275,
+      followingCount: 260,
+      postsCount: 190
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Juho T",
+    lastName: "",
+    bio: "Jääkiekkoa ja liikkumista.",
+    username: "juho.t",
+    password: "ECHO",
+    createdAt: new Date("helmi 2017"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/fi_hickey1.png",
+    verified: false,
+    stats: {
+      followersCount: 410,
+      followingCount: 230,
+      postsCount: 350
+    },
+    puzzle: {
+      isBot: false,
+      official: false,
+      abnormalRatio: false,
+      recentAccount: false,
+      temporalActivity: false,
+      targetAudience: false,
+      emotions: false
     }
   }
 ];

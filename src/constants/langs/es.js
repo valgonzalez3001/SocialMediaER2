@@ -61,18 +61,18 @@ export const es = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Usuarios sospechosos detectados en ECHO",
-        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\nTu misión es analizar cada perfil y determinar si se trata de un bot o una cuenta real. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta parece un bot?\n3. Si consideras que es un bot, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta bot. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
+        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\n📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta parece un bot?\n3. Si consideras que es un bot, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta bot que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
       },
       "challenge2": {
         "subject": "🤖 Posibles publicaciones generadas por IA detectadas",
         "content": "Moderador,\n\nEstamos detectando publicaciones que podrían haber sido generadas por inteligencia artificial y estar difundiendo desinformación.\n\nNuestro detector automático está en mantenimiento, por lo que necesitamos que revises una publicación manualmente.\n\n🧠 Accede a Contenido Generado por IA y analiza el post para determinar si podría haber sido generado por una IA."
       },
       "challenge3": {
-        "subject": "⚠️ Uso incorrecto de IA detectado",
-        "content": "Moderador,\n\nAlgunos usuarios están utilizando inteligencia artificial para obtener información, pero no siempre de forma responsable.\n\nConfiar ciegamente en la IA puede provocar errores o desinformación.\n\n🧭 Accede a Usos Incorrectos de IA y revisa cada situación para elegir la respuesta que mejor aconseje al usuario."
+        "subject": "⚠️ Posible uso incorrecto de la IA detectado",
+        "content": "Moderador,\n\nAlgunos usuarios están utilizando inteligencia artificial para obtener información, pero no siempre de forma responsable.\n\nConfiar ciegamente en la IA puede provocar errores o desinformación.\n\n🧭 Accede a Usos Incorrectos de IA en el panel lateral izquierdo de la red social y revisa cada situación para elegir la respuesta que mejor aconseje al usuario."
       },
       "challengeFinal": {
-        "subject": "📝 Misión final: Community Note",
+        "subject": "📝 Misión final: Nota de la comunidad",
         "content": "Moderador,\n\nHas ayudado a identificar bots y a analizar el uso de la inteligencia artificial en la red.\n\nAhora necesitamos una conclusión clara que ayude a otros usuarios a reconocer la desinformación.\n\n📝 Accede a Nueva Publicación y selecciona las afirmaciones correctas para educar a la comunidad de ECHO."
       }
     }
@@ -96,8 +96,7 @@ export const es = {
     "incorrectSelection": "Selección incorrecta. ¡Intenta de nuevo!",
     "selected": "seleccionados",
     "publishConclusion": "Publicar",
-    "conclusionText": "Para combatir la desinformación en redes sociales, es esencial que desarrolles pensamiento crítico y verifiques la información antes de compartirla. Los bots y cuentas falsas suelen mostrar patrones repetitivos, actividad sospechosa en horarios irregulares y contenido idéntico. ¡Aprende a identificarlos y protege tu comunidad! 🔍✅",
-    "escapeRoomCompleted": "🎉 ¡Escape Room Completado! ¡Gracias por aprender a identificar la desinformación!"
+    "conclusionText": "Para proteger nuestra comunidad frente a la desinformación, es clave verificar lo que vemos antes de compartirlo. Las cuentas automatizadas suelen mostrar patrones de actividad repetitivos y muchos mensajes engañosos buscan provocar reacciones emocionales intensas. Además, las herramientas de IA generan contenido a partir de patrones estadísticos, por lo que sus resultados siempre deben contrastarse con fuentes fiables. En ECHO, informar con criterio también es cuidar a los demás."
   },
   "post": {
     "editPost": "Editar Publicación",
@@ -128,6 +127,7 @@ export const es = {
     "yes": "Sí",
     "no": "No",
     "classificationIncorrect": "Selección incorrecta. Vuelve a mirar el perfil.",
+    "classificationCorrectHuman": "Has clasificado el perfil correctamente",
     "openQuiz": "Continuar test",
     "classificationQuizTitle": "¿Qué características de este perfil hace que se clasifique como desinformador?",
     "sendQuizAnswer": "Enviar respuesta",
@@ -153,14 +153,11 @@ export const es = {
     "playAgain": "Jugar de Nuevo",
     "hintTitle": "Indicadores de cuenta Bot",
     "hintContent": {
+      "emotions": "Apelación a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.",
+      "targetAudience": "Falta de público objetivo claro: repite el mismo contenido en varios idiomas.",
       "temporalActivity": "Actividad temporal sospechosa: Publicaciones a intervalos muy regulares o en horarios poco naturales",
-      "repetitiveContent": "Contenido repetitivo: Mensajes muy similares o idénticos entre publicaciones",
-      "excessLinks": "Exceso de enlaces: Muchas publicaciones con enlaces externos",
-      "noInteraction": "Interacción nula: No responde a comentarios o menciones",
       "abnormalRatio": "Ratio anormal: Muchos seguidos pero poca interacción real",
-      "singleTopic": "Tema único: Solo publica sobre un tema muy específico",
       "recentAccount": "Cuenta reciente: Cuenta nueva con mucha actividad inmediata",
-      "verified": "Cuenta verificada",
       "official": "Cuenta oficial: Pertenece a un organismo público/estatal"
     }
   },
@@ -296,7 +293,8 @@ export const es = {
     "doneModule": {
       "status": "RESUELTO",
       "note": "La red está protegida. ¡Buen trabajo!"
-    }
+    },
+    "timerExpiredContinue": "Se acabó el tiempo. Continúa hasta el reto final a pesar de que no hayas podido controlar la desinformación."
   },
   "errors": {
     "pageNotFound": "Página no encontrada",
@@ -351,17 +349,26 @@ export const es = {
     "moderatorFormSubmit": "Enviar"
   },
   "survey": {
-    "opinionTitle": "What is your general opinion about the escape room? ",
-    "opinionRange": "1 = Very poor, 2 = Poor, 3 = Neutral, 4 = Good, 5 = Very good",
-    "rateTitle": "Rate the following statements on a scale of 1-7",
-    "rateRange": "1 = Strongly Disagree, 2 = Disagree, 3 = Somewhat Disagree , 4 = Neutral, 5 = Somewhat Agree, 6 = Agree, 7 = Strongly Agree).",
-    "learningTitle": "How much did you learn?",
+    "opinionTitle": "¿Cuál es tu opinión general sobre la escape room?",
+    "opinionRange": "1 = Muy mala, 2 = Mala, 3 = Neutral, 4 = Buena, 5 = Muy buena",
+    "rateTitle": "Califica las siguientes afirmaciones en una escala del 1 al 7.",
+    "rateRange": "1 = Totalmente en desacuerdo, 2 = En desacuerdo, 3 = En desacuerdo, 4 = Neutral, 5 = De acuerdo, 6 = De acuerdo, 7 = Totalmente de acuerdo.",
+    "learningTitle": "¿Cuánto has aprendido?",
     "learningItems": {
-      "0": "The escape room increased my knowledge of how AI works",
-      "1": "The escape room increased my knowledge of how AI is used in social media",
-      "2": "The escape room increased my knowledge of what the appropriate uses of AI are"
+      "0": "La escape room aumentó mi conocimiento sobre cómo funciona la IA.",
+      "1": {
+        "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B263,\"\"en\"\",\"\"es\"\")\"),\"La experiencia en la sala de escape aumentó mi conocimiento sobre cómo se utiliza la IA en las redes sociales.\")",
+        "result": "La experiencia en la sala de escape aumentó mi conocimiento sobre cómo se utiliza la IA en las redes sociales."
+      },
+      "2": {
+        "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B264,\"\"en\"\",\"\"es\"\")\"),\"La sala de escape aumentó mi conocimiento sobre cuáles son los usos apropiados de la IA.\")",
+        "result": "La sala de escape aumentó mi conocimiento sobre cuáles son los usos apropiados de la IA."
+      }
     },
-    "guessTitle": "How did you like the gameplay?",
+    "guessTitle": {
+      "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B265,\"\"en\"\",\"\"es\"\")\"),\"¿Qué te pareció la jugabilidad?\")",
+      "result": "¿Qué te pareció la jugabilidad?"
+    },
     "guessItems": {
       "0": "I find the controls of the escape room to be straightforward.",
       "1": "I find the escape room's interface to be easy to navigate.",

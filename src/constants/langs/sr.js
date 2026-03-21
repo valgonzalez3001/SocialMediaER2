@@ -61,18 +61,18 @@ export const sr = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Sumnjivi korisnici otkriveni na mreži ECHO",
-        "content": "Moderatore,\n\nECHO mreža je detektovala nekoliko sumnjivих korisnika koji bi mogli biti botovi koji šire dezinformacije.\n\nTvoja misija je da analiziрaš svaki profil i odrediš da li je to bot ili pravi nalog. Za svaki nalog koji vidiš, moraš:\n\n1. Pregledati profil\n2. Odlučiti: Da li ovaj nalog izgleda kao bot?\n3. Ako misliš da je bot, objasni zašto na osnovu indikatora\n\n🔍 Pre nego što počneš, pregledi indikatore bot naloga. Oni će ti pomoći da identifikuješ sumnjive obrasce.\n\nZaštiti ECHO zajednicu tako što ćeš pravilno identifikovati zlonamerne naloge!"
+        "content": "Moderatore,\n\nMreža ECHO je otkrila više sumnjivih korisnika koji bi mogli biti botovi koji šire dezinformacije.\n\n📌 Istraži levu bočnu traku društvene mreže i klikni na \"Sumnjivi nalozi\" da započneš analizu. Za svaki nalog koji pregledaš, potrebno je da:\n\n1. Pregledaš profil\n2. Odlučiš: Da li ovaj nalog deluje kao bot?\n3. Ako smatraš da jeste bot, objasni zašto na osnovu indikatora\n\n🔍 Pre nego što počneš, pogledaj indikatore bot naloga koji se nalaze u panelu Sumnjivi nalozi. Oni će ti pomoći da prepoznaš sumnjive obrasce.\n\nZaštiti ECHO zajednicu tako što ćeš tačno identifikovati zlonamerne naloge!"
       },
       "challenge2": {
         "subject": "🤖 Moguće objave generisane veštačkom inteligencijom",
         "content": "Moderatore,\n\nOtkrivamo objave koje bi mogle biti generisane veštačkom inteligencijom i širiti dezinformacije.\n\nNaš automatski detektor je na održavanju, pa je potrebno da ručno pregledaš objavu.\n\n🧠 Idi na Sadržaj generisan veštačkom inteligencijom i analiziraj objavu."
       },
       "challenge3": {
-        "subject": "⚠️ Zloupotreba veštačke inteligencije",
-        "content": "Moderatore,\n\nNeki korisnici koriste veštačku inteligenciju da bi dobili informacije, ali ne uvek odgovorno.\n\nSlepo poverenje u AI može dovesti do grešaka ili dezinformacija.\n\n🧭 Idi na Zloupotrebe veštačke inteligencije i pregledaj situacije."
+        "subject": "⚠️ Moguća zloupotreba veštačke inteligencije je otkrivena",
+        "content": "Moderatore,\n\nNeki korisnici koriste veštačku inteligenciju da dođu do informacija, ali ne uvek odgovorno.\n\nSlepo oslanjanje na AI može dovesti do grešaka ili dezinformacija.\n\n🧭 U levom bočnom panelu društvene mreže otvori Nepravilne upotrebe AI i pregledaj svaku situaciju kako bi izabrao odgovor koji najbolje savetuje korisnika."
       },
       "challengeFinal": {
-        "subject": "📝 Završni zadatak: Community Note",
+        "subject": "📝 Završni zadatak: Napomena zajednice",
         "content": "Moderatore,\n\nPomogao/la si da identifikujemo botove i analiziramo upotrebu veštačke inteligencije na mreži.\n\nSada nam je potreban jasan zaključak koji će pomoći drugim korisnicima da prepoznaju dezinformacije.\n\n📝 Idi na Nova objava i izaberi tačne tvrdnje kako bi edukovao/la ECHO zajednicu."
       }
     }
@@ -96,8 +96,7 @@ export const sr = {
     "incorrectSelection": "Pogrešan izbor. Pokušaj ponovo!",
     "selected": "izabrano",
     "publishConclusion": "Objavi ",
-    "conclusionText": "Za borbu protiv dezinformacija na društvenim mrežama, neophodno je da razvijete kriticko razmišljanje i da verifikujete informacije pre nego što ih podelite. Botovi i lažni nalozi često pokazuju ponavljajuće šablone, sumnjive aktivnosti u neregularnim vremenima i identičan sadržaj. Naučite da ih prepoznate i zaštitite svoju zajednicu! ???",
-    "escapeRoomCompleted": "🎉 Escape Room Završen! Hvala što ste naučili de prepoznate dezinformacije!"
+    "conclusionText": "Da bismo zaštitili našu zajednicu od dezinformacija, ključno je da proverimo ono što vidimo pre nego što to podelimo. Automatizovani nalozi često pokazuju ponavljajuće obrasce aktivnosti, a mnoge obmanjujuće poruke pokušavaju da izazovu snažne emocionalne reakcije. Pored toga, AI alati generišu sadržaj na osnovu statističkih obrazaca, zato njihove rezultate uvek treba proveriti u pouzdanim izvorima. Na ECHO-u, odgovorno informisanje znači i brigu o drugima."
   },
   "post": {
     "editPost": "Izmeni objavu",
@@ -128,6 +127,7 @@ export const sr = {
     "yes": "Da",
     "no": "Ne",
     "classificationIncorrect": "Netačan izbor. Ponovo pregledaj profil.",
+    "classificationCorrectHuman": "Luokittelit profiilin oikein",
     "openQuiz": "Nastavi test",
     "classificationQuizTitle": "Koje karakteristike ovog profila dovode do toga da se klasifikuje kao nalog koji širi dezinformacije?",
     "sendQuizAnswer": "Pošalji odgovor",
@@ -153,12 +153,13 @@ export const sr = {
     "playAgain": "Igraj ponovo",
     "hintTitle": "Indikatori Bot naloga",
     "hintContent": {
-      "temporalActivity": "Sumnjiva vremenska aktivnost: Objave u veoma redovnim intervalima ili neprirodno vreme",
-      "repetitiveContent": "Ponavljajući sadržaj: Veoma slične ili identične poruke između objava",
-      "excessLinks": "Previše linkova: Mnogo objava sa spoljašnjim linkovima",
-      "noInteraction": "Bez interakcije: Ne odgovara na komentare ili pominjanja",
+      "emotions": {
+        "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(C107,\"\"en\"\",\"\"fi\"\")\"),\"Apelación a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.\")",
+        "result": "Apelación a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista."
+      },
+      "targetAudience": "Nema jasne ciljne publike: Ponavlja isti sadržaj na više jezika",
+      "temporalActivity": "Sumnjiva vremenska aktivnost: Objavljivanje u vrlo redovitim intervalima ili neobičnim vremenima",
       "abnormalRatio": "Nenormalan odnos: Mnogo pratilaca ali malo prave interakcije",
-      "singleTopic": "Jedna tema: Objavljuje samo o veoma specificnoj temi",
       "recentAccount": "Skoriji nalog: Nov nalog sa trenutnom visokom aktivnošću"
     }
   },
@@ -293,7 +294,8 @@ export const sr = {
     "doneModule": {
       "status": "REŠENO",
       "note": "Mreža je zaštićena. Odličan rad!"
-    }
+    },
+    "timerExpiredContinue": "Aika on loppunut. Jatka viimeiseen haasteeseen, vaikka et onnistunut hallitsemaan disinformaatiota."
   },
   "errors": {
     "pageNotFound": "Stranica nije pronađena",

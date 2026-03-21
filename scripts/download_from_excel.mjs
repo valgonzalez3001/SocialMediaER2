@@ -409,6 +409,20 @@ function parseAiOkValue(value) {
 }
 
 /**
+ * Normalize puzzle indicator values from spreadsheet to boolean.
+ * Accepts TRUE/FALSE, 1/0, X/empty.
+ */
+function parsePuzzleIndicatorValue(value) {
+  if (typeof value === "boolean") return value;
+  if (typeof value === "number") return value === 1;
+
+  const normalized = String(value ?? "").trim().toUpperCase();
+  if (!normalized) return false;
+
+  return ["TRUE", "1", "X", "YES", "SI", "DA"].includes(normalized);
+}
+
+/**
  * Main processing function
  */
 async function main() {
@@ -489,6 +503,12 @@ async function main() {
         "stats.followingCount": row["Following"] || 0,
         "stats.postsCount": getRowValue(row, "NumPosts") || 0,
         "puzzle.isBot": row["isBot"] === true,
+        "puzzle.official": parsePuzzleIndicatorValue(getRowValue(row, "official")),
+        "puzzle.abnormalRatio": parsePuzzleIndicatorValue(getRowValue(row, "abnormalRatio")),
+        "puzzle.recentAccount": parsePuzzleIndicatorValue(getRowValue(row, "recentAccount")),
+        "puzzle.temporalActivity": parsePuzzleIndicatorValue(getRowValue(row, "temporalActivity")),
+        "puzzle.targetAudience": parsePuzzleIndicatorValue(getRowValue(row, "targetAudience")),
+        "puzzle.emotions": parsePuzzleIndicatorValue(getRowValue(row, "emotions")),
       })));
       const oldFileUsers = path.join(OUT_DIR, `src/backend/db/users_${lang}.jsx`);
       if (fs.existsSync(oldFileUsers)) {

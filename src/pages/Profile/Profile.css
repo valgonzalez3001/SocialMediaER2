@@ -37,6 +37,12 @@
   text-decoration: underline;
 }
 
+.back-to-game-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
 .user-info-container {
   padding: 1rem;
 }
@@ -155,6 +161,13 @@
   font-weight: 800;
 }
 
+.profile-classification-feedback--success {
+  width: 100%;
+  color: #5ce88e;
+  border-radius: 10px;
+  padding: 0.2rem;
+}
+
 @keyframes classificationErrorShake {
   0% { transform: translateX(0); }
   20% { transform: translateX(-4px); }
@@ -240,6 +253,10 @@
   padding: 0.65rem 0.75rem;
   border-radius: 10px;
   border: 1px solid var(--border-color);
+}
+
+.classification-quiz-option span {
+  line-height: 1.3;
 }
 
 .classification-quiz-option-placeholder {

@@ -153,7 +153,7 @@ export const es = {
     "playAgain": "Jugar de Nuevo",
     "hintTitle": "Indicadores de cuenta Bot",
     "hintContent": {
-      "emotions": "Apelación a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.",
+      "emotions": "Apela a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.",
       "targetAudience": "Falta de público objetivo claro: repite el mismo contenido en varios idiomas.",
       "temporalActivity": "Actividad temporal sospechosa: Publicaciones a intervalos muy regulares o en horarios poco naturales",
       "abnormalRatio": "Ratio anormal: Muchos seguidos pero poca interacción real",
@@ -348,20 +348,19 @@ export const es = {
     "moderatorFormSubmit": "Enviar"
   },
   "survey": {
+    "bannerTitle": "¡Gracias por jugar!",
+    "bannerSubtitle": "Danos tu opinión",
     "opinionTitle": "¿Cuál es tu opinión general sobre la escape room?",
     "opinionRange": "1 = Muy mala, 2 = Mala, 3 = Neutral, 4 = Buena, 5 = Muy buena",
     "rateTitle": "Califica las siguientes afirmaciones en una escala del 1 al 7.",
-    "rateRange": "1 = Totalmente en desacuerdo, 2 = En desacuerdo, 3 = En desacuerdo, 4 = Neutral, 5 = De acuerdo, 6 = De acuerdo, 7 = Totalmente de acuerdo.",
+    "rateRange": "1 = Totalmente en desacuerdo, 2 = En desacuerdo, 3 = Ligeramente en desacuerdo, 4 = Neutral, 5 = Ligeramente de acuerdo, 6 = De acuerdo, 7 = Totalmente de acuerdo.",
     "learningTitle": "¿Cuánto has aprendido?",
     "learningItems": {
       "0": "La escape room aumentó mi conocimiento sobre cómo funciona la IA.",
       "1": "La escape room aumentó mi conocimiento sobre cómo se utiliza la IA en las redes sociales.",
       "2": "La escape room aumentó mi conocimiento sobre cuáles son los usos apropiados de la IA."
     },
-    "guessTitle": {
-      "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B264,\"\"en\"\",\"\"es\"\")\"),\"¿Qué te pareció la jugabilidad?\")",
-      "result": "¿Qué te pareció la jugabilidad?"
-    },
+    "guessTitle": "¿Qué te pareció la jugabilidad?",
     "guessItems": {
       "0": "I find the controls of the escape room to be straightforward.",
       "1": "I find the escape room's interface to be easy to navigate.",

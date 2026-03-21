@@ -153,10 +153,7 @@ export const sr = {
     "playAgain": "Igraj ponovo",
     "hintTitle": "Indikatori Bot naloga",
     "hintContent": {
-      "emotions": {
-        "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(C107,\"\"en\"\",\"\"fi\"\")\"),\"Apelación a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.\")",
-        "result": "Apelación a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista."
-      },
+      "emotions": "Apeliranje na emocije: Korištenje emocionalno manipulativnog ili senzacionalističkog jezika",
       "targetAudience": "Nema jasne ciljne publike: Ponavlja isti sadržaj na više jezika",
       "temporalActivity": "Sumnjiva vremenska aktivnost: Objavljivanje u vrlo redovitim intervalima ili neobičnim vremenima",
       "abnormalRatio": "Nenormalan odnos: Mnogo pratilaca ali malo prave interakcije",
@@ -351,6 +348,8 @@ export const sr = {
     "moderatorFormSubmit": "Pošalji"
   },
   "survey": {
+    "bannerTitle": "Hvala što si igrao/la!",
+    "bannerSubtitle": "Dajte nam svoje povratne informacije",
     "opinionTitle": "What is your general opinion about the escape room? ",
     "opinionRange": "1 = Very poor, 2 = Poor, 3 = Neutral, 4 = Good, 5 = Very good",
     "rateTitle": "Rate the following statements on a scale of 1-7",

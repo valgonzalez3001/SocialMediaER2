@@ -347,6 +347,8 @@ export const fi = {
     "moderatorFormSubmit": "Lähetä"
   },
   "survey": {
+    "bannerTitle": "Kiitos pelaamisesta!",
+    "bannerSubtitle": "Anna meille palautetta",
     "opinionTitle": "What is your general opinion about the escape room? ",
     "opinionRange": "1 = Very poor, 2 = Poor, 3 = Neutral, 4 = Good, 5 = Very good",
     "rateTitle": "Rate the following statements on a scale of 1-7",

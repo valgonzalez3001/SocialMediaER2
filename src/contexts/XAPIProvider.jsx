@@ -30,6 +30,10 @@ export const XAPI_VERBS = {
     id: "http://adlnet.gov/expapi/verbs/completed",
     display: { en: "completed" },
   },
+  COMPLETED_GENERIC: {
+    id: "https://xapi.elearn.rwth-aachen.de/definitions/generic/verbs/completed",
+    display: { en: "completed" },
+  },
   ANSWERED: {
     id: "http://adlnet.gov/expapi/verbs/answered",
     display: { en: "answered" },
@@ -57,6 +61,14 @@ export const XAPI_VERBS = {
   FAILED: {
     id: "http://adlnet.gov/expapi/verbs/failed",
     display: { en: "failed" },
+  },
+  UNSATISFIED: {
+    id: "http://activitystrea.ms/schema/1.0/unsatisfy",
+    display: { en: "unsatisfied" },
+  },
+  EXITED: {
+    id: "https://xapi.elearn.rwth-aachen.de/definitions/virtualReality/verbs/exited",
+    display: { en: "exited" },
   },
   INTERACTED: {
     id: "http://adlnet.gov/expapi/verbs/interacted",
@@ -224,7 +236,7 @@ export const XAPIProvider = ({ children }) => {
 
   // Send xAPI statement to LRS (non-blocking, fails silently in production)
   // actorOverride can be passed when calling immediately after initializeActor (before state updates)
-  const sendStatement = useCallback(async (verb, object, result = null, context = null, actorOverride = null) => {
+  const sendStatement = useCallback(async (verb, object, result = null, context = null, actorOverride = null, options = null) => {
     const currentActor = actorOverride || actor;
 
     // Early return without interrupting the game
@@ -283,6 +295,7 @@ export const XAPIProvider = ({ children }) => {
 
       const response = await fetch(`${XAPI_ENDPOINT}/statements`, {
         method: "POST",
+        keepalive: Boolean(options?.keepalive),
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Basic ${btoa(`${XAPI_KEY}:${XAPI_SECRET}`)}`,

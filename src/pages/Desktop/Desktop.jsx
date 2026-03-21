@@ -64,6 +64,7 @@ export const Desktop = () => {
     return sessionStorage.getItem('surveyCompleted') === 'true';
   });
   const lastHandledFlashTickRef = useRef(escapeTimerFlashTick);
+  const isCountdownCritical = escapeTimerRemainingMs <= 5 * 60 * 1000;
   const handleBossNotifDismiss = useCallback(() => setBossNotifVisible(false), []);
 
   const handleOpenSurvey = () => setShowSurveyModal(true);
@@ -161,9 +162,9 @@ export const Desktop = () => {
     if (escapeTimerFlashTick <= lastHandledFlashTickRef.current) return;
     lastHandledFlashTickRef.current = escapeTimerFlashTick;
     setCountdownFlash(true);
-    const timeoutId = setTimeout(() => setCountdownFlash(false), 1300);
+    const timeoutId = setTimeout(() => setCountdownFlash(false), isCountdownCritical ? 1700 : 1300);
     return () => clearTimeout(timeoutId);
-  }, [escapeTimerFlashTick, escapeTimerStarted, challengeFinalCompleted]);
+  }, [escapeTimerFlashTick, escapeTimerStarted, challengeFinalCompleted, isCountdownCritical]);
 
   const countdownText = useMemo(() => {
     const totalSeconds = Math.max(0, Math.ceil(escapeTimerRemainingMs / 1000));
@@ -192,7 +193,9 @@ export const Desktop = () => {
           <span className="desktop-clock-date">{formattedDate}</span>
         </div>
         {escapeTimerStarted && !challengeFinalCompleted && activeApp !== "social" && (
-          <div className={`desktop-countdown ${countdownFlash ? "desktop-countdown--flash" : ""}`}>
+          <div
+            className={`desktop-countdown ${isCountdownCritical ? "desktop-countdown--critical" : ""} ${countdownFlash ? "desktop-countdown--flash" : ""}`}
+          >
             <span className="desktop-countdown-label">{t("shared.timeLeft")}</span>
             <span className="desktop-countdown-value">{countdownText}</span>
           </div>

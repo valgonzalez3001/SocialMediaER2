@@ -92,7 +92,7 @@ export const fi = {
     "publish": "Julkaise",
     "challengeLocked": "Haaste Lukittu",
     "completeChallenge1": "Suorita Admin-haaste voidaksesi lähettää viestejä",
-    "selectTwoCorrect": "Olet suojannut ECHOn väärältä tiedolta. Tässä tehtävässä opit tunnistamaan botteja, tarkistamaan lähteitä ja ajattelemaan kriittisesti. Jaa nyt tuo tieto: valitse 2 oikeaa väitettä ja julkaise Yhteisömuistiinpanosi.",
+    "selectCorrectCount": "Olet suojannut ECHOn väärältä tiedolta. Tässä tehtävässä opit tunnistamaan botteja, tarkistamaan lähteitä ja ajattelemaan kriittisesti. Jaa nyt tuo tieto: valitse {{count}} oikeaa väitettä ja julkaise Yhteisömuistiinpanosi.",
     "incorrectSelection": "Väärä valinta. Yritä uudelleen!",
     "selected": "valittu",
     "publishConclusion": "Julkaise ",

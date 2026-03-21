@@ -37,7 +37,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
     [statements]
   );
   const challengeDescription = useMemo(
-    () => t("createPost.selectTwoCorrect").replace(/\b2\b/, String(requiredCorrectCount)),
+    () => t("createPost.selectCorrectCount", { count: requiredCorrectCount }),
     [t, requiredCorrectCount]
   );
 

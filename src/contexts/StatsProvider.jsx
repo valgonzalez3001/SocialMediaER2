@@ -1,7 +1,11 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from "react";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "./XAPIProvider.jsx";
 
 const ESCAPE_TIMER_DURATION_MS = 20 * 60 * 1000;
 const ESCAPE_TIMER_FLASH_INTERVAL_MS = 5 * 60 * 1000;
+const ESCAPE_TIMER_CRITICAL_MS = 5 * 60 * 1000;
+const ESCAPE_TIMER_CRITICAL_FLASH_INTERVAL_MS = 60 * 1000;
+const ESCAPE_OUTCOME_KEY = "echo:escapeOutcome";
 
 const getStoredTimerStart = () => {
   const raw = sessionStorage.getItem("escapeTimerStartedAt");
@@ -23,6 +27,7 @@ export const useStats = () => {
 };
 
 export const StatsProvider = ({ children }) => {
+  const { sendStatement } = useXAPI();
   const getInitialStats = () => ({
     misinformation: {
       level: 78,
@@ -105,9 +110,27 @@ export const StatsProvider = ({ children }) => {
     return Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - startedAt));
   });
   const [escapeTimerFlashTick, setEscapeTimerFlashTick] = useState(0);
-  const lastFlashBucketRef = useRef(
-    Math.floor(Math.max(0, escapeTimerRemainingMs) / ESCAPE_TIMER_FLASH_INTERVAL_MS)
-  );
+  const previousRemainingMsRef = useRef(escapeTimerRemainingMs);
+
+  const sendEscapeOutcome = (outcome, verb, result = null, options = null) => {
+    const existingOutcome = sessionStorage.getItem(ESCAPE_OUTCOME_KEY);
+    if (existingOutcome) return;
+
+    sessionStorage.setItem(ESCAPE_OUTCOME_KEY, outcome);
+
+    sendStatement(
+      verb,
+      ECHO_ACTIVITIES.GAME,
+      result,
+      {
+        contextActivities: {
+          grouping: [ECHO_ACTIVITIES.GAME],
+        },
+      },
+      null,
+      options
+    );
+  };
 
   useEffect(() => {
     const savedChallenge1 = sessionStorage.getItem("challenge1Completed");
@@ -192,10 +215,26 @@ export const StatsProvider = ({ children }) => {
   };
 
   const completeChallengeFinal = () => {
+    const remaining = escapeTimerStartedAt
+      ? Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - escapeTimerStartedAt))
+      : 0;
+
     if (escapeTimerStartedAt) {
-      const remaining = Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - escapeTimerStartedAt));
       setEscapeTimerRemainingMs(remaining);
     }
+
+    if (remaining > 0) {
+      sendEscapeOutcome("completed", XAPI_VERBS.COMPLETED_GENERIC, {
+        completion: true,
+        success: true,
+      });
+    } else {
+      sendEscapeOutcome("unsatisfied", XAPI_VERBS.UNSATISFIED, {
+        completion: true,
+        success: false,
+      });
+    }
+
     reduceMisinformation(78);
     setChallengeFinalCompleted(true);
     sessionStorage.setItem("challengeFinalCompleted", JSON.stringify(true));
@@ -208,10 +247,11 @@ export const StatsProvider = ({ children }) => {
     if (alreadyStartedAt || escapeTimerStartedAt) return;
 
     const startedAt = Date.now();
+    sessionStorage.removeItem(ESCAPE_OUTCOME_KEY);
     sessionStorage.setItem("escapeTimerStartedAt", String(startedAt));
     setEscapeTimerStartedAt(startedAt);
     setEscapeTimerRemainingMs(ESCAPE_TIMER_DURATION_MS);
-    lastFlashBucketRef.current = Math.floor(ESCAPE_TIMER_DURATION_MS / ESCAPE_TIMER_FLASH_INTERVAL_MS);
+    previousRemainingMsRef.current = ESCAPE_TIMER_DURATION_MS;
   };
 
   useEffect(() => {
@@ -219,15 +259,35 @@ export const StatsProvider = ({ children }) => {
 
     const tick = () => {
       const remaining = Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - escapeTimerStartedAt));
+      const previousRemaining = previousRemainingMsRef.current;
       setEscapeTimerRemainingMs(remaining);
 
-      if (!challengeFinalCompleted && remaining > 0) {
-        const currentBucket = Math.floor(remaining / ESCAPE_TIMER_FLASH_INTERVAL_MS);
-        if (currentBucket < lastFlashBucketRef.current) {
+      if (!challengeFinalCompleted && remaining <= 0) {
+        sendEscapeOutcome("unsatisfied", XAPI_VERBS.UNSATISFIED, {
+          completion: false,
+          success: false,
+        });
+      }
+
+      if (!challengeFinalCompleted && remaining > 0 && previousRemaining > 0) {
+        const previousInterval =
+          previousRemaining <= ESCAPE_TIMER_CRITICAL_MS
+            ? ESCAPE_TIMER_CRITICAL_FLASH_INTERVAL_MS
+            : ESCAPE_TIMER_FLASH_INTERVAL_MS;
+        const currentInterval =
+          remaining <= ESCAPE_TIMER_CRITICAL_MS
+            ? ESCAPE_TIMER_CRITICAL_FLASH_INTERVAL_MS
+            : ESCAPE_TIMER_FLASH_INTERVAL_MS;
+
+        const previousBucket = Math.floor(previousRemaining / previousInterval);
+        const currentBucket = Math.floor(remaining / currentInterval);
+
+        if (currentBucket < previousBucket) {
           setEscapeTimerFlashTick((prev) => prev + 1);
         }
-        lastFlashBucketRef.current = currentBucket;
       }
+
+      previousRemainingMsRef.current = remaining;
     };
 
     tick();
@@ -235,6 +295,31 @@ export const StatsProvider = ({ children }) => {
 
     const intervalId = setInterval(tick, 1000);
     return () => clearInterval(intervalId);
+  }, [escapeTimerStartedAt, challengeFinalCompleted]);
+
+  useEffect(() => {
+    const handlePageExit = () => {
+      if (!escapeTimerStartedAt || challengeFinalCompleted) return;
+      if (sessionStorage.getItem(ESCAPE_OUTCOME_KEY)) return;
+
+      sendEscapeOutcome(
+        "exited",
+        XAPI_VERBS.EXITED,
+        {
+          completion: false,
+          success: false,
+        },
+        { keepalive: true }
+      );
+    };
+
+    window.addEventListener("beforeunload", handlePageExit);
+    window.addEventListener("pagehide", handlePageExit);
+
+    return () => {
+      window.removeEventListener("beforeunload", handlePageExit);
+      window.removeEventListener("pagehide", handlePageExit);
+    };
   }, [escapeTimerStartedAt, challengeFinalCompleted]);
 
   const markChallenge2InstructionsRead = () => {

@@ -130,6 +130,76 @@ a {
   }
 }
 
+/* Session Resume Dialog */
+.session-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.session-dialog {
+  background: linear-gradient(135deg, #1b1135 0%, #251c41 100%);
+  border: 1px solid rgba(127, 85, 255, 0.4);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(127, 85, 255, 0.3);
+}
+
+.session-dialog h2 {
+  color: var(--white);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.session-dialog p {
+  color: var(--muted-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.session-dialog-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.session-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.session-btn-resume {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.session-btn-resume:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.session-btn-start-over {
+  background-color: transparent;
+  color: var(--muted-text);
+  border: 1px solid var(--border-color);
+}
+
+.session-btn-start-over:hover {
+  background-color: var(--hover-background);
+  color: var(--white);
+}
+
 @media (min-width: 1200px) {
   .feed {
     flex: 1;

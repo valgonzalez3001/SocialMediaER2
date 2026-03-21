@@ -60,7 +60,7 @@ export const usersES = [
     stats: {
       followersCount: "27K",
       followingCount: 400,
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: true
@@ -80,7 +80,7 @@ export const usersES = [
     stats: {
       followersCount: "18K",
       followingCount: 900,
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: true
@@ -100,7 +100,7 @@ export const usersES = [
     stats: {
       followersCount: "42K",
       followingCount: 300,
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: true
@@ -120,7 +120,7 @@ export const usersES = [
     stats: {
       followersCount: 33,
       followingCount: 1200,
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: true
@@ -140,7 +140,7 @@ export const usersES = [
     stats: {
       followersCount: "1K",
       followingCount: 200,
-      postsCount: 0
+      postsCount: 20
     },
     puzzle: {
       isBot: true
@@ -160,7 +160,7 @@ export const usersES = [
     stats: {
       followersCount: "12K",
       followingCount: 150,
-      postsCount: 0
+      postsCount: 190
     },
     puzzle: {
       isBot: true
@@ -180,7 +180,7 @@ export const usersES = [
     stats: {
       followersCount: "4K",
       followingCount: "4K",
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: true
@@ -208,6 +208,66 @@ export const usersES = [
   },
   {
     _id: uuid(),
+    firstName: "Manoloo",
+    lastName: "",
+    bio: "De Albacete de toda la vida. Aficionado al campo, al fútbol y a las buenas tapas.",
+    username: "Manolo83",
+    password: "ECHO",
+    createdAt: new Date("Marzo 2022"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/Manolo83.png",
+    verified: false,
+    stats: {
+      followersCount: 41,
+      followingCount: 78,
+      postsCount: 22
+    },
+    puzzle: {
+      isBot: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Luis Rodríguez",
+    lastName: "",
+    bio: "Apasionado por la tecnología 📱💻 | Opiniones personales | Cuenta no ofiical",
+    username: "TecnoLuis",
+    password: "ECHO",
+    createdAt: new Date("Noviembre 2017"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/TecnoLuis.png",
+    verified: false,
+    stats: {
+      followersCount: 331,
+      followingCount: 87,
+      postsCount: 340
+    },
+    puzzle: {
+      isBot: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Ainh0a Vibe$$$$",
+    lastName: "",
+    bio: "demasiado online para mi propio bien 🫠 | café + música + llorar x series",
+    username: "n0ahvibes",
+    password: "ECHO",
+    createdAt: new Date("Enero 2023"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/n0ahvibes.png",
+    verified: false,
+    stats: {
+      followersCount: 45,
+      followingCount: 53,
+      postsCount: 47
+    },
+    puzzle: {
+      isBot: false
+    }
+  },
+  {
+    _id: uuid(),
     firstName: "Carlos xD",
     lastName: "",
     bio: "Corredor amateur 🏃‍♂️ | 3 maratones y contando",
@@ -215,12 +275,72 @@ export const usersES = [
     password: "ECHO",
     createdAt: new Date("Enero 2015"),
     updatedAt: formatDate(),
-    avatarURL: "Madrid",
+    avatarURL: "/assets/users/CarlosRunner92.png",
     verified: false,
     stats: {
-      followersCount: 0,
-      followingCount: 0,
-      postsCount: 0
+      followersCount: 87,
+      followingCount: 121,
+      postsCount: 87
+    },
+    puzzle: {
+      isBot: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "it's me diego",
+    lastName: "",
+    bio: "vivo cansado pero con estilo 🧃 | probablemente ignorando responsabilidades rn",
+    username: "lowkeydiego",
+    password: "ECHO",
+    createdAt: new Date("Marzo 2022"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/lowkeydiego.png",
+    verified: false,
+    stats: {
+      followersCount: 39,
+      followingCount: 45,
+      postsCount: 67
+    },
+    puzzle: {
+      isBot: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Xoel Iglesias",
+    lastName: "",
+    bio: "se chove que chova",
+    username: "xoel_ferrol",
+    password: "ECHO",
+    createdAt: new Date("Febrero 2019"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/xoel_ferrol.png",
+    verified: false,
+    stats: {
+      followersCount: 38,
+      followingCount: 23,
+      postsCount: 44
+    },
+    puzzle: {
+      isBot: false
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Belén :)",
+    lastName: "",
+    bio: "en mi era de hacer lo mínimo pero sentirlo todo ✨ | iced coffee dependiente",
+    username: "BeBeBelen",
+    password: "ECHO",
+    createdAt: new Date("Abril 2021"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/BeBeBelen.png",
+    verified: false,
+    stats: {
+      followersCount: 77,
+      followingCount: 89,
+      postsCount: 123
     },
     puzzle: {
       isBot: false

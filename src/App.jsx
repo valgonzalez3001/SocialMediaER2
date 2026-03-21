@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Desktop } from "./pages/Desktop/Desktop";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop.jsx";
@@ -7,8 +7,22 @@ import { PlayerOnboarding } from "./components/PlayerOnboarding/PlayerOnboarding
 import { useTranslation } from "react-i18next";
 
 /**
+ * Check if there's an existing session with meaningful progress
+ */
+const hasExistingSession = () => {
+  try {
+    const playerData = sessionStorage.getItem('playerData');
+    if (!playerData) return false;
+    const parsed = JSON.parse(playerData);
+    return parsed.onboardingCompleted === true;
+  } catch {
+    return false;
+  }
+};
+
+/**
  * Componente principal de la aplicación
- * 
+ *
  * Configura la estructura base de la aplicación con un sistema operativo simulado:
  * - Cuestionario inicial para configuración del jugador
  * - Escritorio con barra de tareas
@@ -16,8 +30,27 @@ import { useTranslation } from "react-i18next";
  * - Sistema de notificaciones toast
  */
 function App() {
-  const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const [onboardingComplete, setOnboardingComplete] = useState(false);
+  const [showSessionDialog, setShowSessionDialog] = useState(false);
+
+  // Check for existing session on mount
+  useEffect(() => {
+    if (hasExistingSession()) {
+      setShowSessionDialog(true);
+    }
+  }, []);
+
+  const handleResume = () => {
+    setShowSessionDialog(false);
+    setOnboardingComplete(true);
+  };
+
+  const handleStartOver = () => {
+    sessionStorage.clear();
+    setShowSessionDialog(false);
+    setOnboardingComplete(false);
+  };
 
   const handleOnboardingComplete = (playerData) => {
     setOnboardingComplete(true);
@@ -25,8 +58,26 @@ function App() {
 
   return (
     <div className="App">
-      {/* Mostrar cuestionario si no está completado */}
-      {!onboardingComplete && <PlayerOnboarding onComplete={handleOnboardingComplete} />}
+      {/* Session resume dialog */}
+      {showSessionDialog && (
+        <div className="session-dialog-overlay">
+          <div className="session-dialog">
+            <h2>{t('sessionDialog.title', 'Welcome Back!')}</h2>
+            <p>{t('sessionDialog.message', 'You have a previous session. Would you like to continue where you left off?')}</p>
+            <div className="session-dialog-buttons">
+              <button className="session-btn session-btn-resume" onClick={handleResume}>
+                {t('sessionDialog.resume', 'Resume')}
+              </button>
+              <button className="session-btn session-btn-start-over" onClick={handleStartOver}>
+                {t('sessionDialog.startOver', 'Start Over')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mostrar cuestionario si no está completado y no hay diálogo de sesión */}
+      {!onboardingComplete && !showSessionDialog && <PlayerOnboarding onComplete={handleOnboardingComplete} />}
       
       {/* Componente que resetea el scroll al inicio al cambiar de ruta */}
       <ScrollToTop />

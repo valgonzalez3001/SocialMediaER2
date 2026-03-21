@@ -70,6 +70,10 @@ export const XAPI_VERBS = {
     id: "http://adlnet.gov/expapi/verbs/progressed",
     display: { en: "progressed" },
   },
+  EVALUATED: {
+    id: "http://www.tincanapi.co.uk/verbs/evaluated",
+    display: { en: "evaluated" },
+  },
 };
 
 // Activity types
@@ -142,6 +146,13 @@ export const ECHO_ACTIVITIES = {
     definition: {
       name: { en: "ECHO File Explorer" },
       type: XAPI_ACTIVITY_TYPES.GAME,
+    },
+  },
+  SURVEY: {
+    id: `${ENDGAME_BASE}/escape-rooms/echo/survey`,
+    definition: {
+      name: { en: "ECHO Post-Game Survey" },
+      type: "http://adlnet.gov/expapi/activities/survey",
     },
   },
 };

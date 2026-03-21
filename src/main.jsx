@@ -16,8 +16,8 @@ import i18n from './i18n.jsx';
 
 // Reiniciar estado de sesión al cargar la app para empezar siempre desde cero.
 // Debe ejecutarse antes de montar React para evitar que los providers lean estado antiguo.
-sessionStorage.clear();
-
+// sessionStorage.clear();
+                                                 
 // Call make Server with initial language
 let initialLanguage = localStorage.getItem('i18nextLng') || 'en';
 // Normalizar el idioma a solo las primeras 2 letras (por si viene como 'en-US')

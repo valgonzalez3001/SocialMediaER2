@@ -71,22 +71,7 @@ export const Desktop = () => {
   const handleOpenSurvey = () => setShowSurveyModal(true);
   const handleCloseSurvey = () => setShowSurveyModal(false);
 
-  // Prompt user before leaving if survey not completed (after game started)
-  useEffect(() => {
-    const handleBeforeUnload = (e) => {
-      // Only prompt if game has started and survey not completed
-      if (!escapeTimerStarted || surveyCompleted) return;
-
-      // Show browser confirmation dialog
-      e.preventDefault();
-      e.returnValue = '';
-      return '';
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
-  }, [escapeTimerStarted, surveyCompleted]);
-
+  
   const handleSurveySubmit = (answers) => {
     console.log('Survey answers:', answers);
     sessionStorage.setItem('surveyCompleted', 'true');

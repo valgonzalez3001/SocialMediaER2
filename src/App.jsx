@@ -5,6 +5,7 @@ import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop.jsx";
 import { Toaster } from "react-hot-toast";
 import { PlayerOnboarding } from "./components/PlayerOnboarding/PlayerOnboarding";
 import { useTranslation } from "react-i18next";
+import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "./contexts/XAPIProvider";
 
 /**
  * Check if there's an existing session with meaningful progress
@@ -31,6 +32,7 @@ const hasExistingSession = () => {
  */
 function App() {
   const { t } = useTranslation();
+  const { sendStatement } = useXAPI();
   const [onboardingComplete, setOnboardingComplete] = useState(false);
   const [showSessionDialog, setShowSessionDialog] = useState(false);
 
@@ -41,15 +43,48 @@ function App() {
     }
   }, []);
 
+  // Send "left" statement when leaving the page
+  useEffect(() => {
+    const handlePageLeave = () => {
+      sendStatement(
+        XAPI_VERBS.LEFT,
+        ECHO_ACTIVITIES.GAME,
+        null,
+        null,
+        null,
+        { keepalive: true }
+      );
+    };
+
+    window.addEventListener('beforeunload', handlePageLeave);
+    window.addEventListener('pagehide', handlePageLeave);
+
+    return () => {
+      window.removeEventListener('beforeunload', handlePageLeave);
+      window.removeEventListener('pagehide', handlePageLeave);
+    };
+  }, [sendStatement]);
+
   const handleResume = () => {
+    // Send "resumed" statement
+    sendStatement(XAPI_VERBS.RESUMED, ECHO_ACTIVITIES.GAME);
     setShowSessionDialog(false);
     setOnboardingComplete(true);
   };
 
   const handleStartOver = () => {
+    // Send "exited" statement before clearing
+    sendStatement(
+      XAPI_VERBS.EXITED_ADL,
+      ECHO_ACTIVITIES.GAME,
+      null,
+      null,
+      null,
+      { keepalive: true }
+    );
     sessionStorage.clear();
-    setShowSessionDialog(false);
-    setOnboardingComplete(false);
+    // Reload to reset all provider states
+    window.location.reload();
   };
 
   const handleOnboardingComplete = (playerData) => {

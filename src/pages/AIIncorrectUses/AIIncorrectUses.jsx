@@ -60,6 +60,22 @@ const pickThreeCasesWithAiConstraint = (allCases) => {
     return shuffleArray([...baseSelection, third]);
 };
 
+const parseStoredArray = (value) => {
+    try {
+        const parsed = JSON.parse(value || "[]");
+        return Array.isArray(parsed) ? parsed : [];
+    } catch {
+        return [];
+    }
+};
+
+const keepOnlySelectedCaseKeys = (record, selectedIds) => {
+    if (!record || typeof record !== "object") return {};
+    return Object.fromEntries(
+        Object.entries(record).filter(([caseId]) => selectedIds.includes(caseId))
+    );
+};
+
 export const AIIncorrectUses = () => {
     const { t } = useTranslation();
     const currentLang = t("langKey");
@@ -86,33 +102,19 @@ export const AIIncorrectUses = () => {
         const allCases = challengeData[currentLang] || challengeData.en || [];
         if (allCases.length <= 3) return allCases;
 
-        const previousSelectionKey = `ai-incorrect:lastCaseSelection:${currentLang}`;
-        let previousSelection = [];
-        try {
-            previousSelection = JSON.parse(sessionStorage.getItem(previousSelectionKey) || "[]");
-        } catch {
-            previousSelection = [];
+        const selectionKey = `ai-incorrect:caseSelection:${currentLang}`;
+        const casesById = new Map(allCases.map((item) => [item.id, item]));
+        const storedSelection = parseStoredArray(sessionStorage.getItem(selectionKey));
+        const restoredCases = storedSelection
+            .map((id) => casesById.get(id))
+            .filter(Boolean);
+
+        if (restoredCases.length === 3) {
+            return restoredCases;
         }
 
-        const targetSize = 3;
-        let picked = [];
-        let attempts = 0;
-
-        do {
-            picked = pickThreeCasesWithAiConstraint(allCases);
-            attempts += 1;
-            if (attempts > 20) break;
-        } while (
-            previousSelection.length === targetSize &&
-            picked.length === targetSize &&
-            picked.map((c) => c.id).sort().join("|") === previousSelection.slice().sort().join("|")
-        );
-
-        sessionStorage.setItem(
-            previousSelectionKey,
-            JSON.stringify(picked.map((c) => c.id))
-        );
-
+        const picked = pickThreeCasesWithAiConstraint(allCases);
+        sessionStorage.setItem(selectionKey, JSON.stringify(picked.map((c) => c.id)));
         return picked;
     }, [currentLang]);
     const shuffledOptionsByCase = useMemo(() => {
@@ -124,6 +126,34 @@ export const AIIncorrectUses = () => {
             acc[item.id] = shuffleArray(optionsWithId);
             return acc;
         }, {});
+    }, [challengeCases]);
+
+    useEffect(() => {
+        const selectedIds = challengeCases.map((item) => item.id);
+
+        const normalizedWrongSelections = keepOnlySelectedCaseKeys(wrongSelections, selectedIds);
+        if (Object.keys(normalizedWrongSelections).length !== Object.keys(wrongSelections).length) {
+            setWrongSelections(normalizedWrongSelections);
+            sessionStorage.setItem("ai-incorrect:wrongSelections", JSON.stringify(normalizedWrongSelections));
+        }
+
+        const normalizedCorrectSelected = keepOnlySelectedCaseKeys(correctSelected, selectedIds);
+        if (Object.keys(normalizedCorrectSelected).length !== Object.keys(correctSelected).length) {
+            setCorrectSelected(normalizedCorrectSelected);
+            sessionStorage.setItem("ai-incorrect:correctSelected", JSON.stringify(normalizedCorrectSelected));
+        }
+
+        const normalizedSelectedWrongOption = keepOnlySelectedCaseKeys(selectedWrongOption, selectedIds);
+        if (Object.keys(normalizedSelectedWrongOption).length !== Object.keys(selectedWrongOption).length) {
+            setSelectedWrongOption(normalizedSelectedWrongOption);
+            sessionStorage.setItem("ai-incorrect:selectedWrongOption", JSON.stringify(normalizedSelectedWrongOption));
+        }
+
+        const normalizedSentReplies = keepOnlySelectedCaseKeys(sentReplies, selectedIds);
+        if (Object.keys(normalizedSentReplies).length !== Object.keys(sentReplies).length) {
+            setSentReplies(normalizedSentReplies);
+            sessionStorage.setItem("ai-incorrect:sentReplies", JSON.stringify(normalizedSentReplies));
+        }
     }, [challengeCases]);
     
     // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa

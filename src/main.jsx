@@ -14,6 +14,16 @@ import { XAPIProvider } from "./contexts/XAPIProvider.jsx";
 import './i18n.jsx';
 import i18n from './i18n.jsx';
 
+// On hard reload/restart, always restore root route instead of keeping current sub-route.
+const navigationEntry = performance.getEntriesByType("navigation")?.[0];
+const isReloadNavigation =
+  navigationEntry?.type === "reload" ||
+  (performance.navigation && performance.navigation.type === 1);
+
+if (isReloadNavigation && window.location.pathname !== "/") {
+  window.history.replaceState(null, "", "/");
+}
+
 // Reiniciar estado de sesión al cargar la app para empezar siempre desde cero.
 // Debe ejecutarse antes de montar React para evitar que los providers lean estado antiguo.
 // sessionStorage.clear();

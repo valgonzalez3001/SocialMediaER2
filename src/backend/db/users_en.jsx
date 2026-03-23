@@ -24,7 +24,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: true,
@@ -50,7 +49,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: true,
       recentAccount: true,
       temporalActivity: false,
@@ -76,7 +74,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: false,
       recentAccount: true,
       temporalActivity: false,
@@ -102,7 +99,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -128,7 +124,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -154,7 +149,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -180,7 +174,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -206,7 +199,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -232,7 +224,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -258,7 +249,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -284,7 +274,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: false,
-      official: true,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -310,7 +299,6 @@ export const usersEN = [
     },
     puzzle: {
       isBot: false,
-      official: true,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,

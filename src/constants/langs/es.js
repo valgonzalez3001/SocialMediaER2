@@ -61,7 +61,7 @@ export const es = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Usuarios sospechosos detectados en ECHO",
-        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\n📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta parece un bot?\n3. Si consideras que es un bot, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta bot que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
+        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\n Usa las credenciales: Usuario: echo. Contraseña: MintAI_mod\n\n 📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta parece un bot?\n3. Si consideras que es un bot, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta bot que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
       },
       "challenge2": {
         "subject": "🤖 Posibles publicaciones generadas por IA detectadas",
@@ -166,21 +166,21 @@ export const es = {
     "cancel": "Cancelar"
   },
   "aiContentPage": {
-    "title": "Bienvenido, Moderador!",
+    "title": "Verifica contenido generado por IA",
     "subtitle": "Contenido generado por IA",
     "pendingReviewCount": "{{count}} post",
     "pendingReviewText": "pendiente de revisión para verificar si fue generado por IA.",
     "verifyButton": "Verificar post →",
     "statsCount": "{{count}} posts",
     "statsText": "han sido marcados como generados por IA en la última hora.",
-    "card1Title": "Will Smith come spaghetti",
+    "card1Title": "Video de Will Smith comiendo spaghetti",
     "card2Title": "Madrid sufre esta mañana el impacto de un meteorito",
     "tag": "GENERADO POR IA",
     "seeAll": "Ver todo →",
     "noPendingReview": "No se han detectado nuevos posts para revisar."
   },
   "aiVerifyPage": {
-    "title": "Verificar contenido generado por IA",
+    "title": "Verifica contenido generado por IA",
     "subtitle": "Demuestra que el contenido de este post fue generado por IA, para frenar la desinformación en línea.",
     "postTitle": "Pensamiento crítico 🍎🥑",
     "postDate": "11 dic. 2025",
@@ -199,14 +199,14 @@ export const es = {
     "suspiciousBadge": "PROMPT SOSPECHOSO"
   },
   "aiChallengeBriefPage": {
-    "title": "Verificar contenido generado por IA",
+    "title": "Verifica contenido generado por IA",
     "systemMessage": "El sistema encontró un <strong>posible prompt en MINT-AI que generó el post</strong>, a través de la comparación de palabras, tono y temas:",
     "explanation": "Este prompt puede tener algunas pistas.",
     "instructions": "Para demostrar que el post fue generado por IA, deberás <strong>imitar la generación del post</strong>, palabra por palabra.",
     "buttonText": "Verificar post como IA →"
   },
   "aiGamePage": {
-    "title": "Verificar contenido generado por IA",
+    "title": "Verifica contenido generado por IA",
     "subtitle": "¡Piensa como una máquina! ¿Qué palabra es más probable que se genere a continuación?",
     "success": "¡Felicidades! Has completado la frase correctamente.",
     "error": "❌ Palabra incorrecta. Intenta de nuevo desde el principio.",

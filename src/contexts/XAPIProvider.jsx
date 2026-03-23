@@ -262,6 +262,22 @@ export const XAPIProvider = ({ children }) => {
       return null;
     }
 
+    // Transport-level dedup for rapid duplicate lifecycle signals.
+    // beforeunload/pagehide (and occasional double handlers) can fire almost simultaneously.
+    if (verb?.id === XAPI_VERBS.LEFT.id || verb?.id === XAPI_VERBS.RESUMED.id) {
+      const dedupKey = `xapi:dedup:${verb.id}`;
+      const now = Date.now();
+      const lastRaw = sessionStorage.getItem(dedupKey);
+      const lastTs = Number(lastRaw);
+      const dedupWindowMs = verb?.id === XAPI_VERBS.LEFT.id ? 5000 : 2000;
+
+      if (Number.isFinite(lastTs) && now - lastTs < dedupWindowMs) {
+        if (isDev) console.warn(`[xAPI] Deduped statement: ${verb?.display?.en || verb?.id}`);
+        return null;
+      }
+      sessionStorage.setItem(dedupKey, String(now));
+    }
+
     // Build the statement
     const statement = {
       actor: {

@@ -503,7 +503,6 @@ async function main() {
         "stats.followingCount": row["Following"] || 0,
         "stats.postsCount": getRowValue(row, "NumPosts") || 0,
         "puzzle.isBot": row["isBot"] === true,
-        "puzzle.official": parsePuzzleIndicatorValue(getRowValue(row, "official")),
         "puzzle.abnormalRatio": parsePuzzleIndicatorValue(getRowValue(row, "abnormalRatio")),
         "puzzle.recentAccount": parsePuzzleIndicatorValue(getRowValue(row, "recentAccount")),
         "puzzle.temporalActivity": parsePuzzleIndicatorValue(getRowValue(row, "temporalActivity")),

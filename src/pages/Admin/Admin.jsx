@@ -40,6 +40,17 @@ export const Admin = () => {
             Object.entries(parsed).map(([uname, classification]) => [uname, normalizeClassification(classification)])
         );
     });
+    const [quizSubmittedByUser, setQuizSubmittedByUser] = useState(() => {
+        const saved = sessionStorage.getItem('adminGameQuizState');
+        if (!saved) return {};
+
+        try {
+            const parsed = JSON.parse(saved);
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch {
+            return {};
+        }
+    });
     const [showHint, setShowHint] = useState(false);
     const [showResult, setShowResult] = useState(false);
     const [gameResult, setGameResult] = useState(null);
@@ -135,10 +146,39 @@ export const Admin = () => {
         }
     }, [suspectUsers]);
 
+    // Mantener en sync los tests enviados de usuarios sospechosos activos
+    useEffect(() => {
+        if (suspectUsers.length > 0) {
+            const currentUsernames = suspectUsers.map(u => u.username);
+            const savedQuizUsers = Object.keys(quizSubmittedByUser);
+            const hasInvalidQuizUsers = savedQuizUsers.some(uname => !currentUsernames.includes(uname));
+
+            if (hasInvalidQuizUsers) {
+                const validQuizState = {};
+                currentUsernames.forEach(uname => {
+                    if (quizSubmittedByUser[uname]) validQuizState[uname] = true;
+                });
+                setQuizSubmittedByUser(validQuizState);
+                sessionStorage.setItem('adminGameQuizState', JSON.stringify(validQuizState));
+            }
+        }
+    }, [suspectUsers]);
+
     const isCorrectClassification = (user) => {
         const classification = normalizeClassification(classifiedUsers[user.username]);
         const isBot = user?.puzzle?.isBot;
-        return (classification === CLASSIFICATION.YES && isBot) || (classification === CLASSIFICATION.NO && !isBot);
+        const isClassificationCorrect =
+            (classification === CLASSIFICATION.YES && isBot) ||
+            (classification === CLASSIFICATION.NO && !isBot);
+
+        if (!isClassificationCorrect) return false;
+
+        // Si se clasifica correctamente como bot, además se requiere haber enviado el test.
+        if (isBot) {
+            return Boolean(quizSubmittedByUser[user.username]);
+        }
+
+        return true;
     };
 
     const handleProfileClick = (username) => {
@@ -264,8 +304,10 @@ export const Admin = () => {
             // Limpiar el estado del juego al completar exitosamente
             sessionStorage.removeItem('adminGameUsernames');
             sessionStorage.removeItem('adminGameState');
+            sessionStorage.removeItem('adminGameQuizState');
             sessionStorage.removeItem('fromAdmin');
             setClassifiedUsers({});
+            setQuizSubmittedByUser({});
             // Enviar instrucciones del reto 2
             sessionStorage.setItem("challenge2InstructionsSent", JSON.stringify(true));
             addMessage({
@@ -366,7 +408,6 @@ export const Admin = () => {
                                 <li><strong>{t('admin.hintContent.temporalActivity').split(':')[0]}:</strong> {t('admin.hintContent.temporalActivity').split(':')[1]}</li>
                                 <li><strong>{t('admin.hintContent.abnormalRatio').split(':')[0]}:</strong> {t('admin.hintContent.abnormalRatio').split(':')[1]}</li>
                                 <li><strong>{t('admin.hintContent.recentAccount').split(':')[0]}:</strong> {t('admin.hintContent.recentAccount').split(':')[1]}</li>
-                                <li><strong>{t('admin.hintContent.official').split(':')[0]}:</strong> {t('admin.hintContent.official').split(':')[1]}</li>
                             </ul>
                         </div>
                     </div>

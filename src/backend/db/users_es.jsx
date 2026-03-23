@@ -24,7 +24,7 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: true,
+      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -50,7 +50,7 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: true,
+      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,

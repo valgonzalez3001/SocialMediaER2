@@ -157,8 +157,7 @@ export const fi = {
       "targetAudience": "Ei selkeää kohdeyleisöä: Toistaa samaa sisältöä useilla kielillä",
       "temporalActivity": "Epäilyttävä ajallinen toiminta: Julkaisut hyvin säännöllisin väliajoin tai epätavallisina aikoina",
       "abnormalRatio": "Epänormaali suhde: Monta seuraajaa mutta vähän todellista vuorovaikutusta",
-      "recentAccount": "Tuore tili: Uusi tili välittömällä korkealla aktiivisuudella",
-      "official": "Virallinen tili: Se kuuluu viralliselle/julkiselle organisaatiolle"
+      "recentAccount": "Tuore tili: Uusi tili välittömällä korkealla aktiivisuudella"
     }
   },
   "editPost": {
@@ -213,6 +212,8 @@ export const fi = {
     "error": "❌ Väärä sana. Yritä uudelleen alusta.",
     "back": "← Takaisin",
     "finish": "Lopeta",
+    "coincidenceWithPost": "VASTAAVUUS JULKAISUN KANSSA:",
+    "postGeneratedWithAi": "JULKAISU ON TEKOÄLYN TUOTTAMA",
     "challengeCompleted": "Haaste suoritettu! 🎉",
     "challengeCompletedMsg": "Olet todistanut, että julkaisun sisältö on generatiivisen tekoälyn tuottamaa."
   },
@@ -349,6 +350,12 @@ export const fi = {
   "survey": {
     "bannerTitle": "Kiitos pelaamisesta!",
     "bannerSubtitle": "Anna meille palautetta",
+    "bannerButton": "Osallistu kyselyyn",
+    "requiredHint": "Ole hyvä ja vastaa kaikkiin kysymyksiin",
+    "previous": "Edellinen",
+    "next": "Seuraava",
+    "submit": "Lähetä",
+    "title": "Jaa palautteesi",
     "opinionTitle": "What is your general opinion about the escape room? ",
     "opinionRange": "1 = Very poor, 2 = Poor, 3 = Neutral, 4 = Good, 5 = Very good",
     "rateTitle": "Rate the following statements on a scale of 1-7",
@@ -376,7 +383,7 @@ export const fi = {
       "12": "I enjoy the escape room’s graphics.",
       "13": "I think the escape room is visually appealing."
     },
-    "comments": "Any additional comments or suggestions?"
+    "comments": "Onko muita kommentteja tai ehdotuksia?"
   },
   "sessionDialog": {
     "title": "Tervetuloa takaisin",

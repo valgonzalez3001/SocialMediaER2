@@ -157,8 +157,7 @@ export const es = {
       "targetAudience": "Falta de público objetivo claro: repite el mismo contenido en varios idiomas.",
       "temporalActivity": "Actividad temporal sospechosa: Publicaciones a intervalos muy regulares o en horarios poco naturales",
       "abnormalRatio": "Ratio anormal: Muchos seguidos pero poca interacción real",
-      "recentAccount": "Cuenta reciente: Cuenta nueva con mucha actividad inmediata",
-      "official": "Cuenta oficial: Pertenece a un organismo público/estatal"
+      "recentAccount": "Cuenta reciente: Cuenta nueva con mucha actividad inmediata"
     }
   },
   "editPost": {
@@ -213,6 +212,8 @@ export const es = {
     "error": "❌ Palabra incorrecta. Intenta de nuevo desde el principio.",
     "back": "← Atrás",
     "finish": "Finalizar",
+    "coincidenceWithPost": "COINCIDENCIA CON EL POST:",
+    "postGeneratedWithAi": "POST GENERADO CON IA",
     "challengeCompleted": "¡Reto superado! 🎉",
     "challengeCompletedMsg": "Has demostrado que el contenido de la publicación fue generada por IA generativa."
   },
@@ -331,7 +332,7 @@ export const es = {
     "back": "Atrás"
   },
   "playerOnboarding": {
-    "subtitle": "Bienvenido al Escaperoom de ECHO.",
+    "subtitle": "Bienvenido al Escape room de ECHO.",
     "nameLabel": "Nombre del jugador",
     "namePlaceholder": "Ingresa tu nombre",
     "nameErrorEmpty": "Por favor ingresa tu nombre",
@@ -350,6 +351,12 @@ export const es = {
   "survey": {
     "bannerTitle": "¡Gracias por jugar!",
     "bannerSubtitle": "Danos tu opinión",
+    "bannerButton": "Responder encuesta",
+    "requiredHint": "Por favor, responda a todas las preguntas.",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "submit": "Entregar",
+    "title": "Comparte tu opinión",
     "opinionTitle": "¿Cuál es tu opinión general sobre la escape room?",
     "opinionRange": "1 = Muy mala, 2 = Mala, 3 = Neutral, 4 = Buena, 5 = Muy buena",
     "rateTitle": "Califica las siguientes afirmaciones en una escala del 1 al 7.",
@@ -362,22 +369,22 @@ export const es = {
     },
     "guessTitle": "¿Qué te pareció la jugabilidad?",
     "guessItems": {
-      "0": "I find the controls of the escape room to be straightforward.",
-      "1": "I find the escape room's interface to be easy to navigate.",
-      "2": "I am captivated by the escape room’s story from the beginning.",
-      "3": "I enjoy the story provided by the escape room.",
-      "4": "I feel detached from the outside world while playing the escape room.",
-      "5": "I do not care to check events that are happening in the real world during the escape room.",
-      "6": "I think the escape room is fun.",
-      "7": "I feel bored while playing the escape room.",
-      "8": "I feel the escape room allows me to be imaginative.",
-      "9": "I feel creative while playing the escape room.",
-      "10": "I am very focused on my own performance while playing the escape room.",
-      "11": "I want to do as well as possible during the escape room.",
-      "12": "I enjoy the escape room’s graphics.",
-      "13": "I think the escape room is visually appealing."
+      "0": "Los controles de la escape room me parecen sencillos.",
+      "1": "La interfaz de la escape room me resulta fácil de usar.",
+      "2": "La historia de la escape room me cautivó desde el principio.",
+      "3": "Disfruto de la historia que ofrece la escape room.",
+      "4": "Me siento desconectad@ del mundo exterior mientras juego al escape room.",
+      "5": "No me intereso por lo que está sucediando a mi alrededor durante la partida de escape room.",
+      "6": "Creo que la escape room es divertida.",
+      "7": "Me aburro mientras juego al escape room.",
+      "8": "Siento que la escape room me permite ser imaginativ@.",
+      "9": "Me siento creativ@ mientras juego al escape room.",
+      "10": "Estoy muy concentrad@ en mi propio desempeño mientras juego al escape room.",
+      "11": "Quiero hacerlo lo mejor posible en la escape room.",
+      "12": "Me gustan los gráficos de la escape room.",
+      "13": "Creo que la escape room es visualmente atractiva."
     },
-    "comments": "Any additional comments or suggestions?"
+    "comments": "¿Algún comentario o sugerencia adicional?"
   },
   "sessionDialog": {
     "title": "Bienvenido de nuevo",

@@ -20,7 +20,7 @@ export const usersSR = [
     stats: {
       followersCount: "17K",
       followingCount: 0,
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: false,
@@ -46,7 +46,7 @@ export const usersSR = [
     stats: {
       followersCount: "5,2K",
       followingCount: 13,
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: false,
@@ -68,11 +68,11 @@ export const usersSR = [
     createdAt: new Date("May 01 2015 00:00:00"),
     updatedAt: formatDate(),
     avatarURL: "",
-    verified: "FAKE",
+    verified: false,
     stats: {
       followersCount: "1.1K",
       followingCount: 91,
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: true,
@@ -91,14 +91,14 @@ export const usersSR = [
     bio: "Sektor za vanredne situacije obavlja poslove normativne, upravne, organizaciono-tehničke, preventivne, preventivno-tehničke, obrazovne, informativne i druge prirode za organizovanje, planiranje, sprovođenje, kontrolu mera zaštite života, zdravlja i materijalnih dobara građana, očuvanja uslova neophodnih za život i pripremanje za prevladavanje situacija u uslovima požara, elementarnih nepogoda, tehničkih i tehnoloških nesreća, dejstava opasnih materija i drugih stanja, opasnosti većih razmera koje mogu da ugroze zdravlje i živote ljudi i životnu sredinu ili da prouzrokuju štetu i pružanje pomoći kod otklanjanja posledica prouzrokovanih vanrednim događajima i vanrednim situacijama.",
     username: "SVSMUP",
     password: "ECHO",
-    createdAt: new Date("September 25 2010 00:00:00"),
+    createdAt: new Date("September 01 2022 00:00:00"),
     updatedAt: formatDate(),
     avatarURL: "",
     verified: true,
     stats: {
       followersCount: "12K",
       followingCount: 4,
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: false,
@@ -120,11 +120,11 @@ export const usersSR = [
     createdAt: new Date("January 01 2023 00:00:00"),
     updatedAt: formatDate(),
     avatarURL: "",
-    verified: "FAKE",
+    verified: true,
     stats: {
       followersCount: "52K",
       followingCount: 26,
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: true,
@@ -138,19 +138,19 @@ export const usersSR = [
   },
   {
     _id: uuid(),
-    firstName: "",
+    firstName: "Luka Pavlović",
     lastName: "",
-    bio: "",
-    username: "",
+    bio: "tribina je druga kuća\nvikend = utakmica\nvernost se ne menja ⚽",
+    username: "luka.ultras",
     password: "ECHO",
-    createdAt: "",
+    createdAt: new Date("October 01 2022 00:00:00"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/sr_boy2.png",
     verified: false,
     stats: {
-      followersCount: 0,
-      followingCount: 0,
-      postsCount: 0
+      followersCount: 87,
+      followingCount: 87,
+      postsCount: 43
     },
     puzzle: {
       isBot: false,
@@ -164,19 +164,19 @@ export const usersSR = [
   },
   {
     _id: uuid(),
-    firstName: "",
+    firstName: "Nikola Ilić",
     lastName: "",
-    bio: "",
-    username: "",
+    bio: "student | ne ćutim kad treba da se govori\npravda nije opcija nego obaveza\nulice pamte više nego udžbenici",
+    username: "nikola.otpor",
     password: "ECHO",
-    createdAt: "",
+    createdAt: new Date("March 01 2024 00:00:00"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/sr_boy.png",
     verified: false,
     stats: {
-      followersCount: 0,
-      followingCount: 0,
-      postsCount: 0
+      followersCount: 34,
+      followingCount: 111,
+      postsCount: 184
     },
     puzzle: {
       isBot: false,
@@ -190,19 +190,19 @@ export const usersSR = [
   },
   {
     _id: uuid(),
-    firstName: "",
+    firstName: "Ivana Stojić",
     lastName: "",
-    bio: "",
-    username: "",
+    bio: "tišina mi više govori\ncrna kafa, dugi dani i još duže misli\nne objašnjavam se često",
+    username: "ivana.noir",
     password: "ECHO",
-    createdAt: "",
+    createdAt: new Date("May 01 2015 00:00:00"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/sr_folk.png",
     verified: false,
     stats: {
-      followersCount: 0,
-      followingCount: 0,
-      postsCount: 0
+      followersCount: "5.9K",
+      followingCount: 608,
+      postsCount: 312
     },
     puzzle: {
       isBot: false,
@@ -216,19 +216,19 @@ export const usersSR = [
   },
   {
     _id: uuid(),
-    firstName: "",
+    firstName: "Marko Jovanović",
     lastName: "",
-    bio: "",
-    username: "",
+    bio: "profesor istorije | večiti učenik\nknjige, kafa i dobra pitanja\npokušavam da prošlost ima smisla",
+    username: "marko.teaches",
     password: "ECHO",
-    createdAt: "",
+    createdAt: new Date("September 01 2018 00:00:00"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/sr_teacher.png",
     verified: false,
     stats: {
-      followersCount: 0,
-      followingCount: 0,
-      postsCount: 0
+      followersCount: 732,
+      followingCount: 389,
+      postsCount: "500+"
     },
     puzzle: {
       isBot: false,
@@ -242,71 +242,19 @@ export const usersSR = [
   },
   {
     _id: uuid(),
-    firstName: "",
+    firstName: "Milena Petrović",
     lastName: "",
-    bio: "",
-    username: "",
+    bio: "belgrade | coffee lover | дневник у мислима",
+    username: "milena.vibes",
     password: "ECHO",
-    createdAt: "",
+    createdAt: new Date("March 01 2022 00:00:00"),
     updatedAt: formatDate(),
     avatarURL: "/assets/users/sr_disco.png",
     verified: false,
     stats: {
-      followersCount: 0,
-      followingCount: 0,
-      postsCount: 0
-    },
-    puzzle: {
-      isBot: false,
-      official: false,
-      abnormalRatio: false,
-      recentAccount: false,
-      temporalActivity: false,
-      targetAudience: false,
-      emotions: false
-    }
-  },
-  {
-    _id: uuid(),
-    firstName: "",
-    lastName: "",
-    bio: "",
-    username: "",
-    password: "ECHO",
-    createdAt: "",
-    updatedAt: formatDate(),
-    avatarURL: "/assets/users/sr_girl.png",
-    verified: false,
-    stats: {
-      followersCount: 0,
-      followingCount: 0,
-      postsCount: 0
-    },
-    puzzle: {
-      isBot: false,
-      official: false,
-      abnormalRatio: false,
-      recentAccount: false,
-      temporalActivity: false,
-      targetAudience: false,
-      emotions: false
-    }
-  },
-  {
-    _id: uuid(),
-    firstName: "",
-    lastName: "",
-    bio: "",
-    username: "",
-    password: "ECHO",
-    createdAt: "",
-    updatedAt: formatDate(),
-    avatarURL: "/assets/users/sr_men.png",
-    verified: false,
-    stats: {
-      followersCount: 0,
-      followingCount: 0,
-      postsCount: 0
+      followersCount: "3.2K",
+      followingCount: 512,
+      postsCount: 287
     },
     puzzle: {
       isBot: false,

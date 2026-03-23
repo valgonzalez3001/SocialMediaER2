@@ -20,6 +20,9 @@ export const useMessages = () => {
 export const MessagesProvider = ({ children }) => {
   const { t } = useTranslation();
   const {
+    challenge2InstructionsRead,
+    challenge3InstructionsRead,
+    challengeFinalInstructionsRead,
     markChallenge2InstructionsRead,
     markChallenge3InstructionsRead,
     markChallengeFinalInstructionsRead,
@@ -68,6 +71,58 @@ export const MessagesProvider = ({ children }) => {
       window.removeEventListener("onboardingComplete", handleOnboardingComplete);
     };
   }, [t]);
+
+  // Restore missing instruction messages on mount (for resume after refresh)
+  useEffect(() => {
+    const messagesToAdd = [];
+    let nextId = 2; // Start after mission brief (id: 1)
+
+    // Check challenge 2 instructions
+    const challenge2InstructionsSent = sessionStorage.getItem("challenge2InstructionsSent");
+    if (challenge2InstructionsSent && !challenge2InstructionsRead) {
+      messagesToAdd.push({
+        id: nextId++,
+        fromKey: "messagesApp.author.name",
+        subjectKey: "messagesApp.messages.challenge2.subject",
+        contentKey: "messagesApp.messages.challenge2.content",
+        timestamp: new Date(),
+        read: false,
+      });
+    }
+
+    // Check challenge 3 instructions
+    const challenge3InstructionsSent = sessionStorage.getItem("challenge3InstructionsSent");
+    if (challenge3InstructionsSent && !challenge3InstructionsRead) {
+      messagesToAdd.push({
+        id: nextId++,
+        fromKey: "messagesApp.author.name",
+        subjectKey: "messagesApp.messages.challenge3.subject",
+        contentKey: "messagesApp.messages.challenge3.content",
+        timestamp: new Date(),
+        read: false,
+      });
+    }
+
+    // Check final challenge instructions
+    const challengeFinalInstructionsSent = sessionStorage.getItem("challengeFinalInstructionsSent");
+    if (challengeFinalInstructionsSent && !challengeFinalInstructionsRead) {
+      messagesToAdd.push({
+        id: nextId++,
+        fromKey: "messagesApp.author.name",
+        subjectKey: "messagesApp.messages.challengeFinal.subject",
+        contentKey: "messagesApp.messages.challengeFinal.content",
+        timestamp: new Date(),
+        read: false,
+      });
+    }
+
+    if (messagesToAdd.length > 0) {
+      setMessages((prev) => [...messagesToAdd, ...prev]);
+      // Show notification for unread messages
+      window.dispatchEvent(new Event("openDrawer"));
+      window.dispatchEvent(new Event("bossMessage"));
+    }
+  }, []); // Run only on mount
 
   // Actualizar contador de mensajes no leídos
   useEffect(() => {

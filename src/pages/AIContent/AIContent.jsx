@@ -7,512 +7,618 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
-import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
+import {
+  useXAPI,
+  XAPI_VERBS,
+  ECHO_ACTIVITIES,
+} from "../../contexts/XAPIProvider.jsx";
 import aiContent from "./AIContent.json";
 
 export const AIContent = () => {
-    const { t } = useTranslation();
-    const currentLang = t("langKey");
+  const { t } = useTranslation();
+  const currentLang = t("langKey");
 
-    // Pick a random sentence ONCE per session and persist the index so navigating
-    // away and back always shows the same sentence.  Languages with only one
-    // sentence always get index 0.
-    const gameData = useMemo(() => {
-        const allSentences = aiContent[currentLang] || aiContent.en;
+  // Pick a random sentence ONCE per session and persist the index so navigating
+  // away and back always shows the same sentence.  Languages with only one
+  // sentence always get index 0.
+  const gameData = useMemo(() => {
+    const allSentences = aiContent[currentLang] || aiContent.en;
 
-        const storedIdx = sessionStorage.getItem("echo:puzzle2:sentenceIndex");
-        let idx;
-        if (storedIdx !== null) {
-            // Clamp in case the stored index is out of range for the current language
-            idx = Math.min(Number(storedIdx), allSentences.length - 1);
-        } else {
-            idx = allSentences.length > 1
-                ? Math.floor(Math.random() * allSentences.length)
-                : 0;
-            sessionStorage.setItem("echo:puzzle2:sentenceIndex", String(idx));
-        }
+    const storedIdx = sessionStorage.getItem("echo:puzzle2:sentenceIndex");
+    let idx;
+    if (storedIdx !== null) {
+      // Clamp in case the stored index is out of range for the current language
+      idx = Math.min(Number(storedIdx), allSentences.length - 1);
+    } else {
+      idx =
+        allSentences.length > 1
+          ? Math.floor(Math.random() * allSentences.length)
+          : 0;
+      sessionStorage.setItem("echo:puzzle2:sentenceIndex", String(idx));
+    }
 
-        return allSentences[idx];
+    return allSentences[idx];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentLang]);
-    const { addMessage } = useMessages();
-    const { challenge2Completed, completeChallenge2 } = useStats();
-    const { sendStatement, trackChallengeStarted } = useXAPI();
-    const completionSentRef = useRef(false);
-    const [step, setStep] = useState("list");
-    const [selectedWords, setSelectedWords] = useState([]);
-    const [showCompletionModal, setShowCompletionModal] = useState(false);
-    const [wrongChoice, setWrongChoice] = useState(null);
-    const [showMatch, setShowMatch] = useState(false);
-    const optionsByStep = useMemo(
-        () =>
-            gameData.words.map((item) =>
-                [item.correct, ...item.alts].sort(() => Math.random() - 0.5)
-            ),
-        [gameData]
-    );
-    const reconstructedSentence = useMemo(
-        () => selectedWords.join(" ").replace(/\s([.,!?;:])/g, "$1"),
-        [selectedWords]
-    );
-    const correctSentence = useMemo(
-        () => gameData.words.map((item) => item.correct).join(" ").replace(/\s([.,!?;:])/g, "$1"),
-        [gameData]
-    );
-    const isCompleted = selectedWords.length === gameData.words.length;
+  }, [currentLang]);
+  const { addMessage } = useMessages();
+  const { challenge2Completed, completeChallenge2 } = useStats();
+  const { sendStatement, trackChallengeStarted } = useXAPI();
+  const completionSentRef = useRef(false);
+  const [step, setStep] = useState("list");
+  const [selectedWords, setSelectedWords] = useState([]);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [wrongChoice, setWrongChoice] = useState(null);
+  const [showMatch, setShowMatch] = useState(false);
+  const optionsByStep = useMemo(
+    () =>
+      gameData.words.map((item) =>
+        [item.correct, ...item.alts].sort(() => Math.random() - 0.5),
+      ),
+    [gameData],
+  );
+  const reconstructedSentence = useMemo(
+    () => selectedWords.join(" ").replace(/\s([.,!?;:])/g, "$1"),
+    [selectedWords],
+  );
+  const correctSentence = useMemo(
+    () =>
+      gameData.words
+        .map((item) => item.correct)
+        .join(" ")
+        .replace(/\s([.,!?;:])/g, "$1"),
+    [gameData],
+  );
+  const isCompleted = selectedWords.length === gameData.words.length;
 
-    // Lock body scroll while on this page
-    useEffect(() => {
-        document.body.classList.add("ai-content-no-scroll");
-        document.documentElement.classList.add("ai-content-no-scroll");
-        return () => {
-            document.body.classList.remove("ai-content-no-scroll");
-            document.documentElement.classList.remove("ai-content-no-scroll");
+  // Lock body scroll while on this page
+  useEffect(() => {
+    document.body.classList.add("ai-content-no-scroll");
+    document.documentElement.classList.add("ai-content-no-scroll");
+    return () => {
+      document.body.classList.remove("ai-content-no-scroll");
+      document.documentElement.classList.remove("ai-content-no-scroll");
+    };
+  }, []);
+
+  // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
+  useEffect(() => {
+    if (challenge2Completed) return;
+    if (!sessionStorage.getItem("echo:challengeStart:2")) {
+      trackChallengeStarted("2", "Puzzle 2 - AI Content Generated");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!isCompleted) {
+      setShowMatch(false);
+      return;
+    }
+
+    const timer = setTimeout(() => setShowMatch(true), 260);
+    return () => clearTimeout(timer);
+  }, [isCompleted]);
+
+  const handleCompletionClose = () => {
+    setShowCompletionModal(false);
+    completeChallenge2();
+    sessionStorage.setItem("challenge3InstructionsSent", JSON.stringify(true));
+    addMessage({
+      fromKey: "messagesApp.author.name",
+      subjectKey: "messagesApp.messages.challenge3.subject",
+      contentKey: "messagesApp.messages.challenge3.content",
+    });
+    window.dispatchEvent(new Event("openDrawer"));
+    window.dispatchEvent(new Event("bossMessage"));
+  };
+
+  useEffect(() => {
+    if (!isCompleted || challenge2Completed) return;
+
+    const instructionsSent = sessionStorage.getItem(
+      "challenge3InstructionsSent",
+    );
+    if (instructionsSent) return;
+
+    if (!completionSentRef.current) {
+      completionSentRef.current = true;
+    } else {
+      return;
+    }
+
+    // Guard dedup + xAPI (immediate — records actual completion time)
+    const completedKey2 = "echo:challengeCompleted:2";
+    if (!sessionStorage.getItem(completedKey2)) {
+      sessionStorage.setItem(completedKey2, "1");
+
+      const context2 = {
+        contextActivities: {
+          parent: [ECHO_ACTIVITIES.PUZZLE_2],
+          grouping: [ECHO_ACTIVITIES.GAME],
+        },
+      };
+
+      // succeeded: resolución correcta con score detallado
+      sendStatement(
+        XAPI_VERBS.SUCCEEDED,
+        ECHO_ACTIVITIES.PUZZLE_2,
+        {
+          success: true,
+          completion: true,
+          score: {
+            scaled: 1,
+            raw: gameData.words.length,
+            min: 0,
+            max: gameData.words.length,
+          },
+        },
+        context2,
+      );
+
+      // completed: duración desde que se inició el reto
+      const startRaw2 = sessionStorage.getItem("echo:challengeStart:2");
+      const completedResult2 = { completion: true };
+      if (startRaw2 && Number.isFinite(Number(startRaw2))) {
+        const durationMs2 = Date.now() - Number(startRaw2);
+        completedResult2.duration = `PT${Math.max(0, Math.round(durationMs2 / 1000))}S`;
+        completedResult2.extensions = {
+          "https://endgameproject.github.io/xapi/ext/durationMs": durationMs2,
         };
-    }, []);
+      }
+      sessionStorage.removeItem("echo:challengeStart:2");
+      sendStatement(
+        XAPI_VERBS.COMPLETED,
+        ECHO_ACTIVITIES.PUZZLE_2,
+        completedResult2,
+        context2,
+      );
+    }
 
-    // Fallback: asegurar que el timer empieza aunque el usuario llegue por URL directa
-    useEffect(() => {
-        if (challenge2Completed) return;
-        if (!sessionStorage.getItem('echo:challengeStart:2')) {
-            trackChallengeStarted('2', 'Puzzle 2 - AI Content Generated');
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    setShowCompletionModal(true);
+  }, [isCompleted, challenge2Completed, sendStatement, gameData.words.length]);
 
-    useEffect(() => {
-        if (!isCompleted) {
-            setShowMatch(false);
-            return;
-        }
+  const handleWordClick = (word) => {
+    if (wrongChoice) return;
+    const currentStep = selectedWords.length;
+    const isCorrect = word === gameData.words[currentStep].correct;
 
-        const timer = setTimeout(() => setShowMatch(true), 260);
-        return () => clearTimeout(timer);
-    }, [isCompleted]);
-
-    const handleCompletionClose = () => {
-        setShowCompletionModal(false);
-        completeChallenge2();
-        sessionStorage.setItem("challenge3InstructionsSent", JSON.stringify(true));
-        addMessage({
-            fromKey: "messagesApp.author.name",
-            subjectKey: "messagesApp.messages.challenge3.subject",
-            contentKey: "messagesApp.messages.challenge3.content",
-        });
-        window.dispatchEvent(new Event("openDrawer"));
-        window.dispatchEvent(new Event("bossMessage"));
-    };
-
-    useEffect(() => {
-        if (!isCompleted || challenge2Completed) return;
-
-        const instructionsSent = sessionStorage.getItem("challenge3InstructionsSent");
-        if (instructionsSent) return;
-
-        if (!completionSentRef.current) {
-            completionSentRef.current = true;
-        } else {
-            return;
-        }
-
-        // Guard dedup + xAPI (immediate — records actual completion time)
-        const completedKey2 = 'echo:challengeCompleted:2';
-        if (!sessionStorage.getItem(completedKey2)) {
-            sessionStorage.setItem(completedKey2, '1');
-
-            const context2 = {
-                contextActivities: {
-                    parent: [ECHO_ACTIVITIES.PUZZLE_2],
-                    grouping: [ECHO_ACTIVITIES.GAME],
-                },
-            };
-
-            // succeeded: resolución correcta con score detallado
-            sendStatement(
-                XAPI_VERBS.SUCCEEDED,
-                ECHO_ACTIVITIES.PUZZLE_2,
-                {
-                    success: true,
-                    completion: true,
-                    score: { scaled: 1, raw: gameData.words.length, min: 0, max: gameData.words.length },
-                },
-                context2
-            );
-
-            // completed: duración desde que se inició el reto
-            const startRaw2 = sessionStorage.getItem('echo:challengeStart:2');
-            const completedResult2 = { completion: true };
-            if (startRaw2 && Number.isFinite(Number(startRaw2))) {
-                const durationMs2 = Date.now() - Number(startRaw2);
-                completedResult2.duration = `PT${Math.max(0, Math.round(durationMs2 / 1000))}S`;
-                completedResult2.extensions = { "https://endgameproject.github.io/xapi/ext/durationMs": durationMs2 };
-            }
-            sessionStorage.removeItem('echo:challengeStart:2');
-            sendStatement(XAPI_VERBS.COMPLETED, ECHO_ACTIVITIES.PUZZLE_2, completedResult2, context2);
-        }
-
-        setShowCompletionModal(true);
-    }, [isCompleted, challenge2Completed, sendStatement, gameData.words.length]);
-
-    const handleWordClick = (word) => {
-        if (wrongChoice) return;
-        const currentStep = selectedWords.length;
-        const isCorrect = word === gameData.words[currentStep].correct;
-
-        // Send xAPI statement for token selection
-        sendStatement(
-            XAPI_VERBS.ANSWERED,
-            {
-                id: `${ECHO_ACTIVITIES.PUZZLE_2.id}/token/${currentStep}`,
-                definition: {
-                    name: { en: `Select Token ${currentStep + 1}` },
-                    type: "http://adlnet.gov/expapi/activities/cmi.interaction",
-                    interactionType: "choice",
-                    correctResponsesPattern: [gameData.words[currentStep].correct],
-                },
-            },
-            {
-                success: isCorrect,
-                score: { scaled: isCorrect ? 1 : 0, raw: isCorrect ? 1 : 0, min: 0, max: 1 },
-                response: word,
-            },
-            {
-                contextActivities: {
-                    parent: [ECHO_ACTIVITIES.PUZZLE_2],
-                    grouping: [ECHO_ACTIVITIES.GAME],
-                },
-            }
-        );
-
-        if (isCorrect) {
-            setSelectedWords([...selectedWords, word]);
-        } else {
-            setWrongChoice({ step: currentStep, word });
-            setTimeout(() => {
-                setSelectedWords([]);
-                setWrongChoice(null);
-            }, 550);
-        }
-    };
-
-    return (
-        <>
-          
-            <div className="app-container">
-                <Navbar />
-
-                <main className="feed ai-content-feed">
-                    <div className="ai-content-page">
-                        <div className="ai-content-frame">
-                            {step === "list" ? (
-                                <>
-                                    <div className="ai-content-title">
-                                        <h1>{t("aiContentPage.title")}</h1>
-                                        <p>{t("aiContentPage.subtitle")}</p>
-                                    </div>
-
-                                    <section className="ai-content-panel">
-                                        {challenge2Completed ? (
-                                            <div className="ai-content-alert ai-content-alert--resolved">
-                                                <div className="ai-content-alert-left">
-                                                    <span className="ai-alert-icon ai-alert-icon--ok">✓</span>
-                                                    <p>{t("aiContentPage.noPendingReview")}</p>
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <div className="ai-content-alert">
-                                                <div className="ai-content-alert-left">
-                                                    <span className="ai-alert-icon">!</span>
-                                                    <p>
-                                                        <strong>{t("aiContentPage.pendingReviewCount", { count: 1 })}</strong>{" "}
-                                                        {t("aiContentPage.pendingReviewText")}
-                                                    </p>
-                                                </div>
-                                                <button
-                                                    className="ai-content-verify"
-                                                    type="button"
-                                                    onClick={() => setStep("verify")}
-                                                >
-                                                    {t("aiContentPage.verifyButton")}
-                                                </button>
-                                            </div>
-                                        )}
-
-                                        <div className="ai-content-stats">
-                                            <span className="ai-content-check">✓</span>
-                                            <p>
-                                                <strong>{t("aiContentPage.statsCount", { count: 24 })}</strong>{" "}
-                                                {t("aiContentPage.statsText")}
-                                            </p>
-                                        </div>
-
-                                        <div className="ai-content-grid">
-                                            <article className="ai-content-card">
-                                                <div className="ai-content-card-image ai-image-one" aria-hidden="true" />
-                                                <div className="ai-content-card-body">
-                                                    <h3>{t("aiContentPage.card1Title")}</h3>
-                                                    <span className="ai-content-tag">{t("aiContentPage.tag")}</span>
-                                                </div>
-                                            </article>
-
-                                            <article className="ai-content-card">
-                                                <div className="ai-content-card-image ai-image-two" aria-hidden="true" />
-                                                <div className="ai-content-card-body">
-                                                    <h3>{t("aiContentPage.card2Title")}</h3>
-                                                    <span className="ai-content-tag">{t("aiContentPage.tag")}</span>
-                                                </div>
-                                            </article>
-                                        </div>
-
-                                        <div className="ai-content-footer">
-                                            <button className="ai-content-seeall" type="button">
-                                                {t("aiContentPage.seeAll")}
-                                            </button>
-                                        </div>
-                                    </section>
-                                </>
-                            ) : step === "verify" ? (
-                                <section className="ai-verify-panel">
-                                    <div className="ai-verify-header">
-                                        <h1>{t("aiVerifyPage.title")}</h1>
-                                        <p>{t("aiVerifyPage.subtitle")}</p>
-                                    </div>
-
-                                    <div className="ai-verify-card">
-                                        <div className="ai-verify-avatar" aria-hidden="true" />
-                                        <div className="ai-verify-body">
-                                            <div className="ai-verify-meta">
-                                                <span className="ai-verify-name">{t("aiVerifyPage.postTitle")}</span>
-                                                <span className="ai-verify-handle">@quesofresco85</span>
-                                                <span className="ai-verify-date">{t("aiVerifyPage.postDate")}</span>
-                                            </div>
-                                            <p className="ai-verify-blurred-text" aria-hidden="true">
-                                                {correctSentence}
-                                            </p>
-                                        </div>
-                                        <div className="ai-verify-stamp">{t("aiVerifyPage.stamp")}</div>
-                                    </div>
-
-                                    <p className="ai-verify-reminder">{t("aiVerifyPage.reminder")}</p>
-
-                                    <div className="ai-verify-actions">
-                                        <button
-                                            className="ai-verify-back"
-                                            type="button"
-                                            onClick={() => setStep("list")}
-                                        >
-                                            {t("aiVerifyPage.back")}
-                                        </button>
-                                        <button
-                                            className="ai-verify-start"
-                                            type="button"
-                                            onClick={() => setStep("video")}
-                                        >
-                                            {t("aiVerifyPage.start")}
-                                        </button>
-                                    </div>
-                                </section>
-                            ) : step === "video" ? (
-                                <section className="ai-video-panel">
-                                    <div className="ai-video-header">
-                                        <h1>{t("aiVideoPage.title")}</h1>
-                                        <p>{t("aiVideoPage.subtitle")}</p>
-                                    </div>
-
-                                    <div className="ai-video-container">
-                                        {/* Video placeholder - será reemplazado con video en el futuro */}
-                                    </div>
-
-                                    <div className="ai-video-actions">
-                                        <button
-                                            className="ai-verify-back"
-                                            type="button"
-                                            onClick={() => setStep("verify")}
-                                        >
-                                            {t("aiVideoPage.back")}
-                                        </button>
-                                        <button
-                                            className="ai-verify-start"
-                                            type="button"
-                                            onClick={() => setStep("brief")}
-                                        >
-                                            {t("aiVideoPage.nextStep")}
-                                        </button>
-                                    </div>
-                                </section>
-                            ) : step === "brief" ? (
-                                <section className="ai-brief-panel">
-                                    <div className="ai-brief-left">
-                                        <div className="ai-brief-header">
-                                            <h1>{t("aiChallengeBriefPage.title")}</h1>
-                                        </div>
-
-                                        <div className="ai-brief-content">
-                                            <p className="ai-brief-system">
-                                                {t("aiChallengeBriefPage.systemMessage").split(/<strong>|<\/strong>/).map((text, i) =>
-                                                    i % 2 === 0 ? text : <strong key={i}>{text}</strong>
-                                                )}
-                                            </p>
-
-                                            <p className="ai-brief-explanation">
-                                                {t("aiChallengeBriefPage.explanation")}
-                                            </p>
-
-                                            <p className="ai-brief-instructions">
-                                                {t("aiChallengeBriefPage.instructions").split(/<strong>|<\/strong>/).map((text, i) =>
-                                                    i % 2 === 0 ? text : <strong key={i}>{text}</strong>
-                                                )}
-                                            </p>
-                                        </div>
-
-                                        <button
-                                            className="ai-brief-button"
-                                            onClick={() => setStep("game")}
-                                        >
-                                            {t("aiChallengeBriefPage.buttonText")}
-                                        </button>
-                                    </div>
-
-                                    <div className="ai-brief-right">
-                                        <div className="ai-brief-prompt-container">
-                                            <div className="ai-brief-badge">
-                                                {t("aiPrompt.suspiciousBadge")}
-                                            </div>
-                                            <div className="ai-brief-prompt-box">
-                                                <p>
-                                                    {gameData.prompt}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            ) : step === "game" ? (
-                                <section className="ai-game-panel">
-                                    <div className="ai-game-header">
-                                        <h1>{t("aiGamePage.title")}</h1>
-                                        <p>{t("aiGamePage.subtitle")}</p>
-                                    </div>
-
-                                    <div className="ai-game-content">
-                                        <div className="ai-game-prompt-container">
-                                            <div className="ai-game-prompt">
-                                                <p className="ai-game-prompt-text">
-                                                    {gameData.prompt}
-                                                </p>
-                                            </div>
-                                            <div className="ai-game-badge">
-                                                <span className="ai-game-badge-text">{t("aiPrompt.suspiciousBadge")}</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="ai-game-words-container">
-                                            <div className={`ai-game-sentence ${isCompleted ? "completed" : ""}`}>
-                                                {isCompleted ? (
-                                                    selectedWords.map((word, idx) => (
-                                                        <div
-                                                            key={idx}
-                                                            className="ai-game-selected-word-group"
-                                                            style={{ "--word-index": idx }}
-                                                        >
-                                                            <span className="ai-game-selected-word">{word}</span>
-                                                            <span className="ai-game-word-percentage">
-                                                                {gameData.words[idx].percentage}
-                                                            </span>
-                                                        </div>
-                                                    ))
-                                                ) : (
-                                                    <>
-                                                        {selectedWords.slice(0, -1).map((word, idx) => (
-                                                            <div key={idx} className="ai-game-selected-word-group">
-                                                                <span className="ai-game-selected-word">{word}</span>
-                                                                <span className="ai-game-word-percentage">
-                                                                    {gameData.words[idx].percentage}
-                                                                </span>
-                                                            </div>
-                                                        ))}
-                                                        <div className="ai-game-active-group">
-                                                            {selectedWords.length > 0 && (
-                                                                <div className="ai-game-selected-word-group">
-                                                                    <span className="ai-game-selected-word">
-                                                                        {selectedWords[selectedWords.length - 1]}
-                                                                    </span>
-                                                                    <span className="ai-game-word-percentage">
-                                                                        {gameData.words[selectedWords.length - 1].percentage}
-                                                                    </span>
-                                                                </div>
-                                                            )}
-                                                            <div className="ai-game-options-column">
-                                                                {optionsByStep[selectedWords.length].map((word) => (
-                                                                    <button
-                                                                        key={`${selectedWords.length}-${word}`}
-                                                                        className={`ai-game-word-button ${
-                                                                            wrongChoice?.step === selectedWords.length &&
-                                                                            wrongChoice?.word === word
-                                                                                ? "wrong-word"
-                                                                                : ""
-                                                                        }`}
-                                                                        onClick={() => handleWordClick(word)}
-                                                                    >
-                                                                        <span className="ai-game-word-text">{word}</span>
-                                                                    </button>
-                                                                ))}
-                                                            </div>
-                                                        </div>
-                                                    </>
-                                                )}
-                                            </div>
-
-                                            {showMatch && (
-                                                <div className="ai-game-match">
-                                                    <p className="ai-game-match-label">COINCIDENCE WITH POST:</p>
-                                                    <article className="ai-game-match-card">
-                                                        <div className="ai-game-match-avatar" aria-hidden="true" />
-                                                        <div className="ai-game-match-content">
-                                                            <div className="ai-game-match-meta">
-                                                                <strong>Critical Thinking 🍅🌶️🥑</strong>
-                                                                <span>@quesofresco85</span>
-                                                                <span>{t("aiVerifyPage.postDate")}</span>
-                                                            </div>
-                                                            <p>{reconstructedSentence}</p>
-                                                            <span className="ai-game-match-tag">POST GENERATED WITH AI</span>
-                                                        </div>
-                                                    </article>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <div className="ai-game-actions">
-                                        {!isCompleted && (
-                                            <button className="ai-verify-back" type="button" onClick={() => setStep("brief")}>
-                                                {t("aiGamePage.back")}
-                                            </button>
-                                        )}
-                                    </div>
-                                </section>
-                            ) : null}
-                        </div>
-                    </div>
-                </main>
-
-                {/* Panel de estadísticas lateral */}
-                <aside className="stats-sidebar">
-                    <StatsPanel />
-                </aside>
-            </div>
-
-            {showCompletionModal && (
-                <div className="challenge-completion-overlay">
-                    <div className="challenge-completion-modal">
-                        <div className="challenge-completion-icon">🎉</div>
-                        <h3 className="challenge-completion-title">{t("aiGamePage.challengeCompleted")}</h3>
-                        <p className="challenge-completion-desc">{t("aiGamePage.challengeCompletedMsg")}</p>
-                        <button className="challenge-completion-close" onClick={handleCompletionClose}>
-                            {t("desktop.window.close")}
-                        </button>
-                    </div>
-                </div>
-            )}
-        </>
+    // Send xAPI statement for token selection
+    sendStatement(
+      XAPI_VERBS.ANSWERED,
+      {
+        id: `${ECHO_ACTIVITIES.PUZZLE_2.id}/token/${currentStep}`,
+        definition: {
+          name: { en: `Select Token ${currentStep + 1}` },
+          type: "http://adlnet.gov/expapi/activities/cmi.interaction",
+          interactionType: "choice",
+          correctResponsesPattern: [gameData.words[currentStep].correct],
+        },
+      },
+      {
+        success: isCorrect,
+        score: {
+          scaled: isCorrect ? 1 : 0,
+          raw: isCorrect ? 1 : 0,
+          min: 0,
+          max: 1,
+        },
+        response: word,
+      },
+      {
+        contextActivities: {
+          parent: [ECHO_ACTIVITIES.PUZZLE_2],
+          grouping: [ECHO_ACTIVITIES.GAME],
+        },
+      },
     );
+
+    if (isCorrect) {
+      setSelectedWords([...selectedWords, word]);
+    } else {
+      setWrongChoice({ step: currentStep, word });
+      setTimeout(() => {
+        setSelectedWords([]);
+        setWrongChoice(null);
+      }, 550);
+    }
+  };
+
+  return (
+    <>
+      <div className="app-container">
+        <Navbar />
+
+        <main className="feed ai-content-feed">
+          <div className="ai-content-page">
+            <div className="ai-content-frame">
+              {step === "list" ? (
+                <>
+                  <div className="ai-content-title">
+                    <h1>{t("aiContentPage.title")}</h1>
+                    <p>{t("aiContentPage.subtitle")}</p>
+                  </div>
+
+                  <section className="ai-content-panel">
+                    {challenge2Completed ? (
+                      <div className="ai-content-alert ai-content-alert--resolved">
+                        <div className="ai-content-alert-left">
+                          <span className="ai-alert-icon ai-alert-icon--ok">
+                            ✓
+                          </span>
+                          <p>{t("aiContentPage.noPendingReview")}</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="ai-content-alert">
+                        <div className="ai-content-alert-left">
+                          <span className="ai-alert-icon">!</span>
+                          <p>
+                            <strong>
+                              {t("aiContentPage.pendingReviewCount", {
+                                count: 1,
+                              })}
+                            </strong>{" "}
+                            {t("aiContentPage.pendingReviewText")}
+                          </p>
+                        </div>
+                        <button
+                          className="ai-content-verify"
+                          type="button"
+                          onClick={() => setStep("verify")}
+                        >
+                          {t("aiContentPage.verifyButton")}
+                        </button>
+                      </div>
+                    )}
+
+                    <div className="ai-content-stats">
+                      <span className="ai-content-check">✓</span>
+                      <p>
+                        <strong>
+                          {t("aiContentPage.statsCount", { count: 24 })}
+                        </strong>{" "}
+                        {t("aiContentPage.statsText")}
+                      </p>
+                    </div>
+
+                    <div className="ai-content-grid">
+                      <article className="ai-content-card">
+                        <div
+                          className="ai-content-card-image ai-image-one"
+                          aria-hidden="true"
+                        />
+                        <div className="ai-content-card-body">
+                          <h3>{t("aiContentPage.card1Title")}</h3>
+                          <span className="ai-content-tag">
+                            {t("aiContentPage.tag")}
+                          </span>
+                        </div>
+                      </article>
+
+                      <article className="ai-content-card">
+                        <div
+                          className="ai-content-card-image ai-image-two"
+                          aria-hidden="true"
+                        />
+                        <div className="ai-content-card-body">
+                          <h3>{t("aiContentPage.card2Title")}</h3>
+                          <span className="ai-content-tag">
+                            {t("aiContentPage.tag")}
+                          </span>
+                        </div>
+                      </article>
+                    </div>
+
+                    <div className="ai-content-footer">
+                      <button className="ai-content-seeall" type="button">
+                        {t("aiContentPage.seeAll")}
+                      </button>
+                    </div>
+                  </section>
+                </>
+              ) : step === "verify" ? (
+                <section className="ai-verify-panel">
+                  <div className="ai-verify-header">
+                    <h1>{t("aiVerifyPage.title")}</h1>
+                    <p>{t("aiVerifyPage.subtitle")}</p>
+                  </div>
+
+                  <div className="ai-verify-card">
+                    <div className="ai-verify-avatar" aria-hidden="true" />
+                    <div className="ai-verify-body">
+                      <div className="ai-verify-meta">
+                        <span className="ai-verify-name">
+                          {t("aiVerifyPage.postTitle")}
+                        </span>
+                        <span className="ai-verify-handle">@quesofresco85</span>
+                        <span className="ai-verify-date">
+                          {t("aiVerifyPage.postDate")}
+                        </span>
+                      </div>
+                      <p className="ai-verify-blurred-text" aria-hidden="true">
+                        {correctSentence}
+                      </p>
+                    </div>
+                    <div className="ai-verify-stamp">
+                      {t("aiVerifyPage.stamp")}
+                    </div>
+                  </div>
+
+                  <p className="ai-verify-reminder">
+                    {t("aiVerifyPage.reminder")}
+                  </p>
+
+                  <div className="ai-verify-actions">
+                    <button
+                      className="ai-verify-back"
+                      type="button"
+                      onClick={() => setStep("list")}
+                    >
+                      {t("aiVerifyPage.back")}
+                    </button>
+                    <button
+                      className="ai-verify-start"
+                      type="button"
+                      onClick={() => setStep("video")}
+                    >
+                      {t("aiVerifyPage.start")}
+                    </button>
+                  </div>
+                </section>
+              ) : step === "video" ? (
+                <section className="ai-video-panel">
+                  <div className="ai-video-header">
+                    <h1>{t("aiVideoPage.title")}</h1>
+                    <p>{t("aiVideoPage.subtitle")}</p>
+                  </div>
+
+                  <div className="ai-video-container">
+                    {/* Video placeholder - será reemplazado con video en el futuro */}
+                  </div>
+
+                  <div className="ai-video-actions">
+                    <button
+                      className="ai-verify-back"
+                      type="button"
+                      onClick={() => setStep("verify")}
+                    >
+                      {t("aiVideoPage.back")}
+                    </button>
+                    <button
+                      className="ai-verify-start"
+                      type="button"
+                      onClick={() => setStep("brief")}
+                    >
+                      {t("aiVideoPage.nextStep")}
+                    </button>
+                  </div>
+                </section>
+              ) : step === "brief" ? (
+                <section className="ai-brief-panel">
+                  <div className="ai-brief-left">
+                    <div className="ai-brief-header">
+                      <h1>{t("aiChallengeBriefPage.title")}</h1>
+                    </div>
+
+                    <div className="ai-brief-content">
+                      <p className="ai-brief-system">
+                        {t("aiChallengeBriefPage.systemMessage")
+                          .split(/<strong>|<\/strong>/)
+                          .map((text, i) =>
+                            i % 2 === 0 ? (
+                              text
+                            ) : (
+                              <strong key={i}>{text}</strong>
+                            ),
+                          )}
+                      </p>
+
+                      <p className="ai-brief-explanation">
+                        {t("aiChallengeBriefPage.explanation")}
+                      </p>
+
+                      <p className="ai-brief-instructions">
+                        {t("aiChallengeBriefPage.instructions")
+                          .split(/<strong>|<\/strong>/)
+                          .map((text, i) =>
+                            i % 2 === 0 ? (
+                              text
+                            ) : (
+                              <strong key={i}>{text}</strong>
+                            ),
+                          )}
+                      </p>
+                    </div>
+                    <div className="ai-game-btn-container">
+                    <button
+                      className="ai-verify-back"
+                      type="button"
+                      onClick={() => setStep("video")}
+                    >
+                      {t("aiVideoPage.back")}
+                    </button>
+                    <button
+                      className="ai-brief-button"
+                      onClick={() => setStep("game")}
+                    >
+                      {t("aiChallengeBriefPage.buttonText")}
+                    </button>
+                    </div>
+                  </div>
+
+                  <div className="ai-brief-right">
+                    <div className="ai-brief-prompt-container">
+                      <div className="ai-brief-badge">
+                        {t("aiPrompt.suspiciousBadge")}
+                      </div>
+                      <div className="ai-brief-prompt-box">
+                        <p>{gameData.prompt}</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              ) : step === "game" ? (
+                <section className="ai-game-panel">
+                  <div className="ai-game-header">
+                    <h1>{t("aiGamePage.title")}</h1>
+                    <p>{t("aiGamePage.subtitle")}</p>
+                  </div>
+
+                  <div className="ai-game-content">
+                    <div className="ai-game-prompt-container">
+                      <div className="ai-game-prompt">
+                        <p className="ai-game-prompt-text">{gameData.prompt}</p>
+                      </div>
+                      <div className="ai-game-badge">
+                        <span className="ai-game-badge-text">
+                          {t("aiPrompt.suspiciousBadge")}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="ai-game-words-container">
+                      <div
+                        className={`ai-game-sentence ${isCompleted ? "completed" : ""}`}
+                      >
+                        {isCompleted ? (
+                          selectedWords.map((word, idx) => (
+                            <div
+                              key={idx}
+                              className="ai-game-selected-word-group"
+                              style={{ "--word-index": idx }}
+                            >
+                              <span className="ai-game-selected-word">
+                                {word}
+                              </span>
+                              <span className="ai-game-word-percentage">
+                                {gameData.words[idx].percentage}
+                              </span>
+                            </div>
+                          ))
+                        ) : (
+                          <>
+                            {selectedWords.slice(0, -1).map((word, idx) => (
+                              <div
+                                key={idx}
+                                className="ai-game-selected-word-group"
+                              >
+                                <span className="ai-game-selected-word">
+                                  {word}
+                                </span>
+                                <span className="ai-game-word-percentage">
+                                  {gameData.words[idx].percentage}
+                                </span>
+                              </div>
+                            ))}
+                            <div className="ai-game-active-group">
+                              {selectedWords.length > 0 && (
+                                <div className="ai-game-selected-word-group">
+                                  <span className="ai-game-selected-word">
+                                    {selectedWords[selectedWords.length - 1]}
+                                  </span>
+                                  <span className="ai-game-word-percentage">
+                                    {
+                                      gameData.words[selectedWords.length - 1]
+                                        .percentage
+                                    }
+                                  </span>
+                                </div>
+                              )}
+                              <div className="ai-game-options-column">
+                                {optionsByStep[selectedWords.length].map(
+                                  (word) => (
+                                    <button
+                                      key={`${selectedWords.length}-${word}`}
+                                      className={`ai-game-word-button ${
+                                        wrongChoice?.step ===
+                                          selectedWords.length &&
+                                        wrongChoice?.word === word
+                                          ? "wrong-word"
+                                          : ""
+                                      }`}
+                                      onClick={() => handleWordClick(word)}
+                                    >
+                                      <span className="ai-game-word-text">
+                                        {word}
+                                      </span>
+                                    </button>
+                                  ),
+                                )}
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
+
+                      {showMatch && (
+                        <div className="ai-game-match">
+                          <p className="ai-game-match-label">
+                            COINCIDENCE WITH POST:
+                          </p>
+                          <article className="ai-game-match-card">
+                            <div
+                              className="ai-game-match-avatar"
+                              aria-hidden="true"
+                            />
+                            <div className="ai-game-match-content">
+                              <div className="ai-game-match-meta">
+                                <strong>Critical Thinking 🍅🌶️🥑</strong>
+                                <span>@quesofresco85</span>
+                                <span>{t("aiVerifyPage.postDate")}</span>
+                              </div>
+                              <p>{reconstructedSentence}</p>
+                              <span className="ai-game-match-tag">
+                                POST GENERATED WITH AI
+                              </span>
+                            </div>
+                          </article>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="ai-game-actions">
+                    {!isCompleted && (
+                      <button
+                        className="ai-verify-back"
+                        type="button"
+                        onClick={() => setStep("brief")}
+                      >
+                        {t("aiGamePage.back")}
+                      </button>
+                    )}
+                  </div>
+                </section>
+              ) : null}
+            </div>
+          </div>
+        </main>
+
+        {/* Panel de estadísticas lateral */}
+        <aside className="stats-sidebar">
+          <StatsPanel />
+        </aside>
+      </div>
+
+      {showCompletionModal && (
+        <div className="challenge-completion-overlay">
+          <div className="challenge-completion-modal">
+            <div className="challenge-completion-icon">🎉</div>
+            <h3 className="challenge-completion-title">
+              {t("aiGamePage.challengeCompleted")}
+            </h3>
+            <p className="challenge-completion-desc">
+              {t("aiGamePage.challengeCompletedMsg")}
+            </p>
+            <button
+              className="challenge-completion-close"
+              onClick={handleCompletionClose}
+            >
+              {t("desktop.window.close")}
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };

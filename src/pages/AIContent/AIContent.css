@@ -327,6 +327,12 @@
     cursor: pointer;
 }
 
+.ai-game-btn-container {
+    display: flex;
+    justify-content: start;
+    gap: 1rem
+}
+
 
 
 @media (max-width: 640px) {

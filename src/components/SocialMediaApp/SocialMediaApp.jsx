@@ -8,6 +8,7 @@ import { useStats } from "../../contexts/StatsProvider";
 import { useUser } from "../../contexts/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider";
+import { assetPath } from "../../utils/assetPath";
 
 /**
  * Componente SocialMediaApp - Envuelve la aplicación de red social en una ventana
@@ -83,9 +84,9 @@ export const SocialMediaApp = ({ mode = "window" }) => {
         <div className="window-titlebar">
           <div className="window-title">
                <img
-          src="/assets/echo-logo.png"
+          src={assetPath("/assets/echo-logo.png")}
           alt="ECHO logo"
-          
+
           onClick={() => navigate("/")}
           className="window-title-logo"
         />
@@ -118,7 +119,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
               <div className="social-login-header">
                 <div className="social-login-brand">
                   <img
-                    src="/assets/echo-logo-bg.png"
+                    src={assetPath("/assets/echo-logo-bg.png")}
                     alt="ECHO"
                     className="social-login-logo"
                   />

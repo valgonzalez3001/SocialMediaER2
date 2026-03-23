@@ -13,6 +13,7 @@ import {
   ECHO_ACTIVITIES,
 } from "../../contexts/XAPIProvider.jsx";
 import aiContent from "./AIContent.json";
+import { assetPath } from "../../utils/assetPath";
 
 export const AIContent = () => {
   const { t } = useTranslation();
@@ -284,7 +285,8 @@ export const AIContent = () => {
                     <div className="ai-content-grid">
                       <article className="ai-content-card">
                         <div
-                          className="ai-content-card-image ai-image-one"
+                          className="ai-content-card-image"
+                          style={{ backgroundImage: `url(${assetPath('/assets/willsmith.png')})` }}
                           aria-hidden="true"
                         />
                         <div className="ai-content-card-body">
@@ -297,7 +299,8 @@ export const AIContent = () => {
 
                       <article className="ai-content-card">
                         <div
-                          className="ai-content-card-image ai-image-two"
+                          className="ai-content-card-image"
+                          style={{ backgroundImage: `url(${assetPath('/assets/madridonfire.jpg')})` }}
                           aria-hidden="true"
                         />
                         <div className="ai-content-card-body">

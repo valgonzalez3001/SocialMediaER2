@@ -5,6 +5,7 @@ import { FiCamera } from "react-icons/fi";
 import React from "react";
 import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider.jsx";
 import { useEffect, useState } from "react";
+import { assetPath } from "../../../../utils/assetPath";
 
 export const EditProfileModal = ({ setIsEditProfile, className }) => {
   const { loggedInUserState, editUser, avatars } = useLoggedInUser();
@@ -63,7 +64,7 @@ export const EditProfileModal = ({ setIsEditProfile, className }) => {
         </div>
 
         <div className="edit-profile-img-container">
-          <img src={formValues?.avatarURL} alt={loggedInUserState?.firstName} />
+          <img src={assetPath(formValues?.avatarURL)} alt={loggedInUserState?.firstName} />
           <label>
             <FiCamera />
             <input onChange={changePictureHandler} type="file" />

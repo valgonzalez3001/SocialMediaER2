@@ -4,6 +4,7 @@ import { useOS } from "../../contexts/OSProvider";
 import { useTranslation } from "react-i18next";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider";
 import { FaTimes, FaMinus, FaFolder, FaFolderOpen, FaLock, FaChevronRight, FaHome, FaArrowLeft } from "react-icons/fa";
+import { assetPath } from "../../utils/assetPath";
 
 const FOLDERS = [
   { id: "documents", labelKey: "filesApp.folders.documents", icon: "folder", items: 0 },
@@ -40,7 +41,7 @@ export const FilesApp = () => {
         {/* Title bar */}
         <div className="files-titlebar">
           <div className="files-window-title">
-            <img src="/assets/folder.png" alt="" className="files-title-icon" />
+            <img src={assetPath("/assets/folder.png")} alt="" className="files-title-icon" />
             <span>{t("filesApp.title")}</span>
           </div>
           <div className="files-window-controls">

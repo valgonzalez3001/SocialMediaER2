@@ -10,6 +10,7 @@ import { useStats } from "../../contexts/StatsProvider.jsx";
 import { useMessages } from "../../contexts/MessagesProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import challengeData from "./AIIncorrectUses.json";
+import { assetPath } from "../../utils/assetPath";
 
 const shuffleArray = (items) => {
     const shuffled = [...items];
@@ -352,7 +353,7 @@ export const AIIncorrectUses = () => {
                                 {challengeCases.map((item) => (
                                     <article key={item.id} className="ai-incorrect-post-card list-item">
                                         <div className="x-avatar">
-                                            <img src={item.post?.image || echoOfficialUser?.avatarURL} alt={item.post.name} />
+                                            <img src={assetPath(item.post?.image || echoOfficialUser?.avatarURL)} alt={item.post.name} />
                                         </div>
                                         <div className="x-post-main">
                                             <div className="ai-incorrect-post-meta">
@@ -363,15 +364,15 @@ export const AIIncorrectUses = () => {
                                             <p className="ai-incorrect-post-text">{item.post.text}</p>
                                             {item.post?.postImage && (
                                                 <div className="ai-incorrect-post-image-wrap">
-                                                    <img className="ai-incorrect-post-image" src={item.post.postImage} alt={item.post.name} />
+                                                    <img className="ai-incorrect-post-image" src={assetPath(item.post.postImage)} alt={item.post.name} />
                                                 </div>
                                             )}
                                             {sentReplies[item.id] && (
                                                 <div className="thread-reply-card">
                                                     <div className="x-avatar reply-avatar">
                                                         <img
-                                                            src={ echoOfficialUser?.avatarURL}
-                                                            alt={ "ECHO"}
+                                                            src={assetPath(echoOfficialUser?.avatarURL)}
+                                                            alt={"ECHO"}
                                                         />
                                                     </div>
                                                     <div className="x-post-main">
@@ -443,7 +444,7 @@ export const AIIncorrectUses = () => {
 
                         <article className="ai-incorrect-post-card x-post modal-top-post">
                             <div className="x-avatar">
-                                <img src={activeCase.post?.image || echoOfficialUser?.avatarURL} alt={activeCase.post.name} />
+                                <img src={assetPath(activeCase.post?.image || echoOfficialUser?.avatarURL)} alt={activeCase.post.name} />
                             </div>
                             <div className="x-post-main">
                                 <div className="ai-incorrect-post-meta">
@@ -454,7 +455,7 @@ export const AIIncorrectUses = () => {
                                 <p className="ai-incorrect-post-text">{activeCase.post.text}</p>
                                 {activeCase.post?.postImage && (
                                     <div className="ai-incorrect-post-image-wrap">
-                                        <img className="ai-incorrect-post-image" src={activeCase.post.postImage} alt={activeCase.post.name} />
+                                        <img className="ai-incorrect-post-image" src={assetPath(activeCase.post.postImage)} alt={activeCase.post.name} />
                                     </div>
                                 )}
                             </div>
@@ -463,7 +464,7 @@ export const AIIncorrectUses = () => {
                         <div className="x-reply-section modal-reply">
                             <div className="x-avatar moderator">
                                 <img
-                                    src={activeCase.officialPost?.image || echoOfficialUser?.avatarURL}
+                                    src={assetPath(activeCase.officialPost?.image || echoOfficialUser?.avatarURL)}
                                     alt={echoOfficialUser?.firstName || "ECHO"}
                                 />
                             </div>

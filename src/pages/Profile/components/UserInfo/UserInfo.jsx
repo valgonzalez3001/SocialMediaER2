@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useUser } from "../../../../contexts/UserProvider.jsx";
 import { getLocalizedContent } from '../../../../utils/i18nHelpers.jsx';
 import { createdOnDate } from '../../../../utils/date.jsx';
+import { assetPath } from "../../../../utils/assetPath";
 
 export const UserInfo = ({ username, showClassificationControls = false, selectedClassification, onClassify, isClassificationLocked = false, canOpenClassificationQuiz = false, onOpenClassificationQuiz }) => {
   const { t, i18n } = useTranslation();
@@ -34,7 +35,7 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
     <div className="user-info-container">
       <div className="profile-header-row">
         <div className="profilepicture-container">
-          <img src={user.avatarURL} alt={user.firstName} />
+          <img src={assetPath(user.avatarURL)} alt={user.firstName} />
         </div>
         {showClassificationControls && !isEchoProfile && (
           <div className="profile-classification-panel--pulse">
@@ -87,7 +88,7 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
           {user.firstName}{user.lastName ? ` ${user.lastName}` : ""}
           {user.verified && (
             <img
-              src="/assets/verified_badge.png"
+              src={assetPath("/assets/verified_badge.png")}
               alt={t('profile.verifiedAccount')}
               className="verified-badge"
               title={t('profile.verifiedAccount')}

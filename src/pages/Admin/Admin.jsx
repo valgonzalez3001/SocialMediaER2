@@ -12,6 +12,7 @@ import { useOS } from "../../contexts/OSProvider.jsx";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
 import { RxInfoCircled } from "../../utils/icons.jsx";
+import { assetPath } from "../../utils/assetPath";
 
 const CLASSIFICATION = {
     YES: 'yes',
@@ -351,7 +352,7 @@ export const Admin = () => {
                                             onClick={() => handleProfileClick(user.username)}
                                             className="suspect-user-img-container"
                                         >
-                                            <img src={user?.avatarURL} alt={user?.firstName} />
+                                            <img src={assetPath(user?.avatarURL)} alt={user?.firstName} />
                                         </div>
                                         <div
                                             className="user-info"
@@ -361,7 +362,7 @@ export const Admin = () => {
                                                 {user?.firstName} {user?.lastName}
                                                 {user?.verified && (
                                                     <img
-                                                        src="/assets/verified_badge.png"
+                                                        src={assetPath("/assets/verified_badge.png")}
                                                         alt={t('profile.verifiedAccount')}
                                                         className="verified-badge"
                                                         title={t('profile.verifiedAccount')}

@@ -6,6 +6,7 @@ import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { usePosts } from "../../contexts/PostsProvider.jsx";
 import { EmojiModal } from "../EmojiModal/EmojiModal";
 import { toast } from "react-hot-toast";
+import { assetPath } from "../../utils/assetPath";
 
 export const EditPostForm = ({
   setIsEditPostClicked,
@@ -30,7 +31,7 @@ export const EditPostForm = ({
       if (file.size < 20 * 1024 * 1024) {
         setPostEditForm((prev) => ({
           ...prev,
-          mediaUrl: URL.createObjectURL(file),
+          mediaUrl: URL.createObjectURL((file)),
           type: file?.type?.startsWith("image/") ? "image" : "video",
         }));
       } else {
@@ -66,7 +67,7 @@ export const EditPostForm = ({
       >
         <div className="img-container">
           <img
-            src={loggedInUserState?.avatarURL}
+            src={assetPath(loggedInUserState?.avatarURL)}
             alt={loggedInUserState?.firstName}
           />
         </div>
@@ -94,7 +95,7 @@ export const EditPostForm = ({
           {postEditForm?.mediaUrl && postEditForm?.type !== "image" && (
             <div className="media-container">
               <video muted loop>
-                <source src={postEditForm?.mediaUrl} />
+                <source src={assetPath(postEditForm?.mediaUrl)} />
               </video>
               <IoMdClose
                 onClick={() => {
@@ -106,7 +107,7 @@ export const EditPostForm = ({
           )}
           {postEditForm?.mediaUrl && postEditForm.type === "image" && (
             <div className="media-container">
-              <img src={postEditForm?.mediaUrl} alt="" />
+              <img src={assetPath(postEditForm?.mediaUrl)} alt="" />
               <IoMdClose
                 onClick={() => {
                   setPostEditForm({ ...postEditForm, mediaUrl: "" });

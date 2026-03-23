@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES, XAPI_EXTENSIONS } from "../../contexts/XAPIProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import statementsData from "../../pages/CommunityNote/CommunityNoteStatements.json";
+import { assetPath } from "../../utils/assetPath";
 
 export const PlayerOnboarding = ({ onComplete }) => {
   const { i18n, t } = useTranslation();
@@ -58,7 +59,7 @@ export const PlayerOnboarding = ({ onComplete }) => {
   const moderatorFormSubmit = t("playerOnboarding.moderatorFormSubmit", { lng: selectedLanguage });
   const appName = t("header.appName", { lng: selectedLanguage });
 
-  const getVideoPath = (introNumber, language) => `/assets/intro${introNumber}_${language}.mp4`;
+  const getVideoPath = (introNumber, language) => assetPath(`/assets/intro${introNumber}_${language}.mp4`);
 
   const checkVideoExists = async (path) => {
     const canUseDom = typeof window !== "undefined" && typeof document !== "undefined";

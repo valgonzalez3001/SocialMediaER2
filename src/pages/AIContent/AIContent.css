@@ -145,13 +145,6 @@
     background-position: center;
 }
 
-.ai-image-one {
-    background-image: url('/assets/willsmith.png');
-}
-
-.ai-image-two {
-    background-image: url('/assets/madridonfire.jpg');
-}
 
 .ai-content-card-body {
     padding: 10px 12px;

@@ -9,6 +9,7 @@ import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { usePosts } from "../../contexts/PostsProvider.jsx";
 import { useStats } from "../../contexts/StatsProvider.jsx";
 import { EmojiModal } from "../EmojiModal/EmojiModal";
+import { assetPath } from "../../utils/assetPath";
 
 
 export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
@@ -81,7 +82,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
           className="img-container"
         >
           <img
-            src={loggedInUserState.avatarURL}
+            src={assetPath(loggedInUserState.avatarURL)}
             alt={loggedInUserState.firstName}
           />
         </div>
@@ -108,7 +109,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
           {postForm?.mediaUrl && postForm.type !== "image" && (
             <div className="media-container">
               <video muted loop>
-                <source src={postForm?.mediaUrl} />
+                <source src={assetPath(postForm?.mediaUrl)} />
               </video>
               <IoMdClose
                 onClick={() => {
@@ -121,7 +122,7 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
 
           {postForm?.mediaUrl && postForm.type === "image" && (
             <div className="media-container">
-              <img src={postForm?.mediaUrl} alt="" />
+              <img src={assetPath(postForm?.mediaUrl)} alt="" />
               <IoMdClose
                 onClick={() => {
                   setPostForm({ ...postForm, mediaUrl: "" });

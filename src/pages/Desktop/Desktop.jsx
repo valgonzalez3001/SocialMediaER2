@@ -13,6 +13,7 @@ import { useStats } from "../../contexts/StatsProvider";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider";
 import { FaChevronUp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { assetPath } from "../../utils/assetPath";
 
 /**
  * Componente Desktop - Pantalla principal del sistema operativo simulado
@@ -273,7 +274,7 @@ export const Desktop = () => {
           >
             <img
               className="launcher-image launcher-image--messages"
-              src="/assets/messages-icon.png"
+              src={assetPath("/assets/messages-icon.png")}
               alt={t("desktop.apps.messages")}
             />
             <span className="launcher-label">
@@ -290,7 +291,7 @@ export const Desktop = () => {
           >
             <img
               className="launcher-image"
-              src="/assets/echo-logo-short-neg.png"
+              src={assetPath("/assets/echo-logo-short-neg.png")}
               alt={t("desktop.apps.social")}
             />
             <span className="launcher-label">
@@ -305,7 +306,7 @@ export const Desktop = () => {
           >
             <img
               className="launcher-image"
-              src="/assets/folder.png"
+              src={assetPath("/assets/folder.png")}
               alt={t("desktop.apps.files")}
             />
             <span className="launcher-label">{t("desktop.apps.files")}</span>
@@ -317,7 +318,7 @@ export const Desktop = () => {
           >
             <img
               className="launcher-image"
-              src="/assets/tips-icon.png"
+              src={assetPath("/assets/tips-icon.png")}
               alt={t("hintsApp.title")}
             />
             <span className="launcher-label">{t("hintsApp.title")}</span>

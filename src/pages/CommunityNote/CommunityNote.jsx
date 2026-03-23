@@ -8,6 +8,7 @@ import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import { IoMdClose } from "../../utils/icons.jsx";
 import statementsData from "./CommunityNoteStatements.json";
+import { assetPath } from "../../utils/assetPath";
 import "./CommunityNote.css";
 
 const toMinutesSecondsLabel = (durationMs) => {
@@ -189,7 +190,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
         className="img-container"
       >
         <img
-          src={loggedInUserState.avatarURL}
+          src={assetPath(loggedInUserState.avatarURL)}
           alt={loggedInUserState.firstName}
         />
       </div>

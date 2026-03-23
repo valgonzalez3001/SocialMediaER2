@@ -15,13 +15,15 @@ import './i18n.jsx';
 import i18n from './i18n.jsx';
 
 // On hard reload/restart, always restore root route instead of keeping current sub-route.
+// Uses BASE_URL to support subdirectory deployments (e.g., /ECHO/)
+const BASE_URL = import.meta.env.BASE_URL || "/";
 const navigationEntry = performance.getEntriesByType("navigation")?.[0];
 const isReloadNavigation =
   navigationEntry?.type === "reload" ||
   (performance.navigation && performance.navigation.type === 1);
 
-if (isReloadNavigation && window.location.pathname !== "/") {
-  window.history.replaceState(null, "", "/");
+if (isReloadNavigation && window.location.pathname !== BASE_URL) {
+  window.history.replaceState(null, "", BASE_URL);
 }
 
 // Reiniciar estado de sesión al cargar la app para empezar siempre desde cero.
@@ -38,7 +40,7 @@ makeServer({ language: initialLanguage });
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <XAPIProvider>
         <UserProvider>
           <LoggedInUserProvider>

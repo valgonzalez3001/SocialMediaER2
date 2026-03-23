@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useOS } from "../../contexts/OSProvider";
+import { assetPath } from "../../utils/assetPath";
 import "./BossNotification.css";
 
 export const BossNotification = ({ visible, onDismiss }) => {
@@ -23,7 +24,7 @@ export const BossNotification = ({ visible, onDismiss }) => {
     <div className={`boss-notification ${visible ? "boss-notification--visible" : ""}`} onClick={handleClick}>
       <img
         className="boss-notification-avatar"
-        src="/assets/messages-icon.png"
+        src={assetPath("/assets/messages-icon.png")}
         alt="Boss"
       />
       <div className="boss-notification-body">

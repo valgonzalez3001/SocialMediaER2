@@ -4,6 +4,7 @@ import React from "react";
 import { useUser } from "../../contexts/UserProvider.jsx";
 import { useNavigate } from "react-router-dom";
 import { useLoggedInUser } from "../../contexts/LoggedInUserProvider.jsx";
+import { assetPath } from "../../utils/assetPath";
 
 export const Discover = () => {
   const { loggedInUserState, followUser } = useLoggedInUser();
@@ -37,7 +38,7 @@ export const Discover = () => {
                   }}
                   className="discover-user-img-container"
                 >
-                  <img src={user?.avatarURL} alt={user.firstName} />
+                  <img src={assetPath(user?.avatarURL)} alt={user.firstName} />
                 </div>
                 <div className="user-name-username-container">
                   <p className="name">

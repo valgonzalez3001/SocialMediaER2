@@ -19,6 +19,7 @@ import { EditPostForm } from "../EditPostForm/EditPostForm";
 import { useUser } from "../../contexts/UserProvider.jsx";
 import { Comment } from "./components/Comment/Comment";
 import { getTimeDifference } from "../../utils/date.jsx";
+import { assetPath } from "../../utils/assetPath";
 
 export const Post = ({ post }) => {
   const { t, i18n } = useTranslation();
@@ -52,7 +53,7 @@ export const Post = ({ post }) => {
     <div className="post-card">
       <div className="profile-picture-container">
         <img
-          src={userDetails?.avatarURL || post?.avatarURL || post?._feedAvatarURL || ""}
+          src={assetPath(userDetails?.avatarURL || post?.avatarURL || post?._feedAvatarURL || "")}
           alt={userDetails?.firstName || getLocalizedContent(post?.firstName, i18n.language)}
         />{" "}
       </div>
@@ -68,7 +69,7 @@ export const Post = ({ post }) => {
               {getLocalizedContent(post?.firstName, i18n.language)} {post?.lastName}
               {userDetails?.verified === true && (
                 <img
-                  src="/assets/verified_badge.png"
+                  src={assetPath("/assets/verified_badge.png")}
                   alt={t('post.verifiedAccount')}
                   className="verified-badge"
                   title={t('post.verifiedAccount')}
@@ -149,11 +150,11 @@ export const Post = ({ post }) => {
         <div className="media">
           {post?.mediaUrl && post.type !== "image" && (
             <video controls autoPlay muted loop>
-              <source src={post?.mediaUrl} />
+              <source src={assetPath(post?.mediaUrl)} />
             </video>
           )}
           {post?.mediaUrl && post?.type === "image" && (
-            <img src={post?.mediaUrl} alt="" />
+            <img src={assetPath(post?.mediaUrl)} alt="" />
           )}
         </div>
 
@@ -213,7 +214,7 @@ export const Post = ({ post }) => {
             <div className="comments-input-section-container">
               <div className="user-profile-img-container">
                 <img
-                  src={loggedInUserState?.avatarURL}
+                  src={assetPath(loggedInUserState?.avatarURL)}
                   alt={loggedInUserState?.firstName}
                 />
               </div>

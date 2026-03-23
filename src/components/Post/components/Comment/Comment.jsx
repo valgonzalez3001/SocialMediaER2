@@ -8,6 +8,7 @@ import { getLocalizedContent } from '../../../../utils/i18nHelpers.jsx';
 import { usePosts } from "../../../../contexts/PostsProvider.jsx";
 import { useLoggedInUser } from "../../../../contexts/LoggedInUserProvider.jsx";
 import { useUser } from "../../../../contexts/UserProvider.jsx";
+import { assetPath } from "../../../../utils/assetPath";
 
 export const Comment = ({ comment, post }) => {
   const { t, i18n } = useTranslation();
@@ -58,7 +59,7 @@ export const Comment = ({ comment, post }) => {
       <div>
         <img
           className="comment-user-image"
-          src={displayAvatar}
+          src={assetPath(displayAvatar)}
           alt={displayName || "User"}
         />
       </div>

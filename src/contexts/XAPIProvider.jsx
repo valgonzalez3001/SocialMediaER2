@@ -4,8 +4,8 @@ const XAPIContext = createContext();
 
 // xAPI LRS configuration from environment variables
 const XAPI_ENDPOINT = import.meta.env.VITE_XAPI_ENDPOINT;
-const XAPI_KEY = import.meta.env.VITE_XAPI_KEY;
-const XAPI_SECRET = import.meta.env.VITE_XAPI_SECRET;
+// Pre-encoded Basic auth token (base64 of key:secret)
+const XAPI_AUTH = import.meta.env.VITE_XAPI_AUTH;
 
 // Base IRIs for ENDGAME project
 const ENDGAME_BASE = "https://endgameproject.github.io/xapi";
@@ -191,10 +191,10 @@ export const XAPIProvider = ({ children }) => {
 
   // Check if xAPI is properly configured
   useEffect(() => {
-    const configured = !!(XAPI_ENDPOINT && XAPI_KEY && XAPI_SECRET);
+    const configured = !!(XAPI_ENDPOINT && XAPI_AUTH);
     setIsConfigured(configured);
     if (!configured && isDev) {
-      console.warn("xAPI is not fully configured. Check VITE_XAPI_ENDPOINT, VITE_XAPI_KEY, and VITE_XAPI_SECRET in .env");
+      console.warn("xAPI is not fully configured. Check VITE_XAPI_ENDPOINT and VITE_XAPI_AUTH in .env");
     }
   }, [isDev]);
 
@@ -333,7 +333,7 @@ export const XAPIProvider = ({ children }) => {
         keepalive: Boolean(options?.keepalive),
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Basic ${btoa(`${XAPI_KEY}:${XAPI_SECRET}`)}`,
+          "Authorization": `Basic ${XAPI_AUTH}`,
           "X-Experience-API-Version": "1.0.3",
         },
         body: JSON.stringify(statement),

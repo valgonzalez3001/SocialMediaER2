@@ -16,8 +16,9 @@ i18n
   .use(LanguageDetector)
   .init({
     debug: true,
+    fallbackLng: 'es', // Set the fallback language to Spanish
     supportedLngs: ['en', 'es', 'sr', 'fi'],
-    fallbackLng: 'en', // Set the fallback language to English
+    // supportedLngs: ['es'],
     resources: {
       en: {
         translation: en

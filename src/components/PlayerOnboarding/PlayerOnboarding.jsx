@@ -7,17 +7,17 @@ import statementsData from "../../pages/CommunityNote/CommunityNoteStatements.js
 
 export const PlayerOnboarding = ({ onComplete }) => {
   const { i18n, t } = useTranslation();
+  
   const { initializeActor, sendStatement } = useXAPI();
   const { startEscapeTimer } = useStats();
   const [step, setStep] = useState("playerForm");
   const [playerName, setPlayerName] = useState("");
   const [playerAge, setPlayerAge] = useState("");
-  const [selectedLanguage, setSelectedLanguage] = useState("es");
+  const [selectedLanguage, setSelectedLanguage] = useState(i18n.language || "en");
   const [errors, setErrors] = useState({});
   const [playerData, setPlayerData] = useState(null);
   const [selectedStatements, setSelectedStatements] = useState([]);
   const [videoAvailability, setVideoAvailability] = useState({ intro1: false, intro2: false });
-
   const tx = (key, options = {}) => t(key, { lng: selectedLanguage, ...options });
 
   const validateForm = () => {
@@ -322,44 +322,44 @@ export const PlayerOnboarding = ({ onComplete }) => {
                 />
                 {errors.age && <span className="onboarding-error">{errors.age}</span>}
               </div>
-
+              {i18n.options.supportedLngs && i18n.options.supportedLngs.length > 0 && (
               <div className="onboarding-field">
                 <label className="onboarding-label">{tx("playerOnboarding.languageLabel")}</label>
                 <div className="language-grid">
-                  <button
+                  {i18n.options.supportedLngs.includes("es") && <button
                     type="button"
                     className={`language-option ${selectedLanguage === "es" ? "selected" : ""}`}
                     onClick={() => setSelectedLanguage("es")}
                   >
                     <img src="https://flagcdn.com/w80/es.png" alt="ES" className="language-flag" />
                     <span className="language-name">Español</span>
-                  </button>
-                  <button
+                  </button>}
+                  {i18n.options.supportedLngs.includes("en") && <button
                     type="button"
                     className={`language-option ${selectedLanguage === "en" ? "selected" : ""}`}
                     onClick={() => setSelectedLanguage("en")}
                   >
                     <img src="https://flagcdn.com/w80/gb.png" alt="GB" className="language-flag" />
                     <span className="language-name">English</span>
-                  </button>
-                  <button
+                  </button>}
+                  {i18n.options.supportedLngs.includes("fi") && <button
                     type="button"
                     className={`language-option ${selectedLanguage === "fi" ? "selected" : ""}`}
                     onClick={() => setSelectedLanguage("fi")}
                   >
                     <img src="https://flagcdn.com/w80/fi.png" alt="FI" className="language-flag" />
                     <span className="language-name">Suomi</span>
-                  </button>
-                  <button
+                  </button>}
+                  {i18n.options.supportedLngs.includes("sr") && <button
                     type="button"
                     className={`language-option ${selectedLanguage === "sr" ? "selected" : ""}`}
                     onClick={() => setSelectedLanguage("sr")}
                   >
                     <img src="https://flagcdn.com/w80/rs.png" alt="RS" className="language-flag" />
                     <span className="language-name">Српски</span>
-                  </button>
+                  </button>}
                 </div>
-              </div>
+              </div>)}
 
               <button type="submit" className="onboarding-submit">
                 {tx("playerOnboarding.submitButton")}

@@ -37,6 +37,7 @@ export const NewPostLauncher = () => {
 
   const isLocked = Boolean(lockMessageKey);
   const shouldShowCommunityNote = challenge3Completed && !challengeFinalCompleted;
+  const shouldPulseNewPost = shouldShowCommunityNote && !isLocked;
 
   const handleButtonClick = (event) => {
     if (!isLocked) {

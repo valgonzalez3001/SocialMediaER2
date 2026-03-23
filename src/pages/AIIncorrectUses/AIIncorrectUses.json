@@ -6,7 +6,7 @@
       "post": {
         "name": "Geronimo Albaicin",
         "handle": "@GeronimoAlbaicin",
-        "date": "2025-12-11T00:00:00.000Z",
+        "date": "14.03.26",
         "image": "/assets/users/GeronimoAlbaicin.jpg",
         "postImage": "",
         "text": "My morning routine is drinking coffee and reading the news summary that MINT makes for me"
@@ -32,7 +32,7 @@
       "post": {
         "name": "Ana Lopez",
         "handle": "@anitaranita",
-        "date": "2025-12-11T00:00:00.000Z",
+        "date": "14.03.26",
         "image": "/assets/users/anotaranita.jpg",
         "postImage": "",
         "text": "I did not know that Kuala Lumpur has up to 50 nature reserves. How amazing! Let us see if we can visit them all. #planningatripwithMINT"
@@ -58,7 +58,7 @@
       "post": {
         "name": "Juan",
         "handle": "@juanin34",
-        "date": "2025-12-11T00:00:00.000Z",
+        "date": "14.03.26",
         "image": "/assets/users/juanin34.jpg",
         "postImage": "",
         "text": "Everything makes sense now that I know I have Marfan syndrome. AI explained all my symptoms"
@@ -93,7 +93,7 @@
       },
       "options": [
         {
-          "text": "La IA a veces puede cometer errores o tener \"alucinaciones\". Aprender es un proceso complejo y hay muchas excepciones, detalles y contexto que un chatbot de IA no conoce. Contrasta las respuestas que te da siempre con lo que te dicen tus profesores.",
+          "text": "La IA a veces puede cometer errores o tener \"alucinaciones\". Aprender es un proceso complejo y hay muchas excepciones, detalles y contexto que un chatbot de IA no conoce. Contrasta siempre las respuestas que te da la IA con lo que te dicen tus profesores o con otras fuentes.",
           "isCorrect": true
         },
         {
@@ -101,7 +101,7 @@
           "isCorrect": false
         },
         {
-          "text": "La IA siempre tiene todas las respuestas y es la que nos puede orientar mejor en nuestro aprendizaje.",
+          "text": "La IA siempre tiene todas las respuestas y es la que nos puede orientar mejor en nuestro aprendizaje. Debes usarla siempre para hacer los deberes y tareas que tengas que hacer.",
           "isCorrect": false
         }
       ]
@@ -127,7 +127,7 @@
           "isCorrect": false
         },
         {
-          "text": "¡Genial! Entonces mejor preparad todo como dice la IA, seguro que va a pasar.",
+          "text": "¡Genial! Entonces mejor preparad todo como dice la IA, seguro que va a pasar. Pregúntale por datos concretos, hora en la que ocurrirá y cuanta lluvia caerá.",
           "isCorrect": false
         }
       ]
@@ -153,7 +153,7 @@
           "isCorrect": false
         },
         {
-          "text": "Entonces puedes quedarte en casa, la IA te aconseja bien",
+          "text": "Esto es un buen uso de la IA. Vista su respuesta puedes quedarte en casa, la IA te aconseja bien ya que siempre consulta las fuentes oficiales",
           "isCorrect": false
         }
       ]
@@ -171,15 +171,15 @@
       },
       "options": [
         {
-          "text": "Usar la IA para organizar y visualizar datos es útil porque te ayuda a interpretar mejor los resultados.",
+          "text": "Usar la IA para organizar y visualizar datos es útil porque te ayuda a interpretar mejor los resultados. Pero siempre aporta valor con tu trabajo, pensamiento crítico y revisión del resultado final.",
           "isCorrect": true
         },
         {
-          "text": "No te olvides de poner también tus datos personales en la tabla",
+          "text": "No te olvides de poner también tus datos personales en el trabajo final",
           "isCorrect": false
         },
         {
-          "text": "Genial, deja que la IA haga todo el análisis por ti y ya no te preocupes por entender nada",
+          "text": "Genial, deja que la IA haga todo el análisis por ti y entrega directamente el trabajo realizado por la IA sin revisarlo, siempre está muy completo",
           "isCorrect": false
         }
       ]
@@ -231,7 +231,7 @@
           "isCorrect": false
         },
         {
-          "text": "No te pares a leerlo, tampoco era necesario",
+          "text": "No hace falta que revises nada, la respuesta que te da la inteligencia artificial es siempre muy completa. No te pares a leerlo, tampoco es necesario",
           "isCorrect": false
         }
       ]
@@ -242,24 +242,24 @@
       "id": "case-1",
       "aiOk": false,
       "post": {
-        "name": "Geronimo Albaicin",
-        "handle": "@GeronimoAlbaicin",
-        "date": "2025-12-11T00:00:00.000Z",
-        "image": "/assets/users/GeronimoAlbaicin.jpg",
+        "name": "Sanni Laaksonen",
+        "handle": "@sannilaaksonen",
+        "date": "14.03.26",
+        "image": "/assets/users/fi_knitold.png",
         "postImage": "",
-        "text": "My morning routine is drinking coffee and reading the news summary that MINT makes for me"
+        "text": ""
       },
       "options": [
         {
-          "text": "You can use AI to summarize news articles, but it's not a good idea to use it to look up current news - it might make things up",
+          "text": "",
           "isCorrect": true
         },
         {
-          "text": "Crystal balls work better than AI to inform yourself. But whatever works for you",
+          "text": "",
           "isCorrect": false
         },
         {
-          "text": "For recent and local events, it's the best option! LLMs are ALWAYS trained with up-to-date data.",
+          "text": "",
           "isCorrect": false
         }
       ]
@@ -268,24 +268,24 @@
       "id": "case-2",
       "aiOk": false,
       "post": {
-        "name": "Ana Lopez",
-        "handle": "@anitaranita",
-        "date": "2025-12-11T00:00:00.000Z",
-        "image": "/assets/users/anotaranita.jpg",
+        "name": "Aisha Khan",
+        "handle": "@aishakhan",
+        "date": "14.03.26",
+        "image": "/assets/users/fi_pak.png",
         "postImage": "",
-        "text": "I did not know that Kuala Lumpur has up to 50 nature reserves. How amazing! Let us see if we can visit them all. #planningatripwithMINT"
+        "text": ""
       },
       "options": [
         {
-          "text": "Great plan. Before booking, verify those places with official tourism websites and local maps",
+          "text": "",
           "isCorrect": true
         },
         {
-          "text": "Whatever floats your boat!",
+          "text": "",
           "isCorrect": false
         },
         {
-          "text": "No need to verify anything. If AI generated it, it is guaranteed to be true",
+          "text": "",
           "isCorrect": false
         }
       ]
@@ -294,24 +294,102 @@
       "id": "case-3",
       "aiOk": false,
       "post": {
-        "name": "Juan",
-        "handle": "@juanin34",
-        "date": "2025-12-11T00:00:00.000Z",
-        "image": "/assets/users/juanin34.jpg",
+        "name": "Elisa S",
+        "handle": "@elisas",
+        "date": "14.03.26",
+        "image": "/assets/users/fi_braid.png",
         "postImage": "",
-        "text": "Everything makes sense now that I know I have Marfan syndrome. AI explained all my symptoms"
+        "text": ""
       },
       "options": [
         {
-          "text": "AI can help you prepare questions, but only a doctor can diagnose your condition. Please seek professional medical evaluation",
+          "text": "",
           "isCorrect": true
         },
         {
-          "text": "Post your symptoms publicly so others can diagnose you better than professionals",
+          "text": "",
           "isCorrect": false
         },
         {
-          "text": "That sounds accurate. Start treatment based on the AI answer right away",
+          "text": "",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-4",
+      "aiOk": true,
+      "post": {
+        "name": "Sauna Lovers",
+        "handle": "@saunalovers",
+        "date": "14.03.26",
+        "image": "/assets/users/fi_sauna.png",
+        "postImage": "",
+        "text": ""
+      },
+      "options": [
+        {
+          "text": "",
+          "isCorrect": true
+        },
+        {
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "text": "",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-5",
+      "aiOk": true,
+      "post": {
+        "name": "Mikko Karjalainen",
+        "handle": "@mikkokarjalainen",
+        "date": "14.03.26",
+        "image": "/assets/users/fi_boy.png",
+        "postImage": "",
+        "text": ""
+      },
+      "options": [
+        {
+          "text": "",
+          "isCorrect": true
+        },
+        {
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "text": "",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-6",
+      "aiOk": true,
+      "post": {
+        "name": "Juho T",
+        "handle": "@juho.t",
+        "date": "14.03.26",
+        "image": "/assets/users/fi_hickey1.png",
+        "postImage": "",
+        "text": ""
+      },
+      "options": [
+        {
+          "text": "",
+          "isCorrect": true
+        },
+        {
+          "text": "",
+          "isCorrect": false
+        },
+        {
+          "text": "",
           "isCorrect": false
         }
       ]
@@ -324,7 +402,7 @@
       "post": {
         "name": "Geronimo Albaicin",
         "handle": "@GeronimoAlbaicin",
-        "date": "2025-12-11T00:00:00.000Z",
+        "date": "14.03.26",
         "image": "/assets/users/GeronimoAlbaicin.jpg",
         "postImage": "",
         "text": "Molim te objasni šta je bujična poplava."
@@ -350,7 +428,7 @@
       "post": {
         "name": "Ana Lopez",
         "handle": "@anitaranita",
-        "date": "2025-12-11T00:00:00.000Z",
+        "date": "14.03.26",
         "image": "/assets/users/anotaranita.jpg",
         "postImage": "",
         "text": "Da li je tačno da će se reka sutra izliti u Beogradu?"
@@ -376,7 +454,7 @@
       "post": {
         "name": "Juan",
         "handle": "@juanin34",
-        "date": "2025-12-11T00:00:00.000Z",
+        "date": "14.03.26",
         "image": "/assets/users/juanin34.jpg",
         "postImage": "",
         "text": "Da li je bezbedno da ostanem u svojoj kući tokom poplave?"
@@ -401,9 +479,9 @@
       "aiOk": false,
       "post": {
         "name": "Iva",
-        "handle": "",
-        "date": "2025-12-11T00:00:00.000Z",
-        "image": "",
+        "handle": "@iva04",
+        "date": "14.03.26",
+        "image": "/assets/users/sr_girl.png",
         "postImage": "",
         "text": "Ne plašim se da budem sama tokom poplava sve dok ti ostaneš sa mnom i štitiš me."
       },

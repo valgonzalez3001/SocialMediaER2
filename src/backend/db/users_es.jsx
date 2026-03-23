@@ -24,7 +24,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: true,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -50,7 +49,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: true,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -76,7 +74,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -102,7 +99,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: true,
@@ -128,7 +124,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: true,
@@ -154,7 +149,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: true,
       recentAccount: false,
       temporalActivity: true,
@@ -180,7 +174,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: false,
       recentAccount: true,
       temporalActivity: false,
@@ -206,7 +199,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: true,
@@ -232,7 +224,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: true,
-      official: false,
       abnormalRatio: true,
       recentAccount: true,
       temporalActivity: true,
@@ -258,7 +249,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -284,7 +274,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -310,7 +299,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -336,7 +324,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -362,7 +349,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -388,7 +374,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -414,7 +399,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,
@@ -440,7 +424,6 @@ export const usersES = [
     },
     puzzle: {
       isBot: false,
-      official: false,
       abnormalRatio: false,
       recentAccount: false,
       temporalActivity: false,

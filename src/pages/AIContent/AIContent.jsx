@@ -550,32 +550,25 @@ export const AIContent = () => {
                         )}
                       </div>
 
-                      {showMatch && (
-                        <div className="ai-game-match">
-                          <p className="ai-game-match-label">
-                            COINCIDENCE WITH POST:
-                          </p>
-                          <article className="ai-game-match-card">
-                            <div
-                              className="ai-game-match-avatar"
-                              aria-hidden="true"
-                            />
-                            <div className="ai-game-match-content">
-                              <div className="ai-game-match-meta">
-                                <strong>Critical Thinking 🍅🌶️🥑</strong>
-                                <span>@quesofresco85</span>
-                                <span>{t("aiVerifyPage.postDate")}</span>
-                              </div>
-                              <p>{reconstructedSentence}</p>
-                              <span className="ai-game-match-tag">
-                                POST GENERATED WITH AI
-                              </span>
-                            </div>
-                          </article>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                                            {showMatch && (
+                                                <div className="ai-game-match">
+                                                    <p className="ai-game-match-label">{t("aiGamePage.coincidenceWithPost")}</p>
+                                                    <article className="ai-game-match-card">
+                                                        <div className="ai-game-match-avatar" aria-hidden="true" />
+                                                        <div className="ai-game-match-content">
+                                                            <div className="ai-game-match-meta">
+                                                                <strong>Critical Thinking 🍅🌶️🥑</strong>
+                                                                <span>@quesofresco85</span>
+                                                                <span>{t("aiVerifyPage.postDate")}</span>
+                                                            </div>
+                                                            <p>{reconstructedSentence}</p>
+                                                            <span className="ai-game-match-tag">{t("aiGamePage.postGeneratedWithAi")}</span>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
 
                   <div className="ai-game-actions">
                     {!isCompleted && (

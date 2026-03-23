@@ -26,10 +26,13 @@ const expectedClassificationFromIsBot = (isBot) => (
   isBot ? CLASSIFICATION.YES : CLASSIFICATION.NO
 );
 
+const requiresQuizSubmission = (classification, user) => (
+  normalizeClassification(classification) === CLASSIFICATION.YES && user?.puzzle?.isBot === true
+);
+
 const isBotClassification = (value) => normalizeClassification(value) === CLASSIFICATION.YES;
 
 const QUIZ_INDICATOR_KEYS = [
-  'official',
   'abnormalRatio',
   'recentAccount',
   'temporalActivity',
@@ -182,7 +185,7 @@ export const Profile = () => {
       return newState;
     });
 
-    const shouldRequireQuiz = normalizedClassification === CLASSIFICATION.YES;
+    const shouldRequireQuiz = requiresQuizSubmission(normalizedClassification, currentUser);
     if (shouldRequireQuiz && !quizSubmittedByUser[currentUser.username]) {
       setShowClassificationQuiz(true);
       return;
@@ -213,7 +216,7 @@ export const Profile = () => {
 
   const currentClassification = normalizeClassification(classifiedUsers[username]);
   const hasClassificationForCurrentProfile = Boolean(currentClassification);
-  const shouldRequireQuizForCurrentProfile = currentClassification === CLASSIFICATION.YES;
+  const shouldRequireQuizForCurrentProfile = requiresQuizSubmission(currentClassification, currentUser);
   const isPuzzleProfile = fromAdmin && isSuspectUser && username !== 'ECHO';
   const isQuizCompletedForCurrentProfile = Boolean(currentUser && quizSubmittedByUser[currentUser.username]);
   const canReturnToGame =
@@ -224,6 +227,7 @@ export const Profile = () => {
     shouldRequireQuizForCurrentProfile &&
     currentUser &&
     !quizSubmittedByUser[currentUser.username];
+  const shouldLockGlobalNavigation = isPuzzleProfile && !canReturnToGame;
 
   useEffect(() => {
     setSelectedQuizOptions([]);
@@ -233,7 +237,9 @@ export const Profile = () => {
     <>
 
       <div className="app-container">
-        <Navbar />
+        <div className={shouldLockGlobalNavigation ? "profile-navbar-locked" : ""}>
+          <Navbar />
+        </div>
 
         <main className="feed profile-feed">
           {fromAdmin && (

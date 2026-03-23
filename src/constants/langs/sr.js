@@ -157,8 +157,7 @@ export const sr = {
       "targetAudience": "Nema jasne ciljne publike: Ponavlja isti sadržaj na više jezika",
       "temporalActivity": "Sumnjiva vremenska aktivnost: Objavljivanje u vrlo redovitim intervalima ili neobičnim vremenima",
       "abnormalRatio": "Nenormalan odnos: Mnogo pratilaca ali malo prave interakcije",
-      "recentAccount": "Skoriji nalog: Nov nalog sa trenutnom visokom aktivnošću",
-      "official": "Službeni račun: Pripada službenoj/javnoj organizaciji"
+      "recentAccount": "Skoriji nalog: Nov nalog sa trenutnom visokom aktivnošću"
     }
   },
   "editPost": {
@@ -352,6 +351,12 @@ export const sr = {
   "survey": {
     "bannerTitle": "Hvala što si igrao/la!",
     "bannerSubtitle": "Dajte nam svoje povratne informacije",
+    "bannerButton": "Ispunite anketu",
+    "requiredHint": "Molim vas odgovorite na sva pitanja",
+    "previous": "Prethodno",
+    "next": "Sljedeći",
+    "submit": "Pošalji",
+    "title": "Podijelite svoje povratne informacije",
     "opinionTitle": "What is your general opinion about the escape room? ",
     "opinionRange": "1 = Very poor, 2 = Poor, 3 = Neutral, 4 = Good, 5 = Very good",
     "rateTitle": "Rate the following statements on a scale of 1-7",
@@ -379,7 +384,7 @@ export const sr = {
       "12": "I enjoy the escape room’s graphics.",
       "13": "I think the escape room is visually appealing."
     },
-    "comments": "Any additional comments or suggestions?"
+    "comments": "Imate li kakvih dodatnih komentara ili prijedloga?"
   },
   "sessionDialog": {
     "title": "Dobrodošli natrag",

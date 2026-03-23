@@ -309,6 +309,7 @@ export const Admin = () => {
             setClassifiedUsers({});
             setQuizSubmittedByUser({});
             // Enviar instrucciones del reto 2
+            sessionStorage.setItem("challenge2InstructionsSent", JSON.stringify(true));
             addMessage({
                 fromKey: "messagesApp.author.name",
                 subjectKey: "messagesApp.messages.challenge2.subject",

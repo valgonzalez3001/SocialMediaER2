@@ -351,6 +351,12 @@ export const en = {
   "survey": {
     "bannerTitle": "Thanks for playing!",
     "bannerSubtitle": "Give us your feedback",
+    "bannerButton": "Take Survey",
+    "requiredHint": "Please answer all questions",
+    "previous": "Previous",
+    "next": "Next",
+    "submit": "Submit",
+    "title": "Share Your Feedback",
     "opinionTitle": "What is your general opinion about the escape room? ",
     "opinionRange": "1 = Very poor, 2 = Poor, 3 = Neutral, 4 = Good, 5 = Very good",
     "rateTitle": "Rate the following statements on a scale of 1-7",

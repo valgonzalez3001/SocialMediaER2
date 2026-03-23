@@ -36,15 +36,6 @@ const getStoredXapiActor = () => {
   }
 };
 
-const isReloadNavigation = () => {
-  try {
-    const navEntry = performance.getEntriesByType("navigation")?.[0];
-    return navEntry?.type === "reload" || (performance.navigation && performance.navigation.type === 1);
-  } catch {
-    return false;
-  }
-};
-
 /**
  * Componente principal de la aplicación
  *
@@ -60,7 +51,6 @@ function App() {
   const { pauseEscapeTimer, resumeEscapeTimer } = useStats();
   const [onboardingComplete, setOnboardingComplete] = useState(false);
   const [showSessionDialog, setShowSessionDialog] = useState(false);
-  const leaveStatementSentRef = useRef(false);
   const sessionDialogInitRef = useRef(false);
 
   const sendWithFallbackActor = useCallback((verb, object, result = null, context = null, options = null) => {
@@ -74,38 +64,12 @@ function App() {
     sessionDialogInitRef.current = true;
 
     if (hasExistingSession()) {
-      // Recovery path: if reload happened and beforeunload delivery failed,
-      // emit LEFT on next mount so analytics still capture the leave event.
-      if (isReloadNavigation()) {
-        sendWithFallbackActor(XAPI_VERBS.LEFT, ECHO_ACTIVITIES.GAME);
-      }
+      // Cuando aparece el diálogo de sesión previa, registramos salida del juego.
+      sendWithFallbackActor(XAPI_VERBS.EXITED_ADL, ECHO_ACTIVITIES.GAME);
       pauseEscapeTimer();
       setShowSessionDialog(true);
     }
   }, [pauseEscapeTimer, sendWithFallbackActor]);
-
-  // Send "left" statement when leaving the page
-  useEffect(() => {
-    const handlePageLeave = () => {
-      if (leaveStatementSentRef.current) return;
-      leaveStatementSentRef.current = true;
-      sendWithFallbackActor(
-        XAPI_VERBS.LEFT,
-        ECHO_ACTIVITIES.GAME,
-        null,
-        null,
-        { keepalive: true }
-      );
-    };
-
-    window.addEventListener('beforeunload', handlePageLeave);
-    window.addEventListener('pagehide', handlePageLeave);
-
-    return () => {
-      window.removeEventListener('beforeunload', handlePageLeave);
-      window.removeEventListener('pagehide', handlePageLeave);
-    };
-  }, [sendWithFallbackActor]);
 
   const handleResume = () => {
     resumeEscapeTimer();
@@ -116,26 +80,7 @@ function App() {
   };
 
   const handleStartOver = async () => {
-    // Ensure a single "left" statement is emitted before restarting.
-    if (!leaveStatementSentRef.current) {
-      leaveStatementSentRef.current = true;
-      await sendWithFallbackActor(
-        XAPI_VERBS.LEFT,
-        ECHO_ACTIVITIES.GAME,
-        null,
-        null,
-        { keepalive: true }
-      );
-    }
-
-    // Send "exited" statement before clearing.
-    await sendWithFallbackActor(
-      XAPI_VERBS.EXITED_ADL,
-      ECHO_ACTIVITIES.GAME,
-      null,
-      null,
-      { keepalive: true }
-    );
+    await sendWithFallbackActor(XAPI_VERBS.EXITED_ADL, ECHO_ACTIVITIES.GAME);
 
     // Give the browser a short window to flush keepalive requests before reload.
     await new Promise((resolve) => setTimeout(resolve, 150));

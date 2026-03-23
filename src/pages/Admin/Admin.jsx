@@ -371,7 +371,7 @@ export const Admin = () => {
                                             <p className="username">@{user?.username}</p>
                                         </div>
                                         {isCorrectClassification(user) && (
-                                            <div className="classification-status" title={t('admin.classificationCorrect')}>
+                                            <div className="classification-status" title={t('profile.classificationCorrectHuman')}>
                                                 <span aria-hidden="true">✓</span>
                                             </div>
                                         )}

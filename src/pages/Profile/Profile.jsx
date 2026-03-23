@@ -30,8 +30,6 @@ const requiresQuizSubmission = (classification, user) => (
   normalizeClassification(classification) === CLASSIFICATION.YES && user?.puzzle?.isBot === true
 );
 
-const isBotClassification = (value) => normalizeClassification(value) === CLASSIFICATION.YES;
-
 const QUIZ_INDICATOR_KEYS = [
   'abnormalRatio',
   'recentAccount',
@@ -39,16 +37,6 @@ const QUIZ_INDICATOR_KEYS = [
   'targetAudience',
   'emotions',
 ];
-
-const normalizeBooleanFromSpreadsheet = (value) => {
-  if (typeof value === 'boolean') return value;
-  if (typeof value === 'number') return value === 1;
-
-  const normalized = String(value ?? '').trim().toLowerCase();
-  if (!normalized) return false;
-
-  return ['true', '1', 'x', 'yes', 'si', 'da'].includes(normalized);
-};
 
 export const Profile = () => {
   const { t } = useTranslation();
@@ -75,7 +63,7 @@ export const Profile = () => {
       Object.entries(parsed).map(([uname, classification]) => [uname, normalizeClassification(classification)])
     );
   });
-  const { sendStatement } = useXAPI();
+  const { sendStatement, trackQuizAnswered } = useXAPI();
   const lookedAtSentRef = useRef(new Set());
   const { userState } = useUser();
 
@@ -152,7 +140,7 @@ export const Profile = () => {
     const isCorrect = normalizedClassification === expectedClassification;
 
     sendStatement(
-      XAPI_VERBS.ANSWERED,
+      XAPI_VERBS.ATTEMPTED,
       {
         id: `${ECHO_ACTIVITIES.PUZZLE_1.id}/account/${currentUser?.username}`,
         definition: {
@@ -194,17 +182,28 @@ export const Profile = () => {
     setShowClassificationQuiz(false);
   };
 
-  const toggleQuizOption = (optionIndex) => {
+  const toggleQuizOption = (optionKey) => {
     setSelectedQuizOptions((prev) => {
-      if (prev.includes(optionIndex)) {
-        return prev.filter((id) => id !== optionIndex);
+      if (prev.includes(optionKey)) {
+        return prev.filter((id) => id !== optionKey);
       }
-      return [...prev, optionIndex];
+      return [...prev, optionKey];
     });
   };
 
   const handleSubmitQuiz = () => {
     if (!currentUser) return;
+
+    // Obtener los indicadores seleccionados por el usuario (convertir índices a nombres)
+    const selectedIndicators = selectedQuizOptions.filter(Boolean);
+
+    // Obtener los indicadores correctos (los que son true en puzzle)
+    const correctIndicators = QUIZ_INDICATOR_KEYS.filter(
+      key => currentUser?.puzzle?.[key] === true
+    );
+
+    // Enviar statement xAPI con el verbo "answered" al completar el test
+    trackQuizAnswered(currentUser.username, selectedIndicators, correctIndicators);
 
     setQuizSubmittedByUser((prev) => {
       const newState = { ...prev, [currentUser.username]: true };
@@ -216,12 +215,20 @@ export const Profile = () => {
 
   const currentClassification = normalizeClassification(classifiedUsers[username]);
   const hasClassificationForCurrentProfile = Boolean(currentClassification);
+  const expectedClassificationForCurrentProfile = expectedClassificationFromIsBot(currentUser?.puzzle?.isBot);
+  const isClassificationCorrectForCurrentProfile =
+    Boolean(currentUser) &&
+    hasClassificationForCurrentProfile &&
+    currentClassification === expectedClassificationForCurrentProfile;
   const shouldRequireQuizForCurrentProfile = requiresQuizSubmission(currentClassification, currentUser);
   const isPuzzleProfile = fromAdmin && isSuspectUser && username !== 'ECHO';
   const isQuizCompletedForCurrentProfile = Boolean(currentUser && quizSubmittedByUser[currentUser.username]);
+  const isCurrentProfileResolved =
+    isClassificationCorrectForCurrentProfile &&
+    (!shouldRequireQuizForCurrentProfile || isQuizCompletedForCurrentProfile);
   const canReturnToGame =
     !isPuzzleProfile ||
-    (hasClassificationForCurrentProfile && (!shouldRequireQuizForCurrentProfile || isQuizCompletedForCurrentProfile));
+    isCurrentProfileResolved;
 
   const canOpenQuiz =
     shouldRequireQuizForCurrentProfile &&

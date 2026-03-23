@@ -252,6 +252,19 @@
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
+.language-option:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(0.35);
+  transform: none;
+}
+
+.language-option:disabled:hover {
+  background: rgba(20, 10, 40, 0.6);
+  border-color: rgba(138, 92, 246, 0.3);
+  transform: none;
+}
+
 .language-flag {
   width: 48px;
   height: 36px;

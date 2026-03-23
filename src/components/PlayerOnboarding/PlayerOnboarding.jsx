@@ -337,7 +337,9 @@ export const PlayerOnboarding = ({ onComplete }) => {
                   <button
                     type="button"
                     className={`language-option ${selectedLanguage === "en" ? "selected" : ""}`}
+                    disabled
                     onClick={() => setSelectedLanguage("en")}
+                    title="Temporalmente deshabilitado"
                   >
                     <img src="https://flagcdn.com/w80/gb.png" alt="GB" className="language-flag" />
                     <span className="language-name">English</span>
@@ -345,7 +347,9 @@ export const PlayerOnboarding = ({ onComplete }) => {
                   <button
                     type="button"
                     className={`language-option ${selectedLanguage === "fi" ? "selected" : ""}`}
+                    disabled
                     onClick={() => setSelectedLanguage("fi")}
+                    title="Temporalmente deshabilitado"
                   >
                     <img src="https://flagcdn.com/w80/fi.png" alt="FI" className="language-flag" />
                     <span className="language-name">Suomi</span>
@@ -353,7 +357,9 @@ export const PlayerOnboarding = ({ onComplete }) => {
                   <button
                     type="button"
                     className={`language-option ${selectedLanguage === "sr" ? "selected" : ""}`}
+                    disabled
                     onClick={() => setSelectedLanguage("sr")}
+                    title="Temporalmente deshabilitado"
                   >
                     <img src="https://flagcdn.com/w80/rs.png" alt="RS" className="language-flag" />
                     <span className="language-name">Српски</span>

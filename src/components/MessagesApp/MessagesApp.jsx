@@ -27,7 +27,11 @@ export const MessagesApp = () => {
   const sortedMessages = useMemo(
     () =>
       [...messages].sort(
-        (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+        (a, b) => {
+          const timeDiff = new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
+          if (timeDiff !== 0) return timeDiff;
+          return b.id - a.id;
+        }
       ),
     [messages]
   );
@@ -41,7 +45,7 @@ export const MessagesApp = () => {
   useEffect(() => {
     if (!chatThreadRef.current) return;
     chatThreadRef.current.scrollTo({
-      top: chatThreadRef.current.scrollHeight,
+      top: 0,
       behavior: "smooth",
     });
   }, [sortedMessages.length]);

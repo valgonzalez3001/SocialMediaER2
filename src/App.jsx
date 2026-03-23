@@ -36,6 +36,15 @@ const getStoredXapiActor = () => {
   }
 };
 
+const isReloadNavigation = () => {
+  try {
+    const navEntry = performance.getEntriesByType("navigation")?.[0];
+    return navEntry?.type === "reload" || (performance.navigation && performance.navigation.type === 1);
+  } catch {
+    return false;
+  }
+};
+
 /**
  * Componente principal de la aplicación
  *
@@ -65,10 +74,15 @@ function App() {
     sessionDialogInitRef.current = true;
 
     if (hasExistingSession()) {
+      // Recovery path: if reload happened and beforeunload delivery failed,
+      // emit LEFT on next mount so analytics still capture the leave event.
+      if (isReloadNavigation()) {
+        sendWithFallbackActor(XAPI_VERBS.LEFT, ECHO_ACTIVITIES.GAME);
+      }
       pauseEscapeTimer();
       setShowSessionDialog(true);
     }
-  }, [pauseEscapeTimer]);
+  }, [pauseEscapeTimer, sendWithFallbackActor]);
 
   // Send "left" statement when leaving the page
   useEffect(() => {
@@ -101,11 +115,11 @@ function App() {
     setOnboardingComplete(true);
   };
 
-  const handleStartOver = () => {
+  const handleStartOver = async () => {
     // Ensure a single "left" statement is emitted before restarting.
     if (!leaveStatementSentRef.current) {
       leaveStatementSentRef.current = true;
-      sendWithFallbackActor(
+      await sendWithFallbackActor(
         XAPI_VERBS.LEFT,
         ECHO_ACTIVITIES.GAME,
         null,
@@ -115,13 +129,17 @@ function App() {
     }
 
     // Send "exited" statement before clearing.
-    sendWithFallbackActor(
+    await sendWithFallbackActor(
       XAPI_VERBS.EXITED_ADL,
       ECHO_ACTIVITIES.GAME,
       null,
       null,
       { keepalive: true }
     );
+
+    // Give the browser a short window to flush keepalive requests before reload.
+    await new Promise((resolve) => setTimeout(resolve, 150));
+
     sessionStorage.clear();
     // Reload to reset all provider states
     window.location.reload();

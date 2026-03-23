@@ -250,6 +250,8 @@ export const XAPIProvider = ({ children }) => {
   // actorOverride can be passed when calling immediately after initializeActor (before state updates)
   const sendStatement = useCallback(async (verb, object, result = null, context = null, actorOverride = null, options = null) => {
     const currentActor = actorOverride || actor;
+    let dedupKey = null;
+    let dedupStamp = null;
 
     // Early return without interrupting the game
     if (!isConfigured) {
@@ -265,7 +267,7 @@ export const XAPIProvider = ({ children }) => {
     // Transport-level dedup for rapid duplicate lifecycle signals.
     // beforeunload/pagehide (and occasional double handlers) can fire almost simultaneously.
     if (verb?.id === XAPI_VERBS.LEFT.id || verb?.id === XAPI_VERBS.RESUMED.id) {
-      const dedupKey = `xapi:dedup:${verb.id}`;
+      dedupKey = `xapi:dedup:${verb.id}`;
       const now = Date.now();
       const lastRaw = sessionStorage.getItem(dedupKey);
       const lastTs = Number(lastRaw);
@@ -275,7 +277,8 @@ export const XAPIProvider = ({ children }) => {
         if (isDev) console.warn(`[xAPI] Deduped statement: ${verb?.display?.en || verb?.id}`);
         return null;
       }
-      sessionStorage.setItem(dedupKey, String(now));
+      dedupStamp = String(now);
+      sessionStorage.setItem(dedupKey, dedupStamp);
     }
 
     // Build the statement
@@ -340,6 +343,9 @@ export const XAPIProvider = ({ children }) => {
       if (isDev) console.log("[xAPI] Statement sent successfully:", statementId);
       return statementId;
     } catch (error) {
+      if (dedupKey && dedupStamp && sessionStorage.getItem(dedupKey) === dedupStamp) {
+        sessionStorage.removeItem(dedupKey);
+      }
       // Log error only in dev mode, never interrupt the game
       if (isDev) console.error("[xAPI] Failed to send statement:", error.message);
       return null;

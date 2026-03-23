@@ -10,6 +10,13 @@ import { IoMdClose } from "../../utils/icons.jsx";
 import statementsData from "./CommunityNoteStatements.json";
 import "./CommunityNote.css";
 
+const toMinutesSecondsLabel = (durationMs) => {
+  const totalSeconds = Math.max(0, Math.round(durationMs / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, "0")}min${String(seconds).padStart(2, "0")}seg`;
+};
+
 export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-content" }) => {
   const { t } = useTranslation();
   const currentLang = t("langKey");
@@ -143,11 +150,33 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
       const completedResult4 = { completion: true };
       if (startRaw4 && Number.isFinite(Number(startRaw4))) {
         const durationMs4 = Date.now() - Number(startRaw4);
-        completedResult4.duration = `PT${Math.max(0, Math.round(durationMs4 / 1000))}S`;
+        completedResult4.duration = toMinutesSecondsLabel(durationMs4);
         completedResult4.extensions = { "https://endgameproject.github.io/xapi/ext/durationMs": durationMs4 };
       }
       sessionStorage.removeItem('echo:challengeStart:4');
       sendStatement(XAPI_VERBS.COMPLETED, ECHO_ACTIVITIES.FINAL, completedResult4, context4);
+
+      // Send COMPLETED statement for the entire ECHO GAME with total duration
+      const escapeTimerStartedAt = sessionStorage.getItem('escapeTimerStartedAt');
+      const gameCompletedResult = { 
+        completion: true,
+        success: true,
+      };
+      if (escapeTimerStartedAt && Number.isFinite(Number(escapeTimerStartedAt))) {
+        const totalDurationMs = Date.now() - Number(escapeTimerStartedAt);
+        gameCompletedResult.duration = toMinutesSecondsLabel(totalDurationMs);
+        gameCompletedResult.extensions = { "https://endgameproject.github.io/xapi/ext/durationMs": totalDurationMs };
+      }
+      sendStatement(
+        XAPI_VERBS.COMPLETED,
+        ECHO_ACTIVITIES.GAME,
+        gameCompletedResult,
+        {
+          contextActivities: {
+            grouping: [ECHO_ACTIVITIES.GAME],
+          },
+        }
+      );
     }
     setIsCreateNewPostClicked && setIsCreateNewPostClicked(false);
     navigate(`/profile/${loggedInUserState?.username || "Katherine"}`);

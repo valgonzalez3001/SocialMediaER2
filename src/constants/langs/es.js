@@ -61,7 +61,7 @@ export const es = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Usuarios sospechosos detectados en ECHO",
-        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\n📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta parece un bot?\n3. Si consideras que es un bot, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta bot que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
+        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\n Usa las credenciales: Usuario: echo. Contraseña: MintAI_mod\n\n 📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta parece un bot?\n3. Si consideras que es un bot, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta bot que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
       },
       "challenge2": {
         "subject": "🤖 Posibles publicaciones generadas por IA detectadas",

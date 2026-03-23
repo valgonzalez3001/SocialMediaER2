@@ -61,7 +61,7 @@ export const sr = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Sumnjivi korisnici otkriveni na mreži ECHO",
-        "content": "Moderatore,\n\nMreža ECHO je otkrila više sumnjivih korisnika koji bi mogli biti botovi koji šire dezinformacije.\n\n📌 Istraži levu bočnu traku društvene mreže i klikni na \"Sumnjivi nalozi\" da započneš analizu. Za svaki nalog koji pregledaš, potrebno je da:\n\n1. Pregledaš profil\n2. Odlučiš: Da li ovaj nalog deluje kao bot?\n3. Ako smatraš da jeste bot, objasni zašto na osnovu indikatora\n\n🔍 Pre nego što počneš, pogledaj indikatore bot naloga koji se nalaze u panelu Sumnjivi nalozi. Oni će ti pomoći da prepoznaš sumnjive obrasce.\n\nZaštiti ECHO zajednicu tako što ćeš tačno identifikovati zlonamerne naloge!"
+        "content": "Moderatore,\n\nMreža ECHO je otkrila više sumnjivih korisnika koji bi mogli biti botovi koji šire dezinformacije.\n\n Koristi sledeće podatke: Korisničko ime: echo. Lozinka: MintAI_mod\n\n📌 Istraži levu bočnu traku društvene mreže i klikni na \"Sumnjivi nalozi\" da započneš analizu. Za svaki nalog koji pregledaš, potrebno je da:\n\n1. Pregledaš profil\n2. Odlučiš: Da li ovaj nalog deluje kao bot?\n3. Ako smatraš da jeste bot, objasni zašto na osnovu indikatora\n\n🔍 Pre nego što počneš, pogledaj indikatore bot naloga koji se nalaze u panelu Sumnjivi nalozi. Oni će ti pomoći da prepoznaš sumnjive obrasce.\n\nZaštiti ECHO zajednicu tako što ćeš tačno identifikovati zlonamerne naloge!"
       },
       "challenge2": {
         "subject": "🤖 Moguće objave generisane veštačkom inteligencijom",

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "./App.css";
 import { Desktop } from "./pages/Desktop/Desktop";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop.jsx";
@@ -6,18 +6,33 @@ import { Toaster } from "react-hot-toast";
 import { PlayerOnboarding } from "./components/PlayerOnboarding/PlayerOnboarding";
 import { useTranslation } from "react-i18next";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "./contexts/XAPIProvider";
+import { useStats } from "./contexts/StatsProvider";
 
 /**
  * Check if there's an existing session with meaningful progress
+ * If survey is completed, the game is finished, so no session to resume
  */
 const hasExistingSession = () => {
   try {
+    // If survey is completed, game is over - no session to resume
+    const surveyCompleted = sessionStorage.getItem('surveyCompleted') === 'true';
+    if (surveyCompleted) return false;
+
     const playerData = sessionStorage.getItem('playerData');
     if (!playerData) return false;
     const parsed = JSON.parse(playerData);
     return parsed.onboardingCompleted === true;
   } catch {
     return false;
+  }
+};
+
+const getStoredXapiActor = () => {
+  try {
+    const raw = sessionStorage.getItem("xapiActor");
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
   }
 };
 
@@ -33,23 +48,36 @@ const hasExistingSession = () => {
 function App() {
   const { t } = useTranslation();
   const { sendStatement } = useXAPI();
+  const { pauseEscapeTimer, resumeEscapeTimer } = useStats();
   const [onboardingComplete, setOnboardingComplete] = useState(false);
   const [showSessionDialog, setShowSessionDialog] = useState(false);
+  const leaveStatementSentRef = useRef(false);
+  const sessionDialogInitRef = useRef(false);
+
+  const sendWithFallbackActor = useCallback((verb, object, result = null, context = null, options = null) => {
+    const fallbackActor = getStoredXapiActor();
+    return sendStatement(verb, object, result, context, fallbackActor, options);
+  }, [sendStatement]);
 
   // Check for existing session on mount
   useEffect(() => {
+    if (sessionDialogInitRef.current) return;
+    sessionDialogInitRef.current = true;
+
     if (hasExistingSession()) {
+      pauseEscapeTimer();
       setShowSessionDialog(true);
     }
-  }, []);
+  }, [pauseEscapeTimer]);
 
   // Send "left" statement when leaving the page
   useEffect(() => {
     const handlePageLeave = () => {
-      sendStatement(
+      if (leaveStatementSentRef.current) return;
+      leaveStatementSentRef.current = true;
+      sendWithFallbackActor(
         XAPI_VERBS.LEFT,
         ECHO_ACTIVITIES.GAME,
-        null,
         null,
         null,
         { keepalive: true }
@@ -63,21 +91,33 @@ function App() {
       window.removeEventListener('beforeunload', handlePageLeave);
       window.removeEventListener('pagehide', handlePageLeave);
     };
-  }, [sendStatement]);
+  }, [sendWithFallbackActor]);
 
   const handleResume = () => {
+    resumeEscapeTimer();
     // Send "resumed" statement
-    sendStatement(XAPI_VERBS.RESUMED, ECHO_ACTIVITIES.GAME);
+    sendWithFallbackActor(XAPI_VERBS.RESUMED, ECHO_ACTIVITIES.GAME);
     setShowSessionDialog(false);
     setOnboardingComplete(true);
   };
 
   const handleStartOver = () => {
-    // Send "exited" statement before clearing
-    sendStatement(
+    // Ensure a single "left" statement is emitted before restarting.
+    if (!leaveStatementSentRef.current) {
+      leaveStatementSentRef.current = true;
+      sendWithFallbackActor(
+        XAPI_VERBS.LEFT,
+        ECHO_ACTIVITIES.GAME,
+        null,
+        null,
+        { keepalive: true }
+      );
+    }
+
+    // Send "exited" statement before clearing.
+    sendWithFallbackActor(
       XAPI_VERBS.EXITED_ADL,
       ECHO_ACTIVITIES.GAME,
-      null,
       null,
       null,
       { keepalive: true }

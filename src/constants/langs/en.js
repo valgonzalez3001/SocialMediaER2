@@ -61,7 +61,7 @@ export const en = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Suspicious users detected on ECHO",
-        "content": "Moderator,\n\nThe ECHO network has detected several suspicious users who may be bots spreading misinformation.\n\n📌 Explore the social network’s left sidebar and click on \"Suspicious Accounts\" to begin the analysis. For each account you review, you must:\n\n1. Examine the profile\n2. Decide: Does this account seem like a bot?\n3. If you think it is a bot, explain why based on the indicators\n\n🔍 Before you begin, review the bot account indicators found in the Suspicious Accounts panel. These will help you identify suspicious patterns.\n\nProtect the ECHO community by correctly identifying malicious accounts!"
+        "content": "Moderator,\n\nThe ECHO network has detected several suspicious users who may be bots spreading misinformation.\n\n Use the credentials: Username: echo. Password: MintAI_mod\n\n 📌 Explore the social network’s left sidebar and click on \"Suspicious Accounts\" to begin the analysis. For each account you review, you must:\n\n1. Examine the profile\n2. Decide: Does this account seem like a bot?\n3. If you think it is a bot, explain why based on the indicators\n\n🔍 Before you begin, review the bot account indicators found in the Suspicious Accounts panel. These will help you identify suspicious patterns.\n\nProtect the ECHO community by correctly identifying malicious accounts!"
       },
       "challenge2": {
         "subject": "🤖 Possible AI-generated posts detected",

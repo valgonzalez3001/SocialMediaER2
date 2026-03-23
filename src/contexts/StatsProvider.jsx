@@ -6,9 +6,16 @@ const ESCAPE_TIMER_FLASH_INTERVAL_MS = 5 * 60 * 1000;
 const ESCAPE_TIMER_CRITICAL_MS = 5 * 60 * 1000;
 const ESCAPE_TIMER_CRITICAL_FLASH_INTERVAL_MS = 60 * 1000;
 const ESCAPE_OUTCOME_KEY = "echo:escapeOutcome";
+const ESCAPE_TIMER_PAUSED_AT_KEY = "escapeTimerPausedAt";
 
 const getStoredTimerStart = () => {
   const raw = sessionStorage.getItem("escapeTimerStartedAt");
+  const parsed = Number(raw);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+};
+
+const getStoredTimerPausedAt = () => {
+  const raw = sessionStorage.getItem(ESCAPE_TIMER_PAUSED_AT_KEY);
   const parsed = Number(raw);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
 };
@@ -104,10 +111,13 @@ export const StatsProvider = ({ children }) => {
   });
 
   const [escapeTimerStartedAt, setEscapeTimerStartedAt] = useState(() => getStoredTimerStart());
+  const [escapeTimerPausedAt, setEscapeTimerPausedAt] = useState(() => getStoredTimerPausedAt());
   const [escapeTimerRemainingMs, setEscapeTimerRemainingMs] = useState(() => {
     const startedAt = getStoredTimerStart();
+    const pausedAt = getStoredTimerPausedAt();
     if (!startedAt) return ESCAPE_TIMER_DURATION_MS;
-    return Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - startedAt));
+    const referenceNow = pausedAt || Date.now();
+    return Math.max(0, ESCAPE_TIMER_DURATION_MS - (referenceNow - startedAt));
   });
   const [escapeTimerFlashTick, setEscapeTimerFlashTick] = useState(0);
   const previousRemainingMsRef = useRef(escapeTimerRemainingMs);
@@ -248,17 +258,40 @@ export const StatsProvider = ({ children }) => {
 
     const startedAt = Date.now();
     sessionStorage.removeItem(ESCAPE_OUTCOME_KEY);
+    sessionStorage.removeItem(ESCAPE_TIMER_PAUSED_AT_KEY);
     sessionStorage.setItem("escapeTimerStartedAt", String(startedAt));
     setEscapeTimerStartedAt(startedAt);
+    setEscapeTimerPausedAt(null);
     setEscapeTimerRemainingMs(ESCAPE_TIMER_DURATION_MS);
     previousRemainingMsRef.current = ESCAPE_TIMER_DURATION_MS;
+  };
+
+  const pauseEscapeTimer = () => {
+    if (!escapeTimerStartedAt || challengeFinalCompleted || escapeTimerPausedAt) return;
+    const pausedAt = Date.now();
+    sessionStorage.setItem(ESCAPE_TIMER_PAUSED_AT_KEY, String(pausedAt));
+    setEscapeTimerPausedAt(pausedAt);
+  };
+
+  const resumeEscapeTimer = () => {
+    if (!escapeTimerStartedAt || !escapeTimerPausedAt) return;
+
+    const pausedDuration = Math.max(0, Date.now() - escapeTimerPausedAt);
+    const adjustedStartedAt = escapeTimerStartedAt + pausedDuration;
+
+    sessionStorage.setItem("escapeTimerStartedAt", String(adjustedStartedAt));
+    sessionStorage.removeItem(ESCAPE_TIMER_PAUSED_AT_KEY);
+
+    setEscapeTimerStartedAt(adjustedStartedAt);
+    setEscapeTimerPausedAt(null);
   };
 
   useEffect(() => {
     if (!escapeTimerStartedAt) return;
 
     const tick = () => {
-      const remaining = Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - escapeTimerStartedAt));
+      const referenceNow = escapeTimerPausedAt || Date.now();
+      const remaining = Math.max(0, ESCAPE_TIMER_DURATION_MS - (referenceNow - escapeTimerStartedAt));
       const previousRemaining = previousRemainingMsRef.current;
       setEscapeTimerRemainingMs(remaining);
 
@@ -291,11 +324,11 @@ export const StatsProvider = ({ children }) => {
     };
 
     tick();
-    if (challengeFinalCompleted) return;
+    if (challengeFinalCompleted || escapeTimerPausedAt) return;
 
     const intervalId = setInterval(tick, 1000);
     return () => clearInterval(intervalId);
-  }, [escapeTimerStartedAt, challengeFinalCompleted]);
+  }, [escapeTimerStartedAt, challengeFinalCompleted, escapeTimerPausedAt]);
 
   useEffect(() => {
     const handlePageExit = () => {
@@ -360,6 +393,7 @@ export const StatsProvider = ({ children }) => {
     escapeTimerDurationMs: ESCAPE_TIMER_DURATION_MS,
     escapeTimerStarted: Boolean(escapeTimerStartedAt),
     escapeTimerStartedAt,
+    escapeTimerPaused: Boolean(escapeTimerPausedAt),
     escapeTimerRemainingMs,
     // "active" means the run is ongoing until the final challenge is completed,
     // even if the countdown reached 00:00.
@@ -368,6 +402,8 @@ export const StatsProvider = ({ children }) => {
       Boolean(escapeTimerStartedAt) && !challengeFinalCompleted && escapeTimerRemainingMs <= 0,
     escapeTimerFlashTick,
     startEscapeTimer,
+    pauseEscapeTimer,
+    resumeEscapeTimer,
   };
 
   return <StatsContext.Provider value={value}>{children}</StatsContext.Provider>;

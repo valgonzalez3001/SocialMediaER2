@@ -157,7 +157,8 @@ export const fi = {
       "targetAudience": "Ei selkeää kohdeyleisöä: Toistaa samaa sisältöä useilla kielillä",
       "temporalActivity": "Epäilyttävä ajallinen toiminta: Julkaisut hyvin säännöllisin väliajoin tai epätavallisina aikoina",
       "abnormalRatio": "Epänormaali suhde: Monta seuraajaa mutta vähän todellista vuorovaikutusta",
-      "recentAccount": "Tuore tili: Uusi tili välittömällä korkealla aktiivisuudella"
+      "recentAccount": "Tuore tili: Uusi tili välittömällä korkealla aktiivisuudella",
+      "official": "Virallinen tili: Se kuuluu viralliselle/julkiselle organisaatiolle"
     }
   },
   "editPost": {

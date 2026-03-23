@@ -357,58 +357,98 @@
   display: none;
 }
 
-/* Survey balloon */
-.survey-balloon {
+/* Survey banner */
+.survey-banner {
   position: fixed;
   bottom: 160px;
-  right: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #1b1135 0%, #251c41 100%);
+  border: 2px solid rgba(127, 85, 255, 0.6);
+  border-radius: 16px;
+  padding: 16px 24px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 8px 32px rgba(127, 85, 255, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 1100;
+  animation: bannerSlideUp 0.6s ease-out, bannerPulse 3s ease-in-out infinite 1s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.survey-banner:hover {
+  transform: translateX(-50%) scale(1.02);
+  box-shadow: 0 12px 40px rgba(127, 85, 255, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.survey-banner-icon {
+  font-size: 2.2rem;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+.survey-banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.survey-banner-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.survey-banner-subtitle {
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}
+
+.survey-banner-btn {
   background: linear-gradient(135deg, var(--primary-color), #9370ff);
   border: none;
-  border-radius: 50px;
-  padding: 12px 20px;
+  border-radius: 8px;
+  padding: 10px 20px;
   color: #fff;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 20px rgba(127, 85, 255, 0.5);
-  z-index: 1100;
-  animation: balloonBounce 2s ease-in-out infinite, balloonFadeIn 0.5s ease-out;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.survey-balloon:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 28px rgba(127, 85, 255, 0.7);
-}
-
-.survey-balloon-icon {
-  font-size: 1.3rem;
-}
-
-.survey-balloon-text {
+  transition: background 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
 }
 
-@keyframes balloonBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+.survey-banner-btn:hover {
+  background: linear-gradient(135deg, #9370ff, var(--primary-color));
+  transform: scale(1.05);
 }
 
-@keyframes balloonFadeIn {
+@keyframes bannerSlideUp {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.8);
+    transform: translateX(-50%) translateY(40px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes bannerPulse {
+  0%, 100% {
+    box-shadow: 0 8px 32px rgba(127, 85, 255, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 8px 40px rgba(127, 85, 255, 0.6), 0 0 0 3px rgba(127, 85, 255, 0.3);
+  }
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
   }
 }
 
@@ -432,5 +472,29 @@
   .app-launcher-card {
     padding: 12px 8px;
     font-size: 13px;
+  }
+
+  .survey-banner {
+    width: 92vw;
+    padding: 14px 16px;
+    gap: 12px;
+    bottom: 150px;
+  }
+
+  .survey-banner-icon {
+    font-size: 1.8rem;
+  }
+
+  .survey-banner-title {
+    font-size: 1rem;
+  }
+
+  .survey-banner-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .survey-banner-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
   }
 }

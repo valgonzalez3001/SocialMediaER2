@@ -568,7 +568,25 @@ async function main() {
             });
           }
         }
-        
+          
+
+        let currentDate = new Date();
+
+        // Create yesterday's date
+        let previousDate = new Date(currentDate);
+        previousDate.setDate(previousDate.getDate() - 1);
+
+        // Copy only the time from row["Time"]
+        if (row["Time"] instanceof Date) {
+          previousDate.setHours(
+            row["Time"].getHours(),
+            row["Time"].getMinutes(),
+            row["Time"].getSeconds(),
+            row["Time"].getMilliseconds()
+          );
+        }
+
+        // previousDate = yesterday with the time from row["Time"]
         return {
           _id: "uuid()",
           content: row["Text"] || "",
@@ -578,13 +596,14 @@ async function main() {
           firstName: row["Account name"] || "",
           lastName: "",
           avatarURL: await processAvatarUrl(row["Photo (link)"], avatarsDir),
-          createdAt: row["Timestamp"] ? new Date(row["Timestamp"]) : new Date(),
+          createdAt: previousDate,
           updatedAt: "formatDate()",
           likes: {
               likeCount: row["Likes"] || 0,
           },
           comments: comments
         };
+        
       }));
 
 

@@ -26,6 +26,7 @@ export const Desktop = () => {
     escapeTimerStarted,
     escapeTimerRemainingMs,
     escapeTimerFlashTick,
+    escapeTimerExpired,
   } = useStats();
   const { sendStatement } = useXAPI();
   const { t, i18n } = useTranslation();
@@ -69,6 +70,8 @@ export const Desktop = () => {
 
   const handleOpenSurvey = () => setShowSurveyModal(true);
   const handleCloseSurvey = () => setShowSurveyModal(false);
+
+  
   const handleSurveySubmit = (answers) => {
     console.log('Survey answers:', answers);
     sessionStorage.setItem('surveyCompleted', 'true');
@@ -336,15 +339,18 @@ export const Desktop = () => {
       />
 
       {/* Survey balloon - shows when game is complete and survey not done */}
-      {challengeFinalCompleted && !surveyCompleted && (
-        <button
-          className="survey-balloon"
-          onClick={handleOpenSurvey}
-          title={t('survey.balloonTitle', 'Share your feedback!')}
-        >
-          <span className="survey-balloon-icon">📋</span>
-          <span className="survey-balloon-text">{t('survey.balloonText', 'Survey')}</span>
-        </button>
+      {/* Survey balloon - shows when game is complete OR timed out, and survey not done */}
+      {(challengeFinalCompleted || escapeTimerExpired) && !surveyCompleted && (
+        <div className="survey-banner" onClick={handleOpenSurvey}>
+          <span className="survey-banner-icon">🎉</span>
+          <div className="survey-banner-content">
+            <span className="survey-banner-title">{t('survey.bannerTitle', 'Thanks for playing!')}</span>
+            <span className="survey-banner-subtitle">{t('survey.bannerSubtitle', 'Give us your feedback')}</span>
+          </div>
+          <button className="survey-banner-btn">
+            {t('survey.bannerButton', 'Take Survey')}
+          </button>
+        </div>
       )}
 
       {/* Survey modal */}

@@ -63,7 +63,7 @@ export const NewPostLauncher = () => {
   return (
     <>
       <button
-        className={`create-new-post-btn ${isLocked ? "is-locked" : ""} ${shouldPulseNewPost ? "hint-button--pulse" : ""}`}
+        className={`create-new-post-btn ${isLocked ? "is-locked" : ""} ${(challenge3Completed && !challengeFinalCompleted && challengeFinalInstructionsRead) ? "hint-button--pulse" : ""}`}
         onClick={handleButtonClick}
         type="button"
         aria-disabled={isLocked}

@@ -86,6 +86,18 @@ export const XAPI_VERBS = {
     id: "http://www.tincanapi.co.uk/verbs/evaluated",
     display: { en: "evaluated" },
   },
+  RESUMED: {
+    id: "http://adlnet.gov/expapi/verbs/resumed",
+    display: { en: "resumed" },
+  },
+  EXITED_ADL: {
+    id: "http://adlnet.gov/expapi/verbs/exited",
+    display: { en: "exited" },
+  },
+  LEFT: {
+    id: "http://activitystrea.ms/schema/1.0/leave",
+    display: { en: "left" },
+  },
 };
 
 // Activity types

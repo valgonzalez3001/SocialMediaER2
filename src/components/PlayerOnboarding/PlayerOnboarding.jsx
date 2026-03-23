@@ -337,7 +337,6 @@ export const PlayerOnboarding = ({ onComplete }) => {
                   {i18n.options.supportedLngs.includes("en") && <button
                     type="button"
                     className={`language-option ${selectedLanguage === "en" ? "selected" : ""}`}
-                    disabled
                     onClick={() => setSelectedLanguage("en")}
                     title="Temporalmente deshabilitado"
                   >
@@ -347,7 +346,6 @@ export const PlayerOnboarding = ({ onComplete }) => {
                   {i18n.options.supportedLngs.includes("fi") && <button
                     type="button"
                     className={`language-option ${selectedLanguage === "fi" ? "selected" : ""}`}
-                    disabled
                     onClick={() => setSelectedLanguage("fi")}
                     title="Temporalmente deshabilitado"
                   >
@@ -357,7 +355,6 @@ export const PlayerOnboarding = ({ onComplete }) => {
                   {i18n.options.supportedLngs.includes("sr") && <button
                     type="button"
                     className={`language-option ${selectedLanguage === "sr" ? "selected" : ""}`}
-                    disabled
                     onClick={() => setSelectedLanguage("sr")}
                     title="Temporalmente deshabilitado"
                   >

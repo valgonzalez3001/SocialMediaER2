@@ -114,65 +114,113 @@
   "fi": [
     {
       "id": 1,
-      "text": "Botit voidaan havaita johdonmukaisten ja toistuvien toimintamallien perusteella.",
+      "text": "Botit voidaan tunnistaa johdonmukaisista ja toistuvista toimintamalleista.",
       "correct": true,
       "category": "bot-detection"
     },
     {
       "id": 2,
-      "text": "Vahvistetut tilit ovat aina oikeita tilejä, eivätkä ne voi koskaan olla botteja.",
+      "text": "Vahvistetut tilit ovat aina aitoja eivätkä koskaan voi olla botteja.",
       "correct": false,
       "category": "verification-misconception"
     },
     {
       "id": 3,
-      "text": "Tilien vahvistaminen useiden tietolähteiden avulla on avainasemassa disinformaation torjunnassa.",
+      "text": "Sosiaalisen median sisältöjen tarkistaminen useista lähteistä on keskeistä väärän tiedon torjumisessa.",
       "correct": true,
       "category": "information-verification"
     },
     {
       "id": 4,
-      "text": "Boteilla on aina julkiset profiilit, eivätkä ne ole koskaan yksityisiä.",
+      "text": "Tekoäly tuottaa aina sisältöä todisteiden perusteella.",
       "correct": false,
       "category": "bot-misconception"
     },
     {
       "id": 5,
-      "text": "Digitaalinen koulutus on välttämätöntä käyttäjille väärennetyn sisällön tunnistamiseksi.",
+      "text": "Digitaalisten alustojen moderointi ei ole tarpeellista ja voidaan täysin automatisoida tekoälyllä.",
       "correct": false,
-      "category": "digital-education"
+      "category": "media-literacy"
+    },
+    {
+      "id": 6,
+      "text": "Tekoäly tuottaa sisältöä koulutusdatastaan oppimiensa tilastollisten mallien perusteella.",
+      "correct": true,
+      "category": "ai-misconception"
+    },
+    {
+      "id": 7,
+      "text": "Tekoäly on aina ajan tasalla uusimmista uutisista reaaliajassa.",
+      "correct": false,
+      "category": "ai-usage"
+    },
+    {
+      "id": 8,
+      "text": "Tekoälyä voidaan käyttää tiedon tiivistämiseen, mutta sen tulokset tulisi tarkistaa.",
+      "correct": true,
+      "category": "ai-usage"
+    },
+    {
+      "id": 9,
+      "text": "Tilien, jotka levittävät väärää tietoa, kieli pyrkii herättämään voimakkaita tunteita.",
+      "correct": true,
+      "category": "misinformation-style"
     }
   ],
   "sr": [
     {
       "id": 1,
-      "text": "Botovi se mogu otkriti po doslednim i ponavljajućim obrascima aktivnosti.",
-      "correct": false,
+      "text": "Botovi se mogu prepoznati po doslednim i ponavljajućim obrascima aktivnosti.",
+      "correct": true,
       "category": "bot-detection"
     },
     {
       "id": 2,
-      "text": "Verifikovani nalozi su uvek pravi nalozi i nikada ne mogu biti botovi.",
+      "text": "Verifikovani nalozi su uvek pravi i nikada ne mogu biti botovi.",
       "correct": false,
       "category": "verification-misconception"
     },
     {
       "id": 3,
-      "text": "Verifikacija naloga korišćenjem više izvora informacija je ključna za borbu protiv dezinformacija.",
-      "correct": false,
+      "text": "Proveravanje onoga što čitamo na društvenim mrežama iz više izvora informacija ključno je za borbu protiv dezinformacija.",
+      "correct": true,
       "category": "information-verification"
     },
     {
       "id": 4,
-      "text": "Botovi uvek imaju javne profile, a nikada privatne.",
+      "text": "Veštačka inteligencija uvek generiše sadržaj na osnovu dokaza.",
       "correct": false,
       "category": "bot-misconception"
     },
     {
       "id": 5,
-      "text": "Digitalno obrazovanje je neophodno da bi korisnici mogli da identifikuju lažni sadržaj.",
+      "text": "Moderacija digitalnih platformi nije potrebna i može se u potpunosti automatizovati pomoću veštačke inteligencije.",
       "correct": false,
-      "category": "digital-education"
+      "category": "media-literacy"
+    },
+    {
+      "id": 6,
+      "text": "Veštačka inteligencija generiše sadržaj na osnovu statističkih obrazaca naučenih iz svojih podataka za obuku.",
+      "correct": true,
+      "category": "ai-misconception"
+    },
+    {
+      "id": 7,
+      "text": "Veštačka inteligencija je uvek u toku sa najnovijim vestima u realnom vremenu.",
+      "correct": false,
+      "category": "ai-usage"
+    },
+    {
+      "id": 8,
+      "text": "Veštačka inteligencija se može koristiti za sažimanje informacija, ali njene rezultate treba proveriti.",
+      "correct": true,
+      "category": "ai-usage"
+    },
+    {
+      "id": 9,
+      "text": "Nalozi koji šire dezinformacije koriste jezik koji ima za cilj da izazove snažne emocije.",
+      "correct": true,
+      "category": "misinformation-style"
     }
   ]
 }

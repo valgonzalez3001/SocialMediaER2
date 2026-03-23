@@ -65,7 +65,7 @@ export const fi = {
       },
       "challenge2": {
         "subject": "🤖 Mahdollisesti tekoälyn tuottamia julkaisuja havaittu",
-        "content": "Moderaattori,\n\nHavaitsemme julkaisuja, jotka saattavat olla tekoälyn tuottamia ja levittää disinformaatiota.\n\nAutomaattinen tunnistimemme on huollossa, joten tarvitsemme sinua tarkistamaan julkaisun käsin.\n\n🧠 Siirry kohtaan Tekoälyn tuottama sisältö ja analysoi julkaisu."
+        "content": "Moderaattori,\n\nHavaitsemme julkaisuja, jotka saattavat olla tekoälyn tuottamia ja meidän on merkittävä ne \"automaattiseksi sisällöksi\".\n\nAutomaattinen tunnistimemme on huollossa, joten tarvitsemme sinua tarkistamaan julkaisun käsin.\n\n🧠 Siirry kohtaan Tekoälyn tuottama sisältö ja analysoi julkaisu."
       },
       "challenge3": {
         "subject": "⚠️ Mahdollinen tekoälyn virheellinen käyttö havaittu",
@@ -123,7 +123,7 @@ export const fi = {
     "follow": "Seuraa",
     "verifiedAccount": "Vahvistettu tili",
     "backToGame": "Takaisin Peliin",
-    "misinfoQuestion": "Vaikuttaako tämä tili botilta?",
+    "misinfoQuestion": "Levittääkö tämä tili disinformaatiota?",
     "yes": "Kyllä",
     "no": "Ei",
     "classificationIncorrect": "Väärä valinta. Tarkista profiili uudelleen.",
@@ -151,7 +151,7 @@ export const fi = {
     "allCorrect": "Erinomaista! Olet tunnistanut kaikki käyttäjät oikein.",
     "tryAgain": "Jotkut luokittelut ovat väärin. Yritä uudelleen!",
     "playAgain": "Pelaa Uudelleen",
-    "hintTitle": "Bottitilin indikaattorit",
+    "hintTitle": "Tilin virheellisten tietojen indikaattorit",
     "hintContent": {
       "emotions": "Tunteisiin vetoaminen: Tunnetasolla manipuloivan tai sensaatiohakuisen kielen käyttö",
       "targetAudience": "Ei selkeää kohdeyleisöä: Toistaa samaa sisältöä useilla kielillä",
@@ -181,7 +181,7 @@ export const fi = {
   },
   "aiVerifyPage": {
     "title": "Vahvista tekoälyn luoma sisältö",
-    "subtitle": "Todista, että tämän julkaisun sisältö on tekoälyn luoma, jotta disinformaatio verkossa vähenisi.",
+    "subtitle": "Todiste siitä, että tekoäly on luonut tämän viestin sisällön, jotta tunniste on asianmukaisesti merkitty",
     "postTitle": "Kriittinen ajattelu 🍎🥑",
     "postDate": "11.12.2025",
     "stamp": "TEKOÄLY?",
@@ -213,7 +213,7 @@ export const fi = {
     "back": "← Takaisin",
     "finish": "Lopeta",
     "coincidenceWithPost": "VASTAAVUUS JULKAISUN KANSSA:",
-    "postGeneratedWithAi": "JULKAISU ON TEKOÄLYN TUOTTAMA",
+    "postGeneratedWithAi": "TEKOÄLYN TUOTTAMA",
     "challengeCompleted": "Haaste suoritettu! 🎉",
     "challengeCompletedMsg": "Olet todistanut, että julkaisun sisältö on generatiivisen tekoälyn tuottamaa."
   },
@@ -262,11 +262,11 @@ export const fi = {
     "statusAlert": "HÄLYTYS",
     "statusSecure": "TURVALLINEN",
     "botModule": {
-      "title": "Bottiverkko",
-      "detected": "Botteja havaittu",
+      "title": "Misinformaatioverko",
+      "detected": "Merkityt tilit",
       "suspicious": "Epäilyttävät tilit",
       "note": "Koordinoitua toimintaa havaittu verkossa",
-      "resolvedNote": "Bottiverkko neutralisoitu"
+      "resolvedNote": "Misinformaatioverko neutralisoitu"
     },
     "aiModule": {
       "title": "Tekoälyntunnistin",
@@ -360,13 +360,13 @@ export const fi = {
     "opinionRange": "1 = Very poor, 2 = Poor, 3 = Neutral, 4 = Good, 5 = Very good",
     "rateTitle": "Rate the following statements on a scale of 1-7",
     "rateRange": "1 = Strongly Disagree, 2 = Disagree, 3 = Somewhat Disagree , 4 = Neutral, 5 = Somewhat Agree, 6 = Agree, 7 = Strongly Agree).",
-    "learningTitle": "How much did you learn?",
+    "learningTitle": "Kuinka paljon opit?",
     "learningItems": {
-      "0": "The escape room increased my knowledge of how AI works",
-      "1": "The escape room increased my knowledge of how AI is used in social media",
-      "2": "The escape room increased my knowledge of what the appropriate uses of AI are"
+      "0": "Pakohuonepeli lisäsi tietämystäni tekoälyn toiminnasta",
+      "1": "Pakohuonepeli lisäsi tietämystäni tekoälyn käytöstä sosiaalisessa mediassa",
+      "2": "Pakohuonepeli lisäsi tietämystäni tekoälyn asianmukaisista käyttötavoista"
     },
-    "guessTitle": "How did you like the gameplay?",
+    "guessTitle": "Mitä pidit pelattavuudesta?",
     "guessItems": {
       "0": "I find the controls of the escape room to be straightforward.",
       "1": "I find the escape room's interface to be easy to navigate.",

@@ -247,19 +247,19 @@
         "date": "14.03.26",
         "image": "/assets/users/fi_knitold.png",
         "postImage": "",
-        "text": ""
+        "text": "En pystynyt tekemään lauseen syntaksianalyysiä kieliläksyissäni, ja tekoäly ratkaisi ongelmani alle minuutissa, mutta opettajani sanoi, että analyysi oli väärä. Hänellä ei ole aavistustakaan! Kuinka hän voisi tietää enemmän kuin tekoäly?"
       },
       "options": [
         {
-          "text": "",
+          "text": "Tekoäly voi joskus tehdä virheitä tai kokea \"hallusinaatioita\". Oppiminen on monimutkainen prosessi, ja on monia poikkeuksia, yksityiskohtia ja konteksteja, joita tekoäly-chatbot ei tiedä. Vertaa aina tekoälyn antamia vastauksia opettajiesi kertomiin vastauksiin tai muihin lähteisiin.",
           "isCorrect": true
         },
         {
-          "text": "",
+          "text": "Tekoäly voi olla hyödyllinen harjoitusten tekemisessä, vaikka se voi joskus tehdä virheitä aivan kuten ihmiset, joten on hyvä ottaa huomioon myös muiden mielipiteet.",
           "isCorrect": false
         },
         {
-          "text": "",
+          "text": "Tekoälyllä on aina kaikki vastaukset ja se voi parhaiten ohjata meitä oppimisessamme. Sinun tulisi aina käyttää sitä läksyissäsi ja tehtävissäsi.",
           "isCorrect": false
         }
       ]
@@ -273,19 +273,19 @@
         "date": "14.03.26",
         "image": "/assets/users/fi_pak.png",
         "postImage": "",
-        "text": ""
+        "text": "Katso, MINT on kertonut minulle, että Espanjassa on huomenna äärimmäisiä myrskyjä. Valmistautukaa!"
       },
       "options": [
         {
-          "text": "",
+          "text": "Ilman kontekstia tekoälychatbotin ottama kuvakaappaus ei ole luotettava säätiedon lähde. Tekoäly ei voi ennustaa tiettyjä myrskyjä reaaliajassa. Säävaroitusten saamiseksi on aina parasta kääntyä virallisten lähteiden, kuten AEMET:n, puoleen.",
           "isCorrect": true
         },
         {
-          "text": "",
+          "text": "En osaa lukea kovin hyvin, mitä kuvakaappauksessa lukee.",
           "isCorrect": false
         },
         {
-          "text": "",
+          "text": "Hienoa! Sitten sinun on parasta valmistella kaikki tekoälyn ohjeiden mukaisesti; se varmasti tapahtuu. Kysy siltä tarkempia tietoja, kuten kellonaikaa ja sademäärää.",
           "isCorrect": false
         }
       ]
@@ -299,19 +299,19 @@
         "date": "14.03.26",
         "image": "/assets/users/fi_braid.png",
         "postImage": "",
-        "text": ""
+        "text": "Pitääkö meidän mennä kouluun huomenna? Kysyin tekoälyltä, onko tunnit edelleen peruttu sateen vuoksi, ja se vastasi kyllä."
       },
       "options": [
         {
-          "text": "",
+          "text": "Saadaksesi selville, onko oppitunnit keskeytetty, tarkista aina koulun tai pelastuspalvelun virallinen ilmoitus, josta saat ajantasaisimmat tiedot. Tekoälyllä toimiva chatbotti ei ole sama asia kuin hakukone.",
           "isCorrect": true
         },
         {
-          "text": "",
+          "text": "Luota intuitioosi tai kysy äidiltäsi tai isältäsi",
           "isCorrect": false
         },
         {
-          "text": "",
+          "text": "Tämä on tekoälyn hyvä käyttötarkoitus. Sen vastauksen perusteella voit jäädä kotiin; tekoäly antaa sinulle hyviä neuvoja, koska se aina konsultoi virallisia lähteitä.",
           "isCorrect": false
         }
       ]
@@ -325,19 +325,19 @@
         "date": "14.03.26",
         "image": "/assets/users/fi_sauna.png",
         "postImage": "",
-        "text": ""
+        "text": "Luokassa teimme kokeen lämpötilan ja kosteuden muutoksista kuukauden aikana. Käytin tekoälyä datan järjestämiseen taulukoiksi ja kaavioiksi, ja lopputuloksena oli UPEA esitys!"
       },
       "options": [
         {
-          "text": "",
+          "text": "Tekoälyn käyttäminen datan järjestämiseen ja visualisointiin on hyödyllistä, koska se auttaa tulkitsemaan tuloksia paremmin. Mutta tuo aina lisäarvoa oman työsi, kriittisen ajattelun ja lopputuotteen tarkastelun kautta.",
           "isCorrect": true
         },
         {
-          "text": "",
+          "text": "Muista sisällyttää henkilötietosi lopputyöhön.",
           "isCorrect": false
         },
         {
-          "text": "",
+          "text": "Hienoa, anna tekoälyn tehdä kaikki analyysit puolestasi ja toimittaa tekoälyn luoma työ suoraan tarkistamatta sitä; se on aina erittäin perusteellista.",
           "isCorrect": false
         }
       ]
@@ -351,19 +351,19 @@
         "date": "14.03.26",
         "image": "/assets/users/fi_boy.png",
         "postImage": "",
-        "text": ""
+        "text": "Tekoäly auttoi minua järjestämään lukujärjestykseni ja luomaan tenttikalenterin, jotta tiedän milloin opiskella ja mihin valmistautua."
       },
       "options": [
         {
-          "text": "",
+          "text": "Tekoälyn käyttäminen aikataulun ja koekalenterin järjestämiseen auttaa sinua suunnittelemaan, mutta oppiminen on silti sinun vastuullasi.",
           "isCorrect": true
         },
         {
-          "text": "",
+          "text": "Älä unohda käyttää myöskään kauniita värejä.",
           "isCorrect": false
         },
         {
-          "text": "",
+          "text": "Se on tekoälyn käyttöä, josta ei ole mitään hyötyä.",
           "isCorrect": false
         }
       ]
@@ -377,19 +377,19 @@
         "date": "14.03.26",
         "image": "/assets/users/fi_hickey1.png",
         "postImage": "",
-        "text": ""
+        "text": "Luonnontieteiden kokeessa pyysin tekoälyä tiivistämään ja hahmottelemaan opiskelemani aiheet. Tarkistin kuitenkin sen varmistaakseni, että olin sisällyttänyt kaiken oikein."
       },
       "options": [
         {
-          "text": "",
+          "text": "Tekoälyn käyttäminen yhteenvetojen ja jäsentelyjen tekemiseen auttaa sinua järjestämään aiheita, mutta lukemalla ne itse varmistat, että ymmärrät kaiken ja vältyt mahdollisilta virheiltä tai hallusinaatioilta.",
           "isCorrect": true
         },
         {
-          "text": "",
+          "text": "Hienoa, kerro meille minkä arvosanan sait!",
           "isCorrect": false
         },
         {
-          "text": "",
+          "text": "Sinun ei tarvitse tarkistaa mitään; tekoälyn antama vastaus on aina erittäin kattava. Älä vaivaudu lukemaan sitä; se ei ole välttämätöntä.",
           "isCorrect": false
         }
       ]
@@ -496,6 +496,84 @@
         },
         {
           "text": "Ovo tretira MINT kao osobu i podstiče emocionalnu zavisnost tokom krizne situacije.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-5",
+      "aiOk": true,
+      "post": {
+        "name": "marko.teaches",
+        "handle": "Marko Jovanović",
+        "date": "14.03.26",
+        "image": "/assets/users/sr_teacher.png",
+        "postImage": "",
+        "text": "U razredu smo proveli eksperiment o promjenama temperature i vlažnosti tijekom mjeseca. Koristio sam umjetnu inteligenciju za organiziranje podataka u tablice i grafikone i na kraju sam dobio FANTASTIČNU prezentaciju!"
+      },
+      "options": [
+        {
+          "text": "Korištenje umjetne inteligencije za organiziranje i vizualizaciju podataka korisno je jer vam omogućuje bolje tumačenje rezultata. Ali uvijek dodajte vrijednost vlastitim radom, kritičkim razmišljanjem i pregledom konačnog proizvoda.",
+          "isCorrect": true
+        },
+        {
+          "text": "Ne zaboravite uključiti svoje osobne podatke u završni rad.",
+          "isCorrect": false
+        },
+        {
+          "text": "Izvrsno, neka umjetna inteligencija obavi svu analizu za vas i isporučite rad koji je generirala umjetna inteligencija izravno bez pregledavanja; uvijek je vrlo temeljito.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-6",
+      "aiOk": true,
+      "post": {
+        "name": "milena.vibes",
+        "handle": "Milena Petrović",
+        "date": "14.03.26",
+        "image": "/assets/users/sr_disco.png",
+        "postImage": "",
+        "text": "Umjetna inteligencija mi je pomogla organizirati raspored nastave i izraditi kalendar ispita, tako da znam kada učiti i što pripremiti."
+      },
+      "options": [
+        {
+          "text": "Korištenje umjetne inteligencije za organiziranje rasporeda i kalendara ispita pomaže vam u planiranju, ali učenje je i dalje vaša odgovornost.",
+          "isCorrect": true
+        },
+        {
+          "text": "Ne zaboravite koristiti i lijepe boje.",
+          "isCorrect": false
+        },
+        {
+          "text": "To je korištenje umjetne inteligencije koje nema nikakvu svrhu.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "case-7",
+      "aiOk": true,
+      "post": {
+        "name": "nemanj4",
+        "handle": "Nemanjaaaa",
+        "date": "14.03.26",
+        "image": "/assets/users/PedroMM124.png",
+        "postImage": "",
+        "text": "Za ispit iz znanosti, zamolio sam umjetnu inteligenciju da sažme i opiše teme koje sam trebao proučiti. Unatoč tome, provjerio sam je kako bih se uvjerio da sam sve ispravno uključio."
+      },
+      "options": [
+        {
+          "text": "Korištenje umjetne inteligencije za sažimanje i skiciranje pomaže vam u organiziranju tema, ali samostalno čitanje osigurava da sve razumijete i izbjegavate potencijalne pogreške ili halucinacije.",
+          "isCorrect": true
+        },
+        {
+          "text": "To je super, javi nam koju ocjenu si dobio/la!",
+          "isCorrect": false
+        },
+        {
+          "text": "Ne morate ništa provjeravati; odgovor koji vam daje umjetna inteligencija uvijek je vrlo sveobuhvatan. Nemojte se truditi čitati ga; nije potrebno.",
           "isCorrect": false
         }
       ]

@@ -28,9 +28,10 @@ export const MessagesApp = () => {
     () =>
       [...messages].sort(
         (a, b) => {
-          const timeDiff = new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
+          // Older messages first, newer at bottom (chat style)
+          const timeDiff = new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
           if (timeDiff !== 0) return timeDiff;
-          return b.id - a.id;
+          return a.id - b.id;
         }
       ),
     [messages]
@@ -45,7 +46,7 @@ export const MessagesApp = () => {
   useEffect(() => {
     if (!chatThreadRef.current) return;
     chatThreadRef.current.scrollTo({
-      top: 0,
+      top: chatThreadRef.current.scrollHeight,
       behavior: "smooth",
     });
   }, [sortedMessages.length]);

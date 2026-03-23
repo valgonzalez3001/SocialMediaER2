@@ -15,7 +15,7 @@
       },
       {
         "context": "I don't know how to identify suspicious accounts",
-        "clue": "To detect bots, you need to observe how these accounts behave: if they repeat messages, always post the same thing, have activity that is too regular, or barely interact with other users. These patterns may indicate automation."
+        "clue": "To detect accounts that spread misinformation, you need to observe how these accounts behave: if they repeat messages, always post the same thing, have activity that is too regular, or barely interact with other users. These patterns may indicate automation."
       }
     ],
     "2": [
@@ -89,7 +89,7 @@
       },
       {
         "context": "No sé cómo identificar qué cuentas son sospechosas",
-        "clue": "Para detectar bots tienes que observar cómo se comportan estas cuentas: si repiten mensajes, publican siempre lo mismo, tienen actividad demasiado regular o casi no interactúan con otros usuarios. Estos patrones pueden indicar automatización."
+        "clue": "Para detectar cuentas que difunden desinformación tienes que observar cómo se comportan estas cuentas: si repiten mensajes, publican siempre lo mismo, tienen actividad demasiado regular o casi no interactúan con otros usuarios. Estos patrones pueden indicar automatización."
       }
     ],
     "2": [
@@ -163,7 +163,7 @@
       },
       {
         "context": "En tiedä miten tunnistaa epäilyttävät tilit",
-        "clue": "Botteja havaitaksesi sinun täytyy tarkkailla, miten nämä tilit käyttäytyvät: toistavatko ne viestejä, julkaisevatko ne aina samaa sisältöä, onko niiden toiminta liian säännöllistä tai ovatko ne tuskin lainkaan vuorovaikutuksessa muiden käyttäjien kanssa. Nämä mallit voivat viitata automaatioon."
+        "clue": "Väärää tietoa levittävien tilien havaitsemiseksi sinun on tarkkailtava, miten nämä tilit käyttäytyvät: toistavatko ne viestejä, julkaisevatko ne aina samaa asiaa, onko niillä liian säännöllistä toimintaa vai ovatko ne tuskin lainkaan vuorovaikutuksessa muiden käyttäjien kanssa. Nämä kaavat voivat viitata automaatioon."
       }
     ],
     "2": [
@@ -237,7 +237,7 @@
       },
       {
         "context": "Ne znam kako da identifikujem sumnjive naloge",
-        "clue": "Da bi otkrio botove, moraš da posmatraš kako se ovi nalozi ponašaju: da li ponavljaju poruke, uvek objavljuju isto, imaju previše redovnu aktivnost ili gotovo uopšte ne stupaju u interakciju sa drugim korisnicima. Ovi obrasci mogu ukazivati na automatizaciju."
+        "clue": "Da biste otkrili naloge koji šire dezinformacije, potrebno je da posmatrate kako se ti nalozi ponašaju: da li ponavljaju poruke, uvek objavljuju istu stvar, imaju previše redovnu aktivnost ili jedva komuniciraju sa drugim korisnicima. Ovi obrasci mogu ukazivati na automatizaciju."
       }
     ],
     "2": [

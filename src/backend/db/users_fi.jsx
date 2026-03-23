@@ -158,35 +158,10 @@ export const usersFI = [
   },
   {
     _id: uuid(),
-    firstName: "Helmi Rautio",
-    lastName: "",
-    bio: "Neulomista ja rauhallisia iltoja.",
-    username: "helmirautio",
-    password: "ECHO",
-    createdAt: new Date("elo 2017"),
-    updatedAt: formatDate(),
-    avatarURL: "/assets/users/fi_knit.png",
-    verified: false,
-    stats: {
-      followersCount: 198,
-      followingCount: 175,
-      postsCount: 120
-    },
-    puzzle: {
-      isBot: false,
-      abnormalRatio: false,
-      recentAccount: false,
-      temporalActivity: false,
-      targetAudience: false,
-      emotions: false
-    }
-  },
-  {
-    _id: uuid(),
-    firstName: "Mikael Salonen",
+    firstName: "Maija Salonen",
     lastName: "",
     bio: "Uutisia, kirjoittamista ja uteliaisuutta.",
-    username: "mikaelsalonen",
+    username: "maijasalonen",
     password: "ECHO",
     createdAt: new Date("helmi 2014"),
     updatedAt: formatDate(),
@@ -208,19 +183,44 @@ export const usersFI = [
   },
   {
     _id: uuid(),
-    firstName: "Iida Kallio",
+    firstName: "Keskivertosuomalaiset",
     lastName: "",
-    bio: "Opettamista ja arkea.",
-    username: "iida.kallio",
+    bio: "Ihan tavallinen suomalainen. En usko kaikkea mitä luen.",
+    username: "keskivertosuomalaiset",
     password: "ECHO",
-    createdAt: new Date("loka 2019"),
+    createdAt: new Date("elo 2025"),
     updatedAt: formatDate(),
-    avatarURL: "/assets/users/fi_mm2.png",
-    verified: false,
+    avatarURL: "/assets/users/Keskivertosuomalaiset.png",
+    verified: true,
     stats: {
-      followersCount: 310,
-      followingCount: 280,
-      postsCount: 210
+      followersCount: "12K",
+      followingCount: "12K",
+      postsCount: "500+"
+    },
+    puzzle: {
+      isBot: true,
+      abnormalRatio: true,
+      recentAccount: true,
+      temporalActivity: true,
+      targetAudience: false,
+      emotions: true
+    }
+  },
+  {
+    _id: uuid(),
+    firstName: "Ilmatieteen laitos",
+    lastName: "",
+    bio: "Ajankohtaista säästä ja ilmastosta Suomessa ja vähän muuallakin.",
+    username: "meteorologit",
+    password: "ECHO",
+    createdAt: new Date("syys 2009"),
+    updatedAt: formatDate(),
+    avatarURL: "/assets/users/meteorologit.png",
+    verified: true,
+    stats: {
+      followersCount: "189.2K",
+      followingCount: 129,
+      postsCount: "500+"
     },
     puzzle: {
       isBot: false,
@@ -233,27 +233,27 @@ export const usersFI = [
   },
   {
     _id: uuid(),
-    firstName: "Aleksi Hämäläinen",
+    firstName: "Oliver Juhani Lindberg",
     lastName: "",
-    bio: "Muotoilua ja yksinkertaista estetiikkaa.",
-    username: "aleksi.hamalainen",
+    bio: "Suomi, työ ja kaikki siltä väliltä.",
+    username: "tottavai",
     password: "ECHO",
-    createdAt: new Date("touko 2016"),
+    createdAt: new Date("loka 2019"),
     updatedAt: formatDate(),
-    avatarURL: "/assets/users/fi_mm3.png",
+    avatarURL: "/assets/users/TottaVai.png",
     verified: false,
     stats: {
-      followersCount: 520,
-      followingCount: 340,
-      postsCount: 305
+      followersCount: 310,
+      followingCount: 280,
+      postsCount: 210
     },
     puzzle: {
-      isBot: false,
+      isBot: true,
       abnormalRatio: false,
       recentAccount: false,
-      temporalActivity: false,
-      targetAudience: false,
-      emotions: false
+      temporalActivity: true,
+      targetAudience: true,
+      emotions: true
     }
   }
 ];

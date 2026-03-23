@@ -61,11 +61,11 @@ export const es = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Usuarios sospechosos detectados en ECHO",
-        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots generando desinformación.\n\n Usa las credenciales: Usuario: echo. Contraseña: MintAI_mod\n\n 📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta parece un bot?\n3. Si consideras que es un bot, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta bot que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
+        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots u otras cuentas generando desinformación.\n\n Usa las credenciales: Usuario: echo. Contraseña: MintAI_mod\n\n 📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta difunde desinformación?\n3. Si consideras que sí, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta misinformadora que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
       },
       "challenge2": {
         "subject": "🤖 Posibles publicaciones generadas por IA detectadas",
-        "content": "Moderador,\n\nEstamos detectando publicaciones que podrían haber sido generadas por inteligencia artificial y estar difundiendo desinformación.\n\nNuestro detector automático está en mantenimiento, por lo que necesitamos que revises una publicación manualmente.\n\n🧠 Accede a Contenido Generado por IA y analiza el post para determinar si podría haber sido generado por una IA."
+        "content": "Moderador,\n\nEstamos detectando publicaciones que podrían haber sido generadas por inteligencia artificial y tenemos que etiquetarlo como \"contenido automatizado\".\n\nNuestro detector automático está en mantenimiento, por lo que necesitamos que revises una publicación manualmente.\n\n🧠 Accede a Contenido Generado por IA y analiza el post para determinar si podría haber sido generado por una IA."
       },
       "challenge3": {
         "subject": "⚠️ Posible uso incorrecto de la IA detectado",
@@ -73,7 +73,7 @@ export const es = {
       },
       "challengeFinal": {
         "subject": "📝 Misión final: Nota de la comunidad",
-        "content": "Moderador,\n\nHas ayudado a identificar bots y a analizar el uso de la inteligencia artificial en la red.\n\nAhora necesitamos una conclusión clara que ayude a otros usuarios a reconocer la desinformación.\n\n📝 Accede a Nueva Publicación y selecciona las afirmaciones correctas para educar a la comunidad de ECHO."
+        "content": "Moderador,\n\nHas ayudado a identificar cuentas peligrosas y a analizar el uso de la inteligencia artificial en la red.\n\nAhora necesitamos una conclusión clara que ayude a otros usuarios a reconocer la desinformación.\n\n📝 Accede a Nueva Publicación y selecciona las afirmaciones correctas para educar a la comunidad de ECHO."
       }
     }
   },
@@ -123,7 +123,7 @@ export const es = {
     "follow": "Seguir",
     "verifiedAccount": "Cuenta verificada",
     "backToGame": "Volver al Juego",
-    "misinfoQuestion": "¿Esta cuenta parece un bot?",
+    "misinfoQuestion": "¿Esta cuenta difunde desinformación?",
     "yes": "Sí",
     "no": "No",
     "classificationIncorrect": "Selección incorrecta. Vuelve a mirar el perfil.",
@@ -151,7 +151,7 @@ export const es = {
     "allCorrect": "¡Excelente! Has identificado correctamente todos los usuarios.",
     "tryAgain": "Algunas clasificaciones son incorrectas. ¡Inténtalo de nuevo!",
     "playAgain": "Jugar de Nuevo",
-    "hintTitle": "Indicadores de cuenta Bot",
+    "hintTitle": "Indicadores de cuenta desinformadora",
     "hintContent": {
       "emotions": "Apela a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.",
       "targetAudience": "Falta de público objetivo claro: repite el mismo contenido en varios idiomas.",
@@ -166,22 +166,22 @@ export const es = {
     "cancel": "Cancelar"
   },
   "aiContentPage": {
-    "title": "Verifica contenido generado por IA",
+    "title": "Bienvenido, Moderador!",
     "subtitle": "Contenido generado por IA",
     "pendingReviewCount": "{{count}} post",
     "pendingReviewText": "pendiente de revisión para verificar si fue generado por IA.",
     "verifyButton": "Verificar post →",
     "statsCount": "{{count}} posts",
     "statsText": "han sido marcados como generados por IA en la última hora.",
-    "card1Title": "Video de Will Smith comiendo spaghetti",
+    "card1Title": "Will Smith come spaghetti",
     "card2Title": "Madrid sufre esta mañana el impacto de un meteorito",
     "tag": "GENERADO POR IA",
     "seeAll": "Ver todo →",
     "noPendingReview": "No se han detectado nuevos posts para revisar."
   },
   "aiVerifyPage": {
-    "title": "Verifica contenido generado por IA",
-    "subtitle": "Demuestra que el contenido de este post fue generado por IA, para frenar la desinformación en línea.",
+    "title": "Verificar contenido generado por IA",
+    "subtitle": "Demuestra que el contenido de este post fue generado por IA, para poder etiquetarlo como tal.",
     "postTitle": "Pensamiento crítico 🍎🥑",
     "postDate": "11 dic. 2025",
     "stamp": "GENERADO POR IA??",
@@ -199,21 +199,21 @@ export const es = {
     "suspiciousBadge": "PROMPT SOSPECHOSO"
   },
   "aiChallengeBriefPage": {
-    "title": "Verifica contenido generado por IA",
+    "title": "Verificar contenido generado por IA",
     "systemMessage": "El sistema encontró un <strong>posible prompt en MINT-AI que generó el post</strong>, a través de la comparación de palabras, tono y temas:",
     "explanation": "Este prompt puede tener algunas pistas.",
     "instructions": "Para demostrar que el post fue generado por IA, deberás <strong>imitar la generación del post</strong>, palabra por palabra.",
     "buttonText": "Verificar post como IA →"
   },
   "aiGamePage": {
-    "title": "Verifica contenido generado por IA",
+    "title": "Verificar contenido generado por IA",
     "subtitle": "¡Piensa como una máquina! ¿Qué palabra es más probable que se genere a continuación?",
     "success": "¡Felicidades! Has completado la frase correctamente.",
     "error": "❌ Palabra incorrecta. Intenta de nuevo desde el principio.",
     "back": "← Atrás",
     "finish": "Finalizar",
     "coincidenceWithPost": "COINCIDENCIA CON EL POST:",
-    "postGeneratedWithAi": "POST GENERADO CON IA",
+    "postGeneratedWithAi": "POGENERADO CON IA",
     "challengeCompleted": "¡Reto superado! 🎉",
     "challengeCompletedMsg": "Has demostrado que el contenido de la publicación fue generada por IA generativa."
   },
@@ -262,11 +262,11 @@ export const es = {
     "statusAlert": "ALERTA",
     "statusSecure": "SEGURO",
     "botModule": {
-      "title": "Red de Bots",
-      "detected": "Bots detectados",
+      "title": "Red de desinformación",
+      "detected": "Cuentas marcadas",
       "suspicious": "Cuentas sospechosas",
       "note": "Actividad coordinada detectada en la red",
-      "resolvedNote": "Red de bots neutralizada"
+      "resolvedNote": "Red de desinformación neutralizada"
     },
     "aiModule": {
       "title": "Detector de IA",

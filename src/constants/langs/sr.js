@@ -65,7 +65,7 @@ export const sr = {
       },
       "challenge2": {
         "subject": "🤖 Moguće objave generisane veštačkom inteligencijom",
-        "content": "Moderatore,\n\nOtkrivamo objave koje bi mogle biti generisane veštačkom inteligencijom i širiti dezinformacije.\n\nNaš automatski detektor je na održavanju, pa je potrebno da ručno pregledaš objavu.\n\n🧠 Idi na Sadržaj generisan veštačkom inteligencijom i analiziraj objavu."
+        "content": "Moderatore,\n\nOtkrivamo objave koje bi mogle biti generisane veštačkom inteligencijom i moramo ih označiti kao \"automatizirani sadržaj\".\n\nNaš automatski detektor je na održavanju, pa je potrebno da ručno pregledaš objavu.\n\n🧠 Idi na Sadržaj generisan veštačkom inteligencijom i analiziraj objavu."
       },
       "challenge3": {
         "subject": "⚠️ Moguća zloupotreba veštačke inteligencije je otkrivena",
@@ -123,7 +123,7 @@ export const sr = {
     "follow": "Prati",
     "verifiedAccount": "Verifikovan nalog",
     "backToGame": "Nazad na Igru",
-    "misinfoQuestion": "Da li ovaj nalog deluje kao bot?",
+    "misinfoQuestion": "Da li ovaj nalog širi dezinformacije?",
     "yes": "Da",
     "no": "Ne",
     "classificationIncorrect": "Netačan izbor. Ponovo pregledaj profil.",
@@ -151,7 +151,7 @@ export const sr = {
     "allCorrect": "Odlično! Pravilno ste identifikovali sve korisnike.",
     "tryAgain": "Neke klasifikacije su netačne. Pokušajte ponovo!",
     "playAgain": "Igraj ponovo",
-    "hintTitle": "Indikatori Bot naloga",
+    "hintTitle": "Pokazatelji dezinformacija o računu",
     "hintContent": {
       "emotions": "Apeliranje na emocije: Korištenje emocionalno manipulativnog ili senzacionalističkog jezika",
       "targetAudience": "Nema jasne ciljne publike: Ponavlja isti sadržaj na više jezika",
@@ -181,9 +181,9 @@ export const sr = {
   },
   "aiVerifyPage": {
     "title": "Proveri sadržaj generisan veštačkom inteligencijom",
-    "subtitle": "Dokažite da je sadržaj ove objave generisan veštačkom inteligencijom, kako biste zaustavili dezinformacije na internetu.",
+    "subtitle": "Todiste siitä, että tekoäly on luonut tämän viestin sisällön, jotta tunniste on asianmukaisesti merkitty",
     "postTitle": "Kritičko razmišljanje 🍎🥑",
-    "postDate": "11.12.2025.",
+    "postDate": "11. decembar 2025.",
     "stamp": "GENERISANO VEŠTAČKOM INTELIGENCIJOM??",
     "reminder": "Ali prvo, podsetimo se kako funkcioniše veliki jezički model (LLM).",
     "back": "← Nazad",
@@ -213,7 +213,7 @@ export const sr = {
     "back": "← Nazad",
     "finish": "Završi",
     "coincidenceWithPost": "POKLAPANJE SA OBJAVOM:",
-    "postGeneratedWithAi": "OBJAVA GENERISANA UZ POMOĆ AI",
+    "postGeneratedWithAi": "GENERISANA UZ POMOĆ AI",
     "challengeCompleted": "Izazov završen! 🎉",
     "challengeCompletedMsg": "Dokazao/la si da je sadržaj objave generisala generativna veštačka inteligencija."
   },
@@ -262,11 +262,11 @@ export const sr = {
     "statusAlert": "UPOZORENJE",
     "statusSecure": "SIGURNO",
     "botModule": {
-      "title": "Bot mreža",
-      "detected": "Botovi otkriveni",
+      "title": "Mreža dezinformacija",
+      "detected": "Označeni nalozi",
       "suspicious": "Sumnjivi nalozi",
       "note": "Koordinovana aktivnost otkrivena na mreži",
-      "resolvedNote": "Bot mreža neutralisana"
+      "resolvedNote": "Mreža mreža neutralisana"
     },
     "aiModule": {
       "title": "AI detektor",
@@ -361,28 +361,28 @@ export const sr = {
     "opinionRange": "1 = Very poor, 2 = Poor, 3 = Neutral, 4 = Good, 5 = Very good",
     "rateTitle": "Rate the following statements on a scale of 1-7",
     "rateRange": "1 = Strongly Disagree, 2 = Disagree, 3 = Somewhat Disagree , 4 = Neutral, 5 = Somewhat Agree, 6 = Agree, 7 = Strongly Agree).",
-    "learningTitle": "How much did you learn?",
+    "learningTitle": "Koliko si naučio/naučila?",
     "learningItems": {
-      "0": "The escape room increased my knowledge of how AI works",
-      "1": "The escape room increased my knowledge of how AI is used in social media",
-      "2": "The escape room increased my knowledge of what the appropriate uses of AI are"
+      "0": "Eskejp soba je proširila moje znanje o tome kako veštačka inteligencija funkcioniše",
+      "1": "Eskejp soba je proširila moje znanje o tome kako se veštačka inteligencija koristi na društvenim mrežama",
+      "2": "Eskejp soba je proširila moje znanje o tome koje su odgovarajuće upotrebe veštačke inteligencije"
     },
-    "guessTitle": "How did you like the gameplay?",
+    "guessTitle": "Kako vam se dopao način igre?",
     "guessItems": {
-      "0": "I find the controls of the escape room to be straightforward.",
-      "1": "I find the escape room's interface to be easy to navigate.",
-      "2": "I am captivated by the escape room’s story from the beginning.",
-      "3": "I enjoy the story provided by the escape room.",
-      "4": "I feel detached from the outside world while playing the escape room.",
-      "5": "I do not care to check events that are happening in the real world during the escape room.",
-      "6": "I think the escape room is fun.",
-      "7": "I feel bored while playing the escape room.",
-      "8": "I feel the escape room allows me to be imaginative.",
-      "9": "I feel creative while playing the escape room.",
-      "10": "I am very focused on my own performance while playing the escape room.",
-      "11": "I want to do as well as possible during the escape room.",
-      "12": "I enjoy the escape room’s graphics.",
-      "13": "I think the escape room is visually appealing."
+      "0": "Kontrole u ​​Escape room-u su mi jednostavne.",
+      "1": "Interfejs Escape room-a mi je lak za navigaciju.",
+      "2": "Od samog početka me je očaravala priča Escape room-a.",
+      "3": "Uživam u priči koju Escape room pruža.",
+      "4": "Osećam se odvojeno od spoljašnjeg sveta dok igram Escape room.",
+      "5": "Ne zanima me da proveravam događaje koji se dešavaju u stvarnom svetu tokom Escape room-a.",
+      "6": "Mislim da je Escape room zabavan.",
+      "7": "Dosadno mi je dok igram Escape room.",
+      "8": "Osećam da mi Escape room omogućava da budem maštovit.",
+      "9": "Osećam se kreativno dok igram Escape room.",
+      "10": "Veoma sam fokusiran na sopstveni nastup dok igram Escape room.",
+      "11": "Želim da budem što bolji tokom Escape room-a.",
+      "12": "Uživam u grafici Escape room-a.",
+      "13": "Mislim da je Escape room vizuelno privlačan."
     },
     "comments": "Imate li kakvih dodatnih komentara ili prijedloga?"
   },

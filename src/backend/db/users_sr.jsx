@@ -33,9 +33,9 @@ export const usersSR = [
   },
   {
     _id: uuid(),
-    firstName: "SEPA (Agencija za zastitu zivotne sredine)",
+    firstName: "Agencija za zastitu zivotne sredine",
     lastName: "",
-    bio: "",
+    bio: "SEPA (Agencija za zastitu zivotne sredine)",
     username: "SEPA",
     password: "ECHO",
     createdAt: new Date("March 01 2013 00:00:00"),
@@ -63,9 +63,9 @@ export const usersSR = [
     bio: "/",
     username: "Borba_za_istinu",
     password: "ECHO",
-    createdAt: new Date("May 01 2015 00:00:00"),
+    createdAt: new Date("May 01 2025 00:00:00"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarURL: "/assets/users/Coat_of_arms_of_Serbia_small_B-W.png",
     verified: false,
     stats: {
       followersCount: "1.1K",
@@ -75,22 +75,22 @@ export const usersSR = [
     puzzle: {
       isBot: true,
       abnormalRatio: true,
-      recentAccount: false,
-      temporalActivity: false,
+      recentAccount: true,
+      temporalActivity: true,
       targetAudience: false,
-      emotions: false
+      emotions: true
     }
   },
   {
     _id: uuid(),
     firstName: "Sektor za vanredne situacije MUP-a Republike Srbije",
     lastName: "",
-    bio: "Sektor za vanredne situacije obavlja poslove normativne, upravne, organizaciono-tehničke, preventivne, preventivno-tehničke, obrazovne, informativne i druge prirode za organizovanje, planiranje, sprovođenje, kontrolu mera zaštite života, zdravlja i materijalnih dobara građana, očuvanja uslova neophodnih za život i pripremanje za prevladavanje situacija u uslovima požara, elementarnih nepogoda, tehničkih i tehnoloških nesreća, dejstava opasnih materija i drugih stanja, opasnosti većih razmera koje mogu da ugroze zdravlje i živote ljudi i životnu sredinu ili da prouzrokuju štetu i pružanje pomoći kod otklanjanja posledica prouzrokovanih vanrednim događajima i vanrednim situacijama.",
+    bio: "Sektor za vanredne situacije, \n\nMinistarstvo unutrasnjih poslova, \n\nRepublika Srbija.",
     username: "SVSMUP",
     password: "ECHO",
     createdAt: new Date("September 01 2022 00:00:00"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarURL: "/assets/users/svsmup.jpeg",
     verified: true,
     stats: {
       followersCount: "12K",
@@ -113,9 +113,9 @@ export const usersSR = [
     bio: "Slovenski medvedi ",
     username: "Slavic_Bears",
     password: "ECHO",
-    createdAt: new Date("January 01 2023 00:00:00"),
+    createdAt: new Date("January 01 2026 00:00:00"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarURL: "/assets/users/Slavic_Bears.png",
     verified: true,
     stats: {
       followersCount: "52K",
@@ -124,11 +124,11 @@ export const usersSR = [
     },
     puzzle: {
       isBot: true,
-      abnormalRatio: false,
-      recentAccount: false,
+      abnormalRatio: true,
+      recentAccount: true,
       temporalActivity: false,
-      targetAudience: false,
-      emotions: false
+      targetAudience: true,
+      emotions: true
     }
   },
   {

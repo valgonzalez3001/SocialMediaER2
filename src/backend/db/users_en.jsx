@@ -20,7 +20,7 @@ export const usersEN = [
     stats: {
       followersCount: "4K",
       followingCount: "4K",
-      postsCount: 0
+      postsCount: "500+"
     },
     puzzle: {
       isBot: true,

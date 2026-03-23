@@ -7,7 +7,7 @@
       },
       {
         "context": "I don't remember the credentials to log in to the social network",
-        "clue": "To investigate what is happening, you must log into the platform as a moderator. Use the credentials: Username: echo. Password: 1234."
+        "clue": "To investigate what is happening, you must log into the platform as a moderator. Use the credentials: Username: echo. Password: MintAI_mod"
       },
       {
         "context": "I can't find the challenge in the social network",
@@ -81,7 +81,7 @@
       },
       {
         "context": "No recuerdo las credenciales para iniciar sesión en la red social",
-        "clue": "Para investigar lo que está ocurriendo debes entrar en la plataforma como moderador. Usa las credenciales: Usuario: echo. Contraseña: 1234."
+        "clue": "Para investigar lo que está ocurriendo debes entrar en la plataforma como moderador. Usa las credenciales: Usuario: echo. Contraseña: MintAI_mod"
       },
       {
         "context": "No encuentro el reto dentro de la red social",
@@ -155,7 +155,7 @@
       },
       {
         "context": "En muista tunnuksia, joilla kirjaudun sosiaaliseen mediaan",
-        "clue": "Tutkiaksesi, mitä tapahtuu, sinun täytyy kirjautua alustalle moderaattorina. Käytä tunnuksia: Käyttäjänimi: echo. Salasana: 1234"
+        "clue": "Tutkiaksesi, mitä tapahtuu, sinun täytyy kirjautua alustalle moderaattorina. Käytä tunnuksia: Käyttäjänimi: echo. Salasana: MintAI_mod"
       },
       {
         "context": "En löydä haastetta sosiaalisesta mediasta",
@@ -229,7 +229,7 @@
       },
       {
         "context": "Ne sećam se podataka za prijavu na društvenu mrežu",
-        "clue": "Da bi istražio šta se dešava, moraš da se prijaviš na platformu kao moderator. Koristi sledeće podatke: Korisničko ime: echo. Lozinka: 1234"
+        "clue": "Da bi istražio šta se dešava, moraš da se prijaviš na platformu kao moderator. Koristi sledeće podatke: Korisničko ime: echo. Lozinka: MintAI_mod"
       },
       {
         "context": "Ne mogu da pronađem izazov na društvenoj mreži",

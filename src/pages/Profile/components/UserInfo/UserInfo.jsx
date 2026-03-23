@@ -25,6 +25,11 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
     : userState?.allUsers?.find((u) => u.username === username) || null;
   if (!user) return null;
 
+  const expectedClassification = user?.puzzle?.isBot ? 'yes' : 'no';
+  const hasClassification = selectedClassification === 'yes' || selectedClassification === 'no';
+  const isIncorrectClassification = hasClassification && selectedClassification !== expectedClassification;
+  const isCorrectHumanClassification = hasClassification && selectedClassification === 'no' && expectedClassification === 'no';
+
   return (
     <div className="user-info-container">
       <div className="profile-header-row">
@@ -61,6 +66,18 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
               >
                 {t('profile.openQuiz')}
               </button>
+            )}
+
+            {isIncorrectClassification && (
+              <p className="profile-classification-feedback profile-classification-feedback--error">
+                {t('profile.classificationIncorrect')}
+              </p>
+            )}
+
+            {isCorrectHumanClassification && (
+              <p className="profile-classification-feedback profile-classification-feedback--success">
+                {t('profile.classificationCorrectHuman')}
+              </p>
             )}
           </div>
         )}

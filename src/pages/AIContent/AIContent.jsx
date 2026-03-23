@@ -464,7 +464,7 @@ export const AIContent = () => {
 
                                             {showMatch && (
                                                 <div className="ai-game-match">
-                                                    <p className="ai-game-match-label">COINCIDENCE WITH POST:</p>
+                                                    <p className="ai-game-match-label">{t("aiGamePage.coincidenceWithPost")}</p>
                                                     <article className="ai-game-match-card">
                                                         <div className="ai-game-match-avatar" aria-hidden="true" />
                                                         <div className="ai-game-match-content">
@@ -474,7 +474,7 @@ export const AIContent = () => {
                                                                 <span>{t("aiVerifyPage.postDate")}</span>
                                                             </div>
                                                             <p>{reconstructedSentence}</p>
-                                                            <span className="ai-game-match-tag">POST GENERATED WITH AI</span>
+                                                            <span className="ai-game-match-tag">{t("aiGamePage.postGeneratedWithAi")}</span>
                                                         </div>
                                                     </article>
                                                 </div>

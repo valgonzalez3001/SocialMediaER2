@@ -37,6 +37,7 @@ export const NewPostLauncher = () => {
 
   const isLocked = Boolean(lockMessageKey);
   const shouldShowCommunityNote = challenge3Completed && !challengeFinalCompleted;
+  const shouldPulseNewPost = shouldShowCommunityNote && !isLocked;
 
   const handleButtonClick = (event) => {
     if (!isLocked) {
@@ -62,7 +63,7 @@ export const NewPostLauncher = () => {
   return (
     <>
       <button
-        className={`create-new-post-btn ${isLocked ? "is-locked" : ""} ${(challenge2Completed && !challenge3Completed) ? "hint-button--pulse" : ""}`}
+        className={`create-new-post-btn ${isLocked ? "is-locked" : ""} ${shouldPulseNewPost ? "hint-button--pulse" : ""}`}
         onClick={handleButtonClick}
         type="button"
         aria-disabled={isLocked}

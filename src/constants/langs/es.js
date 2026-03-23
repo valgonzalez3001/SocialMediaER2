@@ -153,12 +153,11 @@ export const es = {
     "playAgain": "Jugar de Nuevo",
     "hintTitle": "Indicadores de cuenta Bot",
     "hintContent": {
-      "emotions": "Apelación a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.",
+      "emotions": "Apela a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.",
       "targetAudience": "Falta de público objetivo claro: repite el mismo contenido en varios idiomas.",
       "temporalActivity": "Actividad temporal sospechosa: Publicaciones a intervalos muy regulares o en horarios poco naturales",
       "abnormalRatio": "Ratio anormal: Muchos seguidos pero poca interacción real",
-      "recentAccount": "Cuenta reciente: Cuenta nueva con mucha actividad inmediata",
-      "official": "Cuenta oficial: Pertenece a un organismo público/estatal"
+      "recentAccount": "Cuenta reciente: Cuenta nueva con mucha actividad inmediata"
     }
   },
   "editPost": {
@@ -213,6 +212,8 @@ export const es = {
     "error": "❌ Palabra incorrecta. Intenta de nuevo desde el principio.",
     "back": "← Atrás",
     "finish": "Finalizar",
+    "coincidenceWithPost": "COINCIDENCIA CON EL POST:",
+    "postGeneratedWithAi": "POST GENERADO CON IA",
     "challengeCompleted": "¡Reto superado! 🎉",
     "challengeCompletedMsg": "Has demostrado que el contenido de la publicación fue generada por IA generativa."
   },
@@ -227,7 +228,6 @@ export const es = {
     "progress": "Caso {{current}} de {{total}}",
     "next": "Siguiente caso",
     "finish": "Reiniciar reto",
-    "cases": "[object Object],[object Object],[object Object]",
     "reply": "Responder",
     "challengeCompleted": "¡Reto superado! 🎉",
     "challengeCompletedMsg": "Has respondido correctamente a todos los casos de uso incorrecto de IA."
@@ -332,7 +332,7 @@ export const es = {
     "back": "Atrás"
   },
   "playerOnboarding": {
-    "subtitle": "Bienvenido al Escaperoom de ECHO.",
+    "subtitle": "Bienvenido al Escape room de ECHO.",
     "nameLabel": "Nombre del jugador",
     "namePlaceholder": "Ingresa tu nombre",
     "nameErrorEmpty": "Por favor ingresa tu nombre",
@@ -349,26 +349,19 @@ export const es = {
     "moderatorFormSubmit": "Enviar"
   },
   "survey": {
+    "bannerTitle": "¡Gracias por jugar!",
+    "bannerSubtitle": "Danos tu opinión",
     "opinionTitle": "¿Cuál es tu opinión general sobre la escape room?",
     "opinionRange": "1 = Muy mala, 2 = Mala, 3 = Neutral, 4 = Buena, 5 = Muy buena",
     "rateTitle": "Califica las siguientes afirmaciones en una escala del 1 al 7.",
-    "rateRange": "1 = Totalmente en desacuerdo, 2 = En desacuerdo, 3 = En desacuerdo, 4 = Neutral, 5 = De acuerdo, 6 = De acuerdo, 7 = Totalmente de acuerdo.",
+    "rateRange": "1 = Totalmente en desacuerdo, 2 = En desacuerdo, 3 = Ligeramente en desacuerdo, 4 = Neutral, 5 = Ligeramente de acuerdo, 6 = De acuerdo, 7 = Totalmente de acuerdo.",
     "learningTitle": "¿Cuánto has aprendido?",
     "learningItems": {
       "0": "La escape room aumentó mi conocimiento sobre cómo funciona la IA.",
-      "1": {
-        "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B263,\"\"en\"\",\"\"es\"\")\"),\"La experiencia en la sala de escape aumentó mi conocimiento sobre cómo se utiliza la IA en las redes sociales.\")",
-        "result": "La experiencia en la sala de escape aumentó mi conocimiento sobre cómo se utiliza la IA en las redes sociales."
-      },
-      "2": {
-        "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B264,\"\"en\"\",\"\"es\"\")\"),\"La sala de escape aumentó mi conocimiento sobre cuáles son los usos apropiados de la IA.\")",
-        "result": "La sala de escape aumentó mi conocimiento sobre cuáles son los usos apropiados de la IA."
-      }
+      "1": "La escape room aumentó mi conocimiento sobre cómo se utiliza la IA en las redes sociales.",
+      "2": "La escape room aumentó mi conocimiento sobre cuáles son los usos apropiados de la IA."
     },
-    "guessTitle": {
-      "formula": "IFERROR(__xludf.DUMMYFUNCTION(\"GOOGLETRANSLATE(B265,\"\"en\"\",\"\"es\"\")\"),\"¿Qué te pareció la jugabilidad?\")",
-      "result": "¿Qué te pareció la jugabilidad?"
-    },
+    "guessTitle": "¿Qué te pareció la jugabilidad?",
     "guessItems": {
       "0": "I find the controls of the escape room to be straightforward.",
       "1": "I find the escape room's interface to be easy to navigate.",

@@ -56,7 +56,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
 
   const handleLoginSubmit = (event) => {
     event.preventDefault();
-    const isValid = username === "echo" && password === "1234";
+    const isValid = username === "echo" && password === "MintAI_mod";
     if (isValid) {
       sessionStorage.setItem("socialLoginDone", "true");
       setLoginDone(true);
@@ -152,7 +152,7 @@ export const SocialMediaApp = ({ mode = "window" }) => {
                     type={isPasswordVisible ? "text" : "password"}
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
-                    placeholder="1234"
+                    placeholder="MintAI_mod"
                     autoComplete="current-password"
                   />
                   <button

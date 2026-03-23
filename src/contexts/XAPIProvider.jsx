@@ -94,10 +94,6 @@ export const XAPI_VERBS = {
     id: "http://adlnet.gov/expapi/verbs/exited",
     display: { en: "exited" },
   },
-  LEFT: {
-    id: "http://activitystrea.ms/schema/1.0/leave",
-    display: { en: "left" },
-  },
 };
 
 // Activity types
@@ -250,6 +246,8 @@ export const XAPIProvider = ({ children }) => {
   // actorOverride can be passed when calling immediately after initializeActor (before state updates)
   const sendStatement = useCallback(async (verb, object, result = null, context = null, actorOverride = null, options = null) => {
     const currentActor = actorOverride || actor;
+    let dedupKey = null;
+    let dedupStamp = null;
 
     // Early return without interrupting the game
     if (!isConfigured) {
@@ -264,18 +262,27 @@ export const XAPIProvider = ({ children }) => {
 
     // Transport-level dedup for rapid duplicate lifecycle signals.
     // beforeunload/pagehide (and occasional double handlers) can fire almost simultaneously.
-    if (verb?.id === XAPI_VERBS.LEFT.id || verb?.id === XAPI_VERBS.RESUMED.id) {
-      const dedupKey = `xapi:dedup:${verb.id}`;
+    if (
+      !options?.bypassDedup &&
+      (
+        verb?.id === XAPI_VERBS.EXITED.id ||
+        verb?.id === XAPI_VERBS.EXITED_ADL.id ||
+        verb?.id === XAPI_VERBS.RESUMED.id
+      )
+    ) {
+      dedupKey = `xapi:dedup:${verb.id}`;
       const now = Date.now();
       const lastRaw = sessionStorage.getItem(dedupKey);
       const lastTs = Number(lastRaw);
-      const dedupWindowMs = verb?.id === XAPI_VERBS.LEFT.id ? 5000 : 2000;
+      const isExitVerb = verb?.id === XAPI_VERBS.EXITED.id || verb?.id === XAPI_VERBS.EXITED_ADL.id;
+      const dedupWindowMs = isExitVerb ? 5000 : 2000;
 
       if (Number.isFinite(lastTs) && now - lastTs < dedupWindowMs) {
         if (isDev) console.warn(`[xAPI] Deduped statement: ${verb?.display?.en || verb?.id}`);
         return null;
       }
-      sessionStorage.setItem(dedupKey, String(now));
+      dedupStamp = String(now);
+      sessionStorage.setItem(dedupKey, dedupStamp);
     }
 
     // Build the statement
@@ -340,6 +347,9 @@ export const XAPIProvider = ({ children }) => {
       if (isDev) console.log("[xAPI] Statement sent successfully:", statementId);
       return statementId;
     } catch (error) {
+      if (dedupKey && dedupStamp && sessionStorage.getItem(dedupKey) === dedupStamp) {
+        sessionStorage.removeItem(dedupKey);
+      }
       // Log error only in dev mode, never interrupt the game
       if (isDev) console.error("[xAPI] Failed to send statement:", error.message);
       return null;
@@ -432,6 +442,60 @@ export const XAPIProvider = ({ children }) => {
     );
   }, [sendStatement]);
 
+  const trackQuizAnswered = useCallback((username, selectedIndicators = [], correctIndicators = []) => {
+    if (!username) return null;
+
+    const selected = [...new Set(selectedIndicators.map(String))];
+    const correct = [...new Set(correctIndicators.map(String))];
+
+    const selectedSet = new Set(selected);
+    const correctSet = new Set(correct);
+
+    const isCorrect =
+      selectedSet.size === correctSet.size &&
+      Array.from(selectedSet).every((item) => correctSet.has(item));
+
+    const missingIndicators = correct.filter((item) => !selectedSet.has(item));
+    const incorrectlySelected = selected.filter((item) => !correctSet.has(item));
+    const matchedCount = selected.filter((item) => correctSet.has(item)).length;
+    const selectionAccuracy = correct.length > 0 ? matchedCount / correct.length : 1;
+
+    return sendStatement(
+      XAPI_VERBS.ANSWERED,
+      {
+        id: `${ENDGAME_BASE}/activities/puzzle/1/quiz/${username}`,
+        definition: {
+          name: { "en-US": `Bot Indicators Quiz: ${username}` },
+          type: "http://adlnet.gov/expapi/activities/assessment",
+        },
+      },
+      {
+        success: isCorrect,
+        score: {
+          scaled: isCorrect ? 1 : 0,
+          raw: isCorrect ? 1 : 0,
+          min: 0,
+          max: 1,
+        },
+        response: selected.length > 0 ? selected.join(",") : "none",
+        extensions: {
+          [`${ENDGAME_BASE}/ext/quiz/targetUsername`]: username,
+          [`${ENDGAME_BASE}/ext/quiz/selectedIndicators`]: selected,
+          [`${ENDGAME_BASE}/ext/quiz/correctIndicators`]: correct,
+          [`${ENDGAME_BASE}/ext/quiz/missingIndicators`]: missingIndicators,
+          [`${ENDGAME_BASE}/ext/quiz/incorrectlySelected`]: incorrectlySelected,
+          [`${ENDGAME_BASE}/ext/quiz/selectionAccuracy`]: selectionAccuracy,
+        },
+      },
+      {
+        contextActivities: {
+          parent: [ECHO_ACTIVITIES.PUZZLE_1],
+          grouping: [ECHO_ACTIVITIES.GAME],
+        },
+      }
+    );
+  }, [sendStatement]);
+
   const value = {
     actor,
     isConfigured,
@@ -441,6 +505,7 @@ export const XAPIProvider = ({ children }) => {
     trackChallengeCompleted,
     trackInteraction,
     trackProgress,
+    trackQuizAnswered,
     XAPI_VERBS,
   };
 

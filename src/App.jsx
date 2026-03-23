@@ -51,7 +51,6 @@ function App() {
   const { pauseEscapeTimer, resumeEscapeTimer } = useStats();
   const [onboardingComplete, setOnboardingComplete] = useState(false);
   const [showSessionDialog, setShowSessionDialog] = useState(false);
-  const leaveStatementSentRef = useRef(false);
   const sessionDialogInitRef = useRef(false);
 
   const sendWithFallbackActor = useCallback((verb, object, result = null, context = null, options = null) => {
@@ -65,33 +64,12 @@ function App() {
     sessionDialogInitRef.current = true;
 
     if (hasExistingSession()) {
+      // Cuando aparece el diálogo de sesión previa, registramos salida del juego.
+      sendWithFallbackActor(XAPI_VERBS.EXITED_ADL, ECHO_ACTIVITIES.GAME);
       pauseEscapeTimer();
       setShowSessionDialog(true);
     }
-  }, [pauseEscapeTimer]);
-
-  // Send "left" statement when leaving the page
-  useEffect(() => {
-    const handlePageLeave = () => {
-      if (leaveStatementSentRef.current) return;
-      leaveStatementSentRef.current = true;
-      sendWithFallbackActor(
-        XAPI_VERBS.LEFT,
-        ECHO_ACTIVITIES.GAME,
-        null,
-        null,
-        { keepalive: true }
-      );
-    };
-
-    window.addEventListener('beforeunload', handlePageLeave);
-    window.addEventListener('pagehide', handlePageLeave);
-
-    return () => {
-      window.removeEventListener('beforeunload', handlePageLeave);
-      window.removeEventListener('pagehide', handlePageLeave);
-    };
-  }, [sendWithFallbackActor]);
+  }, [pauseEscapeTimer, sendWithFallbackActor]);
 
   const handleResume = () => {
     resumeEscapeTimer();
@@ -101,27 +79,12 @@ function App() {
     setOnboardingComplete(true);
   };
 
-  const handleStartOver = () => {
-    // Ensure a single "left" statement is emitted before restarting.
-    if (!leaveStatementSentRef.current) {
-      leaveStatementSentRef.current = true;
-      sendWithFallbackActor(
-        XAPI_VERBS.LEFT,
-        ECHO_ACTIVITIES.GAME,
-        null,
-        null,
-        { keepalive: true }
-      );
-    }
+  const handleStartOver = async () => {
+    await sendWithFallbackActor(XAPI_VERBS.EXITED_ADL, ECHO_ACTIVITIES.GAME);
 
-    // Send "exited" statement before clearing.
-    sendWithFallbackActor(
-      XAPI_VERBS.EXITED_ADL,
-      ECHO_ACTIVITIES.GAME,
-      null,
-      null,
-      { keepalive: true }
-    );
+    // Give the browser a short window to flush keepalive requests before reload.
+    await new Promise((resolve) => setTimeout(resolve, 150));
+
     sessionStorage.clear();
     // Reload to reset all provider states
     window.location.reload();

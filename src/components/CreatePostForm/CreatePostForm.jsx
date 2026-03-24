@@ -79,9 +79,10 @@ export const CreatePostForm = ({ setIsCreateNewPostClicked, className }) => {
       >
         <div
           onClick={() => navigate(`/profile/${loggedInUserState?.username}`)}
-          className="img-container"
+          className="img-container "
         >
           <img
+          className="echo-logo-create-post"
             src={assetPath(loggedInUserState.avatarURL)}
             alt={loggedInUserState.firstName}
           />

@@ -36,6 +36,7 @@
 
 .hint-button--pulse {
   animation: pulse-glow 1.2s ease-in-out infinite, scale-pulse 1.2s ease-in-out infinite;
+  color: white;
 }
 
 @keyframes pulse-glow {

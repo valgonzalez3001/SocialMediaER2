@@ -229,3 +229,6 @@
     font-size: 1.3rem;
   }
 }
+.echo-logo-create-post {
+  border: rgba(255, 255, 255, 0.205) solid 2px;
+}

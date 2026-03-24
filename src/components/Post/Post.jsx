@@ -53,6 +53,7 @@ export const Post = ({ post, shouldFlash = false }) => {
     <div className={`post-card ${shouldFlash ? "post-card--flash" : ""}`}>
       <div className="profile-picture-container">
         <img
+          className={getLocalizedContent(post?.firstName, i18n.language) === "ECHO Oficial" ? "echo-logo-mini" : ""}
           src={assetPath(userDetails?.avatarURL || post?.avatarURL || post?._feedAvatarURL || "")}
           alt={userDetails?.firstName || getLocalizedContent(post?.firstName, i18n.language)}
         />{" "}

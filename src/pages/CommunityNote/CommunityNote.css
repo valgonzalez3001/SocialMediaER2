@@ -91,7 +91,7 @@
 
 .challenge-description {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgb(202, 202, 202);
   margin: 0;
   line-height: 1.5;
   font-weight: 400;
@@ -176,7 +176,7 @@
   flex: 1;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.938);
   margin: 0;
   transition: color 0.18s ease;
 }

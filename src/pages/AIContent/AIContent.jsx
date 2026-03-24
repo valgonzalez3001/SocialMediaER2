@@ -245,12 +245,16 @@ export const AIContent = () => {
             <div className="ai-content-frame">
               {step === "list" ? (
                 <>
-                  <div className="ai-content-title">
+                  {/* <div className="ai-content-title">
                     <h1>{t("aiContentPage.title")}</h1>
                     <p>{t("aiContentPage.subtitle")}</p>
-                  </div>
+                  </div> */}
 
-                  <section className="ai-content-panel">
+                  <section className="ai-verify-panel">
+                          <div className="ai-verify-header">
+                    <h1>{t("aiVerifyPage.title")}</h1>
+                    <p>{t("aiVerifyPage.subtitle")}</p>
+                  </div>
                     {challenge2Completed ? (
                       <div className="ai-content-alert ai-content-alert--resolved">
                         <div className="ai-content-alert-left">

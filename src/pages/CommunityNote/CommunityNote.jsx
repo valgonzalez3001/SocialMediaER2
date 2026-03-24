@@ -195,6 +195,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
         className="img-container"
       >
         <img
+         className="echo-logo-create-post"
           src={assetPath(loggedInUserState.avatarURL)}
           alt={loggedInUserState.firstName}
         />

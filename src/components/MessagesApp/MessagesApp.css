@@ -275,10 +275,11 @@
 
 .messages-chat-composer button {
   border: none;
-  border-radius: 50%;
-  width: 40px;
+  border-radius: 8px;
+  /* width: 40px; */
   height: 40px;
   display: flex;
+  padding: 0px 18px;
   align-items: center;
   justify-content: center;
   background: #00a884;

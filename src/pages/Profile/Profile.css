@@ -461,3 +461,9 @@
     margin-top: 2%;
   }
 }
+.echo-logo {
+  border: rgba(255, 255, 255, 0.349) solid 3px;
+}
+.echo-logo-mini {
+  border: rgba(255, 255, 255, 0.233) solid 2px;
+}

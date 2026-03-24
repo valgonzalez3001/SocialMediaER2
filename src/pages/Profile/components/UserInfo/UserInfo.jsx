@@ -35,7 +35,8 @@ export const UserInfo = ({ username, showClassificationControls = false, selecte
     <div className="user-info-container">
       <div className="profile-header-row">
         <div className="profilepicture-container">
-          <img src={assetPath(user.avatarURL)} alt={user.firstName} />
+          <img src={assetPath(user.avatarURL)} alt={user.firstName} 
+          className={isEchoProfile ? "echo-logo" : ""}/>
         </div>
         {showClassificationControls && !isEchoProfile && (
           <div className="profile-classification-panel--pulse">

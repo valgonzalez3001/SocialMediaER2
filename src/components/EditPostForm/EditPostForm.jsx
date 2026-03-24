@@ -67,6 +67,7 @@ export const EditPostForm = ({
       >
         <div className="img-container">
           <img
+           className="echo-logo-create-post"
             src={assetPath(loggedInUserState?.avatarURL)}
             alt={loggedInUserState?.firstName}
           />

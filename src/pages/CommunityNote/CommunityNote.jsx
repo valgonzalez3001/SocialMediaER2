@@ -179,6 +179,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
         }
       );
     }
+    sessionStorage.setItem("echo:highlightFinalCommunityNote", "true");
     setIsCreateNewPostClicked && setIsCreateNewPostClicked(false);
     navigate(`/profile/${loggedInUserState?.username || "Katherine"}`);
   };

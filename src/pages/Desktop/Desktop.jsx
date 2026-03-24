@@ -15,6 +15,10 @@ import { FaChevronUp } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { assetPath } from "../../utils/assetPath";
 
+const SUCCESS_OUTRO_DELAY_MS = 10000;
+const FAIL_OUTRO_DELAY_MS = 7000;
+const OUTRO_COMPLETED_KEY = "echo:outroCompleted";
+
 /**
  * Componente Desktop - Pantalla principal del sistema operativo simulado
  * Muestra el fondo de escritorio y las aplicaciones abiertas
@@ -28,6 +32,8 @@ export const Desktop = () => {
     escapeTimerRemainingMs,
     escapeTimerFlashTick,
     escapeTimerExpired,
+    finalCompletionStatus,
+    finalCompletionAt,
   } = useStats();
   const { sendStatement } = useXAPI();
   const { t, i18n } = useTranslation();
@@ -65,9 +71,35 @@ export const Desktop = () => {
   const [surveyCompleted, setSurveyCompleted] = useState(() => {
     return sessionStorage.getItem('surveyCompleted') === 'true';
   });
+  const [outroCompleted, setOutroCompleted] = useState(() => {
+    return sessionStorage.getItem(OUTRO_COMPLETED_KEY) === "true";
+  });
+  const [showOutroVideo, setShowOutroVideo] = useState(false);
+  const [outroLanguage, setOutroLanguage] = useState(() => {
+    const baseLanguage = i18n.resolvedLanguage || i18n.language || "es";
+    return ["es", "en", "fi", "sr"].includes(baseLanguage) ? baseLanguage : "es";
+  });
   const lastHandledFlashTickRef = useRef(escapeTimerFlashTick);
+  const outroTimeoutRef = useRef(null);
+  const outroVideoRef = useRef(null);
   const isCountdownCritical = escapeTimerRemainingMs <= 5 * 60 * 1000;
   const handleBossNotifDismiss = useCallback(() => setBossNotifVisible(false), []);
+  const normalizedLanguage = useMemo(() => {
+    const baseLanguage = i18n.resolvedLanguage || i18n.language || "es";
+    return ["es", "en", "fi", "sr"].includes(baseLanguage) ? baseLanguage : "es";
+  }, [i18n.language, i18n.resolvedLanguage]);
+  const outroVideoSrc = useMemo(() => {
+    if (!finalCompletionStatus) return null;
+    const suffix = finalCompletionStatus === "success" ? "success" : "fail";
+    return assetPath(`/assets/Outro_${suffix}_${outroLanguage}.mp4`);
+  }, [finalCompletionStatus, outroLanguage]);
+  const isOutroPending =
+    challengeFinalCompleted && !outroCompleted && !showOutroVideo && Boolean(finalCompletionStatus);
+  const isSurveyAvailable =
+    !surveyCompleted &&
+    !showOutroVideo &&
+    !isOutroPending &&
+    (escapeTimerExpired || (challengeFinalCompleted && outroCompleted && finalCompletionStatus !== "success"));
 
   const handleOpenSurvey = () => setShowSurveyModal(true);
   const handleCloseSurvey = () => setShowSurveyModal(false);
@@ -91,6 +123,23 @@ export const Desktop = () => {
       }
     );
   };
+
+  const handleOutroFinished = useCallback(() => {
+    if (outroTimeoutRef.current) {
+      clearTimeout(outroTimeoutRef.current);
+      outroTimeoutRef.current = null;
+    }
+    sessionStorage.setItem(OUTRO_COMPLETED_KEY, "true");
+    setShowOutroVideo(false);
+    setOutroCompleted(true);
+    if (finalCompletionStatus === "success" && !surveyCompleted) {
+      setShowSurveyModal(true);
+    }
+  }, [finalCompletionStatus, surveyCompleted]);
+
+  const handleOutroVideoError = useCallback(() => {
+    handleOutroFinished();
+  }, [handleOutroFinished]);
 
   const clampTranslate = (value) =>
     Math.min(Math.max(value, 0), closedTranslate);
@@ -169,6 +218,37 @@ export const Desktop = () => {
     const timeoutId = setTimeout(() => setCountdownFlash(false), isCountdownCritical ? 1700 : 1300);
     return () => clearTimeout(timeoutId);
   }, [escapeTimerFlashTick, escapeTimerStarted, challengeFinalCompleted, isCountdownCritical]);
+
+  useEffect(() => {
+    if (!challengeFinalCompleted || !finalCompletionStatus || outroCompleted) return;
+
+    setOutroLanguage(normalizedLanguage);
+    setShowSurveyModal(false);
+    const elapsedSinceCompletion = finalCompletionAt ? Date.now() - finalCompletionAt : 0;
+    const targetDelay = finalCompletionStatus === "success"
+      ? SUCCESS_OUTRO_DELAY_MS
+      : FAIL_OUTRO_DELAY_MS;
+    const remainingDelay = Math.max(0, targetDelay - elapsedSinceCompletion);
+
+    outroTimeoutRef.current = setTimeout(() => {
+      setShowOutroVideo(true);
+    }, remainingDelay);
+
+    return () => {
+      if (outroTimeoutRef.current) {
+        clearTimeout(outroTimeoutRef.current);
+        outroTimeoutRef.current = null;
+      }
+    };
+  }, [challengeFinalCompleted, finalCompletionAt, finalCompletionStatus, normalizedLanguage, outroCompleted]);
+
+  useEffect(() => {
+    if (!showOutroVideo || !outroVideoRef.current) return;
+    const playPromise = outroVideoRef.current.play();
+    if (playPromise?.catch) {
+      playPromise.catch(() => {});
+    }
+  }, [showOutroVideo, outroVideoSrc]);
 
   const countdownText = useMemo(() => {
     const totalSeconds = Math.max(0, Math.ceil(escapeTimerRemainingMs / 1000));
@@ -341,7 +421,7 @@ export const Desktop = () => {
 
       {/* Survey balloon - shows when game is complete and survey not done */}
       {/* Survey balloon - shows when game is complete OR timed out, and survey not done */}
-      {(challengeFinalCompleted || escapeTimerExpired) && !surveyCompleted && (
+      {isSurveyAvailable && (
         <div className="survey-banner" onClick={handleOpenSurvey}>
           <span className="survey-banner-icon">🎉</span>
           <div className="survey-banner-content">
@@ -360,6 +440,21 @@ export const Desktop = () => {
           onClose={handleCloseSurvey}
           onSubmit={handleSurveySubmit}
         />
+      )}
+
+      {showOutroVideo && outroVideoSrc && (
+        <div className="outro-video-overlay">
+          <video
+            ref={outroVideoRef}
+            className="outro-video-player"
+            src={outroVideoSrc}
+            autoPlay
+            playsInline
+            onEnded={handleOutroFinished}
+            onError={handleOutroVideoError}
+            onContextMenu={(event) => event.preventDefault()}
+          />
+        </div>
       )}
     </div>
   );

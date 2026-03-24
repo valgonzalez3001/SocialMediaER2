@@ -10,6 +10,38 @@
   color: var(--text-color);
 }
 
+.post-card--flash {
+  position: relative;
+  animation: postCardFlash 2.8s ease-in-out 1;
+}
+
+@keyframes postCardFlash {
+  0%, 100% {
+    background: transparent;
+    box-shadow: inset 0 0 0 0 rgba(163, 126, 255, 0);
+  }
+  16% {
+    background: rgba(142, 99, 255, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(182, 151, 255, 0.55), 0 0 26px rgba(142, 99, 255, 0.2);
+  }
+  32% {
+    background: transparent;
+    box-shadow: inset 0 0 0 0 rgba(163, 126, 255, 0);
+  }
+  48% {
+    background: rgba(142, 99, 255, 0.16);
+    box-shadow: inset 0 0 0 1px rgba(208, 190, 255, 0.72), 0 0 32px rgba(142, 99, 255, 0.28);
+  }
+  64% {
+    background: transparent;
+    box-shadow: inset 0 0 0 0 rgba(163, 126, 255, 0);
+  }
+  80% {
+    background: rgba(142, 99, 255, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(182, 151, 255, 0.42), 0 0 18px rgba(142, 99, 255, 0.16);
+  }
+}
+
 .post-card-content {
   display: flex;
   flex-flow: column nowrap;

@@ -7,6 +7,8 @@ const ESCAPE_TIMER_CRITICAL_MS = 5 * 60 * 1000;
 const ESCAPE_TIMER_CRITICAL_FLASH_INTERVAL_MS = 60 * 1000;
 const ESCAPE_OUTCOME_KEY = "echo:escapeOutcome";
 const ESCAPE_TIMER_PAUSED_AT_KEY = "escapeTimerPausedAt";
+const FINAL_COMPLETION_STATUS_KEY = "echo:finalCompletionStatus";
+const FINAL_COMPLETION_AT_KEY = "echo:finalCompletionAt";
 
 const getStoredTimerStart = () => {
   const raw = sessionStorage.getItem("escapeTimerStartedAt");
@@ -120,6 +122,13 @@ export const StatsProvider = ({ children }) => {
     return Math.max(0, ESCAPE_TIMER_DURATION_MS - (referenceNow - startedAt));
   });
   const [escapeTimerFlashTick, setEscapeTimerFlashTick] = useState(0);
+  const [finalCompletionStatus, setFinalCompletionStatus] = useState(
+    () => sessionStorage.getItem(FINAL_COMPLETION_STATUS_KEY) || null
+  );
+  const [finalCompletionAt, setFinalCompletionAt] = useState(() => {
+    const raw = Number(sessionStorage.getItem(FINAL_COMPLETION_AT_KEY));
+    return Number.isFinite(raw) && raw > 0 ? raw : null;
+  });
   const previousRemainingMsRef = useRef(escapeTimerRemainingMs);
 
   const sendEscapeOutcome = (outcome, verb, result = null, options = null) => {
@@ -225,15 +234,18 @@ export const StatsProvider = ({ children }) => {
   };
 
   const completeChallengeFinal = () => {
+    const completedAt = Date.now();
+    const elapsedMs = escapeTimerStartedAt ? completedAt - escapeTimerStartedAt : ESCAPE_TIMER_DURATION_MS;
     const remaining = escapeTimerStartedAt
-      ? Math.max(0, ESCAPE_TIMER_DURATION_MS - (Date.now() - escapeTimerStartedAt))
+      ? Math.max(0, ESCAPE_TIMER_DURATION_MS - elapsedMs)
       : 0;
+    const completedWithinTime = elapsedMs <= ESCAPE_TIMER_DURATION_MS;
 
     if (escapeTimerStartedAt) {
       setEscapeTimerRemainingMs(remaining);
     }
 
-    if (remaining > 0) {
+    if (completedWithinTime) {
       sendEscapeOutcome("completed", XAPI_VERBS.COMPLETED_GENERIC, {
         completion: true,
         success: true,
@@ -248,6 +260,13 @@ export const StatsProvider = ({ children }) => {
     reduceMisinformation(78);
     setChallengeFinalCompleted(true);
     sessionStorage.setItem("challengeFinalCompleted", JSON.stringify(true));
+    sessionStorage.setItem(
+      FINAL_COMPLETION_STATUS_KEY,
+      completedWithinTime ? "success" : "fail"
+    );
+    sessionStorage.setItem(FINAL_COMPLETION_AT_KEY, String(completedAt));
+    setFinalCompletionStatus(completedWithinTime ? "success" : "fail");
+    setFinalCompletionAt(completedAt);
   };
 
   const startEscapeTimer = () => {
@@ -401,6 +420,8 @@ export const StatsProvider = ({ children }) => {
     escapeTimerExpired:
       Boolean(escapeTimerStartedAt) && !challengeFinalCompleted && escapeTimerRemainingMs <= 0,
     escapeTimerFlashTick,
+    finalCompletionStatus,
+    finalCompletionAt,
     startEscapeTimer,
     pauseEscapeTimer,
     resumeEscapeTimer,

@@ -21,7 +21,7 @@ import { Comment } from "./components/Comment/Comment";
 import { getTimeDifference } from "../../utils/date.jsx";
 import { assetPath } from "../../utils/assetPath";
 
-export const Post = ({ post }) => {
+export const Post = ({ post, shouldFlash = false }) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [isEditPostClicked, setIsEditPostClicked] = useState(false);
@@ -50,7 +50,7 @@ export const Post = ({ post }) => {
   };
 
   return (
-    <div className="post-card">
+    <div className={`post-card ${shouldFlash ? "post-card--flash" : ""}`}>
       <div className="profile-picture-container">
         <img
           src={assetPath(userDetails?.avatarURL || post?.avatarURL || post?._feedAvatarURL || "")}

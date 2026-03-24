@@ -128,6 +128,7 @@ export const fi = {
     "no": "Ei",
     "classificationIncorrect": "Väärä valinta. Tarkista profiili uudelleen.",
     "classificationCorrectHuman": "Ispravno ste klasifikovali profil",
+    "classificationQuizSubtitle": "Oikeita vastauksia voi olla useampi kuin yksi.        ",
     "openQuiz": "Jatka testiä",
     "classificationQuizTitle": "Mitkä tämän profiilin ominaisuudet saavat sen luokiteltua disinformaatiota levittäväksi?",
     "sendQuizAnswer": "Lähetä vastaus",

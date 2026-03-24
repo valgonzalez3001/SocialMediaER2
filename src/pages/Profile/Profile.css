@@ -245,6 +245,13 @@
   line-height: 1.4;
 }
 
+.classification-quiz-subtitle {
+  margin: -0.35rem 1.5rem 1rem 0;
+  color: var(--muted-text);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
 .classification-quiz-options {
   display: flex;
   flex-direction: column;

@@ -128,6 +128,7 @@ export const en = {
     "no": "No",
     "classificationIncorrect": "Incorrect selection. Review the profile again.",
     "classificationCorrectHuman": "You classified the profile correctly",
+    "classificationQuizSubtitle": "There may be more than one correct answer.        ",
     "openQuiz": "Continue quiz",
     "classificationQuizTitle": "What characteristics of this profile make it classified as a disinformation account?",
     "sendQuizAnswer": "Submit answer",

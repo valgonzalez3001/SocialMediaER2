@@ -46,6 +46,7 @@ export const AIContent = () => {
   const { sendStatement, trackChallengeStarted } = useXAPI();
   const completionSentRef = useRef(false);
   const [step, setStep] = useState("list");
+  const [videoEnded, setVideoEnded] = useState(false);
   const [selectedWords, setSelectedWords] = useState([]);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [wrongChoice, setWrongChoice] = useState(null);
@@ -376,7 +377,16 @@ export const AIContent = () => {
                   </div>
 
                   <div className="ai-video-container">
-                    {/* Video placeholder - será reemplazado con video en el futuro */}
+                    <video
+                      width="100%"
+                      controls={false}
+                      autoPlay
+                      playsInline
+                      onEnded={() => setVideoEnded(true)}
+                      onPlay={() => setVideoEnded(false)}
+                      src={assetPath("/assets/video IA_V.2.mp4")}
+                      style={{ borderRadius: 12, background: "#000" }}
+                    />
                   </div>
 
                   <div className="ai-video-actions">
@@ -391,6 +401,8 @@ export const AIContent = () => {
                       className="ai-verify-start"
                       type="button"
                       onClick={() => setStep("brief")}
+                      disabled={!videoEnded}
+                      style={!videoEnded ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                     >
                       {t("aiVideoPage.nextStep")}
                     </button>

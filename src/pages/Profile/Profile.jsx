@@ -55,6 +55,7 @@ export const Profile = () => {
     }
   });
   const [selectedQuizOptions, setSelectedQuizOptions] = useState([]);
+  const [highlightedPostId, setHighlightedPostId] = useState(null);
   const [classifiedUsers, setClassifiedUsers] = useState(() => {
     const saved = sessionStorage.getItem('adminGameState');
     if (!saved) return {};
@@ -240,6 +241,28 @@ export const Profile = () => {
     setSelectedQuizOptions([]);
   }, [username]);
 
+  useEffect(() => {
+    if (username !== "ECHO") {
+      setHighlightedPostId(null);
+      return;
+    }
+
+    const shouldHighlight = sessionStorage.getItem("echo:highlightFinalCommunityNote") === "true";
+    if (!shouldHighlight || !sortedPostsByUser.length) return;
+
+    const postToHighlight = sortedPostsByUser.find((post) => post.isCommunityNote) || sortedPostsByUser[0];
+    if (!postToHighlight?._id) return;
+
+    setHighlightedPostId(postToHighlight._id);
+    sessionStorage.removeItem("echo:highlightFinalCommunityNote");
+
+    const timeoutId = setTimeout(() => {
+      setHighlightedPostId(null);
+    }, 2800);
+
+    return () => clearTimeout(timeoutId);
+  }, [sortedPostsByUser, username]);
+
   return (
     <>
 
@@ -268,7 +291,13 @@ export const Profile = () => {
           <div className="user-posts-container">
             {!postLoading &&
               (sortedPostsByUser.length ? (
-                sortedPostsByUser.map((post) => <Post key={post._id} post={post} />)
+                sortedPostsByUser.map((post) => (
+                  <Post
+                    key={post._id}
+                    post={post}
+                    shouldFlash={post._id === highlightedPostId}
+                  />
+                ))
               ) : (<>
                 <p className="no-bookmarks">{t('profile.noPosts')}</p>   
        </>
@@ -287,6 +316,7 @@ export const Profile = () => {
                   ×
                 </button>
                 <h3 className="classification-quiz-title">{t('profile.classificationQuizTitle')}</h3>
+                <p className="classification-quiz-subtitle">{t('profile.classificationQuizSubtitle')}</p>
 
                 <div className="classification-quiz-options">
                   {QUIZ_INDICATOR_KEYS.map((optionKey) => (

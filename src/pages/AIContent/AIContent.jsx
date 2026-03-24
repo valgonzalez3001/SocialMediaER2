@@ -107,26 +107,7 @@ export const AIContent = () => {
   }, [isCompleted]);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const checkVideoAvailability = async () => {
-      try {
-        const response = await fetch(localizedVideoSrc, { method: "HEAD" });
-        if (isMounted) {
-          setHasLocalizedVideo(response.ok);
-        }
-      } catch {
-        if (isMounted) {
-          setHasLocalizedVideo(false);
-        }
-      }
-    };
-
-    checkVideoAvailability();
-
-    return () => {
-      isMounted = false;
-    };
+    setHasLocalizedVideo(true);
   }, [localizedVideoSrc]);
 
   const handleCompletionClose = () => {
@@ -413,6 +394,7 @@ export const AIContent = () => {
                         playsInline
                         onEnded={() => setVideoEnded(true)}
                         onPlay={() => setVideoEnded(false)}
+                        onError={() => setHasLocalizedVideo(false)}
                         src={localizedVideoSrc}
                         style={{ borderRadius: 12, background: "#000" }}
                       />

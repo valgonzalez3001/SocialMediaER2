@@ -68,6 +68,7 @@ export const Desktop = () => {
   const [bossNotifVisible, setBossNotifVisible] = useState(false);
   const [countdownFlash, setCountdownFlash] = useState(false);
   const [showSurveyModal, setShowSurveyModal] = useState(false);
+  const [showEndOptionsModal, setShowEndOptionsModal] = useState(false);
   const [surveyCompleted, setSurveyCompleted] = useState(() => {
     return sessionStorage.getItem('surveyCompleted') === 'true';
   });
@@ -100,15 +101,23 @@ export const Desktop = () => {
     !showOutroVideo &&
     !isOutroPending &&
     (escapeTimerExpired || (challengeFinalCompleted && outroCompleted && finalCompletionStatus !== "success"));
+  const isEndingFlowComplete = challengeFinalCompleted && outroCompleted;
 
-  const resetToNewSession = useCallback(async () => {
+  const handleOpenSurvey = () => setShowSurveyModal(true);
+  const handleCloseSurvey = () => setShowSurveyModal(false);
+  const handleCloseEndOptionsModal = () => setShowEndOptionsModal(false);
+
+  const handleRestartSession = useCallback(async () => {
+    setShowEndOptionsModal(false);
     await new Promise((resolve) => setTimeout(resolve, 150));
     sessionStorage.clear();
     window.location.reload();
   }, []);
 
-  const handleOpenSurvey = () => setShowSurveyModal(true);
-  const handleCloseSurvey = () => setShowSurveyModal(false);
+  const handleVisitEndgame = useCallback(() => {
+    setShowEndOptionsModal(false);
+    window.open("https://endgameproject.github.io/", "_blank", "noopener,noreferrer");
+  }, []);
 
   
   const handleSurveySubmit = async (answers) => {
@@ -128,7 +137,7 @@ export const Desktop = () => {
         },
       }
     );
-    await resetToNewSession();
+    setShowEndOptionsModal(true);
   };
 
   const handleOutroFinished = useCallback(async () => {
@@ -143,8 +152,8 @@ export const Desktop = () => {
       setShowSurveyModal(true);
       return;
     }
-    await resetToNewSession();
-  }, [resetToNewSession, surveyCompleted]);
+    setShowEndOptionsModal(true);
+  }, [surveyCompleted]);
 
   const handleOutroVideoError = useCallback(() => {
     handleOutroFinished();
@@ -449,6 +458,45 @@ export const Desktop = () => {
           onClose={handleCloseSurvey}
           onSubmit={handleSurveySubmit}
         />
+      )}
+
+      {showEndOptionsModal && (
+        <div className="end-options-overlay" onClick={handleCloseEndOptionsModal}>
+          <div className="end-options-modal" onClick={(event) => event.stopPropagation()}>
+            <h2 className="end-options-title">
+              {t("escapeRoomEnd.title", "Escape room finished")}
+            </h2>
+            <p className="end-options-description">
+              {t(
+                "escapeRoomEnd.description",
+                "What would you like to do next?",
+              )}
+            </p>
+            <div className="end-options-actions">
+              <button
+                type="button"
+                className="end-options-btn end-options-btn--primary"
+                onClick={handleRestartSession}
+              >
+                {t("escapeRoomEnd.restart", "Return to the beginning")}
+              </button>
+              <button
+                type="button"
+                className="end-options-btn"
+                onClick={handleCloseEndOptionsModal}
+              >
+                {t("escapeRoomEnd.continueExploring", "Continue exploring ECHO")}
+              </button>
+              <button
+                type="button"
+                className="end-options-btn"
+                onClick={handleVisitEndgame}
+              >
+                {t("escapeRoomEnd.visitResources", "Visit ENDGAME resources")}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {showOutroVideo && outroVideoSrc && (

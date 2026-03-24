@@ -442,6 +442,74 @@
   pointer-events: none;
 }
 
+.end-options-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 10, 19, 0.82);
+  backdrop-filter: blur(6px);
+  padding: 20px;
+}
+
+.end-options-modal {
+  width: min(560px, 100%);
+  border-radius: 22px;
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(28, 21, 52, 0.98) 0%, rgba(18, 14, 34, 0.98) 100%);
+  border: 1px solid rgba(151, 122, 255, 0.35);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  color: #fff;
+}
+
+.end-options-title {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.end-options-description {
+  margin: 0 0 20px;
+  color: rgba(255, 255, 255, 0.74);
+  line-height: 1.5;
+}
+
+.end-options-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.end-options-btn {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.end-options-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.end-options-btn--primary {
+  background: linear-gradient(135deg, #7f55ff 0%, #5a8dff 100%);
+  border-color: transparent;
+}
+
+.end-options-btn--primary:hover {
+  background: linear-gradient(135deg, #8f6aff 0%, #6a9bff 100%);
+}
+
 @keyframes bannerSlideUp {
   from {
     opacity: 0;
@@ -524,5 +592,14 @@
   .outro-video-player {
     width: 100vw;
     height: 100vh;
+  }
+
+  .end-options-modal {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .end-options-title {
+    font-size: 1.3rem;
   }
 }

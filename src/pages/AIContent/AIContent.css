@@ -276,14 +276,14 @@
 
 .ai-verify-stamp {
     position: absolute;
-    right: 16px;
-    bottom: -12px;
+    right: -12px;
+    top: 0px;
     background: #f41c2f;
     color: #fff;
     font-weight: 800;
     padding: 6px 14px;
     border-radius: 6px;
-    transform: rotate(-8deg);
+    transform: rotate(10deg);
     letter-spacing: 1px;
     text-transform: uppercase;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);

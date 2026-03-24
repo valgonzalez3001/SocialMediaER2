@@ -47,7 +47,7 @@ export const AIContent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLang]);
   const { addMessage } = useMessages();
-  const { challenge2Completed, completeChallenge2 } = useStats();
+  const { challenge2Completed, completeChallenge2, setChallenge2Total, setChallenge2Progress } = useStats();
   const { sendStatement, trackChallengeStarted } = useXAPI();
   const completionSentRef = useRef(false);
   const [step, setStep] = useState("list");
@@ -77,6 +77,13 @@ export const AIContent = () => {
   );
   const isCompleted = selectedWords.length === gameData.words.length;
   const canAdvanceFromVideo = !hasLocalizedVideo || videoEnded;
+
+  // Sync challenge 2 progress to StatsProvider for navbar badge
+  // Challenge 2 is a single task (complete the word game), so total=1
+  useEffect(() => {
+    setChallenge2Total(1);
+    setChallenge2Progress(isCompleted ? 1 : 0);
+  }, [isCompleted, setChallenge2Total, setChallenge2Progress]);
 
   // Lock body scroll while on this page
   useEffect(() => {
@@ -344,7 +351,7 @@ export const AIContent = () => {
                         <span className="ai-verify-name">
                           {t("aiVerifyPage.postTitle")}
                         </span>
-                        <span className="ai-verify-handle">@quesofresco85</span>
+                        <span className="ai-verify-handle">@{t("aiVerifyPage.tweetAuthor","quesofresco85")}@</span>
                         <span className="ai-verify-date">
                           {t("aiVerifyPage.postDate")}
                         </span>
@@ -495,7 +502,11 @@ export const AIContent = () => {
                   <div className="ai-game-content">
                     <div className="ai-game-prompt-container">
                       <div className="ai-game-prompt">
-                        <p className="ai-game-prompt-text">{gameData.prompt}</p>
+                        <p className="ai-game-prompt-text">
+                          <strong>{t("aiVerifyPage.postTitle","Critical Thinking 🍅🌶️🥑")}</strong>
+                          <small><span>@{t("aiVerifyPage.tweetAuthorHandle","quesofresco85")}</span>:</small><br/>
+                          {gameData.prompt}
+                        </p>
                       </div>
                       <div className="ai-game-badge">
                         <span className="ai-game-badge-text">
@@ -505,6 +516,7 @@ export const AIContent = () => {
                     </div>
 
                     <div className="ai-game-words-container">
+                      <b>{t("aiGamePage.ai","AI")}:</b>
                       <div
                         className={`ai-game-sentence ${isCompleted ? "completed" : ""}`}
                       >
@@ -585,8 +597,8 @@ export const AIContent = () => {
                                                         <div className="ai-game-match-avatar" aria-hidden="true" />
                                                         <div className="ai-game-match-content">
                                                             <div className="ai-game-match-meta">
-                                                                <strong>Critical Thinking 🍅🌶️🥑</strong>
-                                                                <span>@quesofresco85</span>
+                                                                <strong>{t("aiVerifyPage.postTitle","Critical Thinking 🍅🌶️🥑")}</strong>
+                                                                <span>@{t("aiVerifyPage.tweetAuthorHandle","quesofresco85")}</span>
                                                                 <span>{t("aiVerifyPage.postDate")}</span>
                                                             </div>
                                                             <p>{reconstructedSentence}</p>

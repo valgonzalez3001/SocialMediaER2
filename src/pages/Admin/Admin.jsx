@@ -29,7 +29,7 @@ export const Admin = () => {
     const { t } = useTranslation();
     const { openApp } = useOS();
     const { userState } = useUser();
-    const { reduceMisinformation, completeChallenge1, challenge1Completed, setSuspectUsersCount } = useStats();
+    const { reduceMisinformation, completeChallenge1, challenge1Completed, setSuspectUsersCount, setChallenge1Progress } = useStats();
     const { addMessage } = useMessages();
     const { sendStatement, trackChallengeStarted } = useXAPI();
     const navigate = useNavigate();
@@ -164,6 +164,23 @@ export const Admin = () => {
             }
         }
     }, [suspectUsers]);
+
+    // Sync progress to navbar badge - count correctly classified users
+    useEffect(() => {
+        if (suspectUsers.length === 0) return;
+        const correctCount = suspectUsers.filter(user => {
+            const classification = normalizeClassification(classifiedUsers[user.username]);
+            const isBot = user?.puzzle?.isBot;
+            const isClassificationCorrect =
+                (classification === CLASSIFICATION.YES && isBot) ||
+                (classification === CLASSIFICATION.NO && !isBot);
+            if (!isClassificationCorrect) return false;
+            // For bots, also require quiz submission
+            if (isBot) return Boolean(quizSubmittedByUser[user.username]);
+            return true;
+        }).length;
+        setChallenge1Progress(correctCount);
+    }, [suspectUsers, classifiedUsers, quizSubmittedByUser, setChallenge1Progress]);
 
     const isCorrectClassification = (user) => {
         const classification = normalizeClassification(classifiedUsers[user.username]);

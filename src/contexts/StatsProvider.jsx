@@ -80,6 +80,16 @@ export const StatsProvider = ({ children }) => {
   });
 
   const [suspectUsersCount, setSuspectUsersCount] = useState(0);
+  const [challenge1Progress, setChallenge1Progress] = useState(0);
+  const [challenge2Total, setChallenge2Total] = useState(1);
+  const [challenge2Progress, setChallenge2Progress] = useState(0);
+  const [challenge3Total, setChallenge3Total] = useState(3);
+  const [challenge3Progress, setChallenge3Progress] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem("ai-incorrect:sentReplies");
+      return saved ? Object.keys(JSON.parse(saved)).length : 0;
+    } catch { return 0; }
+  });
 
   const [challenge2Completed, setChallenge2Completed] = useState(() => {
     const saved = sessionStorage.getItem("challenge2Completed");
@@ -395,6 +405,16 @@ export const StatsProvider = ({ children }) => {
     reduceMisinformation,
     suspectUsersCount,
     setSuspectUsersCount,
+    challenge1Progress,
+    setChallenge1Progress,
+    challenge2Total,
+    setChallenge2Total,
+    challenge2Progress,
+    setChallenge2Progress,
+    challenge3Total,
+    setChallenge3Total,
+    challenge3Progress,
+    setChallenge3Progress,
     challenge1Completed,
     completeChallenge1,
     challenge2Completed,

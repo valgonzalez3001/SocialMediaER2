@@ -81,7 +81,7 @@ export const AIIncorrectUses = () => {
     const { t } = useTranslation();
     const currentLang = t("langKey");
     const { userState } = useUser();
-    const { challenge3Completed, completeChallenge3 } = useStats();
+    const { challenge3Completed, completeChallenge3, setChallenge3Total, setChallenge3Progress } = useStats();
     const { addMessage } = useMessages();
     const { sendStatement, trackChallengeStarted } = useXAPI();
     const completionSentRef = useRef(false);
@@ -175,6 +175,12 @@ export const AIIncorrectUses = () => {
             document.documentElement.classList.remove("ai-incorrect-no-scroll");
         };
     }, []);
+
+    // Sync progress to navbar badge
+    useEffect(() => {
+        setChallenge3Total(challengeCases.length);
+        setChallenge3Progress(Object.keys(sentReplies).length);
+    }, [challengeCases.length, sentReplies, setChallenge3Total, setChallenge3Progress]);
 
     const handleCompletionClose = () => {
         setShowCompletionModal(false);

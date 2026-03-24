@@ -155,7 +155,7 @@ export const es = {
     "hintTitle": "Indicadores de cuenta desinformadora",
     "hintContent": {
       "emotions": "Apela a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.",
-      "targetAudience": "Falta de público objetivo claro: repite el mismo contenido en varios idiomas.",
+      "targetAudience": "Falta de público objetivo claro: Repite el mismo contenido en varios idiomas.",
       "temporalActivity": "Actividad temporal sospechosa: Publicaciones a intervalos muy regulares o en horarios poco naturales",
       "abnormalRatio": "Ratio anormal: Muchos seguidos pero poca interacción real",
       "recentAccount": "Cuenta reciente: Cuenta nueva con mucha actividad inmediata"
@@ -181,7 +181,7 @@ export const es = {
     "noPendingReview": "No se han detectado nuevos posts para revisar."
   },
   "aiVerifyPage": {
-    "title": "Verificar contenido generado por IA",
+    "title": "Verifica contenido generado por IA",
     "subtitle": "Demuestra que el contenido de este post fue generado por IA, para poder etiquetarlo como tal.",
     "postTitle": "Pensamiento crítico 🍎🥑",
     "postDate": "11 dic. 2025",
@@ -200,14 +200,14 @@ export const es = {
     "suspiciousBadge": "PROMPT SOSPECHOSO"
   },
   "aiChallengeBriefPage": {
-    "title": "Verificar contenido generado por IA",
+    "title": "Verifica contenido generado por IA",
     "systemMessage": "El sistema encontró un <strong>posible prompt en MINT-AI que generó el post</strong>, a través de la comparación de palabras, tono y temas:",
     "explanation": "Este prompt puede tener algunas pistas.",
     "instructions": "Para demostrar que el post fue generado por IA, deberás <strong>imitar la generación del post</strong>, palabra por palabra.",
     "buttonText": "Verificar post como IA →"
   },
   "aiGamePage": {
-    "title": "Verificar contenido generado por IA",
+    "title": "Verifica contenido generado por IA",
     "subtitle": "¡Piensa como una máquina! ¿Qué palabra es más probable que se genere a continuación?",
     "success": "¡Felicidades! Has completado la frase correctamente.",
     "error": "❌ Palabra incorrecta. Intenta de nuevo desde el principio.",
@@ -219,7 +219,7 @@ export const es = {
     "challengeCompletedMsg": "Has demostrado que el contenido de la publicación fue generada por IA generativa."
   },
   "aiIncorrectUsesPage": {
-    "title": "Usos incorrectos de IA ⚠️",
+    "title": "Detecta usos incorrectos de IA ⚠️",
     "subtitle": "¡Hola Moderador! Por favor, responde a los usuarios con consejos para que no repitan estos errores, que están generando desinformación en Echo.",
     "instruction": "Selecciona la respuesta que representa un uso incorrecto de IA.",
     "unavailable": "Este reto aun no esta disponible en el idioma actual.",

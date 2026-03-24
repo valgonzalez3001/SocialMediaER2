@@ -392,5 +392,12 @@ export const es = {
     "message": "Tienes una sesión anterior. ¿Te gustaría continuar donde la dejaste?",
     "resume": "Reanudar",
     "startOver": "Volver a empezar"
+  },
+  "escapeRoomEnd": {
+    "title": "Escape room finalizado",
+    "description": "¿Qué te gustaría hacer ahora?",
+    "restart": "Volver al principio",
+    "continueExploring": "Continuar explorando ECHO",
+    "visitResources": "Ir a los recursos de ENDGAME"
   }
 };

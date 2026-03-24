@@ -76,6 +76,7 @@ export const AIContent = () => {
     [gameData],
   );
   const isCompleted = selectedWords.length === gameData.words.length;
+  const canAdvanceFromVideo = !hasLocalizedVideo || videoEnded;
 
   // Lock body scroll while on this page
   useEffect(() => {
@@ -413,8 +414,8 @@ export const AIContent = () => {
                       className="ai-verify-start"
                       type="button"
                       onClick={() => setStep("brief")}
-                      disabled={!videoEnded}
-                      style={!videoEnded ? { opacity: 0.5, cursor: "not-allowed" } : {}}
+                      disabled={!canAdvanceFromVideo}
+                      style={!canAdvanceFromVideo ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                     >
                       {t("aiVideoPage.nextStep")}
                     </button>

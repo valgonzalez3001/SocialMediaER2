@@ -183,6 +183,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
     }
     sessionStorage.setItem("echo:highlightFinalCommunityNote", "true");
     sessionStorage.setItem("echo:highlightFinalCommunityNoteCreatedAt", finalCommunityNoteCreatedAt);
+    sessionStorage.setItem("echo:highlightFinalCommunityNoteContent", t("createPost.conclusionText"));
     setIsCreateNewPostClicked && setIsCreateNewPostClicked(false);
     navigate(`/profile/${loggedInUserState?.username || "Katherine"}`);
   };

@@ -10,6 +10,7 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import { useXAPI, XAPI_VERBS, ECHO_ACTIVITIES } from "../../contexts/XAPIProvider.jsx";
 import { useUser } from "../../contexts/UserProvider.jsx";
 import { StatsPanel } from "../../components/StatsPanel/StatsPanel";
+import { getLocalizedContent } from "../../utils/i18nHelpers.jsx";
 
 const CLASSIFICATION = {
   YES: 'yes',
@@ -39,7 +40,7 @@ const QUIZ_INDICATOR_KEYS = [
 ];
 
 export const Profile = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [fromAdmin, setFromAdmin] = useState(false);
   const [showClassificationQuiz, setShowClassificationQuiz] = useState(false);
@@ -249,26 +250,32 @@ export const Profile = () => {
 
     const shouldHighlight = sessionStorage.getItem("echo:highlightFinalCommunityNote") === "true";
     const highlightedCreatedAt = sessionStorage.getItem("echo:highlightFinalCommunityNoteCreatedAt");
+    const highlightedContent = sessionStorage.getItem("echo:highlightFinalCommunityNoteContent");
     if (!shouldHighlight || !sortedPostsByUser.length) return;
 
     const postToHighlight =
       sortedPostsByUser.find(
-        (post) => post.isCommunityNote && String(post.createdAt) === String(highlightedCreatedAt)
-      ) ||
-      sortedPostsByUser.find((post) => post.isCommunityNote) ||
-      sortedPostsByUser[0];
-    if (!postToHighlight?._id) return;
+        (post) =>
+          post.isCommunityNote &&
+          String(post.createdAt) === String(highlightedCreatedAt) &&
+          String(getLocalizedContent(post.content, i18n.language)) === String(highlightedContent)
+      );
+    if (!postToHighlight?._id) {
+      setHighlightedPostId(null);
+      return;
+    }
 
     setHighlightedPostId(postToHighlight._id);
     sessionStorage.removeItem("echo:highlightFinalCommunityNote");
     sessionStorage.removeItem("echo:highlightFinalCommunityNoteCreatedAt");
+    sessionStorage.removeItem("echo:highlightFinalCommunityNoteContent");
 
     const timeoutId = setTimeout(() => {
       setHighlightedPostId(null);
     }, 2800);
 
     return () => clearTimeout(timeoutId);
-  }, [sortedPostsByUser, username]);
+  }, [i18n.language, sortedPostsByUser, username]);
 
   return (
     <>

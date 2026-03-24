@@ -392,5 +392,12 @@ export const sr = {
     "message": "Imate prethodnu sesiju. Želite li nastaviti tamo gdje ste stali?",
     "resume": "Životopis",
     "startOver": "Počni ispočetka"
+  },
+  "escapeRoomEnd": {
+    "title": "Escape room je završen",
+    "description": "Šta bi želeo/la da uradiš sledeće?",
+    "restart": "Vrati se na početak",
+    "continueExploring": "Nastavi da istražuješ ECHO",
+    "visitResources": "Poseti ENDGAME resurse"
   }
 };

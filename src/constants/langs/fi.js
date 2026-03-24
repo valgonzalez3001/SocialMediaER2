@@ -391,5 +391,12 @@ export const fi = {
     "message": "Sinulla on aiempi istunto. Haluatko jatkaa siitä, mihin jäit?",
     "resume": "Jatkaa",
     "startOver": "Aloita alusta"
+  },
+  "escapeRoomEnd": {
+    "title": "Pakohuone päättynyt",
+    "description": "Mitä haluaisit tehdä seuraavaksi?",
+    "restart": "Palaa alkuun",
+    "continueExploring": "Jatka ECHOn tutkimista",
+    "visitResources": "Siirry ENDGAME-resursseihin"
   }
 };

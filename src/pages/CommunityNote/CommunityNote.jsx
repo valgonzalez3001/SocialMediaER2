@@ -114,6 +114,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
       return;
     }
 
+    const finalCommunityNoteCreatedAt = new Date().toISOString();
     const conclusionPost = {
       firstName: loggedInUserState?.firstName,
       lastName: loggedInUserState?.lastName,
@@ -121,6 +122,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
       mediaUrl: "",
       isCommunityNote: true,
       avatarURL: "/assets/echo-logo-bg.png",
+      createdAt: finalCommunityNoteCreatedAt,
     };
 
     createPost(new Event("submit"), conclusionPost, "admin-token");
@@ -180,6 +182,7 @@ export const CommunityNote = ({ setIsCreateNewPostClicked, className = "modal-co
       );
     }
     sessionStorage.setItem("echo:highlightFinalCommunityNote", "true");
+    sessionStorage.setItem("echo:highlightFinalCommunityNoteCreatedAt", finalCommunityNoteCreatedAt);
     setIsCreateNewPostClicked && setIsCreateNewPostClicked(false);
     navigate(`/profile/${loggedInUserState?.username || "Katherine"}`);
   };

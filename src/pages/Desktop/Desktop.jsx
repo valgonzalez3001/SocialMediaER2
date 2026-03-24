@@ -101,18 +101,24 @@ export const Desktop = () => {
     !isOutroPending &&
     (escapeTimerExpired || (challengeFinalCompleted && outroCompleted && finalCompletionStatus !== "success"));
 
+  const resetToNewSession = useCallback(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    sessionStorage.clear();
+    window.location.reload();
+  }, []);
+
   const handleOpenSurvey = () => setShowSurveyModal(true);
   const handleCloseSurvey = () => setShowSurveyModal(false);
 
   
-  const handleSurveySubmit = (answers) => {
+  const handleSurveySubmit = async (answers) => {
     console.log('Survey answers:', answers);
     sessionStorage.setItem('surveyCompleted', 'true');
     setSurveyCompleted(true);
     setShowSurveyModal(false);
 
     // Send survey results to LRS
-    sendStatement(
+    await sendStatement(
       XAPI_VERBS.EVALUATED,
       ECHO_ACTIVITIES.SURVEY,
       {
@@ -122,9 +128,10 @@ export const Desktop = () => {
         },
       }
     );
+    await resetToNewSession();
   };
 
-  const handleOutroFinished = useCallback(() => {
+  const handleOutroFinished = useCallback(async () => {
     if (outroTimeoutRef.current) {
       clearTimeout(outroTimeoutRef.current);
       outroTimeoutRef.current = null;
@@ -132,10 +139,12 @@ export const Desktop = () => {
     sessionStorage.setItem(OUTRO_COMPLETED_KEY, "true");
     setShowOutroVideo(false);
     setOutroCompleted(true);
-    if (finalCompletionStatus === "success" && !surveyCompleted) {
+    if (!surveyCompleted) {
       setShowSurveyModal(true);
+      return;
     }
-  }, [finalCompletionStatus, surveyCompleted]);
+    await resetToNewSession();
+  }, [resetToNewSession, surveyCompleted]);
 
   const handleOutroVideoError = useCallback(() => {
     handleOutroFinished();

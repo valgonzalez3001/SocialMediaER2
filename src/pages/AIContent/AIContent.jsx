@@ -18,6 +18,11 @@ import { assetPath } from "../../utils/assetPath";
 export const AIContent = () => {
   const { t } = useTranslation();
   const currentLang = t("langKey");
+  const [hasLocalizedVideo, setHasLocalizedVideo] = useState(true);
+  const localizedVideoSrc = useMemo(
+    () => assetPath(`/assets/video_IA_${currentLang}.mp4`),
+    [currentLang],
+  );
 
   // Pick a random sentence ONCE per session and persist the index so navigating
   // away and back always shows the same sentence.  Languages with only one
@@ -100,6 +105,29 @@ export const AIContent = () => {
     const timer = setTimeout(() => setShowMatch(true), 260);
     return () => clearTimeout(timer);
   }, [isCompleted]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const checkVideoAvailability = async () => {
+      try {
+        const response = await fetch(localizedVideoSrc, { method: "HEAD" });
+        if (isMounted) {
+          setHasLocalizedVideo(response.ok);
+        }
+      } catch {
+        if (isMounted) {
+          setHasLocalizedVideo(false);
+        }
+      }
+    };
+
+    checkVideoAvailability();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [localizedVideoSrc]);
 
   const handleCompletionClose = () => {
     setShowCompletionModal(false);
@@ -376,18 +404,20 @@ export const AIContent = () => {
                     <p>{t("aiVideoPage.subtitle")}</p>
                   </div>
 
-                  <div className="ai-video-container">
-                    <video
-                      width="100%"
-                      controls={false}
-                      autoPlay
-                      playsInline
-                      onEnded={() => setVideoEnded(true)}
-                      onPlay={() => setVideoEnded(false)}
-                      src={assetPath("/assets/video IA_V.2.mp4")}
-                      style={{ borderRadius: 12, background: "#000" }}
-                    />
-                  </div>
+                  {hasLocalizedVideo && (
+                    <div className="ai-video-container">
+                      <video
+                        width="100%"
+                        controls={false}
+                        autoPlay
+                        playsInline
+                        onEnded={() => setVideoEnded(true)}
+                        onPlay={() => setVideoEnded(false)}
+                        src={localizedVideoSrc}
+                        style={{ borderRadius: 12, background: "#000" }}
+                      />
+                    </div>
+                  )}
 
                   <div className="ai-video-actions">
                     <button

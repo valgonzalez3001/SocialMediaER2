@@ -248,13 +248,20 @@ export const Profile = () => {
     }
 
     const shouldHighlight = sessionStorage.getItem("echo:highlightFinalCommunityNote") === "true";
+    const highlightedCreatedAt = sessionStorage.getItem("echo:highlightFinalCommunityNoteCreatedAt");
     if (!shouldHighlight || !sortedPostsByUser.length) return;
 
-    const postToHighlight = sortedPostsByUser.find((post) => post.isCommunityNote) || sortedPostsByUser[0];
+    const postToHighlight =
+      sortedPostsByUser.find(
+        (post) => post.isCommunityNote && String(post.createdAt) === String(highlightedCreatedAt)
+      ) ||
+      sortedPostsByUser.find((post) => post.isCommunityNote) ||
+      sortedPostsByUser[0];
     if (!postToHighlight?._id) return;
 
     setHighlightedPostId(postToHighlight._id);
     sessionStorage.removeItem("echo:highlightFinalCommunityNote");
+    sessionStorage.removeItem("echo:highlightFinalCommunityNoteCreatedAt");
 
     const timeoutId = setTimeout(() => {
       setHighlightedPostId(null);

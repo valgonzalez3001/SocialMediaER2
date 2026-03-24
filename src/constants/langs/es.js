@@ -61,7 +61,7 @@ export const es = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Usuarios sospechosos detectados en ECHO",
-        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots u otras cuentas generando desinformación.\n\n Usa las credenciales: Usuario: echo. Contraseña: MintAI_mod\n\n 📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta difunde desinformación?\n3. Si consideras que sí, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta misinformadora que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
+        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots u otras cuentas generando desinformación.\n\n Usa las credenciales: Usuario: echo. Contraseña: MintAI_mod\n\n 📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta difunde desinformación?\n3. Si consideras que sí, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta desinformadora que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
       },
       "challenge2": {
         "subject": "🤖 Posibles publicaciones generadas por IA detectadas",
@@ -154,11 +154,11 @@ export const es = {
     "playAgain": "Jugar de Nuevo",
     "hintTitle": "Indicadores de cuenta desinformadora",
     "hintContent": {
-      "emotions": "Apela a las emociones: Uso de lenguaje emocionalmente manipulador o sensacionalista.",
-      "targetAudience": "Falta de público objetivo claro: Repite el mismo contenido en varios idiomas.",
-      "temporalActivity": "Actividad temporal sospechosa: Publicaciones a intervalos muy regulares o en horarios poco naturales",
-      "abnormalRatio": "Ratio anormal: Muchos seguidos pero poca interacción real",
-      "recentAccount": "Cuenta reciente: Cuenta nueva con mucha actividad inmediata"
+      "emotions": "Apela a las emociones: Utiliza un lenguaje exagerado o sensacionalista que busca provocar reacciones intensas, como miedo, urgencia o indignación, en lugar de informar de manera objetiva.",
+      "targetAudience": "Falta de público objetivo claro: El contenido no está dirigido a una audiencia específica y, en algunos casos, se publica repetidamente en varios idiomas sin una estrategia clara.",
+      "temporalActivity": "Actividad temporal sospechosa: Las publicaciones se realizan en intervalos demasiado regulares o en horarios poco habituales, lo que puede indicar automatización.",
+      "abnormalRatio": "Ratio anormal: La cuenta sigue a muchas personas, pero recibe muy poca interacción (me gusta, comentarios o compartidos), lo que sugiere una audiencia poco auténtica.",
+      "recentAccount": "Cuenta reciente: El perfil ha sido creado hace poco tiempo y presenta un volumen de actividad inusualmente alto desde sus inicios."
     }
   },
   "editPost": {

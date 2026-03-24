@@ -154,11 +154,11 @@ export const sr = {
     "playAgain": "Igraj ponovo",
     "hintTitle": "Pokazatelji dezinformacija o računu",
     "hintContent": {
-      "emotions": "Apeliranje na emocije: Korištenje emocionalno manipulativnog ili senzacionalističkog jezika",
-      "targetAudience": "Nema jasne ciljne publike: Ponavlja isti sadržaj na više jezika",
-      "temporalActivity": "Sumnjiva vremenska aktivnost: Objavljivanje u vrlo redovitim intervalima ili neobičnim vremenima",
-      "abnormalRatio": "Nenormalan odnos: Mnogo pratilaca ali malo prave interakcije",
-      "recentAccount": "Skoriji nalog: Nov nalog sa trenutnom visokom aktivnošću"
+      "emotions": "Apeliranje na emocije: Koristi pretjerani ili senzacionalistički jezik osmišljen da izazove snažne reakcije - poput straha, hitnosti ili ogorčenja - umjesto da pruži objektivne informacije.",
+      "targetAudience": "Nedostatak jasne ciljne publike: Sadržaj nije prilagođen određenoj publici i može se ponavljati na više jezika bez jasne strategije.",
+      "temporalActivity": "Sumnjivi obrasci objavljivanja: Objave se pojavljuju u vrlo redovitim intervalima ili u neuobičajeno vrijeme, što može ukazivati ​​na automatiziranu aktivnost.",
+      "abnormalRatio": "Nenormalan omjer angažmana: Račun prati mnogo korisnika, ali prima vrlo malo stvarne interakcije (lajkova, komentara ili dijeljenja), što sugerira nekvalitetnu ili neautentičnu publiku.",
+      "recentAccount": "Nedavno kreiran račun: Profil je nedavno kreiran i od samog početka pokazuje neuobičajeno visoku razinu aktivnosti."
     }
   },
   "editPost": {

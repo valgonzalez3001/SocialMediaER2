@@ -154,11 +154,11 @@ export const en = {
     "playAgain": "Play Again",
     "hintTitle": "Account Misinformation Indicators",
     "hintContent": {
-      "emotions": "Appeals to emotions: Use of emotionally manipulative or sensationalist language",
-      "targetAudience": "No clear target audience: Repeats the same content in multiple languages",
-      "temporalActivity": "Suspicious temporal activity: Posts at very regular intervals or unusual times",
-      "abnormalRatio": "Abnormal ratio: Many followers but little real interaction",
-      "recentAccount": "Recent account: New account with immediate high activity"
+      "emotions": "Appeals to emotions: Uses exaggerated or sensationalist language designed to trigger strong reactions—such as fear, urgency, or outrage—rather than provide objective information.",
+      "targetAudience": "Lack of a clear target audience: The content is not tailored to a specific audience and may be repeated across multiple languages without a clear strategy.",
+      "temporalActivity": "Suspicious posting patterns: Posts appear at highly regular intervals or at unusual hours, which may indicate automated activity.",
+      "abnormalRatio": "Abnormal engagement ratio: The account follows many users but receives very little genuine interaction (likes, comments, or shares), suggesting a low-quality or inauthentic audience.",
+      "recentAccount": "Recently created account: The profile was created recently and shows an unusually high level of activity from the start."
     }
   },
   "editPost": {

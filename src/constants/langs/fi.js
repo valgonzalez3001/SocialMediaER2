@@ -154,11 +154,11 @@ export const fi = {
     "playAgain": "Pelaa Uudelleen",
     "hintTitle": "Tilin virheellisten tietojen indikaattorit",
     "hintContent": {
-      "emotions": "Tunteisiin vetoaminen: Tunnetasolla manipuloivan tai sensaatiohakuisen kielen käyttö",
-      "targetAudience": "Ei selkeää kohdeyleisöä: Toistaa samaa sisältöä useilla kielillä",
-      "temporalActivity": "Epäilyttävä ajallinen toiminta: Julkaisut hyvin säännöllisin väliajoin tai epätavallisina aikoina",
-      "abnormalRatio": "Epänormaali suhde: Monta seuraajaa mutta vähän todellista vuorovaikutusta",
-      "recentAccount": "Tuore tili: Uusi tili välittömällä korkealla aktiivisuudella"
+      "emotions": "Vetoaa tunteisiin: Käyttää liioiteltua tai sensaatiohakuista kieltä, jonka tarkoituksena on laukaista voimakkaita reaktioita – kuten pelkoa, kiireellisyyttä tai raivoa – sen sijaan, että se antaisi objektiivista tietoa.",
+      "targetAudience": "Selkeän kohdeyleisön puute: Sisältöä ei ole räätälöity tietylle yleisölle, ja sitä voidaan toistaa useilla kielillä ilman selkeää strategiaa.",
+      "temporalActivity": "Epäilyttävät julkaisumallit: Julkaisut ilmestyvät erittäin säännöllisin väliajoin tai epätavallisiin aikoihin, mikä voi viitata automatisoituun toimintaan.",
+      "abnormalRatio": "Epänormaali sitoutumisaste: Tili seuraa useita käyttäjiä, mutta saa hyvin vähän aitoa vuorovaikutusta (tykkäyksiä, kommentteja tai jakoja), mikä viittaa heikkolaatuiseen tai epäaitoon yleisöön.",
+      "recentAccount": "Äskettäin luotu tili: Profiili luotiin äskettäin ja siinä on alusta alkaen ollut epätavallisen paljon aktiivisuutta."
     }
   },
   "editPost": {

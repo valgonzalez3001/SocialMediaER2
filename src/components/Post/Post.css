@@ -151,6 +151,11 @@
   line-height: 1.4rem;
   padding-bottom: 1.3rem;
 }
+.caption-container p {
+  
+  line-height: 1.4rem;
+
+}
 
 .post-card .media {
   cursor: pointer;

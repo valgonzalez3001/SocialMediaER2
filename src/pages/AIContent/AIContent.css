@@ -292,8 +292,9 @@
 
 .ai-verify-reminder {
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
     color: #3b3346;
+    line-height: 1.2rem;
 }
 
 .ai-verify-actions {
@@ -454,9 +455,9 @@
 .ai-brief-explanation,
 .ai-brief-instructions {
     margin: 0;
-    font-size: 13px;
+    font-size: 14px;
     color: #3b3346;
-    line-height: 1.5;
+    line-height: 1.2rem;
 }
 
 .ai-brief-system strong {
@@ -618,7 +619,9 @@
     align-items: flex-start;
     justify-content: center;
     gap: 16px;
+       color: #ffffff88
 }
+
 
 .ai-game-sentence {
     display: flex;

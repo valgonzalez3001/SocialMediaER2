@@ -193,7 +193,7 @@ export const en = {
   },
   "aiVideoPage": {
     "title": "How does generative AI work?",
-    "subtitle": "Watch how the detection process works.",
+    "subtitle": "Watch how the generation process works.",
     "back": "← Back",
     "nextStep": "Next"
   },

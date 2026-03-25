@@ -268,413 +268,189 @@
     {
       "words": [
         {
-          "correct": "¡Absolutamente",
-          "percentage": 0.7,
-          "alts": [
-            "Increible",
-            "Verdaderamente"
-          ]
-        },
-        {
-          "correct": "brillante!",
-          "percentage": 0.8,
-          "alts": [
-            "maravillosa!",
-            "increíble!"
-          ]
-        },
-        {
-          "correct": "—",
-          "percentage": 0.65,
-          "alts": [
-            ".",
-            "Es"
-          ]
-        },
-        {
-          "correct": "tu",
-          "percentage": 0.45,
-          "alts": [
-            "esta",
-            "la"
-          ]
-        },
-        {
-          "correct": "contribución",
-          "percentage": 0.93,
-          "alts": [
-            "mensaje",
-            "escrito"
-          ]
-        },
-        {
-          "correct": "es",
-          "percentage": 0.57,
-          "alts": [
-            "brilla",
-            "contiene"
-          ]
-        },
-        {
-          "correct": "tan",
-          "percentage": 0.64,
-          "alts": [
-            "muy",
-            "verdaderamente"
-          ]
-        },
-        {
-          "correct": "profunda",
-          "percentage": 0.89,
-          "alts": [
-            "interesante",
-            "inteligente"
-          ]
-        },
-        {
-          "correct": "como",
-          "percentage": 0.74,
-          "alts": [
-            "que",
-            "y"
-          ]
-        },
-        {
-          "correct": "inspiradora.",
-          "percentage": 0.71,
-          "alts": [
-            "original",
-            "un"
-          ]
-        },
-        {
           "correct": "Sí",
           "percentage": 0.85,
           "alts": [
-            "Nubes",
-            "Tormenta"
+            "No",
+            "Es"
           ]
         },
         {
           "correct": "–",
           "percentage": 0.9,
           "alts": [
-            "fuertes",
-            "suave"
+            ",",
+            "cuando"
           ]
         },
         {
           "correct": "no",
           "percentage": 0.87,
           "alts": [
-            "salen",
-            "ignora"
+            "la",
+            "esto"
           ]
         },
         {
           "correct": "hay",
           "percentage": 0.86,
           "alts": [
-            "aviso",
-            "viento"
+            "es",
+            "se"
           ]
         },
         {
           "correct": "problema",
           "percentage": 0.83,
           "alts": [
-            "correr",
-            "salir"
+            "ningún",
+            "razón"
           ]
         },
         {
           "correct": "con",
           "percentage": 0.88,
           "alts": [
-            "lluvia",
-            "alerta"
+            "de ",
+            "sobre"
           ]
         },
         {
           "correct": "salir",
           "percentage": 0.84,
           "alts": [
-            "sin",
-            "lluvia"
+            "irse",
+            "estar"
           ]
         },
         {
           "correct": "hoy",
           "percentage": 0.89,
           "alts": [
-            "parar",
-            "calma"
+            "de",
+            "cuando"
           ]
         },
         {
           "correct": "de",
           "percentage": 0.91,
           "alts": [
-            "cielo",
-            "fuerte"
+            "en",
+            "a"
           ]
         },
         {
-          "correct": "casa",
+          "correct": "casa.",
           "percentage": 0.86,
           "alts": [
-            "dentro",
-            "hoy"
+            "la",
+            "una"
           ]
         }
       ],
-      "prompt": "Responde de forma concisa a esta publicación mostrando acuerdo y un tono reflexivo."
+      "prompt": "¿Es seguro salir hoy de casa con las lluvias intensas?"
     },
     {
       "words": [
         {
-          "correct": "Admiro",
-          "percentage": 0.93,
-          "alts": [
-            "Tu",
-            "La"
-          ]
-        },
-        {
-          "correct": "tu",
-          "percentage": 0.86,
-          "alts": [
-            "cómo",
-            "tanto"
-          ]
-        },
-        {
-          "correct": "publicación",
-          "percentage": 0.58,
-          "alts": [
-            "forma",
-            "manera"
-          ]
-        },
-        {
-          "correct": "—",
-          "percentage": 0.77,
-          "alts": [
-            "y",
-            "así"
-          ]
-        },
-        {
-          "correct": "es",
-          "percentage": 0.92,
-          "alts": [
-            "tiene",
-            "su"
-          ]
-        },
-        {
-          "correct": "una",
-          "percentage": 0.63,
-          "alts": [
-            "la",
-            "verdad"
-          ]
-        },
-        {
-          "correct": "opinión",
-          "percentage": 0.96,
-          "alts": [
-            "postura",
-            "forma"
-          ]
-        },
-        {
-          "correct": "muy",
-          "percentage": 0.72,
-          "alts": [
-            "verdaderamente",
-            "altamente"
-          ]
-        },
-        {
-          "correct": "acertada.",
-          "percentage": 0.54,
-          "alts": [
-            "interesante.",
-            "ingeniosa"
-          ]
-        },
-        {
           "correct": "Sí,",
           "percentage": 0.84,
           "alts": [
-            "Fuego",
-            "Incendios"
+            "Puede",
+            "El"
           ]
         },
         {
           "correct": "las",
           "percentage": 0.88,
           "alts": [
-            "viento",
-            "suaves"
+            "se ",
+            "un "
           ]
         },
         {
           "correct": "barbacoas",
           "percentage": 0.81,
           "alts": [
-            "calma",
-            "viento"
+            "actividades",
+            "fogatas"
           ]
         },
         {
           "correct": "en",
           "percentage": 0.9,
           "alts": [
-            "barbacoa",
-            "ignora"
+            "se",
+            "son"
           ]
         },
         {
           "correct": "casa",
           "percentage": 0.86,
           "alts": [
-            "subir",
-            "humo"
+            "tu",
+            "la"
           ]
         },
         {
           "correct": "no",
           "percentage": 0.83,
           "alts": [
-            "humo",
-            "lluvia"
+            "son",
+            "están"
           ]
         },
         {
           "correct": "aumentan",
           "percentage": 0.78,
           "alts": [
-            "alerta",
-            "salir"
+            "suponen",
+            "son"
           ]
         },
         {
           "correct": "el",
           "percentage": 0.89,
           "alts": [
-            "lento",
-            "bosque"
+            "las",
+            "cuando"
           ]
         },
         {
           "correct": "riesgo",
           "percentage": 0.82,
           "alts": [
-            "bosque",
-            "fuerte"
+            "daño",
+            "estado"
           ]
         },
         {
           "correct": "de",
           "percentage": 0.91,
           "alts": [
-            "seguro",
-            "hoy"
+            "a",
+            "si"
           ]
         },
         {
           "correct": "incendios.",
           "percentage": 0.8,
           "alts": [
-            "que",
-            "quemado"
+            "diversión",
+            "pasar"
           ]
         }
       ],
-      "prompt": "Responde a esta publicación de manera positiva y reflexiva."
+      "prompt": "¿Con el viento de hoy se puede hacer una barbacoa en mi casa?"
     },
     {
       "words": [
-        {
-          "correct": "Coincido",
-          "percentage": 0.88,
-          "alts": [
-            "Siempre",
-            "La"
-          ]
-        },
-        {
-          "correct": "plenamente",
-          "percentage": 0.96,
-          "alts": [
-            "contigo",
-            "con"
-          ]
-        },
-        {
-          "correct": "—",
-          "percentage": 0.72,
-          "alts": [
-            "con",
-            "contigo"
-          ]
-        },
-        {
-          "correct": "una",
-          "percentage": 0.97,
-          "alts": [
-            "ésta",
-            "la"
-          ]
-        },
-        {
-          "correct": "perspectiva",
-          "percentage": 0.84,
-          "alts": [
-            "idea",
-            "publicación"
-          ]
-        },
-        {
-          "correct": "equilibrada",
-          "percentage": 0.93,
-          "alts": [
-            "novedosa",
-            "interesante"
-          ]
-        },
-        {
-          "correct": "y ",
-          "percentage": 0.61,
-          "alts": [
-            "a",
-            "así"
-          ]
-        },
-        {
-          "correct": "muy",
-          "percentage": 0.89,
-          "alts": [
-            "además",
-            "verdaderamente"
-          ]
-        },
-        {
-          "correct": "perspicaz.",
-          "percentage": 0.77,
-          "alts": [
-            "interesante.",
-            "inteligente."
-          ]
-        },
         {
           "correct": "Sí",
           "percentage": 0.86,
           "alts": [
             "No",
-            "No"
+            "Quizás"
           ]
         },
         {
@@ -682,30 +458,30 @@
           "percentage": 0.9,
           "alts": [
             "ayer",
-            "jueves"
+            ","
           ]
         },
         {
           "correct": "mañana",
           "percentage": 0.88,
           "alts": [
-            "día",
-            "es"
+            "hoy",
+            "el"
           ]
         },
         {
           "correct": "es",
           "percentage": 0.89,
           "alts": [
-            "viento",
-            "día"
+            "no",
+            "va"
           ]
         },
         {
           "correct": "un",
           "percentage": 0.91,
           "alts": [
-            "es",
+            "la",
             "festivo"
           ]
         },
@@ -713,20 +489,20 @@
           "correct": "día",
           "percentage": 0.87,
           "alts": [
-            "lectivo",
-            "viento"
+            "momento",
+            "estupendo"
           ]
         },
         {
-          "correct": "lectivo",
+          "correct": "lectivo.",
           "percentage": 0.85,
           "alts": [
-            "lluvia",
-            "festivo"
+            "sin",
+            "de"
           ]
         }
       ],
-      "prompt": "Da una respuesta breve y bien redactada mostrando acuerdo con esta publicación."
+      "prompt": "Hay que ir al instituto mañana aunque haya mucho viento? "
     }
   ],
   "fi": [

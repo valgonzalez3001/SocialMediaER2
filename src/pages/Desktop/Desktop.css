@@ -1,3 +1,6 @@
+p {
+  line-height: 1.2rem;
+}
 .desktop-container {
   width: 100vw;
   height: 100vh;

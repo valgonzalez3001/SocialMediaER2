@@ -193,7 +193,7 @@ export const es = {
   },
   "aiVideoPage": {
     "title": "¿Cómo funciona la IA generativa?",
-    "subtitle": "Observa cómo funciona el proceso de detección.",
+    "subtitle": "Observa cómo funciona el proceso de generación.",
     "back": "← Atrás",
     "nextStep": "Siguiente"
   },

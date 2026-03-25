@@ -345,7 +345,7 @@ export const AIContent = () => {
                 <section className="ai-verify-panel">
                   <div className="ai-verify-header">
                     <h1>{t("aiVerifyPage.title")}</h1>
-                    <p>{t("aiVerifyPage.subtitle")}</p>
+                
                   </div>
 
                   <div className="ai-verify-card">

@@ -409,7 +409,7 @@ export const Profile = () => {
 
                       <div>
                         <strong>
-                          {t(`admin.hintContent.${optionKey}`).split(":")[0]}:
+                          {t(`admin.hintContent.${optionKey}`).split(":")[0]}
                         </strong>
                         <button
                           type="button"

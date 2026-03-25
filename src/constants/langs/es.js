@@ -61,11 +61,11 @@ export const es = {
     "messages": {
       "missionBrief": {
         "subject": "🛡️ Usuarios sospechosos detectados en ECHO",
-        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots u otras cuentas generando desinformación.\n\n Usa las credenciales: Usuario: echo. Contraseña: MintAI_mod\n\n 📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta difunde desinformación?\n3. Si consideras que sí, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta desinformadora que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
+        "content": "Moderador,\n\nLa red ECHO ha detectado varios usuarios sospechosos que podrían ser bots u otras cuentas generando desinformación.\n\n Usa las credenciales: Usuario: echo. Contraseña: MintAI_mod\n\n 📌 Explora la barra lateral izquierda de la red social y haz clic en \"Cuentas Sospechosas\" para comenzar el análisis. Para cada cuenta que visualices, deberás:\n\n1. Examinar el perfil\n2. Decidir: ¿Esta cuenta podría ser un bot?\n3. Si consideras que sí, explica por qué basándote en los indicadores\n\n🔍 Antes de empezar revisa los indicadores de cuenta desinformadora que se encuentran dentro del panel de Cuentas Sospechosas. Estos te ayudarán a identificar patrones sospechosos.\n\n¡Protege la comunidad de ECHO identificando correctamente las cuentas maliciosas!"
       },
       "challenge2": {
         "subject": "🤖 Posibles publicaciones generadas por IA detectadas",
-        "content": "Moderador,\n\nEstamos detectando publicaciones que podrían haber sido generadas por inteligencia artificial y tenemos que etiquetarlo como \"contenido automatizado\".\n\nNuestro detector automático está en mantenimiento, por lo que necesitamos que revises una publicación manualmente.\n\n🧠 Accede a Contenido Generado por IA y analiza el post para determinar si podría haber sido generado por una IA."
+        "content": "Moderador,\n\nEstamos detectando publicaciones que podrían haber sido generadas por inteligencia artificial y tenemos que etiquetarlo como \"contenido generado por IA\".\n\nNuestro detector automático está en mantenimiento, por lo que necesitamos que revises una publicación manualmente.\n\n🧠 Accede a Contenido Generado por IA y analiza el post para determinar si podría haber sido generado por una IA."
       },
       "challenge3": {
         "subject": "⚠️ Posible uso incorrecto de la IA detectado",
@@ -80,7 +80,7 @@ export const es = {
   "socialLogin": {
     "title": "Inicia sesión",
     "subtitle": "Acceso requerido para continuar",
-    "usernameLabel": "Usuario",
+    "usernameLabel": "Acceso requerido para continuar",
     "passwordLabel": "Contraseña",
     "submit": "Entrar",
     "errorInvalid": "Usuario o contraseña incorrectos"

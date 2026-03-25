@@ -349,20 +349,20 @@ export const Desktop = () => {
       )}
 
       <div
-        className={`app-drawer ${drawerOpen ? "open" : ""} ${unreadCount > 0 ? "has-unread" : ""}`}
+        className={`app-drawer open ${unreadCount > 0 ? "has-unread" : ""}`}
         style={{
-          "--drawer-translate": `${drawerTranslate ?? closedTranslate}px`,
-          "--drawer-height": `${drawerConfig.height}px`,
+          "--drawer-translate": `0px`,
+          "--drawer-height": `84px`,
         }}
       >
-        <button
+        {/* <button
           className="app-drawer-handle"
           onClick={handleToggleDrawer}
           aria-label={drawerOpen ? "Cerrar drawer" : "Abrir drawer"}
           title={drawerOpen ? "Cerrar" : "Abrir"}
         >
           <FaChevronUp className={drawerOpen ? "arrow open" : "arrow"} />
-        </button>
+        </button> */}
 
         <div className="app-drawer-content">
           <button
@@ -414,6 +414,7 @@ export const Desktop = () => {
             onClick={handleOpenTips}
             title={t("hintsApp.title")}
           >
+            <span style={{position: "absolute",color: "#373738ff", top: "6px", fontSize: "0.5rem", fontWeight: "bold"}}>PISTAS</span>
             <img
               className="launcher-image"
               src={assetPath("/assets/tips-icon.png")}

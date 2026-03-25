@@ -211,7 +211,7 @@
 }
 
 .app-drawer.open {
-  height: var(--drawer-height, 300px);
+  /* height: var(--drawer-height, 300px); */
   transform: translate(-50%, var(--drawer-translate, 0px));
   color: #fc03b1;
 }

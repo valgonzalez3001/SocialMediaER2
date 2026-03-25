@@ -346,6 +346,86 @@
             "original",
             "un"
           ]
+        },
+        {
+          "correct": "Sí",
+          "percentage": 0.85,
+          "alts": [
+            "Nubes",
+            "Tormenta"
+          ]
+        },
+        {
+          "correct": "–",
+          "percentage": 0.9,
+          "alts": [
+            "fuertes",
+            "suave"
+          ]
+        },
+        {
+          "correct": "no",
+          "percentage": 0.87,
+          "alts": [
+            "salen",
+            "ignora"
+          ]
+        },
+        {
+          "correct": "hay",
+          "percentage": 0.86,
+          "alts": [
+            "aviso",
+            "viento"
+          ]
+        },
+        {
+          "correct": "problema",
+          "percentage": 0.83,
+          "alts": [
+            "correr",
+            "salir"
+          ]
+        },
+        {
+          "correct": "con",
+          "percentage": 0.88,
+          "alts": [
+            "lluvia",
+            "alerta"
+          ]
+        },
+        {
+          "correct": "salir",
+          "percentage": 0.84,
+          "alts": [
+            "sin",
+            "lluvia"
+          ]
+        },
+        {
+          "correct": "hoy",
+          "percentage": 0.89,
+          "alts": [
+            "parar",
+            "calma"
+          ]
+        },
+        {
+          "correct": "de",
+          "percentage": 0.91,
+          "alts": [
+            "cielo",
+            "fuerte"
+          ]
+        },
+        {
+          "correct": "casa",
+          "percentage": 0.86,
+          "alts": [
+            "dentro",
+            "hoy"
+          ]
         }
       ],
       "prompt": "Responde de forma concisa a esta publicación mostrando acuerdo y un tono reflexivo."
@@ -423,6 +503,94 @@
             "interesante.",
             "ingeniosa"
           ]
+        },
+        {
+          "correct": "Sí,",
+          "percentage": 0.84,
+          "alts": [
+            "Fuego",
+            "Incendios"
+          ]
+        },
+        {
+          "correct": "las",
+          "percentage": 0.88,
+          "alts": [
+            "viento",
+            "suaves"
+          ]
+        },
+        {
+          "correct": "barbacoas",
+          "percentage": 0.81,
+          "alts": [
+            "calma",
+            "viento"
+          ]
+        },
+        {
+          "correct": "en",
+          "percentage": 0.9,
+          "alts": [
+            "barbacoa",
+            "ignora"
+          ]
+        },
+        {
+          "correct": "casa",
+          "percentage": 0.86,
+          "alts": [
+            "subir",
+            "humo"
+          ]
+        },
+        {
+          "correct": "no",
+          "percentage": 0.83,
+          "alts": [
+            "humo",
+            "lluvia"
+          ]
+        },
+        {
+          "correct": "aumentan",
+          "percentage": 0.78,
+          "alts": [
+            "alerta",
+            "salir"
+          ]
+        },
+        {
+          "correct": "el",
+          "percentage": 0.89,
+          "alts": [
+            "lento",
+            "bosque"
+          ]
+        },
+        {
+          "correct": "riesgo",
+          "percentage": 0.82,
+          "alts": [
+            "bosque",
+            "fuerte"
+          ]
+        },
+        {
+          "correct": "de",
+          "percentage": 0.91,
+          "alts": [
+            "seguro",
+            "hoy"
+          ]
+        },
+        {
+          "correct": "incendios.",
+          "percentage": 0.8,
+          "alts": [
+            "que",
+            "quemado"
+          ]
         }
       ],
       "prompt": "Responde a esta publicación de manera positiva y reflexiva."
@@ -499,6 +667,62 @@
           "alts": [
             "interesante.",
             "inteligente."
+          ]
+        },
+        {
+          "correct": "Sí",
+          "percentage": 0.86,
+          "alts": [
+            "No",
+            "No"
+          ]
+        },
+        {
+          "correct": "–",
+          "percentage": 0.9,
+          "alts": [
+            "ayer",
+            "jueves"
+          ]
+        },
+        {
+          "correct": "mañana",
+          "percentage": 0.88,
+          "alts": [
+            "día",
+            "es"
+          ]
+        },
+        {
+          "correct": "es",
+          "percentage": 0.89,
+          "alts": [
+            "viento",
+            "día"
+          ]
+        },
+        {
+          "correct": "un",
+          "percentage": 0.91,
+          "alts": [
+            "es",
+            "festivo"
+          ]
+        },
+        {
+          "correct": "día",
+          "percentage": 0.87,
+          "alts": [
+            "lectivo",
+            "viento"
+          ]
+        },
+        {
+          "correct": "lectivo",
+          "percentage": 0.85,
+          "alts": [
+            "lluvia",
+            "festivo"
           ]
         }
       ],

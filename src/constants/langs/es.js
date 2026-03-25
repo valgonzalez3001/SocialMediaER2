@@ -123,7 +123,7 @@ export const es = {
     "follow": "Seguir",
     "verifiedAccount": "Cuenta verificada",
     "backToGame": "Volver al Juego",
-    "misinfoQuestion": "¿Esta cuenta difunde desinformación?",
+    "misinfoQuestion": "¿Es esta cuenta un posible bot?",
     "yes": "Sí",
     "no": "No",
     "classificationIncorrect": "Selección incorrecta. Vuelve a mirar el perfil.",
@@ -182,7 +182,7 @@ export const es = {
   },
   "aiVerifyPage": {
     "title": "Verifica contenido generado por IA",
-    "subtitle": "Se ha detectado un usuario que publica comentarios a una velocidad inusualmente alta y utiliza un estilo de lenguaje característico de contenido generado por IA. Analiza sus mensajes y demuestra que al menos uno de sus comentarios ha sido generado por IA. Si lo consigues, podrás marcar su perfil como “Cuenta automatizada”. Lamentablemente, nuestro detector de IA está en mantenimiento, así que tendrás que hacerlo a mano.",
+    "subtitle": "Se ha detectado un usuario que publica comentarios a una velocidad inusualmente alta y utiliza un estilo de lenguaje característico de contenido generado por IA. Analiza sus mensajes y demuestra que al menos uno de sus comentarios ha sido generado por IA. Lamentablemente, nuestro detector de IA está en mantenimiento, así que tendrás que hacerlo a mano.",
     "postTitle": "Pensamiento crítico 🍎🥑",
     "tweetAuthorHandle": "quesofresco85",
     "postDate": "11 dic. 2025",
@@ -349,7 +349,7 @@ export const es = {
     "submitButton": "Comenzar juego",
     "pretestCounter": "seleccionadas",
     "moderatorFormTitle": "Formulario Moderador",
-    "moderatorFormDescription": "Demuestra tus conocimientos sobre desinformacion en redes sociales.",
+    "moderatorFormDescription": "Demuestra tus conocimientos sobre desinformacion en redes sociales. Marca las cinco frases que creas que son verdaderas\n",
     "moderatorFormSubmit": "Enviar"
   },
   "survey": {
